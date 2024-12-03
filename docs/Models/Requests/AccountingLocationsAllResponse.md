@@ -1,0 +1,10 @@
+# AccountingLocationsAllResponse
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                  | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                     | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `GetAccountingLocationsResponse`                                                            | [GetAccountingLocationsResponse](../../Models/Components/GetAccountingLocationsResponse.md) | :heavy_minus_sign:                                                                          | Locations                                                                                   |
+| `UnexpectedErrorResponse`                                                                   | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)               | :heavy_minus_sign:                                                                          | Unexpected error                                                                            |

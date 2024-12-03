@@ -1,0 +1,13 @@
+# PhoneNumber
+
+
+## Fields
+
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `Id`                                                          | *string*                                                      | :heavy_minus_sign:                                            | Unique identifier of the phone number                         | 12345                                                         |
+| `CountryCode`                                                 | *string*                                                      | :heavy_minus_sign:                                            | The country code of the phone number, e.g. +1                 | 1                                                             |
+| `AreaCode`                                                    | *string*                                                      | :heavy_minus_sign:                                            | The area code of the phone number, e.g. 323                   | 323                                                           |
+| `Number`                                                      | *string*                                                      | :heavy_check_mark:                                            | The phone number                                              | 111-111-1111                                                  |
+| `Extension`                                                   | *string*                                                      | :heavy_minus_sign:                                            | The extension of the phone number                             | 105                                                           |
+| `Type`                                                        | [PhoneNumberType](../../Models/Components/PhoneNumberType.md) | :heavy_minus_sign:                                            | The type of phone number                                      | primary                                                       |

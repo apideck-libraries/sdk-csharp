@@ -1,0 +1,10 @@
+# VaultValidateConnectionStateResponse
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                    | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                       | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `ValidateConnectionStateResponse`                                                             | [ValidateConnectionStateResponse](../../Models/Components/ValidateConnectionStateResponse.md) | :heavy_minus_sign:                                                                            | Connection access token refreshed                                                             |
+| `UnexpectedErrorResponse`                                                                     | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)                 | :heavy_minus_sign:                                                                            | Unexpected error                                                                              |

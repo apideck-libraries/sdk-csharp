@@ -1,0 +1,11 @@
+# BalanceSheetFilter
+
+
+## Fields
+
+| Field                                                                | Type                                                                 | Required                                                             | Description                                                          | Example                                                              |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `StartDate`                                                          | *string*                                                             | :heavy_minus_sign:                                                   | The start date of the period to include in the resource.             | 2021-01-01                                                           |
+| `EndDate`                                                            | *string*                                                             | :heavy_minus_sign:                                                   | The end date of the period to include in the resource.               | 2021-12-31                                                           |
+| `PeriodCount`                                                        | *long*                                                               | :heavy_minus_sign:                                                   | The number of periods to include in the resource.                    | 3                                                                    |
+| `PeriodType`                                                         | [PeriodType](../../Models/Components/PeriodType.md)                  | :heavy_minus_sign:                                                   | The type of period to include in the resource: month, quarter, year. | month                                                                |
