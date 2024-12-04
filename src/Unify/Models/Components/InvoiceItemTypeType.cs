@@ -14,9 +14,9 @@ namespace Unify.Models.Components
     using Unify.Utils;
     
     /// <summary>
-    /// The type of invoice item, indicating whether it is an inventory item, a service, or another type.
+    /// Item type
     /// </summary>
-    public enum InvoiceItemType
+    public enum InvoiceItemTypeType
     {
         [JsonProperty("inventory")]
         Inventory,
@@ -26,16 +26,16 @@ namespace Unify.Models.Components
         Other,
     }
 
-    public static class InvoiceItemTypeExtension
+    public static class InvoiceItemTypeTypeExtension
     {
-        public static string Value(this InvoiceItemType value)
+        public static string Value(this InvoiceItemTypeType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static InvoiceItemType ToEnum(this string value)
+        public static InvoiceItemTypeType ToEnum(this string value)
         {
-            foreach(var field in typeof(InvoiceItemType).GetFields())
+            foreach(var field in typeof(InvoiceItemTypeType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -48,14 +48,14 @@ namespace Unify.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is InvoiceItemType)
+                    if (enumVal is InvoiceItemTypeType)
                     {
-                        return (InvoiceItemType)enumVal;
+                        return (InvoiceItemTypeType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum InvoiceItemType");
+            throw new Exception($"Unknown value {value} for enum InvoiceItemTypeType");
         }
     }
 

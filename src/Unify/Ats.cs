@@ -25,10 +25,10 @@ namespace Unify
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.1";
-        private const string _sdkGenVersion = "2.467.4";
+        private const string _sdkVersion = "0.0.3";
+        private const string _sdkGenVersion = "2.470.1";
         private const string _openapiDocVersion = "10.8.1";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.1 2.467.4 10.8.1 Unify";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.3 2.470.1 10.8.1 Unify";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Unify.Models.Components.Security>? _securitySource;

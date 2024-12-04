@@ -33,6 +33,7 @@ AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
     ServiceId = "salesforce",
     Filter = new InvoiceItemsFilter() {
         Name = "Widgets Large",
+        Type = Unify.Models.Components.InvoiceItemType.Service,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -95,7 +96,7 @@ AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
         Tracked = true,
         Taxable = true,
         InventoryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
-        Type = Unify.Models.Components.InvoiceItemType.Inventory,
+        Type = Unify.Models.Components.InvoiceItemTypeType.Inventory,
         SalesDetails = new InvoiceItemSalesDetails() {
             UnitPrice = 27500.5D,
             UnitOfMeasure = "pc.",
@@ -205,6 +206,9 @@ AccountingInvoiceItemsOneRequest req = new AccountingInvoiceItemsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
+    Filter = new InvoiceItemFilter() {
+        Type = Unify.Models.Components.InvoiceItemFilterInvoiceItemType.Service,
+    },
 };
 
 var res = await sdk.Accounting.InvoiceItems.GetAsync(req);
@@ -263,7 +267,7 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
         Tracked = true,
         Taxable = true,
         InventoryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
-        Type = Unify.Models.Components.InvoiceItemType.Inventory,
+        Type = Unify.Models.Components.InvoiceItemTypeType.Inventory,
         SalesDetails = new InvoiceItemSalesDetails() {
             UnitPrice = 27500.5D,
             UnitOfMeasure = "pc.",

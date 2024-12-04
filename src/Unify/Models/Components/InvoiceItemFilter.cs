@@ -12,19 +12,13 @@ namespace Unify.Models.Components
     using Unify.Models.Components;
     using Unify.Utils;
     
-    public class InvoiceItemsFilter
+    public class InvoiceItemFilter
     {
-
-        /// <summary>
-        /// Name of Invoice Items to search for
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:name=name")]
-        public string? Name { get; set; }
 
         /// <summary>
         /// The type of invoice item, indicating whether it is an inventory item, a service, or another type.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=type")]
-        public InvoiceItemType? Type { get; set; } = null;
+        public InvoiceItemFilterInvoiceItemType? Type { get; set; } = null;
     }
 }

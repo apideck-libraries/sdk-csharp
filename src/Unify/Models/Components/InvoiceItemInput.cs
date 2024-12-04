@@ -71,7 +71,7 @@ namespace Unify.Models.Components
         /// Item type
         /// </summary>
         [JsonProperty("type")]
-        public InvoiceItemType? Type { get; set; } = null;
+        public InvoiceItemTypeType? Type { get; set; } = null;
 
         [JsonProperty("sales_details")]
         public InvoiceItemSalesDetails? SalesDetails { get; set; }

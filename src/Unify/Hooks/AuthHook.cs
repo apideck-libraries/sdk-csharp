@@ -1,5 +1,6 @@
 using System.Net.Http;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Unify.Hooks
 {

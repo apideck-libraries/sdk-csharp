@@ -9,6 +9,7 @@
 #nullable enable
 namespace Unify.Models.Requests
 {
+    using Unify.Models.Components;
     using Unify.Utils;
     
     public class AccountingInvoiceItemsOneRequest
@@ -49,5 +50,11 @@ namespace Unify.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")]
         public string? Fields { get; set; } = null;
+
+        /// <summary>
+        /// Apply filters
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
+        public InvoiceItemFilter? Filter { get; set; }
     }
 }
