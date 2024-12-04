@@ -10,6 +10,9 @@ targets:
     apideck:
         target: csharp
         source: Apideck
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck-csharp-code-samples
