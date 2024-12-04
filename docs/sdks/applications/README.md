@@ -18,10 +18,10 @@ List Applications
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
 using System.Collections.Generic;
-using Unify.Models.Components;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -53,14 +53,14 @@ var res = await sdk.Ats.Applications.ListAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Create
 
@@ -69,9 +69,9 @@ Create Application
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -84,7 +84,7 @@ AtsApplicationsAddRequest req = new AtsApplicationsAddRequest() {
     Application = new ApplicationInput() {
         ApplicantId = "12345",
         JobId = "12345",
-        Status = Unify.Models.Components.ApplicationStatus.Open,
+        Status = ApiDeckSdk.Models.Components.ApplicationStatus.Open,
         Stage = new Stage() {
             Id = "12345",
             Name = "12345",
@@ -125,14 +125,14 @@ var res = await sdk.Ats.Applications.CreateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Get
 
@@ -141,9 +141,9 @@ Get Application
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -173,14 +173,14 @@ var res = await sdk.Ats.Applications.GetAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Update
 
@@ -189,9 +189,9 @@ Update Application
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -205,7 +205,7 @@ AtsApplicationsUpdateRequest req = new AtsApplicationsUpdateRequest() {
     Application = new ApplicationInput() {
         ApplicantId = "12345",
         JobId = "12345",
-        Status = Unify.Models.Components.ApplicationStatus.Open,
+        Status = ApiDeckSdk.Models.Components.ApplicationStatus.Open,
         Stage = new Stage() {
             Id = "12345",
             Name = "12345",
@@ -246,14 +246,14 @@ var res = await sdk.Ats.Applications.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Delete
 
@@ -262,9 +262,9 @@ Delete Application
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -294,11 +294,11 @@ var res = await sdk.Ats.Applications.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |

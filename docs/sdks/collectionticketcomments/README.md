@@ -18,9 +18,9 @@ List Comments
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -34,8 +34,8 @@ IssueTrackingCollectionTicketCommentsAllRequest req = new IssueTrackingCollectio
     TicketId = "<id>",
     ServiceId = "salesforce",
     Sort = new CommentsSort() {
-        By = Unify.Models.Components.CommentsSortBy.CreatedAt,
-        Direction = Unify.Models.Components.SortDirection.Desc,
+        By = ApiDeckSdk.Models.Components.CommentsSortBy.CreatedAt,
+        Direction = ApiDeckSdk.Models.Components.SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -60,14 +60,14 @@ var res = await sdk.IssueTracking.CollectionTicketComments.ListAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Create
 
@@ -76,9 +76,9 @@ Create Comment
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -128,14 +128,14 @@ var res = await sdk.IssueTracking.CollectionTicketComments.CreateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Get
 
@@ -144,9 +144,9 @@ Get Comment
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -179,14 +179,14 @@ var res = await sdk.IssueTracking.CollectionTicketComments.GetAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Update
 
@@ -195,9 +195,9 @@ Update Comment
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -248,14 +248,14 @@ var res = await sdk.IssueTracking.CollectionTicketComments.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Delete
 
@@ -264,9 +264,9 @@ Delete Comment
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -298,11 +298,11 @@ var res = await sdk.IssueTracking.CollectionTicketComments.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |

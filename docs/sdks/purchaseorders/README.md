@@ -18,10 +18,10 @@ List Purchase Orders
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
 using System.Collections.Generic;
-using Unify.Models.Components;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -39,8 +39,8 @@ AccountingPurchaseOrdersAllRequest req = new AccountingPurchaseOrdersAllRequest(
         SupplierId = "1234",
     },
     Sort = new PurchaseOrdersSort() {
-        By = Unify.Models.Components.PurchaseOrdersSortBy.UpdatedAt,
-        Direction = Unify.Models.Components.SortDirection.Desc,
+        By = ApiDeckSdk.Models.Components.PurchaseOrdersSortBy.UpdatedAt,
+        Direction = ApiDeckSdk.Models.Components.SortDirection.Desc,
     },
 };
 
@@ -61,14 +61,14 @@ var res = await sdk.Accounting.PurchaseOrders.ListAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Create
 
@@ -77,9 +77,9 @@ Create Purchase Order
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -98,7 +98,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
             DisplayName = "Windsurf Shop",
             Address = new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -124,11 +124,11 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
             },
         },
         CompanyId = "12345",
-        Status = Unify.Models.Components.PurchaseOrderStatus.Open,
+        Status = ApiDeckSdk.Models.Components.PurchaseOrderStatus.Open,
         IssuedDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         DeliveryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         ExpectedArrivalDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
-        Currency = Unify.Models.Components.Currency.Usd,
+        Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         CurrencyRate = 0.69D,
         SubTotal = 27500D,
         TotalTax = 2500D,
@@ -141,7 +141,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = Unify.Models.Components.InvoiceLineItemType.SalesItem,
+                Type = ApiDeckSdk.Models.Components.InvoiceLineItemType.SalesItem,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -186,7 +186,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
         },
         ShippingAddress = new Address() {
             Id = "123",
-            Type = Unify.Models.Components.Type.Primary,
+            Type = ApiDeckSdk.Models.Components.Type.Primary,
             String = "25 Spring Street, Blackburn, VIC 3130",
             Name = "HQ US",
             Line1 = "Main street",
@@ -221,14 +221,14 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = Unify.Models.Components.AccountType.CreditCard,
+            AccountType = ApiDeckSdk.Models.Components.AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = Unify.Models.Components.Currency.Usd,
+            Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         },
         AccountingByRow = false,
         DueDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
@@ -279,14 +279,14 @@ var res = await sdk.Accounting.PurchaseOrders.CreateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Get
 
@@ -295,9 +295,9 @@ Get Purchase Order
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -327,14 +327,14 @@ var res = await sdk.Accounting.PurchaseOrders.GetAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Update
 
@@ -343,9 +343,9 @@ Update Purchase Order
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -365,7 +365,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
             DisplayName = "Windsurf Shop",
             Address = new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -391,11 +391,11 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
             },
         },
         CompanyId = "12345",
-        Status = Unify.Models.Components.PurchaseOrderStatus.Open,
+        Status = ApiDeckSdk.Models.Components.PurchaseOrderStatus.Open,
         IssuedDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         DeliveryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         ExpectedArrivalDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
-        Currency = Unify.Models.Components.Currency.Usd,
+        Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         CurrencyRate = 0.69D,
         SubTotal = 27500D,
         TotalTax = 2500D,
@@ -408,7 +408,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = Unify.Models.Components.InvoiceLineItemType.SalesItem,
+                Type = ApiDeckSdk.Models.Components.InvoiceLineItemType.SalesItem,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -455,7 +455,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
         },
         ShippingAddress = new Address() {
             Id = "123",
-            Type = Unify.Models.Components.Type.Primary,
+            Type = ApiDeckSdk.Models.Components.Type.Primary,
             String = "25 Spring Street, Blackburn, VIC 3130",
             Name = "HQ US",
             Line1 = "Main street",
@@ -490,14 +490,14 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = Unify.Models.Components.AccountType.CreditCard,
+            AccountType = ApiDeckSdk.Models.Components.AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = Unify.Models.Components.Currency.Usd,
+            Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         },
         AccountingByRow = false,
         DueDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
@@ -548,14 +548,14 @@ var res = await sdk.Accounting.PurchaseOrders.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Delete
 
@@ -564,9 +564,9 @@ Delete Purchase Order
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -596,11 +596,11 @@ var res = await sdk.Accounting.PurchaseOrders.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |

@@ -18,9 +18,9 @@ List Bill Payments
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +35,8 @@ AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new PaymentsSort() {
-        By = Unify.Models.Components.PaymentsSortBy.UpdatedAt,
-        Direction = Unify.Models.Components.SortDirection.Desc,
+        By = ApiDeckSdk.Models.Components.PaymentsSortBy.UpdatedAt,
+        Direction = ApiDeckSdk.Models.Components.SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -61,14 +61,14 @@ var res = await sdk.Accounting.BillPayments.ListAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Create
 
@@ -77,9 +77,9 @@ Create Bill Payment
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -90,7 +90,7 @@ var sdk = new Apideck(
 
 AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
     BillPayment = new BillPaymentInput() {
-        Currency = Unify.Models.Components.Currency.Usd,
+        Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         CurrencyRate = 0.69D,
         TotalAmount = 49.99D,
         Reference = "123456",
@@ -108,7 +108,7 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
             DisplayName = "Windsurf Shop",
             Address = new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -135,12 +135,12 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
         },
         CompanyId = "12345",
         Reconciled = true,
-        Status = Unify.Models.Components.PaymentStatus.Authorised,
-        Type = Unify.Models.Components.BillPaymentType.AccountsPayable,
+        Status = ApiDeckSdk.Models.Components.PaymentStatus.Authorised,
+        Type = ApiDeckSdk.Models.Components.BillPaymentType.AccountsPayable,
         Allocations = new List<BillPaymentAllocations>() {
             new BillPaymentAllocations() {
                 Id = "12345",
-                Type = Unify.Models.Components.BillPaymentAllocationType.Bill,
+                Type = ApiDeckSdk.Models.Components.BillPaymentAllocationType.Bill,
                 Amount = 49.99D,
                 AllocationId = "123456",
             },
@@ -201,14 +201,14 @@ var res = await sdk.Accounting.BillPayments.CreateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Get
 
@@ -217,9 +217,9 @@ Get Bill Payment
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -250,14 +250,14 @@ var res = await sdk.Accounting.BillPayments.GetAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Update
 
@@ -266,9 +266,9 @@ Update Bill Payment
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -280,7 +280,7 @@ var sdk = new Apideck(
 AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateRequest() {
     Id = "<id>",
     BillPayment = new BillPaymentInput() {
-        Currency = Unify.Models.Components.Currency.Usd,
+        Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         CurrencyRate = 0.69D,
         TotalAmount = 49.99D,
         Reference = "123456",
@@ -298,7 +298,7 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
             DisplayName = "Windsurf Shop",
             Address = new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -325,12 +325,12 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
         },
         CompanyId = "12345",
         Reconciled = true,
-        Status = Unify.Models.Components.PaymentStatus.Authorised,
-        Type = Unify.Models.Components.BillPaymentType.AccountsPayable,
+        Status = ApiDeckSdk.Models.Components.PaymentStatus.Authorised,
+        Type = ApiDeckSdk.Models.Components.BillPaymentType.AccountsPayable,
         Allocations = new List<BillPaymentAllocations>() {
             new BillPaymentAllocations() {
                 Id = "12345",
-                Type = Unify.Models.Components.BillPaymentAllocationType.Bill,
+                Type = ApiDeckSdk.Models.Components.BillPaymentAllocationType.Bill,
                 Amount = 49.99D,
                 AllocationId = "123456",
             },
@@ -393,14 +393,14 @@ var res = await sdk.Accounting.BillPayments.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Delete
 
@@ -409,9 +409,9 @@ Delete Bill Payment
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -441,11 +441,11 @@ var res = await sdk.Accounting.BillPayments.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |

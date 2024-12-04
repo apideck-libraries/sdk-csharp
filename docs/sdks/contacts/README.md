@@ -18,9 +18,9 @@ List contacts
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -39,8 +39,8 @@ CrmContactsAllRequest req = new CrmContactsAllRequest() {
         OwnerId = "12345",
     },
     Sort = new ContactsSort() {
-        By = Unify.Models.Components.ContactsSortBy.CreatedAt,
-        Direction = Unify.Models.Components.SortDirection.Desc,
+        By = ApiDeckSdk.Models.Components.ContactsSortBy.CreatedAt,
+        Direction = ApiDeckSdk.Models.Components.SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -65,14 +65,14 @@ var res = await sdk.Crm.Contacts.ListAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Create
 
@@ -81,9 +81,9 @@ Create contact
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -96,7 +96,7 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
     Contact = new ContactInput() {
         Name = "Elon Musk",
         OwnerId = "54321",
-        Type = Unify.Models.Components.ContactType.Personal,
+        Type = ApiDeckSdk.Models.Components.ContactType.Personal,
         CompanyId = "23456",
         CompanyName = "23456",
         LeadId = "34567",
@@ -108,7 +108,7 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
         Title = "CEO",
         Department = "Engineering",
         Language = "EN",
-        Gender = Unify.Models.Components.ContactGender.Female,
+        Gender = ApiDeckSdk.Models.Components.ContactGender.Female,
         Birthday = "2000-08-12",
         PhotoUrl = "https://unavatar.io/elon-musk",
         LeadSource = "Cold Call",
@@ -121,13 +121,13 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = Unify.Models.Components.WebsiteType.Primary,
+                Type = ApiDeckSdk.Models.Components.WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -166,14 +166,14 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = Unify.Models.Components.PhoneNumberType.Primary,
+                Type = ApiDeckSdk.Models.Components.PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = Unify.Models.Components.EmailType.Primary,
+                Type = ApiDeckSdk.Models.Components.EmailType.Primary,
             },
         },
         EmailDomain = "gmail.com",
@@ -229,14 +229,14 @@ var res = await sdk.Crm.Contacts.CreateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Get
 
@@ -245,9 +245,9 @@ Get contact
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -285,14 +285,14 @@ var res = await sdk.Crm.Contacts.GetAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Update
 
@@ -301,9 +301,9 @@ Update contact
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -317,7 +317,7 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
     Contact = new ContactInput() {
         Name = "Elon Musk",
         OwnerId = "54321",
-        Type = Unify.Models.Components.ContactType.Personal,
+        Type = ApiDeckSdk.Models.Components.ContactType.Personal,
         CompanyId = "23456",
         CompanyName = "23456",
         LeadId = "34567",
@@ -329,7 +329,7 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
         Title = "CEO",
         Department = "Engineering",
         Language = "EN",
-        Gender = Unify.Models.Components.ContactGender.Female,
+        Gender = ApiDeckSdk.Models.Components.ContactGender.Female,
         Birthday = "2000-08-12",
         PhotoUrl = "https://unavatar.io/elon-musk",
         LeadSource = "Cold Call",
@@ -342,13 +342,13 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = Unify.Models.Components.WebsiteType.Primary,
+                Type = ApiDeckSdk.Models.Components.WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -387,14 +387,14 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = Unify.Models.Components.PhoneNumberType.Primary,
+                Type = ApiDeckSdk.Models.Components.PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = Unify.Models.Components.EmailType.Primary,
+                Type = ApiDeckSdk.Models.Components.EmailType.Primary,
             },
         },
         EmailDomain = "gmail.com",
@@ -452,14 +452,14 @@ var res = await sdk.Crm.Contacts.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Delete
 
@@ -468,9 +468,9 @@ Delete contact
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -500,11 +500,11 @@ var res = await sdk.Crm.Contacts.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |

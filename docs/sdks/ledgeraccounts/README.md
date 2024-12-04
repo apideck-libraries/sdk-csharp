@@ -18,9 +18,9 @@ List Ledger Accounts
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +35,8 @@ AccountingLedgerAccountsAllRequest req = new AccountingLedgerAccountsAllRequest(
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new LedgerAccountsSort() {
-        By = Unify.Models.Components.LedgerAccountsSortBy.UpdatedAt,
-        Direction = Unify.Models.Components.SortDirection.Desc,
+        By = ApiDeckSdk.Models.Components.LedgerAccountsSortBy.UpdatedAt,
+        Direction = ApiDeckSdk.Models.Components.SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -61,14 +61,14 @@ var res = await sdk.Accounting.LedgerAccounts.ListAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Create
 
@@ -77,9 +77,9 @@ Create Ledger Account
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -93,15 +93,15 @@ AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest(
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
-        Classification = Unify.Models.Components.Classification.Asset,
-        Type = Unify.Models.Components.LedgerAccountType.Bank,
+        Classification = ApiDeckSdk.Models.Components.Classification.Asset,
+        Type = ApiDeckSdk.Models.Components.LedgerAccountType.Bank,
         SubType = "CHECKING_ACCOUNT",
         Name = "Bank account",
         FullyQualifiedName = "Asset.Bank.Checking_Account",
         Description = "Main checking account",
         OpeningBalance = 75000D,
         CurrentBalance = 20000D,
-        Currency = Unify.Models.Components.Currency.Usd,
+        Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         TaxType = "NONE",
         TaxRate = new LinkedTaxRateInput() {
             Id = "123456",
@@ -109,20 +109,20 @@ AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest(
         },
         Level = 1D,
         Active = true,
-        Status = Unify.Models.Components.AccountStatus.Active,
+        Status = ApiDeckSdk.Models.Components.AccountStatus.Active,
         Header = true,
         BankAccount = new BankAccount() {
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = Unify.Models.Components.AccountType.CreditCard,
+            AccountType = ApiDeckSdk.Models.Components.AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = Unify.Models.Components.Currency.Usd,
+            Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         },
         ParentAccount = new ParentAccount() {
             Id = "12345",
@@ -168,14 +168,14 @@ var res = await sdk.Accounting.LedgerAccounts.CreateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Get
 
@@ -184,9 +184,9 @@ Get Ledger Account
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -217,14 +217,14 @@ var res = await sdk.Accounting.LedgerAccounts.GetAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Update
 
@@ -233,9 +233,9 @@ Update Ledger Account
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -250,15 +250,15 @@ AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRe
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
-        Classification = Unify.Models.Components.Classification.Asset,
-        Type = Unify.Models.Components.LedgerAccountType.Bank,
+        Classification = ApiDeckSdk.Models.Components.Classification.Asset,
+        Type = ApiDeckSdk.Models.Components.LedgerAccountType.Bank,
         SubType = "CHECKING_ACCOUNT",
         Name = "Bank account",
         FullyQualifiedName = "Asset.Bank.Checking_Account",
         Description = "Main checking account",
         OpeningBalance = 75000D,
         CurrentBalance = 20000D,
-        Currency = Unify.Models.Components.Currency.Usd,
+        Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         TaxType = "NONE",
         TaxRate = new LinkedTaxRateInput() {
             Id = "123456",
@@ -266,20 +266,20 @@ AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRe
         },
         Level = 1D,
         Active = true,
-        Status = Unify.Models.Components.AccountStatus.Active,
+        Status = ApiDeckSdk.Models.Components.AccountStatus.Active,
         Header = true,
         BankAccount = new BankAccount() {
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = Unify.Models.Components.AccountType.CreditCard,
+            AccountType = ApiDeckSdk.Models.Components.AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = Unify.Models.Components.Currency.Usd,
+            Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         },
         ParentAccount = new ParentAccount() {
             Id = "12345",
@@ -325,14 +325,14 @@ var res = await sdk.Accounting.LedgerAccounts.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Delete
 
@@ -341,9 +341,9 @@ Delete Ledger Account
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -373,11 +373,11 @@ var res = await sdk.Accounting.LedgerAccounts.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |

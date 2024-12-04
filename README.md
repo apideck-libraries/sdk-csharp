@@ -46,14 +46,14 @@ For more information about the API: [Apideck Developer Docs](https://developers.
 
 To add the [NuGet](https://www.nuget.org/) package to a .NET project:
 ```bash
-dotnet add package Unify
+dotnet add package ApiDeckSdk
 ```
 
 ### Locally
 
 To add a reference to a local instance of the SDK in a .NET project:
 ```bash
-dotnet add reference src/Unify/Unify.csproj
+dotnet add reference src/ApiDeckSdk/ApiDeckSdk.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -63,9 +63,9 @@ dotnet add reference src/Unify/Unify.csproj
 ### Example
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -108,9 +108,9 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `ApiKey` parameter must be set when initializing the SDK client instance. For example:
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -670,9 +670,9 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply pass a `RetryConfig` to the call:
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -715,9 +715,9 @@ var res = await sdk.Accounting.TaxRates.ListAsync(
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -762,7 +762,7 @@ var res = await sdk.Accounting.TaxRates.ListAsync(req);
 
 Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
 
-By default, an API error will raise a `Unify.Models.Errors.APIException` exception, which has the following properties:
+By default, an API error will raise a `ApiDeckSdk.Models.Errors.APIException` exception, which has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
@@ -772,24 +772,24 @@ By default, an API error will raise a `Unify.Models.Errors.APIException` excepti
 
 When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `ListAsync` method throws the following exceptions:
 
-| Error Type                                  | Status Code | Content Type     |
-| ------------------------------------------- | ----------- | ---------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400         | application/json |
-| Unify.Models.Errors.UnauthorizedResponse    | 401         | application/json |
-| Unify.Models.Errors.PaymentRequiredResponse | 402         | application/json |
-| Unify.Models.Errors.NotFoundResponse        | 404         | application/json |
-| Unify.Models.Errors.UnprocessableResponse   | 422         | application/json |
-| Unify.Models.Errors.APIException            | 4XX, 5XX    | \*/\*            |
+| Error Type                                       | Status Code | Content Type     |
+| ------------------------------------------------ | ----------- | ---------------- |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400         | application/json |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401         | application/json |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402         | application/json |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404         | application/json |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422         | application/json |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 using System;
-using Unify.Models.Errors;
+using ApiDeckSdk.Models.Errors;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -845,7 +845,7 @@ catch (Exception ex)
         // Handle exception data
         throw;
     }
-    else if (ex is Unify.Models.Errors.APIException)
+    else if (ex is ApiDeckSdk.Models.Errors.APIException)
     {
         // Handle default exception
         throw;
@@ -861,9 +861,9 @@ catch (Exception ex)
 
 The default server can also be overridden globally by passing a URL to the `serverUrl: string` optional parameter when initializing the SDK client instance. For example:
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -897,9 +897,9 @@ var res = await sdk.Accounting.TaxRates.ListAsync(req);
 
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(

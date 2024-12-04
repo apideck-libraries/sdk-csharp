@@ -18,9 +18,9 @@ Apideck operates as a stateless Unified API, which means that the list endpoint 
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -38,13 +38,13 @@ HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
         Title = "Manager",
         LastName = "Musk",
         ManagerId = "1234",
-        EmploymentStatus = Unify.Models.Components.EmployeesFilterEmploymentStatus.Active,
+        EmploymentStatus = ApiDeckSdk.Models.Components.EmployeesFilterEmploymentStatus.Active,
         EmployeeNumber = "123456-AB",
         DepartmentId = "1234",
     },
     Sort = new EmployeesSort() {
-        By = Unify.Models.Components.EmployeesSortBy.CreatedAt,
-        Direction = Unify.Models.Components.SortDirection.Desc,
+        By = ApiDeckSdk.Models.Components.EmployeesSortBy.CreatedAt,
+        Direction = ApiDeckSdk.Models.Components.SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -69,14 +69,14 @@ var res = await sdk.Hris.Employees.ListAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Create
 
@@ -85,9 +85,9 @@ Create Employee
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -113,7 +113,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
             FirstName = "Elon",
             LastName = "Musk",
             MiddleName = "D.",
-            Gender = Unify.Models.Components.Gender.Male,
+            Gender = ApiDeckSdk.Models.Components.Gender.Male,
             Initials = "EM",
             Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
             DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
@@ -130,9 +130,9 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         CompanyName = "SpaceX",
         EmploymentStartDate = "2021-10-26",
         EmploymentEndDate = "2028-10-26",
-        LeavingReason = Unify.Models.Components.LeavingReason.Resigned,
+        LeavingReason = ApiDeckSdk.Models.Components.LeavingReason.Resigned,
         EmployeeNumber = "123456-AB",
-        EmploymentStatus = Unify.Models.Components.EmploymentStatus.Active,
+        EmploymentStatus = ApiDeckSdk.Models.Components.EmploymentStatus.Active,
         Ethnicity = "African American",
         Manager = new Manager() {
             Id = "12345",
@@ -140,7 +140,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
             FirstName = "Elon",
             LastName = "Musk",
             Email = "elon@musk.com",
-            EmploymentStatus = Unify.Models.Components.EmploymentStatus.Active,
+            EmploymentStatus = ApiDeckSdk.Models.Components.EmploymentStatus.Active,
         },
         DirectReports = new List<string>() {
             "a0d636c6-43b3-4bde-8c70-85b707d992f4",
@@ -151,7 +151,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
         CountryOfBirth = "US",
         Description = "A description",
-        Gender = Unify.Models.Components.Gender.Male,
+        Gender = ApiDeckSdk.Models.Components.Gender.Male,
         Pronouns = "she,her",
         PreferredLanguage = "EN",
         Languages = new List<string>() {
@@ -172,15 +172,15 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 CompensationRate = 72000D,
-                Currency = Unify.Models.Components.Currency.Usd,
-                PaymentUnit = Unify.Models.Components.PaymentUnit.Year,
+                Currency = ApiDeckSdk.Models.Components.Currency.Usd,
+                PaymentUnit = ApiDeckSdk.Models.Components.PaymentUnit.Year,
                 HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 IsPrimary = true,
                 IsManager = true,
-                Status = Unify.Models.Components.EmployeeJobStatus.Active,
+                Status = ApiDeckSdk.Models.Components.EmployeeJobStatus.Active,
                 Location = new Address() {
                     Id = "123",
-                    Type = Unify.Models.Components.Type.Primary,
+                    Type = ApiDeckSdk.Models.Components.Type.Primary,
                     String = "25 Spring Street, Blackburn, VIC 3130",
                     Name = "HQ US",
                     Line1 = "Main street",
@@ -209,8 +209,8 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         Compensations = new List<EmployeeCompensationInput>() {
             new EmployeeCompensationInput() {
                 Rate = 50D,
-                PaymentUnit = Unify.Models.Components.PaymentUnit.Hour,
-                FlsaStatus = Unify.Models.Components.FlsaStatus.Nonexempt,
+                PaymentUnit = ApiDeckSdk.Models.Components.PaymentUnit.Hour,
+                FlsaStatus = ApiDeckSdk.Models.Components.FlsaStatus.Nonexempt,
                 EffectiveDate = "2021-06-11",
             },
         },
@@ -218,7 +218,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -250,14 +250,14 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = Unify.Models.Components.PhoneNumberType.Primary,
+                Type = ApiDeckSdk.Models.Components.PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = Unify.Models.Components.EmailType.Primary,
+                Type = ApiDeckSdk.Models.Components.EmailType.Primary,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -282,14 +282,14 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = Unify.Models.Components.AccountType.CreditCard,
+                AccountType = ApiDeckSdk.Models.Components.AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = Unify.Models.Components.Currency.Usd,
+                Currency = ApiDeckSdk.Models.Components.Currency.Usd,
             },
         },
         TaxCode = "1111",
@@ -343,14 +343,14 @@ var res = await sdk.Hris.Employees.CreateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Get
 
@@ -359,9 +359,9 @@ Get Employee
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -399,14 +399,14 @@ var res = await sdk.Hris.Employees.GetAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Update
 
@@ -415,9 +415,9 @@ Update Employee
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -444,7 +444,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
             FirstName = "Elon",
             LastName = "Musk",
             MiddleName = "D.",
-            Gender = Unify.Models.Components.Gender.Male,
+            Gender = ApiDeckSdk.Models.Components.Gender.Male,
             Initials = "EM",
             Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
             DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
@@ -461,9 +461,9 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         CompanyName = "SpaceX",
         EmploymentStartDate = "2021-10-26",
         EmploymentEndDate = "2028-10-26",
-        LeavingReason = Unify.Models.Components.LeavingReason.Resigned,
+        LeavingReason = ApiDeckSdk.Models.Components.LeavingReason.Resigned,
         EmployeeNumber = "123456-AB",
-        EmploymentStatus = Unify.Models.Components.EmploymentStatus.Active,
+        EmploymentStatus = ApiDeckSdk.Models.Components.EmploymentStatus.Active,
         Ethnicity = "African American",
         Manager = new Manager() {
             Id = "12345",
@@ -471,7 +471,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
             FirstName = "Elon",
             LastName = "Musk",
             Email = "elon@musk.com",
-            EmploymentStatus = Unify.Models.Components.EmploymentStatus.Active,
+            EmploymentStatus = ApiDeckSdk.Models.Components.EmploymentStatus.Active,
         },
         DirectReports = new List<string>() {
             "a0d636c6-43b3-4bde-8c70-85b707d992f4",
@@ -482,7 +482,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
         CountryOfBirth = "US",
         Description = "A description",
-        Gender = Unify.Models.Components.Gender.Male,
+        Gender = ApiDeckSdk.Models.Components.Gender.Male,
         Pronouns = "she,her",
         PreferredLanguage = "EN",
         Languages = new List<string>() {
@@ -503,15 +503,15 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 CompensationRate = 72000D,
-                Currency = Unify.Models.Components.Currency.Usd,
-                PaymentUnit = Unify.Models.Components.PaymentUnit.Year,
+                Currency = ApiDeckSdk.Models.Components.Currency.Usd,
+                PaymentUnit = ApiDeckSdk.Models.Components.PaymentUnit.Year,
                 HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 IsPrimary = true,
                 IsManager = true,
-                Status = Unify.Models.Components.EmployeeJobStatus.Active,
+                Status = ApiDeckSdk.Models.Components.EmployeeJobStatus.Active,
                 Location = new Address() {
                     Id = "123",
-                    Type = Unify.Models.Components.Type.Primary,
+                    Type = ApiDeckSdk.Models.Components.Type.Primary,
                     String = "25 Spring Street, Blackburn, VIC 3130",
                     Name = "HQ US",
                     Line1 = "Main street",
@@ -540,8 +540,8 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         Compensations = new List<EmployeeCompensationInput>() {
             new EmployeeCompensationInput() {
                 Rate = 50D,
-                PaymentUnit = Unify.Models.Components.PaymentUnit.Hour,
-                FlsaStatus = Unify.Models.Components.FlsaStatus.Nonexempt,
+                PaymentUnit = ApiDeckSdk.Models.Components.PaymentUnit.Hour,
+                FlsaStatus = ApiDeckSdk.Models.Components.FlsaStatus.Nonexempt,
                 EffectiveDate = "2021-06-11",
             },
         },
@@ -549,7 +549,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -581,14 +581,14 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = Unify.Models.Components.PhoneNumberType.Primary,
+                Type = ApiDeckSdk.Models.Components.PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = Unify.Models.Components.EmailType.Primary,
+                Type = ApiDeckSdk.Models.Components.EmailType.Primary,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -615,14 +615,14 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = Unify.Models.Components.AccountType.CreditCard,
+                AccountType = ApiDeckSdk.Models.Components.AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = Unify.Models.Components.Currency.Usd,
+                Currency = ApiDeckSdk.Models.Components.Currency.Usd,
             },
         },
         TaxCode = "1111",
@@ -676,14 +676,14 @@ var res = await sdk.Hris.Employees.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Delete
 
@@ -692,9 +692,9 @@ Delete Employee
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -724,11 +724,11 @@ var res = await sdk.Hris.Employees.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |

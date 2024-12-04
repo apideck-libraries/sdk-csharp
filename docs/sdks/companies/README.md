@@ -18,9 +18,9 @@ List companies
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +35,8 @@ CrmCompaniesAllRequest req = new CrmCompaniesAllRequest() {
         Name = "SpaceX",
     },
     Sort = new CompaniesSort() {
-        By = Unify.Models.Components.CompaniesSortBy.CreatedAt,
-        Direction = Unify.Models.Components.SortDirection.Desc,
+        By = ApiDeckSdk.Models.Components.CompaniesSortBy.CreatedAt,
+        Direction = ApiDeckSdk.Models.Components.SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -61,14 +61,14 @@ var res = await sdk.Crm.Companies.ListAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Create
 
@@ -77,9 +77,9 @@ Create company
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 using NodaTime;
 
@@ -96,7 +96,7 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
         Image = "https://www.spacex.com/static/images/share.jpg",
         Description = "Space Exploration Technologies Corp. is an American aerospace manufacturer, space transportation services and communications company headquartered in Hawthorne, California.",
         VatNumber = "BE0689615164",
-        Currency = Unify.Models.Components.Currency.Usd,
+        Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         Status = "Open",
         Fax = "+12129876543",
         AnnualRevenue = "+$35m",
@@ -115,27 +115,27 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = Unify.Models.Components.AccountType.CreditCard,
+                AccountType = ApiDeckSdk.Models.Components.AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = Unify.Models.Components.Currency.Usd,
+                Currency = ApiDeckSdk.Models.Components.Currency.Usd,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = Unify.Models.Components.WebsiteType.Primary,
+                Type = ApiDeckSdk.Models.Components.WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -174,14 +174,14 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = Unify.Models.Components.PhoneNumberType.Primary,
+                Type = ApiDeckSdk.Models.Components.PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = Unify.Models.Components.EmailType.Primary,
+                Type = ApiDeckSdk.Models.Components.EmailType.Primary,
             },
         },
         RowType = new CompanyRowType() {
@@ -240,14 +240,14 @@ var res = await sdk.Crm.Companies.CreateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Get
 
@@ -256,9 +256,9 @@ Get company
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -289,14 +289,14 @@ var res = await sdk.Crm.Companies.GetAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Update
 
@@ -305,9 +305,9 @@ Update company
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 using System.Collections.Generic;
 using NodaTime;
 
@@ -325,7 +325,7 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
         Image = "https://www.spacex.com/static/images/share.jpg",
         Description = "Space Exploration Technologies Corp. is an American aerospace manufacturer, space transportation services and communications company headquartered in Hawthorne, California.",
         VatNumber = "BE0689615164",
-        Currency = Unify.Models.Components.Currency.Usd,
+        Currency = ApiDeckSdk.Models.Components.Currency.Usd,
         Status = "Open",
         Fax = "+12129876543",
         AnnualRevenue = "+$35m",
@@ -344,27 +344,27 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = Unify.Models.Components.AccountType.CreditCard,
+                AccountType = ApiDeckSdk.Models.Components.AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = Unify.Models.Components.Currency.Usd,
+                Currency = ApiDeckSdk.Models.Components.Currency.Usd,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = Unify.Models.Components.WebsiteType.Primary,
+                Type = ApiDeckSdk.Models.Components.WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
-                Type = Unify.Models.Components.Type.Primary,
+                Type = ApiDeckSdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -403,14 +403,14 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = Unify.Models.Components.PhoneNumberType.Primary,
+                Type = ApiDeckSdk.Models.Components.PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = Unify.Models.Components.EmailType.Primary,
+                Type = ApiDeckSdk.Models.Components.EmailType.Primary,
             },
         },
         RowType = new CompanyRowType() {
@@ -471,14 +471,14 @@ var res = await sdk.Crm.Companies.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
 
 ## Delete
 
@@ -487,9 +487,9 @@ Delete company
 ### Example Usage
 
 ```csharp
-using Unify;
-using Unify.Models.Requests;
-using Unify.Models.Components;
+using ApiDeckSdk;
+using ApiDeckSdk.Models.Requests;
+using ApiDeckSdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_API_KEY_HERE>",
@@ -519,11 +519,11 @@ var res = await sdk.Crm.Companies.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                  | Status Code                                 | Content Type                                |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| Unify.Models.Errors.BadRequestResponse      | 400                                         | application/json                            |
-| Unify.Models.Errors.UnauthorizedResponse    | 401                                         | application/json                            |
-| Unify.Models.Errors.PaymentRequiredResponse | 402                                         | application/json                            |
-| Unify.Models.Errors.NotFoundResponse        | 404                                         | application/json                            |
-| Unify.Models.Errors.UnprocessableResponse   | 422                                         | application/json                            |
-| Unify.Models.Errors.APIException            | 4XX, 5XX                                    | \*/\*                                       |
+| Error Type                                       | Status Code                                      | Content Type                                     |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| ApiDeckSdk.Models.Errors.BadRequestResponse      | 400                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnauthorizedResponse    | 401                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.PaymentRequiredResponse | 402                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.NotFoundResponse        | 404                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.UnprocessableResponse   | 422                                              | application/json                                 |
+| ApiDeckSdk.Models.Errors.APIException            | 4XX, 5XX                                         | \*/\*                                            |
