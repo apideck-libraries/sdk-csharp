@@ -1,0 +1,11 @@
+# Defaults
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Target`                                                            | [Target](../../Models/Components/Target.md)                         | :heavy_minus_sign:                                                  | N/A                                                                 | custom_fields                                                       |
+| `Id`                                                                | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 | ProductInterest                                                     |
+| `Options`                                                           | List<[FormFieldOption](../../Models/Components/FormFieldOption.md)> | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
+| `Value`                                                             | [ConnectionValue](../../Models/Components/ConnectionValue.md)       | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |

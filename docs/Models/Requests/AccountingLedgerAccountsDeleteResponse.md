@@ -1,0 +1,10 @@
+# AccountingLedgerAccountsDeleteResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                            | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                               | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `DeleteLedgerAccountResponse`                                                         | [DeleteLedgerAccountResponse](../../Models/Components/DeleteLedgerAccountResponse.md) | :heavy_minus_sign:                                                                    | LedgerAccount deleted                                                                 |
+| `UnexpectedErrorResponse`                                                             | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)         | :heavy_minus_sign:                                                                    | Unexpected error                                                                      |

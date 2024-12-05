@@ -1,0 +1,10 @@
+# AccountingTrackingCategoriesUpdateResponse
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                  | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                     | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `UpdateTrackingCategoryResponse`                                                            | [UpdateTrackingCategoryResponse](../../Models/Components/UpdateTrackingCategoryResponse.md) | :heavy_minus_sign:                                                                          | Tracking category updated                                                                   |
+| `UnexpectedErrorResponse`                                                                   | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)               | :heavy_minus_sign:                                                                          | Unexpected error                                                                            |

@@ -1,0 +1,10 @@
+# ConnectorConnectorResourcesOneResponse
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                              | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                 | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `GetConnectorResourceResponse`                                                          | [GetConnectorResourceResponse](../../Models/Components/GetConnectorResourceResponse.md) | :heavy_minus_sign:                                                                      | ConnectorResources                                                                      |
+| `UnexpectedErrorResponse`                                                               | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)           | :heavy_minus_sign:                                                                      | Unexpected error                                                                        |

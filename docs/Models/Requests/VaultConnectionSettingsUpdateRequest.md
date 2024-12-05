@@ -1,0 +1,13 @@
+# VaultConnectionSettingsUpdateRequest
+
+
+## Fields
+
+| Field                                                         | Type                                                          | Required                                                      | Description                                                   | Example                                                       |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `ServiceId`                                                   | *string*                                                      | :heavy_check_mark:                                            | Service ID of the resource to return                          | pipedrive                                                     |
+| `UnifiedApi`                                                  | *string*                                                      | :heavy_check_mark:                                            | Unified API                                                   | crm                                                           |
+| `Resource`                                                    | *string*                                                      | :heavy_check_mark:                                            | Name of the resource (plural)                                 | leads                                                         |
+| `Connection`                                                  | [ConnectionInput](../../Models/Components/ConnectionInput.md) | :heavy_check_mark:                                            | Fields that need to be updated on the resource                |                                                               |
+| `ConsumerId`                                                  | *string*                                                      | :heavy_minus_sign:                                            | ID of the consumer which you want to get or push data from    | test-consumer                                                 |
+| `AppId`                                                       | *string*                                                      | :heavy_minus_sign:                                            | The ID of your Unify application                              | dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX                       |

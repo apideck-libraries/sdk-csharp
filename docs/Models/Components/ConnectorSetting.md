@@ -1,0 +1,10 @@
+# ConnectorSetting
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `Id`                                                                    | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     | pipeline_id                                                             |
+| `Label`                                                                 | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     | Pipeline                                                                |
+| `Type`                                                                  | [ConnectorSettingType](../../Models/Components/ConnectorSettingType.md) | :heavy_minus_sign:                                                      | N/A                                                                     | select                                                                  |

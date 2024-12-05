@@ -1,0 +1,16 @@
+# CustomMapping
+
+
+## Fields
+
+| Field                                               | Type                                                | Required                                            | Description                                         | Example                                             |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `Id`                                                | *string*                                            | :heavy_minus_sign:                                  | Target Field ID                                     | hris+employees+first_aid_training                   |
+| `Label`                                             | *string*                                            | :heavy_minus_sign:                                  | Target Field name to use as a label                 | First Aid Training                                  |
+| `Description`                                       | *string*                                            | :heavy_minus_sign:                                  | Target Field description                            | First Aid Training completed after 2019-01-01       |
+| `Value`                                             | *string*                                            | :heavy_minus_sign:                                  | Target Field Mapping value                          | $.root.training.first_aid                           |
+| `Key`                                               | *string*                                            | :heavy_minus_sign:                                  | Target Field Key                                    | first_aid_training                                  |
+| `Required`                                          | *bool*                                              | :heavy_minus_sign:                                  | Target Field Mapping is required                    | false                                               |
+| `CustomField`                                       | *bool*                                              | :heavy_minus_sign:                                  | This mapping represents a finder for a custom field | true                                                |
+| `ConsumerId`                                        | *string*                                            | :heavy_minus_sign:                                  | Consumer ID                                         | test_user_id                                        |
+| `Example`                                           | *string*                                            | :heavy_minus_sign:                                  | Target Field Mapping example value from downstream  | Some value                                          |

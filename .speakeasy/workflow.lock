@@ -1,0 +1,34 @@
+speakeasyVersion: 1.451.7
+sources:
+    Apideck:
+        sourceNamespace: apideck
+        sourceRevisionDigest: sha256:eee4902687bd6f052dda870a6a13fea3c97b0831d61a4b0c5aa45a5d62e25858
+        sourceBlobDigest: sha256:fddd10690c80869d4e68901544c3e4259054ba9a99e1419a5695ee831fb8e538
+        tags:
+            - latest
+            - 10.8.2
+targets:
+    apideck:
+        source: Apideck
+        sourceNamespace: apideck
+        sourceRevisionDigest: sha256:eee4902687bd6f052dda870a6a13fea3c97b0831d61a4b0c5aa45a5d62e25858
+        sourceBlobDigest: sha256:fddd10690c80869d4e68901544c3e4259054ba9a99e1419a5695ee831fb8e538
+        codeSamplesNamespace: apideck-csharp-code-samples
+        codeSamplesRevisionDigest: sha256:c2cf72d32371616839f330f0a63556752e29381c35d98f6ed623447271e7b93f
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        Apideck:
+            inputs:
+                - location: https://ci-spec-unify.s3.eu-central-1.amazonaws.com/speakeasy-spec.yml
+            registry:
+                location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck
+    targets:
+        apideck:
+            target: csharp
+            source: Apideck
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck-csharp-code-samples
+                blocking: false

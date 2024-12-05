@@ -1,0 +1,10 @@
+# AccountingLedgerAccountsAddResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                            | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                               | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `CreateLedgerAccountResponse`                                                         | [CreateLedgerAccountResponse](../../Models/Components/CreateLedgerAccountResponse.md) | :heavy_minus_sign:                                                                    | LedgerAccount created                                                                 |
+| `UnexpectedErrorResponse`                                                             | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)         | :heavy_minus_sign:                                                                    | Unexpected error                                                                      |

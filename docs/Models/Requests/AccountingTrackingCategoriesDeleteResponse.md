@@ -1,0 +1,10 @@
+# AccountingTrackingCategoriesDeleteResponse
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                  | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                     | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `DeleteTrackingCategoryResponse`                                                            | [DeleteTrackingCategoryResponse](../../Models/Components/DeleteTrackingCategoryResponse.md) | :heavy_minus_sign:                                                                          | Tracking category deleted                                                                   |
+| `UnexpectedErrorResponse`                                                                   | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)               | :heavy_minus_sign:                                                                          | Unexpected error                                                                            |
