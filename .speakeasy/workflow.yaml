@@ -1,0 +1,19 @@
+workflowVersion: 1.0.0
+speakeasyVersion: latest
+sources:
+    Apideck:
+        inputs:
+            - location: https://ci-spec-unify.s3.eu-central-1.amazonaws.com/speakeasy-spec.yml
+        registry:
+            location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck
+targets:
+    apideck:
+        target: csharp
+        source: Apideck
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
+        codeSamples:
+            registry:
+                location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck-csharp-code-samples
+            blocking: false
