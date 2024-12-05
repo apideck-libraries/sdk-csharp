@@ -10,10 +10,6 @@ Developer-friendly & type-safe Csharp SDK specifically catered to leverage *Apid
 </div>
 
 
-<br /><br />
-> [!IMPORTANT]
-> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/apideck-k2o/apideck). Delete this section before > publishing to a package manager.
-
 <!-- Start Summary [summary] -->
 ## Summary
 
@@ -41,6 +37,15 @@ For more information about the API: [Apideck Developer Docs](https://developers.
 
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+### NuGet
+
+To add the [NuGet](https://www.nuget.org/) package to a .NET project:
+```bash
+dotnet add package ApideckUnifySdk
+```
+
+### Locally
 
 To add a reference to a local instance of the SDK in a .NET project:
 ```bash

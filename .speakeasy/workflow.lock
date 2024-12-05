@@ -2,7 +2,7 @@ speakeasyVersion: 1.451.7
 sources:
     Apideck:
         sourceNamespace: apideck
-        sourceRevisionDigest: sha256:eee4902687bd6f052dda870a6a13fea3c97b0831d61a4b0c5aa45a5d62e25858
+        sourceRevisionDigest: sha256:d9bdd0e8c654830bb8d9735718fca79769c0c3b8531eaf167a60763446b0b8bb
         sourceBlobDigest: sha256:fddd10690c80869d4e68901544c3e4259054ba9a99e1419a5695ee831fb8e538
         tags:
             - latest
@@ -11,10 +11,10 @@ targets:
     apideck:
         source: Apideck
         sourceNamespace: apideck
-        sourceRevisionDigest: sha256:eee4902687bd6f052dda870a6a13fea3c97b0831d61a4b0c5aa45a5d62e25858
+        sourceRevisionDigest: sha256:d9bdd0e8c654830bb8d9735718fca79769c0c3b8531eaf167a60763446b0b8bb
         sourceBlobDigest: sha256:fddd10690c80869d4e68901544c3e4259054ba9a99e1419a5695ee831fb8e538
         codeSamplesNamespace: apideck-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:c2cf72d32371616839f330f0a63556752e29381c35d98f6ed623447271e7b93f
+        codeSamplesRevisionDigest: sha256:9374fa54422bd8b7eff32e5f38ecec40a17b9ff5d13bd7ed130a5bd584306dac
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -28,6 +28,9 @@ workflow:
         apideck:
             target: csharp
             source: Apideck
+            publish:
+                nuget:
+                    apiKey: $nuget_api_key
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck-csharp-code-samples
