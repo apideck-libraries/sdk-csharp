@@ -144,7 +144,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The subsidiaries the account belongs to.
         /// </summary>
         [JsonProperty("subsidiaries")]
-        public List<Models.Components.Subsidiaries>? Subsidiaries { get; set; }
+        public List<LedgerAccountSubsidiaries>? Subsidiaries { get; set; }
 
         /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.

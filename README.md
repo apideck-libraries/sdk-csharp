@@ -65,7 +65,7 @@ using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
@@ -98,9 +98,9 @@ var res = await sdk.Accounting.TaxRates.ListAsync(req);
 
 This SDK supports the following security scheme globally:
 
-| Name     | Type   | Scheme  |
-| -------- | ------ | ------- |
-| `ApiKey` | apiKey | API key |
+| Name     | Type | Scheme      |
+| -------- | ---- | ----------- |
+| `ApiKey` | http | HTTP Bearer |
 
 To authenticate with the API the `ApiKey` parameter must be set when initializing the SDK client instance. For example:
 ```csharp
@@ -110,7 +110,7 @@ using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
@@ -672,7 +672,7 @@ using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
@@ -727,7 +727,7 @@ var sdk = new Apideck(
         ),
         retryConnectionErrors: false
     ),
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
@@ -788,7 +788,7 @@ using System;
 using ApideckUnifySdk.Models.Errors;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
@@ -864,7 +864,7 @@ using System.Collections.Generic;
 
 var sdk = new Apideck(
     serverUrl: "https://unify.apideck.com",
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
@@ -899,7 +899,7 @@ using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );

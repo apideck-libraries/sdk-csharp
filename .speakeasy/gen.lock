@@ -1,12 +1,13 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 29e131cc34f149097161628c2a21c36d
-  docVersion: 10.8.2
-  speakeasyVersion: 1.451.7
-  generationVersion: 2.471.2
-  releaseVersion: 0.0.3
-  configChecksum: d5c0a76805dfdeab7b49a89ebbca7ac1
+  docChecksum: 5a3c61710af05ae5c21380b118217322
+  docVersion: 10.8.3
+  speakeasyVersion: 1.453.0
+  generationVersion: 2.472.1
+  releaseVersion: 0.0.4
+  configChecksum: 5c149b42e06bb5d4c015e0665194c224
+  repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
   csharp:
@@ -530,6 +531,7 @@ generatedFiles:
   - docs/Models/Components/LeavingReason.md
   - docs/Models/Components/LedgerAccount.md
   - docs/Models/Components/LedgerAccountInput.md
+  - docs/Models/Components/LedgerAccountSubsidiaries.md
   - docs/Models/Components/LedgerAccountType.md
   - docs/Models/Components/LedgerAccountsFilter.md
   - docs/Models/Components/LedgerAccountsSort.md
@@ -686,6 +688,7 @@ generatedFiles:
   - docs/Models/Components/TrackingCategory.md
   - docs/Models/Components/TrackingCategoryInput.md
   - docs/Models/Components/TrackingCategoryStatus.md
+  - docs/Models/Components/TrackingCategorySubsidiaries.md
   - docs/Models/Components/TrackingItem.md
   - docs/Models/Components/Type.md
   - docs/Models/Components/UnexpectedErrorResponse.md
@@ -1936,6 +1939,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/LeavingReason.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccount.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccountInput.cs
+  - src/ApideckUnifySdk/Models/Components/LedgerAccountSubsidiaries.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccountType.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccountsFilter.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccountsSort.cs
@@ -2092,6 +2096,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/TrackingCategory.cs
   - src/ApideckUnifySdk/Models/Components/TrackingCategoryInput.cs
   - src/ApideckUnifySdk/Models/Components/TrackingCategoryStatus.cs
+  - src/ApideckUnifySdk/Models/Components/TrackingCategorySubsidiaries.cs
   - src/ApideckUnifySdk/Models/Components/TrackingItem.cs
   - src/ApideckUnifySdk/Models/Components/Type.cs
   - src/ApideckUnifySdk/Models/Components/UnexpectedErrorResponse.cs
@@ -9071,7 +9076,7 @@ examples:
         "422":
           application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
         default:
-          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": {"missing": [{"x-apideck-consumer-id": "required"}]}, "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
   vault.validateConnectionState:
     "":
       parameters:
@@ -9093,7 +9098,7 @@ examples:
         "404":
           application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
         "422":
-          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": {"error": "Unprocessable", "message": "Unprocessable request, please verify your request headers and body."}, "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
         default:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": {"missing": [{"x-apideck-consumer-id": "required"}]}, "ref": "https://developers.apideck.com/errors#unauthorizederror"}
   vault.createCallbackState:
@@ -9119,7 +9124,7 @@ examples:
         "404":
           application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
         "422":
-          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": {"error": "Unprocessable", "message": "Unprocessable request, please verify your request headers and body."}, "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
         default:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": {"missing": [{"x-apideck-consumer-id": "required"}]}, "ref": "https://developers.apideck.com/errors#unauthorizederror"}
   vault.connectionSettingsAll:

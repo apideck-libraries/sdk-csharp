@@ -3,10 +3,12 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>ApideckUnifySdk</PackageId>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Speakeasy</Authors>
     <Copyright>Copyright (c) Speakeasy 2024</Copyright>
+    <RepositoryUrl>https://github.com/apideck-libraries/sdk-csharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://developers.apideck.com</PackageProjectUrl>
     <Description>Apideck: The Apideck OpenAPI Spec: SDK Optimized</Description>
   </PropertyGroup>
