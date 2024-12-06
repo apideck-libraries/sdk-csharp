@@ -89,5 +89,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        /// <summary>
+        /// The subsidiaries the account belongs to.
+        /// </summary>
+        [JsonProperty("subsidiaries")]
+        public List<TrackingCategorySubsidiaries>? Subsidiaries { get; set; }
     }
 }

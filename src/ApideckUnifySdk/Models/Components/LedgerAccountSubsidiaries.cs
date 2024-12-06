@@ -10,11 +10,15 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
+    using Newtonsoft.Json;
     
-    public class Security
+    public class LedgerAccountSubsidiaries
     {
 
-        [SpeakeasyMetadata("security:scheme=true,type=http,subType=bearer,name=Authorization")]
-        public string ApiKey { get; set; } = default!;
+        /// <summary>
+        /// The ID of the subsidiary.
+        /// </summary>
+        [JsonProperty("id")]
+        public string? Id { get; set; }
     }
 }

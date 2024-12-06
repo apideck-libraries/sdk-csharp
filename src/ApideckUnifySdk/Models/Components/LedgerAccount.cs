@@ -162,7 +162,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The subsidiaries the account belongs to.
         /// </summary>
         [JsonProperty("subsidiaries")]
-        public List<Models.Components.Subsidiaries>? Subsidiaries { get; set; }
+        public List<LedgerAccountSubsidiaries>? Subsidiaries { get; set; }
 
         /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.

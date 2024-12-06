@@ -21,7 +21,7 @@ using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
@@ -82,7 +82,7 @@ using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_API_KEY_HERE>",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
