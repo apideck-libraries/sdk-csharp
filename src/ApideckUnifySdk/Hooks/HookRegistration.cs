@@ -31,7 +31,7 @@ namespace ApideckUnifySdk.Hooks
             // hooks.RegisterBeforeRequestHook(myHook);
             // hooks.RegisterAfterSuccessHook(myHook);
             // hooks.RegisterAfterErrorHook(myHook;
-            hooks.RegisterBeforeRequestHook(new AuthHook());
+            // hooks.RegisterBeforeRequestHook(new AuthHook());
         }
     }
 }
