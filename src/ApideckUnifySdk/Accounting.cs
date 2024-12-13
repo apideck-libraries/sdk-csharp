@@ -37,16 +37,18 @@ namespace ApideckUnifySdk
         public ITrackingCategories TrackingCategories { get; }
         public IBillPayments BillPayments { get; }
         public IExpenses Expenses { get; }
+        public IAgedCreditors AgedCreditors { get; }
+        public IAgedDebtors AgedDebtors { get; }
     }
 
     public class Accounting: IAccounting
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.5";
-        private const string _sdkGenVersion = "2.477.0";
-        private const string _openapiDocVersion = "10.8.3";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.477.0 10.8.3 ApideckUnifySdk";
+        private const string _sdkVersion = "0.1.0";
+        private const string _sdkGenVersion = "2.477.4";
+        private const string _openapiDocVersion = "10.9.0";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.477.4 10.9.0 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
@@ -71,6 +73,8 @@ namespace ApideckUnifySdk
         public ITrackingCategories TrackingCategories { get; private set; }
         public IBillPayments BillPayments { get; private set; }
         public IExpenses Expenses { get; private set; }
+        public IAgedCreditors AgedCreditors { get; private set; }
+        public IAgedDebtors AgedDebtors { get; private set; }
 
         public Accounting(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
         {
@@ -99,6 +103,8 @@ namespace ApideckUnifySdk
             TrackingCategories = new TrackingCategories(_client, _securitySource, _serverUrl, SDKConfiguration);
             BillPayments = new BillPayments(_client, _securitySource, _serverUrl, SDKConfiguration);
             Expenses = new Expenses(_client, _securitySource, _serverUrl, SDKConfiguration);
+            AgedCreditors = new AgedCreditors(_client, _securitySource, _serverUrl, SDKConfiguration);
+            AgedDebtors = new AgedDebtors(_client, _securitySource, _serverUrl, SDKConfiguration);
         }
     }
 }
