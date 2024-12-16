@@ -132,36 +132,8 @@ catch (Exception ex) {
 For more information about error handling, please check our [documentation](https://github.com/apideck-libraries/sdk-csharp/tree/main?tab=readme-ov-file#error-handling)
 
 
-## Additional features in the new SDK
 
-1. **Retry configuration**
-
-The retry configuration allows you to specify how the SDK should handle retries for failed requests. You can configure the retry strategy, initial interval, maximum interval, exponent, and maximum elapsed time.
-
-Here is an example of how to configure retries:
-
-```csharp
-var sdk = new Apideck(
-    retryConfig: new RetryConfig(
-        strategy: RetryConfig.RetryStrategy.BACKOFF,
-        backoff: new BackoffStrategy(
-            initialIntervalMs: 1L,
-            maxIntervalMs: 50L,
-            maxElapsedTimeMs: 100L,
-            exponent: 1.1
-        ),
-        retryConnectionErrors: false
-    ),
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "your-app-id"
-);
-```
-
-For more information about retry configuration, please refer to the [Retry Configuration Documentation](https://github.com/apideck-libraries/sdk-csharp/tree/main?tab=readme-ov-file#retries).
-
-
-## Breaking Changes
+## Summary of breaking Changes
 
 1. Package name has changed from Apideck to ApideckUnifySdk
 2. All API methods now follow a consistent naming pattern and are async by default
