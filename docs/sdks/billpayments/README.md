@@ -46,7 +46,16 @@ AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
 
 var res = await sdk.Accounting.BillPayments.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

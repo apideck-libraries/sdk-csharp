@@ -51,7 +51,16 @@ AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
 
 var res = await sdk.Accounting.Suppliers.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

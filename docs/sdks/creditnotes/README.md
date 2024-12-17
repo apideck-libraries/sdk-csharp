@@ -46,7 +46,16 @@ AccountingCreditNotesAllRequest req = new AccountingCreditNotesAllRequest() {
 
 var res = await sdk.Accounting.CreditNotes.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

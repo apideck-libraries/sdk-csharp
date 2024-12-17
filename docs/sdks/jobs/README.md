@@ -36,7 +36,16 @@ AtsJobsAllRequest req = new AtsJobsAllRequest() {
 
 var res = await sdk.Ats.Jobs.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

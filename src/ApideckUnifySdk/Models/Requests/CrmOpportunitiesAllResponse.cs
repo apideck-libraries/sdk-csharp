@@ -12,9 +12,12 @@ namespace ApideckUnifySdk.Models.Requests
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Threading.Tasks;
+    using System;
     
     public class CrmOpportunitiesAllResponse
     {
+        public Func<Task<CrmOpportunitiesAllResponse?>>? Next {get;set;}
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;

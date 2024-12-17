@@ -35,7 +35,16 @@ SmsMessagesAllRequest req = new SmsMessagesAllRequest() {
 
 var res = await sdk.Sms.Messages.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

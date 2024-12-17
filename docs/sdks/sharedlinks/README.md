@@ -39,7 +39,16 @@ FileStorageSharedLinksAllRequest req = new FileStorageSharedLinksAllRequest() {
 
 var res = await sdk.FileStorage.SharedLinks.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

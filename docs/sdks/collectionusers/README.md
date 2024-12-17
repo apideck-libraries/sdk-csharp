@@ -37,7 +37,16 @@ IssueTrackingCollectionUsersAllRequest req = new IssueTrackingCollectionUsersAll
 
 var res = await sdk.IssueTracking.CollectionUsers.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

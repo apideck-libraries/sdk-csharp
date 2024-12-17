@@ -26,6 +26,7 @@ For more information about the API: [Apideck Developer Docs](https://developers.
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
+  * [Pagination](#pagination)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
@@ -87,7 +88,16 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
 
 var res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -132,7 +142,16 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
 
 var res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 <!-- End Authentication [security] -->
 
@@ -667,6 +686,56 @@ var res = await sdk.Accounting.TaxRates.ListAsync(req);
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+```csharp
+using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Requests;
+using ApideckUnifySdk.Models.Components;
+using System.Collections.Generic;
+
+var sdk = new Apideck(
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+    consumerId: "test-consumer",
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+);
+
+AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+    ServiceId = "salesforce",
+    Filter = new TaxRatesFilter() {
+        Assets = true,
+        Equity = true,
+        Expenses = true,
+        Liabilities = true,
+        Revenue = true,
+    },
+    PassThrough = new Dictionary<string, object>() {
+        { "search", "San Francisco" },
+    },
+    Fields = "id,updated_at",
+};
+
+var res = await sdk.Accounting.TaxRates.ListAsync(req);
+
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
+```
+<!-- End Pagination [pagination] -->
+
 <!-- Start Retries [retries] -->
 ## Retries
 
@@ -714,7 +783,16 @@ var res = await sdk.Accounting.TaxRates.ListAsync(
     req
 );
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
@@ -757,7 +835,16 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
 
 var res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 <!-- End Retries [retries] -->
 
@@ -820,7 +907,16 @@ try
 
     var res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-    // handle response
+    while(true)
+    {
+        // handle items
+
+        res = await res.Next();
+        if (res == null)
+        {
+            break;
+        }
+    }
 }
 catch (Exception ex)
 {
@@ -894,7 +990,16 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
 
 var res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Override Server URL Per-Operation

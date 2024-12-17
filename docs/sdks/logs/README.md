@@ -35,7 +35,16 @@ VaultLogsAllRequest req = new VaultLogsAllRequest() {
 
 var res = await sdk.Vault.Logs.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

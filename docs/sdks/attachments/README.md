@@ -36,7 +36,16 @@ AccountingAttachmentsAllRequest req = new AccountingAttachmentsAllRequest() {
 
 var res = await sdk.Accounting.Attachments.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

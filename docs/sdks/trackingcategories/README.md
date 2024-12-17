@@ -39,7 +39,16 @@ AccountingTrackingCategoriesAllRequest req = new AccountingTrackingCategoriesAll
 
 var res = await sdk.Accounting.TrackingCategories.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

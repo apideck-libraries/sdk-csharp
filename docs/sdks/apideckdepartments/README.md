@@ -39,7 +39,16 @@ HrisDepartmentsAllRequest req = new HrisDepartmentsAllRequest() {
 
 var res = await sdk.Hris.Departments.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

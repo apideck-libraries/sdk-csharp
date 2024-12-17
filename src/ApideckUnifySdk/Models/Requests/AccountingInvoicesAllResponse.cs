@@ -12,9 +12,12 @@ namespace ApideckUnifySdk.Models.Requests
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Threading.Tasks;
+    using System;
     
     public class AccountingInvoicesAllResponse
     {
+        public Func<Task<AccountingInvoicesAllResponse?>>? Next {get;set;}
 
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;

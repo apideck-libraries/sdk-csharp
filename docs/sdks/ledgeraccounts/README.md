@@ -46,7 +46,16 @@ AccountingLedgerAccountsAllRequest req = new AccountingLedgerAccountsAllRequest(
 
 var res = await sdk.Accounting.LedgerAccounts.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

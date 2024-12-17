@@ -15,8 +15,10 @@ namespace ApideckUnifySdk
     using ApideckUnifySdk.Models.Requests;
     using ApideckUnifySdk.Utils.Retries;
     using ApideckUnifySdk.Utils;
+    using Newtonsoft.Json.Linq;
     using Newtonsoft.Json;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http.Headers;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -75,10 +77,10 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.0";
-        private const string _sdkGenVersion = "2.477.4";
+        private const string _sdkVersion = "0.2.0";
+        private const string _sdkGenVersion = "2.481.0";
         private const string _openapiDocVersion = "10.9.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.0 2.477.4 10.9.0 ApideckUnifySdk";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.2.0 2.481.0 10.9.0 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
@@ -175,6 +177,37 @@ namespace ApideckUnifySdk
 
             httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
 
+            
+            Func<Task<AccountingPurchaseOrdersAllResponse?>> nextFunc = async delegate()
+            {
+                var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
+                var nextCursorToken = body.SelectToken("$.meta.cursors.next");
+
+                if(nextCursorToken == null)
+                {
+                    return null;
+                }
+                var nextCursor = nextCursorToken.Value<string>();
+
+                var newRequest = new AccountingPurchaseOrdersAllRequest
+                {
+                    Raw = request?.Raw,
+                    ConsumerId = request?.ConsumerId,
+                    AppId = request?.AppId,
+                    ServiceId = request?.ServiceId,
+                    Cursor = nextCursor,
+                    PassThrough = request?.PassThrough,
+                    Limit = request?.Limit,
+                    Filter = request?.Filter,
+                    Sort = request?.Sort
+                };
+
+                return await ListAsync (
+                    request: newRequest,
+                    retryConfig: retryConfig
+                );
+            };
+
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
@@ -188,7 +221,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Next = nextFunc
                     };
                     response.GetPurchaseOrdersResponse = obj;
                     return response;
@@ -261,7 +295,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Next = nextFunc
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;

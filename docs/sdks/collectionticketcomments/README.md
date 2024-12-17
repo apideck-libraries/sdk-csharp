@@ -45,7 +45,16 @@ IssueTrackingCollectionTicketCommentsAllRequest req = new IssueTrackingCollectio
 
 var res = await sdk.IssueTracking.CollectionTicketComments.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters
@@ -164,7 +173,16 @@ IssueTrackingCollectionTicketCommentsOneRequest req = new IssueTrackingCollectio
 
 var res = await sdk.IssueTracking.CollectionTicketComments.GetAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters
