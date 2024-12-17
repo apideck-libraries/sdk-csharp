@@ -39,7 +39,16 @@ CrmUsersAllRequest req = new CrmUsersAllRequest() {
 
 var res = await sdk.Crm.Users.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

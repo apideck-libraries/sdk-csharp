@@ -39,7 +39,16 @@ HrisCompaniesAllRequest req = new HrisCompaniesAllRequest() {
 
 var res = await sdk.Hris.Companies.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

@@ -38,7 +38,16 @@ AccountingLocationsAllRequest req = new AccountingLocationsAllRequest() {
 
 var res = await sdk.Accounting.Locations.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

@@ -36,7 +36,16 @@ IssueTrackingCollectionTagsAllRequest req = new IssueTrackingCollectionTagsAllRe
 
 var res = await sdk.IssueTracking.CollectionTags.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

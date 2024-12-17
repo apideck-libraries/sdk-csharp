@@ -47,7 +47,16 @@ HrisTimeOffRequestsAllRequest req = new HrisTimeOffRequestsAllRequest() {
 
 var res = await sdk.Hris.TimeOffRequests.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

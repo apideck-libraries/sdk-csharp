@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 7ac99bda5530d96a93dea69622cbc790
+  docChecksum: cda8452b07ff6e11825be9a5d1f08751
   docVersion: 10.9.0
-  speakeasyVersion: 1.454.2
-  generationVersion: 2.477.4
-  releaseVersion: 0.1.0
-  configChecksum: 586d0169602c13a21a88f4cb0f233c93
+  speakeasyVersion: 1.456.0
+  generationVersion: 2.481.0
+  releaseVersion: 0.2.0
+  configChecksum: a3cd09c04de2bb9d2c46cd086264842d
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.10.7
+    core: 3.10.9
     deprecations: 2.81.2
     errors: 0.2.0
     flattening: 2.81.3
@@ -29,6 +29,7 @@ features:
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.0
+    pagination: 0.2.3
     responseFormat: 0.0.4
     retries: 0.0.1
     sdkHooks: 0.1.0

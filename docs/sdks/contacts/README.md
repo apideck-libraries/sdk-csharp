@@ -50,7 +50,16 @@ CrmContactsAllRequest req = new CrmContactsAllRequest() {
 
 var res = await sdk.Crm.Contacts.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

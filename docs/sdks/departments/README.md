@@ -38,7 +38,16 @@ AccountingDepartmentsAllRequest req = new AccountingDepartmentsAllRequest() {
 
 var res = await sdk.Accounting.Departments.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

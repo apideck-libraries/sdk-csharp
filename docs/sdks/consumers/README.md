@@ -90,7 +90,16 @@ var res = await sdk.Vault.Consumers.ListAsync(
     limit: 20
 );
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

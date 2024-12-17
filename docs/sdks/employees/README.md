@@ -54,7 +54,16 @@ HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
 
 var res = await sdk.Hris.Employees.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

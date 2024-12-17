@@ -39,7 +39,16 @@ CrmPipelinesAllRequest req = new CrmPipelinesAllRequest() {
 
 var res = await sdk.Crm.Pipelines.ListAsync(req);
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters

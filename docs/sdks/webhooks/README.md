@@ -34,7 +34,16 @@ var res = await sdk.Webhook.Webhooks.ListAsync(
     limit: 20
 );
 
-// handle response
+while(true)
+{
+    // handle items
+
+    res = await res.Next();
+    if (res == null)
+    {
+        break;
+    }
+}
 ```
 
 ### Parameters
