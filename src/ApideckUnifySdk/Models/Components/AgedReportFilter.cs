@@ -21,6 +21,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? CustomerId { get; set; }
 
         /// <summary>
+        /// Filter by supplier id
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=supplier_id")]
+        public string? SupplierId { get; set; }
+
+        /// <summary>
         /// The cutoff date for considering transactions
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=report_as_of_date")]

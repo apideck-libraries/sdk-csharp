@@ -19,8 +19,8 @@ List Departments
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -36,17 +36,13 @@ AccountingDepartmentsAllRequest req = new AccountingDepartmentsAllRequest() {
     },
 };
 
-var res = await sdk.Accounting.Departments.ListAsync(req);
+AccountingDepartmentsAllResponse? res = await sdk.Accounting.Departments.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -79,8 +75,8 @@ Create Department
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -93,7 +89,7 @@ AccountingDepartmentsAddRequest req = new AccountingDepartmentsAddRequest() {
     AccountingDepartment = new AccountingDepartmentInput() {
         ParentId = "12345",
         Name = "Sales",
-        Status = ApideckUnifySdk.Models.Components.DepartmentStatus.Active,
+        Status = DepartmentStatus.Active,
         Subsidiaries = new List<SubsidiaryReferenceInput>() {
             new SubsidiaryReferenceInput() {
                 Name = "SpaceX",
@@ -153,8 +149,8 @@ Get Department
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -202,8 +198,8 @@ Update Department
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -217,7 +213,7 @@ AccountingDepartmentsUpdateRequest req = new AccountingDepartmentsUpdateRequest(
     AccountingDepartment = new AccountingDepartmentInput() {
         ParentId = "12345",
         Name = "Sales",
-        Status = ApideckUnifySdk.Models.Components.DepartmentStatus.Active,
+        Status = DepartmentStatus.Active,
         Subsidiaries = new List<SubsidiaryReferenceInput>() {
             new SubsidiaryReferenceInput() {
                 Name = "SpaceX",
@@ -277,8 +273,8 @@ Delete Department
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

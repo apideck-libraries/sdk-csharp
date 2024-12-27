@@ -15,9 +15,9 @@ List Tags
 
 ```csharp
 using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
-using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -34,17 +34,13 @@ IssueTrackingCollectionTagsAllRequest req = new IssueTrackingCollectionTagsAllRe
     Fields = "id,updated_at",
 };
 
-var res = await sdk.IssueTracking.CollectionTags.ListAsync(req);
+IssueTrackingCollectionTagsAllResponse? res = await sdk.IssueTracking.CollectionTags.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 

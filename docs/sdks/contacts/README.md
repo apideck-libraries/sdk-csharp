@@ -19,8 +19,8 @@ List contacts
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -39,8 +39,8 @@ CrmContactsAllRequest req = new CrmContactsAllRequest() {
         OwnerId = "12345",
     },
     Sort = new ContactsSort() {
-        By = ApideckUnifySdk.Models.Components.ContactsSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = ContactsSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -48,17 +48,13 @@ CrmContactsAllRequest req = new CrmContactsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Crm.Contacts.ListAsync(req);
+CrmContactsAllResponse? res = await sdk.Crm.Contacts.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -91,8 +87,8 @@ Create contact
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -105,7 +101,7 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
     Contact = new ContactInput() {
         Name = "Elon Musk",
         OwnerId = "54321",
-        Type = ApideckUnifySdk.Models.Components.ContactType.Personal,
+        Type = ContactType.Personal,
         CompanyId = "23456",
         CompanyName = "23456",
         LeadId = "34567",
@@ -117,7 +113,7 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
         Title = "CEO",
         Department = "Engineering",
         Language = "EN",
-        Gender = ApideckUnifySdk.Models.Components.ContactGender.Female,
+        Gender = ContactGender.Female,
         Birthday = "2000-08-12",
         PhotoUrl = "https://unavatar.io/elon-musk",
         LeadSource = "Cold Call",
@@ -130,7 +126,7 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
@@ -175,14 +171,14 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         EmailDomain = "gmail.com",
@@ -255,8 +251,8 @@ Get contact
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -311,8 +307,8 @@ Update contact
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -326,7 +322,7 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
     Contact = new ContactInput() {
         Name = "Elon Musk",
         OwnerId = "54321",
-        Type = ApideckUnifySdk.Models.Components.ContactType.Personal,
+        Type = ContactType.Personal,
         CompanyId = "23456",
         CompanyName = "23456",
         LeadId = "34567",
@@ -338,7 +334,7 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
         Title = "CEO",
         Department = "Engineering",
         Language = "EN",
-        Gender = ApideckUnifySdk.Models.Components.ContactGender.Female,
+        Gender = ContactGender.Female,
         Birthday = "2000-08-12",
         PhotoUrl = "https://unavatar.io/elon-musk",
         LeadSource = "Cold Call",
@@ -351,7 +347,7 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
@@ -396,14 +392,14 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         EmailDomain = "gmail.com",
@@ -478,8 +474,8 @@ Delete contact
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

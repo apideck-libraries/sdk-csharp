@@ -19,16 +19,16 @@ namespace ApideckUnifySdk.Models.Components
     {
 
         /// <summary>
-        /// Start date of the period.
+        /// The starting date of the period. If not provided, it represents the oldest period, where all transactions due before the specified `end_date` are included.
         /// </summary>
         [JsonProperty("start_date")]
-        public LocalDate? StartDate { get; set; }
+        public LocalDate? StartDate { get; set; } = null;
 
         /// <summary>
-        /// End date of the period.
+        /// The ending date of the period. If not provided, it represents an open-ended period starting from the `start_date`, typically capturing future-dated transactions that are not yet aged.
         /// </summary>
         [JsonProperty("end_date")]
-        public LocalDate? EndDate { get; set; }
+        public LocalDate? EndDate { get; set; } = null;
 
         /// <summary>
         /// Total amount of the period.

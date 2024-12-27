@@ -19,9 +19,9 @@ List Companies
 
 ```csharp
 using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
-using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -37,17 +37,13 @@ HrisCompaniesAllRequest req = new HrisCompaniesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Hris.Companies.ListAsync(req);
+HrisCompaniesAllResponse? res = await sdk.Hris.Companies.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -80,8 +76,8 @@ Create Company
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -95,9 +91,9 @@ HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
         LegalName = "SpaceX",
         DisplayName = "SpaceX",
         Subdomain = "company",
-        Status = ApideckUnifySdk.Models.Components.HrisCompanyStatus.Active,
+        Status = HrisCompanyStatus.Active,
         CompanyNumber = "123456-AB",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
@@ -133,21 +129,21 @@ HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         DebtorId = "12345",
@@ -204,8 +200,8 @@ Get Company
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -253,8 +249,8 @@ Update Company
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -269,9 +265,9 @@ HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
         LegalName = "SpaceX",
         DisplayName = "SpaceX",
         Subdomain = "company",
-        Status = ApideckUnifySdk.Models.Components.HrisCompanyStatus.Active,
+        Status = HrisCompanyStatus.Active,
         CompanyNumber = "123456-AB",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
@@ -307,21 +303,21 @@ HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         DebtorId = "12345",
@@ -378,8 +374,8 @@ Delete Company
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

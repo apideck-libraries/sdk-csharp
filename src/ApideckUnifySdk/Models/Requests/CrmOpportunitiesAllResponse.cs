@@ -12,8 +12,8 @@ namespace ApideckUnifySdk.Models.Requests
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    using System.Threading.Tasks;
     using System;
+    using System.Threading.Tasks;
     
     public class CrmOpportunitiesAllResponse
     {

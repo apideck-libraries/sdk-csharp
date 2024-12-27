@@ -19,8 +19,8 @@ List Tickets
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -33,8 +33,8 @@ IssueTrackingCollectionTicketsAllRequest req = new IssueTrackingCollectionTicket
     CollectionId = "apideck-io",
     ServiceId = "salesforce",
     Sort = new TicketsSort() {
-        By = ApideckUnifySdk.Models.Components.TicketsSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = TicketsSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     Filter = new IssuesFilter() {
         Status = new List<string>() {
@@ -47,17 +47,13 @@ IssueTrackingCollectionTicketsAllRequest req = new IssueTrackingCollectionTicket
     Fields = "id,updated_at",
 };
 
-var res = await sdk.IssueTracking.CollectionTickets.ListAsync(req);
+IssueTrackingCollectionTicketsAllResponse? res = await sdk.IssueTracking.CollectionTickets.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -90,8 +86,9 @@ Create Ticket
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -108,7 +105,7 @@ IssueTrackingCollectionTicketsAddRequest req = new IssueTrackingCollectionTicket
         Subject = "Technical Support Request",
         Description = "I am facing issues with my internet connection",
         Status = "open",
-        Priority = ApideckUnifySdk.Models.Components.Priority.High,
+        Priority = Priority.High,
         Assignees = new List<AssigneeInput>() {
             new AssigneeInput() {
                 Id = "12345",
@@ -173,8 +170,8 @@ Get Ticket
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -223,8 +220,9 @@ Update Ticket
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -242,7 +240,7 @@ IssueTrackingCollectionTicketsUpdateRequest req = new IssueTrackingCollectionTic
         Subject = "Technical Support Request",
         Description = "I am facing issues with my internet connection",
         Status = "open",
-        Priority = ApideckUnifySdk.Models.Components.Priority.High,
+        Priority = Priority.High,
         Assignees = new List<AssigneeInput>() {
             new AssigneeInput() {
                 Id = "12345",
@@ -307,8 +305,8 @@ Delete Ticket
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

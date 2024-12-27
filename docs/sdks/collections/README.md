@@ -16,8 +16,8 @@ List Collections
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -29,8 +29,8 @@ var sdk = new Apideck(
 IssueTrackingCollectionsAllRequest req = new IssueTrackingCollectionsAllRequest() {
     ServiceId = "salesforce",
     Sort = new CollectionsSort() {
-        By = ApideckUnifySdk.Models.Components.CollectionsSortBy.Name,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = CollectionsSortBy.Name,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -38,17 +38,13 @@ IssueTrackingCollectionsAllRequest req = new IssueTrackingCollectionsAllRequest(
     Fields = "id,updated_at",
 };
 
-var res = await sdk.IssueTracking.Collections.ListAsync(req);
+IssueTrackingCollectionsAllResponse? res = await sdk.IssueTracking.Collections.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -81,8 +77,8 @@ Get Collection
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

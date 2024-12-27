@@ -19,9 +19,9 @@ List Applications
 
 ```csharp
 using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
-using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -36,17 +36,13 @@ AtsApplicationsAllRequest req = new AtsApplicationsAllRequest() {
     },
 };
 
-var res = await sdk.Ats.Applications.ListAsync(req);
+AtsApplicationsAllResponse? res = await sdk.Ats.Applications.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -79,8 +75,8 @@ Create Application
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -93,7 +89,7 @@ AtsApplicationsAddRequest req = new AtsApplicationsAddRequest() {
     Application = new ApplicationInput() {
         ApplicantId = "12345",
         JobId = "12345",
-        Status = ApideckUnifySdk.Models.Components.ApplicationStatus.Open,
+        Status = ApplicationStatus.Open,
         Stage = new Stage() {
             Id = "12345",
             Name = "12345",
@@ -151,8 +147,8 @@ Get Application
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -199,8 +195,8 @@ Update Application
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -214,7 +210,7 @@ AtsApplicationsUpdateRequest req = new AtsApplicationsUpdateRequest() {
     Application = new ApplicationInput() {
         ApplicantId = "12345",
         JobId = "12345",
-        Status = ApideckUnifySdk.Models.Components.ApplicationStatus.Open,
+        Status = ApplicationStatus.Open,
         Stage = new Stage() {
             Id = "12345",
             Name = "12345",
@@ -272,8 +268,8 @@ Delete Application
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

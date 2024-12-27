@@ -19,8 +19,8 @@ List opportunities
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -36,8 +36,8 @@ CrmOpportunitiesAllRequest req = new CrmOpportunitiesAllRequest() {
         MonetaryAmount = 75000D,
     },
     Sort = new OpportunitiesSort() {
-        By = ApideckUnifySdk.Models.Components.OpportunitiesSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = OpportunitiesSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -45,17 +45,13 @@ CrmOpportunitiesAllRequest req = new CrmOpportunitiesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Crm.Opportunities.ListAsync(req);
+CrmOpportunitiesAllResponse? res = await sdk.Crm.Opportunities.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -88,9 +84,10 @@ Create opportunity
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -106,7 +103,7 @@ CrmOpportunitiesAddRequest req = new CrmOpportunitiesAddRequest() {
         Description = "Opportunities are created for People and Companies that are interested in buying your products or services. Create Opportunities for People and Companies to move them through one of your Pipelines.",
         Type = "Existing Customer - Upgrade",
         MonetaryAmount = 75000D,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         WinProbability = 40D,
         CloseDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
         LossReasonId = "12345",
@@ -195,8 +192,8 @@ Get opportunity
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -244,9 +241,10 @@ Update opportunity
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -263,7 +261,7 @@ CrmOpportunitiesUpdateRequest req = new CrmOpportunitiesUpdateRequest() {
         Description = "Opportunities are created for People and Companies that are interested in buying your products or services. Create Opportunities for People and Companies to move them through one of your Pipelines.",
         Type = "Existing Customer - Upgrade",
         MonetaryAmount = 75000D,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         WinProbability = 40D,
         CloseDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
         LossReasonId = "12345",
@@ -354,8 +352,8 @@ Delete opportunity
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

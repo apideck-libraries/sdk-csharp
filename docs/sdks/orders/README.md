@@ -16,8 +16,8 @@ List Orders
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +35,8 @@ EcommerceOrdersAllRequest req = new EcommerceOrdersAllRequest() {
         CreatedSince = "2020-09-30T07:43:32.000Z",
     },
     Sort = new OrdersSort() {
-        By = ApideckUnifySdk.Models.Components.OrdersSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = OrdersSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +44,13 @@ EcommerceOrdersAllRequest req = new EcommerceOrdersAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Ecommerce.Orders.ListAsync(req);
+EcommerceOrdersAllResponse? res = await sdk.Ecommerce.Orders.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +83,8 @@ Get Order
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

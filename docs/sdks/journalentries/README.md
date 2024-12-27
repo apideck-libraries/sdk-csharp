@@ -19,8 +19,9 @@ List Journal Entries
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +36,8 @@ AccountingJournalEntriesAllRequest req = new AccountingJournalEntriesAllRequest(
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new JournalEntriesSort() {
-        By = ApideckUnifySdk.Models.Components.JournalEntriesSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = JournalEntriesSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +45,13 @@ AccountingJournalEntriesAllRequest req = new AccountingJournalEntriesAllRequest(
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.JournalEntries.ListAsync(req);
+AccountingJournalEntriesAllResponse? res = await sdk.Accounting.JournalEntries.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +84,9 @@ Create Journal Entry
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -101,7 +99,7 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
     JournalEntry = new JournalEntryInput() {
         Title = "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry",
         CurrencyRate = 0.69D,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CompanyId = "12345",
         LineItems = new List<JournalEntryLineItemInput>() {
             new JournalEntryLineItemInput() {
@@ -109,7 +107,7 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
                 TaxAmount = 27500D,
                 SubTotal = 27500D,
                 TotalAmount = 27500D,
-                Type = ApideckUnifySdk.Models.Components.JournalEntryLineItemType.Debit,
+                Type = JournalEntryLineItemType.Debit,
                 TaxRate = new LinkedTaxRateInput() {
                     Id = "123456",
                     Rate = 10D,
@@ -230,8 +228,8 @@ Get Journal Entry
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -279,8 +277,9 @@ Update Journal Entry
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -294,7 +293,7 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
     JournalEntry = new JournalEntryInput() {
         Title = "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry",
         CurrencyRate = 0.69D,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CompanyId = "12345",
         LineItems = new List<JournalEntryLineItemInput>() {
             new JournalEntryLineItemInput() {
@@ -302,7 +301,7 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
                 TaxAmount = 27500D,
                 SubTotal = 27500D,
                 TotalAmount = 27500D,
-                Type = ApideckUnifySdk.Models.Components.JournalEntryLineItemType.Debit,
+                Type = JournalEntryLineItemType.Debit,
                 TaxRate = new LinkedTaxRateInput() {
                     Id = "123456",
                     Rate = 10D,
@@ -423,8 +422,8 @@ Delete Journal Entry
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

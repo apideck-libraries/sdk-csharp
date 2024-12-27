@@ -19,9 +19,10 @@ List Purchase Orders
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
-using System.Collections.Generic;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -39,22 +40,18 @@ AccountingPurchaseOrdersAllRequest req = new AccountingPurchaseOrdersAllRequest(
         SupplierId = "1234",
     },
     Sort = new PurchaseOrdersSort() {
-        By = ApideckUnifySdk.Models.Components.PurchaseOrdersSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = PurchaseOrdersSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
 };
 
-var res = await sdk.Accounting.PurchaseOrders.ListAsync(req);
+AccountingPurchaseOrdersAllResponse? res = await sdk.Accounting.PurchaseOrders.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +84,8 @@ Create Purchase Order
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -133,11 +130,11 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
             },
         },
         CompanyId = "12345",
-        Status = ApideckUnifySdk.Models.Components.PurchaseOrderStatus.Open,
+        Status = PurchaseOrderStatus.Open,
         IssuedDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         DeliveryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         ExpectedArrivalDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         SubTotal = 27500D,
         TotalTax = 2500D,
@@ -150,7 +147,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = ApideckUnifySdk.Models.Components.InvoiceLineItemType.SalesItem,
+                Type = InvoiceLineItemType.SalesItem,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -230,14 +227,14 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+            AccountType = AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+            Currency = Currency.Usd,
         },
         AccountingByRow = false,
         DueDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
@@ -305,8 +302,8 @@ Get Purchase Order
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -353,8 +350,8 @@ Update Purchase Order
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -400,11 +397,11 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
             },
         },
         CompanyId = "12345",
-        Status = ApideckUnifySdk.Models.Components.PurchaseOrderStatus.Open,
+        Status = PurchaseOrderStatus.Open,
         IssuedDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         DeliveryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         ExpectedArrivalDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         SubTotal = 27500D,
         TotalTax = 2500D,
@@ -417,7 +414,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = ApideckUnifySdk.Models.Components.InvoiceLineItemType.SalesItem,
+                Type = InvoiceLineItemType.SalesItem,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -499,14 +496,14 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+            AccountType = AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+            Currency = Currency.Usd,
         },
         AccountingByRow = false,
         DueDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
@@ -574,8 +571,8 @@ Delete Purchase Order
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

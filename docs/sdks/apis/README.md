@@ -16,8 +16,8 @@ List APIs
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -25,24 +25,20 @@ var sdk = new Apideck(
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
 
-var res = await sdk.Connector.Apis.ListAsync(
+ConnectorApisAllResponse? res = await sdk.Connector.Apis.ListAsync(
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     cursor: "<value>",
     limit: 20,
     filter: new ApisFilter() {
-        Status = ApideckUnifySdk.Models.Components.ApiStatus.Beta,
+        Status = ApiStatus.Beta,
     }
 );
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -76,7 +72,6 @@ Get API
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(

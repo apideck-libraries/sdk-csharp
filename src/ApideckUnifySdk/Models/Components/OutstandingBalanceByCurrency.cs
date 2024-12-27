@@ -23,6 +23,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("currency")]
         public Currency? Currency { get; set; } = null;
 
+        /// <summary>
+        /// Total amount of the outstanding balance.
+        /// </summary>
+        [JsonProperty("total_amount")]
+        public double? TotalAmount { get; set; }
+
         [JsonProperty("balances_by_period")]
         public List<BalanceByPeriod>? BalancesByPeriod { get; set; }
     }

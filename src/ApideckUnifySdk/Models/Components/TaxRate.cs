@@ -12,8 +12,8 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     public class TaxRate
     {
@@ -140,5 +140,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("subsidiaries")]
         public List<Models.Components.Subsidiaries>? Subsidiaries { get; set; }
+
+        [JsonProperty("custom_fields")]
+        public List<CustomField>? CustomFields { get; set; }
     }
 }

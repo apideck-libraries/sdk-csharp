@@ -12,13 +12,13 @@ namespace ApideckUnifySdk
     using ApideckUnifySdk.Hooks;
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Models.Errors;
-    using ApideckUnifySdk.Utils.Retries;
     using ApideckUnifySdk.Utils;
+    using ApideckUnifySdk.Utils.Retries;
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using System;
 
     /// <summary>
     /// Apideck: The Apideck OpenAPI Spec: SDK Optimized
@@ -87,10 +87,10 @@ namespace ApideckUnifySdk
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.2.0";
-        private const string _sdkGenVersion = "2.481.0";
+        private const string _sdkVersion = "0.2.1";
+        private const string _sdkGenVersion = "2.484.0";
         private const string _openapiDocVersion = "10.9.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.2.0 2.481.0 10.9.0 ApideckUnifySdk";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.2.1 2.484.0 10.9.0 ApideckUnifySdk";
         private string _serverUrl = "";
         private int _serverIndex = 0;
         private ISpeakeasyHttpClient _client;

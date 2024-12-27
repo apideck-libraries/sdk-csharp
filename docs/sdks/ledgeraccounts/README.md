@@ -19,8 +19,9 @@ List Ledger Accounts
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +36,8 @@ AccountingLedgerAccountsAllRequest req = new AccountingLedgerAccountsAllRequest(
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new LedgerAccountsSort() {
-        By = ApideckUnifySdk.Models.Components.LedgerAccountsSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = LedgerAccountsSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +45,13 @@ AccountingLedgerAccountsAllRequest req = new AccountingLedgerAccountsAllRequest(
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.LedgerAccounts.ListAsync(req);
+AccountingLedgerAccountsAllResponse? res = await sdk.Accounting.LedgerAccounts.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +84,8 @@ Create Ledger Account
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -102,15 +99,15 @@ AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest(
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
-        Classification = ApideckUnifySdk.Models.Components.Classification.Asset,
-        Type = ApideckUnifySdk.Models.Components.LedgerAccountType.Bank,
+        Classification = Classification.Asset,
+        Type = LedgerAccountType.Bank,
         SubType = "CHECKING_ACCOUNT",
         Name = "Bank account",
         FullyQualifiedName = "Asset.Bank.Checking_Account",
         Description = "Main checking account",
         OpeningBalance = 75000D,
         CurrentBalance = 20000D,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         TaxType = "NONE",
         TaxRate = new LinkedTaxRateInput() {
             Id = "123456",
@@ -118,20 +115,20 @@ AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest(
         },
         Level = 1D,
         Active = true,
-        Status = ApideckUnifySdk.Models.Components.AccountStatus.Active,
+        Status = AccountStatus.Active,
         Header = true,
         BankAccount = new BankAccount() {
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+            AccountType = AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+            Currency = Currency.Usd,
         },
         ParentAccount = new ParentAccount() {
             Id = "12345",
@@ -194,8 +191,8 @@ Get Ledger Account
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -243,8 +240,8 @@ Update Ledger Account
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -259,15 +256,15 @@ AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRe
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
-        Classification = ApideckUnifySdk.Models.Components.Classification.Asset,
-        Type = ApideckUnifySdk.Models.Components.LedgerAccountType.Bank,
+        Classification = Classification.Asset,
+        Type = LedgerAccountType.Bank,
         SubType = "CHECKING_ACCOUNT",
         Name = "Bank account",
         FullyQualifiedName = "Asset.Bank.Checking_Account",
         Description = "Main checking account",
         OpeningBalance = 75000D,
         CurrentBalance = 20000D,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         TaxType = "NONE",
         TaxRate = new LinkedTaxRateInput() {
             Id = "123456",
@@ -275,20 +272,20 @@ AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRe
         },
         Level = 1D,
         Active = true,
-        Status = ApideckUnifySdk.Models.Components.AccountStatus.Active,
+        Status = AccountStatus.Active,
         Header = true,
         BankAccount = new BankAccount() {
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+            AccountType = AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+            Currency = Currency.Usd,
         },
         ParentAccount = new ParentAccount() {
             Id = "12345",
@@ -351,8 +348,8 @@ Delete Ledger Account
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

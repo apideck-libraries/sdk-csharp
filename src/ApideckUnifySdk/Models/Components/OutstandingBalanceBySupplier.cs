@@ -7,29 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace ApideckUnifySdk.Models.Requests
+namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    using System;
-    using System.Threading.Tasks;
+    using System.Collections.Generic;
     
-    public class AtsApplicantsAllResponse
+    public class OutstandingBalanceBySupplier
     {
-        public Func<Task<AtsApplicantsAllResponse?>>? Next {get;set;}
-
-        [JsonProperty("-")]
-        public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Applicants
+        /// Unique identifier for the supplier.
         /// </summary>
-        public GetApplicantsResponse? GetApplicantsResponse { get; set; }
+        [JsonProperty("supplier_id")]
+        public string? SupplierId { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Full name of the supplier.
         /// </summary>
-        public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
+        [JsonProperty("supplier_name")]
+        public string? SupplierName { get; set; }
+
+        [JsonProperty("outstanding_balances_by_currency")]
+        public List<OutstandingBalanceByCurrency>? OutstandingBalancesByCurrency { get; set; }
     }
 }

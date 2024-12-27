@@ -15,9 +15,9 @@ Get BalanceSheet
 
 ```csharp
 using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
-using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -34,7 +34,7 @@ AccountingBalanceSheetOneRequest req = new AccountingBalanceSheetOneRequest() {
         StartDate = "2021-01-01",
         EndDate = "2021-12-31",
         PeriodCount = 3,
-        PeriodType = ApideckUnifySdk.Models.Components.PeriodType.Month,
+        PeriodType = PeriodType.Month,
     },
 };
 

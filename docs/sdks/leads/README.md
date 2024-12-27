@@ -19,8 +19,8 @@ List leads
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -38,8 +38,8 @@ CrmLeadsAllRequest req = new CrmLeadsAllRequest() {
         PhoneNumber = "1234567890",
     },
     Sort = new LeadsSort() {
-        By = ApideckUnifySdk.Models.Components.LeadsSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = LeadsSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -47,17 +47,13 @@ CrmLeadsAllRequest req = new CrmLeadsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Crm.Leads.ListAsync(req);
+CrmLeadsAllResponse? res = await sdk.Crm.Leads.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -90,8 +86,8 @@ Create lead
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -117,13 +113,13 @@ CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
         Language = "EN",
         Status = "New",
         MonetaryAmount = 75000D,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Fax = "+12129876543",
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
@@ -168,14 +164,14 @@ CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -244,8 +240,8 @@ Get lead
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -293,8 +289,8 @@ Update lead
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -321,13 +317,13 @@ CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
         Language = "EN",
         Status = "New",
         MonetaryAmount = 75000D,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Fax = "+12129876543",
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
@@ -372,14 +368,14 @@ CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -450,8 +446,8 @@ Delete lead
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

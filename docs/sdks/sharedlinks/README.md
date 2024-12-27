@@ -19,9 +19,9 @@ List SharedLinks
 
 ```csharp
 using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
-using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -37,17 +37,13 @@ FileStorageSharedLinksAllRequest req = new FileStorageSharedLinksAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.FileStorage.SharedLinks.ListAsync(req);
+FileStorageSharedLinksAllResponse? res = await sdk.FileStorage.SharedLinks.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -80,8 +76,8 @@ Create Shared Link
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -94,7 +90,7 @@ FileStorageSharedLinksAddRequest req = new FileStorageSharedLinksAddRequest() {
     SharedLink = new SharedLinkInput() {
         DownloadUrl = "https://www.box.com/shared/static/rh935iit6ewrmw0unyul.jpeg",
         TargetId = "<id>",
-        Scope = ApideckUnifySdk.Models.Components.Scope.Company,
+        Scope = Scope.Company,
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
@@ -148,8 +144,8 @@ Get Shared Link
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -197,8 +193,8 @@ Update Shared Link
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -212,7 +208,7 @@ FileStorageSharedLinksUpdateRequest req = new FileStorageSharedLinksUpdateReques
     SharedLink = new SharedLinkInput() {
         DownloadUrl = "https://www.box.com/shared/static/rh935iit6ewrmw0unyul.jpeg",
         TargetId = "<id>",
-        Scope = ApideckUnifySdk.Models.Components.Scope.Company,
+        Scope = Scope.Company,
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
@@ -266,8 +262,8 @@ Delete Shared Link
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

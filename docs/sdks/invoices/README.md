@@ -19,8 +19,9 @@ List Invoices
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -37,8 +38,8 @@ AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
         Number = "OIT00546",
     },
     Sort = new InvoicesSort() {
-        By = ApideckUnifySdk.Models.Components.InvoicesSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = InvoicesSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -46,17 +47,13 @@ AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.Invoices.ListAsync(req);
+AccountingInvoicesAllResponse? res = await sdk.Accounting.Invoices.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -89,8 +86,8 @@ Create Invoice
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -102,7 +99,7 @@ var sdk = new Apideck(
 
 AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
     Invoice = new InvoiceInput() {
-        Type = ApideckUnifySdk.Models.Components.InvoiceType.Service,
+        Type = InvoiceType.Service,
         Number = "OIT00546",
         Customer = new LinkedCustomerInput() {
             Id = "12345",
@@ -115,9 +112,9 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
         Terms = "Net 30 days",
         PoNumber = "90000117",
         Reference = "123456",
-        Status = ApideckUnifySdk.Models.Components.InvoiceStatus.Draft,
+        Status = InvoiceStatus.Draft,
         InvoiceSent = true,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TaxInclusive = true,
         SubTotal = 27500D,
@@ -142,7 +139,7 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = ApideckUnifySdk.Models.Components.InvoiceLineItemType.SalesItem,
+                Type = InvoiceLineItemType.SalesItem,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -247,14 +244,14 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+            AccountType = AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+            Currency = Currency.Usd,
         },
         LedgerAccount = new LinkedLedgerAccountInput() {
             Id = "123456",
@@ -325,8 +322,8 @@ Get Invoice
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -374,8 +371,8 @@ Update Invoice
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -388,7 +385,7 @@ var sdk = new Apideck(
 AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
     Id = "<id>",
     Invoice = new InvoiceInput() {
-        Type = ApideckUnifySdk.Models.Components.InvoiceType.Service,
+        Type = InvoiceType.Service,
         Number = "OIT00546",
         Customer = new LinkedCustomerInput() {
             Id = "12345",
@@ -401,9 +398,9 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
         Terms = "Net 30 days",
         PoNumber = "90000117",
         Reference = "123456",
-        Status = ApideckUnifySdk.Models.Components.InvoiceStatus.Draft,
+        Status = InvoiceStatus.Draft,
         InvoiceSent = true,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TaxInclusive = true,
         SubTotal = 27500D,
@@ -428,7 +425,7 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = ApideckUnifySdk.Models.Components.InvoiceLineItemType.SalesItem,
+                Type = InvoiceLineItemType.SalesItem,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -535,14 +532,14 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+            AccountType = AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+            Currency = Currency.Usd,
         },
         LedgerAccount = new LinkedLedgerAccountInput() {
             Id = "123456",
@@ -613,8 +610,8 @@ Delete Invoice
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

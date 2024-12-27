@@ -109,5 +109,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("subsidiaries")]
         public List<Models.Components.Subsidiaries>? Subsidiaries { get; set; }
+
+        [JsonProperty("custom_fields")]
+        public List<CustomField>? CustomFields { get; set; }
     }
 }

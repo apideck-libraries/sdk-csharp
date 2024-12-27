@@ -19,8 +19,9 @@ List Bill Payments
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +36,8 @@ AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new PaymentsSort() {
-        By = ApideckUnifySdk.Models.Components.PaymentsSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = PaymentsSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +45,13 @@ AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.BillPayments.ListAsync(req);
+AccountingBillPaymentsAllResponse? res = await sdk.Accounting.BillPayments.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +84,9 @@ Create Bill Payment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -99,7 +97,7 @@ var sdk = new Apideck(
 
 AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
     BillPayment = new BillPaymentInput() {
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TotalAmount = 49.99D,
         Reference = "123456",
@@ -144,12 +142,12 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
         },
         CompanyId = "12345",
         Reconciled = true,
-        Status = ApideckUnifySdk.Models.Components.PaymentStatus.Authorised,
-        Type = ApideckUnifySdk.Models.Components.BillPaymentType.AccountsPayable,
+        Status = PaymentStatus.Authorised,
+        Type = BillPaymentType.AccountsPayable,
         Allocations = new List<BillPaymentAllocations>() {
             new BillPaymentAllocations() {
                 Id = "12345",
-                Type = ApideckUnifySdk.Models.Components.BillPaymentAllocationType.Bill,
+                Type = BillPaymentAllocationType.Bill,
                 Amount = 49.99D,
                 AllocationId = "123456",
             },
@@ -227,8 +225,8 @@ Get Bill Payment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -276,8 +274,9 @@ Update Bill Payment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -289,7 +288,7 @@ var sdk = new Apideck(
 AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateRequest() {
     Id = "<id>",
     BillPayment = new BillPaymentInput() {
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TotalAmount = 49.99D,
         Reference = "123456",
@@ -334,12 +333,12 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
         },
         CompanyId = "12345",
         Reconciled = true,
-        Status = ApideckUnifySdk.Models.Components.PaymentStatus.Authorised,
-        Type = ApideckUnifySdk.Models.Components.BillPaymentType.AccountsPayable,
+        Status = PaymentStatus.Authorised,
+        Type = BillPaymentType.AccountsPayable,
         Allocations = new List<BillPaymentAllocations>() {
             new BillPaymentAllocations() {
                 Id = "12345",
-                Type = ApideckUnifySdk.Models.Components.BillPaymentAllocationType.Bill,
+                Type = BillPaymentAllocationType.Bill,
                 Amount = 49.99D,
                 AllocationId = "123456",
             },
@@ -419,8 +418,8 @@ Delete Bill Payment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

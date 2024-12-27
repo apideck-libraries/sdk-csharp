@@ -19,8 +19,8 @@ List companies
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +35,8 @@ CrmCompaniesAllRequest req = new CrmCompaniesAllRequest() {
         Name = "SpaceX",
     },
     Sort = new CompaniesSort() {
-        By = ApideckUnifySdk.Models.Components.CompaniesSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = CompaniesSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +44,13 @@ CrmCompaniesAllRequest req = new CrmCompaniesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Crm.Companies.ListAsync(req);
+CrmCompaniesAllResponse? res = await sdk.Crm.Companies.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,10 +83,10 @@ Create company
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
-using System.Collections.Generic;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -105,7 +101,7 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
         Image = "https://www.spacex.com/static/images/share.jpg",
         Description = "Space Exploration Technologies Corp. is an American aerospace manufacturer, space transportation services and communications company headquartered in Hawthorne, California.",
         VatNumber = "BE0689615164",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Status = "Open",
         Fax = "+12129876543",
         AnnualRevenue = "+$35m",
@@ -124,21 +120,21 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+                AccountType = AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+                Currency = Currency.Usd,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
@@ -183,14 +179,14 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         RowType = new CompanyRowType() {
@@ -266,8 +262,8 @@ Get company
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -315,10 +311,10 @@ Update company
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
-using System.Collections.Generic;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -334,7 +330,7 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
         Image = "https://www.spacex.com/static/images/share.jpg",
         Description = "Space Exploration Technologies Corp. is an American aerospace manufacturer, space transportation services and communications company headquartered in Hawthorne, California.",
         VatNumber = "BE0689615164",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Status = "Open",
         Fax = "+12129876543",
         AnnualRevenue = "+$35m",
@@ -353,21 +349,21 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+                AccountType = AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+                Currency = Currency.Usd,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         Addresses = new List<Address>() {
@@ -412,14 +408,14 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         RowType = new CompanyRowType() {
@@ -497,8 +493,8 @@ Delete company
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

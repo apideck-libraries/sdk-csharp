@@ -13,8 +13,8 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     public class PurchaseOrder
     {

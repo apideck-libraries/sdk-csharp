@@ -15,7 +15,6 @@ Get Connector Resource
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
@@ -28,7 +27,7 @@ var res = await sdk.Connector.ConnectorResources.GetAsync(
     id: "<id>",
     resourceId: "<id>",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
-    unifiedApi: ApideckUnifySdk.Models.Components.UnifiedApiId.Crm
+    unifiedApi: UnifiedApiId.Crm
 );
 
 // handle response

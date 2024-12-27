@@ -14,17 +14,17 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System.Collections.Generic;
     
-    public class OutstandingBalance
+    public class OutstandingBalanceByCustomer
     {
 
         /// <summary>
-        /// Unique identifier for the customer or supplier.
+        /// Unique identifier for the customer.
         /// </summary>
         [JsonProperty("customer_id")]
         public string? CustomerId { get; set; }
 
         /// <summary>
-        /// Full name of the customer or supplier.
+        /// Full name of the customer.
         /// </summary>
         [JsonProperty("customer_name")]
         public string? CustomerName { get; set; }

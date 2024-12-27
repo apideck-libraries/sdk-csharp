@@ -19,8 +19,8 @@ List Expenses
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -32,17 +32,13 @@ AccountingExpensesAllRequest req = new AccountingExpensesAllRequest() {
     ServiceId = "salesforce",
 };
 
-var res = await sdk.Accounting.Expenses.ListAsync(req);
+AccountingExpensesAllResponse? res = await sdk.Accounting.Expenses.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -75,8 +71,9 @@ Create Expense
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -94,10 +91,10 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
         SupplierId = "12345",
         CompanyId = "12345",
         DepartmentId = "12345",
-        PaymentType = ApideckUnifySdk.Models.Components.ExpensePaymentType.Cash,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        PaymentType = ExpensePaymentType.Cash,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
-        Type = ApideckUnifySdk.Models.Components.ExpenseType.Expense,
+        Type = ExpenseType.Expense,
         Memo = "For travel expenses incurred on 2024-05-15",
         TaxRate = new LinkedTaxRateInput() {
             Id = "123456",
@@ -189,8 +186,8 @@ Get Expense
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -237,8 +234,9 @@ Update Expense
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -257,10 +255,10 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
         SupplierId = "12345",
         CompanyId = "12345",
         DepartmentId = "12345",
-        PaymentType = ApideckUnifySdk.Models.Components.ExpensePaymentType.Cash,
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        PaymentType = ExpensePaymentType.Cash,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
-        Type = ApideckUnifySdk.Models.Components.ExpenseType.Expense,
+        Type = ExpenseType.Expense,
         Memo = "For travel expenses incurred on 2024-05-15",
         TaxRate = new LinkedTaxRateInput() {
             Id = "123456",
@@ -354,8 +352,8 @@ Delete Expense
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

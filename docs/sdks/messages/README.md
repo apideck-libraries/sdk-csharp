@@ -19,8 +19,8 @@ List Messages
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -33,17 +33,13 @@ SmsMessagesAllRequest req = new SmsMessagesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Sms.Messages.ListAsync(req);
+SmsMessagesAllResponse? res = await sdk.Sms.Messages.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -76,8 +72,9 @@ Create Message
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -92,7 +89,7 @@ SmsMessagesAddRequest req = new SmsMessagesAddRequest() {
         To = "+15017122662",
         Subject = "Picture",
         Body = "Hi! How are you doing?",
-        Type = ApideckUnifySdk.Models.Components.MessageType.Sms,
+        Type = MessageType.Sms,
         ScheduledAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
         WebhookUrl = "https://unify.apideck.com/webhook/webhooks/eyz329dkffdl4949/x/sms",
         Reference = "CUST001",
@@ -150,8 +147,8 @@ Get Message
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -199,8 +196,9 @@ Update Message
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -216,7 +214,7 @@ SmsMessagesUpdateRequest req = new SmsMessagesUpdateRequest() {
         To = "+15017122662",
         Subject = "Picture",
         Body = "Hi! How are you doing?",
-        Type = ApideckUnifySdk.Models.Components.MessageType.Sms,
+        Type = MessageType.Sms,
         ScheduledAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
         WebhookUrl = "https://unify.apideck.com/webhook/webhooks/eyz329dkffdl4949/x/sms",
         Reference = "CUST001",
@@ -274,8 +272,8 @@ Delete Message
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

@@ -19,8 +19,8 @@ List Time Off Requests
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -36,7 +36,7 @@ HrisTimeOffRequestsAllRequest req = new HrisTimeOffRequestsAllRequest() {
         EndDate = "2022-04-21",
         UpdatedSince = "2020-09-30T07:43:32.000Z",
         EmployeeId = "1234",
-        TimeOffRequestStatus = ApideckUnifySdk.Models.Components.TimeOffRequestStatus.Approved,
+        TimeOffRequestStatus = TimeOffRequestStatus.Approved,
         CompanyId = "1234",
     },
     PassThrough = new Dictionary<string, object>() {
@@ -45,17 +45,13 @@ HrisTimeOffRequestsAllRequest req = new HrisTimeOffRequestsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Hris.TimeOffRequests.ListAsync(req);
+HrisTimeOffRequestsAllResponse? res = await sdk.Hris.TimeOffRequests.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -88,8 +84,8 @@ Create Time Off Request
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -102,14 +98,14 @@ HrisTimeOffRequestsAddRequest req = new HrisTimeOffRequestsAddRequest() {
     TimeOffRequest = new TimeOffRequestInput() {
         EmployeeId = "12345",
         PolicyId = "12345",
-        Status = ApideckUnifySdk.Models.Components.TimeOffRequestStatusStatus.Approved,
+        Status = TimeOffRequestStatusStatus.Approved,
         Description = "Enjoying some sun.",
         StartDate = "2022-04-01",
         EndDate = "2022-04-01",
         RequestDate = "2022-03-21",
-        RequestType = ApideckUnifySdk.Models.Components.RequestType.Vacation,
+        RequestType = RequestType.Vacation,
         ApprovalDate = "2022-03-21",
-        Units = ApideckUnifySdk.Models.Components.Units.Hours,
+        Units = Units.Hours,
         Amount = 3.5D,
         DayPart = "morning",
         Notes = new Models.Components.Notes() {
@@ -170,8 +166,8 @@ Get Time Off Request
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -220,8 +216,8 @@ Update Time Off Request
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -236,14 +232,14 @@ HrisTimeOffRequestsUpdateRequest req = new HrisTimeOffRequestsUpdateRequest() {
     TimeOffRequest = new TimeOffRequestInput() {
         EmployeeId = "12345",
         PolicyId = "12345",
-        Status = ApideckUnifySdk.Models.Components.TimeOffRequestStatusStatus.Approved,
+        Status = TimeOffRequestStatusStatus.Approved,
         Description = "Enjoying some sun.",
         StartDate = "2022-04-01",
         EndDate = "2022-04-01",
         RequestDate = "2022-03-21",
-        RequestType = ApideckUnifySdk.Models.Components.RequestType.Vacation,
+        RequestType = RequestType.Vacation,
         ApprovalDate = "2022-03-21",
-        Units = ApideckUnifySdk.Models.Components.Units.Hours,
+        Units = Units.Hours,
         Amount = 3.5D,
         DayPart = "morning",
         Notes = new Models.Components.Notes() {
@@ -304,8 +300,8 @@ Delete Time Off Request
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

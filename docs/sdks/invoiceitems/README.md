@@ -19,8 +19,8 @@ List Invoice Items
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -33,7 +33,7 @@ AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
     ServiceId = "salesforce",
     Filter = new InvoiceItemsFilter() {
         Name = "Widgets Large",
-        Type = ApideckUnifySdk.Models.Components.InvoiceItemType.Service,
+        Type = InvoiceItemType.Service,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -41,17 +41,13 @@ AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.InvoiceItems.ListAsync(req);
+AccountingInvoiceItemsAllResponse? res = await sdk.Accounting.InvoiceItems.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -84,8 +80,8 @@ Create Invoice Item
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -105,7 +101,7 @@ AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
         Tracked = true,
         Taxable = true,
         InventoryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
-        Type = ApideckUnifySdk.Models.Components.InvoiceItemTypeType.Inventory,
+        Type = InvoiceItemTypeType.Inventory,
         SalesDetails = new InvoiceItemSalesDetails() {
             UnitPrice = 27500.5D,
             UnitOfMeasure = "pc.",
@@ -202,8 +198,8 @@ Get Invoice Item
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -216,7 +212,7 @@ AccountingInvoiceItemsOneRequest req = new AccountingInvoiceItemsOneRequest() {
     ServiceId = "salesforce",
     Fields = "id,updated_at",
     Filter = new InvoiceItemFilter() {
-        Type = ApideckUnifySdk.Models.Components.InvoiceItemFilterInvoiceItemType.Service,
+        Type = InvoiceItemFilterInvoiceItemType.Service,
     },
 };
 
@@ -254,8 +250,8 @@ Update Invoice Item
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -276,7 +272,7 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
         Tracked = true,
         Taxable = true,
         InventoryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
-        Type = ApideckUnifySdk.Models.Components.InvoiceItemTypeType.Inventory,
+        Type = InvoiceItemTypeType.Inventory,
         SalesDetails = new InvoiceItemSalesDetails() {
             UnitPrice = 27500.5D,
             UnitOfMeasure = "pc.",
@@ -373,8 +369,8 @@ Delete Invoice Item
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

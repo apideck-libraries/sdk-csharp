@@ -19,8 +19,8 @@ Apideck operates as a stateless Unified API, which means that the list endpoint 
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -38,13 +38,13 @@ HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
         Title = "Manager",
         LastName = "Musk",
         ManagerId = "1234",
-        EmploymentStatus = ApideckUnifySdk.Models.Components.EmployeesFilterEmploymentStatus.Active,
+        EmploymentStatus = EmployeesFilterEmploymentStatus.Active,
         EmployeeNumber = "123456-AB",
         DepartmentId = "1234",
     },
     Sort = new EmployeesSort() {
-        By = ApideckUnifySdk.Models.Components.EmployeesSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = EmployeesSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -52,17 +52,13 @@ HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Hris.Employees.ListAsync(req);
+HrisEmployeesAllResponse? res = await sdk.Hris.Employees.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -95,8 +91,8 @@ Create Employee
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -122,7 +118,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
             FirstName = "Elon",
             LastName = "Musk",
             MiddleName = "D.",
-            Gender = ApideckUnifySdk.Models.Components.Gender.Male,
+            Gender = Gender.Male,
             Initials = "EM",
             Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
             DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
@@ -139,9 +135,9 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         CompanyName = "SpaceX",
         EmploymentStartDate = "2021-10-26",
         EmploymentEndDate = "2028-10-26",
-        LeavingReason = ApideckUnifySdk.Models.Components.LeavingReason.Resigned,
+        LeavingReason = LeavingReason.Resigned,
         EmployeeNumber = "123456-AB",
-        EmploymentStatus = ApideckUnifySdk.Models.Components.EmploymentStatus.Active,
+        EmploymentStatus = EmploymentStatus.Active,
         Ethnicity = "African American",
         Manager = new Manager() {
             Id = "12345",
@@ -149,7 +145,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
             FirstName = "Elon",
             LastName = "Musk",
             Email = "elon@musk.com",
-            EmploymentStatus = ApideckUnifySdk.Models.Components.EmploymentStatus.Active,
+            EmploymentStatus = EmploymentStatus.Active,
         },
         DirectReports = new List<string>() {
             "a0d636c6-43b3-4bde-8c70-85b707d992f4",
@@ -160,7 +156,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
         CountryOfBirth = "US",
         Description = "A description",
-        Gender = ApideckUnifySdk.Models.Components.Gender.Male,
+        Gender = Gender.Male,
         Pronouns = "she,her",
         PreferredLanguage = "EN",
         Languages = new List<string>() {
@@ -181,12 +177,12 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 CompensationRate = 72000D,
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
-                PaymentUnit = ApideckUnifySdk.Models.Components.PaymentUnit.Year,
+                Currency = Currency.Usd,
+                PaymentUnit = PaymentUnit.Year,
                 HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 IsPrimary = true,
                 IsManager = true,
-                Status = ApideckUnifySdk.Models.Components.EmployeeJobStatus.Active,
+                Status = EmployeeJobStatus.Active,
                 Location = new Address() {
                     Id = "123",
                     Type = ApideckUnifySdk.Models.Components.Type.Primary,
@@ -218,8 +214,8 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         Compensations = new List<EmployeeCompensationInput>() {
             new EmployeeCompensationInput() {
                 Rate = 50D,
-                PaymentUnit = ApideckUnifySdk.Models.Components.PaymentUnit.Hour,
-                FlsaStatus = ApideckUnifySdk.Models.Components.FlsaStatus.Nonexempt,
+                PaymentUnit = PaymentUnit.Hour,
+                FlsaStatus = FlsaStatus.Nonexempt,
                 EffectiveDate = "2021-06-11",
             },
         },
@@ -259,14 +255,14 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -291,14 +287,14 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+                AccountType = AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+                Currency = Currency.Usd,
             },
         },
         TaxCode = "1111",
@@ -369,8 +365,8 @@ Get Employee
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -425,8 +421,8 @@ Update Employee
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -453,7 +449,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
             FirstName = "Elon",
             LastName = "Musk",
             MiddleName = "D.",
-            Gender = ApideckUnifySdk.Models.Components.Gender.Male,
+            Gender = Gender.Male,
             Initials = "EM",
             Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
             DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
@@ -470,9 +466,9 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         CompanyName = "SpaceX",
         EmploymentStartDate = "2021-10-26",
         EmploymentEndDate = "2028-10-26",
-        LeavingReason = ApideckUnifySdk.Models.Components.LeavingReason.Resigned,
+        LeavingReason = LeavingReason.Resigned,
         EmployeeNumber = "123456-AB",
-        EmploymentStatus = ApideckUnifySdk.Models.Components.EmploymentStatus.Active,
+        EmploymentStatus = EmploymentStatus.Active,
         Ethnicity = "African American",
         Manager = new Manager() {
             Id = "12345",
@@ -480,7 +476,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
             FirstName = "Elon",
             LastName = "Musk",
             Email = "elon@musk.com",
-            EmploymentStatus = ApideckUnifySdk.Models.Components.EmploymentStatus.Active,
+            EmploymentStatus = EmploymentStatus.Active,
         },
         DirectReports = new List<string>() {
             "a0d636c6-43b3-4bde-8c70-85b707d992f4",
@@ -491,7 +487,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
         CountryOfBirth = "US",
         Description = "A description",
-        Gender = ApideckUnifySdk.Models.Components.Gender.Male,
+        Gender = Gender.Male,
         Pronouns = "she,her",
         PreferredLanguage = "EN",
         Languages = new List<string>() {
@@ -512,12 +508,12 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 CompensationRate = 72000D,
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
-                PaymentUnit = ApideckUnifySdk.Models.Components.PaymentUnit.Year,
+                Currency = Currency.Usd,
+                PaymentUnit = PaymentUnit.Year,
                 HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
                 IsPrimary = true,
                 IsManager = true,
-                Status = ApideckUnifySdk.Models.Components.EmployeeJobStatus.Active,
+                Status = EmployeeJobStatus.Active,
                 Location = new Address() {
                     Id = "123",
                     Type = ApideckUnifySdk.Models.Components.Type.Primary,
@@ -549,8 +545,8 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         Compensations = new List<EmployeeCompensationInput>() {
             new EmployeeCompensationInput() {
                 Rate = 50D,
-                PaymentUnit = ApideckUnifySdk.Models.Components.PaymentUnit.Hour,
-                FlsaStatus = ApideckUnifySdk.Models.Components.FlsaStatus.Nonexempt,
+                PaymentUnit = PaymentUnit.Hour,
+                FlsaStatus = FlsaStatus.Nonexempt,
                 EffectiveDate = "2021-06-11",
             },
         },
@@ -590,14 +586,14 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -624,14 +620,14 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+                AccountType = AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+                Currency = Currency.Usd,
             },
         },
         TaxCode = "1111",
@@ -702,8 +698,8 @@ Delete Employee
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

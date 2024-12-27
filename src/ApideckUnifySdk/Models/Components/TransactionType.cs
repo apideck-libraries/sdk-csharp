@@ -26,7 +26,7 @@ namespace ApideckUnifySdk.Models.Components
         Bill,
         [JsonProperty("payment")]
         Payment,
-        [JsonProperty("bill-payment")]
+        [JsonProperty("bill_payment")]
         BillPayment,
     }
 

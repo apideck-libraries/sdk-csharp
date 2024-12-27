@@ -19,8 +19,8 @@ List Locations
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -36,17 +36,13 @@ AccountingLocationsAllRequest req = new AccountingLocationsAllRequest() {
     },
 };
 
-var res = await sdk.Accounting.Locations.ListAsync(req);
+AccountingLocationsAllResponse? res = await sdk.Accounting.Locations.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -79,8 +75,8 @@ Create Location
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -94,7 +90,7 @@ AccountingLocationsAddRequest req = new AccountingLocationsAddRequest() {
         ParentId = "12345",
         CompanyName = "SpaceX",
         DisplayName = "11 UT - South Jordan",
-        Status = ApideckUnifySdk.Models.Components.LocationStatus.Active,
+        Status = LocationStatus.Active,
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
@@ -182,8 +178,8 @@ Get Location
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -231,8 +227,8 @@ Update Location
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -247,7 +243,7 @@ AccountingLocationsUpdateRequest req = new AccountingLocationsUpdateRequest() {
         ParentId = "12345",
         CompanyName = "SpaceX",
         DisplayName = "11 UT - South Jordan",
-        Status = ApideckUnifySdk.Models.Components.LocationStatus.Active,
+        Status = LocationStatus.Active,
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
@@ -335,8 +331,8 @@ Delete Location
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

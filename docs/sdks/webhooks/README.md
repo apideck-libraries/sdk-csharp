@@ -19,8 +19,8 @@ List all webhook subscriptions
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -28,21 +28,17 @@ var sdk = new Apideck(
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
 
-var res = await sdk.Webhook.Webhooks.ListAsync(
+WebhookWebhooksAllResponse? res = await sdk.Webhook.Webhooks.ListAsync(
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     cursor: "<value>",
     limit: 20
 );
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -77,7 +73,6 @@ Create a webhook subscription to receive events
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
@@ -90,12 +85,12 @@ var sdk = new Apideck(
 var res = await sdk.Webhook.Webhooks.CreateAsync(
     createWebhookRequest: new CreateWebhookRequest() {
         Description = "A description",
-        UnifiedApi = ApideckUnifySdk.Models.Components.UnifiedApiId.Crm,
-        Status = ApideckUnifySdk.Models.Components.Status.Enabled,
+        UnifiedApi = UnifiedApiId.Crm,
+        Status = Status.Enabled,
         DeliveryUrl = "https://example.com/my/webhook/endpoint",
         Events = new List<WebhookEventType>() {
-            ApideckUnifySdk.Models.Components.WebhookEventType.VaultConnectionCreated,
-            ApideckUnifySdk.Models.Components.WebhookEventType.VaultConnectionUpdated,
+            WebhookEventType.VaultConnectionCreated,
+            WebhookEventType.VaultConnectionUpdated,
         },
     },
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -134,7 +129,6 @@ Get the webhook subscription details
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
@@ -181,7 +175,6 @@ Update a webhook subscription
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
@@ -195,11 +188,11 @@ var res = await sdk.Webhook.Webhooks.UpdateAsync(
     id: "<id>",
     updateWebhookRequest: new UpdateWebhookRequest() {
         Description = "A description",
-        Status = ApideckUnifySdk.Models.Components.Status.Enabled,
+        Status = Status.Enabled,
         DeliveryUrl = "https://example.com/my/webhook/endpoint",
         Events = new List<WebhookEventType>() {
-            ApideckUnifySdk.Models.Components.WebhookEventType.VaultConnectionCreated,
-            ApideckUnifySdk.Models.Components.WebhookEventType.VaultConnectionUpdated,
+            WebhookEventType.VaultConnectionCreated,
+            WebhookEventType.VaultConnectionUpdated,
         },
     },
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -239,7 +232,6 @@ Delete a webhook subscription
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(

@@ -13,8 +13,8 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     public class AgedCreditors
     {
@@ -44,6 +44,6 @@ namespace ApideckUnifySdk.Models.Components
         public long? PeriodLength { get; set; } = 30;
 
         [JsonProperty("outstanding_balances")]
-        public List<OutstandingBalance>? OutstandingBalances { get; set; }
+        public List<OutstandingBalanceBySupplier>? OutstandingBalances { get; set; }
     }
 }

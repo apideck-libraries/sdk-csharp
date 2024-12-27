@@ -19,7 +19,6 @@ Note: This is a short lived token that will expire after 1 hour (TTL: 3600).
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
@@ -42,7 +41,7 @@ var res = await sdk.Vault.Sessions.CreateAsync(
         RedirectUri = "https://mysaas.com/dashboard",
         Settings = new SessionSettings() {
             UnifiedApis = new List<UnifiedApiId>() {
-                ApideckUnifySdk.Models.Components.UnifiedApiId.Crm,
+                UnifiedApiId.Crm,
             },
             SessionLength = "30m",
         },

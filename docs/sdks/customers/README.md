@@ -19,8 +19,9 @@ List Customers
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -37,12 +38,12 @@ AccountingCustomersAllRequest req = new AccountingCustomersAllRequest() {
         FirstName = "Elon",
         LastName = "Musk",
         Email = "elon@musk.com",
-        Status = ApideckUnifySdk.Models.Components.CustomersFilterStatus.Active,
+        Status = CustomersFilterStatus.Active,
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new CustomersSort() {
-        By = ApideckUnifySdk.Models.Components.CustomersSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = CustomersSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -50,17 +51,13 @@ AccountingCustomersAllRequest req = new AccountingCustomersAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.Customers.ListAsync(req);
+AccountingCustomersAllResponse? res = await sdk.Accounting.Customers.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -93,8 +90,8 @@ Create Customer
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -151,21 +148,21 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         BankAccounts = new List<BankAccount>() {
@@ -173,14 +170,14 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+                AccountType = AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+                Currency = Currency.Usd,
             },
         },
         Notes = "Some notes about this customer",
@@ -189,7 +186,7 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
             Rate = 10D,
         },
         TaxNumber = "US123945459",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Account = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
@@ -199,9 +196,19 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
             Id = "12345",
             Name = "Windsurf Shop",
         },
-        Status = ApideckUnifySdk.Models.Components.CustomerStatusStatus.Active,
+        Status = CustomerStatusStatus.Active,
         PaymentMethod = "cash",
         Channel = "email",
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateBoolean(
+                    true
+                ),
+            },
+        },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -256,8 +263,8 @@ Get Customer
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -305,8 +312,8 @@ Update Customer
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -364,21 +371,21 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         BankAccounts = new List<BankAccount>() {
@@ -386,14 +393,14 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+                AccountType = AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+                Currency = Currency.Usd,
             },
         },
         Notes = "Some notes about this customer",
@@ -402,7 +409,7 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
             Rate = 10D,
         },
         TaxNumber = "US123945459",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Account = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
@@ -412,9 +419,21 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
             Id = "12345",
             Name = "Windsurf Shop",
         },
-        Status = ApideckUnifySdk.Models.Components.CustomerStatusStatus.Active,
+        Status = CustomerStatusStatus.Active,
         PaymentMethod = "cash",
         Channel = "email",
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateArrayOf6(
+                    new List<Six>() {
+                        new Six() {},
+                    }
+                ),
+            },
+        },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -469,8 +488,8 @@ Delete Customer
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
