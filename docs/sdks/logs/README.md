@@ -16,8 +16,8 @@ This endpoint includes all consumer request logs.
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -33,17 +33,13 @@ VaultLogsAllRequest req = new VaultLogsAllRequest() {
     },
 };
 
-var res = await sdk.Vault.Logs.ListAsync(req);
+VaultLogsAllResponse? res = await sdk.Vault.Logs.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 

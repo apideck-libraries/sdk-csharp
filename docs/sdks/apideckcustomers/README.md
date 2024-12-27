@@ -16,8 +16,8 @@ List Customers
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -38,17 +38,13 @@ EcommerceCustomersAllRequest req = new EcommerceCustomersAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Ecommerce.Customers.ListAsync(req);
+EcommerceCustomersAllResponse? res = await sdk.Ecommerce.Customers.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -81,8 +77,8 @@ Get Customer
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

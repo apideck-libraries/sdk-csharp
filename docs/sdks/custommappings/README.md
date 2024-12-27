@@ -15,7 +15,6 @@ This endpoint returns a list of custom mappings.
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(

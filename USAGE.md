@@ -1,8 +1,8 @@
 <!-- Start SDK Example Usage [usage] -->
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -26,17 +26,13 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.TaxRates.ListAsync(req);
+AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 <!-- End SDK Example Usage [usage] -->

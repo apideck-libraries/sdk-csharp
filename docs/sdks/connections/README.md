@@ -23,7 +23,6 @@ OAuth2 supported integrations will contain authorize and revoke links to handle 
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
@@ -74,7 +73,6 @@ Get a connection
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
@@ -125,8 +123,8 @@ Update a connection
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -222,7 +220,6 @@ Deletes a connection
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
@@ -274,8 +271,8 @@ Import an authorized connection.
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -343,8 +340,8 @@ Note:
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

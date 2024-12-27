@@ -61,8 +61,8 @@ dotnet add reference src/ApideckUnifySdk/ApideckUnifySdk.csproj
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -86,17 +86,13 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.TaxRates.ListAsync(req);
+AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 <!-- End SDK Example Usage [usage] -->
@@ -115,8 +111,8 @@ This SDK supports the following security scheme globally:
 To authenticate with the API the `ApiKey` parameter must be set when initializing the SDK client instance. For example:
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -140,17 +136,13 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.TaxRates.ListAsync(req);
+AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 <!-- End Authentication [security] -->
@@ -696,8 +688,8 @@ return value of `Next` is `null`, then there are no more pages to be fetched.
 Here's an example of one such pagination call:
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -721,17 +713,13 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.TaxRates.ListAsync(req);
+AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 <!-- End Pagination [pagination] -->
@@ -744,8 +732,8 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 To change the default retry strategy for a single API call, simply pass a `RetryConfig` to the call:
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -769,7 +757,7 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.TaxRates.ListAsync(
+AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -780,26 +768,22 @@ var res = await sdk.Accounting.TaxRates.ListAsync(
         ),
         retryConnectionErrors: false
     ),
-    req
+    request: req
 );
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -833,17 +817,13 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.TaxRates.ListAsync(req);
+AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 <!-- End Retries [retries] -->
@@ -876,11 +856,10 @@ When custom error responses are specified for an operation, the SDK may also thr
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
-using System.Collections.Generic;
-using System;
 using ApideckUnifySdk.Models.Errors;
+using ApideckUnifySdk.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -905,17 +884,13 @@ try
         Fields = "id,updated_at",
     };
 
-    var res = await sdk.Accounting.TaxRates.ListAsync(req);
+    AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-    while(true)
+    while(res != null)
     {
         // handle items
 
-        res = await res.Next();
-        if (res == null)
-        {
-            break;
-        }
+        res = await res.Next!();
     }
 }
 catch (Exception ex)
@@ -962,8 +937,8 @@ catch (Exception ex)
 The default server can also be overridden globally by passing a URL to the `serverUrl: string` optional parameter when initializing the SDK client instance. For example:
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -988,17 +963,13 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.TaxRates.ListAsync(req);
+AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -1007,8 +978,8 @@ while(true)
 The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -1043,7 +1014,7 @@ FileStorageUploadSessionsAddRequest req = new FileStorageUploadSessionsAddReques
 };
 
 var res = await sdk.FileStorage.UploadSessions.CreateAsync(
-    req,
+    request: req,
     serverUrl: "https://upload.apideck.com"
 );
 

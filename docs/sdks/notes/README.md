@@ -19,9 +19,9 @@ List notes
 
 ```csharp
 using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
-using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -37,17 +37,13 @@ CrmNotesAllRequest req = new CrmNotesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Crm.Notes.ListAsync(req);
+CrmNotesAllResponse? res = await sdk.Crm.Notes.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -80,8 +76,8 @@ Create note
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -153,8 +149,8 @@ Get note
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -202,8 +198,8 @@ Update note
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -276,8 +272,8 @@ Delete note
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

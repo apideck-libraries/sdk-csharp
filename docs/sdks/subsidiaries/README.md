@@ -19,8 +19,8 @@ List Subsidiaries
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -33,17 +33,13 @@ AccountingSubsidiariesAllRequest req = new AccountingSubsidiariesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.Subsidiaries.ListAsync(req);
+AccountingSubsidiariesAllResponse? res = await sdk.Accounting.Subsidiaries.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -76,8 +72,8 @@ Create Subsidiary
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -90,7 +86,7 @@ AccountingSubsidiariesAddRequest req = new AccountingSubsidiariesAddRequest() {
     Subsidiary = new SubsidiaryInput() {
         ParentId = "12345",
         Name = "SpaceX",
-        Status = ApideckUnifySdk.Models.Components.SubsidiaryStatus.Active,
+        Status = SubsidiaryStatus.Active,
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -145,8 +141,8 @@ Get Subsidiary
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -194,8 +190,8 @@ Update Subsidiary
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -209,7 +205,7 @@ AccountingSubsidiariesUpdateRequest req = new AccountingSubsidiariesUpdateReques
     Subsidiary = new SubsidiaryInput() {
         ParentId = "12345",
         Name = "SpaceX",
-        Status = ApideckUnifySdk.Models.Components.SubsidiaryStatus.Active,
+        Status = SubsidiaryStatus.Active,
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -264,8 +260,8 @@ Delete Subsidiary
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

@@ -19,8 +19,9 @@ List Payments
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +36,8 @@ AccountingPaymentsAllRequest req = new AccountingPaymentsAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new PaymentsSort() {
-        By = ApideckUnifySdk.Models.Components.PaymentsSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = PaymentsSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +45,13 @@ AccountingPaymentsAllRequest req = new AccountingPaymentsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.Payments.ListAsync(req);
+AccountingPaymentsAllResponse? res = await sdk.Accounting.Payments.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +84,9 @@ Create Payment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -99,7 +97,7 @@ var sdk = new Apideck(
 
 AccountingPaymentsAddRequest req = new AccountingPaymentsAddRequest() {
     Payment = new PaymentInput() {
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TotalAmount = 49.99D,
         Reference = "123456",
@@ -119,8 +117,8 @@ AccountingPaymentsAddRequest req = new AccountingPaymentsAddRequest() {
         },
         CompanyId = "12345",
         Reconciled = true,
-        Status = ApideckUnifySdk.Models.Components.PaymentStatus.Authorised,
-        Type = ApideckUnifySdk.Models.Components.PaymentType.AccountsReceivable,
+        Status = PaymentStatus.Authorised,
+        Type = PaymentType.AccountsReceivable,
         Allocations = new List<AllocationInput>() {
             new AllocationInput() {
                 Id = "123456",
@@ -201,8 +199,8 @@ Get Payment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -250,8 +248,9 @@ Update Payment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -263,7 +262,7 @@ var sdk = new Apideck(
 AccountingPaymentsUpdateRequest req = new AccountingPaymentsUpdateRequest() {
     Id = "<id>",
     Payment = new PaymentInput() {
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TotalAmount = 49.99D,
         Reference = "123456",
@@ -283,8 +282,8 @@ AccountingPaymentsUpdateRequest req = new AccountingPaymentsUpdateRequest() {
         },
         CompanyId = "12345",
         Reconciled = true,
-        Status = ApideckUnifySdk.Models.Components.PaymentStatus.Authorised,
-        Type = ApideckUnifySdk.Models.Components.PaymentType.AccountsReceivable,
+        Status = PaymentStatus.Authorised,
+        Type = PaymentType.AccountsReceivable,
         Allocations = new List<AllocationInput>() {
             new AllocationInput() {
                 Id = "123456",
@@ -367,8 +366,8 @@ Delete Payment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

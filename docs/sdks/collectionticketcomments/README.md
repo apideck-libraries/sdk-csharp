@@ -19,8 +19,8 @@ List Comments
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -34,8 +34,8 @@ IssueTrackingCollectionTicketCommentsAllRequest req = new IssueTrackingCollectio
     TicketId = "<id>",
     ServiceId = "salesforce",
     Sort = new CommentsSort() {
-        By = ApideckUnifySdk.Models.Components.CommentsSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = CommentsSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -43,17 +43,13 @@ IssueTrackingCollectionTicketCommentsAllRequest req = new IssueTrackingCollectio
     Fields = "id,updated_at",
 };
 
-var res = await sdk.IssueTracking.CollectionTicketComments.ListAsync(req);
+IssueTrackingCollectionTicketCommentsAllResponse? res = await sdk.IssueTracking.CollectionTicketComments.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -86,8 +82,8 @@ Create Comment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -154,8 +150,8 @@ Get Comment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -171,17 +167,13 @@ IssueTrackingCollectionTicketCommentsOneRequest req = new IssueTrackingCollectio
     Fields = "id,updated_at",
 };
 
-var res = await sdk.IssueTracking.CollectionTicketComments.GetAsync(req);
+IssueTrackingCollectionTicketCommentsOneResponse? res = await sdk.IssueTracking.CollectionTicketComments.GetAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -214,8 +206,8 @@ Update Comment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -283,8 +275,8 @@ Delete Comment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

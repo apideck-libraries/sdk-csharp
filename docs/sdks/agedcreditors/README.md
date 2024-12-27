@@ -15,8 +15,8 @@ Get Aged Creditors
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -29,6 +29,7 @@ AccountingAgedCreditorsOneRequest req = new AccountingAgedCreditorsOneRequest() 
     ServiceId = "salesforce",
     Filter = new AgedReportFilter() {
         CustomerId = "123abc",
+        SupplierId = "123abc",
         ReportAsOfDate = "2024-01-01",
         PeriodCount = 3,
         PeriodLength = 30,

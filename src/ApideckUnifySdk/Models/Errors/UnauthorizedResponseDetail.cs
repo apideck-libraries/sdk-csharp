@@ -10,12 +10,12 @@
 namespace ApideckUnifySdk.Models.Errors
 {
     using ApideckUnifySdk.Utils;
-    using Newtonsoft.Json.Linq;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using System;
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    using System;
     
 
     public class UnauthorizedResponseDetailType

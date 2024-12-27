@@ -18,8 +18,8 @@ List Attachments
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -28,23 +28,19 @@ var sdk = new Apideck(
 );
 
 AccountingAttachmentsAllRequest req = new AccountingAttachmentsAllRequest() {
-    ReferenceType = ApideckUnifySdk.Models.Components.AttachmentReferenceType.Invoice,
+    ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.Attachments.ListAsync(req);
+AccountingAttachmentsAllResponse? res = await sdk.Accounting.Attachments.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -77,8 +73,8 @@ Get Attachment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -87,7 +83,7 @@ var sdk = new Apideck(
 );
 
 AccountingAttachmentsOneRequest req = new AccountingAttachmentsOneRequest() {
-    ReferenceType = ApideckUnifySdk.Models.Components.AttachmentReferenceType.Invoice,
+    ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
     Id = "<id>",
     ServiceId = "salesforce",
@@ -128,8 +124,8 @@ Delete Attachment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -138,7 +134,7 @@ var sdk = new Apideck(
 );
 
 AccountingAttachmentsDeleteRequest req = new AccountingAttachmentsDeleteRequest() {
-    ReferenceType = ApideckUnifySdk.Models.Components.AttachmentReferenceType.Invoice,
+    ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
     Id = "<id>",
     ServiceId = "salesforce",
@@ -178,8 +174,8 @@ Download Attachment
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -188,7 +184,7 @@ var sdk = new Apideck(
 );
 
 AccountingAttachmentsDownloadRequest req = new AccountingAttachmentsDownloadRequest() {
-    ReferenceType = ApideckUnifySdk.Models.Components.AttachmentReferenceType.Invoice,
+    ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
     Id = "<id>",
     ServiceId = "salesforce",

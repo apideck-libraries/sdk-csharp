@@ -19,8 +19,9 @@ List Bills
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +36,8 @@ AccountingBillsAllRequest req = new AccountingBillsAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new BillsSort() {
-        By = ApideckUnifySdk.Models.Components.By.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = By.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +45,13 @@ AccountingBillsAllRequest req = new AccountingBillsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.Bills.ListAsync(req);
+AccountingBillsAllResponse? res = await sdk.Accounting.Bills.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +84,8 @@ Create Bill
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -132,7 +129,7 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
             },
         },
         CompanyId = "12345",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TaxInclusive = true,
         BillDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
@@ -146,7 +143,7 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = ApideckUnifySdk.Models.Components.BillLineItemType.ExpenseAccount,
+                Type = BillLineItemType.ExpenseAccount,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -187,7 +184,7 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
         Total = 27500D,
         TaxCode = "1234",
         Notes = "Some notes about this bill.",
-        Status = ApideckUnifySdk.Models.Components.BillStatus.Draft,
+        Status = BillStatus.Draft,
         LedgerAccount = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
@@ -201,14 +198,14 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+            AccountType = AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+            Currency = Currency.Usd,
         },
         DiscountPercentage = 5.5D,
         TrackingCategories = new List<LinkedTrackingCategory>() {
@@ -272,8 +269,8 @@ Get Bill
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -321,8 +318,8 @@ Update Bill
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -367,7 +364,7 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
             },
         },
         CompanyId = "12345",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TaxInclusive = true,
         BillDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
@@ -381,7 +378,7 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = ApideckUnifySdk.Models.Components.BillLineItemType.ExpenseAccount,
+                Type = BillLineItemType.ExpenseAccount,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -422,7 +419,7 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
         Total = 27500D,
         TaxCode = "1234",
         Notes = "Some notes about this bill.",
-        Status = ApideckUnifySdk.Models.Components.BillStatus.Draft,
+        Status = BillStatus.Draft,
         LedgerAccount = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
@@ -436,14 +433,14 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
             BankName = "Monzo",
             AccountNumber = "123465",
             AccountName = "SPACEX LLC",
-            AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+            AccountType = AccountType.CreditCard,
             Iban = "CH2989144532982975332",
             Bic = "AUDSCHGGXXX",
             RoutingNumber = "012345678",
             BsbNumber = "062-001",
             BranchIdentifier = "001",
             BankCode = "BNH",
-            Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+            Currency = Currency.Usd,
         },
         DiscountPercentage = 5.5D,
         TrackingCategories = new List<LinkedTrackingCategory>() {
@@ -507,8 +504,8 @@ Delete Bill
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

@@ -19,9 +19,9 @@ List Departments
 
 ```csharp
 using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
-using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -37,17 +37,13 @@ HrisDepartmentsAllRequest req = new HrisDepartmentsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Hris.Departments.ListAsync(req);
+HrisDepartmentsAllResponse? res = await sdk.Hris.Departments.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -80,8 +76,8 @@ Create Department
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -148,8 +144,8 @@ Get Department
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -197,8 +193,8 @@ Update Department
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -266,8 +262,8 @@ Delete Department
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

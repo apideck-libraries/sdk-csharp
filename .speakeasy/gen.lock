@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: cda8452b07ff6e11825be9a5d1f08751
+  docChecksum: 7dcfb4378c6b67f6f82c84503a30eb9f
   docVersion: 10.9.0
-  speakeasyVersion: 1.456.0
-  generationVersion: 2.481.0
-  releaseVersion: 0.2.0
-  configChecksum: a3cd09c04de2bb9d2c46cd086264842d
+  speakeasyVersion: 1.460.3
+  generationVersion: 2.484.0
+  releaseVersion: 0.2.1
+  configChecksum: 15cbb1f518f62e6ec74c6c3733356d9f
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.10.9
+    core: 3.10.10
     deprecations: 2.81.2
     errors: 0.2.0
     flattening: 2.81.3
@@ -590,8 +590,9 @@ generatedFiles:
   - docs/Models/Components/Options.md
   - docs/Models/Components/OrdersSort.md
   - docs/Models/Components/OrdersSortBy.md
-  - docs/Models/Components/OutstandingBalance.md
   - docs/Models/Components/OutstandingBalanceByCurrency.md
+  - docs/Models/Components/OutstandingBalanceByCustomer.md
+  - docs/Models/Components/OutstandingBalanceBySupplier.md
   - docs/Models/Components/Owner.md
   - docs/Models/Components/PaginationCoverage.md
   - docs/Models/Components/PaginationCoverageMode.md
@@ -2016,8 +2017,9 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/Options.cs
   - src/ApideckUnifySdk/Models/Components/OrdersSort.cs
   - src/ApideckUnifySdk/Models/Components/OrdersSortBy.cs
-  - src/ApideckUnifySdk/Models/Components/OutstandingBalance.cs
   - src/ApideckUnifySdk/Models/Components/OutstandingBalanceByCurrency.cs
+  - src/ApideckUnifySdk/Models/Components/OutstandingBalanceByCustomer.cs
+  - src/ApideckUnifySdk/Models/Components/OutstandingBalanceBySupplier.cs
   - src/ApideckUnifySdk/Models/Components/Owner.cs
   - src/ApideckUnifySdk/Models/Components/PaginationCoverage.cs
   - src/ApideckUnifySdk/Models/Components/PaginationCoverageMode.cs
@@ -9451,7 +9453,7 @@ examples:
     "":
       parameters:
         query:
-          filter: {"customer_id": "123abc", "report_as_of_date": "2024-01-01", "period_count": 3, "period_length": 30}
+          filter: {"customer_id": "123abc", "supplier_id": "123abc", "report_as_of_date": "2024-01-01", "period_count": 3, "period_length": 30}
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
         header:
@@ -9460,7 +9462,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "AgedCreditors", "operation": "one", "data": {"report_generated_at": "2024-11-14T12:00:00.000Z", "report_as_of_date": "2024-11-13", "period_count": 4, "period_length": 30, "outstanding_balances": [{"customer_id": "123", "customer_name": "Super Store", "outstanding_balances_by_currency": [{"currency": "USD", "balances_by_period": [{"start_date": "2024-01-01", "end_date": "2024-01-30", "total_amount": 1500, "balances_by_transaction": [{"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}, {"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}]}, {"start_date": "2024-01-01", "end_date": "2024-01-30", "total_amount": 1500, "balances_by_transaction": [{"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}, {"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}, {"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}]}]}, {"currency": "USD", "balances_by_period": [{"start_date": "2024-01-01", "end_date": "2024-01-30", "total_amount": 1500, "balances_by_transaction": [{"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}]}]}]}, {"customer_id": "123", "customer_name": "Super Store", "outstanding_balances_by_currency": [{"currency": "USD", "balances_by_period": []}]}]}}
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "AgedCreditors", "operation": "one", "data": {"report_generated_at": "2024-11-14T12:00:00.000Z", "report_as_of_date": "2024-11-13", "period_count": 4, "period_length": 30, "outstanding_balances": [{"outstanding_balances_by_currency": [{"currency": "USD", "balances_by_period": [{"start_date": "2024-01-01", "end_date": "2024-01-30", "total_amount": 1500, "balances_by_transaction": [{"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}, {"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}]}, {"start_date": "2024-01-01", "end_date": "2024-01-30", "total_amount": 1500, "balances_by_transaction": [{"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}, {"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}, {"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}]}]}, {"currency": "USD", "balances_by_period": [{"start_date": "2024-01-01", "end_date": "2024-01-30", "total_amount": 1500, "balances_by_transaction": [{"transaction_id": "INV-1001", "transaction_date": "2024-01-15", "transaction_type": "invoice", "due_date": "2024-02-15", "original_amount": 1000, "outstanding_balance": 800}]}]}]}, {"outstanding_balances_by_currency": [{"currency": "USD", "balances_by_period": []}]}]}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": {"missing": [{"foobar": "required"}]}, "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":
@@ -9477,7 +9479,7 @@ examples:
     "":
       parameters:
         query:
-          filter: {"customer_id": "123abc", "report_as_of_date": "2024-01-01", "period_count": 3, "period_length": 30}
+          filter: {"customer_id": "123abc", "supplier_id": "123abc", "report_as_of_date": "2024-01-01", "period_count": 3, "period_length": 30}
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
         header:

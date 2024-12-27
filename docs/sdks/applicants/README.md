@@ -19,8 +19,8 @@ List Applicants
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -40,17 +40,13 @@ AtsApplicantsAllRequest req = new AtsApplicantsAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Ats.Applicants.ListAsync(req);
+AtsApplicantsAllResponse? res = await sdk.Ats.Applicants.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -83,8 +79,8 @@ Create Applicant
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -110,7 +106,7 @@ AtsApplicantsAddRequest req = new AtsApplicantsAddRequest() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -130,7 +126,7 @@ AtsApplicantsAddRequest req = new AtsApplicantsAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Addresses = new List<Address>() {
@@ -165,7 +161,7 @@ AtsApplicantsAddRequest req = new AtsApplicantsAddRequest() {
             new Websites() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.ApplicantType.Primary,
+                Type = ApplicantType.Primary,
             },
         },
         SocialLinks = new List<SocialLinks>() {
@@ -255,8 +251,8 @@ Get Applicant
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -304,8 +300,8 @@ Update Applicant
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using NodaTime;
 using System.Collections.Generic;
 
@@ -332,7 +328,7 @@ AtsApplicantsUpdateRequest req = new AtsApplicantsUpdateRequest() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -354,7 +350,7 @@ AtsApplicantsUpdateRequest req = new AtsApplicantsUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Addresses = new List<Address>() {
@@ -389,7 +385,7 @@ AtsApplicantsUpdateRequest req = new AtsApplicantsUpdateRequest() {
             new Websites() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.ApplicantType.Primary,
+                Type = ApplicantType.Primary,
             },
         },
         SocialLinks = new List<SocialLinks>() {
@@ -479,8 +475,8 @@ Delete Applicant
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

@@ -19,8 +19,9 @@ List Suppliers
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -40,8 +41,8 @@ AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new SuppliersSort() {
-        By = ApideckUnifySdk.Models.Components.SuppliersSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = SuppliersSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -49,17 +50,13 @@ AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.Suppliers.ListAsync(req);
+AccountingSuppliersAllResponse? res = await sdk.Accounting.Suppliers.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -92,8 +89,8 @@ Create Supplier
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -149,21 +146,21 @@ AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         BankAccounts = new List<BankAccount>() {
@@ -171,14 +168,14 @@ AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+                AccountType = AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+                Currency = Currency.Usd,
             },
         },
         Notes = "Some notes about this supplier",
@@ -187,13 +184,13 @@ AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
             Rate = 10D,
         },
         TaxNumber = "US123945459",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Account = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
         },
-        Status = ApideckUnifySdk.Models.Components.SupplierStatus.Active,
+        Status = SupplierStatus.Active,
         PaymentMethod = "cash",
         Channel = "email",
         RowVersion = "1-12345",
@@ -251,8 +248,8 @@ Get Supplier
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -300,8 +297,8 @@ Update Supplier
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -358,21 +355,21 @@ AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
                 AreaCode = "323",
                 Number = "111-111-1111",
                 Extension = "105",
-                Type = ApideckUnifySdk.Models.Components.PhoneNumberType.Primary,
+                Type = PhoneNumberType.Primary,
             },
         },
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
                 Email = "elon@musk.com",
-                Type = ApideckUnifySdk.Models.Components.EmailType.Primary,
+                Type = EmailType.Primary,
             },
         },
         Websites = new List<Website>() {
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
-                Type = ApideckUnifySdk.Models.Components.WebsiteType.Primary,
+                Type = WebsiteType.Primary,
             },
         },
         BankAccounts = new List<BankAccount>() {
@@ -380,14 +377,14 @@ AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = ApideckUnifySdk.Models.Components.AccountType.CreditCard,
+                AccountType = AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
                 BsbNumber = "062-001",
                 BranchIdentifier = "001",
                 BankCode = "BNH",
-                Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+                Currency = Currency.Usd,
             },
         },
         Notes = "Some notes about this supplier",
@@ -396,13 +393,13 @@ AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
             Rate = 10D,
         },
         TaxNumber = "US123945459",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         Account = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
         },
-        Status = ApideckUnifySdk.Models.Components.SupplierStatus.Active,
+        Status = SupplierStatus.Active,
         PaymentMethod = "cash",
         Channel = "email",
         RowVersion = "1-12345",
@@ -460,8 +457,8 @@ Delete Supplier
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

@@ -52,5 +52,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("outstanding_balance")]
         public double? OutstandingBalance { get; set; }
+
+        /// <summary>
+        /// Transaction number of the transaction.
+        /// </summary>
+        [JsonProperty("transaction_number")]
+        public string? TransactionNumber { get; set; }
     }
 }

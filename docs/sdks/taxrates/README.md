@@ -20,8 +20,8 @@ List Tax Rates. Note: Not all connectors return the actual rate/percentage value
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -45,17 +45,13 @@ AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.TaxRates.ListAsync(req);
+AccountingTaxRatesAllResponse? res = await sdk.Accounting.TaxRates.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -88,8 +84,8 @@ Create Tax Rate
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -119,7 +115,7 @@ AccountingTaxRatesAddRequest req = new AccountingTaxRatesAddRequest() {
         Type = "NONE",
         ReportTaxType = "NONE",
         OriginalTaxRateId = "12345",
-        Status = ApideckUnifySdk.Models.Components.TaxRateStatus.Active,
+        Status = TaxRateStatus.Active,
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -134,6 +130,16 @@ AccountingTaxRatesAddRequest req = new AccountingTaxRatesAddRequest() {
                         },
                     },
                 },
+            },
+        },
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateBoolean(
+                    true
+                ),
             },
         },
     },
@@ -175,8 +181,8 @@ Get Tax Rate. Note: Not all connectors return the actual rate/percentage value. 
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -224,8 +230,8 @@ Update Tax Rate
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -256,7 +262,7 @@ AccountingTaxRatesUpdateRequest req = new AccountingTaxRatesUpdateRequest() {
         Type = "NONE",
         ReportTaxType = "NONE",
         OriginalTaxRateId = "12345",
-        Status = ApideckUnifySdk.Models.Components.TaxRateStatus.Active,
+        Status = TaxRateStatus.Active,
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -271,6 +277,18 @@ AccountingTaxRatesUpdateRequest req = new AccountingTaxRatesUpdateRequest() {
                         },
                     },
                 },
+            },
+        },
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateArrayOf6(
+                    new List<Six>() {
+                        new Six() {},
+                    }
+                ),
             },
         },
     },
@@ -311,8 +329,8 @@ Delete Tax Rate
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

@@ -19,8 +19,9 @@ List Credit Notes
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +36,8 @@ AccountingCreditNotesAllRequest req = new AccountingCreditNotesAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new CreditNotesSort() {
-        By = ApideckUnifySdk.Models.Components.CreditNotesSortBy.UpdatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = CreditNotesSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +45,13 @@ AccountingCreditNotesAllRequest req = new AccountingCreditNotesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Accounting.CreditNotes.ListAsync(req);
+AccountingCreditNotesAllResponse? res = await sdk.Accounting.CreditNotes.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +84,9 @@ Create Credit Note
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -106,7 +104,7 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
             Email = "boring@boring.com",
         },
         CompanyId = "12345",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TaxInclusive = true,
         SubTotal = 27500D,
@@ -115,11 +113,11 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
         TaxCode = "1234",
         Balance = 27500D,
         RemainingCredit = 27500D,
-        Status = ApideckUnifySdk.Models.Components.CreditNoteStatus.Authorised,
+        Status = CreditNoteStatus.Authorised,
         Reference = "123456",
         DateIssued = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
         DatePaid = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
-        Type = ApideckUnifySdk.Models.Components.CreditNoteType.AccountsReceivableCredit,
+        Type = CreditNoteType.AccountsReceivableCredit,
         Account = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
@@ -132,7 +130,7 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = ApideckUnifySdk.Models.Components.InvoiceLineItemType.SalesItem,
+                Type = InvoiceLineItemType.SalesItem,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -306,8 +304,8 @@ Get Credit Note
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -355,8 +353,9 @@ Update Credit Note
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -375,7 +374,7 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
             Email = "boring@boring.com",
         },
         CompanyId = "12345",
-        Currency = ApideckUnifySdk.Models.Components.Currency.Usd,
+        Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TaxInclusive = true,
         SubTotal = 27500D,
@@ -384,11 +383,11 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
         TaxCode = "1234",
         Balance = 27500D,
         RemainingCredit = 27500D,
-        Status = ApideckUnifySdk.Models.Components.CreditNoteStatus.Authorised,
+        Status = CreditNoteStatus.Authorised,
         Reference = "123456",
         DateIssued = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
         DatePaid = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
-        Type = ApideckUnifySdk.Models.Components.CreditNoteType.AccountsReceivableCredit,
+        Type = CreditNoteType.AccountsReceivableCredit,
         Account = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
@@ -401,7 +400,7 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
                 Code = "120-C",
                 LineNumber = 1,
                 Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
-                Type = ApideckUnifySdk.Models.Components.InvoiceLineItemType.SalesItem,
+                Type = InvoiceLineItemType.SalesItem,
                 TaxAmount = 27500D,
                 TotalAmount = 27500D,
                 Quantity = 1D,
@@ -577,8 +576,8 @@ Delete Credit Note
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

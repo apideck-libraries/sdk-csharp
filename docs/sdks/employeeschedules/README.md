@@ -15,9 +15,9 @@ List schedules for employee, a schedule is a work pattern, not the actual worked
 
 ```csharp
 using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
-using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

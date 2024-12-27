@@ -10,8 +10,8 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     public class IssuesFilter
     {

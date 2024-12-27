@@ -19,8 +19,9 @@ List activities
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -35,8 +36,8 @@ CrmActivitiesAllRequest req = new CrmActivitiesAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new ActivitiesSort() {
-        By = ApideckUnifySdk.Models.Components.ActivitiesSortBy.CreatedAt,
-        Direction = ApideckUnifySdk.Models.Components.SortDirection.Desc,
+        By = ActivitiesSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -44,17 +45,13 @@ CrmActivitiesAllRequest req = new CrmActivitiesAllRequest() {
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Crm.Activities.ListAsync(req);
+CrmActivitiesAllResponse? res = await sdk.Crm.Activities.ListAsync(req);
 
-while(true)
+while(res != null)
 {
     // handle items
 
-    res = await res.Next();
-    if (res == null)
-    {
-        break;
-    }
+    res = await res.Next!();
 }
 ```
 
@@ -87,8 +84,8 @@ Create activity
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -115,7 +112,7 @@ CrmActivitiesAddRequest req = new CrmActivitiesAddRequest() {
         ProductId = "12345",
         SolutionId = "12345",
         CustomObjectId = "12345",
-        Type = ApideckUnifySdk.Models.Components.ActivityType.Meeting,
+        Type = ActivityType.Meeting,
         Title = "Meeting",
         Description = "More info about the meeting",
         Note = "An internal note about the meeting",
@@ -154,7 +151,7 @@ CrmActivitiesAddRequest req = new CrmActivitiesAddRequest() {
         Child = false,
         Archived = false,
         Deleted = false,
-        ShowAs = ApideckUnifySdk.Models.Components.ShowAs.Busy,
+        ShowAs = ShowAs.Busy,
         Done = false,
         StartDatetime = "2021-05-01T12:00:00.000Z",
         EndDatetime = "2021-05-01T12:30:00.000Z",
@@ -185,7 +182,7 @@ CrmActivitiesAddRequest req = new CrmActivitiesAddRequest() {
                 Suffix = "PhD",
                 EmailAddress = "elon@musk.com",
                 IsOrganizer = true,
-                Status = ApideckUnifySdk.Models.Components.ActivityAttendeeStatus.Accepted,
+                Status = ActivityAttendeeStatus.Accepted,
             },
         },
         PassThrough = new List<PassThroughBody>() {
@@ -241,8 +238,8 @@ Get activity
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -290,8 +287,8 @@ Update activity
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -319,7 +316,7 @@ CrmActivitiesUpdateRequest req = new CrmActivitiesUpdateRequest() {
         ProductId = "12345",
         SolutionId = "12345",
         CustomObjectId = "12345",
-        Type = ApideckUnifySdk.Models.Components.ActivityType.Meeting,
+        Type = ActivityType.Meeting,
         Title = "Meeting",
         Description = "More info about the meeting",
         Note = "An internal note about the meeting",
@@ -358,7 +355,7 @@ CrmActivitiesUpdateRequest req = new CrmActivitiesUpdateRequest() {
         Child = false,
         Archived = false,
         Deleted = false,
-        ShowAs = ApideckUnifySdk.Models.Components.ShowAs.Busy,
+        ShowAs = ShowAs.Busy,
         Done = false,
         StartDatetime = "2021-05-01T12:00:00.000Z",
         EndDatetime = "2021-05-01T12:30:00.000Z",
@@ -391,7 +388,7 @@ CrmActivitiesUpdateRequest req = new CrmActivitiesUpdateRequest() {
                 Suffix = "PhD",
                 EmailAddress = "elon@musk.com",
                 IsOrganizer = true,
-                Status = ApideckUnifySdk.Models.Components.ActivityAttendeeStatus.Accepted,
+                Status = ActivityAttendeeStatus.Accepted,
             },
         },
         PassThrough = new List<PassThroughBody>() {
@@ -447,8 +444,8 @@ Delete activity
 
 ```csharp
 using ApideckUnifySdk;
-using ApideckUnifySdk.Models.Requests;
 using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",

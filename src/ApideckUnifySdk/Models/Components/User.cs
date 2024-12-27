@@ -12,8 +12,8 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     using System;
+    using System.Collections.Generic;
     
     public class User
     {
