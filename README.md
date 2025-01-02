@@ -156,10 +156,6 @@ while(res != null)
 ### [Accounting](docs/sdks/accounting/README.md)
 
 
-#### [Accounting.AgedCreditors](docs/sdks/agedcreditors/README.md)
-
-* [Get](docs/sdks/agedcreditors/README.md#get) - Get Aged Creditors
-
 #### [Accounting.AgedDebtors](docs/sdks/ageddebtors/README.md)
 
 * [Get](docs/sdks/ageddebtors/README.md#get) - Get Aged Debtors
@@ -427,10 +423,6 @@ while(res != null)
 #### [Crm.Pipelines](docs/sdks/pipelines/README.md)
 
 * [List](docs/sdks/pipelines/README.md#list) - List pipelines
-* [Create](docs/sdks/pipelines/README.md#create) - Create pipeline
-* [Get](docs/sdks/pipelines/README.md#get) - Get pipeline
-* [Update](docs/sdks/pipelines/README.md#update) - Update pipeline
-* [Delete](docs/sdks/pipelines/README.md#delete) - Delete pipeline
 
 #### [Crm.Users](docs/sdks/users/README.md)
 

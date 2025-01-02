@@ -223,6 +223,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("row_version")]
         public string? RowVersion { get; set; } = null;
 
+        [JsonProperty("custom_fields")]
+        public List<CustomField>? CustomFields { get; set; }
+
         /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>

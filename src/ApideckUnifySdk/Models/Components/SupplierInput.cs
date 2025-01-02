@@ -128,6 +128,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("channel")]
         public string? Channel { get; set; } = null;
 
+        [JsonProperty("custom_fields")]
+        public List<CustomField>? CustomFields { get; set; }
+
         /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>

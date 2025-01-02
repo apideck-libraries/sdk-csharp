@@ -137,6 +137,16 @@ AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest(
         },
         SubAccount = false,
         LastReconciliationDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateBoolean(
+                    true
+                ),
+            },
+        },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -294,6 +304,18 @@ AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRe
         },
         SubAccount = false,
         LastReconciliationDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateArrayOf6(
+                    new List<Six>() {
+                        new Six() {},
+                    }
+                ),
+            },
+        },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {

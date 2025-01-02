@@ -146,6 +146,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("subsidiaries")]
         public List<LedgerAccountSubsidiaries>? Subsidiaries { get; set; }
 
+        [JsonProperty("custom_fields")]
+        public List<CustomField>? CustomFields { get; set; }
+
         /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
