@@ -147,6 +147,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("custom_mappings")]
         public Models.Components.CustomMappings? CustomMappings { get; set; } = null;
 
+        [JsonProperty("custom_fields")]
+        public List<CustomField>? CustomFields { get; set; }
+
         /// <summary>
         /// The user who last updated the object.
         /// </summary>

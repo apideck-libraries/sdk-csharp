@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 7dcfb4378c6b67f6f82c84503a30eb9f
+  docChecksum: acdbd94ea7dcac1efe718acbf408db84
   docVersion: 10.9.0
   speakeasyVersion: 1.460.3
   generationVersion: 2.484.0
-  releaseVersion: 0.2.1
-  configChecksum: 15cbb1f518f62e6ec74c6c3733356d9f
+  releaseVersion: 0.2.2
+  configChecksum: 65e1c6453b032f752f99f5a6820acf68
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -60,7 +60,6 @@ generatedFiles:
   - docs/Models/Components/ActivityType.md
   - docs/Models/Components/Address.md
   - docs/Models/Components/Addresses.md
-  - docs/Models/Components/AgedCreditors.md
   - docs/Models/Components/AgedDebtors.md
   - docs/Models/Components/AgedReportFilter.md
   - docs/Models/Components/Allocation.md
@@ -206,7 +205,6 @@ generatedFiles:
   - docs/Models/Components/CreateNoteResponse.md
   - docs/Models/Components/CreateOpportunityResponse.md
   - docs/Models/Components/CreatePaymentResponse.md
-  - docs/Models/Components/CreatePipelineResponse.md
   - docs/Models/Components/CreatePurchaseOrderResponse.md
   - docs/Models/Components/CreateSessionResponse.md
   - docs/Models/Components/CreateSessionResponseData.md
@@ -279,7 +277,6 @@ generatedFiles:
   - docs/Models/Components/DeleteNoteResponse.md
   - docs/Models/Components/DeleteOpportunityResponse.md
   - docs/Models/Components/DeletePaymentResponse.md
-  - docs/Models/Components/DeletePipelineResponse.md
   - docs/Models/Components/DeletePurchaseOrderResponse.md
   - docs/Models/Components/DeleteSharedLinkResponse.md
   - docs/Models/Components/DeleteSubsidiaryResponse.md
@@ -376,7 +373,6 @@ generatedFiles:
   - docs/Models/Components/GetAccountingLocationsResponse.md
   - docs/Models/Components/GetActivitiesResponse.md
   - docs/Models/Components/GetActivityResponse.md
-  - docs/Models/Components/GetAgedCreditorsResponse.md
   - docs/Models/Components/GetAgedDebtorsResponse.md
   - docs/Models/Components/GetApiResourceCoverageResponse.md
   - docs/Models/Components/GetApiResourceResponse.md
@@ -463,7 +459,6 @@ generatedFiles:
   - docs/Models/Components/GetPaymentsResponse.md
   - docs/Models/Components/GetPayrollResponse.md
   - docs/Models/Components/GetPayrollsResponse.md
-  - docs/Models/Components/GetPipelineResponse.md
   - docs/Models/Components/GetPipelinesResponse.md
   - docs/Models/Components/GetProductResponse.md
   - docs/Models/Components/GetProductsResponse.md
@@ -592,7 +587,6 @@ generatedFiles:
   - docs/Models/Components/OrdersSortBy.md
   - docs/Models/Components/OutstandingBalanceByCurrency.md
   - docs/Models/Components/OutstandingBalanceByCustomer.md
-  - docs/Models/Components/OutstandingBalanceBySupplier.md
   - docs/Models/Components/Owner.md
   - docs/Models/Components/PaginationCoverage.md
   - docs/Models/Components/PaginationCoverageMode.md
@@ -617,8 +611,6 @@ generatedFiles:
   - docs/Models/Components/PhoneNumber.md
   - docs/Models/Components/PhoneNumberType.md
   - docs/Models/Components/Pipeline.md
-  - docs/Models/Components/PipelineInput.md
-  - docs/Models/Components/PipelineStages.md
   - docs/Models/Components/Price.md
   - docs/Models/Components/Priority.md
   - docs/Models/Components/ProbationPeriod.md
@@ -745,7 +737,6 @@ generatedFiles:
   - docs/Models/Components/UpdateNoteResponse.md
   - docs/Models/Components/UpdateOpportunityResponse.md
   - docs/Models/Components/UpdatePaymentResponse.md
-  - docs/Models/Components/UpdatePipelineResponse.md
   - docs/Models/Components/UpdatePurchaseOrderResponse.md
   - docs/Models/Components/UpdateSharedLinkResponse.md
   - docs/Models/Components/UpdateSubsidiaryResponse.md
@@ -785,8 +776,6 @@ generatedFiles:
   - docs/Models/Errors/UnauthorizedResponseDetail.md
   - docs/Models/Errors/UnprocessableResponse.md
   - docs/Models/Errors/UnprocessableResponseDetail.md
-  - docs/Models/Requests/AccountingAgedCreditorsOneRequest.md
-  - docs/Models/Requests/AccountingAgedCreditorsOneResponse.md
   - docs/Models/Requests/AccountingAgedDebtorsOneRequest.md
   - docs/Models/Requests/AccountingAgedDebtorsOneResponse.md
   - docs/Models/Requests/AccountingAttachmentsAllRequest.md
@@ -1073,16 +1062,8 @@ generatedFiles:
   - docs/Models/Requests/CrmOpportunitiesOneResponse.md
   - docs/Models/Requests/CrmOpportunitiesUpdateRequest.md
   - docs/Models/Requests/CrmOpportunitiesUpdateResponse.md
-  - docs/Models/Requests/CrmPipelinesAddRequest.md
-  - docs/Models/Requests/CrmPipelinesAddResponse.md
   - docs/Models/Requests/CrmPipelinesAllRequest.md
   - docs/Models/Requests/CrmPipelinesAllResponse.md
-  - docs/Models/Requests/CrmPipelinesDeleteRequest.md
-  - docs/Models/Requests/CrmPipelinesDeleteResponse.md
-  - docs/Models/Requests/CrmPipelinesOneRequest.md
-  - docs/Models/Requests/CrmPipelinesOneResponse.md
-  - docs/Models/Requests/CrmPipelinesUpdateRequest.md
-  - docs/Models/Requests/CrmPipelinesUpdateResponse.md
   - docs/Models/Requests/CrmUsersAddRequest.md
   - docs/Models/Requests/CrmUsersAddResponse.md
   - docs/Models/Requests/CrmUsersAllRequest.md
@@ -1316,7 +1297,6 @@ generatedFiles:
   - docs/Models/Requests/WebhookWebhooksUpdateResponse.md
   - docs/sdks/accounting/README.md
   - docs/sdks/activities/README.md
-  - docs/sdks/agedcreditors/README.md
   - docs/sdks/ageddebtors/README.md
   - docs/sdks/apideck/README.md
   - docs/sdks/apideckcompanies/README.md
@@ -1404,7 +1384,6 @@ generatedFiles:
   - global.json
   - src/ApideckUnifySdk/Accounting.cs
   - src/ApideckUnifySdk/Activities.cs
-  - src/ApideckUnifySdk/AgedCreditors.cs
   - src/ApideckUnifySdk/AgedDebtors.cs
   - src/ApideckUnifySdk/ApiResourceCoverage.cs
   - src/ApideckUnifySdk/ApiResources.cs
@@ -1487,7 +1466,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/ActivityType.cs
   - src/ApideckUnifySdk/Models/Components/Address.cs
   - src/ApideckUnifySdk/Models/Components/Addresses.cs
-  - src/ApideckUnifySdk/Models/Components/AgedCreditors.cs
   - src/ApideckUnifySdk/Models/Components/AgedDebtors.cs
   - src/ApideckUnifySdk/Models/Components/AgedReportFilter.cs
   - src/ApideckUnifySdk/Models/Components/Allocation.cs
@@ -1633,7 +1611,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/CreateNoteResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateOpportunityResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreatePaymentResponse.cs
-  - src/ApideckUnifySdk/Models/Components/CreatePipelineResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreatePurchaseOrderResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateSessionResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateSessionResponseData.cs
@@ -1706,7 +1683,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/DeleteNoteResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteOpportunityResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeletePaymentResponse.cs
-  - src/ApideckUnifySdk/Models/Components/DeletePipelineResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeletePurchaseOrderResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteSharedLinkResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteSubsidiaryResponse.cs
@@ -1803,7 +1779,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/GetAccountingLocationsResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetActivitiesResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetActivityResponse.cs
-  - src/ApideckUnifySdk/Models/Components/GetAgedCreditorsResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetAgedDebtorsResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetApiResourceCoverageResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetApiResourceResponse.cs
@@ -1890,7 +1865,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/GetPaymentsResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetPayrollResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetPayrollsResponse.cs
-  - src/ApideckUnifySdk/Models/Components/GetPipelineResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetPipelinesResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetProductResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetProductsResponse.cs
@@ -2019,7 +1993,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/OrdersSortBy.cs
   - src/ApideckUnifySdk/Models/Components/OutstandingBalanceByCurrency.cs
   - src/ApideckUnifySdk/Models/Components/OutstandingBalanceByCustomer.cs
-  - src/ApideckUnifySdk/Models/Components/OutstandingBalanceBySupplier.cs
   - src/ApideckUnifySdk/Models/Components/Owner.cs
   - src/ApideckUnifySdk/Models/Components/PaginationCoverage.cs
   - src/ApideckUnifySdk/Models/Components/PaginationCoverageMode.cs
@@ -2044,8 +2017,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/PhoneNumber.cs
   - src/ApideckUnifySdk/Models/Components/PhoneNumberType.cs
   - src/ApideckUnifySdk/Models/Components/Pipeline.cs
-  - src/ApideckUnifySdk/Models/Components/PipelineInput.cs
-  - src/ApideckUnifySdk/Models/Components/PipelineStages.cs
   - src/ApideckUnifySdk/Models/Components/Price.cs
   - src/ApideckUnifySdk/Models/Components/Priority.cs
   - src/ApideckUnifySdk/Models/Components/ProbationPeriod.cs
@@ -2172,7 +2143,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/UpdateNoteResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateOpportunityResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdatePaymentResponse.cs
-  - src/ApideckUnifySdk/Models/Components/UpdatePipelineResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdatePurchaseOrderResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateSharedLinkResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateSubsidiaryResponse.cs
@@ -2213,8 +2183,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Errors/UnauthorizedResponseDetail.cs
   - src/ApideckUnifySdk/Models/Errors/UnprocessableResponse.cs
   - src/ApideckUnifySdk/Models/Errors/UnprocessableResponseDetail.cs
-  - src/ApideckUnifySdk/Models/Requests/AccountingAgedCreditorsOneRequest.cs
-  - src/ApideckUnifySdk/Models/Requests/AccountingAgedCreditorsOneResponse.cs
   - src/ApideckUnifySdk/Models/Requests/AccountingAgedDebtorsOneRequest.cs
   - src/ApideckUnifySdk/Models/Requests/AccountingAgedDebtorsOneResponse.cs
   - src/ApideckUnifySdk/Models/Requests/AccountingAttachmentsAllRequest.cs
@@ -2501,16 +2469,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Requests/CrmOpportunitiesOneResponse.cs
   - src/ApideckUnifySdk/Models/Requests/CrmOpportunitiesUpdateRequest.cs
   - src/ApideckUnifySdk/Models/Requests/CrmOpportunitiesUpdateResponse.cs
-  - src/ApideckUnifySdk/Models/Requests/CrmPipelinesAddRequest.cs
-  - src/ApideckUnifySdk/Models/Requests/CrmPipelinesAddResponse.cs
   - src/ApideckUnifySdk/Models/Requests/CrmPipelinesAllRequest.cs
   - src/ApideckUnifySdk/Models/Requests/CrmPipelinesAllResponse.cs
-  - src/ApideckUnifySdk/Models/Requests/CrmPipelinesDeleteRequest.cs
-  - src/ApideckUnifySdk/Models/Requests/CrmPipelinesDeleteResponse.cs
-  - src/ApideckUnifySdk/Models/Requests/CrmPipelinesOneRequest.cs
-  - src/ApideckUnifySdk/Models/Requests/CrmPipelinesOneResponse.cs
-  - src/ApideckUnifySdk/Models/Requests/CrmPipelinesUpdateRequest.cs
-  - src/ApideckUnifySdk/Models/Requests/CrmPipelinesUpdateResponse.cs
   - src/ApideckUnifySdk/Models/Requests/CrmUsersAddRequest.cs
   - src/ApideckUnifySdk/Models/Requests/CrmUsersAddResponse.cs
   - src/ApideckUnifySdk/Models/Requests/CrmUsersAllRequest.cs
