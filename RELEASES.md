@@ -59,3 +59,13 @@ Based on:
 - [csharp v0.2.2] .
 ### Releases
 - [NuGet v0.2.2] https://www.nuget.org/packages/ApideckUnifySdk/0.2.2 - .
+
+## 2025-01-07 00:12:13
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.463.1 (2.486.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v0.2.3] .
+### Releases
+- [NuGet v0.2.3] https://www.nuget.org/packages/ApideckUnifySdk/0.2.3 - .
