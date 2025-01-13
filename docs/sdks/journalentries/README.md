@@ -175,6 +175,16 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
         },
         AccountingPeriod = "01-24",
         RowVersion = "1-12345",
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateBoolean(
+                    true
+                ),
+            },
+        },
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
@@ -369,6 +379,18 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
         },
         AccountingPeriod = "01-24",
         RowVersion = "1-12345",
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateArrayOf6(
+                    new List<Six>() {
+                        new Six() {},
+                    }
+                ),
+            },
+        },
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",

@@ -102,6 +102,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("row_version")]
         public string? RowVersion { get; set; } = null;
 
+        [JsonProperty("custom_fields")]
+        public List<CustomField>? CustomFields { get; set; }
+
         /// <summary>
         /// The pass_through property allows passing service-specific, custom data or structured modifications in request body when creating or updating resources.
         /// </summary>

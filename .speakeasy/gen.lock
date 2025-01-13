@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: acdbd94ea7dcac1efe718acbf408db84
-  docVersion: 10.9.0
-  speakeasyVersion: 1.460.3
-  generationVersion: 2.484.0
-  releaseVersion: 0.2.2
-  configChecksum: 65e1c6453b032f752f99f5a6820acf68
+  docChecksum: 3e6be91e9344532273c404d73c679c75
+  docVersion: 10.9.1
+  speakeasyVersion: 1.468.2
+  generationVersion: 2.493.4
+  releaseVersion: 0.3.0
+  configChecksum: ca3109220ddf26fdf903464e458a6e08
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -25,11 +25,11 @@ features:
     groups: 2.81.2
     inputOutputModels: 2.83.0
     intellisenseMarkdownSupport: 0.1.0
-    methodArguments: 0.1.0
+    methodArguments: 0.2.0
     methodServerURLs: 2.82.1
     nameOverrides: 2.81.2
     nullables: 0.1.0
-    pagination: 0.2.3
+    pagination: 0.2.4
     responseFormat: 0.0.4
     retries: 0.0.1
     sdkHooks: 0.1.0
@@ -38,7 +38,6 @@ features:
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
-  - CONTRIBUTING.md
   - NUGET.md
   - USAGE.md
   - docs/Models/Components/AccountStatus.md
