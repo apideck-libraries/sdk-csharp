@@ -34,7 +34,7 @@ namespace ApideckUnifySdk
         /// List APIs
         /// </remarks>
         /// </summary>
-        Task<ConnectorApisAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = null, ApisFilter? filter = null, RetryConfig? retryConfig = null);
+        Task<ConnectorApisAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = 20, ApisFilter? filter = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get API
@@ -50,10 +50,10 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.2.2";
-        private const string _sdkGenVersion = "2.484.0";
-        private const string _openapiDocVersion = "10.9.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.2.2 2.484.0 10.9.0 ApideckUnifySdk";
+        private const string _sdkVersion = "0.3.0";
+        private const string _sdkGenVersion = "2.493.4";
+        private const string _openapiDocVersion = "10.9.1";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.3.0 2.493.4 10.9.1 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
@@ -66,7 +66,7 @@ namespace ApideckUnifySdk
             SDKConfiguration = config;
         }
 
-        public async Task<ConnectorApisAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = null, ApisFilter? filter = null, RetryConfig? retryConfig = null)
+        public async Task<ConnectorApisAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = 20, ApisFilter? filter = null, RetryConfig? retryConfig = null)
         {
             var request = new ConnectorApisAllRequest()
             {
