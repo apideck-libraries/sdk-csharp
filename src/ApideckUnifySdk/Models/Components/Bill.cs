@@ -71,13 +71,13 @@ namespace ApideckUnifySdk.Models.Components
         /// Date bill was issued - YYYY-MM-DD.
         /// </summary>
         [JsonProperty("bill_date")]
-        public LocalDate? BillDate { get; set; }
+        public LocalDate? BillDate { get; set; } = null;
 
         /// <summary>
         /// The due date is the date on which a payment is scheduled to be received - YYYY-MM-DD.
         /// </summary>
         [JsonProperty("due_date")]
-        public LocalDate? DueDate { get; set; }
+        public LocalDate? DueDate { get; set; } = null;
 
         /// <summary>
         /// The paid date is the date on which a payment was sent to the supplier - YYYY-MM-DD.

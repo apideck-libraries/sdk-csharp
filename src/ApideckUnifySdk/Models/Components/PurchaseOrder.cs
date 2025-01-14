@@ -146,7 +146,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The due date is the date on which a payment is scheduled to be received - YYYY-MM-DD.
         /// </summary>
         [JsonProperty("due_date")]
-        public LocalDate? DueDate { get; set; }
+        public LocalDate? DueDate { get; set; } = null;
 
         /// <summary>
         /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check
