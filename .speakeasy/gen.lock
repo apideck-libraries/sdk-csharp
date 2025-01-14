@@ -3,10 +3,10 @@ id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
   docChecksum: 3e6be91e9344532273c404d73c679c75
   docVersion: 10.9.1
-  speakeasyVersion: 1.468.2
-  generationVersion: 2.493.4
-  releaseVersion: 0.3.0
-  configChecksum: ca3109220ddf26fdf903464e458a6e08
+  speakeasyVersion: 1.468.5
+  generationVersion: 2.493.11
+  releaseVersion: 0.3.1
+  configChecksum: 53ebf843ea192bd9f09d15b486bc4183
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
