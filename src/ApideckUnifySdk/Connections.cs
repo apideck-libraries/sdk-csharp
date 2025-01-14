@@ -94,10 +94,10 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.3.0";
-        private const string _sdkGenVersion = "2.493.4";
+        private const string _sdkVersion = "0.3.1";
+        private const string _sdkGenVersion = "2.493.11";
         private const string _openapiDocVersion = "10.9.1";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.3.0 2.493.4 10.9.1 ApideckUnifySdk";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.3.1 2.493.11 10.9.1 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
