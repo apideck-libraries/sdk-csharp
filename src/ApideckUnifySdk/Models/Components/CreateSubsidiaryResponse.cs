@@ -49,6 +49,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("operation")]
         public string Operation { get; set; } = default!;
 
+        /// <summary>
+        /// A object containing a unique identifier for the resource that was created, updated, or deleted.
+        /// </summary>
         [JsonProperty("data")]
         public UnifiedId Data { get; set; } = default!;
     }
