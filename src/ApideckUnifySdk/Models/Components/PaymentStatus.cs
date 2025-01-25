@@ -18,8 +18,12 @@ namespace ApideckUnifySdk.Models.Components
     /// </summary>
     public enum PaymentStatus
     {
+        [JsonProperty("draft")]
+        Draft,
         [JsonProperty("authorised")]
         Authorised,
+        [JsonProperty("rejected")]
+        Rejected,
         [JsonProperty("paid")]
         Paid,
         [JsonProperty("voided")]
