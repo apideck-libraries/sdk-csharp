@@ -59,6 +59,12 @@ namespace ApideckUnifySdk.Models.Requests
         public InvoiceItemsFilter? Filter { get; set; }
 
         /// <summary>
+        /// Apply sorting
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=sort")]
+        public InvoiceItemsSort? Sort { get; set; }
+
+        /// <summary>
         /// Optional unmapped key/values that will be passed through to downstream as query parameters. Ie: ?pass_through[search]=leads becomes ?search=leads
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=pass_through")]
