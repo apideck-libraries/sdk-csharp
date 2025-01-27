@@ -7,7 +7,9 @@ Status of payment
 
 | Name         | Value        |
 | ------------ | ------------ |
+| `Draft`      | draft        |
 | `Authorised` | authorised   |
+| `Rejected`   | rejected     |
 | `Paid`       | paid         |
 | `Voided`     | voided       |
 | `Deleted`    | deleted      |

@@ -35,6 +35,10 @@ AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
         Name = "Widgets Large",
         Type = InvoiceItemType.Service,
     },
+    Sort = new InvoiceItemsSort() {
+        By = InvoiceItemsSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
+    },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },

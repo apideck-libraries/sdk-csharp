@@ -14,34 +14,26 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// Status of payment
+    /// The field on which to sort the Invoice Items
     /// </summary>
-    public enum PaymentStatus
+    public enum InvoiceItemsSortBy
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("authorised")]
-        Authorised,
-        [JsonProperty("rejected")]
-        Rejected,
-        [JsonProperty("paid")]
-        Paid,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("deleted")]
-        Deleted,
+        [JsonProperty("created_at")]
+        CreatedAt,
+        [JsonProperty("updated_at")]
+        UpdatedAt,
     }
 
-    public static class PaymentStatusExtension
+    public static class InvoiceItemsSortByExtension
     {
-        public static string Value(this PaymentStatus value)
+        public static string Value(this InvoiceItemsSortBy value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static PaymentStatus ToEnum(this string value)
+        public static InvoiceItemsSortBy ToEnum(this string value)
         {
-            foreach(var field in typeof(PaymentStatus).GetFields())
+            foreach(var field in typeof(InvoiceItemsSortBy).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -54,14 +46,14 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is PaymentStatus)
+                    if (enumVal is InvoiceItemsSortBy)
                     {
-                        return (PaymentStatus)enumVal;
+                        return (InvoiceItemsSortBy)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum PaymentStatus");
+            throw new Exception($"Unknown value {value} for enum InvoiceItemsSortBy");
         }
     }
 

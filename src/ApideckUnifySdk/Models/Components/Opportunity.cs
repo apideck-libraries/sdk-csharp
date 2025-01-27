@@ -34,8 +34,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The unique identifier of the primary contact associated with the opportunity.
         /// </summary>
-        [JsonProperty("primary_contact_id", NullValueHandling = NullValueHandling.Include)]
-        public string? PrimaryContactId { get; set; }
+        [JsonProperty("primary_contact_id")]
+        public string? PrimaryContactId { get; set; } = null;
 
         /// <summary>
         /// A description of the opportunity.

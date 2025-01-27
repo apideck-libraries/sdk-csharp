@@ -225,6 +225,24 @@ namespace ApideckUnifySdk.Models.Components
         AccountingExpenseUpdated,
         [JsonProperty("accounting.expense.deleted")]
         AccountingExpenseDeleted,
+        [JsonProperty("ecommerce.order.created")]
+        EcommerceOrderCreated,
+        [JsonProperty("ecommerce.order.updated")]
+        EcommerceOrderUpdated,
+        [JsonProperty("ecommerce.order.deleted")]
+        EcommerceOrderDeleted,
+        [JsonProperty("ecommerce.product.created")]
+        EcommerceProductCreated,
+        [JsonProperty("ecommerce.product.updated")]
+        EcommerceProductUpdated,
+        [JsonProperty("ecommerce.product.deleted")]
+        EcommerceProductDeleted,
+        [JsonProperty("ecommerce.customer.created")]
+        EcommerceCustomerCreated,
+        [JsonProperty("ecommerce.customer.updated")]
+        EcommerceCustomerUpdated,
+        [JsonProperty("ecommerce.customer.deleted")]
+        EcommerceCustomerDeleted,
     }
 
     public static class WebhookEventTypeExtension
