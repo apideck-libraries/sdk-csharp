@@ -25,6 +25,8 @@ var sdk = new Apideck(
 );
 
 AccountingCompanyInfoOneRequest req = new AccountingCompanyInfoOneRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };

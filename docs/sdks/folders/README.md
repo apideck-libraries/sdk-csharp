@@ -51,6 +51,8 @@ FileStorageFoldersAddRequest req = new FileStorageFoldersAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -100,6 +102,8 @@ var sdk = new Apideck(
 
 FileStorageFoldersOneRequest req = new FileStorageFoldersOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -170,6 +174,8 @@ FileStorageFoldersUpdateRequest req = new FileStorageFoldersUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -218,6 +224,8 @@ var sdk = new Apideck(
 
 FileStorageFoldersDeleteRequest req = new FileStorageFoldersDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -286,6 +294,8 @@ FileStorageFoldersCopyRequest req = new FileStorageFoldersCopyRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };

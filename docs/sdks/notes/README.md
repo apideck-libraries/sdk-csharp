@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 CrmNotesAllRequest req = new CrmNotesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -112,6 +114,8 @@ CrmNotesAddRequest req = new CrmNotesAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -160,6 +164,8 @@ var sdk = new Apideck(
 
 CrmNotesOneRequest req = new CrmNotesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -235,6 +241,8 @@ CrmNotesUpdateRequest req = new CrmNotesUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -283,6 +291,8 @@ var sdk = new Apideck(
 
 CrmNotesDeleteRequest req = new CrmNotesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

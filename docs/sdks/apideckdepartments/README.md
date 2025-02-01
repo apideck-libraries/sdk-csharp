@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 HrisDepartmentsAllRequest req = new HrisDepartmentsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -107,6 +109,8 @@ HrisDepartmentsAddRequest req = new HrisDepartmentsAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -155,6 +159,8 @@ var sdk = new Apideck(
 
 HrisDepartmentsOneRequest req = new HrisDepartmentsOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -225,6 +231,8 @@ HrisDepartmentsUpdateRequest req = new HrisDepartmentsUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -273,6 +281,8 @@ var sdk = new Apideck(
 
 HrisDepartmentsDeleteRequest req = new HrisDepartmentsDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

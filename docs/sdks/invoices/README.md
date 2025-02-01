@@ -31,6 +31,8 @@ var sdk = new Apideck(
 );
 
 AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new InvoicesFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
@@ -39,7 +41,6 @@ AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
     },
     Sort = new InvoicesSort() {
         By = InvoicesSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -285,6 +286,8 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -333,6 +336,8 @@ var sdk = new Apideck(
 
 AccountingInvoicesOneRequest req = new AccountingInvoicesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -573,6 +578,8 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -621,6 +628,8 @@ var sdk = new Apideck(
 
 AccountingInvoicesDeleteRequest req = new AccountingInvoicesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

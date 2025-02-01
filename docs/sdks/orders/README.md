@@ -27,6 +27,8 @@ var sdk = new Apideck(
 );
 
 EcommerceOrdersAllRequest req = new EcommerceOrdersAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new EcommerceOrdersFilter() {
         Email = "elon@musk.com",
@@ -36,7 +38,6 @@ EcommerceOrdersAllRequest req = new EcommerceOrdersAllRequest() {
     },
     Sort = new OrdersSort() {
         By = OrdersSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -94,6 +95,8 @@ var sdk = new Apideck(
 
 EcommerceOrdersOneRequest req = new EcommerceOrdersOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };

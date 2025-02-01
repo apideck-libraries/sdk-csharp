@@ -43,7 +43,6 @@ var res = await sdk.Vault.Sessions.CreateAsync(
             UnifiedApis = new List<UnifiedApiId>() {
                 UnifiedApiId.Crm,
             },
-            SessionLength = "30m",
         },
         Theme = new Theme() {
             Favicon = "https://res.cloudinary.com/apideck/icons/intercom",
