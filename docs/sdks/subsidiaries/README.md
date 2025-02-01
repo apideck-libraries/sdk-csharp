@@ -29,6 +29,8 @@ var sdk = new Apideck(
 );
 
 AccountingSubsidiariesAllRequest req = new AccountingSubsidiariesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -104,6 +106,8 @@ AccountingSubsidiariesAddRequest req = new AccountingSubsidiariesAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -152,6 +156,8 @@ var sdk = new Apideck(
 
 AccountingSubsidiariesOneRequest req = new AccountingSubsidiariesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -223,6 +229,8 @@ AccountingSubsidiariesUpdateRequest req = new AccountingSubsidiariesUpdateReques
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -271,6 +279,8 @@ var sdk = new Apideck(
 
 AccountingSubsidiariesDeleteRequest req = new AccountingSubsidiariesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

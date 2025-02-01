@@ -32,10 +32,11 @@ var sdk = new Apideck(
 IssueTrackingCollectionTicketCommentsAllRequest req = new IssueTrackingCollectionTicketCommentsAllRequest() {
     CollectionId = "apideck-io",
     TicketId = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Sort = new CommentsSort() {
         By = CommentsSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -113,6 +114,8 @@ IssueTrackingCollectionTicketCommentsAddRequest req = new IssueTrackingCollectio
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -163,6 +166,8 @@ IssueTrackingCollectionTicketCommentsOneRequest req = new IssueTrackingCollectio
     Id = "<id>",
     CollectionId = "apideck-io",
     TicketId = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -238,6 +243,8 @@ IssueTrackingCollectionTicketCommentsUpdateRequest req = new IssueTrackingCollec
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -288,6 +295,8 @@ IssueTrackingCollectionTicketCommentsDeleteRequest req = new IssueTrackingCollec
     Id = "<id>",
     CollectionId = "apideck-io",
     TicketId = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new EmployeesFilter() {
         CompanyId = "1234",
@@ -44,7 +46,6 @@ HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
     },
     Sort = new EmployeesSort() {
         By = EmployeesSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -328,6 +329,8 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -377,6 +380,8 @@ var sdk = new Apideck(
 
 HrisEmployeesOneRequest req = new HrisEmployeesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
     Filter = new EmployeesOneFilter() {
@@ -661,6 +666,8 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -709,6 +716,8 @@ var sdk = new Apideck(
 
 HrisEmployeesDeleteRequest req = new HrisEmployeesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
