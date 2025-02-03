@@ -27,6 +27,8 @@ var sdk = new Apideck(
 );
 
 EcommerceCustomersAllRequest req = new EcommerceCustomersAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new EcommerceCustomersFilter() {
         Email = "elon@musk.com",
@@ -88,6 +90,8 @@ var sdk = new Apideck(
 
 EcommerceCustomersOneRequest req = new EcommerceCustomersOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };

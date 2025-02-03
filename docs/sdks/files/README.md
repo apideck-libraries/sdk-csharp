@@ -32,6 +32,8 @@ var sdk = new Apideck(
 );
 
 FileStorageFilesAllRequest req = new FileStorageFilesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new FilesFilter() {
         DriveId = "1234",
@@ -40,7 +42,6 @@ FileStorageFilesAllRequest req = new FileStorageFilesAllRequest() {
     },
     Sort = new FilesSort() {
         By = FilesSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -101,6 +102,8 @@ FileStorageFilesSearchRequest req = new FileStorageFilesSearchRequest() {
     FilesSearch = new FilesSearch() {
         Query = "logo jpg",
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -158,6 +161,8 @@ var sdk = new Apideck(
 
 FileStorageFilesOneRequest req = new FileStorageFilesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -228,6 +233,8 @@ FileStorageFilesUpdateRequest req = new FileStorageFilesUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -276,6 +283,8 @@ var sdk = new Apideck(
 
 FileStorageFilesDeleteRequest req = new FileStorageFilesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -324,6 +333,8 @@ var sdk = new Apideck(
 
 FileStorageFilesDownloadRequest req = new FileStorageFilesDownloadRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -374,6 +385,8 @@ var sdk = new Apideck(
 FileStorageFilesExportRequest req = new FileStorageFilesExportRequest() {
     Id = "<id>",
     Format = "pdf",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };

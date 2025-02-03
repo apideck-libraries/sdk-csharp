@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new InvoiceItemsFilter() {
         Name = "Widgets Large",
@@ -37,7 +39,6 @@ AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
     },
     Sort = new InvoiceItemsSort() {
         By = InvoiceItemsSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -165,6 +166,8 @@ AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -213,6 +216,8 @@ var sdk = new Apideck(
 
 AccountingInvoiceItemsOneRequest req = new AccountingInvoiceItemsOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
     Filter = new InvoiceItemFilter() {
@@ -336,6 +341,8 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -384,6 +391,8 @@ var sdk = new Apideck(
 
 AccountingInvoiceItemsDeleteRequest req = new AccountingInvoiceItemsDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

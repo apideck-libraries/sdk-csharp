@@ -31,6 +31,8 @@ var sdk = new Apideck(
 );
 
 AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new SuppliersFilter() {
         CompanyName = "SpaceX",
@@ -42,7 +44,6 @@ AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
     },
     Sort = new SuppliersSort() {
         By = SuppliersSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -221,6 +222,8 @@ AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
         },
         SubsidiaryId = "12345",
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -269,6 +272,8 @@ var sdk = new Apideck(
 
 AccountingSuppliersOneRequest req = new AccountingSuppliersOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -442,6 +447,8 @@ AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
         },
         SubsidiaryId = "12345",
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -490,6 +497,8 @@ var sdk = new Apideck(
 
 AccountingSuppliersDeleteRequest req = new AccountingSuppliersDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

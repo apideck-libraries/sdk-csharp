@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 FileStorageDriveGroupsAllRequest req = new FileStorageDriveGroupsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new DriveGroupsFilter() {
         ParentGroupId = "1234",
@@ -110,6 +112,8 @@ FileStorageDriveGroupsAddRequest req = new FileStorageDriveGroupsAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -158,6 +162,8 @@ var sdk = new Apideck(
 
 FileStorageDriveGroupsOneRequest req = new FileStorageDriveGroupsOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -228,6 +234,8 @@ FileStorageDriveGroupsUpdateRequest req = new FileStorageDriveGroupsUpdateReques
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -276,6 +284,8 @@ var sdk = new Apideck(
 
 FileStorageDriveGroupsDeleteRequest req = new FileStorageDriveGroupsDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

@@ -27,6 +27,8 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionTagsAllRequest req = new IssueTrackingCollectionTagsAllRequest() {
     CollectionId = "apideck-io",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

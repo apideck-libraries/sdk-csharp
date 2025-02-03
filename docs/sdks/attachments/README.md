@@ -30,6 +30,8 @@ var sdk = new Apideck(
 AccountingAttachmentsAllRequest req = new AccountingAttachmentsAllRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -86,6 +88,8 @@ AccountingAttachmentsOneRequest req = new AccountingAttachmentsOneRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -137,6 +141,8 @@ AccountingAttachmentsDeleteRequest req = new AccountingAttachmentsDeleteRequest(
     ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -187,6 +193,8 @@ AccountingAttachmentsDownloadRequest req = new AccountingAttachmentsDownloadRequ
     ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
