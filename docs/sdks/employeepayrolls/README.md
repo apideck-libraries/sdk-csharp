@@ -28,6 +28,8 @@ var sdk = new Apideck(
 
 HrisEmployeePayrollsAllRequest req = new HrisEmployeePayrollsAllRequest() {
     EmployeeId = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new PayrollsFilter() {
         StartDate = "2022-04-08",
@@ -85,6 +87,8 @@ var sdk = new Apideck(
 HrisEmployeePayrollsOneRequest req = new HrisEmployeePayrollsOneRequest() {
     PayrollId = "<id>",
     EmployeeId = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };

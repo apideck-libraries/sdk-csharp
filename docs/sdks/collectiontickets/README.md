@@ -31,10 +31,11 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionTicketsAllRequest req = new IssueTrackingCollectionTicketsAllRequest() {
     CollectionId = "apideck-io",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Sort = new TicketsSort() {
         By = TicketsSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     Filter = new IssuesFilter() {
         Status = new List<string>() {
@@ -133,6 +134,8 @@ IssueTrackingCollectionTicketsAddRequest req = new IssueTrackingCollectionTicket
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -182,6 +185,8 @@ var sdk = new Apideck(
 IssueTrackingCollectionTicketsOneRequest req = new IssueTrackingCollectionTicketsOneRequest() {
     TicketId = "<id>",
     CollectionId = "apideck-io",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -268,6 +273,8 @@ IssueTrackingCollectionTicketsUpdateRequest req = new IssueTrackingCollectionTic
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -317,6 +324,8 @@ var sdk = new Apideck(
 IssueTrackingCollectionTicketsDeleteRequest req = new IssueTrackingCollectionTicketsDeleteRequest() {
     TicketId = "<id>",
     CollectionId = "apideck-io",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

@@ -29,6 +29,8 @@ var sdk = new Apideck(
 );
 
 SmsMessagesAllRequest req = new SmsMessagesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -110,6 +112,8 @@ SmsMessagesAddRequest req = new SmsMessagesAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -158,6 +162,8 @@ var sdk = new Apideck(
 
 SmsMessagesOneRequest req = new SmsMessagesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -235,6 +241,8 @@ SmsMessagesUpdateRequest req = new SmsMessagesUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -283,6 +291,8 @@ var sdk = new Apideck(
 
 SmsMessagesDeleteRequest req = new SmsMessagesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

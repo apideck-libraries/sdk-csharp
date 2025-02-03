@@ -31,6 +31,8 @@ var sdk = new Apideck(
 );
 
 AccountingPurchaseOrdersAllRequest req = new AccountingPurchaseOrdersAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -41,7 +43,6 @@ AccountingPurchaseOrdersAllRequest req = new AccountingPurchaseOrdersAllRequest(
     },
     Sort = new PurchaseOrdersSort() {
         By = PurchaseOrdersSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
 };
 
@@ -265,6 +266,8 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -313,6 +316,8 @@ var sdk = new Apideck(
 
 AccountingPurchaseOrdersOneRequest req = new AccountingPurchaseOrdersOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -534,6 +539,8 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -582,6 +589,8 @@ var sdk = new Apideck(
 
 AccountingPurchaseOrdersDeleteRequest req = new AccountingPurchaseOrdersDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
