@@ -72,6 +72,8 @@ var sdk = new Apideck(
 );
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new TaxRatesFilter() {
         Assets = true,
@@ -122,6 +124,8 @@ var sdk = new Apideck(
 );
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new TaxRatesFilter() {
         Assets = true,
@@ -691,6 +695,8 @@ var sdk = new Apideck(
 );
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new TaxRatesFilter() {
         Assets = true,
@@ -735,6 +741,8 @@ var sdk = new Apideck(
 );
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new TaxRatesFilter() {
         Assets = true,
@@ -795,6 +803,8 @@ var sdk = new Apideck(
 );
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new TaxRatesFilter() {
         Assets = true,
@@ -862,6 +872,8 @@ var sdk = new Apideck(
 try
 {
     AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+        ConsumerId = "test-consumer",
+        AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
         ServiceId = "salesforce",
         Filter = new TaxRatesFilter() {
             Assets = true,
@@ -941,6 +953,8 @@ var sdk = new Apideck(
 );
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new TaxRatesFilter() {
         Assets = true,
@@ -1002,6 +1016,8 @@ FileStorageUploadSessionsAddRequest req = new FileStorageUploadSessionsAddReques
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

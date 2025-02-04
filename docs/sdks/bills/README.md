@@ -31,13 +31,14 @@ var sdk = new Apideck(
 );
 
 AccountingBillsAllRequest req = new AccountingBillsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new BillsFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
     },
     Sort = new BillsSort() {
         By = By.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -242,6 +243,8 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
         },
         AccountingPeriod = "01-24",
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -290,6 +293,8 @@ var sdk = new Apideck(
 
 AccountingBillsOneRequest req = new AccountingBillsOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -489,6 +494,8 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
         },
         AccountingPeriod = "01-24",
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -537,6 +544,8 @@ var sdk = new Apideck(
 
 AccountingBillsDeleteRequest req = new AccountingBillsDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

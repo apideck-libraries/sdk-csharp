@@ -30,6 +30,8 @@ VaultConnectionSettingsAllRequest req = new VaultConnectionSettingsAllRequest() 
     UnifiedApi = "crm",
     ServiceId = "pipedrive",
     Resource = "leads",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
 };
 
 var res = await sdk.Vault.ConnectionSettings.ListAsync(req);
@@ -128,6 +130,8 @@ VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequ
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
 };
 
 var res = await sdk.Vault.ConnectionSettings.UpdateAsync(req);

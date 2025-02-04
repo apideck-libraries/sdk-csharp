@@ -184,6 +184,8 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
 };
 
 var res = await sdk.Vault.Connections.UpdateAsync(req);
@@ -298,6 +300,8 @@ VaultConnectionsImportRequest req = new VaultConnectionsImportRequest() {
             { "plan", "enterprise" },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
 };
 
 var res = await sdk.Vault.Connections.ImportsAsync(req);
@@ -352,6 +356,8 @@ var sdk = new Apideck(
 VaultConnectionsTokenRequest req = new VaultConnectionsTokenRequest() {
     ServiceId = "pipedrive",
     UnifiedApi = "crm",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
 };
 
 var res = await sdk.Vault.Connections.TokenAsync(req);

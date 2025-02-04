@@ -27,6 +27,8 @@ var sdk = new Apideck(
 );
 
 HrisPayrollsAllRequest req = new HrisPayrollsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new PayrollsFilter() {
         StartDate = "2022-04-08",
@@ -83,6 +85,8 @@ var sdk = new Apideck(
 
 HrisPayrollsOneRequest req = new HrisPayrollsOneRequest() {
     PayrollId = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };

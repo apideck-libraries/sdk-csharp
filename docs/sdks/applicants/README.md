@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 AtsApplicantsAllRequest req = new AtsApplicantsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new ApplicantsFilter() {
         JobId = "1234",
@@ -214,6 +216,8 @@ AtsApplicantsAddRequest req = new AtsApplicantsAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -262,6 +266,8 @@ var sdk = new Apideck(
 
 AtsApplicantsOneRequest req = new AtsApplicantsOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -438,6 +444,8 @@ AtsApplicantsUpdateRequest req = new AtsApplicantsUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -486,6 +494,8 @@ var sdk = new Apideck(
 
 AtsApplicantsDeleteRequest req = new AtsApplicantsDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

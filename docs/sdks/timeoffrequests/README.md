@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 HrisTimeOffRequestsAllRequest req = new HrisTimeOffRequestsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new TimeOffRequestsFilter() {
         StartDate = "2022-04-08",
@@ -129,6 +131,8 @@ HrisTimeOffRequestsAddRequest req = new HrisTimeOffRequestsAddRequest() {
         },
         PolicyType = "sick",
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -178,6 +182,8 @@ var sdk = new Apideck(
 HrisTimeOffRequestsOneRequest req = new HrisTimeOffRequestsOneRequest() {
     Id = "<id>",
     EmployeeId = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -263,6 +269,8 @@ HrisTimeOffRequestsUpdateRequest req = new HrisTimeOffRequestsUpdateRequest() {
         },
         PolicyType = "sick",
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -312,6 +320,8 @@ var sdk = new Apideck(
 HrisTimeOffRequestsDeleteRequest req = new HrisTimeOffRequestsDeleteRequest() {
     Id = "<id>",
     EmployeeId = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

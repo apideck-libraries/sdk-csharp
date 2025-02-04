@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 CrmOpportunitiesAllRequest req = new CrmOpportunitiesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new OpportunitiesFilter() {
         Status = "Completed",
@@ -37,7 +39,6 @@ CrmOpportunitiesAllRequest req = new CrmOpportunitiesAllRequest() {
     },
     Sort = new OpportunitiesSort() {
         By = OpportunitiesSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -155,6 +156,8 @@ CrmOpportunitiesAddRequest req = new CrmOpportunitiesAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -203,6 +206,8 @@ var sdk = new Apideck(
 
 CrmOpportunitiesOneRequest req = new CrmOpportunitiesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -315,6 +320,8 @@ CrmOpportunitiesUpdateRequest req = new CrmOpportunitiesUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -363,6 +370,8 @@ var sdk = new Apideck(
 
 CrmOpportunitiesDeleteRequest req = new CrmOpportunitiesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
