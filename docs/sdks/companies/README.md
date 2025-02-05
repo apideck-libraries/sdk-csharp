@@ -36,7 +36,6 @@ CrmCompaniesAllRequest req = new CrmCompaniesAllRequest() {
     },
     Sort = new CompaniesSort() {
         By = CompaniesSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

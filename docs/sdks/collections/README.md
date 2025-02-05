@@ -30,7 +30,6 @@ IssueTrackingCollectionsAllRequest req = new IssueTrackingCollectionsAllRequest(
     ServiceId = "salesforce",
     Sort = new CollectionsSort() {
         By = CollectionsSortBy.Name,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

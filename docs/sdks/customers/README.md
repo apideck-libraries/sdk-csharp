@@ -43,7 +43,6 @@ AccountingCustomersAllRequest req = new AccountingCustomersAllRequest() {
     },
     Sort = new CustomersSort() {
         By = CustomersSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

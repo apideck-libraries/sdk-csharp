@@ -37,7 +37,6 @@ CrmOpportunitiesAllRequest req = new CrmOpportunitiesAllRequest() {
     },
     Sort = new OpportunitiesSort() {
         By = OpportunitiesSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

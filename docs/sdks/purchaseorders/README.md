@@ -41,7 +41,6 @@ AccountingPurchaseOrdersAllRequest req = new AccountingPurchaseOrdersAllRequest(
     },
     Sort = new PurchaseOrdersSort() {
         By = PurchaseOrdersSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
 };
 

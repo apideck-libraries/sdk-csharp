@@ -37,7 +37,6 @@ AccountingJournalEntriesAllRequest req = new AccountingJournalEntriesAllRequest(
     },
     Sort = new JournalEntriesSort() {
         By = JournalEntriesSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

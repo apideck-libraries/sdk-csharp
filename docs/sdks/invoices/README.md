@@ -39,7 +39,6 @@ AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
     },
     Sort = new InvoicesSort() {
         By = InvoicesSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

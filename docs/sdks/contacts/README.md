@@ -40,7 +40,6 @@ CrmContactsAllRequest req = new CrmContactsAllRequest() {
     },
     Sort = new ContactsSort() {
         By = ContactsSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

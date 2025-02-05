@@ -44,7 +44,6 @@ HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
     },
     Sort = new EmployeesSort() {
         By = EmployeesSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

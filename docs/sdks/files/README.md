@@ -40,7 +40,6 @@ FileStorageFilesAllRequest req = new FileStorageFilesAllRequest() {
     },
     Sort = new FilesSort() {
         By = FilesSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
