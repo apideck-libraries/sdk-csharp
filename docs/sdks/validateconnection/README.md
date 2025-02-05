@@ -33,6 +33,8 @@ var sdk = new Apideck(
 VaultValidateConnectionStateRequest req = new VaultValidateConnectionStateRequest() {
     ServiceId = "pipedrive",
     UnifiedApi = "crm",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
 };
 
 var res = await sdk.Vault.ValidateConnection.StateAsync(req);

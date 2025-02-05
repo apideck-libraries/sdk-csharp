@@ -27,10 +27,11 @@ var sdk = new Apideck(
 );
 
 IssueTrackingCollectionsAllRequest req = new IssueTrackingCollectionsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Sort = new CollectionsSort() {
         By = CollectionsSortBy.Name,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -88,6 +89,8 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionsOneRequest req = new IssueTrackingCollectionsOneRequest() {
     CollectionId = "apideck-io",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };

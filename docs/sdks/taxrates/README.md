@@ -31,6 +31,8 @@ var sdk = new Apideck(
 );
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new TaxRatesFilter() {
         Assets = true,
@@ -143,6 +145,8 @@ AccountingTaxRatesAddRequest req = new AccountingTaxRatesAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -192,6 +196,8 @@ var sdk = new Apideck(
 
 AccountingTaxRatesOneRequest req = new AccountingTaxRatesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -292,6 +298,8 @@ AccountingTaxRatesUpdateRequest req = new AccountingTaxRatesUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -340,6 +348,8 @@ var sdk = new Apideck(
 
 AccountingTaxRatesDeleteRequest req = new AccountingTaxRatesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

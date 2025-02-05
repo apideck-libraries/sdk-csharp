@@ -26,6 +26,8 @@ var sdk = new Apideck(
 );
 
 CrmPipelinesAllRequest req = new CrmPipelinesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

@@ -29,6 +29,8 @@ VaultCustomFieldsAllRequest req = new VaultCustomFieldsAllRequest() {
     UnifiedApi = "crm",
     ServiceId = "pipedrive",
     Resource = "leads",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ResourceId = "1234",
 };
 

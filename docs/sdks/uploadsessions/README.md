@@ -50,6 +50,8 @@ FileStorageUploadSessionsAddRequest req = new FileStorageUploadSessionsAddReques
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -99,6 +101,8 @@ var sdk = new Apideck(
 
 FileStorageUploadSessionsOneRequest req = new FileStorageUploadSessionsOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -149,6 +153,8 @@ var sdk = new Apideck(
 
 FileStorageUploadSessionsDeleteRequest req = new FileStorageUploadSessionsDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -197,6 +203,8 @@ var sdk = new Apideck(
 
 FileStorageUploadSessionsFinishRequest req = new FileStorageUploadSessionsFinishRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Digest = "sha=fpRyg5eVQletdZqEKaFlqwBXJzM=",
 };

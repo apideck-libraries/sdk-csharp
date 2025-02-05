@@ -31,6 +31,8 @@ VaultCreateCallbackStateRequest req = new VaultCreateCallbackStateRequest() {
     CreateCallbackState = new CreateCallbackState() {
         RedirectUri = "https://example.com/callback",
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
 };
 
 var res = await sdk.Vault.CreateCallback.StateAsync(req);

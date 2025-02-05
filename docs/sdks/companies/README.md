@@ -30,13 +30,14 @@ var sdk = new Apideck(
 );
 
 CrmCompaniesAllRequest req = new CrmCompaniesAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new CompaniesFilter() {
         Name = "SpaceX",
     },
     Sort = new CompaniesSort() {
         By = CompaniesSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -225,6 +226,8 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -273,6 +276,8 @@ var sdk = new Apideck(
 
 CrmCompaniesOneRequest req = new CrmCompaniesOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -456,6 +461,8 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -504,6 +511,8 @@ var sdk = new Apideck(
 
 CrmCompaniesDeleteRequest req = new CrmCompaniesDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

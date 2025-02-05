@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 CrmContactsAllRequest req = new CrmContactsAllRequest() {
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Filter = new ContactsFilter() {
         FirstName = "Elon",
@@ -40,7 +42,6 @@ CrmContactsAllRequest req = new CrmContactsAllRequest() {
     },
     Sort = new ContactsSort() {
         By = ContactsSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -214,6 +215,8 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -262,6 +265,8 @@ var sdk = new Apideck(
 
 CrmContactsOneRequest req = new CrmContactsOneRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
     Filter = new ContactsFilter() {
@@ -437,6 +442,8 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
             },
         },
     },
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 
@@ -485,6 +492,8 @@ var sdk = new Apideck(
 
 CrmContactsDeleteRequest req = new CrmContactsDeleteRequest() {
     Id = "<id>",
+    ConsumerId = "test-consumer",
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     ServiceId = "salesforce",
 };
 

@@ -26,6 +26,8 @@ var sdk = new Apideck(
 );
 
 VaultLogsAllRequest req = new VaultLogsAllRequest() {
+    AppId = "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    ConsumerId = "test-consumer",
     Filter = new LogsFilter() {
         ConnectorId = "crm+salesforce",
         StatusCode = 201D,
