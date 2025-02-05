@@ -37,7 +37,6 @@ AccountingCreditNotesAllRequest req = new AccountingCreditNotesAllRequest() {
     },
     Sort = new CreditNotesSort() {
         By = CreditNotesSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

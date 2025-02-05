@@ -37,7 +37,6 @@ CrmActivitiesAllRequest req = new CrmActivitiesAllRequest() {
     },
     Sort = new ActivitiesSort() {
         By = ActivitiesSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

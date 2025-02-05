@@ -37,7 +37,6 @@ AccountingLedgerAccountsAllRequest req = new AccountingLedgerAccountsAllRequest(
     },
     Sort = new LedgerAccountsSort() {
         By = LedgerAccountsSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

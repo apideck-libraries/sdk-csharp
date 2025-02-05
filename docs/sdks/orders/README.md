@@ -36,7 +36,6 @@ EcommerceOrdersAllRequest req = new EcommerceOrdersAllRequest() {
     },
     Sort = new OrdersSort() {
         By = OrdersSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

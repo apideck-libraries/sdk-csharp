@@ -42,7 +42,6 @@ AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
     },
     Sort = new SuppliersSort() {
         By = SuppliersSortBy.UpdatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

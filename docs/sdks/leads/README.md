@@ -39,7 +39,6 @@ CrmLeadsAllRequest req = new CrmLeadsAllRequest() {
     },
     Sort = new LeadsSort() {
         By = LeadsSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },

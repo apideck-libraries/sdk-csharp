@@ -34,7 +34,6 @@ IssueTrackingCollectionTicketsAllRequest req = new IssueTrackingCollectionTicket
     ServiceId = "salesforce",
     Sort = new TicketsSort() {
         By = TicketsSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     Filter = new IssuesFilter() {
         Status = new List<string>() {

@@ -35,7 +35,6 @@ IssueTrackingCollectionTicketCommentsAllRequest req = new IssueTrackingCollectio
     ServiceId = "salesforce",
     Sort = new CommentsSort() {
         By = CommentsSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
