@@ -67,6 +67,9 @@
 | `AccountingPurchaseOrderCreated`      | accounting.purchase_order.created     |
 | `AccountingPurchaseOrderUpdated`      | accounting.purchase_order.updated     |
 | `AccountingPurchaseOrderDeleted`      | accounting.purchase_order.deleted     |
+| `AccountingCreditNoteCreated`         | accounting.credit_note.created        |
+| `AccountingCreditNoteUpdated`         | accounting.credit_note.updated        |
+| `AccountingCreditNoteDeleted`         | accounting.credit_note.deleted        |
 | `PosOrderCreated`                     | pos.order.created                     |
 | `PosOrderUpdated`                     | pos.order.updated                     |
 | `PosOrderDeleted`                     | pos.order.deleted                     |
