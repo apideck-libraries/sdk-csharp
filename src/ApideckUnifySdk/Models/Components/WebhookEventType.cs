@@ -139,6 +139,12 @@ namespace ApideckUnifySdk.Models.Components
         AccountingPurchaseOrderUpdated,
         [JsonProperty("accounting.purchase_order.deleted")]
         AccountingPurchaseOrderDeleted,
+        [JsonProperty("accounting.credit_note.created")]
+        AccountingCreditNoteCreated,
+        [JsonProperty("accounting.credit_note.updated")]
+        AccountingCreditNoteUpdated,
+        [JsonProperty("accounting.credit_note.deleted")]
+        AccountingCreditNoteDeleted,
         [JsonProperty("pos.order.created")]
         PosOrderCreated,
         [JsonProperty("pos.order.updated")]

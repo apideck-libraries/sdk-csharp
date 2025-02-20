@@ -62,6 +62,12 @@ namespace ApideckUnifySdk.Models.Requests
         public long? Limit { get; set; } = 20;
 
         /// <summary>
+        /// Include raw response. Mostly used for debugging purposes
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
+        public bool? Raw { get; set; } = false;
+
+        /// <summary>
         /// Apply filters
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
