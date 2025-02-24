@@ -64,5 +64,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("links")]
         public Links? Links { get; set; }
+
+        /// <summary>
+        /// Raw response from the integration when raw=true query param is provided
+        /// </summary>
+        [JsonProperty("_raw")]
+        public Dictionary<string, object>? Raw { get; set; } = null;
     }
 }

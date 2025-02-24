@@ -36,6 +36,12 @@ namespace ApideckUnifySdk.Models.Components
         public List<Models.Components.Connector> Data { get; set; } = default!;
 
         /// <summary>
+        /// Raw response from the integration when raw=true query param is provided
+        /// </summary>
+        [JsonProperty("_raw")]
+        public Dictionary<string, object>? Raw { get; set; } = null;
+
+        /// <summary>
         /// Response metadata
         /// </summary>
         [JsonProperty("meta")]
