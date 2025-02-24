@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
     
     /// <summary>
     /// Note created
@@ -54,5 +55,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("data")]
         public UnifiedId Data { get; set; } = default!;
+
+        /// <summary>
+        /// Raw response from the integration when raw=true query param is provided
+        /// </summary>
+        [JsonProperty("_raw")]
+        public Dictionary<string, object>? Raw { get; set; } = null;
     }
 }
