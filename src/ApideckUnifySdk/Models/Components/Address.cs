@@ -26,7 +26,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The type of address.
         /// </summary>
         [JsonProperty("type")]
-        public Models.Components.Type? Type { get; set; } = null;
+        public AddressType? Type { get; set; } = null;
 
         /// <summary>
         /// The address string. Some APIs don&apos;t provide structured address data.

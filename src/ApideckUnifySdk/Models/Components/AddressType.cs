@@ -14,30 +14,36 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// The type of the contact.
+    /// The type of address.
     /// </summary>
-    public enum ContactType
+    public enum AddressType
     {
-        [JsonProperty("customer")]
-        Customer,
-        [JsonProperty("supplier")]
-        Supplier,
-        [JsonProperty("employee")]
-        Employee,
-        [JsonProperty("personal")]
-        Personal,
+        [JsonProperty("primary")]
+        Primary,
+        [JsonProperty("secondary")]
+        Secondary,
+        [JsonProperty("home")]
+        Home,
+        [JsonProperty("office")]
+        Office,
+        [JsonProperty("shipping")]
+        Shipping,
+        [JsonProperty("billing")]
+        Billing,
+        [JsonProperty("other")]
+        Other,
     }
 
-    public static class ContactTypeExtension
+    public static class AddressTypeExtension
     {
-        public static string Value(this ContactType value)
+        public static string Value(this AddressType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static ContactType ToEnum(this string value)
+        public static AddressType ToEnum(this string value)
         {
-            foreach(var field in typeof(ContactType).GetFields())
+            foreach(var field in typeof(AddressType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -50,14 +56,14 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is ContactType)
+                    if (enumVal is AddressType)
                     {
-                        return (ContactType)enumVal;
+                        return (AddressType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum ContactType");
+            throw new Exception($"Unknown value {value} for enum AddressType");
         }
     }
 
