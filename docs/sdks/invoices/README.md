@@ -183,7 +183,7 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
         },
         BillingAddress = new Address() {
             Id = "123",
-            Type = ApideckUnifySdk.Models.Components.Type.Primary,
+            Type = AddressType.Primary,
             String = "25 Spring Street, Blackburn, VIC 3130",
             Name = "HQ US",
             Line1 = "Main street",
@@ -209,7 +209,7 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
         },
         ShippingAddress = new Address() {
             Id = "123",
-            Type = ApideckUnifySdk.Models.Components.Type.Primary,
+            Type = AddressType.Primary,
             String = "25 Spring Street, Blackburn, VIC 3130",
             Name = "HQ US",
             Line1 = "Main street",
@@ -471,7 +471,7 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
         },
         BillingAddress = new Address() {
             Id = "123",
-            Type = ApideckUnifySdk.Models.Components.Type.Primary,
+            Type = AddressType.Primary,
             String = "25 Spring Street, Blackburn, VIC 3130",
             Name = "HQ US",
             Line1 = "Main street",
@@ -497,7 +497,7 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
         },
         ShippingAddress = new Address() {
             Id = "123",
-            Type = ApideckUnifySdk.Models.Components.Type.Primary,
+            Type = AddressType.Primary,
             String = "25 Spring Street, Blackburn, VIC 3130",
             Name = "HQ US",
             Line1 = "Main street",

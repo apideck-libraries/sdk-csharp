@@ -40,7 +40,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The type of the contact.
         /// </summary>
         [JsonProperty("type")]
-        public ContactType? Type { get; set; } = null;
+        public Models.Components.Type? Type { get; set; } = null;
 
         /// <summary>
         /// The company the contact is associated with.

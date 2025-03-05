@@ -14,24 +14,18 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// The type of address.
+    /// The type of the contact.
     /// </summary>
     public enum Type
     {
-        [JsonProperty("primary")]
-        Primary,
-        [JsonProperty("secondary")]
-        Secondary,
-        [JsonProperty("home")]
-        Home,
-        [JsonProperty("office")]
-        Office,
-        [JsonProperty("shipping")]
-        Shipping,
-        [JsonProperty("billing")]
-        Billing,
-        [JsonProperty("other")]
-        Other,
+        [JsonProperty("customer")]
+        Customer,
+        [JsonProperty("supplier")]
+        Supplier,
+        [JsonProperty("employee")]
+        Employee,
+        [JsonProperty("personal")]
+        Personal,
     }
 
     public static class TypeExtension
