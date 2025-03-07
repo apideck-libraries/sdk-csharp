@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: d7135fd6bec8d864fcc4b9f14f36dfd2
+  docChecksum: 93392f47648d3d018e19a11a2540e561
   docVersion: 10.11.5
-  speakeasyVersion: 1.509.1
-  generationVersion: 2.539.1
-  releaseVersion: 0.5.4
-  configChecksum: c8211d8217f941ce5b819b314b24a14e
+  speakeasyVersion: 1.513.2
+  generationVersion: 2.545.2
+  releaseVersion: 0.5.5
+  configChecksum: 84f0f5d0eed18628536aa210913fdd4d
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -169,6 +169,7 @@ generatedFiles:
   - docs/Models/Components/ContactsSort.md
   - docs/Models/Components/ContactsSortBy.md
   - docs/Models/Components/CopyFolderRequest.md
+  - docs/Models/Components/CostOfGoodsSold.md
   - docs/Models/Components/Coverage.md
   - docs/Models/Components/CreateAccountingDepartmentResponse.md
   - docs/Models/Components/CreateAccountingLocationResponse.md
@@ -484,7 +485,6 @@ generatedFiles:
   - docs/Models/Components/GetUsersResponse.md
   - docs/Models/Components/GetWebhookResponse.md
   - docs/Models/Components/GetWebhooksResponse.md
-  - docs/Models/Components/GrossProfit.md
   - docs/Models/Components/HTTPMetadata.md
   - docs/Models/Components/HrisCompany.md
   - docs/Models/Components/HrisCompanyInput.md
@@ -568,8 +568,6 @@ generatedFiles:
   - docs/Models/Components/MessageType.md
   - docs/Models/Components/Meta.md
   - docs/Models/Components/Mode.md
-  - docs/Models/Components/NetIncome.md
-  - docs/Models/Components/NetOperatingIncome.md
   - docs/Models/Components/Note.md
   - docs/Models/Components/NoteInput.md
   - docs/Models/Components/Notes.md
@@ -586,6 +584,8 @@ generatedFiles:
   - docs/Models/Components/Options.md
   - docs/Models/Components/OrdersSort.md
   - docs/Models/Components/OrdersSortBy.md
+  - docs/Models/Components/OtherExpenses.md
+  - docs/Models/Components/OtherIncome.md
   - docs/Models/Components/OutstandingBalanceByCurrency.md
   - docs/Models/Components/OutstandingBalanceByCustomer.md
   - docs/Models/Components/Owner.md
@@ -618,6 +618,8 @@ generatedFiles:
   - docs/Models/Components/ProductStatus.md
   - docs/Models/Components/ProfitAndLoss.md
   - docs/Models/Components/ProfitAndLossFilter.md
+  - docs/Models/Components/ProfitAndLossIndicator.md
+  - docs/Models/Components/ProfitAndLossType.md
   - docs/Models/Components/PurchaseDetails.md
   - docs/Models/Components/PurchaseOrder.md
   - docs/Models/Components/PurchaseOrderInput.md
@@ -696,6 +698,7 @@ generatedFiles:
   - docs/Models/Components/TrackingItem.md
   - docs/Models/Components/TransactionType.md
   - docs/Models/Components/Type.md
+  - docs/Models/Components/UncategorizedAccounts.md
   - docs/Models/Components/UnexpectedErrorResponse.md
   - docs/Models/Components/UnifiedApi.md
   - docs/Models/Components/UnifiedApiId.md
@@ -1577,6 +1580,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/ContactsSort.cs
   - src/ApideckUnifySdk/Models/Components/ContactsSortBy.cs
   - src/ApideckUnifySdk/Models/Components/CopyFolderRequest.cs
+  - src/ApideckUnifySdk/Models/Components/CostOfGoodsSold.cs
   - src/ApideckUnifySdk/Models/Components/Coverage.cs
   - src/ApideckUnifySdk/Models/Components/CreateAccountingDepartmentResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateAccountingLocationResponse.cs
@@ -1892,7 +1896,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/GetUsersResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetWebhookResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetWebhooksResponse.cs
-  - src/ApideckUnifySdk/Models/Components/GrossProfit.cs
   - src/ApideckUnifySdk/Models/Components/HTTPMetadata.cs
   - src/ApideckUnifySdk/Models/Components/HrisCompany.cs
   - src/ApideckUnifySdk/Models/Components/HrisCompanyInput.cs
@@ -1976,8 +1979,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/MessageType.cs
   - src/ApideckUnifySdk/Models/Components/Meta.cs
   - src/ApideckUnifySdk/Models/Components/Mode.cs
-  - src/ApideckUnifySdk/Models/Components/NetIncome.cs
-  - src/ApideckUnifySdk/Models/Components/NetOperatingIncome.cs
   - src/ApideckUnifySdk/Models/Components/Note.cs
   - src/ApideckUnifySdk/Models/Components/NoteInput.cs
   - src/ApideckUnifySdk/Models/Components/Notes.cs
@@ -1994,6 +1995,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/Options.cs
   - src/ApideckUnifySdk/Models/Components/OrdersSort.cs
   - src/ApideckUnifySdk/Models/Components/OrdersSortBy.cs
+  - src/ApideckUnifySdk/Models/Components/OtherExpenses.cs
+  - src/ApideckUnifySdk/Models/Components/OtherIncome.cs
   - src/ApideckUnifySdk/Models/Components/OutstandingBalanceByCurrency.cs
   - src/ApideckUnifySdk/Models/Components/OutstandingBalanceByCustomer.cs
   - src/ApideckUnifySdk/Models/Components/Owner.cs
@@ -2026,6 +2029,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/ProductStatus.cs
   - src/ApideckUnifySdk/Models/Components/ProfitAndLoss.cs
   - src/ApideckUnifySdk/Models/Components/ProfitAndLossFilter.cs
+  - src/ApideckUnifySdk/Models/Components/ProfitAndLossIndicator.cs
+  - src/ApideckUnifySdk/Models/Components/ProfitAndLossType.cs
   - src/ApideckUnifySdk/Models/Components/PurchaseDetails.cs
   - src/ApideckUnifySdk/Models/Components/PurchaseOrder.cs
   - src/ApideckUnifySdk/Models/Components/PurchaseOrderInput.cs
@@ -2104,6 +2109,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/TrackingItem.cs
   - src/ApideckUnifySdk/Models/Components/TransactionType.cs
   - src/ApideckUnifySdk/Models/Components/Type.cs
+  - src/ApideckUnifySdk/Models/Components/UncategorizedAccounts.cs
   - src/ApideckUnifySdk/Models/Components/UnexpectedErrorResponse.cs
   - src/ApideckUnifySdk/Models/Components/UnifiedApi.cs
   - src/ApideckUnifySdk/Models/Components/UnifiedApiId.cs
@@ -4036,7 +4042,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "ProfitAndLosses", "operation": "one", "data": {"id": "12345", "report_name": "ProfitAndLoss", "start_date": "2017-01-01", "end_date": "2017-01-01", "currency": "USD", "customer_id": "123", "income": {"total": 200000, "records": [{"id": "123", "name": "Income 1", "amount": 10000}, {"id": "456", "name": "Income 2", "amount": 20000}]}, "expenses": {"total": 200000, "records": [{"id": "123", "name": "Expense 1", "amount": 10000}, {"id": "456", "name": "Expense 2", "amount": 20000}]}, "net_income": {"total": 200000, "records": "<value>"}, "net_operating_income": {"total": 200000, "records": "<value>"}, "gross_profit": {"total": 200000, "records": "<value>"}}}
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "ProfitAndLosses", "operation": "one", "data": {"id": "12345", "report_name": "ProfitAndLoss", "start_date": "2017-01-01", "end_date": "2017-01-01", "currency": "USD", "income": {"total": 200000, "records": [{"id": "123", "name": "Income 1", "amount": 10000}, {"id": "456", "name": "Income 2", "amount": 20000}]}, "expenses": {"total": 200000, "records": [{"id": "123", "name": "Expense 1", "amount": 10000}, {"id": "456", "name": "Expense 2", "amount": 20000}]}, "gross_profit": {"total": 200000}, "net_operating_income": {"total": 200000}, "net_income": {"total": 200000}}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": {"missing": [{"foobar": "required"}]}, "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":

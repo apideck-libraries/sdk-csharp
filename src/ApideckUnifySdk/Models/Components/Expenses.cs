@@ -9,14 +9,42 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     
+    /// <summary>
+    /// The operating expenses accounts
+    /// </summary>
     public class Expenses
     {
 
         /// <summary>
-        /// Total expense
+        /// A unique identifier for an object.
+        /// </summary>
+        [JsonProperty("id")]
+        public string? Id { get; set; }
+
+        /// <summary>
+        /// The account code of the account
+        /// </summary>
+        [JsonProperty("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// The name of the account.
+        /// </summary>
+        [JsonProperty("title")]
+        public string? Title { get; set; }
+
+        /// <summary>
+        /// The type of profit and loss
+        /// </summary>
+        [JsonProperty("type")]
+        public ProfitAndLossType? Type { get; set; } = null;
+
+        /// <summary>
+        /// The total amount of the transaction
         /// </summary>
         [JsonProperty("total", NullValueHandling = NullValueHandling.Include)]
         public double? Total { get; set; }
