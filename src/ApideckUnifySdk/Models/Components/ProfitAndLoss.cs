@@ -35,34 +35,61 @@ namespace ApideckUnifySdk.Models.Components
         public string? StartDate { get; set; }
 
         /// <summary>
-        /// The start date of the report
+        /// The end date of the report
         /// </summary>
         [JsonProperty("end_date")]
         public string? EndDate { get; set; }
 
-        [JsonProperty("currency")]
-        public string Currency { get; set; } = default!;
+        /// <summary>
+        /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
+        /// </summary>
+        [JsonProperty("currency", NullValueHandling = NullValueHandling.Include)]
+        public Currency? Currency { get; set; }
 
         /// <summary>
-        /// Customer id
+        /// The operating income accounts
         /// </summary>
-        [JsonProperty("customer_id")]
-        public string? CustomerId { get; set; }
-
         [JsonProperty("income")]
         public Income Income { get; set; } = default!;
 
+        /// <summary>
+        /// The cost of goods sold accounts
+        /// </summary>
+        [JsonProperty("cost_of_goods_sold")]
+        public CostOfGoodsSold? CostOfGoodsSold { get; set; }
+
+        /// <summary>
+        /// The operating expenses accounts
+        /// </summary>
         [JsonProperty("expenses")]
         public Models.Components.Expenses Expenses { get; set; } = default!;
 
-        [JsonProperty("net_income")]
-        public NetIncome? NetIncome { get; set; } = null;
+        /// <summary>
+        /// The other income accounts
+        /// </summary>
+        [JsonProperty("other_income")]
+        public OtherIncome? OtherIncome { get; set; }
 
-        [JsonProperty("net_operating_income")]
-        public NetOperatingIncome? NetOperatingIncome { get; set; } = null;
+        /// <summary>
+        /// The other expenses accounts
+        /// </summary>
+        [JsonProperty("other_expenses")]
+        public OtherExpenses? OtherExpenses { get; set; }
+
+        /// <summary>
+        /// The accounts not categorized in the other sections
+        /// </summary>
+        [JsonProperty("uncategorized_accounts")]
+        public UncategorizedAccounts? UncategorizedAccounts { get; set; }
 
         [JsonProperty("gross_profit")]
-        public GrossProfit? GrossProfit { get; set; } = null;
+        public ProfitAndLossIndicator? GrossProfit { get; set; }
+
+        [JsonProperty("net_operating_income")]
+        public ProfitAndLossIndicator? NetOperatingIncome { get; set; }
+
+        [JsonProperty("net_income")]
+        public ProfitAndLossIndicator? NetIncome { get; set; }
 
         /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.
