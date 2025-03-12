@@ -43,7 +43,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? CurrencyRate { get; set; } = null;
 
         /// <summary>
-        /// The total amount of the transaction
+        /// The total amount of the transaction or record
         /// </summary>
         [JsonProperty("total_amount", NullValueHandling = NullValueHandling.Include)]
         public double? TotalAmount { get; set; }

@@ -1,9 +1,15 @@
 # Expenses
 
+The operating expenses accounts
+
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `Total`            | *double*           | :heavy_check_mark: | Total expense      | 100000             |
-| `Records`          | *object*           | :heavy_check_mark: | N/A                |                    |
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `Id`                                                              | *string*                                                          | :heavy_minus_sign:                                                | A unique identifier for an object.                                | 12345                                                             |
+| `Code`                                                            | *string*                                                          | :heavy_minus_sign:                                                | The account code of the account                                   | 1100                                                              |
+| `Title`                                                           | *string*                                                          | :heavy_minus_sign:                                                | The name of the account.                                          | Current assets                                                    |
+| `Type`                                                            | [ProfitAndLossType](../../Models/Components/ProfitAndLossType.md) | :heavy_minus_sign:                                                | The type of profit and loss                                       | Section                                                           |
+| `Total`                                                           | *double*                                                          | :heavy_check_mark:                                                | The aggregated total of all accounts within this category.        | 1000                                                              |
+| `Records`                                                         | *object*                                                          | :heavy_check_mark:                                                | N/A                                                               |                                                                   |

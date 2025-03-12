@@ -207,6 +207,7 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
             Currency = Currency.Usd,
         },
         DiscountPercentage = 5.5D,
+        SourceDocumentUrl = "https://www.invoicesolution.com/bill/123456",
         TrackingCategories = new List<LinkedTrackingCategory>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
@@ -452,6 +453,7 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
             Currency = Currency.Usd,
         },
         DiscountPercentage = 5.5D,
+        SourceDocumentUrl = "https://www.invoicesolution.com/bill/123456",
         TrackingCategories = new List<LinkedTrackingCategory>() {
             new LinkedTrackingCategory() {
                 Id = "123456",

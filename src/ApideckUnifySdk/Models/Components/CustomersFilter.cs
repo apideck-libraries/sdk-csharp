@@ -54,5 +54,11 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
+
+        /// <summary>
+        /// Supplier ID of customer to search for
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=supplier_id")]
+        public string? SupplierId { get; set; }
     }
 }

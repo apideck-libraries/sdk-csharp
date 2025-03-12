@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
+    using System;
     
     public class BalanceSheetFilter
     {
@@ -18,6 +19,7 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The start date of the period to include in the resource.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [SpeakeasyMetadata("queryParam:name=start_date")]
         public string? StartDate { get; set; }
 
