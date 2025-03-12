@@ -188,6 +188,12 @@ namespace ApideckUnifySdk.Models.Components
         public double? DiscountPercentage { get; set; } = null;
 
         /// <summary>
+        /// URL link to a source document - shown as &apos;Go to [appName]&apos; in the downstream app. Currently only supported for Xero.
+        /// </summary>
+        [JsonProperty("source_document_url")]
+        public string? SourceDocumentUrl { get; set; } = null;
+
+        /// <summary>
         /// A list of linked tracking categories.
         /// </summary>
         [JsonProperty("tracking_categories")]

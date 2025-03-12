@@ -12,16 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     
-    public class GrossProfit
+    public class ProfitAndLossIndicator
     {
 
         /// <summary>
-        /// Total gross profit
+        /// The total amount of the transaction or record
         /// </summary>
         [JsonProperty("total", NullValueHandling = NullValueHandling.Include)]
         public double? Total { get; set; }
-
-        [JsonProperty("records")]
-        public object Records { get; set; } = default!;
     }
 }
