@@ -1,13 +1,16 @@
 # Type
 
-The type of the contact.
+The type of address.
 
 
 ## Values
 
-| Name       | Value      |
-| ---------- | ---------- |
-| `Customer` | customer   |
-| `Supplier` | supplier   |
-| `Employee` | employee   |
-| `Personal` | personal   |
+| Name        | Value       |
+| ----------- | ----------- |
+| `Primary`   | primary     |
+| `Secondary` | secondary   |
+| `Home`      | home        |
+| `Office`    | office      |
+| `Shipping`  | shipping    |
+| `Billing`   | billing     |
+| `Other`     | other       |
