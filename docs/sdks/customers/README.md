@@ -116,7 +116,7 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
-                Type = AddressType.Primary,
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",
@@ -339,7 +339,7 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
-                Type = AddressType.Primary,
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
                 String = "25 Spring Street, Blackburn, VIC 3130",
                 Name = "HQ US",
                 Line1 = "Main street",

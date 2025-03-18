@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 1c457e5380748926df036f79bf4d8520
-  docVersion: 10.12.3
-  speakeasyVersion: 1.517.0
-  generationVersion: 2.548.1
-  releaseVersion: 0.6.0
-  configChecksum: 8e4b54e2fcf4349e3f51a5e386bdf9e4
+  docChecksum: 0e7e175f94ab357f68844662d1419e99
+  docVersion: 10.13.0
+  speakeasyVersion: 1.519.0
+  generationVersion: 2.552.1
+  releaseVersion: 0.7.0
+  configChecksum: 24299b9f3d4096029671299fe85d8695
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -58,7 +58,6 @@ generatedFiles:
   - docs/Models/Components/ActivityInput.md
   - docs/Models/Components/ActivityType.md
   - docs/Models/Components/Address.md
-  - docs/Models/Components/AddressType.md
   - docs/Models/Components/Addresses.md
   - docs/Models/Components/AgedDebtors.md
   - docs/Models/Components/AgedReportFilter.md
@@ -165,6 +164,7 @@ generatedFiles:
   - docs/Models/Components/Contact.md
   - docs/Models/Components/ContactGender.md
   - docs/Models/Components/ContactInput.md
+  - docs/Models/Components/ContactType.md
   - docs/Models/Components/ContactsFilter.md
   - docs/Models/Components/ContactsSort.md
   - docs/Models/Components/ContactsSortBy.md
@@ -1469,7 +1469,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/ActivityInput.cs
   - src/ApideckUnifySdk/Models/Components/ActivityType.cs
   - src/ApideckUnifySdk/Models/Components/Address.cs
-  - src/ApideckUnifySdk/Models/Components/AddressType.cs
   - src/ApideckUnifySdk/Models/Components/Addresses.cs
   - src/ApideckUnifySdk/Models/Components/AgedDebtors.cs
   - src/ApideckUnifySdk/Models/Components/AgedReportFilter.cs
@@ -1576,6 +1575,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/Contact.cs
   - src/ApideckUnifySdk/Models/Components/ContactGender.cs
   - src/ApideckUnifySdk/Models/Components/ContactInput.cs
+  - src/ApideckUnifySdk/Models/Components/ContactType.cs
   - src/ApideckUnifySdk/Models/Components/ContactsFilter.cs
   - src/ApideckUnifySdk/Models/Components/ContactsSort.cs
   - src/ApideckUnifySdk/Models/Components/ContactsSortBy.cs
