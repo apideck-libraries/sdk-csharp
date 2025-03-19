@@ -289,7 +289,7 @@ VaultConnectionsImportRequest req = new VaultConnectionsImportRequest() {
             RefreshToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF_xSJyQQ",
             AccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
         },
-        Settings = new ConnectionImportDataSettings() {},
+        Settings = new Settings() {},
         Metadata = new Dictionary<string, object>() {
             { "account", new Dictionary<string, object>() {
                 { "name", "My Company" },
