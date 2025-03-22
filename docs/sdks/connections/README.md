@@ -156,7 +156,7 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
                     new ConnectionDefaults() {
                         Id = "ProductInterest",
                         Options = new List<FormFieldOption>() {
-                            FormFieldOption.CreateFormFieldOptionGroup(
+                            FormFieldOption.CreateGroup(
                                 new FormFieldOptionGroup() {
                                     Id = "1234",
                                     Label = "General Channel",
@@ -166,8 +166,10 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
                                             Value = SimpleFormFieldOptionValue.CreateNumber(
                                                 12.5D
                                             ),
+                                            OptionType = OptionType.Simple,
                                         },
                                     },
+                                    OptionType = FormFieldOptionGroupOptionType.Group,
                                 }
                             ),
                         },
