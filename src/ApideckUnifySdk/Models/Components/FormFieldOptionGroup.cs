@@ -21,9 +21,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         [JsonProperty("label")]
-        public string? Label { get; set; }
+        public string Label { get; set; } = default!;
 
         [JsonProperty("options")]
-        public List<SimpleFormFieldOption>? Options { get; set; }
+        public List<SimpleFormFieldOption> Options { get; set; } = default!;
+
+        [JsonProperty("option_type")]
+        public FormFieldOptionGroupOptionType OptionType { get; set; } = default!;
     }
 }

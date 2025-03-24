@@ -26,6 +26,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
+        /// The third-party API ID of original entity
+        /// </summary>
+        [JsonProperty("downstream_id")]
+        public string? DownstreamId { get; set; } = null;
+
+        /// <summary>
         /// The first name of the person.
         /// </summary>
         [JsonProperty("first_name")]
