@@ -3,14 +3,14 @@
 
 ## Supported Types
 
-### SimpleFormFieldOption
+### Simple
 
 ```csharp
-FormFieldOption.CreateSimpleFormFieldOption(/* values here */);
+FormFieldOption.CreateSimple(/* values here */);
 ```
 
-### FormFieldOptionGroup
+### Group
 
 ```csharp
-FormFieldOption.CreateFormFieldOptionGroup(/* values here */);
+FormFieldOption.CreateGroup(/* values here */);
 ```

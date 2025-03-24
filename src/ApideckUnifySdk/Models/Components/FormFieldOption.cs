@@ -24,18 +24,17 @@ namespace ApideckUnifySdk.Models.Components
         private FormFieldOptionType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        public static FormFieldOptionType SimpleFormFieldOption { get { return new FormFieldOptionType("SimpleFormFieldOption"); } }
         
-        public static FormFieldOptionType FormFieldOptionGroup { get { return new FormFieldOptionType("FormFieldOptionGroup"); } }
-        
+        public static FormFieldOptionType Simple { get { return new FormFieldOptionType("simple"); } }
+        public static FormFieldOptionType Group { get { return new FormFieldOptionType("group"); } }
         public static FormFieldOptionType Null { get { return new FormFieldOptionType("null"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(FormFieldOptionType v) { return v.Value; }
         public static FormFieldOptionType FromString(string v) {
             switch(v) {
-                case "SimpleFormFieldOption": return SimpleFormFieldOption;
-                case "FormFieldOptionGroup": return FormFieldOptionGroup;
+                case "simple": return Simple;
+                case "group": return Group;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for FormFieldOptionType");
             }
@@ -71,22 +70,26 @@ namespace ApideckUnifySdk.Models.Components
         public FormFieldOptionType Type { get; set; }
 
 
-        public static FormFieldOption CreateSimpleFormFieldOption(SimpleFormFieldOption simpleFormFieldOption) {
-            FormFieldOptionType typ = FormFieldOptionType.SimpleFormFieldOption;
-
+        public static FormFieldOption CreateSimple(SimpleFormFieldOption simple) {
+            FormFieldOptionType typ = FormFieldOptionType.Simple;
+        
+            string typStr = FormFieldOptionType.Simple.ToString();
+            
+            simple.OptionType = OptionTypeExtension.ToEnum(FormFieldOptionType.Simple.ToString());
             FormFieldOption res = new FormFieldOption(typ);
-            res.SimpleFormFieldOption = simpleFormFieldOption;
+            res.SimpleFormFieldOption = simple;
             return res;
         }
-
-        public static FormFieldOption CreateFormFieldOptionGroup(FormFieldOptionGroup formFieldOptionGroup) {
-            FormFieldOptionType typ = FormFieldOptionType.FormFieldOptionGroup;
-
+        public static FormFieldOption CreateGroup(FormFieldOptionGroup groupT) {
+            FormFieldOptionType typ = FormFieldOptionType.Group;
+        
+            string typStr = FormFieldOptionType.Group.ToString();
+            
+            groupT.OptionType = FormFieldOptionGroupOptionTypeExtension.ToEnum(FormFieldOptionType.Group.ToString());
             FormFieldOption res = new FormFieldOption(typ);
-            res.FormFieldOptionGroup = formFieldOptionGroup;
+            res.FormFieldOptionGroup = groupT;
             return res;
         }
-
         public static FormFieldOption CreateNull() {
             FormFieldOptionType typ = FormFieldOptionType.Null;
             return new FormFieldOption(typ);
@@ -101,72 +104,17 @@ namespace ApideckUnifySdk.Models.Components
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                JObject jo = JObject.Load(reader);
+                string discriminator = jo.GetValue("option_type")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
+                if (discriminator == FormFieldOptionType.Simple.ToString())
                 {
-                    return null;
+                    SimpleFormFieldOption? simpleFormFieldOption = ResponseBodyDeserializer.Deserialize<SimpleFormFieldOption>(jo.ToString());
+                    return CreateSimple(simpleFormFieldOption!);
                 }
-
-                var fallbackCandidates = new List<(System.Type, object, string)>();
-
-                try
+                if (discriminator == FormFieldOptionType.Group.ToString())
                 {
-                    return new FormFieldOption(FormFieldOptionType.SimpleFormFieldOption)
-                    {
-                        SimpleFormFieldOption = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<SimpleFormFieldOption>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(SimpleFormFieldOption), new FormFieldOption(FormFieldOptionType.SimpleFormFieldOption), "SimpleFormFieldOption"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                try
-                {
-                    return new FormFieldOption(FormFieldOptionType.FormFieldOptionGroup)
-                    {
-                        FormFieldOptionGroup = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<FormFieldOptionGroup>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(FormFieldOptionGroup), new FormFieldOption(FormFieldOptionType.FormFieldOptionGroup), "FormFieldOptionGroup"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                if (fallbackCandidates.Count > 0)
-                {
-                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
-                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
-                    {
-                        try
-                        {
-                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
-                        }
-                        catch (ResponseBodyDeserializer.DeserializationException)
-                        {
-                            // try next fallback option
-                        }
-                        catch (Exception)
-                        {
-                            throw;
-                        }
-                    }
+                    FormFieldOptionGroup? formFieldOptionGroup = ResponseBodyDeserializer.Deserialize<FormFieldOptionGroup>(jo.ToString());
+                    return CreateGroup(formFieldOptionGroup!);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
