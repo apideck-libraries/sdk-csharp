@@ -86,6 +86,7 @@ var sdk = new Apideck(
 );
 
 FileStorageDrivesAddRequest req = new FileStorageDrivesAddRequest() {
+    ServiceId = "salesforce",
     Drive = new DriveInput() {
         Name = "Project Resources",
         Description = "A description",
@@ -105,7 +106,6 @@ FileStorageDrivesAddRequest req = new FileStorageDrivesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.FileStorage.Drives.CreateAsync(req);
@@ -203,6 +203,7 @@ var sdk = new Apideck(
 
 FileStorageDrivesUpdateRequest req = new FileStorageDrivesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Drive = new DriveInput() {
         Name = "Project Resources",
         Description = "A description",
@@ -222,7 +223,6 @@ FileStorageDrivesUpdateRequest req = new FileStorageDrivesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.FileStorage.Drives.UpdateAsync(req);

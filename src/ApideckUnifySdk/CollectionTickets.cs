@@ -77,10 +77,10 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.7.2";
-        private const string _sdkGenVersion = "2.559.0";
-        private const string _openapiDocVersion = "10.12.4";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.7.2 2.559.0 10.12.4 ApideckUnifySdk";
+        private const string _sdkVersion = "0.8.0";
+        private const string _sdkGenVersion = "2.566.5";
+        private const string _openapiDocVersion = "10.14.1";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.0 2.566.5 10.14.1 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
@@ -114,7 +114,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketsAll", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketsAll", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -199,13 +199,13 @@ namespace ApideckUnifySdk
 
                 var newRequest = new IssueTrackingCollectionTicketsAllRequest
                 {
-                    CollectionId = request.CollectionId,
                     Raw = request.Raw,
                     ConsumerId = request.ConsumerId,
                     AppId = request.AppId,
                     ServiceId = request.ServiceId,
                     Cursor = nextCursor,
                     Limit = request.Limit,
+                    CollectionId = request.CollectionId,
                     Sort = request.Sort,
                     Filter = request.Filter,
                     PassThrough = request.PassThrough,
@@ -347,7 +347,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketsAdd", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketsAdd", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -535,7 +535,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketsOne", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketsOne", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -729,7 +729,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketsUpdate", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketsUpdate", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -917,7 +917,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketsDelete", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketsDelete", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)

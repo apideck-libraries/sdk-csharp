@@ -16,21 +16,6 @@ namespace ApideckUnifySdk.Models.Requests
     {
 
         /// <summary>
-        /// The collection ID
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=collection_id")]
-        public string CollectionId { get; set; } = default!;
-
-        /// <summary>
-        /// ID of the ticket you are acting upon.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=ticket_id")]
-        public string TicketId { get; set; } = default!;
-
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public CollectionTicketCommentInput CollectionTicketComment { get; set; } = default!;
-
-        /// <summary>
         /// Include raw response. Mostly used for debugging purposes
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
@@ -53,5 +38,20 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-service-id")]
         public string? ServiceId { get; set; }
+
+        /// <summary>
+        /// The collection ID
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=collection_id")]
+        public string CollectionId { get; set; } = default!;
+
+        /// <summary>
+        /// ID of the ticket you are acting upon.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=ticket_id")]
+        public string TicketId { get; set; } = default!;
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public CollectionTicketCommentInput CollectionTicketComment { get; set; } = default!;
     }
 }

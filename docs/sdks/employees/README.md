@@ -102,6 +102,7 @@ var sdk = new Apideck(
 );
 
 HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
+    ServiceId = "salesforce",
     Employee = new EmployeeInput() {
         Id = "12345",
         FirstName = "Elon",
@@ -327,7 +328,6 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Hris.Employees.CreateAsync(req);
@@ -433,6 +433,7 @@ var sdk = new Apideck(
 
 HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Employee = new EmployeeInput() {
         Id = "12345",
         FirstName = "Elon",
@@ -660,7 +661,6 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Hris.Employees.UpdateAsync(req);

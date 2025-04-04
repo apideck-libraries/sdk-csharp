@@ -15,9 +15,6 @@ namespace ApideckUnifySdk.Models.Requests
     public class FileStorageFoldersAddRequest
     {
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public CreateFolderRequest CreateFolderRequest { get; set; } = default!;
-
         /// <summary>
         /// Include raw response. Mostly used for debugging purposes
         /// </summary>
@@ -47,5 +44,8 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")]
         public string? Fields { get; set; } = null;
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public CreateFolderRequest CreateFolderRequest { get; set; } = default!;
     }
 }

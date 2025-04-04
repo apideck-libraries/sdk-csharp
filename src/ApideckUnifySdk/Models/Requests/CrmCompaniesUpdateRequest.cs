@@ -21,9 +21,6 @@ namespace ApideckUnifySdk.Models.Requests
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")]
         public string Id { get; set; } = default!;
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public CompanyInput Company { get; set; } = default!;
-
         /// <summary>
         /// Include raw response. Mostly used for debugging purposes
         /// </summary>
@@ -47,5 +44,8 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-service-id")]
         public string? ServiceId { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public CompanyInput Company { get; set; } = default!;
     }
 }

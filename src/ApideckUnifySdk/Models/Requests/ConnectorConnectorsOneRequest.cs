@@ -15,15 +15,15 @@ namespace ApideckUnifySdk.Models.Requests
     {
 
         /// <summary>
-        /// ID of the record you are acting upon.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")]
-        public string Id { get; set; } = default!;
-
-        /// <summary>
         /// The ID of your Unify application
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
+
+        /// <summary>
+        /// ID of the record you are acting upon.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")]
+        public string Id { get; set; } = default!;
     }
 }

@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
+    ServiceId = "salesforce",
     BillPayment = new BillPaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
@@ -187,7 +188,6 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.BillPayments.CreateAsync(req);
@@ -286,6 +286,7 @@ var sdk = new Apideck(
 
 AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     BillPayment = new BillPaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
@@ -380,7 +381,6 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.BillPayments.UpdateAsync(req);

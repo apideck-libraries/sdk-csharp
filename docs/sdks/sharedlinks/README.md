@@ -87,6 +87,7 @@ var sdk = new Apideck(
 );
 
 FileStorageSharedLinksAddRequest req = new FileStorageSharedLinksAddRequest() {
+    ServiceId = "salesforce",
     SharedLink = new SharedLinkInput() {
         DownloadUrl = "https://www.box.com/shared/static/rh935iit6ewrmw0unyul.jpeg",
         TargetId = "<id>",
@@ -107,7 +108,6 @@ FileStorageSharedLinksAddRequest req = new FileStorageSharedLinksAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.FileStorage.SharedLinks.CreateAsync(req);
@@ -205,6 +205,7 @@ var sdk = new Apideck(
 
 FileStorageSharedLinksUpdateRequest req = new FileStorageSharedLinksUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     SharedLink = new SharedLinkInput() {
         DownloadUrl = "https://www.box.com/shared/static/rh935iit6ewrmw0unyul.jpeg",
         TargetId = "<id>",
@@ -225,7 +226,6 @@ FileStorageSharedLinksUpdateRequest req = new FileStorageSharedLinksUpdateReques
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.FileStorage.SharedLinks.UpdateAsync(req);

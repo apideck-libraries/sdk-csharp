@@ -86,6 +86,7 @@ var sdk = new Apideck(
 );
 
 AccountingDepartmentsAddRequest req = new AccountingDepartmentsAddRequest() {
+    ServiceId = "salesforce",
     AccountingDepartment = new AccountingDepartmentInput() {
         ParentId = "12345",
         Name = "Sales",
@@ -112,7 +113,6 @@ AccountingDepartmentsAddRequest req = new AccountingDepartmentsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Departments.CreateAsync(req);
@@ -210,6 +210,7 @@ var sdk = new Apideck(
 
 AccountingDepartmentsUpdateRequest req = new AccountingDepartmentsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     AccountingDepartment = new AccountingDepartmentInput() {
         ParentId = "12345",
         Name = "Sales",
@@ -236,7 +237,6 @@ AccountingDepartmentsUpdateRequest req = new AccountingDepartmentsUpdateRequest(
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Departments.UpdateAsync(req);

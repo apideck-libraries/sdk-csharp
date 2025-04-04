@@ -91,13 +91,13 @@ namespace ApideckUnifySdk.Models.Components
         public double? DiscountAmount { get; set; } = null;
 
         /// <summary>
-        /// Location id
+        /// The ID of the location
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// Department id
+        /// The ID of the department
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;

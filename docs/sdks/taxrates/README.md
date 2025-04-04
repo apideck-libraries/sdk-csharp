@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 AccountingTaxRatesAddRequest req = new AccountingTaxRatesAddRequest() {
+    ServiceId = "salesforce",
     TaxRate = new TaxRateInput() {
         Id = "1234",
         Name = "GST on Purchases",
@@ -143,7 +144,6 @@ AccountingTaxRatesAddRequest req = new AccountingTaxRatesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.TaxRates.CreateAsync(req);
@@ -242,6 +242,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesUpdateRequest req = new AccountingTaxRatesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     TaxRate = new TaxRateInput() {
         Id = "1234",
         Name = "GST on Purchases",
@@ -292,7 +293,6 @@ AccountingTaxRatesUpdateRequest req = new AccountingTaxRatesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.TaxRates.UpdateAsync(req);

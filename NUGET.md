@@ -396,7 +396,7 @@ The server URL can also be overridden on a per-operation basis, provided a serve
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
-using System.Collections.Generic;
+using System;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -404,32 +404,14 @@ var sdk = new Apideck(
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
 
-FileStorageUploadSessionsAddRequest req = new FileStorageUploadSessionsAddRequest() {
-    CreateUploadSessionRequest = new CreateUploadSessionRequest() {
-        Name = "Documents",
-        ParentFolderId = "1234",
-        DriveId = "1234",
-        Size = 1810673,
-        PassThrough = new List<PassThroughBody>() {
-            new PassThroughBody() {
-                ServiceId = "<id>",
-                ExtendPaths = new List<ExtendPaths>() {
-                    new ExtendPaths() {
-                        Path = "$.nested.property",
-                        Value = new Dictionary<string, object>() {
-                            { "TaxClassificationRef", new Dictionary<string, object>() {
-                                { "value", "EUC-99990201-V1-00020000" },
-                            } },
-                        },
-                    },
-                },
-            },
-        },
-    },
+AccountingAttachmentsUploadRequest req = new AccountingAttachmentsUploadRequest() {
+    ReferenceType = AttachmentReferenceType.Invoice,
+    ReferenceId = "12345",
     ServiceId = "salesforce",
+    RequestBody = System.Text.Encoding.UTF8.GetBytes("0x8cc9e675ad"),
 };
 
-var res = await sdk.FileStorage.UploadSessions.CreateAsync(
+var res = await sdk.Accounting.Attachments.UploadAsync(
     request: req,
     serverUrl: "https://upload.apideck.com"
 );

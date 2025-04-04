@@ -83,6 +83,7 @@ var sdk = new Apideck(
 );
 
 AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
+    ServiceId = "salesforce",
     Expense = new ExpenseInput() {
         Number = "OIT00546",
         TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
@@ -113,6 +114,7 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
                 CustomerId = "12345",
                 DepartmentId = "12345",
                 LocationId = "12345",
+                SubsidiaryId = "12345",
                 TaxRate = new LinkedTaxRateInput() {
                     Id = "123456",
                     Rate = 10D,
@@ -149,7 +151,6 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Expenses.CreateAsync(req);
@@ -247,6 +248,7 @@ var sdk = new Apideck(
 
 AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Expense = new ExpenseInput() {
         Number = "OIT00546",
         TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
@@ -277,6 +279,7 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
                 CustomerId = "12345",
                 DepartmentId = "12345",
                 LocationId = "12345",
+                SubsidiaryId = "12345",
                 TaxRate = new LinkedTaxRateInput() {
                     Id = "123456",
                     Rate = 10D,
@@ -315,7 +318,6 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Expenses.UpdateAsync(req);

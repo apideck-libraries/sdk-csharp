@@ -21,9 +21,6 @@ namespace ApideckUnifySdk.Models.Requests
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")]
         public string Id { get; set; } = default!;
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public ExpenseInput Expense { get; set; } = default!;
-
         /// <summary>
         /// ID of the consumer which you want to get or push data from
         /// </summary>
@@ -47,5 +44,8 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
         public bool? Raw { get; set; } = false;
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public ExpenseInput Expense { get; set; } = default!;
     }
 }

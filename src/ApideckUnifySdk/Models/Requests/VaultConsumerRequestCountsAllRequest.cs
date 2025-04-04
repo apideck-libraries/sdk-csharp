@@ -15,6 +15,12 @@ namespace ApideckUnifySdk.Models.Requests
     {
 
         /// <summary>
+        /// The ID of your Unify application
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
         /// ID of the consumer to return
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=consumer_id")]
@@ -31,11 +37,5 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=end_datetime")]
         public string EndDatetime { get; set; } = default!;
-
-        /// <summary>
-        /// The ID of your Unify application
-        /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
-        public string? AppId { get; set; }
     }
 }

@@ -97,9 +97,6 @@ var sdk = new Apideck(
 );
 
 FileStorageFilesSearchRequest req = new FileStorageFilesSearchRequest() {
-    FilesSearch = new FilesSearch() {
-        Query = "logo jpg",
-    },
     ServiceId = "salesforce",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -109,6 +106,9 @@ FileStorageFilesSearchRequest req = new FileStorageFilesSearchRequest() {
         DriveId = "1234",
         FolderId = "root",
         Shared = true,
+    },
+    FilesSearch = new FilesSearch() {
+        Query = "logo jpg",
     },
 };
 
@@ -207,6 +207,7 @@ var sdk = new Apideck(
 
 FileStorageFilesUpdateRequest req = new FileStorageFilesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     UpdateFileRequest = new UpdateFileRequest() {
         Name = "New Name.pdf",
         Description = "Renamed PDF Document",
@@ -227,7 +228,6 @@ FileStorageFilesUpdateRequest req = new FileStorageFilesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.FileStorage.Files.UpdateAsync(req);
@@ -372,9 +372,9 @@ var sdk = new Apideck(
 
 FileStorageFilesExportRequest req = new FileStorageFilesExportRequest() {
     Id = "<id>",
-    Format = "pdf",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
+    Format = "pdf",
 };
 
 var res = await sdk.FileStorage.Files.ExportAsync(req);

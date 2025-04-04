@@ -87,6 +87,7 @@ var sdk = new Apideck(
 );
 
 CrmUsersAddRequest req = new CrmUsersAddRequest() {
+    ServiceId = "salesforce",
     User = new UserInput() {
         ParentId = "54321",
         Username = "masterofcoin",
@@ -162,7 +163,6 @@ CrmUsersAddRequest req = new CrmUsersAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Users.CreateAsync(req);
@@ -260,6 +260,7 @@ var sdk = new Apideck(
 
 CrmUsersUpdateRequest req = new CrmUsersUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     User = new UserInput() {
         ParentId = "54321",
         Username = "masterofcoin",
@@ -335,7 +336,6 @@ CrmUsersUpdateRequest req = new CrmUsersUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Users.UpdateAsync(req);

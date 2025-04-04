@@ -30,8 +30,8 @@ var sdk = new Apideck(
 );
 
 IssueTrackingCollectionTicketsAllRequest req = new IssueTrackingCollectionTicketsAllRequest() {
-    CollectionId = "apideck-io",
     ServiceId = "salesforce",
+    CollectionId = "apideck-io",
     Sort = new TicketsSort() {
         By = TicketsSortBy.CreatedAt,
     },
@@ -97,6 +97,7 @@ var sdk = new Apideck(
 );
 
 IssueTrackingCollectionTicketsAddRequest req = new IssueTrackingCollectionTicketsAddRequest() {
+    ServiceId = "salesforce",
     CollectionId = "apideck-io",
     Ticket = new TicketInput() {
         ParentId = "12345",
@@ -132,7 +133,6 @@ IssueTrackingCollectionTicketsAddRequest req = new IssueTrackingCollectionTicket
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.IssueTracking.CollectionTickets.CreateAsync(req);
@@ -180,8 +180,8 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionTicketsOneRequest req = new IssueTrackingCollectionTicketsOneRequest() {
     TicketId = "<id>",
-    CollectionId = "apideck-io",
     ServiceId = "salesforce",
+    CollectionId = "apideck-io",
     Fields = "id,updated_at",
 };
 
@@ -232,6 +232,7 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionTicketsUpdateRequest req = new IssueTrackingCollectionTicketsUpdateRequest() {
     TicketId = "<id>",
+    ServiceId = "salesforce",
     CollectionId = "apideck-io",
     Ticket = new TicketInput() {
         ParentId = "12345",
@@ -267,7 +268,6 @@ IssueTrackingCollectionTicketsUpdateRequest req = new IssueTrackingCollectionTic
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.IssueTracking.CollectionTickets.UpdateAsync(req);
@@ -315,8 +315,8 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionTicketsDeleteRequest req = new IssueTrackingCollectionTicketsDeleteRequest() {
     TicketId = "<id>",
-    CollectionId = "apideck-io",
     ServiceId = "salesforce",
+    CollectionId = "apideck-io",
 };
 
 var res = await sdk.IssueTracking.CollectionTickets.DeleteAsync(req);

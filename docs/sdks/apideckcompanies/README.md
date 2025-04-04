@@ -87,6 +87,7 @@ var sdk = new Apideck(
 );
 
 HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
+    ServiceId = "salesforce",
     HrisCompany = new HrisCompanyInput() {
         LegalName = "SpaceX",
         DisplayName = "SpaceX",
@@ -163,7 +164,6 @@ HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Hris.Companies.CreateAsync(req);
@@ -261,6 +261,7 @@ var sdk = new Apideck(
 
 HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     HrisCompany = new HrisCompanyInput() {
         LegalName = "SpaceX",
         DisplayName = "SpaceX",
@@ -337,7 +338,6 @@ HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Hris.Companies.UpdateAsync(req);

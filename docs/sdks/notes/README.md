@@ -87,6 +87,7 @@ var sdk = new Apideck(
 );
 
 CrmNotesAddRequest req = new CrmNotesAddRequest() {
+    ServiceId = "salesforce",
     Note = new NoteInput() {
         Title = "Meeting Notes",
         Content = "Office hours are 9AM-6PM",
@@ -112,7 +113,6 @@ CrmNotesAddRequest req = new CrmNotesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Notes.CreateAsync(req);
@@ -210,6 +210,7 @@ var sdk = new Apideck(
 
 CrmNotesUpdateRequest req = new CrmNotesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Note = new NoteInput() {
         Title = "Meeting Notes",
         Content = "Office hours are 9AM-6PM",
@@ -235,7 +236,6 @@ CrmNotesUpdateRequest req = new CrmNotesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Notes.UpdateAsync(req);

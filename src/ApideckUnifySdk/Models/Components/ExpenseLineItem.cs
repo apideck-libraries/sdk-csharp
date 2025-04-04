@@ -42,16 +42,22 @@ namespace ApideckUnifySdk.Models.Components
         public string? CustomerId { get; set; }
 
         /// <summary>
-        /// The ID of the department this expense item is linked to.
+        /// The ID of the department
         /// </summary>
         [JsonProperty("department_id")]
-        public string? DepartmentId { get; set; }
+        public string? DepartmentId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location this expense item is linked to.
+        /// The ID of the location
         /// </summary>
         [JsonProperty("location_id")]
-        public string? LocationId { get; set; }
+        public string? LocationId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the subsidiary
+        /// </summary>
+        [JsonProperty("subsidiary_id")]
+        public string? SubsidiaryId { get; set; } = null;
 
         [JsonProperty("tax_rate")]
         public LinkedTaxRate? TaxRate { get; set; }

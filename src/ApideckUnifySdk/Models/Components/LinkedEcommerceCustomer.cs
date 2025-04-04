@@ -23,8 +23,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The ID of the customer this entity is linked to.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Include)]
-        public string? Id { get; set; }
+        [JsonProperty("id")]
+        public string? Id { get; set; } = null;
 
         /// <summary>
         /// Full name of the customer
@@ -51,9 +51,9 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyName { get; set; } = null;
 
         [JsonProperty("phone_numbers")]
-        public List<PhoneNumber>? PhoneNumbers { get; set; }
+        public List<PhoneNumber>? PhoneNumbers { get; set; } = null;
 
         [JsonProperty("emails")]
-        public List<Email>? Emails { get; set; }
+        public List<Email>? Emails { get; set; } = null;
     }
 }

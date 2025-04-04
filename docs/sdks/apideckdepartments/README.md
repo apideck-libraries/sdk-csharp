@@ -87,6 +87,7 @@ var sdk = new Apideck(
 );
 
 HrisDepartmentsAddRequest req = new HrisDepartmentsAddRequest() {
+    ServiceId = "salesforce",
     Department = new DepartmentInput() {
         Name = "R&D",
         Code = "2",
@@ -107,7 +108,6 @@ HrisDepartmentsAddRequest req = new HrisDepartmentsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Hris.Departments.CreateAsync(req);
@@ -205,6 +205,7 @@ var sdk = new Apideck(
 
 HrisDepartmentsUpdateRequest req = new HrisDepartmentsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Department = new DepartmentInput() {
         Name = "R&D",
         Code = "2",
@@ -225,7 +226,6 @@ HrisDepartmentsUpdateRequest req = new HrisDepartmentsUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Hris.Departments.UpdateAsync(req);

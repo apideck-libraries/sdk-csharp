@@ -30,9 +30,9 @@ var sdk = new Apideck(
 );
 
 IssueTrackingCollectionTicketCommentsAllRequest req = new IssueTrackingCollectionTicketCommentsAllRequest() {
+    ServiceId = "salesforce",
     CollectionId = "apideck-io",
     TicketId = "<id>",
-    ServiceId = "salesforce",
     Sort = new CommentsSort() {
         By = CommentsSortBy.CreatedAt,
     },
@@ -92,6 +92,7 @@ var sdk = new Apideck(
 );
 
 IssueTrackingCollectionTicketCommentsAddRequest req = new IssueTrackingCollectionTicketCommentsAddRequest() {
+    ServiceId = "salesforce",
     CollectionId = "apideck-io",
     TicketId = "<id>",
     CollectionTicketComment = new CollectionTicketCommentInput() {
@@ -112,7 +113,6 @@ IssueTrackingCollectionTicketCommentsAddRequest req = new IssueTrackingCollectio
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.IssueTracking.CollectionTicketComments.CreateAsync(req);
@@ -160,9 +160,9 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionTicketCommentsOneRequest req = new IssueTrackingCollectionTicketCommentsOneRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     CollectionId = "apideck-io",
     TicketId = "<id>",
-    ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
 
@@ -217,6 +217,7 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionTicketCommentsUpdateRequest req = new IssueTrackingCollectionTicketCommentsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     CollectionId = "apideck-io",
     TicketId = "<id>",
     CollectionTicketComment = new CollectionTicketCommentInput() {
@@ -237,7 +238,6 @@ IssueTrackingCollectionTicketCommentsUpdateRequest req = new IssueTrackingCollec
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.IssueTracking.CollectionTicketComments.UpdateAsync(req);
@@ -285,9 +285,9 @@ var sdk = new Apideck(
 
 IssueTrackingCollectionTicketCommentsDeleteRequest req = new IssueTrackingCollectionTicketCommentsDeleteRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     CollectionId = "apideck-io",
     TicketId = "<id>",
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.IssueTracking.CollectionTicketComments.DeleteAsync(req);

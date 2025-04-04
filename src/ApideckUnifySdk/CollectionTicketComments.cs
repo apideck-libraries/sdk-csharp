@@ -77,10 +77,10 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.7.2";
-        private const string _sdkGenVersion = "2.559.0";
-        private const string _openapiDocVersion = "10.12.4";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.7.2 2.559.0 10.12.4 ApideckUnifySdk";
+        private const string _sdkVersion = "0.8.0";
+        private const string _sdkGenVersion = "2.566.5";
+        private const string _openapiDocVersion = "10.14.1";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.0 2.566.5 10.14.1 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
@@ -114,7 +114,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketCommentsAll", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketCommentsAll", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -199,14 +199,14 @@ namespace ApideckUnifySdk
 
                 var newRequest = new IssueTrackingCollectionTicketCommentsAllRequest
                 {
-                    CollectionId = request.CollectionId,
-                    TicketId = request.TicketId,
                     Raw = request.Raw,
                     ConsumerId = request.ConsumerId,
                     AppId = request.AppId,
                     ServiceId = request.ServiceId,
                     Cursor = nextCursor,
                     Limit = request.Limit,
+                    CollectionId = request.CollectionId,
+                    TicketId = request.TicketId,
                     Sort = request.Sort,
                     PassThrough = request.PassThrough,
                     Fields = request.Fields
@@ -347,7 +347,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketCommentsAdd", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketCommentsAdd", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -535,7 +535,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketCommentsOne", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketCommentsOne", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -621,14 +621,14 @@ namespace ApideckUnifySdk
                 var newRequest = new IssueTrackingCollectionTicketCommentsOneRequest
                 {
                     Id = request.Id,
-                    CollectionId = request.CollectionId,
-                    TicketId = request.TicketId,
                     Raw = request.Raw,
                     ConsumerId = request.ConsumerId,
                     AppId = request.AppId,
                     ServiceId = request.ServiceId,
                     Cursor = nextCursor,
                     Limit = request.Limit,
+                    CollectionId = request.CollectionId,
+                    TicketId = request.TicketId,
                     Fields = request.Fields
                 };
 
@@ -767,7 +767,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketCommentsUpdate", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketCommentsUpdate", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -955,7 +955,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("issueTracking.collectionTicketCommentsDelete", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "issueTracking.collectionTicketCommentsDelete", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)

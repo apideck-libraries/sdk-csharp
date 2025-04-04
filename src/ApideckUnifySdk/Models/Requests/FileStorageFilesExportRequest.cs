@@ -21,12 +21,6 @@ namespace ApideckUnifySdk.Models.Requests
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// File format to export this file to. A list of available file formats for the current file is available as `export_formats` on the File resource.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=format")]
-        public string Format { get; set; } = default!;
-
-        /// <summary>
         /// ID of the consumer which you want to get or push data from
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
@@ -49,5 +43,11 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")]
         public string? Fields { get; set; } = null;
+
+        /// <summary>
+        /// File format to export this file to. A list of available file formats for the current file is available as `export_formats` on the File resource.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=format")]
+        public string Format { get; set; } = default!;
     }
 }

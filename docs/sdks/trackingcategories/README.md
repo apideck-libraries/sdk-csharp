@@ -87,6 +87,7 @@ var sdk = new Apideck(
 );
 
 AccountingTrackingCategoriesAddRequest req = new AccountingTrackingCategoriesAddRequest() {
+    ServiceId = "salesforce",
     TrackingCategory = new TrackingCategoryInput() {
         ParentId = "12345",
         Name = "Department",
@@ -109,7 +110,6 @@ AccountingTrackingCategoriesAddRequest req = new AccountingTrackingCategoriesAdd
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.TrackingCategories.CreateAsync(req);
@@ -207,6 +207,7 @@ var sdk = new Apideck(
 
 AccountingTrackingCategoriesUpdateRequest req = new AccountingTrackingCategoriesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     TrackingCategory = new TrackingCategoryInput() {
         ParentId = "12345",
         Name = "Department",
@@ -229,7 +230,6 @@ AccountingTrackingCategoriesUpdateRequest req = new AccountingTrackingCategories
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.TrackingCategories.UpdateAsync(req);

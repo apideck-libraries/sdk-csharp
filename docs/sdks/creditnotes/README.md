@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
+    ServiceId = "salesforce",
     CreditNote = new CreditNoteInput() {
         Number = "OIT00546",
         Customer = new LinkedCustomerInput() {
@@ -137,8 +138,8 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
                 UnitOfMeasure = "pc.",
                 DiscountPercentage = 0.01D,
                 DiscountAmount = 19.99D,
-                LocationId = "1234",
-                DepartmentId = "1234",
+                LocationId = "12345",
+                DepartmentId = "12345",
                 Item = new LinkedInvoiceItem() {
                     Id = "12344",
                     Code = "120-C",
@@ -266,7 +267,6 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.CreditNotes.CreateAsync(req);
@@ -365,6 +365,7 @@ var sdk = new Apideck(
 
 AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     CreditNote = new CreditNoteInput() {
         Number = "OIT00546",
         Customer = new LinkedCustomerInput() {
@@ -407,8 +408,8 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
                 UnitOfMeasure = "pc.",
                 DiscountPercentage = 0.01D,
                 DiscountAmount = 19.99D,
-                LocationId = "1234",
-                DepartmentId = "1234",
+                LocationId = "12345",
+                DepartmentId = "12345",
                 Item = new LinkedInvoiceItem() {
                     Id = "12344",
                     Code = "120-C",
@@ -538,7 +539,6 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.CreditNotes.UpdateAsync(req);

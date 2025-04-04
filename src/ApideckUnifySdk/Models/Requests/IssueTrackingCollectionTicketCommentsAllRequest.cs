@@ -17,18 +17,6 @@ namespace ApideckUnifySdk.Models.Requests
     {
 
         /// <summary>
-        /// The collection ID
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=collection_id")]
-        public string CollectionId { get; set; } = default!;
-
-        /// <summary>
-        /// ID of the ticket you are acting upon.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=ticket_id")]
-        public string TicketId { get; set; } = default!;
-
-        /// <summary>
         /// Include raw response. Mostly used for debugging purposes
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
@@ -63,6 +51,18 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
+
+        /// <summary>
+        /// The collection ID
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=collection_id")]
+        public string CollectionId { get; set; } = default!;
+
+        /// <summary>
+        /// ID of the ticket you are acting upon.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=ticket_id")]
+        public string TicketId { get; set; } = default!;
 
         /// <summary>
         /// Apply sorting

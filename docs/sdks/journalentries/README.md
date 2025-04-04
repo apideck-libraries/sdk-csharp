@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest() {
+    ServiceId = "salesforce",
     JournalEntry = new JournalEntryInput() {
         Title = "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry",
         CurrencyRate = 0.69D,
@@ -157,6 +158,8 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
                         RowVersion = "1-12345",
                     },
                 },
+                DepartmentId = "12345",
+                LocationId = "12345",
                 LineNumber = 1,
             },
         },
@@ -200,7 +203,6 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.JournalEntries.CreateAsync(req);
@@ -299,6 +301,7 @@ var sdk = new Apideck(
 
 AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     JournalEntry = new JournalEntryInput() {
         Title = "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry",
         CurrencyRate = 0.69D,
@@ -361,6 +364,8 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
                         RowVersion = "1-12345",
                     },
                 },
+                DepartmentId = "12345",
+                LocationId = "12345",
                 LineNumber = 1,
             },
         },
@@ -406,7 +411,6 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.JournalEntries.UpdateAsync(req);

@@ -77,10 +77,10 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.7.2";
-        private const string _sdkGenVersion = "2.559.0";
-        private const string _openapiDocVersion = "10.12.4";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.7.2 2.559.0 10.12.4 ApideckUnifySdk";
+        private const string _sdkVersion = "0.8.0";
+        private const string _sdkGenVersion = "2.566.5";
+        private const string _openapiDocVersion = "10.14.1";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.0 2.566.5 10.14.1 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
@@ -110,7 +110,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("accounting.expensesAll", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "accounting.expensesAll", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -338,7 +338,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("accounting.expensesAdd", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "accounting.expensesAdd", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -526,7 +526,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("accounting.expensesOne", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "accounting.expensesOne", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -720,7 +720,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("accounting.expensesUpdate", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "accounting.expensesUpdate", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -908,7 +908,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("accounting.expensesDelete", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "accounting.expensesDelete", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)

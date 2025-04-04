@@ -22,15 +22,6 @@ namespace ApideckUnifySdk.Models.Requests
         public string TicketId { get; set; } = default!;
 
         /// <summary>
-        /// The collection ID
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=collection_id")]
-        public string CollectionId { get; set; } = default!;
-
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public TicketInput Ticket { get; set; } = default!;
-
-        /// <summary>
         /// ID of the consumer which you want to get or push data from
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
@@ -53,5 +44,14 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
         public bool? Raw { get; set; } = false;
+
+        /// <summary>
+        /// The collection ID
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=collection_id")]
+        public string CollectionId { get; set; } = default!;
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public TicketInput Ticket { get; set; } = default!;
     }
 }

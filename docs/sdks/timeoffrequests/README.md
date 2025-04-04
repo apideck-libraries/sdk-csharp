@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 HrisTimeOffRequestsAddRequest req = new HrisTimeOffRequestsAddRequest() {
+    ServiceId = "salesforce",
     TimeOffRequest = new TimeOffRequestInput() {
         EmployeeId = "12345",
         PolicyId = "12345",
@@ -129,7 +130,6 @@ HrisTimeOffRequestsAddRequest req = new HrisTimeOffRequestsAddRequest() {
         },
         PolicyType = "sick",
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Hris.TimeOffRequests.CreateAsync(req);
@@ -177,9 +177,9 @@ var sdk = new Apideck(
 
 HrisTimeOffRequestsOneRequest req = new HrisTimeOffRequestsOneRequest() {
     Id = "<id>",
-    EmployeeId = "<id>",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
+    EmployeeId = "<id>",
 };
 
 var res = await sdk.Hris.TimeOffRequests.GetAsync(req);
@@ -228,6 +228,7 @@ var sdk = new Apideck(
 
 HrisTimeOffRequestsUpdateRequest req = new HrisTimeOffRequestsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     EmployeeId = "<id>",
     TimeOffRequest = new TimeOffRequestInput() {
         EmployeeId = "12345",
@@ -263,7 +264,6 @@ HrisTimeOffRequestsUpdateRequest req = new HrisTimeOffRequestsUpdateRequest() {
         },
         PolicyType = "sick",
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Hris.TimeOffRequests.UpdateAsync(req);
@@ -311,8 +311,8 @@ var sdk = new Apideck(
 
 HrisTimeOffRequestsDeleteRequest req = new HrisTimeOffRequestsDeleteRequest() {
     Id = "<id>",
-    EmployeeId = "<id>",
     ServiceId = "salesforce",
+    EmployeeId = "<id>",
 };
 
 var res = await sdk.Hris.TimeOffRequests.DeleteAsync(req);

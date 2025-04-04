@@ -83,16 +83,16 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplier? Supplier { get; set; } = null;
 
         /// <summary>
-        /// A unique identifier for an object.
+        /// The ID of the department
         /// </summary>
         [JsonProperty("department_id")]
-        public string? DepartmentId { get; set; }
+        public string? DepartmentId { get; set; } = null;
 
         /// <summary>
-        /// A unique identifier for an object.
+        /// The ID of the location
         /// </summary>
         [JsonProperty("location_id")]
-        public string? LocationId { get; set; }
+        public string? LocationId { get; set; } = null;
 
         /// <summary>
         /// Line number of the resource

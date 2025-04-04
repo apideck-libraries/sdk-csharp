@@ -91,6 +91,7 @@ var sdk = new Apideck(
 );
 
 AtsApplicantsAddRequest req = new AtsApplicantsAddRequest() {
+    ServiceId = "salesforce",
     Applicant = new ApplicantInput() {
         Name = "Elon Musk",
         FirstName = "Elon",
@@ -214,7 +215,6 @@ AtsApplicantsAddRequest req = new AtsApplicantsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Ats.Applicants.CreateAsync(req);
@@ -313,6 +313,7 @@ var sdk = new Apideck(
 
 AtsApplicantsUpdateRequest req = new AtsApplicantsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Applicant = new ApplicantInput() {
         Name = "Elon Musk",
         FirstName = "Elon",
@@ -438,7 +439,6 @@ AtsApplicantsUpdateRequest req = new AtsApplicantsUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Ats.Applicants.UpdateAsync(req);

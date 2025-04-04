@@ -96,6 +96,7 @@ var sdk = new Apideck(
 );
 
 CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
+    ServiceId = "salesforce",
     Lead = new LeadInput() {
         Name = "Elon Musk",
         CompanyName = "Spacex",
@@ -202,7 +203,6 @@ CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Leads.CreateAsync(req);
@@ -300,6 +300,7 @@ var sdk = new Apideck(
 
 CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Lead = new LeadInput() {
         Name = "Elon Musk",
         CompanyName = "Spacex",
@@ -408,7 +409,6 @@ CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Leads.UpdateAsync(req);

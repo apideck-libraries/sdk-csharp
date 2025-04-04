@@ -77,10 +77,10 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.7.2";
-        private const string _sdkGenVersion = "2.559.0";
-        private const string _openapiDocVersion = "10.12.4";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.7.2 2.559.0 10.12.4 ApideckUnifySdk";
+        private const string _sdkVersion = "0.8.0";
+        private const string _sdkGenVersion = "2.566.5";
+        private const string _openapiDocVersion = "10.14.1";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.8.0 2.566.5 10.14.1 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
@@ -110,7 +110,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("crm.leadsAll", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "crm.leadsAll", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -342,7 +342,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("crm.leadsAdd", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "crm.leadsAdd", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -530,7 +530,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("crm.leadsOne", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "crm.leadsOne", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -724,7 +724,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("crm.leadsUpdate", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "crm.leadsUpdate", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -912,7 +912,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext("crm.leadsDelete", null, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "crm.leadsDelete", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)

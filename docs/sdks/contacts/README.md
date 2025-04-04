@@ -97,6 +97,7 @@ var sdk = new Apideck(
 );
 
 CrmContactsAddRequest req = new CrmContactsAddRequest() {
+    ServiceId = "salesforce",
     Contact = new ContactInput() {
         Name = "Elon Musk",
         OwnerId = "54321",
@@ -213,7 +214,6 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Contacts.CreateAsync(req);
@@ -318,6 +318,7 @@ var sdk = new Apideck(
 
 CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Contact = new ContactInput() {
         Name = "Elon Musk",
         OwnerId = "54321",
@@ -436,7 +437,6 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Contacts.UpdateAsync(req);

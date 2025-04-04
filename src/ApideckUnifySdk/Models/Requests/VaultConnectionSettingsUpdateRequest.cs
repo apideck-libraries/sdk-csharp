@@ -16,6 +16,18 @@ namespace ApideckUnifySdk.Models.Requests
     {
 
         /// <summary>
+        /// ID of the consumer which you want to get or push data from
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
+        public string? ConsumerId { get; set; }
+
+        /// <summary>
+        /// The ID of your Unify application
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
         /// Service ID of the resource to return
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=service_id")]
@@ -38,17 +50,5 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public ConnectionInput Connection { get; set; } = default!;
-
-        /// <summary>
-        /// ID of the consumer which you want to get or push data from
-        /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
-        public string? ConsumerId { get; set; }
-
-        /// <summary>
-        /// The ID of your Unify application
-        /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
-        public string? AppId { get; set; }
     }
 }
