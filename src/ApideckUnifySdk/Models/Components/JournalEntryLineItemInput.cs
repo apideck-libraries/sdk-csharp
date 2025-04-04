@@ -77,6 +77,18 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplierInput? Supplier { get; set; } = null;
 
         /// <summary>
+        /// The ID of the department
+        /// </summary>
+        [JsonProperty("department_id")]
+        public string? DepartmentId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the location
+        /// </summary>
+        [JsonProperty("location_id")]
+        public string? LocationId { get; set; } = null;
+
+        /// <summary>
         /// Line number of the resource
         /// </summary>
         [JsonProperty("line_number")]

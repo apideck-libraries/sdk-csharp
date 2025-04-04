@@ -86,6 +86,7 @@ var sdk = new Apideck(
 );
 
 AtsApplicationsAddRequest req = new AtsApplicationsAddRequest() {
+    ServiceId = "salesforce",
     Application = new ApplicationInput() {
         ApplicantId = "12345",
         JobId = "12345",
@@ -110,7 +111,6 @@ AtsApplicationsAddRequest req = new AtsApplicationsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Ats.Applications.CreateAsync(req);
@@ -207,6 +207,7 @@ var sdk = new Apideck(
 
 AtsApplicationsUpdateRequest req = new AtsApplicationsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Application = new ApplicationInput() {
         ApplicantId = "12345",
         JobId = "12345",
@@ -231,7 +232,6 @@ AtsApplicationsUpdateRequest req = new AtsApplicationsUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Ats.Applications.UpdateAsync(req);

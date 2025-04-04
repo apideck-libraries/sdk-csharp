@@ -15,9 +15,6 @@ namespace ApideckUnifySdk.Models.Requests
     public class HrisCompaniesAddRequest
     {
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public HrisCompanyInput HrisCompany { get; set; } = default!;
-
         /// <summary>
         /// Include raw response. Mostly used for debugging purposes
         /// </summary>
@@ -41,5 +38,8 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-service-id")]
         public string? ServiceId { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public HrisCompanyInput HrisCompany { get; set; } = default!;
     }
 }

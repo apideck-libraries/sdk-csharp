@@ -15,13 +15,13 @@ namespace ApideckUnifySdk.Models.Requests
     public class WebhookWebhooksAddRequest
     {
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public CreateWebhookRequest CreateWebhookRequest { get; set; } = default!;
-
         /// <summary>
         /// The ID of your Unify application
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public CreateWebhookRequest CreateWebhookRequest { get; set; } = default!;
     }
 }

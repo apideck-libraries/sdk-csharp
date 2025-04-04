@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest() {
+    ServiceId = "salesforce",
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
@@ -163,7 +164,6 @@ AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest(
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.LedgerAccounts.CreateAsync(req);
@@ -262,6 +262,7 @@ var sdk = new Apideck(
 
 AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
@@ -332,7 +333,6 @@ AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRe
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.LedgerAccounts.UpdateAsync(req);

@@ -90,6 +90,7 @@ var sdk = new Apideck(
 );
 
 FileStorageDriveGroupsAddRequest req = new FileStorageDriveGroupsAddRequest() {
+    ServiceId = "salesforce",
     DriveGroup = new DriveGroupInput() {
         Name = "accounting",
         DisplayName = "accounting",
@@ -110,7 +111,6 @@ FileStorageDriveGroupsAddRequest req = new FileStorageDriveGroupsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.FileStorage.DriveGroups.CreateAsync(req);
@@ -208,6 +208,7 @@ var sdk = new Apideck(
 
 FileStorageDriveGroupsUpdateRequest req = new FileStorageDriveGroupsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     DriveGroup = new DriveGroupInput() {
         Name = "accounting",
         DisplayName = "accounting",
@@ -228,7 +229,6 @@ FileStorageDriveGroupsUpdateRequest req = new FileStorageDriveGroupsUpdateReques
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.FileStorage.DriveGroups.UpdateAsync(req);

@@ -16,9 +16,6 @@ namespace ApideckUnifySdk.Models.Requests
     public class FileStorageFilesSearchRequest
     {
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public FilesSearch FilesSearch { get; set; } = default!;
-
         /// <summary>
         /// ID of the consumer which you want to get or push data from
         /// </summary>
@@ -72,5 +69,8 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
         public FilesFilter? Filter { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public FilesSearch FilesSearch { get; set; } = default!;
     }
 }

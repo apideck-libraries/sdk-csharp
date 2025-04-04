@@ -86,6 +86,7 @@ var sdk = new Apideck(
 );
 
 AccountingLocationsAddRequest req = new AccountingLocationsAddRequest() {
+    ServiceId = "salesforce",
     AccountingLocation = new AccountingLocationInput() {
         ParentId = "12345",
         CompanyName = "SpaceX",
@@ -141,7 +142,6 @@ AccountingLocationsAddRequest req = new AccountingLocationsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Locations.CreateAsync(req);
@@ -239,6 +239,7 @@ var sdk = new Apideck(
 
 AccountingLocationsUpdateRequest req = new AccountingLocationsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     AccountingLocation = new AccountingLocationInput() {
         ParentId = "12345",
         CompanyName = "SpaceX",
@@ -294,7 +295,6 @@ AccountingLocationsUpdateRequest req = new AccountingLocationsUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Locations.UpdateAsync(req);

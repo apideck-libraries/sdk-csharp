@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
+    ServiceId = "salesforce",
     Bill = new BillInput() {
         BillNumber = "10001",
         Supplier = new LinkedSupplierInput() {
@@ -150,8 +151,8 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
                 UnitOfMeasure = "pc.",
                 DiscountPercentage = 0.01D,
                 DiscountAmount = 19.99D,
-                LocationId = "1234",
-                DepartmentId = "1234",
+                LocationId = "12345",
+                DepartmentId = "12345",
                 Item = new LinkedInvoiceItem() {
                     Id = "12344",
                     Code = "120-C",
@@ -242,7 +243,6 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
         },
         AccountingPeriod = "01-24",
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Bills.CreateAsync(req);
@@ -341,6 +341,7 @@ var sdk = new Apideck(
 
 AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Bill = new BillInput() {
         BillNumber = "10001",
         Supplier = new LinkedSupplierInput() {
@@ -396,8 +397,8 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
                 UnitOfMeasure = "pc.",
                 DiscountPercentage = 0.01D,
                 DiscountAmount = 19.99D,
-                LocationId = "1234",
-                DepartmentId = "1234",
+                LocationId = "12345",
+                DepartmentId = "12345",
                 Item = new LinkedInvoiceItem() {
                     Id = "12344",
                     Code = "120-C",
@@ -490,7 +491,6 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
         },
         AccountingPeriod = "01-24",
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Bills.UpdateAsync(req);

@@ -21,18 +21,6 @@ namespace ApideckUnifySdk.Models.Requests
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The collection ID
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=collection_id")]
-        public string CollectionId { get; set; } = default!;
-
-        /// <summary>
-        /// ID of the ticket you are acting upon.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=ticket_id")]
-        public string TicketId { get; set; } = default!;
-
-        /// <summary>
         /// Include raw response. Mostly used for debugging purposes
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
@@ -67,6 +55,18 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
+
+        /// <summary>
+        /// The collection ID
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=collection_id")]
+        public string CollectionId { get; set; } = default!;
+
+        /// <summary>
+        /// ID of the ticket you are acting upon.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=ticket_id")]
+        public string TicketId { get; set; } = default!;
 
         /// <summary>
         /// The &apos;fields&apos; parameter allows API users to specify the fields they want to include in the API response. If this parameter is not present, the API will return all available fields. If this parameter is present, only the fields specified in the comma-separated string will be included in the response. Nested properties can also be requested by using a dot notation. &lt;br /&gt;&lt;br /&gt;Example: `fields=name,email,addresses.city`&lt;br /&gt;&lt;br /&gt;In the example above, the response will only include the fields &quot;name&quot;, &quot;email&quot; and &quot;addresses.city&quot;. If any other fields are available, they will be excluded.

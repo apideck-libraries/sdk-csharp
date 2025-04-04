@@ -16,18 +16,6 @@ namespace ApideckUnifySdk.Models.Requests
     {
 
         /// <summary>
-        /// Service ID of the resource to return
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=service_id")]
-        public string ServiceId { get; set; } = default!;
-
-        /// <summary>
-        /// Unified API
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=unified_api")]
-        public string UnifiedApi { get; set; } = default!;
-
-        /// <summary>
         /// ID of the consumer which you want to get or push data from
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
@@ -38,6 +26,18 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
+
+        /// <summary>
+        /// Service ID of the resource to return
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=service_id")]
+        public string ServiceId { get; set; } = default!;
+
+        /// <summary>
+        /// Unified API
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=unified_api")]
+        public string UnifiedApi { get; set; } = default!;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public VaultConnectionsTokenRequestBody? RequestBody { get; set; }

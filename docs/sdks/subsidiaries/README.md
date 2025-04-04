@@ -83,6 +83,7 @@ var sdk = new Apideck(
 );
 
 AccountingSubsidiariesAddRequest req = new AccountingSubsidiariesAddRequest() {
+    ServiceId = "salesforce",
     Subsidiary = new SubsidiaryInput() {
         ParentId = "12345",
         Name = "SpaceX",
@@ -104,7 +105,6 @@ AccountingSubsidiariesAddRequest req = new AccountingSubsidiariesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Subsidiaries.CreateAsync(req);
@@ -202,6 +202,7 @@ var sdk = new Apideck(
 
 AccountingSubsidiariesUpdateRequest req = new AccountingSubsidiariesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Subsidiary = new SubsidiaryInput() {
         ParentId = "12345",
         Name = "SpaceX",
@@ -223,7 +224,6 @@ AccountingSubsidiariesUpdateRequest req = new AccountingSubsidiariesUpdateReques
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Subsidiaries.UpdateAsync(req);

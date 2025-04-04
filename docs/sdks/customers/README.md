@@ -101,6 +101,7 @@ var sdk = new Apideck(
 );
 
 AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
+    ServiceId = "salesforce",
     Customer = new CustomerInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -226,7 +227,6 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Customers.CreateAsync(req);
@@ -324,6 +324,7 @@ var sdk = new Apideck(
 
 AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Customer = new CustomerInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -451,7 +452,6 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Customers.UpdateAsync(req);

@@ -21,12 +21,6 @@ namespace ApideckUnifySdk.Models.Requests
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// ID of the employee you are acting upon.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=employee_id")]
-        public string EmployeeId { get; set; } = default!;
-
-        /// <summary>
         /// ID of the consumer which you want to get or push data from
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
@@ -55,5 +49,11 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")]
         public string? Fields { get; set; } = null;
+
+        /// <summary>
+        /// ID of the employee you are acting upon.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=employee_id")]
+        public string EmployeeId { get; set; } = default!;
     }
 }

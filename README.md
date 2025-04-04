@@ -156,6 +156,10 @@ while(res != null)
 ### [Accounting](docs/sdks/accounting/README.md)
 
 
+#### [Accounting.AgedCreditors](docs/sdks/agedcreditors/README.md)
+
+* [Get](docs/sdks/agedcreditors/README.md#get) - Get Aged Creditors
+
 #### [Accounting.AgedDebtors](docs/sdks/ageddebtors/README.md)
 
 * [Get](docs/sdks/ageddebtors/README.md#get) - Get Aged Debtors
@@ -163,6 +167,7 @@ while(res != null)
 #### [Accounting.Attachments](docs/sdks/attachments/README.md)
 
 * [List](docs/sdks/attachments/README.md#list) - List Attachments
+* [Upload](docs/sdks/attachments/README.md#upload) - Upload attachment
 * [Get](docs/sdks/attachments/README.md#get) - Get Attachment
 * [Delete](docs/sdks/attachments/README.md#delete) - Delete Attachment
 * [Download](docs/sdks/attachments/README.md#download) - Download Attachment
@@ -423,6 +428,10 @@ while(res != null)
 #### [Crm.Pipelines](docs/sdks/pipelines/README.md)
 
 * [List](docs/sdks/pipelines/README.md#list) - List pipelines
+* [Create](docs/sdks/pipelines/README.md#create) - Create pipeline
+* [Get](docs/sdks/pipelines/README.md#get) - Get pipeline
+* [Update](docs/sdks/pipelines/README.md#update) - Update pipeline
+* [Delete](docs/sdks/pipelines/README.md#delete) - Delete pipeline
 
 #### [Crm.Users](docs/sdks/users/README.md)
 
@@ -503,6 +512,7 @@ while(res != null)
 
 * [Create](docs/sdks/uploadsessions/README.md#create) - Start Upload Session
 * [Get](docs/sdks/uploadsessions/README.md#get) - Get Upload Session
+* [Upload](docs/sdks/uploadsessions/README.md#upload) - Upload part of File to Upload Session
 * [Delete](docs/sdks/uploadsessions/README.md#delete) - Abort Upload Session
 * [Finish](docs/sdks/uploadsessions/README.md#finish) - Finish Upload Session
 
@@ -972,7 +982,7 @@ The server URL can also be overridden on a per-operation basis, provided a serve
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
-using System.Collections.Generic;
+using System;
 
 var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>",
@@ -980,32 +990,14 @@ var sdk = new Apideck(
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
 );
 
-FileStorageUploadSessionsAddRequest req = new FileStorageUploadSessionsAddRequest() {
-    CreateUploadSessionRequest = new CreateUploadSessionRequest() {
-        Name = "Documents",
-        ParentFolderId = "1234",
-        DriveId = "1234",
-        Size = 1810673,
-        PassThrough = new List<PassThroughBody>() {
-            new PassThroughBody() {
-                ServiceId = "<id>",
-                ExtendPaths = new List<ExtendPaths>() {
-                    new ExtendPaths() {
-                        Path = "$.nested.property",
-                        Value = new Dictionary<string, object>() {
-                            { "TaxClassificationRef", new Dictionary<string, object>() {
-                                { "value", "EUC-99990201-V1-00020000" },
-                            } },
-                        },
-                    },
-                },
-            },
-        },
-    },
+AccountingAttachmentsUploadRequest req = new AccountingAttachmentsUploadRequest() {
+    ReferenceType = AttachmentReferenceType.Invoice,
+    ReferenceId = "12345",
     ServiceId = "salesforce",
+    RequestBody = System.Text.Encoding.UTF8.GetBytes("0x8cc9e675ad"),
 };
 
-var res = await sdk.FileStorage.UploadSessions.CreateAsync(
+var res = await sdk.Accounting.Attachments.UploadAsync(
     request: req,
     serverUrl: "https://upload.apideck.com"
 );

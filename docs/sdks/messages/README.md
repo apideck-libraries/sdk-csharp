@@ -84,6 +84,7 @@ var sdk = new Apideck(
 );
 
 SmsMessagesAddRequest req = new SmsMessagesAddRequest() {
+    ServiceId = "salesforce",
     Message = new MessageInput() {
         From = "+15017122661",
         To = "+15017122662",
@@ -110,7 +111,6 @@ SmsMessagesAddRequest req = new SmsMessagesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Sms.Messages.CreateAsync(req);
@@ -209,6 +209,7 @@ var sdk = new Apideck(
 
 SmsMessagesUpdateRequest req = new SmsMessagesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Message = new MessageInput() {
         From = "+15017122661",
         To = "+15017122662",
@@ -235,7 +236,6 @@ SmsMessagesUpdateRequest req = new SmsMessagesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Sms.Messages.UpdateAsync(req);

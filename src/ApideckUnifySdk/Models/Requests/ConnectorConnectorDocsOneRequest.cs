@@ -15,6 +15,12 @@ namespace ApideckUnifySdk.Models.Requests
     {
 
         /// <summary>
+        /// The ID of your Unify application
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
+        public string? AppId { get; set; }
+
+        /// <summary>
         /// ID of the record you are acting upon.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")]
@@ -25,11 +31,5 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=doc_id")]
         public string DocId { get; set; } = default!;
-
-        /// <summary>
-        /// The ID of your Unify application
-        /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
-        public string? AppId { get; set; }
     }
 }

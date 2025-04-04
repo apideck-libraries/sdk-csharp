@@ -94,6 +94,7 @@ var sdk = new Apideck(
 );
 
 CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
+    ServiceId = "salesforce",
     Company = new CompanyInput() {
         Name = "SpaceX",
         OwnerId = "12345",
@@ -224,7 +225,6 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Companies.CreateAsync(req);
@@ -323,6 +323,7 @@ var sdk = new Apideck(
 
 CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Company = new CompanyInput() {
         Name = "SpaceX",
         OwnerId = "12345",
@@ -455,7 +456,6 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Companies.UpdateAsync(req);

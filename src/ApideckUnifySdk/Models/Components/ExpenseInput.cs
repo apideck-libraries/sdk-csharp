@@ -55,10 +55,10 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department this expense is linked to.
+        /// The ID of the department
         /// </summary>
         [JsonProperty("department_id")]
-        public string? DepartmentId { get; set; }
+        public string? DepartmentId { get; set; } = null;
 
         /// <summary>
         /// The type of payment for the expense.

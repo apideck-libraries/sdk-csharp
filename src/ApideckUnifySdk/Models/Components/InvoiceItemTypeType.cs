@@ -20,8 +20,12 @@ namespace ApideckUnifySdk.Models.Components
     {
         [JsonProperty("inventory")]
         Inventory,
+        [JsonProperty("non_inventory")]
+        NonInventory,
         [JsonProperty("service")]
         Service,
+        [JsonProperty("description")]
+        Description,
         [JsonProperty("other")]
         Other,
     }

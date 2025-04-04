@@ -21,13 +21,13 @@ namespace ApideckUnifySdk.Models.Requests
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")]
         public string Id { get; set; } = default!;
 
-        [SpeakeasyMetadata("request:mediaType=application/json")]
-        public UpdateWebhookRequest UpdateWebhookRequest { get; set; } = default!;
-
         /// <summary>
         /// The ID of your Unify application
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public UpdateWebhookRequest UpdateWebhookRequest { get; set; } = default!;
     }
 }

@@ -108,6 +108,30 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Active { get; set; } = null;
 
         /// <summary>
+        /// The ID of the department
+        /// </summary>
+        [JsonProperty("department_id")]
+        public string? DepartmentId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the location
+        /// </summary>
+        [JsonProperty("location_id")]
+        public string? LocationId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the subsidiary
+        /// </summary>
+        [JsonProperty("subsidiary_id")]
+        public string? SubsidiaryId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the tax schedule
+        /// </summary>
+        [JsonProperty("tax_schedule_id")]
+        public string? TaxScheduleId { get; set; } = null;
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]

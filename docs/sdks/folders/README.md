@@ -30,6 +30,8 @@ var sdk = new Apideck(
 );
 
 FileStorageFoldersAddRequest req = new FileStorageFoldersAddRequest() {
+    ServiceId = "salesforce",
+    Fields = "id,updated_at",
     CreateFolderRequest = new CreateFolderRequest() {
         Name = "Documents",
         Description = "My Personal Documents",
@@ -51,8 +53,6 @@ FileStorageFoldersAddRequest req = new FileStorageFoldersAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
-    Fields = "id,updated_at",
 };
 
 var res = await sdk.FileStorage.Folders.CreateAsync(req);
@@ -150,6 +150,7 @@ var sdk = new Apideck(
 
 FileStorageFoldersUpdateRequest req = new FileStorageFoldersUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     UpdateFolderRequest = new UpdateFolderRequest() {
         Name = "Documents",
         Description = "My Personal Documents",
@@ -170,7 +171,6 @@ FileStorageFoldersUpdateRequest req = new FileStorageFoldersUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.FileStorage.Folders.UpdateAsync(req);
@@ -267,6 +267,8 @@ var sdk = new Apideck(
 
 FileStorageFoldersCopyRequest req = new FileStorageFoldersCopyRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
+    Fields = "id,updated_at",
     CopyFolderRequest = new CopyFolderRequest() {
         Name = "Documents",
         ParentFolderId = "1234",
@@ -286,8 +288,6 @@ FileStorageFoldersCopyRequest req = new FileStorageFoldersCopyRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
-    Fields = "id,updated_at",
 };
 
 var res = await sdk.FileStorage.Folders.CopyAsync(req);

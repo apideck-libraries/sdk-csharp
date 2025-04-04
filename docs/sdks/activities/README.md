@@ -94,6 +94,7 @@ var sdk = new Apideck(
 );
 
 CrmActivitiesAddRequest req = new CrmActivitiesAddRequest() {
+    ServiceId = "salesforce",
     Activity = new ActivityInput() {
         ActivityDatetime = "2021-05-01T12:00:00.000Z",
         DurationSeconds = 1800,
@@ -200,7 +201,6 @@ CrmActivitiesAddRequest req = new CrmActivitiesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Activities.CreateAsync(req);
@@ -298,6 +298,7 @@ var sdk = new Apideck(
 
 CrmActivitiesUpdateRequest req = new CrmActivitiesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Activity = new ActivityInput() {
         ActivityDatetime = "2021-05-01T12:00:00.000Z",
         DurationSeconds = 1800,
@@ -406,7 +407,6 @@ CrmActivitiesUpdateRequest req = new CrmActivitiesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Activities.UpdateAsync(req);

@@ -6,6 +6,7 @@
 ### Available Operations
 
 * [List](#list) - List Attachments
+* [Upload](#upload) - Upload attachment
 * [Get](#get) - Get Attachment
 * [Delete](#delete) - Delete Attachment
 * [Download](#download) - Download Attachment
@@ -53,6 +54,58 @@ while(res != null)
 ### Response
 
 **[AccountingAttachmentsAllResponse](../../Models/Requests/AccountingAttachmentsAllResponse.md)**
+
+### Errors
+
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+
+## Upload
+
+Upload attachment
+
+### Example Usage
+
+```csharp
+using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
+
+var sdk = new Apideck(
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
+    consumerId: "test-consumer",
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+);
+
+AccountingAttachmentsUploadRequest req = new AccountingAttachmentsUploadRequest() {
+    ReferenceType = AttachmentReferenceType.Invoice,
+    ReferenceId = "12345",
+    ServiceId = "salesforce",
+    RequestBody = System.Text.Encoding.UTF8.GetBytes("0x8cc9e675ad"),
+};
+
+var res = await sdk.Accounting.Attachments.UploadAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [AccountingAttachmentsUploadRequest](../../Models/Requests/AccountingAttachmentsUploadRequest.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
+| `serverURL`                                                                                       | *string*                                                                                          | :heavy_minus_sign:                                                                                | An optional server URL to use.                                                                    |
+
+### Response
+
+**[AccountingAttachmentsUploadResponse](../../Models/Requests/AccountingAttachmentsUploadResponse.md)**
 
 ### Errors
 

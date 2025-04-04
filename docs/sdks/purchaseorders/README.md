@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest() {
+    ServiceId = "salesforce",
     PurchaseOrder = new PurchaseOrderInput() {
         PoNumber = "90000117",
         Reference = "123456",
@@ -154,8 +155,8 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                 UnitOfMeasure = "pc.",
                 DiscountPercentage = 0.01D,
                 DiscountAmount = 19.99D,
-                LocationId = "1234",
-                DepartmentId = "1234",
+                LocationId = "12345",
+                DepartmentId = "12345",
                 Item = new LinkedInvoiceItem() {
                     Id = "12344",
                     Code = "120-C",
@@ -247,6 +248,16 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                 Name = "New York",
             },
         },
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateFour(
+                    new Four() {}
+                ),
+            },
+        },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -264,7 +275,6 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.PurchaseOrders.CreateAsync(req);
@@ -362,6 +372,7 @@ var sdk = new Apideck(
 
 AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     PurchaseOrder = new PurchaseOrderInput() {
         PoNumber = "90000117",
         Reference = "123456",
@@ -421,8 +432,8 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                 UnitOfMeasure = "pc.",
                 DiscountPercentage = 0.01D,
                 DiscountAmount = 19.99D,
-                LocationId = "1234",
-                DepartmentId = "1234",
+                LocationId = "12345",
+                DepartmentId = "12345",
                 Item = new LinkedInvoiceItem() {
                     Id = "12344",
                     Code = "120-C",
@@ -516,6 +527,16 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                 Name = "New York",
             },
         },
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateFour(
+                    new Four() {}
+                ),
+            },
+        },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -533,7 +554,6 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.PurchaseOrders.UpdateAsync(req);

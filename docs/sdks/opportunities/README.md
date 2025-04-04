@@ -96,6 +96,7 @@ var sdk = new Apideck(
 );
 
 CrmOpportunitiesAddRequest req = new CrmOpportunitiesAddRequest() {
+    ServiceId = "salesforce",
     Opportunity = new OpportunityInput() {
         Title = "New Rocket",
         PrimaryContactId = "12345",
@@ -154,7 +155,6 @@ CrmOpportunitiesAddRequest req = new CrmOpportunitiesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Opportunities.CreateAsync(req);
@@ -254,6 +254,7 @@ var sdk = new Apideck(
 
 CrmOpportunitiesUpdateRequest req = new CrmOpportunitiesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Opportunity = new OpportunityInput() {
         Title = "New Rocket",
         PrimaryContactId = "12345",
@@ -314,7 +315,6 @@ CrmOpportunitiesUpdateRequest req = new CrmOpportunitiesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Crm.Opportunities.UpdateAsync(req);

@@ -99,6 +99,7 @@ var sdk = new Apideck(
 );
 
 AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
+    ServiceId = "salesforce",
     Supplier = new SupplierInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -220,7 +221,6 @@ AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
         },
         SubsidiaryId = "12345",
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Suppliers.CreateAsync(req);
@@ -318,6 +318,7 @@ var sdk = new Apideck(
 
 AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Supplier = new SupplierInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -441,7 +442,6 @@ AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
         },
         SubsidiaryId = "12345",
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Suppliers.UpdateAsync(req);

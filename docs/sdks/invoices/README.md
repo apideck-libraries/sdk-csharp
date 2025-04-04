@@ -97,6 +97,7 @@ var sdk = new Apideck(
 );
 
 AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
+    ServiceId = "salesforce",
     Invoice = new InvoiceInput() {
         Type = InvoiceType.Service,
         Number = "OIT00546",
@@ -146,8 +147,8 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                 UnitOfMeasure = "pc.",
                 DiscountPercentage = 0.01D,
                 DiscountAmount = 19.99D,
-                LocationId = "1234",
-                DepartmentId = "1234",
+                LocationId = "12345",
+                DepartmentId = "12345",
                 Item = new LinkedInvoiceItem() {
                     Id = "12344",
                     Code = "120-C",
@@ -284,7 +285,6 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Invoices.CreateAsync(req);
@@ -383,6 +383,7 @@ var sdk = new Apideck(
 
 AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     Invoice = new InvoiceInput() {
         Type = InvoiceType.Service,
         Number = "OIT00546",
@@ -432,8 +433,8 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                 UnitOfMeasure = "pc.",
                 DiscountPercentage = 0.01D,
                 DiscountAmount = 19.99D,
-                LocationId = "1234",
-                DepartmentId = "1234",
+                LocationId = "12345",
+                DepartmentId = "12345",
                 Item = new LinkedInvoiceItem() {
                     Id = "12344",
                     Code = "120-C",
@@ -572,7 +573,6 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.Invoices.UpdateAsync(req);

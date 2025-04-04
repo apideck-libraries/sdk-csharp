@@ -95,6 +95,7 @@ var sdk = new Apideck(
 );
 
 AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
+    ServiceId = "salesforce",
     InvoiceItem = new InvoiceItemInput() {
         Name = "Model Y",
         Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
@@ -147,6 +148,10 @@ AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
             },
         },
         Active = true,
+        DepartmentId = "12345",
+        LocationId = "12345",
+        SubsidiaryId = "12345",
+        TaxScheduleId = "123456",
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -164,7 +169,6 @@ AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.InvoiceItems.CreateAsync(req);
@@ -266,6 +270,7 @@ var sdk = new Apideck(
 
 AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateRequest() {
     Id = "<id>",
+    ServiceId = "salesforce",
     InvoiceItem = new InvoiceItemInput() {
         Name = "Model Y",
         Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
@@ -318,6 +323,10 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
             },
         },
         Active = true,
+        DepartmentId = "12345",
+        LocationId = "12345",
+        SubsidiaryId = "12345",
+        TaxScheduleId = "123456",
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -335,7 +344,6 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
             },
         },
     },
-    ServiceId = "salesforce",
 };
 
 var res = await sdk.Accounting.InvoiceItems.UpdateAsync(req);
