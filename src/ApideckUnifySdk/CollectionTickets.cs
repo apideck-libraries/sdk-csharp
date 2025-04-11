@@ -77,10 +77,10 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.8.0";
-        private const string _sdkGenVersion = "2.566.5";
-        private const string _openapiDocVersion = "10.14.1";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.8.0 2.566.5 10.14.1 ApideckUnifySdk";
+        private const string _sdkVersion = "0.9.0";
+        private const string _sdkGenVersion = "2.570.3";
+        private const string _openapiDocVersion = "10.15.2";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.9.0 2.570.3 10.15.2 ApideckUnifySdk";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
@@ -141,7 +141,11 @@ namespace ApideckUnifySdk
 
             List<string> statusCodes = new List<string>
             {
-                "5XX",
+                "408",
+                "500",
+                "502",
+                "503",
+                "504",
             };
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
@@ -374,7 +378,11 @@ namespace ApideckUnifySdk
 
             List<string> statusCodes = new List<string>
             {
-                "5XX",
+                "408",
+                "500",
+                "502",
+                "503",
+                "504",
             };
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
@@ -562,7 +570,11 @@ namespace ApideckUnifySdk
 
             List<string> statusCodes = new List<string>
             {
-                "5XX",
+                "408",
+                "500",
+                "502",
+                "503",
+                "504",
             };
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
@@ -756,7 +768,11 @@ namespace ApideckUnifySdk
 
             List<string> statusCodes = new List<string>
             {
-                "5XX",
+                "408",
+                "500",
+                "502",
+                "503",
+                "504",
             };
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
@@ -944,7 +960,11 @@ namespace ApideckUnifySdk
 
             List<string> statusCodes = new List<string>
             {
-                "5XX",
+                "408",
+                "500",
+                "502",
+                "503",
+                "504",
             };
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>

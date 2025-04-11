@@ -201,6 +201,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? SourceDocumentUrl { get; set; } = null;
 
         /// <summary>
+        /// IDs of payments made on the invoice
+        /// </summary>
+        [JsonProperty("payment_allocations")]
+        public List<PaymentAllocations>? PaymentAllocations { get; set; } = null;
+
+        /// <summary>
         /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check
         /// </summary>
         [JsonProperty("payment_method")]
