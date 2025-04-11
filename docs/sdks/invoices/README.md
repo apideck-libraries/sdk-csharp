@@ -88,6 +88,7 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using NodaTime;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -236,6 +237,13 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
         },
         TemplateId = "123456",
         SourceDocumentUrl = "https://www.invoicesolution.com/invoice/123456",
+        PaymentAllocations = new List<PaymentAllocations>() {
+            new PaymentAllocations() {
+                Id = "123456",
+                AllocatedAmount = 1000D,
+                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+            },
+        },
         PaymentMethod = "cash",
         Channel = "email",
         Language = "EN",
@@ -373,6 +381,7 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using NodaTime;
+using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -524,6 +533,13 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
         },
         TemplateId = "123456",
         SourceDocumentUrl = "https://www.invoicesolution.com/invoice/123456",
+        PaymentAllocations = new List<PaymentAllocations>() {
+            new PaymentAllocations() {
+                Id = "123456",
+                AllocatedAmount = 1000D,
+                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+            },
+        },
         PaymentMethod = "cash",
         Channel = "email",
         Language = "EN",
