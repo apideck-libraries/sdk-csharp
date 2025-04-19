@@ -41,6 +41,8 @@ HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
         EmploymentStatus = EmployeesFilterEmploymentStatus.Active,
         EmployeeNumber = "123456-AB",
         DepartmentId = "1234",
+        City = "San Francisco",
+        Country = "US",
     },
     Sort = new EmployeesSort() {
         By = EmployeesSortBy.CreatedAt,
