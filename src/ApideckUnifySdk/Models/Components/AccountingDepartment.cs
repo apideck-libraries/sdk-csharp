@@ -46,6 +46,12 @@ namespace ApideckUnifySdk.Models.Components
         public List<SubsidiaryReference>? Subsidiaries { get; set; }
 
         /// <summary>
+        /// The code of the department.
+        /// </summary>
+        [JsonProperty("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>
         [JsonProperty("custom_mappings")]

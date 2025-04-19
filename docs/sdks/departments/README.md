@@ -96,6 +96,7 @@ AccountingDepartmentsAddRequest req = new AccountingDepartmentsAddRequest() {
                 Name = "SpaceX",
             },
         },
+        Code = "123",
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -220,6 +221,7 @@ AccountingDepartmentsUpdateRequest req = new AccountingDepartmentsUpdateRequest(
                 Name = "SpaceX",
             },
         },
+        Code = "123",
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {

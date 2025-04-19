@@ -74,5 +74,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=city")]
         public string? City { get; set; }
+
+        /// <summary>
+        /// Country to filter on
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=country")]
+        public string? Country { get; set; }
     }
 }
