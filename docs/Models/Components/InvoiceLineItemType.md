@@ -11,4 +11,5 @@ Item type
 | `Discount`  | discount    |
 | `Info`      | info        |
 | `SubTotal`  | sub_total   |
+| `Service`   | service     |
 | `Other`     | other       |
