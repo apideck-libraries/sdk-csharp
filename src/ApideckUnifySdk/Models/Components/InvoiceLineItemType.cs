@@ -26,6 +26,8 @@ namespace ApideckUnifySdk.Models.Components
         Info,
         [JsonProperty("sub_total")]
         SubTotal,
+        [JsonProperty("service")]
+        Service,
         [JsonProperty("other")]
         Other,
     }

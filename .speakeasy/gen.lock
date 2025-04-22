@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 5f9c8c78f4e97650b9622752c12efc49
-  docVersion: 10.15.2
-  speakeasyVersion: 1.531.3
-  generationVersion: 2.570.3
-  releaseVersion: 0.9.0
-  configChecksum: e278c55ffa2da7a3ac93e3a4c6cd103e
+  docChecksum: b5dc0244aa499b8adfc991da71055e1b
+  docVersion: 10.16.2
+  speakeasyVersion: 1.537.0
+  generationVersion: 2.588.0
+  releaseVersion: 0.10.0
+  configChecksum: c0a469c6555c693542e8bf311df7f0bd
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -7878,7 +7878,7 @@ examples:
         query:
           raw: false
           limit: 20
-          filter: {"company_id": "1234", "email": "elon@tesla.com", "first_name": "Elon", "title": "Manager", "last_name": "Musk", "manager_id": "1234", "employment_status": "active", "employee_number": "123456-AB", "department_id": "1234"}
+          filter: {"company_id": "1234", "email": "elon@tesla.com", "first_name": "Elon", "title": "Manager", "last_name": "Musk", "manager_id": "1234", "employment_status": "active", "employee_number": "123456-AB", "department_id": "1234", "city": "San Francisco", "country": "US"}
           sort: {"by": "created_at", "direction": "desc"}
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"

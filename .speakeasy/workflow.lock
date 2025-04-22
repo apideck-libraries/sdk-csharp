@@ -1,19 +1,19 @@
-speakeasyVersion: 1.531.3
+speakeasyVersion: 1.537.0
 sources:
     Apideck:
         sourceNamespace: apideck
-        sourceRevisionDigest: sha256:d975ead91a1ef951808e68cb8dff1045cf7fb75d11bef70ed0ac240e8951eac8
-        sourceBlobDigest: sha256:f9c5f9f9bcd74daced54528fe07e4457ed5260d78d8dcd991035592dac57bb90
+        sourceRevisionDigest: sha256:31d2d64457bf486f2e183bd904835cf971a4d5a989336b82f856b8c6850c082e
+        sourceBlobDigest: sha256:303c1acf7abc835f46d58b4a823c3bb3e537aae128b78352be572e712c7879f6
         tags:
             - latest
-            - speakeasy-sdk-regen-1744101386
-            - 10.15.2
+            - speakeasy-sdk-regen-1744725232
+            - 10.16.2
 targets:
     apideck:
         source: Apideck
         sourceNamespace: apideck
-        sourceRevisionDigest: sha256:d975ead91a1ef951808e68cb8dff1045cf7fb75d11bef70ed0ac240e8951eac8
-        sourceBlobDigest: sha256:f9c5f9f9bcd74daced54528fe07e4457ed5260d78d8dcd991035592dac57bb90
+        sourceRevisionDigest: sha256:31d2d64457bf486f2e183bd904835cf971a4d5a989336b82f856b8c6850c082e
+        sourceBlobDigest: sha256:303c1acf7abc835f46d58b4a823c3bb3e537aae128b78352be572e712c7879f6
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

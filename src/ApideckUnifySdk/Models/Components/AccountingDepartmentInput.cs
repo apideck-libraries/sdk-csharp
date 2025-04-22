@@ -39,6 +39,12 @@ namespace ApideckUnifySdk.Models.Components
         public List<SubsidiaryReferenceInput>? Subsidiaries { get; set; }
 
         /// <summary>
+        /// The code of the department.
+        /// </summary>
+        [JsonProperty("code")]
+        public string? Code { get; set; }
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]
