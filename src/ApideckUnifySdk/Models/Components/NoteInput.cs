@@ -54,6 +54,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? OpportunityId { get; set; } = null;
 
         /// <summary>
+        /// The activity that is related to the note.
+        /// </summary>
+        [JsonProperty("activity_id")]
+        public string? ActivityId { get; set; } = null;
+
+        /// <summary>
         /// The lead that is related to the note.
         /// </summary>
         [JsonProperty("lead_id")]
