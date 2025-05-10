@@ -110,8 +110,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The total amount for the product(s) or variant associated with the line item, including taxes and discounts.
         /// </summary>
-        [JsonProperty("total_amount", NullValueHandling = NullValueHandling.Include)]
-        public string? TotalAmount { get; set; }
+        [JsonProperty("total_amount")]
+        public string? TotalAmount { get; set; } = null;
 
         [JsonProperty("discounts")]
         public List<EcommerceDiscount>? Discounts { get; set; }
