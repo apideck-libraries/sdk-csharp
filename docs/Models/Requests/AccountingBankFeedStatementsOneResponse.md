@@ -1,0 +1,10 @@
+# AccountingBankFeedStatementsOneResponse
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                              | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                 | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `GetBankFeedStatementResponse`                                                          | [GetBankFeedStatementResponse](../../Models/Components/GetBankFeedStatementResponse.md) | :heavy_minus_sign:                                                                      | Bank Feed Statements                                                                    |
+| `UnexpectedErrorResponse`                                                               | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)           | :heavy_minus_sign:                                                                      | Unexpected error                                                                        |
