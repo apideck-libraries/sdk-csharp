@@ -245,8 +245,10 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateFour(
-                    new Four() {}
+                Value = Value.CreateArrayOfStr(
+                    new List<string>() {
+                        "<value>",
+                    }
                 ),
             },
         },
@@ -435,10 +437,8 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
                         Id = "2389328923893298",
                         Name = "employee_level",
                         Description = "Employee Level",
-                        Value = Value.CreateArrayOf6(
-                            new List<Six>() {
-                                new Six() {},
-                            }
+                        Value = Value.CreateFour(
+                            new Four() {}
                         ),
                     },
                 },

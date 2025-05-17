@@ -79,5 +79,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("billable")]
         public bool? Billable { get; set; }
+
+        /// <summary>
+        /// Line number of the resource
+        /// </summary>
+        [JsonProperty("line_number")]
+        public long? LineNumber { get; set; } = null;
     }
 }

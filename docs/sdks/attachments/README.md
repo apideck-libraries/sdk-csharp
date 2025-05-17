@@ -88,7 +88,7 @@ AccountingAttachmentsUploadRequest req = new AccountingAttachmentsUploadRequest(
     ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "12345",
     ServiceId = "salesforce",
-    RequestBody = System.Text.Encoding.UTF8.GetBytes("0x8cc9e675ad"),
+    RequestBody = System.Text.Encoding.UTF8.GetBytes("0x506D4BD16D"),
 };
 
 var res = await sdk.Accounting.Attachments.UploadAsync(req);

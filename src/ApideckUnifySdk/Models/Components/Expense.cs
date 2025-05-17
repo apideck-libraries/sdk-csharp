@@ -139,6 +139,18 @@ namespace ApideckUnifySdk.Models.Components
         public string? RowVersion { get; set; } = null;
 
         /// <summary>
+        /// The user who last updated the object.
+        /// </summary>
+        [JsonProperty("updated_by")]
+        public string? UpdatedBy { get; set; } = null;
+
+        /// <summary>
+        /// The user who created the object.
+        /// </summary>
+        [JsonProperty("created_by")]
+        public string? CreatedBy { get; set; } = null;
+
+        /// <summary>
         /// The pass_through property allows passing service-specific, custom data or structured modifications in request body when creating or updating resources.
         /// </summary>
         [JsonProperty("pass_through")]

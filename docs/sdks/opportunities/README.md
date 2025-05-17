@@ -133,8 +133,10 @@ CrmOpportunitiesAddRequest req = new CrmOpportunitiesAddRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateBoolean(
-                    true
+                Value = Value.CreateArrayOfStr(
+                    new List<string>() {
+                        "<value>",
+                    }
                 ),
             },
         },
