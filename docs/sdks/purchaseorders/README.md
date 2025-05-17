@@ -129,6 +129,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                 RowVersion = "1-12345",
             },
         },
+        SubsidiaryId = "12345",
         CompanyId = "12345",
         Status = PurchaseOrderStatus.Open,
         IssuedDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
@@ -182,8 +183,8 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                         Id = "2389328923893298",
                         Name = "employee_level",
                         Description = "Employee Level",
-                        Value = Value.CreateBoolean(
-                            true
+                        Value = Value.CreateNumber(
+                            10D
                         ),
                     },
                 },
@@ -253,8 +254,10 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateFour(
-                    new Four() {}
+                Value = Value.CreateArrayOfStr(
+                    new List<string>() {
+                        "<value>",
+                    }
                 ),
             },
         },
@@ -406,6 +409,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                 RowVersion = "1-12345",
             },
         },
+        SubsidiaryId = "12345",
         CompanyId = "12345",
         Status = PurchaseOrderStatus.Open,
         IssuedDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
@@ -459,10 +463,8 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                         Id = "2389328923893298",
                         Name = "employee_level",
                         Description = "Employee Level",
-                        Value = Value.CreateArrayOf6(
-                            new List<Six>() {
-                                new Six() {},
-                            }
+                        Value = Value.CreateStr(
+                            "Uses Salesforce and Marketo"
                         ),
                     },
                 },
@@ -532,8 +534,8 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateFour(
-                    new Four() {}
+                Value = Value.CreateBoolean(
+                    true
                 ),
             },
         },

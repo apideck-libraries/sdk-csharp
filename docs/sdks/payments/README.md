@@ -34,6 +34,7 @@ AccountingPaymentsAllRequest req = new AccountingPaymentsAllRequest() {
     ServiceId = "salesforce",
     Filter = new PaymentsFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        InvoiceId = "123",
     },
     Sort = new PaymentsSort() {
         By = PaymentsSortBy.UpdatedAt,
@@ -139,8 +140,10 @@ AccountingPaymentsAddRequest req = new AccountingPaymentsAddRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateBoolean(
-                    true
+                Value = Value.CreateArrayOfStr(
+                    new List<string>() {
+                        "<value>",
+                    }
                 ),
             },
         },
@@ -304,10 +307,8 @@ AccountingPaymentsUpdateRequest req = new AccountingPaymentsUpdateRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateArrayOf6(
-                    new List<Six>() {
-                        new Six() {},
-                    }
+                Value = Value.CreateFour(
+                    new Four() {}
                 ),
             },
         },

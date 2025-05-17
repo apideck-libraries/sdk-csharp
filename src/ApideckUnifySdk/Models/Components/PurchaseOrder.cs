@@ -50,6 +50,12 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplier? Supplier { get; set; } = null;
 
         /// <summary>
+        /// The ID of the subsidiary
+        /// </summary>
+        [JsonProperty("subsidiary_id")]
+        public string? SubsidiaryId { get; set; } = null;
+
+        /// <summary>
         /// The company or subsidiary id the transaction belongs to
         /// </summary>
         [JsonProperty("company_id")]

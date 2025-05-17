@@ -107,8 +107,15 @@ VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequ
                                     Options = new List<SimpleFormFieldOption>() {
                                         new SimpleFormFieldOption() {
                                             Label = "General Channel",
-                                            Value = SimpleFormFieldOptionValue.CreateNumber(
-                                                12.5D
+                                            Value = SimpleFormFieldOptionValue.CreateArrayOf5(
+                                                new List<Five>() {
+                                                    Five.CreateStr(
+                                                        "team"
+                                                    ),
+                                                    Five.CreateStr(
+                                                        "general"
+                                                    ),
+                                                }
                                             ),
                                             OptionType = OptionType.Simple,
                                         },
@@ -117,8 +124,8 @@ VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequ
                                 }
                             ),
                         },
-                        Value = ConnectionValue.CreateInteger(
-                            10
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
                         ),
                     },
                 },

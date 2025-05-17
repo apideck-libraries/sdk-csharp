@@ -175,8 +175,10 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                         Id = "2389328923893298",
                         Name = "employee_level",
                         Description = "Employee Level",
-                        Value = Value.CreateBoolean(
-                            true
+                        Value = Value.CreateArrayOf6(
+                            new List<Six>() {
+                                new Six() {},
+                            }
                         ),
                     },
                 },
@@ -271,8 +273,8 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateFour(
-                    new Four() {}
+                Value = Value.CreateBoolean(
+                    true
                 ),
             },
         },
@@ -469,10 +471,8 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                         Id = "2389328923893298",
                         Name = "employee_level",
                         Description = "Employee Level",
-                        Value = Value.CreateArrayOf6(
-                            new List<Six>() {
-                                new Six() {},
-                            }
+                        Value = Value.CreateBoolean(
+                            true
                         ),
                     },
                 },
@@ -567,8 +567,10 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateFour(
-                    new Four() {}
+                Value = Value.CreateArrayOf6(
+                    new List<Six>() {
+                        new Six() {},
+                    }
                 ),
             },
         },
