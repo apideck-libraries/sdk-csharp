@@ -13,6 +13,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
+    using System.Collections.Generic;
     
     public class Person
     {
@@ -69,6 +70,6 @@ namespace ApideckUnifySdk.Models.Components
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>
         [JsonProperty("custom_mappings")]
-        public Models.Components.CustomMappings? CustomMappings { get; set; } = null;
+        public Dictionary<string, object>? CustomMappings { get; set; } = null;
     }
 }

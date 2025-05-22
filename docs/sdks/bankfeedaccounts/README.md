@@ -102,8 +102,8 @@ AccountingBankFeedAccountsAddRequest req = new AccountingBankFeedAccountsAddRequ
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateBoolean(
-                    true
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
                 ),
             },
         },
@@ -220,10 +220,8 @@ AccountingBankFeedAccountsUpdateRequest req = new AccountingBankFeedAccountsUpda
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateArrayOf6(
-                    new List<Six>() {
-                        new Six() {},
-                    }
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
                 ),
             },
         },

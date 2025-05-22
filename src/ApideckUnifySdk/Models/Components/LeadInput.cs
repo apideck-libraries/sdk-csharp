@@ -26,8 +26,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The name of the company the lead is associated with.
         /// </summary>
-        [JsonProperty("company_name", NullValueHandling = NullValueHandling.Include)]
-        public string? CompanyName { get; set; }
+        [JsonProperty("company_name")]
+        public string? CompanyName { get; set; } = null;
 
         /// <summary>
         /// The owner of the lead.
@@ -132,7 +132,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<Email>? Emails { get; set; }
 
         [JsonProperty("custom_fields")]
-        public List<CustomField>? CustomFields { get; set; }
+        public List<CustomField>? CustomFields { get; set; } = null;
 
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; } = null;

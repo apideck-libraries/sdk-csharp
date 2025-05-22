@@ -34,7 +34,7 @@ namespace ApideckUnifySdk.Models.Components
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>
         [JsonProperty("custom_mappings")]
-        public Models.Components.CustomMappings? CustomMappings { get; set; } = null;
+        public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         /// <summary>
         /// The user who created the object.

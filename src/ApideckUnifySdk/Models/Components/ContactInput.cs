@@ -179,7 +179,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? EmailDomain { get; set; } = null;
 
         [JsonProperty("custom_fields")]
-        public List<CustomField>? CustomFields { get; set; }
+        public List<CustomField>? CustomFields { get; set; } = null;
 
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; } = null;

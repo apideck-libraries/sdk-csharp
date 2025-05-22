@@ -46,8 +46,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The aggregated total of all accounts within this category.
         /// </summary>
-        [JsonProperty("total", NullValueHandling = NullValueHandling.Include)]
-        public double? Total { get; set; }
+        [JsonProperty("total")]
+        public double? Total { get; set; } = null;
 
         [JsonProperty("records")]
         public object Records { get; set; } = default!;

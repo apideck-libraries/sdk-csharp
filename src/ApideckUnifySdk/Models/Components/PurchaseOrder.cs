@@ -50,6 +50,12 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplier? Supplier { get; set; } = null;
 
         /// <summary>
+        /// The ID of the subsidiary
+        /// </summary>
+        [JsonProperty("subsidiary_id")]
+        public string? SubsidiaryId { get; set; } = null;
+
+        /// <summary>
         /// The company or subsidiary id the transaction belongs to
         /// </summary>
         [JsonProperty("company_id")]
@@ -182,7 +188,7 @@ namespace ApideckUnifySdk.Models.Components
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>
         [JsonProperty("custom_mappings")]
-        public Models.Components.CustomMappings? CustomMappings { get; set; } = null;
+        public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         [JsonProperty("custom_fields")]
         public List<CustomField>? CustomFields { get; set; }

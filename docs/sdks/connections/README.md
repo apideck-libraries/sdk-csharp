@@ -156,25 +156,15 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
                     new ConnectionDefaults() {
                         Id = "ProductInterest",
                         Options = new List<FormFieldOption>() {
-                            FormFieldOption.CreateGroup(
-                                new FormFieldOptionGroup() {
-                                    Id = "1234",
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
                                     Label = "General Channel",
-                                    Options = new List<SimpleFormFieldOption>() {
-                                        new SimpleFormFieldOption() {
-                                            Label = "General Channel",
-                                            Value = SimpleFormFieldOptionValue.CreateNumber(
-                                                12.5D
-                                            ),
-                                            OptionType = OptionType.Simple,
-                                        },
-                                    },
-                                    OptionType = FormFieldOptionGroupOptionType.Group,
+                                    OptionType = OptionType.Simple,
                                 }
                             ),
                         },
-                        Value = ConnectionValue.CreateInteger(
-                            10
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
                         ),
                     },
                 },

@@ -34,6 +34,7 @@ AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
     ServiceId = "salesforce",
     Filter = new PaymentsFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        InvoiceId = "123",
     },
     Sort = new PaymentsSort() {
         By = PaymentsSortBy.UpdatedAt,
@@ -165,8 +166,8 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateBoolean(
-                    true
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
                 ),
             },
         },
@@ -356,10 +357,8 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateArrayOf6(
-                    new List<Six>() {
-                        new Six() {},
-                    }
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
                 ),
             },
         },
