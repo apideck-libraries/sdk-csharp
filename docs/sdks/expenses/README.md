@@ -122,6 +122,7 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
                 Description = "Travel US.",
                 TotalAmount = 275D,
                 Billable = true,
+                LineNumber = 1,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -129,8 +130,8 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateBoolean(
-                    true
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
                 ),
             },
         },
@@ -287,6 +288,7 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
                 Description = "Travel US.",
                 TotalAmount = 275D,
                 Billable = true,
+                LineNumber = 1,
             },
         },
         CustomFields = new List<CustomField>() {
@@ -294,10 +296,8 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateArrayOf6(
-                    new List<Six>() {
-                        new Six() {},
-                    }
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
                 ),
             },
         },

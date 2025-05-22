@@ -175,8 +175,8 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                         Id = "2389328923893298",
                         Name = "employee_level",
                         Description = "Employee Level",
-                        Value = Value.CreateBoolean(
-                            true
+                        Value = Value.CreateStr(
+                            "Uses Salesforce and Marketo"
                         ),
                     },
                 },
@@ -271,8 +271,8 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateFour(
-                    new Four() {}
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
                 ),
             },
         },
@@ -469,10 +469,8 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                         Id = "2389328923893298",
                         Name = "employee_level",
                         Description = "Employee Level",
-                        Value = Value.CreateArrayOf6(
-                            new List<Six>() {
-                                new Six() {},
-                            }
+                        Value = Value.CreateStr(
+                            "Uses Salesforce and Marketo"
                         ),
                     },
                 },
@@ -567,8 +565,8 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateFour(
-                    new Four() {}
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
                 ),
             },
         },

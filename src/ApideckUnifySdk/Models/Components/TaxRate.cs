@@ -97,7 +97,7 @@ namespace ApideckUnifySdk.Models.Components
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>
         [JsonProperty("custom_mappings")]
-        public Models.Components.CustomMappings? CustomMappings { get; set; } = null;
+        public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.

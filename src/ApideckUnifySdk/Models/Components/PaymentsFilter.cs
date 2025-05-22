@@ -17,5 +17,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
+
+        [SpeakeasyMetadata("queryParam:name=invoice_id")]
+        public string? InvoiceId { get; set; }
     }
 }

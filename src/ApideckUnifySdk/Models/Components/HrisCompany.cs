@@ -67,7 +67,7 @@ namespace ApideckUnifySdk.Models.Components
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>
         [JsonProperty("custom_mappings")]
-        public Models.Components.CustomMappings? CustomMappings { get; set; } = null;
+        public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         [JsonProperty("deleted")]
         public bool? Deleted { get; set; }
