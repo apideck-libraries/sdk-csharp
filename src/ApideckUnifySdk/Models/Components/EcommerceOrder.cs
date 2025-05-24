@@ -135,6 +135,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("note")]
         public string? Note { get; set; } = null;
 
+        [JsonProperty("refunds")]
+        public List<EcommerceOrderRefund>? Refunds { get; set; }
+
         /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>
