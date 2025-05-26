@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 73457f557ac055c92e02d0d6ff516221
-  docVersion: 10.16.7
-  speakeasyVersion: 1.548.4
-  generationVersion: 2.605.6
-  releaseVersion: 0.10.3
-  configChecksum: bca2b92447f9648dabe4a254cce0f460
+  docChecksum: f6e72d58840c76168b88550d7b91da4f
+  docVersion: 10.16.8
+  speakeasyVersion: 1.551.0
+  generationVersion: 2.610.0
+  releaseVersion: 0.10.4
+  configChecksum: 82c26921bcfa136866478c723a92b722
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -324,6 +324,7 @@ generatedFiles:
   - docs/Models/Components/EcommerceOrder.md
   - docs/Models/Components/EcommerceOrderLineItem.md
   - docs/Models/Components/EcommerceOrderPaymentStatus.md
+  - docs/Models/Components/EcommerceOrderRefund.md
   - docs/Models/Components/EcommerceOrderStatus.md
   - docs/Models/Components/EcommerceOrdersFilter.md
   - docs/Models/Components/EcommerceProduct.md
@@ -1807,6 +1808,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/EcommerceOrder.cs
   - src/ApideckUnifySdk/Models/Components/EcommerceOrderLineItem.cs
   - src/ApideckUnifySdk/Models/Components/EcommerceOrderPaymentStatus.cs
+  - src/ApideckUnifySdk/Models/Components/EcommerceOrderRefund.cs
   - src/ApideckUnifySdk/Models/Components/EcommerceOrderStatus.cs
   - src/ApideckUnifySdk/Models/Components/EcommerceOrdersFilter.cs
   - src/ApideckUnifySdk/Models/Components/EcommerceProduct.cs
@@ -6886,7 +6888,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "shopify", "resource": "orders", "operation": "one", "data": {"id": "12345", "order_number": "123456789", "currency": "USD", "discounts": [{"code": "SUMMER20", "amount": "5.99", "percentage": "0.1"}, {"code": "SUMMER20", "amount": "5.99", "percentage": "0.1"}, {"code": "SUMMER20", "amount": "5.99", "percentage": "0.1"}], "sub_total": "45.17", "shipping_cost": "5.17", "coupon_discount": "5.5", "total_discount": "5.5", "total_tax": "5.16", "total_amount": "50.17", "refunded_amount": "5.5", "status": "active", "payment_status": "paid", "fulfillment_status": "shipped", "payment_method": "credit_card", "customer": {"id": "12345", "name": "John Doe", "first_name": "John", "last_name": "Doe", "company_name": "Acme Inc.", "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}, {"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}]}, "billing_address": {"line1": "123 Main Street", "line2": "Apt 1", "company_name": "Acme Inc.", "city": "New York", "state": "NY", "postal_code": "10001", "country": "US"}, "shipping_address": {"line1": "123 Main Street", "line2": "Apt 1", "company_name": "Acme Inc.", "city": "New York", "state": "NY", "postal_code": "10001", "country": "US"}, "tracking": [{"provider": "UPS", "number": "1Z9999999999999999", "url": "https://www.ups.com/track?tracknum=1Z9999999999999999", "updated_at": "2020-09-30T07:43:32.000Z"}, {"provider": "UPS", "number": "1Z9999999999999999", "url": "https://www.ups.com/track?tracknum=1Z9999999999999999", "updated_at": "2020-09-30T07:43:32.000Z"}], "line_items": [{"id": "12345", "product_id": "def456", "variant_id": "ghi789", "sku": "MBP123-16GB-SILVER-13", "name": "Midnight 16inch MacBook Pro", "description": "Powerful and portable, the MacBook Pro is perfect for professionals and creatives.", "options": [{"id": "jkl012", "name": "Color", "value": "Silver"}, {"id": "jkl012", "name": "Color", "value": "Silver"}, {"id": "jkl012", "name": "Color", "value": "Silver"}], "quantity": "2", "unit_price": "19.99", "tax_rate": "0.08", "tax_amount": "1.6", "is_refunded": false, "refunded_amount": "0", "refunded_quantity": "0", "sub_total": "43.18", "total_amount": "43.18", "discounts": [{"code": "SUMMER20", "amount": "5.99", "percentage": "0.1"}]}], "note": "Special instructions for delivery", "created_at": "2020-09-30T07:43:32.000Z", "updated_at": "2020-09-30T07:43:32.000Z"}}
+          application/json: {"status_code": 200, "status": "OK", "service": "shopify", "resource": "orders", "operation": "one", "data": {"id": "12345", "order_number": "123456789", "currency": "USD", "discounts": [{"code": "SUMMER20", "amount": "5.99", "percentage": "0.1"}, {"code": "SUMMER20", "amount": "5.99", "percentage": "0.1"}, {"code": "SUMMER20", "amount": "5.99", "percentage": "0.1"}], "sub_total": "45.17", "shipping_cost": "5.17", "coupon_discount": "5.5", "total_discount": "5.5", "total_tax": "5.16", "total_amount": "50.17", "refunded_amount": "5.5", "status": "active", "payment_status": "paid", "fulfillment_status": "shipped", "payment_method": "credit_card", "customer": {"id": "12345", "name": "John Doe", "first_name": "John", "last_name": "Doe", "company_name": "Acme Inc.", "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}, {"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}]}, "billing_address": {"line1": "123 Main Street", "line2": "Apt 1", "company_name": "Acme Inc.", "city": "New York", "state": "NY", "postal_code": "10001", "country": "US"}, "shipping_address": {"line1": "123 Main Street", "line2": "Apt 1", "company_name": "Acme Inc.", "city": "New York", "state": "NY", "postal_code": "10001", "country": "US"}, "tracking": [{"provider": "UPS", "number": "1Z9999999999999999", "url": "https://www.ups.com/track?tracknum=1Z9999999999999999", "updated_at": "2020-09-30T07:43:32.000Z"}, {"provider": "UPS", "number": "1Z9999999999999999", "url": "https://www.ups.com/track?tracknum=1Z9999999999999999", "updated_at": "2020-09-30T07:43:32.000Z"}], "line_items": [{"id": "12345", "product_id": "def456", "variant_id": "ghi789", "sku": "MBP123-16GB-SILVER-13", "name": "Midnight 16inch MacBook Pro", "description": "Powerful and portable, the MacBook Pro is perfect for professionals and creatives.", "options": [{"id": "jkl012", "name": "Color", "value": "Silver"}, {"id": "jkl012", "name": "Color", "value": "Silver"}, {"id": "jkl012", "name": "Color", "value": "Silver"}], "quantity": "2", "unit_price": "19.99", "tax_rate": "0.08", "tax_amount": "1.6", "is_refunded": false, "refunded_amount": "0", "refunded_quantity": "0", "sub_total": "43.18", "total_amount": "43.18", "discounts": [{"code": "SUMMER20", "amount": "5.99", "percentage": "0.1"}]}], "note": "Special instructions for delivery", "refunds": [{"id": "12345", "amount": "100", "currency": "USD", "reason": "Customer requested a refund", "created_at": "2020-09-30T07:43:32.000Z"}, {"id": "12345", "amount": "100", "currency": "USD", "reason": "Customer requested a refund", "created_at": "2020-09-30T07:43:32.000Z"}, {"id": "12345", "amount": "100", "currency": "USD", "reason": "Customer requested a refund", "created_at": "2020-09-30T07:43:32.000Z"}], "created_at": "2020-09-30T07:43:32.000Z", "updated_at": "2020-09-30T07:43:32.000Z"}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":
