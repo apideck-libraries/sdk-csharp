@@ -49,6 +49,12 @@ namespace ApideckUnifySdk.Models.Components
         public List<JournalEntryLineItemInput>? LineItems { get; set; }
 
         /// <summary>
+        /// Journal entry status
+        /// </summary>
+        [JsonProperty("status")]
+        public JournalEntryStatus? Status { get; set; } = null;
+
+        /// <summary>
         /// Reference for the journal entry.
         /// </summary>
         [JsonProperty("memo")]

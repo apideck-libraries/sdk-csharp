@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: f6e72d58840c76168b88550d7b91da4f
-  docVersion: 10.16.8
-  speakeasyVersion: 1.551.0
-  generationVersion: 2.610.0
-  releaseVersion: 0.10.4
-  configChecksum: 82c26921bcfa136866478c723a92b722
+  docChecksum: d3a631039ef3972a6ba543f5005a6dfe
+  docVersion: 10.17.2
+  speakeasyVersion: 1.554.1
+  generationVersion: 2.616.1
+  releaseVersion: 0.11.0
+  configChecksum: d0c6907c2725af90faa39eea8405f678
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.10.17
+    core: 3.11.0
     deprecations: 2.81.2
     errors: 0.2.1
     flattening: 2.81.3
@@ -32,7 +32,7 @@ features:
     pagination: 0.2.6
     responseFormat: 0.0.4
     retries: 0.0.1
-    sdkHooks: 0.1.0
+    sdkHooks: 0.2.0
     typeOverrides: 2.81.1
     unions: 0.2.2
 generatedFiles:
@@ -196,6 +196,8 @@ generatedFiles:
   - docs/Models/Components/CreateConsumerResponse.md
   - docs/Models/Components/CreateContactResponse.md
   - docs/Models/Components/CreateCreditNoteResponse.md
+  - docs/Models/Components/CreateCustomObjectResponse.md
+  - docs/Models/Components/CreateCustomObjectSchemaResponse.md
   - docs/Models/Components/CreateCustomerResponse.md
   - docs/Models/Components/CreateDepartmentResponse.md
   - docs/Models/Components/CreateDriveGroupResponse.md
@@ -245,6 +247,13 @@ generatedFiles:
   - docs/Models/Components/CustomFieldFinder.md
   - docs/Models/Components/CustomMapping.md
   - docs/Models/Components/CustomMappingInput.md
+  - docs/Models/Components/CustomObject.md
+  - docs/Models/Components/CustomObjectFields.md
+  - docs/Models/Components/CustomObjectInput.md
+  - docs/Models/Components/CustomObjectSchema.md
+  - docs/Models/Components/CustomObjectSchemaInput.md
+  - docs/Models/Components/CustomObjectSchemaOptions.md
+  - docs/Models/Components/CustomObjectSchemaType.md
   - docs/Models/Components/Customer.md
   - docs/Models/Components/CustomerInput.md
   - docs/Models/Components/CustomerStatus.md
@@ -272,6 +281,8 @@ generatedFiles:
   - docs/Models/Components/DeleteConsumerResponseData.md
   - docs/Models/Components/DeleteContactResponse.md
   - docs/Models/Components/DeleteCreditNoteResponse.md
+  - docs/Models/Components/DeleteCustomObjectResponse.md
+  - docs/Models/Components/DeleteCustomObjectSchemaResponse.md
   - docs/Models/Components/DeleteCustomerResponse.md
   - docs/Models/Components/DeleteDepartmentResponse.md
   - docs/Models/Components/DeleteDriveGroupResponse.md
@@ -366,6 +377,7 @@ generatedFiles:
   - docs/Models/Components/Expenses.md
   - docs/Models/Components/ExtendPaths.md
   - docs/Models/Components/FeedStatus.md
+  - docs/Models/Components/Fields.md
   - docs/Models/Components/FileType.md
   - docs/Models/Components/FilesFilter.md
   - docs/Models/Components/FilesSearch.md
@@ -433,6 +445,10 @@ generatedFiles:
   - docs/Models/Components/GetCreditNotesResponse.md
   - docs/Models/Components/GetCustomFieldsResponse.md
   - docs/Models/Components/GetCustomMappingsResponse.md
+  - docs/Models/Components/GetCustomObjectResponse.md
+  - docs/Models/Components/GetCustomObjectSchemaResponse.md
+  - docs/Models/Components/GetCustomObjectSchemasResponse.md
+  - docs/Models/Components/GetCustomObjectsResponse.md
   - docs/Models/Components/GetCustomerResponse.md
   - docs/Models/Components/GetCustomersResponse.md
   - docs/Models/Components/GetDepartmentResponse.md
@@ -549,6 +565,7 @@ generatedFiles:
   - docs/Models/Components/JournalEntryLineItem.md
   - docs/Models/Components/JournalEntryLineItemInput.md
   - docs/Models/Components/JournalEntryLineItemType.md
+  - docs/Models/Components/JournalEntryStatus.md
   - docs/Models/Components/Lead.md
   - docs/Models/Components/LeadInput.md
   - docs/Models/Components/LeadsFilter.md
@@ -752,6 +769,8 @@ generatedFiles:
   - docs/Models/Components/UpdateConsumerResponse.md
   - docs/Models/Components/UpdateContactResponse.md
   - docs/Models/Components/UpdateCreditNoteResponse.md
+  - docs/Models/Components/UpdateCustomObjectResponse.md
+  - docs/Models/Components/UpdateCustomObjectSchemaResponse.md
   - docs/Models/Components/UpdateCustomerResponse.md
   - docs/Models/Components/UpdateDepartmentResponse.md
   - docs/Models/Components/UpdateDriveGroupResponse.md
@@ -1093,6 +1112,26 @@ generatedFiles:
   - docs/Models/Requests/CrmContactsOneResponse.md
   - docs/Models/Requests/CrmContactsUpdateRequest.md
   - docs/Models/Requests/CrmContactsUpdateResponse.md
+  - docs/Models/Requests/CrmCustomObjectSchemasAddRequest.md
+  - docs/Models/Requests/CrmCustomObjectSchemasAddResponse.md
+  - docs/Models/Requests/CrmCustomObjectSchemasAllRequest.md
+  - docs/Models/Requests/CrmCustomObjectSchemasAllResponse.md
+  - docs/Models/Requests/CrmCustomObjectSchemasDeleteRequest.md
+  - docs/Models/Requests/CrmCustomObjectSchemasDeleteResponse.md
+  - docs/Models/Requests/CrmCustomObjectSchemasOneRequest.md
+  - docs/Models/Requests/CrmCustomObjectSchemasOneResponse.md
+  - docs/Models/Requests/CrmCustomObjectSchemasUpdateRequest.md
+  - docs/Models/Requests/CrmCustomObjectSchemasUpdateResponse.md
+  - docs/Models/Requests/CrmCustomObjectsAddRequest.md
+  - docs/Models/Requests/CrmCustomObjectsAddResponse.md
+  - docs/Models/Requests/CrmCustomObjectsAllRequest.md
+  - docs/Models/Requests/CrmCustomObjectsAllResponse.md
+  - docs/Models/Requests/CrmCustomObjectsDeleteRequest.md
+  - docs/Models/Requests/CrmCustomObjectsDeleteResponse.md
+  - docs/Models/Requests/CrmCustomObjectsOneRequest.md
+  - docs/Models/Requests/CrmCustomObjectsOneResponse.md
+  - docs/Models/Requests/CrmCustomObjectsUpdateRequest.md
+  - docs/Models/Requests/CrmCustomObjectsUpdateResponse.md
   - docs/Models/Requests/CrmLeadsAddRequest.md
   - docs/Models/Requests/CrmLeadsAddResponse.md
   - docs/Models/Requests/CrmLeadsAllRequest.md
@@ -1409,6 +1448,8 @@ generatedFiles:
   - docs/sdks/customers/README.md
   - docs/sdks/customfields/README.md
   - docs/sdks/custommappings/README.md
+  - docs/sdks/customobjects/README.md
+  - docs/sdks/customobjectschemas/README.md
   - docs/sdks/departments/README.md
   - docs/sdks/drivegroups/README.md
   - docs/sdks/drives/README.md
@@ -1499,6 +1540,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Crm.cs
   - src/ApideckUnifySdk/CustomFields.cs
   - src/ApideckUnifySdk/CustomMappings.cs
+  - src/ApideckUnifySdk/CustomObjectSchemas.cs
+  - src/ApideckUnifySdk/CustomObjects.cs
   - src/ApideckUnifySdk/Customers.cs
   - src/ApideckUnifySdk/Departments.cs
   - src/ApideckUnifySdk/DriveGroups.cs
@@ -1680,6 +1723,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/CreateConsumerResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateContactResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateCreditNoteResponse.cs
+  - src/ApideckUnifySdk/Models/Components/CreateCustomObjectResponse.cs
+  - src/ApideckUnifySdk/Models/Components/CreateCustomObjectSchemaResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateCustomerResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateDepartmentResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateDriveGroupResponse.cs
@@ -1729,6 +1774,13 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/CustomFieldFinder.cs
   - src/ApideckUnifySdk/Models/Components/CustomMapping.cs
   - src/ApideckUnifySdk/Models/Components/CustomMappingInput.cs
+  - src/ApideckUnifySdk/Models/Components/CustomObject.cs
+  - src/ApideckUnifySdk/Models/Components/CustomObjectFields.cs
+  - src/ApideckUnifySdk/Models/Components/CustomObjectInput.cs
+  - src/ApideckUnifySdk/Models/Components/CustomObjectSchema.cs
+  - src/ApideckUnifySdk/Models/Components/CustomObjectSchemaInput.cs
+  - src/ApideckUnifySdk/Models/Components/CustomObjectSchemaOptions.cs
+  - src/ApideckUnifySdk/Models/Components/CustomObjectSchemaType.cs
   - src/ApideckUnifySdk/Models/Components/Customer.cs
   - src/ApideckUnifySdk/Models/Components/CustomerInput.cs
   - src/ApideckUnifySdk/Models/Components/CustomerStatus.cs
@@ -1756,6 +1808,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/DeleteConsumerResponseData.cs
   - src/ApideckUnifySdk/Models/Components/DeleteContactResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteCreditNoteResponse.cs
+  - src/ApideckUnifySdk/Models/Components/DeleteCustomObjectResponse.cs
+  - src/ApideckUnifySdk/Models/Components/DeleteCustomObjectSchemaResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteCustomerResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteDepartmentResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteDriveGroupResponse.cs
@@ -1850,6 +1904,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/Expenses.cs
   - src/ApideckUnifySdk/Models/Components/ExtendPaths.cs
   - src/ApideckUnifySdk/Models/Components/FeedStatus.cs
+  - src/ApideckUnifySdk/Models/Components/Fields.cs
   - src/ApideckUnifySdk/Models/Components/FileType.cs
   - src/ApideckUnifySdk/Models/Components/FilesFilter.cs
   - src/ApideckUnifySdk/Models/Components/FilesSearch.cs
@@ -1917,6 +1972,10 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/GetCreditNotesResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetCustomFieldsResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetCustomMappingsResponse.cs
+  - src/ApideckUnifySdk/Models/Components/GetCustomObjectResponse.cs
+  - src/ApideckUnifySdk/Models/Components/GetCustomObjectSchemaResponse.cs
+  - src/ApideckUnifySdk/Models/Components/GetCustomObjectSchemasResponse.cs
+  - src/ApideckUnifySdk/Models/Components/GetCustomObjectsResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetCustomerResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetCustomersResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetDepartmentResponse.cs
@@ -2033,6 +2092,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/JournalEntryLineItem.cs
   - src/ApideckUnifySdk/Models/Components/JournalEntryLineItemInput.cs
   - src/ApideckUnifySdk/Models/Components/JournalEntryLineItemType.cs
+  - src/ApideckUnifySdk/Models/Components/JournalEntryStatus.cs
   - src/ApideckUnifySdk/Models/Components/Lead.cs
   - src/ApideckUnifySdk/Models/Components/LeadInput.cs
   - src/ApideckUnifySdk/Models/Components/LeadsFilter.cs
@@ -2236,6 +2296,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/UpdateConsumerResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateContactResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateCreditNoteResponse.cs
+  - src/ApideckUnifySdk/Models/Components/UpdateCustomObjectResponse.cs
+  - src/ApideckUnifySdk/Models/Components/UpdateCustomObjectSchemaResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateCustomerResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateDepartmentResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateDriveGroupResponse.cs
@@ -2578,6 +2640,26 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Requests/CrmContactsOneResponse.cs
   - src/ApideckUnifySdk/Models/Requests/CrmContactsUpdateRequest.cs
   - src/ApideckUnifySdk/Models/Requests/CrmContactsUpdateResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasAddRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasAddResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasAllRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasAllResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasDeleteRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasDeleteResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasOneRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasOneResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasUpdateRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectSchemasUpdateResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsAddRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsAddResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsAllRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsAllResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsDeleteRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsDeleteResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsOneRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsOneResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsUpdateRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/CrmCustomObjectsUpdateResponse.cs
   - src/ApideckUnifySdk/Models/Requests/CrmLeadsAddRequest.cs
   - src/ApideckUnifySdk/Models/Requests/CrmLeadsAddResponse.cs
   - src/ApideckUnifySdk/Models/Requests/CrmLeadsAllRequest.cs
@@ -2860,6 +2942,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Products.cs
   - src/ApideckUnifySdk/ProfitAndLoss.cs
   - src/ApideckUnifySdk/PurchaseOrders.cs
+  - src/ApideckUnifySdk/SDKConfig.cs
   - src/ApideckUnifySdk/Sessions.cs
   - src/ApideckUnifySdk/SharedLinks.cs
   - src/ApideckUnifySdk/Sms.cs
@@ -4134,7 +4217,7 @@ examples:
         header:
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"title": "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry", "currency_rate": 0.69, "currency": "USD", "company_id": "12345", "line_items": [{"description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "tax_amount": 27500, "sub_total": 27500, "total_amount": 27500, "type": "debit", "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "customer": {"id": "12345", "display_name": "Windsurf Shop", "email": "boring@boring.com"}, "supplier": {"id": "12345", "display_name": "Windsurf Shop", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "department_id": "12345", "location_id": "12345", "line_number": 1}], "memo": "Thank you for your business and have a great day!", "posted_at": "2020-09-30T07:43:32.000Z", "journal_symbol": "IND", "tax_type": "sales", "tax_code": "1234", "number": "OIT00546", "tracking_categories": null, "accounting_period": "01-24", "row_version": "1-12345", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+        application/json: {"title": "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry", "currency_rate": 0.69, "currency": "USD", "company_id": "12345", "line_items": [{"description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "tax_amount": 27500, "sub_total": 27500, "total_amount": 27500, "type": "debit", "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "customer": {"id": "12345", "display_name": "Windsurf Shop", "email": "boring@boring.com"}, "supplier": {"id": "12345", "display_name": "Windsurf Shop", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "department_id": "12345", "location_id": "12345", "line_number": 1}], "status": "draft", "memo": "Thank you for your business and have a great day!", "posted_at": "2020-09-30T07:43:32.000Z", "journal_symbol": "IND", "tax_type": "sales", "tax_code": "1234", "number": "OIT00546", "tracking_categories": null, "accounting_period": "01-24", "row_version": "1-12345", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
       responses:
         "201":
           application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "journal-entries", "operation": "add", "data": {"id": "12345"}}
@@ -4162,7 +4245,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "journal-entries", "operation": "one", "data": {"id": "12345", "title": "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry", "currency_rate": 0.69, "currency": "USD", "company_id": "12345", "line_items": [{"id": "12345", "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "tax_amount": 27500, "sub_total": 27500, "total_amount": 27500, "type": "debit", "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "customer": {"id": "12345", "display_id": "CUST00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "email": "boring@boring.com"}, "supplier": {"id": "12345", "display_id": "SUPP00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "department_id": "12345", "location_id": "12345", "line_number": 1}, {"id": "12345", "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "tax_amount": 27500, "sub_total": 27500, "total_amount": 27500, "type": "debit", "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "customer": {"id": "12345", "display_id": "CUST00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "email": "boring@boring.com"}, "supplier": {"id": "12345", "display_id": "SUPP00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "department_id": "12345", "location_id": "12345", "line_number": 1}], "memo": "Thank you for your business and have a great day!", "posted_at": "2020-09-30T07:43:32.000Z", "journal_symbol": "IND", "tax_type": "sales", "tax_code": "1234", "number": "OIT00546", "tracking_categories": null, "accounting_period": "01-24", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "row_version": "1-12345", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}, {"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}, {"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "journal-entries", "operation": "one", "data": {"id": "12345", "title": "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry", "currency_rate": 0.69, "currency": "USD", "company_id": "12345", "line_items": [{"id": "12345", "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "tax_amount": 27500, "sub_total": 27500, "total_amount": 27500, "type": "debit", "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "customer": {"id": "12345", "display_id": "CUST00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "email": "boring@boring.com"}, "supplier": {"id": "12345", "display_id": "SUPP00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "department_id": "12345", "location_id": "12345", "line_number": 1}, {"id": "12345", "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "tax_amount": 27500, "sub_total": 27500, "total_amount": 27500, "type": "debit", "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "customer": {"id": "12345", "display_id": "CUST00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "email": "boring@boring.com"}, "supplier": {"id": "12345", "display_id": "SUPP00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "department_id": "12345", "location_id": "12345", "line_number": 1}], "status": "draft", "memo": "Thank you for your business and have a great day!", "posted_at": "2020-09-30T07:43:32.000Z", "journal_symbol": "IND", "tax_type": "sales", "tax_code": "1234", "number": "OIT00546", "tracking_categories": null, "accounting_period": "01-24", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "row_version": "1-12345", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}, {"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}, {"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":
@@ -4185,7 +4268,7 @@ examples:
         header:
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"title": "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry", "currency_rate": 0.69, "currency": "USD", "company_id": "12345", "line_items": [{"description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "tax_amount": 27500, "sub_total": 27500, "total_amount": 27500, "type": "debit", "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "customer": {"id": "12345", "display_name": "Windsurf Shop", "email": "boring@boring.com"}, "supplier": {"id": "12345", "display_name": "Windsurf Shop", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "department_id": "12345", "location_id": "12345", "line_number": 1}], "memo": "Thank you for your business and have a great day!", "posted_at": "2020-09-30T07:43:32.000Z", "journal_symbol": "IND", "tax_type": "sales", "tax_code": "1234", "number": "OIT00546", "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "accounting_period": "01-24", "row_version": "1-12345", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+        application/json: {"title": "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry", "currency_rate": 0.69, "currency": "USD", "company_id": "12345", "line_items": [{"description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "tax_amount": 27500, "sub_total": 27500, "total_amount": 27500, "type": "debit", "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "customer": {"id": "12345", "display_name": "Windsurf Shop", "email": "boring@boring.com"}, "supplier": {"id": "12345", "display_name": "Windsurf Shop", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "department_id": "12345", "location_id": "12345", "line_number": 1}], "status": "draft", "memo": "Thank you for your business and have a great day!", "posted_at": "2020-09-30T07:43:32.000Z", "journal_symbol": "IND", "tax_type": "sales", "tax_code": "1234", "number": "OIT00546", "tracking_categories": [{"id": "123456", "name": "New York"}, {"id": "123456", "name": "New York"}], "accounting_period": "01-24", "row_version": "1-12345", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
       responses:
         "200":
           application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "journal-entries", "operation": "update", "data": {"id": "12345"}}
@@ -9664,6 +9747,258 @@ examples:
       responses:
         "200":
           application/json: {"status_code": 200, "status": "OK", "data": {"id": "1234", "description": "A description", "unified_api": "crm", "status": "enabled", "disabled_reason": "retry_limit", "delivery_url": "https://example.com/my/webhook/endpoint", "execute_base_url": "https://unify.apideck.com/webhook/webhooks/1234/execute", "events": ["vault.connection.created", "vault.connection.updated"], "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectSchemasAll:
+    "":
+      parameters:
+        query:
+          raw: false
+          limit: 20
+          pass_through: {"search": "San Francisco"}
+        header:
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-object-schemas", "operation": "all", "data": [{"id": "cos_12345", "name": "project", "description": "This schema defines a project custom object", "fields": [{"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}, {"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}], "visible": true, "active": true, "created_by": "12345", "updated_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}, {"id": "cos_12345", "name": "project", "description": "This schema defines a project custom object", "fields": [{"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}, {"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}], "visible": true, "active": true, "created_by": "12345", "updated_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}, {"id": "cos_12345", "name": "project", "description": "This schema defines a project custom object", "fields": [{"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}, {"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}], "visible": true, "active": true, "created_by": "12345", "updated_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}], "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}}, "links": {"previous": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjE%3D", "current": "https://unify.apideck.com/crm/companies", "next": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjM"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectSchemasAdd:
+    "":
+      parameters:
+        query:
+          raw: false
+        header:
+          x-apideck-service-id: "salesforce"
+      requestBody:
+        application/json: {"name": "project", "description": "This schema defines a project custom object", "fields": [{"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}], "default_value": "New Project"}], "visible": true, "active": true, "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+      responses:
+        "201":
+          application/json: {"status_code": 201, "status": "Created", "service": "zoho-crm", "resource": "custom-object-schemas", "operation": "add", "data": {"id": "cos_12345", "name": "project", "description": "This schema defines a project custom object", "fields": [{"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}], "default_value": "New Project"}, {"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}], "default_value": "New Project"}], "visible": true, "active": true, "created_by": "12345", "updated_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectSchemasOne:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-object-schemas", "operation": "one", "data": {"id": "cos_12345", "name": "project", "description": "This schema defines a project custom object", "fields": [{"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}], "default_value": "New Project"}], "visible": true, "active": true, "created_by": "12345", "updated_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectSchemasUpdate:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-service-id: "salesforce"
+      requestBody:
+        application/json: {"name": "project", "description": "This schema defines a project custom object", "fields": [{"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}, {"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}, {"id": "field_123", "name": "project_name", "description": "Name of the project", "type": "string", "required": true, "options": [{"value": "option1", "label": "Option 1"}, {"value": "option1", "label": "Option 1"}], "default_value": "New Project"}], "visible": true, "active": true, "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-object-schemas", "operation": "update", "data": {"id": "12345"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectSchemasDelete:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-object-schemas", "operation": "delete", "data": {"id": "12345"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectsAll:
+    "":
+      parameters:
+        path:
+          object_id: "<id>"
+        query:
+          raw: false
+          limit: 20
+          pass_through: {"search": "San Francisco"}
+          fields: "id,updated_at"
+        header:
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-objects", "operation": "all", "data": [{"id": "co_12345", "owner_id": "user_12345", "name": "project", "fields": [{"name": "name", "value": "string"}], "updated_by": "user_12345", "created_by": "user_12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}, {"id": "co_12345", "owner_id": "user_12345", "name": "project", "fields": [{"name": "name", "value": "string"}], "updated_by": "user_12345", "created_by": "user_12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}, {"id": "co_12345", "owner_id": "user_12345", "name": "project", "fields": [{"name": "name", "value": "string"}], "updated_by": "user_12345", "created_by": "user_12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}], "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}}, "links": {"previous": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjE%3D", "current": "https://unify.apideck.com/crm/companies", "next": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjM"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectsAdd:
+    "":
+      parameters:
+        path:
+          object_id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-service-id: "salesforce"
+      requestBody:
+        application/json: {"name": "project", "fields": [{"name": "name", "value": "string"}, {"name": "name", "value": "string"}, {"name": "name", "value": "string"}], "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}, {"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+      responses:
+        "201":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-objects", "operation": "add", "data": {"id": "12345"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectsOne:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+          object_id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-objects", "operation": "one", "data": {"id": "co_12345", "owner_id": "user_12345", "name": "project", "fields": [{"name": "name", "value": "string"}, {"name": "name", "value": "string"}, {"name": "name", "value": "string"}], "updated_by": "user_12345", "created_by": "user_12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectsUpdate:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+          object_id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-service-id: "salesforce"
+      requestBody:
+        application/json: {"name": "project", "fields": [{"name": "name", "value": "string"}, {"name": "name", "value": "string"}], "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}, {"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-objects", "operation": "update", "data": {"id": "12345"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.customObjectsDelete:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+          object_id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "zoho-crm", "resource": "custom-objects", "operation": "delete", "data": {"id": "12345"}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":

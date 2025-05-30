@@ -1,0 +1,10 @@
+# CrmCustomObjectSchemasAllResponse
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                  | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                     | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `GetCustomObjectSchemasResponse`                                                            | [GetCustomObjectSchemasResponse](../../Models/Components/GetCustomObjectSchemasResponse.md) | :heavy_minus_sign:                                                                          | Custom object schemas                                                                       |
+| `UnexpectedErrorResponse`                                                                   | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)               | :heavy_minus_sign:                                                                          | Unexpected error                                                                            |

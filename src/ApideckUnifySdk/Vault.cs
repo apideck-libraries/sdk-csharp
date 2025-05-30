@@ -33,13 +33,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public IConsumers Consumers { get; private set; }
         public IConsumerRequestCounts ConsumerRequestCounts { get; private set; }
         public IConnections Connections { get; private set; }
@@ -52,23 +48,20 @@ namespace ApideckUnifySdk
         public ISessions Sessions { get; private set; }
         public ILogs Logs { get; private set; }
 
-        public Vault(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Vault(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Consumers = new Consumers(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ConsumerRequestCounts = new ConsumerRequestCounts(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Connections = new Connections(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ValidateConnection = new ValidateConnection(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CreateCallback = new CreateCallback(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ConnectionSettings = new ConnectionSettings(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CustomFields = new CustomFields(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ConnectionCustomMappings = new ConnectionCustomMappings(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CustomMappings = new CustomMappings(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Sessions = new Sessions(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Logs = new Logs(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Consumers = new Consumers(SDKConfiguration);
+            ConsumerRequestCounts = new ConsumerRequestCounts(SDKConfiguration);
+            Connections = new Connections(SDKConfiguration);
+            ValidateConnection = new ValidateConnection(SDKConfiguration);
+            CreateCallback = new CreateCallback(SDKConfiguration);
+            ConnectionSettings = new ConnectionSettings(SDKConfiguration);
+            CustomFields = new CustomFields(SDKConfiguration);
+            ConnectionCustomMappings = new ConnectionCustomMappings(SDKConfiguration);
+            CustomMappings = new CustomMappings(SDKConfiguration);
+            Sessions = new Sessions(SDKConfiguration);
+            Logs = new Logs(SDKConfiguration);
         }
     }
 }

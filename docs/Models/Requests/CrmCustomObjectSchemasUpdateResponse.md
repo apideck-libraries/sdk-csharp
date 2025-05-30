@@ -1,0 +1,10 @@
+# CrmCustomObjectSchemasUpdateResponse
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                      | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                         | :heavy_check_mark:                                                                              | N/A                                                                                             |
+| `UpdateCustomObjectSchemaResponse`                                                              | [UpdateCustomObjectSchemaResponse](../../Models/Components/UpdateCustomObjectSchemaResponse.md) | :heavy_minus_sign:                                                                              | Custom object schema updated                                                                    |
+| `UnexpectedErrorResponse`                                                                       | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)                   | :heavy_minus_sign:                                                                              | Unexpected error                                                                                |

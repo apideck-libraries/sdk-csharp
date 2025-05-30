@@ -417,6 +417,22 @@ while(res != null)
 * [Update](docs/sdks/contacts/README.md#update) - Update contact
 * [Delete](docs/sdks/contacts/README.md#delete) - Delete contact
 
+#### [Crm.CustomObjects](docs/sdks/customobjects/README.md)
+
+* [List](docs/sdks/customobjects/README.md#list) - List custom objects
+* [Create](docs/sdks/customobjects/README.md#create) - Create custom object
+* [Get](docs/sdks/customobjects/README.md#get) - Get custom object
+* [Update](docs/sdks/customobjects/README.md#update) - Update custom object
+* [Delete](docs/sdks/customobjects/README.md#delete) - Delete custom object
+
+#### [Crm.CustomObjectSchemas](docs/sdks/customobjectschemas/README.md)
+
+* [List](docs/sdks/customobjectschemas/README.md#list) - List custom object schemas
+* [Create](docs/sdks/customobjectschemas/README.md#create) - Create custom object schema
+* [Get](docs/sdks/customobjectschemas/README.md#get) - Get custom object schema
+* [Update](docs/sdks/customobjectschemas/README.md#update) - Update custom object schema
+* [Delete](docs/sdks/customobjectschemas/README.md#delete) - Delete custom object schema
+
 #### [Crm.Leads](docs/sdks/leads/README.md)
 
 * [List](docs/sdks/leads/README.md#list) - List leads

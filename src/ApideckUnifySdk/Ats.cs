@@ -25,26 +25,19 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public IJobs Jobs { get; private set; }
         public IApplicants Applicants { get; private set; }
         public IApplications Applications { get; private set; }
 
-        public Ats(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Ats(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Jobs = new Jobs(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Applicants = new Applicants(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Applications = new Applications(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Jobs = new Jobs(SDKConfiguration);
+            Applicants = new Applicants(SDKConfiguration);
+            Applications = new Applications(SDKConfiguration);
         }
     }
 }

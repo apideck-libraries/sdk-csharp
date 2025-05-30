@@ -24,19 +24,17 @@ namespace ApideckUnifySdk
         public INotes Notes { get; }
         public IUsers Users { get; }
         public IActivities Activities { get; }
+        public ICustomObjectSchemas CustomObjectSchemas { get; }
+        public ICustomObjects CustomObjects { get; }
     }
 
     public class Crm: ICrm
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public ICompanies Companies { get; private set; }
         public IContacts Contacts { get; private set; }
         public IOpportunities Opportunities { get; private set; }
@@ -45,21 +43,22 @@ namespace ApideckUnifySdk
         public INotes Notes { get; private set; }
         public IUsers Users { get; private set; }
         public IActivities Activities { get; private set; }
+        public ICustomObjectSchemas CustomObjectSchemas { get; private set; }
+        public ICustomObjects CustomObjects { get; private set; }
 
-        public Crm(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Crm(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Companies = new Companies(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Contacts = new Contacts(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Opportunities = new Opportunities(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Leads = new Leads(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Pipelines = new Pipelines(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Notes = new Notes(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Users = new Users(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Activities = new Activities(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Companies = new Companies(SDKConfiguration);
+            Contacts = new Contacts(SDKConfiguration);
+            Opportunities = new Opportunities(SDKConfiguration);
+            Leads = new Leads(SDKConfiguration);
+            Pipelines = new Pipelines(SDKConfiguration);
+            Notes = new Notes(SDKConfiguration);
+            Users = new Users(SDKConfiguration);
+            Activities = new Activities(SDKConfiguration);
+            CustomObjectSchemas = new CustomObjectSchemas(SDKConfiguration);
+            CustomObjects = new CustomObjects(SDKConfiguration);
         }
     }
 }

@@ -40,42 +40,6 @@ namespace ApideckUnifySdk
         public IWebhook Webhook { get; }
     }
 
-    public class SDKConfig
-    {
-        /// <summary>
-        /// List of server URLs available to the SDK.
-        /// </summary>
-        public static readonly string[] ServerList = {
-            "https://unify.apideck.com",
-        };
-
-        public string ServerUrl = "";
-        public int ServerIndex = 0;
-        public string? ConsumerId;
-        public string? AppId;
-        public SDKHooks Hooks = new SDKHooks();
-        public RetryConfig? RetryConfig = null;
-
-        public string GetTemplatedServerUrl()
-        {
-            if (!String.IsNullOrEmpty(this.ServerUrl))
-            {
-                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.ServerUrl, "/"), new Dictionary<string, string>());
-            }
-            return Utilities.TemplateUrl(SDKConfig.ServerList[this.ServerIndex], new Dictionary<string, string>());
-        }
-
-        public ISpeakeasyHttpClient InitHooks(ISpeakeasyHttpClient client)
-        {
-            string preHooksUrl = GetTemplatedServerUrl();
-            var (postHooksUrl, postHooksClient) = this.Hooks.SDKInit(preHooksUrl, client);
-            if (preHooksUrl != postHooksUrl)
-            {
-                this.ServerUrl = postHooksUrl;
-            }
-            return postHooksClient;
-        }
-    }
 
     /// <summary>
     /// Apideck: The Apideck OpenAPI Spec: SDK Optimized
@@ -87,14 +51,9 @@ namespace ApideckUnifySdk
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private int _serverIndex = 0;
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public IAccounting Accounting { get; private set; }
         public IAts Ats { get; private set; }
         public ICrm Crm { get; private set; }
@@ -107,6 +66,34 @@ namespace ApideckUnifySdk
         public IVault Vault { get; private set; }
         public IWebhook Webhook { get; private set; }
 
+        public Apideck(SDKConfig config)
+        {
+            SDKConfiguration = config;
+            InitHooks();
+
+            Accounting = new Accounting(SDKConfiguration);
+
+            Ats = new Ats(SDKConfiguration);
+
+            Crm = new Crm(SDKConfiguration);
+
+            Ecommerce = new Ecommerce(SDKConfiguration);
+
+            FileStorage = new FileStorage(SDKConfiguration);
+
+            Hris = new Hris(SDKConfiguration);
+
+            Sms = new Sms(SDKConfiguration);
+
+            IssueTracking = new IssueTracking(SDKConfiguration);
+
+            Connector = new Connector(SDKConfiguration);
+
+            Vault = new Vault(SDKConfiguration);
+
+            Webhook = new Webhook(SDKConfiguration);
+        }
+
         public Apideck(string? apiKey = null, Func<string>? apiKeySource = null, string? consumerId = null, string? appId = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (serverIndex != null)
@@ -115,7 +102,6 @@ namespace ApideckUnifySdk
                 {
                     throw new Exception($"Invalid server index {serverIndex.Value}");
                 }
-                _serverIndex = serverIndex.Value;
             }
 
             if (serverUrl != null)
@@ -124,10 +110,8 @@ namespace ApideckUnifySdk
                 {
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
-                _serverUrl = serverUrl;
             }
-
-            _client = client ?? new SpeakeasyHttpClient();
+            Func<ApideckUnifySdk.Models.Components.Security>? _securitySource = null;
 
             if(apiKeySource != null)
             {
@@ -142,49 +126,126 @@ namespace ApideckUnifySdk
                 throw new Exception("apiKey and apiKeySource cannot both be null");
             }
 
-            SDKConfiguration = new SDKConfig()
+            SDKConfiguration = new SDKConfig(client)
             {
                 ConsumerId = consumerId,
                 AppId = appId,
-                ServerIndex = _serverIndex,
-                ServerUrl = _serverUrl,
+                ServerIndex = serverIndex == null ? 0 : serverIndex.Value,
+                ServerUrl = serverUrl == null ? "" : serverUrl,
+                SecuritySource = _securitySource,
                 RetryConfig = retryConfig
             };
 
-            _client = SDKConfiguration.InitHooks(_client);
+            InitHooks();
 
+            Accounting = new Accounting(SDKConfiguration);
 
-            Accounting = new Accounting(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Ats = new Ats(SDKConfiguration);
 
+            Crm = new Crm(SDKConfiguration);
 
-            Ats = new Ats(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Ecommerce = new Ecommerce(SDKConfiguration);
 
+            FileStorage = new FileStorage(SDKConfiguration);
 
-            Crm = new Crm(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Hris = new Hris(SDKConfiguration);
 
+            Sms = new Sms(SDKConfiguration);
 
-            Ecommerce = new Ecommerce(_client, _securitySource, _serverUrl, SDKConfiguration);
+            IssueTracking = new IssueTracking(SDKConfiguration);
 
+            Connector = new Connector(SDKConfiguration);
 
-            FileStorage = new FileStorage(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Vault = new Vault(SDKConfiguration);
 
-
-            Hris = new Hris(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Sms = new Sms(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            IssueTracking = new IssueTracking(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Connector = new Connector(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Vault = new Vault(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Webhook = new Webhook(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Webhook = new Webhook(SDKConfiguration);
         }
+
+        private void InitHooks()
+        {
+            string preHooksUrl = SDKConfiguration.GetTemplatedServerUrl();
+            var (postHooksUrl, postHooksClient) = SDKConfiguration.Hooks.SDKInit(preHooksUrl, SDKConfiguration.Client);
+            var config = SDKConfiguration;
+            if (preHooksUrl != postHooksUrl)
+            {
+                config.ServerUrl = postHooksUrl;
+            }
+            config.Client = postHooksClient;
+            SDKConfiguration = config;
+        }
+
+        public class SDKBuilder
+        {
+            private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
+
+            public SDKBuilder() { }
+
+            public SDKBuilder WithServerIndex(int serverIndex)
+            {
+                if (serverIndex < 0 || serverIndex >= SDKConfig.ServerList.Length)
+                {
+                    throw new Exception($"Invalid server index {serverIndex}");
+                }
+                _sdkConfig.ServerIndex = serverIndex;
+                return this;
+            }
+
+            public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
+            {
+                if (serverVariables != null)
+                {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, serverVariables);
+                }
+                _sdkConfig.ServerUrl = serverUrl;
+                return this;
+            }
+
+            public SDKBuilder WithConsumerId(string consumerId)
+            {
+                _sdkConfig.ConsumerId = consumerId;
+                return this;
+            }
+
+            public SDKBuilder WithAppId(string appId)
+            {
+                _sdkConfig.AppId = appId;
+                return this;
+            }
+
+            public SDKBuilder WithApiKeySource(Func<string> apiKeySource)
+            {
+                _sdkConfig.SecuritySource = () => new ApideckUnifySdk.Models.Components.Security() { ApiKey = apiKeySource() };
+                return this;
+            }
+
+            public SDKBuilder WithApiKey(string apiKey)
+            {
+                _sdkConfig.SecuritySource = () => new ApideckUnifySdk.Models.Components.Security() { ApiKey = apiKey };
+                return this;
+            }
+
+            public SDKBuilder WithClient(ISpeakeasyHttpClient client)
+            {
+                _sdkConfig.Client = client;
+                return this;
+            }
+
+            public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
+            {
+                _sdkConfig.RetryConfig = retryConfig;
+                return this;
+            }
+
+            public Apideck Build()
+            {
+              if (_sdkConfig.SecuritySource == null) {
+                  throw new Exception("securitySource cannot be null. One of `ApiKey` or `apiKeySource` needs to be defined.");
+              }
+              return new Apideck(_sdkConfig);
+            }
+
+        }
+
+        public static SDKBuilder Builder() => new SDKBuilder();
     }
 }

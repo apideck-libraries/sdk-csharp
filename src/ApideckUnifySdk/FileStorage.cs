@@ -28,13 +28,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public IFiles Files { get; private set; }
         public IFolders Folders { get; private set; }
         public ISharedLinks SharedLinks { get; private set; }
@@ -42,18 +38,15 @@ namespace ApideckUnifySdk
         public IDrives Drives { get; private set; }
         public IDriveGroups DriveGroups { get; private set; }
 
-        public FileStorage(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public FileStorage(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Files = new Files(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Folders = new Folders(_client, _securitySource, _serverUrl, SDKConfiguration);
-            SharedLinks = new SharedLinks(_client, _securitySource, _serverUrl, SDKConfiguration);
-            UploadSessions = new UploadSessions(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Drives = new Drives(_client, _securitySource, _serverUrl, SDKConfiguration);
-            DriveGroups = new DriveGroups(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Files = new Files(SDKConfiguration);
+            Folders = new Folders(SDKConfiguration);
+            SharedLinks = new SharedLinks(SDKConfiguration);
+            UploadSessions = new UploadSessions(SDKConfiguration);
+            Drives = new Drives(SDKConfiguration);
+            DriveGroups = new DriveGroups(SDKConfiguration);
         }
     }
 }
