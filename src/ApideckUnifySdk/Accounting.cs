@@ -47,13 +47,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public ITaxRates TaxRates { get; private set; }
         public IBills Bills { get; private set; }
         public IInvoices Invoices { get; private set; }
@@ -80,37 +76,34 @@ namespace ApideckUnifySdk
         public IBankFeedAccounts BankFeedAccounts { get; private set; }
         public IBankFeedStatements BankFeedStatements { get; private set; }
 
-        public Accounting(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Accounting(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            TaxRates = new TaxRates(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Bills = new Bills(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Invoices = new Invoices(_client, _securitySource, _serverUrl, SDKConfiguration);
-            LedgerAccounts = new LedgerAccounts(_client, _securitySource, _serverUrl, SDKConfiguration);
-            InvoiceItems = new InvoiceItems(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CreditNotes = new CreditNotes(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Customers = new Customers(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Suppliers = new Suppliers(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Payments = new Payments(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CompanyInfo = new CompanyInfo(_client, _securitySource, _serverUrl, SDKConfiguration);
-            BalanceSheet = new BalanceSheet(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ProfitAndLoss = new ProfitAndLoss(_client, _securitySource, _serverUrl, SDKConfiguration);
-            JournalEntries = new JournalEntries(_client, _securitySource, _serverUrl, SDKConfiguration);
-            PurchaseOrders = new PurchaseOrders(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Subsidiaries = new Subsidiaries(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Locations = new Locations(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Departments = new Departments(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Attachments = new Attachments(_client, _securitySource, _serverUrl, SDKConfiguration);
-            TrackingCategories = new TrackingCategories(_client, _securitySource, _serverUrl, SDKConfiguration);
-            BillPayments = new BillPayments(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Expenses = new Expenses(_client, _securitySource, _serverUrl, SDKConfiguration);
-            AgedCreditors = new AgedCreditors(_client, _securitySource, _serverUrl, SDKConfiguration);
-            AgedDebtors = new AgedDebtors(_client, _securitySource, _serverUrl, SDKConfiguration);
-            BankFeedAccounts = new BankFeedAccounts(_client, _securitySource, _serverUrl, SDKConfiguration);
-            BankFeedStatements = new BankFeedStatements(_client, _securitySource, _serverUrl, SDKConfiguration);
+            TaxRates = new TaxRates(SDKConfiguration);
+            Bills = new Bills(SDKConfiguration);
+            Invoices = new Invoices(SDKConfiguration);
+            LedgerAccounts = new LedgerAccounts(SDKConfiguration);
+            InvoiceItems = new InvoiceItems(SDKConfiguration);
+            CreditNotes = new CreditNotes(SDKConfiguration);
+            Customers = new Customers(SDKConfiguration);
+            Suppliers = new Suppliers(SDKConfiguration);
+            Payments = new Payments(SDKConfiguration);
+            CompanyInfo = new CompanyInfo(SDKConfiguration);
+            BalanceSheet = new BalanceSheet(SDKConfiguration);
+            ProfitAndLoss = new ProfitAndLoss(SDKConfiguration);
+            JournalEntries = new JournalEntries(SDKConfiguration);
+            PurchaseOrders = new PurchaseOrders(SDKConfiguration);
+            Subsidiaries = new Subsidiaries(SDKConfiguration);
+            Locations = new Locations(SDKConfiguration);
+            Departments = new Departments(SDKConfiguration);
+            Attachments = new Attachments(SDKConfiguration);
+            TrackingCategories = new TrackingCategories(SDKConfiguration);
+            BillPayments = new BillPayments(SDKConfiguration);
+            Expenses = new Expenses(SDKConfiguration);
+            AgedCreditors = new AgedCreditors(SDKConfiguration);
+            AgedDebtors = new AgedDebtors(SDKConfiguration);
+            BankFeedAccounts = new BankFeedAccounts(SDKConfiguration);
+            BankFeedStatements = new BankFeedStatements(SDKConfiguration);
         }
     }
 }

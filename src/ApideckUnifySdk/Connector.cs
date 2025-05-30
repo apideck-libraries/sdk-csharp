@@ -28,13 +28,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public IConnectors Connectors { get; private set; }
         public IConnectorDocs ConnectorDocs { get; private set; }
         public IConnectorResources ConnectorResources { get; private set; }
@@ -42,18 +38,15 @@ namespace ApideckUnifySdk
         public IApiResources ApiResources { get; private set; }
         public IApiResourceCoverage ApiResourceCoverage { get; private set; }
 
-        public Connector(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Connector(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Connectors = new Connectors(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ConnectorDocs = new ConnectorDocs(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ConnectorResources = new ConnectorResources(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Apis = new Apis(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ApiResources = new ApiResources(_client, _securitySource, _serverUrl, SDKConfiguration);
-            ApiResourceCoverage = new ApiResourceCoverage(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Connectors = new Connectors(SDKConfiguration);
+            ConnectorDocs = new ConnectorDocs(SDKConfiguration);
+            ConnectorResources = new ConnectorResources(SDKConfiguration);
+            Apis = new Apis(SDKConfiguration);
+            ApiResources = new ApiResources(SDKConfiguration);
+            ApiResourceCoverage = new ApiResourceCoverage(SDKConfiguration);
         }
     }
 }

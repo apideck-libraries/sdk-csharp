@@ -26,28 +26,21 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public IOrders Orders { get; private set; }
         public IProducts Products { get; private set; }
         public IApideckCustomers Customers { get; private set; }
         public IStores Stores { get; private set; }
 
-        public Ecommerce(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Ecommerce(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Orders = new Orders(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Products = new Products(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Customers = new ApideckCustomers(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Stores = new Stores(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Orders = new Orders(SDKConfiguration);
+            Products = new Products(SDKConfiguration);
+            Customers = new ApideckCustomers(SDKConfiguration);
+            Stores = new Stores(SDKConfiguration);
         }
     }
 }

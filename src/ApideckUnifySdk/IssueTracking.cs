@@ -27,30 +27,23 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public ICollections Collections { get; private set; }
         public ICollectionTickets CollectionTickets { get; private set; }
         public ICollectionTicketComments CollectionTicketComments { get; private set; }
         public ICollectionUsers CollectionUsers { get; private set; }
         public ICollectionTags CollectionTags { get; private set; }
 
-        public IssueTracking(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public IssueTracking(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Collections = new Collections(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CollectionTickets = new CollectionTickets(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CollectionTicketComments = new CollectionTicketComments(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CollectionUsers = new CollectionUsers(_client, _securitySource, _serverUrl, SDKConfiguration);
-            CollectionTags = new CollectionTags(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Collections = new Collections(SDKConfiguration);
+            CollectionTickets = new CollectionTickets(SDKConfiguration);
+            CollectionTicketComments = new CollectionTicketComments(SDKConfiguration);
+            CollectionUsers = new CollectionUsers(SDKConfiguration);
+            CollectionTags = new CollectionTags(SDKConfiguration);
         }
     }
 }

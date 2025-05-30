@@ -29,13 +29,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.10.4";
-        private const string _sdkGenVersion = "2.610.0";
-        private const string _openapiDocVersion = "10.16.8";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.10.4 2.610.0 10.16.8 ApideckUnifySdk";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<ApideckUnifySdk.Models.Components.Security>? _securitySource;
+        private const string _sdkVersion = "0.11.0";
+        private const string _sdkGenVersion = "2.616.1";
+        private const string _openapiDocVersion = "10.17.2";
         public IEmployees Employees { get; private set; }
         public IApideckCompanies Companies { get; private set; }
         public IApideckDepartments Departments { get; private set; }
@@ -44,19 +40,16 @@ namespace ApideckUnifySdk
         public IEmployeeSchedules EmployeeSchedules { get; private set; }
         public ITimeOffRequests TimeOffRequests { get; private set; }
 
-        public Hris(ISpeakeasyHttpClient client, Func<ApideckUnifySdk.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public Hris(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Employees = new Employees(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Companies = new ApideckCompanies(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Departments = new ApideckDepartments(_client, _securitySource, _serverUrl, SDKConfiguration);
-            Payrolls = new Payrolls(_client, _securitySource, _serverUrl, SDKConfiguration);
-            EmployeePayrolls = new EmployeePayrolls(_client, _securitySource, _serverUrl, SDKConfiguration);
-            EmployeeSchedules = new EmployeeSchedules(_client, _securitySource, _serverUrl, SDKConfiguration);
-            TimeOffRequests = new TimeOffRequests(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Employees = new Employees(SDKConfiguration);
+            Companies = new ApideckCompanies(SDKConfiguration);
+            Departments = new ApideckDepartments(SDKConfiguration);
+            Payrolls = new Payrolls(SDKConfiguration);
+            EmployeePayrolls = new EmployeePayrolls(SDKConfiguration);
+            EmployeeSchedules = new EmployeeSchedules(SDKConfiguration);
+            TimeOffRequests = new TimeOffRequests(SDKConfiguration);
         }
     }
 }
