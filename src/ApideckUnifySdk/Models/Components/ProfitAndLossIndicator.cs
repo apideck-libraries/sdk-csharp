@@ -18,7 +18,7 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The total amount of the transaction or record
         /// </summary>
-        [JsonProperty("total", NullValueHandling = NullValueHandling.Include)]
-        public double? Total { get; set; }
+        [JsonProperty("total")]
+        public double? Total { get; set; } = null;
     }
 }

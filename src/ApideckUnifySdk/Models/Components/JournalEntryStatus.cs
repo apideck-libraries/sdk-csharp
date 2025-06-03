@@ -32,6 +32,8 @@ namespace ApideckUnifySdk.Models.Components
         Rejected,
         [JsonProperty("deleted")]
         Deleted,
+        [JsonProperty("other")]
+        Other,
     }
 
     public static class JournalEntryStatusExtension
