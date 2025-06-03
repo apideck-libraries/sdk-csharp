@@ -44,8 +44,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
         /// </summary>
-        [JsonProperty("currency", NullValueHandling = NullValueHandling.Include)]
-        public Currency? Currency { get; set; }
+        [JsonProperty("currency")]
+        public Currency? Currency { get; set; } = null;
 
         /// <summary>
         /// The operating income accounts
