@@ -25,9 +25,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCreditNotesAllRequest req = new AccountingCreditNotesAllRequest() {
@@ -37,6 +37,7 @@ AccountingCreditNotesAllRequest req = new AccountingCreditNotesAllRequest() {
     },
     Sort = new CreditNotesSort() {
         By = CreditNotesSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -89,9 +90,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
@@ -150,6 +151,10 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
                     Rate = 10D,
                 },
                 TrackingCategories = new List<LinkedTrackingCategory>() {
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -249,6 +254,22 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
                     "Uses Salesforce and Marketo"
                 ),
             },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -307,9 +328,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCreditNotesOneRequest req = new AccountingCreditNotesOneRequest() {
@@ -358,9 +379,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest() {
@@ -439,11 +460,32 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
                             "Uses Salesforce and Marketo"
                         ),
                     },
+                    new CustomField() {
+                        Id = "2389328923893298",
+                        Name = "employee_level",
+                        Description = "Employee Level",
+                        Value = Value.CreateStr(
+                            "Uses Salesforce and Marketo"
+                        ),
+                    },
+                    new CustomField() {
+                        Id = "2389328923893298",
+                        Name = "employee_level",
+                        Description = "Employee Level",
+                        Value = Value.CreateStr(
+                            "Uses Salesforce and Marketo"
+                        ),
+                    },
                 },
                 RowVersion = "1-12345",
             },
         },
         Allocations = new List<AllocationInput>() {
+            new AllocationInput() {
+                Id = "123456",
+                Amount = 49.99D,
+                AllocationId = "123456",
+            },
             new AllocationInput() {
                 Id = "123456",
                 Amount = 49.99D,
@@ -509,8 +551,20 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
                 Id = "123456",
                 Name = "New York",
             },
+            new LinkedTrackingCategory() {
+                Id = "123456",
+                Name = "New York",
+            },
         },
         CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
             new CustomField() {
                 Id = "2389328923893298",
                 Name = "employee_level",
@@ -577,9 +631,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCreditNotesDeleteRequest req = new AccountingCreditNotesDeleteRequest() {

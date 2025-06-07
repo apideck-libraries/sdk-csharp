@@ -24,9 +24,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedStatementsAllRequest req = new AccountingBankFeedStatementsAllRequest() {
@@ -82,9 +82,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedStatementsAddRequest req = new AccountingBankFeedStatementsAddRequest() {
@@ -99,6 +99,26 @@ AccountingBankFeedStatementsAddRequest req = new AccountingBankFeedStatementsAdd
         EndBalance = 9800.5D,
         EndBalanceCreditOrDebit = CreditOrDebit.Debit,
         Transactions = new List<Transactions>() {
+            new Transactions() {
+                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
+                Description = "Payment received from ACME Corp",
+                Amount = 250D,
+                CreditOrDebit = CreditOrDebit.Debit,
+                SourceTransactionId = "txn_987",
+                Counterparty = "ACME Corp",
+                Reference = "INV-2025-01",
+                TransactionType = BankFeedStatementTransactionType.Payment,
+            },
+            new Transactions() {
+                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
+                Description = "Payment received from ACME Corp",
+                Amount = 250D,
+                CreditOrDebit = CreditOrDebit.Debit,
+                SourceTransactionId = "txn_987",
+                Counterparty = "ACME Corp",
+                Reference = "INV-2025-01",
+                TransactionType = BankFeedStatementTransactionType.Payment,
+            },
             new Transactions() {
                 PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
                 Description = "Payment received from ACME Corp",
@@ -151,9 +171,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedStatementsOneRequest req = new AccountingBankFeedStatementsOneRequest() {
@@ -202,9 +222,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedStatementsUpdateRequest req = new AccountingBankFeedStatementsUpdateRequest() {
@@ -220,6 +240,16 @@ AccountingBankFeedStatementsUpdateRequest req = new AccountingBankFeedStatements
         EndBalance = 9800.5D,
         EndBalanceCreditOrDebit = CreditOrDebit.Debit,
         Transactions = new List<Transactions>() {
+            new Transactions() {
+                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
+                Description = "Payment received from ACME Corp",
+                Amount = 250D,
+                CreditOrDebit = CreditOrDebit.Debit,
+                SourceTransactionId = "txn_987",
+                Counterparty = "ACME Corp",
+                Reference = "INV-2025-01",
+                TransactionType = BankFeedStatementTransactionType.Payment,
+            },
             new Transactions() {
                 PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
                 Description = "Payment received from ACME Corp",
@@ -272,9 +302,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedStatementsDeleteRequest req = new AccountingBankFeedStatementsDeleteRequest() {

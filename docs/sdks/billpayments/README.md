@@ -25,9 +25,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
@@ -38,6 +38,7 @@ AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
     },
     Sort = new PaymentsSort() {
         By = PaymentsSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -90,9 +91,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
@@ -152,6 +153,18 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
                 Amount = 49.99D,
                 AllocationId = "123456",
             },
+            new BillPaymentAllocations() {
+                Id = "12345",
+                Type = BillPaymentAllocationType.Bill,
+                Amount = 49.99D,
+                AllocationId = "123456",
+            },
+            new BillPaymentAllocations() {
+                Id = "12345",
+                Type = BillPaymentAllocationType.Bill,
+                Amount = 49.99D,
+                AllocationId = "123456",
+            },
         },
         Note = "Some notes about this transaction",
         Number = "123456",
@@ -170,6 +183,22 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
                     "Uses Salesforce and Marketo"
                 ),
             },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         DisplayId = "123456",
@@ -177,6 +206,22 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -229,9 +274,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBillPaymentsOneRequest req = new AccountingBillPaymentsOneRequest() {
@@ -280,9 +325,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateRequest() {
@@ -343,15 +388,22 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
                 Amount = 49.99D,
                 AllocationId = "123456",
             },
+            new BillPaymentAllocations() {
+                Id = "12345",
+                Type = BillPaymentAllocationType.Bill,
+                Amount = 49.99D,
+                AllocationId = "123456",
+            },
+            new BillPaymentAllocations() {
+                Id = "12345",
+                Type = BillPaymentAllocationType.Bill,
+                Amount = 49.99D,
+                AllocationId = "123456",
+            },
         },
         Note = "Some notes about this transaction",
         Number = "123456",
-        TrackingCategories = new List<LinkedTrackingCategory>() {
-            new LinkedTrackingCategory() {
-                Id = "123456",
-                Name = "New York",
-            },
-        },
+        TrackingCategories = null,
         CustomFields = new List<CustomField>() {
             new CustomField() {
                 Id = "2389328923893298",
@@ -365,6 +417,19 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
         RowVersion = "1-12345",
         DisplayId = "123456",
         PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
@@ -420,9 +485,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBillPaymentsDeleteRequest req = new AccountingBillPaymentsDeleteRequest() {

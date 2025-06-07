@@ -19,16 +19,14 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.Vault.ConsumerRequestCounts.ListAsync(
     consumerId: "test_user_id",
     startDatetime: "2021-05-01T12:00:00.000Z",
-    endDatetime: "2021-05-30T12:00:00.000Z",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    endDatetime: "2021-05-30T12:00:00.000Z"
 );
 
 // handle response
