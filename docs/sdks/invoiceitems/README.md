@@ -24,9 +24,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
@@ -37,6 +37,7 @@ AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
     },
     Sort = new InvoiceItemsSort() {
         By = InvoiceItemsSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -89,9 +90,9 @@ using NodaTime;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
@@ -141,12 +142,7 @@ AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
             NominalCode = "N091",
             Code = "453",
         },
-        TrackingCategories = new List<LinkedTrackingCategory>() {
-            new LinkedTrackingCategory() {
-                Id = "123456",
-                Name = "New York",
-            },
-        },
+        TrackingCategories = null,
         Active = true,
         DepartmentId = "12345",
         LocationId = "12345",
@@ -157,6 +153,14 @@ AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -209,9 +213,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoiceItemsOneRequest req = new AccountingInvoiceItemsOneRequest() {
@@ -263,9 +267,9 @@ using NodaTime;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateRequest() {
@@ -306,17 +310,17 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
             NominalCode = "N091",
             Code = "453",
         },
-        IncomeAccount = new LinkedLedgerAccountInput() {
-            Id = "123456",
-            NominalCode = "N091",
-            Code = "453",
-        },
+        IncomeAccount = null,
         ExpenseAccount = new LinkedLedgerAccountInput() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
         },
         TrackingCategories = new List<LinkedTrackingCategory>() {
+            new LinkedTrackingCategory() {
+                Id = "123456",
+                Name = "New York",
+            },
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",
@@ -329,6 +333,19 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
         TaxScheduleId = "123456",
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
@@ -384,9 +401,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoiceItemsDeleteRequest req = new AccountingInvoiceItemsDeleteRequest() {

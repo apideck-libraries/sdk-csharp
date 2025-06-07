@@ -18,16 +18,14 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.Vault.CustomMappings.ListAsync(
     unifiedApi: "crm",
-    serviceId: "pipedrive",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    serviceId: "pipedrive"
 );
 
 // handle response

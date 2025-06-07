@@ -17,9 +17,10 @@ generation:
     oAuth2ClientCredentialsEnabled: true
     oAuth2PasswordEnabled: true
 csharp:
-  version: 0.11.1
+  version: 0.11.2
   additionalDependencies: []
   author: Speakeasy
+  baseErrorName: ApideckError
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
   disableNamespacePascalCasingApr2024: true
