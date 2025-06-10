@@ -23,16 +23,11 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-WebhookWebhooksAllResponse? res = await sdk.Webhook.Webhooks.ListAsync(
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
-    cursor: "<value>",
-    limit: 20
-);
+WebhookWebhooksAllResponse? res = await sdk.Webhook.Webhooks.ListAsync(limit: 20);
 
 while(res != null)
 {
@@ -77,24 +72,20 @@ using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Webhook.Webhooks.CreateAsync(
-    createWebhookRequest: new CreateWebhookRequest() {
-        Description = "A description",
-        UnifiedApi = UnifiedApiId.Crm,
-        Status = Status.Enabled,
-        DeliveryUrl = "https://example.com/my/webhook/endpoint",
-        Events = new List<WebhookEventType>() {
-            WebhookEventType.VaultConnectionCreated,
-            WebhookEventType.VaultConnectionUpdated,
-        },
+var res = await sdk.Webhook.Webhooks.CreateAsync(createWebhookRequest: new CreateWebhookRequest() {
+    Description = "A description",
+    UnifiedApi = UnifiedApiId.Crm,
+    Status = Status.Enabled,
+    DeliveryUrl = "https://example.com/my/webhook/endpoint",
+    Events = new List<WebhookEventType>() {
+        WebhookEventType.VaultConnectionCreated,
+        WebhookEventType.VaultConnectionUpdated,
     },
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
-);
+});
 
 // handle response
 ```
@@ -132,15 +123,11 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Webhook.Webhooks.GetAsync(
-    id: "<id>",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
-);
+var res = await sdk.Webhook.Webhooks.GetAsync(id: "<id>");
 
 // handle response
 ```
@@ -179,9 +166,8 @@ using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.Webhook.Webhooks.UpdateAsync(
@@ -194,8 +180,7 @@ var res = await sdk.Webhook.Webhooks.UpdateAsync(
             WebhookEventType.VaultConnectionCreated,
             WebhookEventType.VaultConnectionUpdated,
         },
-    },
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    }
 );
 
 // handle response
@@ -235,15 +220,11 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Webhook.Webhooks.DeleteAsync(
-    id: "<id>",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
-);
+var res = await sdk.Webhook.Webhooks.DeleteAsync(id: "<id>");
 
 // handle response
 ```

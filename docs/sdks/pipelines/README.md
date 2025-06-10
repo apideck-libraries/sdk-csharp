@@ -24,9 +24,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmPipelinesAllRequest req = new CrmPipelinesAllRequest() {
@@ -81,9 +81,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmPipelinesAddRequest req = new CrmPipelinesAddRequest() {
@@ -103,8 +103,27 @@ CrmPipelinesAddRequest req = new CrmPipelinesAddRequest() {
                 WinProbability = 50,
                 DisplayOrder = 1,
             },
+            new PipelineStages() {
+                Name = "Contract Sent",
+                Value = "CONTRACT_SENT",
+                WinProbability = 50,
+                DisplayOrder = 1,
+            },
         },
         PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
@@ -160,9 +179,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmPipelinesOneRequest req = new CrmPipelinesOneRequest() {
@@ -210,9 +229,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmPipelinesUpdateRequest req = new CrmPipelinesUpdateRequest() {
@@ -233,11 +252,62 @@ CrmPipelinesUpdateRequest req = new CrmPipelinesUpdateRequest() {
                 WinProbability = 50,
                 DisplayOrder = 1,
             },
+            new PipelineStages() {
+                Name = "Contract Sent",
+                Value = "CONTRACT_SENT",
+                WinProbability = 50,
+                DisplayOrder = 1,
+            },
         },
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -290,9 +360,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmPipelinesDeleteRequest req = new CrmPipelinesDeleteRequest() {

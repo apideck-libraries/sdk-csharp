@@ -23,9 +23,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingExpensesAllRequest req = new AccountingExpensesAllRequest() {
@@ -77,9 +77,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
@@ -109,6 +109,14 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
                         Id = "123456",
                         Name = "New York",
                     },
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
                 },
                 AccountId = "123456",
                 CustomerId = "12345",
@@ -134,12 +142,73 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
                     "Uses Salesforce and Marketo"
                 ),
             },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -192,9 +261,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingExpensesOneRequest req = new AccountingExpensesOneRequest() {
@@ -242,9 +311,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
@@ -271,6 +340,14 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
         LineItems = new List<ExpenseLineItemInput>() {
             new ExpenseLineItemInput() {
                 TrackingCategories = new List<LinkedTrackingCategory>() {
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -303,6 +380,32 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
@@ -358,9 +461,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingExpensesDeleteRequest req = new AccountingExpensesDeleteRequest() {

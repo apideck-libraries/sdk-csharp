@@ -23,9 +23,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingDepartmentsAllRequest req = new AccountingDepartmentsAllRequest() {
@@ -80,9 +80,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingDepartmentsAddRequest req = new AccountingDepartmentsAddRequest() {
@@ -92,6 +92,12 @@ AccountingDepartmentsAddRequest req = new AccountingDepartmentsAddRequest() {
         Name = "Sales",
         Status = DepartmentStatus.Active,
         Subsidiaries = new List<SubsidiaryReferenceInput>() {
+            new SubsidiaryReferenceInput() {
+                Name = "SpaceX",
+            },
+            new SubsidiaryReferenceInput() {
+                Name = "SpaceX",
+            },
             new SubsidiaryReferenceInput() {
                 Name = "SpaceX",
             },
@@ -154,9 +160,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingDepartmentsOneRequest req = new AccountingDepartmentsOneRequest() {
@@ -204,9 +210,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingDepartmentsUpdateRequest req = new AccountingDepartmentsUpdateRequest() {
@@ -220,6 +226,12 @@ AccountingDepartmentsUpdateRequest req = new AccountingDepartmentsUpdateRequest(
             new SubsidiaryReferenceInput() {
                 Name = "SpaceX",
             },
+            new SubsidiaryReferenceInput() {
+                Name = "SpaceX",
+            },
+            new SubsidiaryReferenceInput() {
+                Name = "SpaceX",
+            },
         },
         Code = "123",
         RowVersion = "1-12345",
@@ -227,6 +239,22 @@ AccountingDepartmentsUpdateRequest req = new AccountingDepartmentsUpdateRequest(
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -279,9 +307,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingDepartmentsDeleteRequest req = new AccountingDepartmentsDeleteRequest() {

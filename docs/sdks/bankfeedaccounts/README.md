@@ -24,9 +24,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedAccountsAllRequest req = new AccountingBankFeedAccountsAllRequest() {
@@ -81,9 +81,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedAccountsAddRequest req = new AccountingBankFeedAccountsAddRequest() {
@@ -98,6 +98,22 @@ AccountingBankFeedAccountsAddRequest req = new AccountingBankFeedAccountsAddRequ
         FeedStatus = FeedStatus.Pending,
         Country = "US",
         CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
             new CustomField() {
                 Id = "2389328923893298",
                 Name = "employee_level",
@@ -148,9 +164,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedAccountsOneRequest req = new AccountingBankFeedAccountsOneRequest() {
@@ -198,9 +214,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedAccountsUpdateRequest req = new AccountingBankFeedAccountsUpdateRequest() {
@@ -216,6 +232,14 @@ AccountingBankFeedAccountsUpdateRequest req = new AccountingBankFeedAccountsUpda
         FeedStatus = FeedStatus.Pending,
         Country = "US",
         CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
             new CustomField() {
                 Id = "2389328923893298",
                 Name = "employee_level",
@@ -266,9 +290,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingBankFeedAccountsDeleteRequest req = new AccountingBankFeedAccountsDeleteRequest() {

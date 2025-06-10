@@ -24,9 +24,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
@@ -46,6 +46,7 @@ HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
     },
     Sort = new EmployeesSort() {
         By = EmployeesSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -98,9 +99,9 @@ using NodaTime;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
@@ -212,6 +213,84 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                     RowVersion = "1-12345",
                 },
             },
+            new EmployeeJobInput() {
+                Title = "CEO",
+                Role = "Sales",
+                StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
+                EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
+                CompensationRate = 72000D,
+                Currency = Currency.Usd,
+                PaymentUnit = PaymentUnit.Year,
+                HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
+                IsPrimary = true,
+                IsManager = true,
+                Status = EmployeeJobStatus.Active,
+                Location = new Address() {
+                    Id = "123",
+                    Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                    String = "25 Spring Street, Blackburn, VIC 3130",
+                    Name = "HQ US",
+                    Line1 = "Main street",
+                    Line2 = "apt #",
+                    Line3 = "Suite #",
+                    Line4 = "delivery instructions",
+                    StreetNumber = "25",
+                    City = "San Francisco",
+                    State = "CA",
+                    PostalCode = "94104",
+                    Country = "US",
+                    Latitude = "40.759211",
+                    Longitude = "-73.984638",
+                    County = "Santa Clara",
+                    ContactName = "Elon Musk",
+                    Salutation = "Mr",
+                    PhoneNumber = "111-111-1111",
+                    Fax = "122-111-1111",
+                    Email = "elon@musk.com",
+                    Website = "https://elonmusk.com",
+                    Notes = "Address notes or delivery instructions.",
+                    RowVersion = "1-12345",
+                },
+            },
+            new EmployeeJobInput() {
+                Title = "CEO",
+                Role = "Sales",
+                StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
+                EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
+                CompensationRate = 72000D,
+                Currency = Currency.Usd,
+                PaymentUnit = PaymentUnit.Year,
+                HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
+                IsPrimary = true,
+                IsManager = true,
+                Status = EmployeeJobStatus.Active,
+                Location = new Address() {
+                    Id = "123",
+                    Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                    String = "25 Spring Street, Blackburn, VIC 3130",
+                    Name = "HQ US",
+                    Line1 = "Main street",
+                    Line2 = "apt #",
+                    Line3 = "Suite #",
+                    Line4 = "delivery instructions",
+                    StreetNumber = "25",
+                    City = "San Francisco",
+                    State = "CA",
+                    PostalCode = "94104",
+                    Country = "US",
+                    Latitude = "40.759211",
+                    Longitude = "-73.984638",
+                    County = "Santa Clara",
+                    ContactName = "Elon Musk",
+                    Salutation = "Mr",
+                    PhoneNumber = "111-111-1111",
+                    Fax = "122-111-1111",
+                    Email = "elon@musk.com",
+                    Website = "https://elonmusk.com",
+                    Notes = "Address notes or delivery instructions.",
+                    RowVersion = "1-12345",
+                },
+            },
         },
         Compensations = new List<EmployeeCompensationInput>() {
             new EmployeeCompensationInput() {
@@ -223,6 +302,32 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         },
         WorksRemote = true,
         Addresses = new List<Address>() {
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
             new Address() {
                 Id = "123",
                 Type = ApideckUnifySdk.Models.Components.Type.Primary,
@@ -276,6 +381,14 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                     "Uses Salesforce and Marketo"
                 ),
             },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         SocialLinks = new List<SocialLink>() {
             new SocialLink() {
@@ -283,8 +396,39 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 Url = "https://www.twitter.com/apideck",
                 Type = "twitter",
             },
+            new SocialLink() {
+                Id = "12345",
+                Url = "https://www.twitter.com/apideck",
+                Type = "twitter",
+            },
         },
         BankAccounts = new List<BankAccount>() {
+            new BankAccount() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
+            new BankAccount() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
             new BankAccount() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
@@ -318,6 +462,56 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -371,9 +565,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 HrisEmployeesOneRequest req = new HrisEmployeesOneRequest() {
@@ -428,9 +622,9 @@ using NodaTime;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
@@ -590,6 +784,14 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 Extension = "105",
                 Type = PhoneNumberType.Primary,
             },
+            new PhoneNumber() {
+                Id = "12345",
+                CountryCode = "1",
+                AreaCode = "323",
+                Number = "111-111-1111",
+                Extension = "105",
+                Type = PhoneNumberType.Primary,
+            },
         },
         Emails = new List<Email>() {
             new Email() {
@@ -607,8 +809,29 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                     "Uses Salesforce and Marketo"
                 ),
             },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         SocialLinks = new List<SocialLink>() {
+            new SocialLink() {
+                Id = "12345",
+                Url = "https://www.twitter.com/apideck",
+                Type = "twitter",
+            },
             new SocialLink() {
                 Id = "12345",
                 Url = "https://www.twitter.com/apideck",
@@ -646,6 +869,19 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         RowVersion = "1-12345",
         Deleted = true,
         PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
@@ -701,9 +937,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 HrisEmployeesDeleteRequest req = new HrisEmployeesDeleteRequest() {

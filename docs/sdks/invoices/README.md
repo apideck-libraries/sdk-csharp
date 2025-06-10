@@ -25,9 +25,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
@@ -39,6 +39,7 @@ AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
     },
     Sort = new InvoicesSort() {
         By = InvoicesSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -92,9 +93,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
@@ -165,12 +166,16 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
-                    Id = "123456",
-                    NominalCode = "N091",
-                    Code = "453",
-                },
+                LedgerAccount = null,
                 CustomFields = new List<CustomField>() {
+                    new CustomField() {
+                        Id = "2389328923893298",
+                        Name = "employee_level",
+                        Description = "Employee Level",
+                        Value = Value.CreateStr(
+                            "Uses Salesforce and Marketo"
+                        ),
+                    },
                     new CustomField() {
                         Id = "2389328923893298",
                         Name = "employee_level",
@@ -275,12 +280,36 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                     "Uses Salesforce and Marketo"
                 ),
             },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -333,9 +362,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoicesOneRequest req = new AccountingInvoicesOneRequest() {
@@ -385,9 +414,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
@@ -458,6 +487,14 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                         Id = "123456",
                         Name = "New York",
                     },
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
                 },
                 LedgerAccount = new LinkedLedgerAccountInput() {
                     Id = "123456",
@@ -469,9 +506,19 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                         Id = "2389328923893298",
                         Name = "employee_level",
                         Description = "Employee Level",
-                        Value = Value.CreateStr(
-                            "Uses Salesforce and Marketo"
-                        ),
+                        Value = null,
+                    },
+                    new CustomField() {
+                        Id = "2389328923893298",
+                        Name = "employee_level",
+                        Description = "Employee Level",
+                        Value = null,
+                    },
+                    new CustomField() {
+                        Id = "2389328923893298",
+                        Name = "employee_level",
+                        Description = "Employee Level",
+                        Value = null,
                     },
                 },
                 RowVersion = "1-12345",
@@ -537,6 +584,11 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                 AllocatedAmount = 1000D,
                 Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
             },
+            new PaymentAllocations() {
+                Id = "123456",
+                AllocatedAmount = 1000D,
+                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+            },
         },
         PaymentMethod = "cash",
         Channel = "email",
@@ -565,9 +617,7 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
+                Value = null,
             },
         },
         RowVersion = "1-12345",
@@ -575,6 +625,80 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -627,9 +751,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingInvoicesDeleteRequest req = new AccountingInvoicesDeleteRequest() {

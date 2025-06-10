@@ -25,9 +25,9 @@ using System;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCustomersAllRequest req = new AccountingCustomersAllRequest() {
@@ -44,6 +44,7 @@ AccountingCustomersAllRequest req = new AccountingCustomersAllRequest() {
     },
     Sort = new CustomersSort() {
         By = CustomersSortBy.UpdatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -95,9 +96,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
@@ -165,8 +166,31 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
                 Url = "http://example.com",
                 Type = WebsiteType.Primary,
             },
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
         },
         BankAccounts = new List<BankAccount>() {
+            new BankAccount() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
             new BankAccount() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
@@ -205,9 +229,19 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
                 Id = "2389328923893298",
                 Name = "employee_level",
                 Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
+                Value = null,
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = null,
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = null,
             },
         },
         RowVersion = "1-12345",
@@ -215,6 +249,14 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -267,9 +309,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCustomersOneRequest req = new AccountingCustomersOneRequest() {
@@ -317,9 +359,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
@@ -374,6 +416,14 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
                 Extension = "105",
                 Type = PhoneNumberType.Primary,
             },
+            new PhoneNumber() {
+                Id = "12345",
+                CountryCode = "1",
+                AreaCode = "323",
+                Number = "111-111-1111",
+                Extension = "105",
+                Type = PhoneNumberType.Primary,
+            },
         },
         Emails = new List<Email>() {
             new Email() {
@@ -388,8 +438,44 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
                 Url = "http://example.com",
                 Type = WebsiteType.Primary,
             },
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
         },
         BankAccounts = new List<BankAccount>() {
+            new BankAccount() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
+            new BankAccount() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
             new BankAccount() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
@@ -446,6 +532,22 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
                             } },
                         },
                     },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                 },
             },
         },
@@ -490,9 +592,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingCustomersDeleteRequest req = new AccountingCustomersDeleteRequest() {

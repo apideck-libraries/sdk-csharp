@@ -24,9 +24,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmLeadsAllRequest req = new CrmLeadsAllRequest() {
@@ -39,6 +39,7 @@ CrmLeadsAllRequest req = new CrmLeadsAllRequest() {
     },
     Sort = new LeadsSort() {
         By = LeadsSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
@@ -90,9 +91,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
@@ -116,6 +117,11 @@ CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
         Currency = Currency.Usd,
         Fax = "+12129876543",
         Websites = new List<Website>() {
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
@@ -149,8 +155,70 @@ CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
                 Notes = "Address notes or delivery instructions.",
                 RowVersion = "1-12345",
             },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
         },
         SocialLinks = new List<SocialLink>() {
+            new SocialLink() {
+                Id = "12345",
+                Url = "https://www.twitter.com/apideck",
+                Type = "twitter",
+            },
+            new SocialLink() {
+                Id = "12345",
+                Url = "https://www.twitter.com/apideck",
+                Type = "twitter",
+            },
             new SocialLink() {
                 Id = "12345",
                 Url = "https://www.twitter.com/apideck",
@@ -173,8 +241,21 @@ CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
                 Email = "elon@musk.com",
                 Type = EmailType.Primary,
             },
+            new Email() {
+                Id = "123",
+                Email = "elon@musk.com",
+                Type = EmailType.Primary,
+            },
         },
         CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
             new CustomField() {
                 Id = "2389328923893298",
                 Name = "employee_level",
@@ -191,6 +272,80 @@ CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -243,9 +398,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmLeadsOneRequest req = new CrmLeadsOneRequest() {
@@ -293,9 +448,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
@@ -320,6 +475,16 @@ CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
         Currency = Currency.Usd,
         Fax = "+12129876543",
         Websites = new List<Website>() {
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
             new Website() {
                 Id = "12345",
                 Url = "http://example.com",
@@ -353,8 +518,65 @@ CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
                 Notes = "Address notes or delivery instructions.",
                 RowVersion = "1-12345",
             },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
         },
         SocialLinks = new List<SocialLink>() {
+            new SocialLink() {
+                Id = "12345",
+                Url = "https://www.twitter.com/apideck",
+                Type = "twitter",
+            },
             new SocialLink() {
                 Id = "12345",
                 Url = "https://www.twitter.com/apideck",
@@ -387,6 +609,22 @@ CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
                     "Uses Salesforce and Marketo"
                 ),
             },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         Tags = new List<string>() {
             "New",
@@ -395,6 +633,35 @@ CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -447,9 +714,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmLeadsDeleteRequest req = new CrmLeadsDeleteRequest() {

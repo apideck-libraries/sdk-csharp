@@ -21,9 +21,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 VaultConnectionSettingsAllRequest req = new VaultConnectionSettingsAllRequest() {
@@ -71,9 +71,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequest() {
@@ -83,8 +83,8 @@ VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequ
     Connection = new ConnectionInput() {
         Enabled = true,
         Settings = new Dictionary<string, object>() {
-            { "instance_url", "https://eu28.salesforce.com" },
             { "api_key", "12345xxxxxx" },
+            { "instance_url", "https://eu28.salesforce.com" },
         },
         Metadata = new Dictionary<string, object>() {
             { "account", new Dictionary<string, object>() {
@@ -100,19 +100,85 @@ VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequ
                     new ConnectionDefaults() {
                         Id = "ProductInterest",
                         Options = new List<FormFieldOption>() {
-                            FormFieldOption.CreateGroup(
-                                new FormFieldOptionGroup() {
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
                                     Label = "General Channel",
-                                    Options = new List<SimpleFormFieldOption>() {
-                                        new SimpleFormFieldOption() {
-                                            Label = "General Channel",
-                                            Value = SimpleFormFieldOptionValue.CreateStr(
-                                                "general"
-                                            ),
-                                            OptionType = OptionType.Simple,
-                                        },
-                                    },
-                                    OptionType = FormFieldOptionGroupOptionType.Group,
+                                    OptionType = OptionType.Simple,
+                                }
+                            ),
+                        },
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
+                        ),
+                    },
+                    new ConnectionDefaults() {
+                        Id = "ProductInterest",
+                        Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
+                                    Label = "General Channel",
+                                    OptionType = OptionType.Simple,
+                                }
+                            ),
+                        },
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
+                        ),
+                    },
+                    new ConnectionDefaults() {
+                        Id = "ProductInterest",
+                        Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
+                                    Label = "General Channel",
+                                    OptionType = OptionType.Simple,
+                                }
+                            ),
+                        },
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
+                        ),
+                    },
+                },
+            },
+            new ConnectionConfiguration() {
+                Resource = "leads",
+                Defaults = new List<ConnectionDefaults>() {
+                    new ConnectionDefaults() {
+                        Id = "ProductInterest",
+                        Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
+                                    Label = "General Channel",
+                                    OptionType = OptionType.Simple,
+                                }
+                            ),
+                        },
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
+                        ),
+                    },
+                    new ConnectionDefaults() {
+                        Id = "ProductInterest",
+                        Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
+                                    Label = "General Channel",
+                                    OptionType = OptionType.Simple,
+                                }
+                            ),
+                        },
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
+                        ),
+                    },
+                    new ConnectionDefaults() {
+                        Id = "ProductInterest",
+                        Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
+                                    Label = "General Channel",
+                                    OptionType = OptionType.Simple,
                                 }
                             ),
                         },
@@ -124,6 +190,9 @@ VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequ
             },
         },
         CustomMappings = new List<CustomMappingInput>() {
+            new CustomMappingInput() {
+                Value = "$.root.training.first_aid",
+            },
             new CustomMappingInput() {
                 Value = "$.root.training.first_aid",
             },

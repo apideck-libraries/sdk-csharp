@@ -23,14 +23,14 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingAttachmentsAllRequest req = new AccountingAttachmentsAllRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
-    ReferenceId = "12345",
+    ReferenceId = "123456",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -79,14 +79,15 @@ using ApideckUnifySdk.Models.Requests;
 using System;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingAttachmentsUploadRequest req = new AccountingAttachmentsUploadRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
-    ReferenceId = "12345",
+    ReferenceId = "123456",
+    XApideckMetadata = "{\"name\":\"document.pdf\",\"description\":\"Invoice attachment\"}",
     ServiceId = "salesforce",
     RequestBody = System.Text.Encoding.UTF8.GetBytes("0x506D4BD16D"),
 };
@@ -130,14 +131,14 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingAttachmentsOneRequest req = new AccountingAttachmentsOneRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
-    ReferenceId = "12345",
+    ReferenceId = "123456",
     Id = "<id>",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
@@ -181,14 +182,14 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingAttachmentsDeleteRequest req = new AccountingAttachmentsDeleteRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
-    ReferenceId = "12345",
+    ReferenceId = "123456",
     Id = "<id>",
     ServiceId = "salesforce",
 };
@@ -231,14 +232,14 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingAttachmentsDownloadRequest req = new AccountingAttachmentsDownloadRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
-    ReferenceId = "12345",
+    ReferenceId = "123456",
     Id = "<id>",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
