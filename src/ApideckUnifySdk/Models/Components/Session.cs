@@ -33,7 +33,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Settings to change the way the Vault is displayed.
         /// </summary>
         [JsonProperty("settings")]
-        public SessionSettings? Settings { get; set; }
+        public Settings? Settings { get; set; }
 
         /// <summary>
         /// Theming options to change the look and feel of Vault.

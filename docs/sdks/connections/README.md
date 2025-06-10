@@ -26,14 +26,12 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.Vault.Connections.ListAsync(
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
     api: "crm",
     configured: true
 );
@@ -76,16 +74,14 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.Vault.Connections.GetAsync(
     serviceId: "pipedrive",
-    unifiedApi: "crm",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    unifiedApi: "crm"
 );
 
 // handle response
@@ -128,9 +124,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
@@ -156,6 +152,81 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
                     new ConnectionDefaults() {
                         Id = "ProductInterest",
                         Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateGroup(
+                                new FormFieldOptionGroup() {
+                                    Label = "General Channel",
+                                    Options = new List<SimpleFormFieldOption>() {},
+                                    OptionType = FormFieldOptionGroupOptionType.Group,
+                                }
+                            ),
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
+                                    Label = "General Channel",
+                                    OptionType = OptionType.Simple,
+                                }
+                            ),
+                        },
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
+                        ),
+                    },
+                    new ConnectionDefaults() {
+                        Id = "ProductInterest",
+                        Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateGroup(
+                                new FormFieldOptionGroup() {
+                                    Label = "General Channel",
+                                    Options = new List<SimpleFormFieldOption>() {},
+                                    OptionType = FormFieldOptionGroupOptionType.Group,
+                                }
+                            ),
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
+                                    Label = "General Channel",
+                                    OptionType = OptionType.Simple,
+                                }
+                            ),
+                        },
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
+                        ),
+                    },
+                },
+            },
+            new ConnectionConfiguration() {
+                Resource = "leads",
+                Defaults = new List<ConnectionDefaults>() {
+                    new ConnectionDefaults() {
+                        Id = "ProductInterest",
+                        Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateGroup(
+                                new FormFieldOptionGroup() {
+                                    Label = "General Channel",
+                                    Options = new List<SimpleFormFieldOption>() {},
+                                    OptionType = FormFieldOptionGroupOptionType.Group,
+                                }
+                            ),
+                            FormFieldOption.CreateSimple(
+                                new SimpleFormFieldOption() {
+                                    Label = "General Channel",
+                                    OptionType = OptionType.Simple,
+                                }
+                            ),
+                        },
+                        Value = ConnectionValue.CreateStr(
+                            "GC5000 series"
+                        ),
+                    },
+                    new ConnectionDefaults() {
+                        Id = "ProductInterest",
+                        Options = new List<FormFieldOption>() {
+                            FormFieldOption.CreateGroup(
+                                new FormFieldOptionGroup() {
+                                    Label = "General Channel",
+                                    Options = new List<SimpleFormFieldOption>() {},
+                                    OptionType = FormFieldOptionGroupOptionType.Group,
+                                }
+                            ),
                             FormFieldOption.CreateSimple(
                                 new SimpleFormFieldOption() {
                                     Label = "General Channel",
@@ -171,6 +242,12 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
             },
         },
         CustomMappings = new List<CustomMappingInput>() {
+            new CustomMappingInput() {
+                Value = "$.root.training.first_aid",
+            },
+            new CustomMappingInput() {
+                Value = "$.root.training.first_aid",
+            },
             new CustomMappingInput() {
                 Value = "$.root.training.first_aid",
             },
@@ -215,16 +292,14 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.Vault.Connections.DeleteAsync(
     serviceId: "pipedrive",
-    unifiedApi: "crm",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    unifiedApi: "crm"
 );
 
 // handle response
@@ -268,9 +343,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 VaultConnectionsImportRequest req = new VaultConnectionsImportRequest() {
@@ -281,7 +356,9 @@ VaultConnectionsImportRequest req = new VaultConnectionsImportRequest() {
             RefreshToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.cThIIoDvwdueQB468K5xDc5633seEFoqwxjF_xSJyQQ",
             AccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
         },
-        Settings = new Settings() {},
+        Settings = new Dictionary<string, object>() {
+            { "instance_url", "https://eu28.salesforce.com" },
+        },
         Metadata = new Dictionary<string, object>() {
             { "account", new Dictionary<string, object>() {
                 { "name", "My Company" },
@@ -336,9 +413,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 VaultConnectionsTokenRequest req = new VaultConnectionsTokenRequest() {

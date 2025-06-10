@@ -23,9 +23,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingLocationsAllRequest req = new AccountingLocationsAllRequest() {
@@ -80,9 +80,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingLocationsAddRequest req = new AccountingLocationsAddRequest() {
@@ -121,6 +121,9 @@ AccountingLocationsAddRequest req = new AccountingLocationsAddRequest() {
             },
         },
         Subsidiaries = new List<SubsidiaryReferenceInput>() {
+            new SubsidiaryReferenceInput() {
+                Name = "SpaceX",
+            },
             new SubsidiaryReferenceInput() {
                 Name = "SpaceX",
             },
@@ -182,9 +185,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingLocationsOneRequest req = new AccountingLocationsOneRequest() {
@@ -232,9 +235,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingLocationsUpdateRequest req = new AccountingLocationsUpdateRequest() {
@@ -272,8 +275,66 @@ AccountingLocationsUpdateRequest req = new AccountingLocationsUpdateRequest() {
                 Notes = "Address notes or delivery instructions.",
                 RowVersion = "1-12345",
             },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
         },
         Subsidiaries = new List<SubsidiaryReferenceInput>() {
+            new SubsidiaryReferenceInput() {
+                Name = "SpaceX",
+            },
+            new SubsidiaryReferenceInput() {
+                Name = "SpaceX",
+            },
             new SubsidiaryReferenceInput() {
                 Name = "SpaceX",
             },
@@ -283,6 +344,22 @@ AccountingLocationsUpdateRequest req = new AccountingLocationsUpdateRequest() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -335,9 +412,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 AccountingLocationsDeleteRequest req = new AccountingLocationsDeleteRequest() {

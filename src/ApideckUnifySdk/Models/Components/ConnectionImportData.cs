@@ -24,7 +24,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Connection settings. Values will persist to `form_fields` with corresponding id
         /// </summary>
         [JsonProperty("settings")]
-        public Settings? Settings { get; set; } = null;
+        public Dictionary<string, object>? Settings { get; set; } = null;
 
         /// <summary>
         /// Attach your own consumer specific metadata

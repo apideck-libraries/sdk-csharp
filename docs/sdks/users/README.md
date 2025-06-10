@@ -24,9 +24,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmUsersAllRequest req = new CrmUsersAllRequest() {
@@ -81,9 +81,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmUsersAddRequest req = new CrmUsersAddRequest() {
@@ -129,8 +129,68 @@ CrmUsersAddRequest req = new CrmUsersAddRequest() {
                 Notes = "Address notes or delivery instructions.",
                 RowVersion = "1-12345",
             },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
         },
         PhoneNumbers = new List<PhoneNumber>() {
+            new PhoneNumber() {
+                Id = "12345",
+                CountryCode = "1",
+                AreaCode = "323",
+                Number = "111-111-1111",
+                Extension = "105",
+                Type = PhoneNumberType.Primary,
+            },
             new PhoneNumber() {
                 Id = "12345",
                 CountryCode = "1",
@@ -146,8 +206,39 @@ CrmUsersAddRequest req = new CrmUsersAddRequest() {
                 Email = "elon@musk.com",
                 Type = EmailType.Primary,
             },
+            new Email() {
+                Id = "123",
+                Email = "elon@musk.com",
+                Type = EmailType.Primary,
+            },
         },
         PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
@@ -203,9 +294,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmUsersOneRequest req = new CrmUsersOneRequest() {
@@ -253,9 +344,9 @@ using ApideckUnifySdk.Models.Requests;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmUsersUpdateRequest req = new CrmUsersUpdateRequest() {
@@ -302,8 +393,42 @@ CrmUsersUpdateRequest req = new CrmUsersUpdateRequest() {
                 Notes = "Address notes or delivery instructions.",
                 RowVersion = "1-12345",
             },
+            new Address() {
+                Id = "123",
+                Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                String = "25 Spring Street, Blackburn, VIC 3130",
+                Name = "HQ US",
+                Line1 = "Main street",
+                Line2 = "apt #",
+                Line3 = "Suite #",
+                Line4 = "delivery instructions",
+                StreetNumber = "25",
+                City = "San Francisco",
+                State = "CA",
+                PostalCode = "94104",
+                Country = "US",
+                Latitude = "40.759211",
+                Longitude = "-73.984638",
+                County = "Santa Clara",
+                ContactName = "Elon Musk",
+                Salutation = "Mr",
+                PhoneNumber = "111-111-1111",
+                Fax = "122-111-1111",
+                Email = "elon@musk.com",
+                Website = "https://elonmusk.com",
+                Notes = "Address notes or delivery instructions.",
+                RowVersion = "1-12345",
+            },
         },
         PhoneNumbers = new List<PhoneNumber>() {
+            new PhoneNumber() {
+                Id = "12345",
+                CountryCode = "1",
+                AreaCode = "323",
+                Number = "111-111-1111",
+                Extension = "105",
+                Type = PhoneNumberType.Primary,
+            },
             new PhoneNumber() {
                 Id = "12345",
                 CountryCode = "1",
@@ -319,11 +444,32 @@ CrmUsersUpdateRequest req = new CrmUsersUpdateRequest() {
                 Email = "elon@musk.com",
                 Type = EmailType.Primary,
             },
+            new Email() {
+                Id = "123",
+                Email = "elon@musk.com",
+                Type = EmailType.Primary,
+            },
         },
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -376,9 +522,9 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
     consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 CrmUsersDeleteRequest req = new CrmUsersDeleteRequest() {

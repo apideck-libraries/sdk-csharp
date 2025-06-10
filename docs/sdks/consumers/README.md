@@ -22,23 +22,19 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Vault.Consumers.CreateAsync(
-    consumer: new ConsumerInput() {
-        ConsumerId = "test_consumer_id",
-        Metadata = new ConsumerMetadata() {
-            AccountName = "SpaceX",
-            UserName = "Elon Musk",
-            Email = "elon@musk.com",
-            Image = "https://www.spacex.com/static/images/share.jpg",
-        },
+var res = await sdk.Vault.Consumers.CreateAsync(consumer: new ConsumerInput() {
+    ConsumerId = "test_consumer_id",
+    Metadata = new ConsumerMetadata() {
+        AccountName = "SpaceX",
+        UserName = "Elon Musk",
+        Email = "elon@musk.com",
+        Image = "https://www.spacex.com/static/images/share.jpg",
     },
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
-);
+});
 
 // handle response
 ```
@@ -78,16 +74,11 @@ using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-VaultConsumersAllResponse? res = await sdk.Vault.Consumers.ListAsync(
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
-    cursor: "<value>",
-    limit: 20
-);
+VaultConsumersAllResponse? res = await sdk.Vault.Consumers.ListAsync(limit: 20);
 
 while(res != null)
 {
@@ -132,15 +123,11 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Vault.Consumers.GetAsync(
-    consumerId: "test_user_id",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
-);
+var res = await sdk.Vault.Consumers.GetAsync(consumerId: "test_user_id");
 
 // handle response
 ```
@@ -178,9 +165,8 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.Vault.Consumers.UpdateAsync(
@@ -192,8 +178,7 @@ var res = await sdk.Vault.Consumers.UpdateAsync(
             Email = "elon@musk.com",
             Image = "https://www.spacex.com/static/images/share.jpg",
         },
-    },
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    }
 );
 
 // handle response
@@ -233,15 +218,11 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Vault.Consumers.DeleteAsync(
-    consumerId: "test_user_id",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
-);
+var res = await sdk.Vault.Consumers.DeleteAsync(consumerId: "test_user_id");
 
 // handle response
 ```

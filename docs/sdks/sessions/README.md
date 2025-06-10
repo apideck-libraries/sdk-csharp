@@ -23,52 +23,49 @@ using ApideckUnifySdk.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
-    apiKey: "<YOUR_BEARER_TOKEN_HERE>",
-    consumerId: "test-consumer",
-    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
-);
-
-var res = await sdk.Vault.Sessions.CreateAsync(
     consumerId: "test-consumer",
     appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
-    session: new Session() {
-        ConsumerMetadata = new ConsumerMetadata() {
-            AccountName = "SpaceX",
-            UserName = "Elon Musk",
-            Email = "elon@musk.com",
-            Image = "https://www.spacex.com/static/images/share.jpg",
-        },
-        RedirectUri = "https://mysaas.com/dashboard",
-        Settings = new SessionSettings() {
-            UnifiedApis = new List<UnifiedApiId>() {
-                UnifiedApiId.Crm,
-            },
-        },
-        Theme = new Theme() {
-            Favicon = "https://res.cloudinary.com/apideck/icons/intercom",
-            Logo = "https://res.cloudinary.com/apideck/icons/intercom",
-            PrimaryColor = "#286efa",
-            SidepanelBackgroundColor = "#286efa",
-            SidepanelTextColor = "#FFFFFF",
-            VaultName = "Intercom",
-            PrivacyUrl = "https://compliance.apideck.com/privacy-policy",
-            TermsUrl = "https://www.termsfeed.com/terms-conditions/957c85c1b089ae9e3219c83eff65377e",
-        },
-        CustomConsumerSettings = new Dictionary<string, object>() {
-            { "feature_flag_1", true },
-            { "tax_rates", new List<object>() {
-                new Dictionary<string, object>() {
-                    { "id", "6" },
-                    { "label", "6%" },
-                },
-                new Dictionary<string, object>() {
-                    { "id", "21" },
-                    { "label", "21%" },
-                },
-            } },
-        },
-    }
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Vault.Sessions.CreateAsync(session: new Session() {
+    ConsumerMetadata = new ConsumerMetadata() {
+        AccountName = "SpaceX",
+        UserName = "Elon Musk",
+        Email = "elon@musk.com",
+        Image = "https://www.spacex.com/static/images/share.jpg",
+    },
+    RedirectUri = "https://mysaas.com/dashboard",
+    Settings = new Settings() {
+        UnifiedApis = new List<UnifiedApiId>() {
+            UnifiedApiId.Crm,
+        },
+        SessionLength = "30m",
+    },
+    Theme = new Theme() {
+        Favicon = "https://res.cloudinary.com/apideck/icons/intercom",
+        Logo = "https://res.cloudinary.com/apideck/icons/intercom",
+        PrimaryColor = "#286efa",
+        SidepanelBackgroundColor = "#286efa",
+        SidepanelTextColor = "#FFFFFF",
+        VaultName = "Intercom",
+        PrivacyUrl = "https://compliance.apideck.com/privacy-policy",
+        TermsUrl = "https://www.termsfeed.com/terms-conditions/957c85c1b089ae9e3219c83eff65377e",
+    },
+    CustomConsumerSettings = new Dictionary<string, object>() {
+        { "feature_flag_1", true },
+        { "tax_rates", new List<object>() {
+            new Dictionary<string, object>() {
+                { "id", "6" },
+                { "label", "6%" },
+            },
+            new Dictionary<string, object>() {
+                { "id", "21" },
+                { "label", "21%" },
+            },
+        } },
+    },
+});
 
 // handle response
 ```
