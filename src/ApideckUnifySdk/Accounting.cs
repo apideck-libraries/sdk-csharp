@@ -41,15 +41,16 @@ namespace ApideckUnifySdk
         public IAgedDebtors AgedDebtors { get; }
         public IBankFeedAccounts BankFeedAccounts { get; }
         public IBankFeedStatements BankFeedStatements { get; }
+        public ICategories Categories { get; }
     }
 
     public class Accounting: IAccounting
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.11.2";
-        private const string _sdkGenVersion = "2.624.0";
-        private const string _openapiDocVersion = "10.17.2";
+        private const string _sdkVersion = "0.12.0";
+        private const string _sdkGenVersion = "2.632.2";
+        private const string _openapiDocVersion = "10.18.0";
         public ITaxRates TaxRates { get; private set; }
         public IBills Bills { get; private set; }
         public IInvoices Invoices { get; private set; }
@@ -75,6 +76,7 @@ namespace ApideckUnifySdk
         public IAgedDebtors AgedDebtors { get; private set; }
         public IBankFeedAccounts BankFeedAccounts { get; private set; }
         public IBankFeedStatements BankFeedStatements { get; private set; }
+        public ICategories Categories { get; private set; }
 
         public Accounting(SDKConfig config)
         {
@@ -104,6 +106,7 @@ namespace ApideckUnifySdk
             AgedDebtors = new AgedDebtors(SDKConfiguration);
             BankFeedAccounts = new BankFeedAccounts(SDKConfiguration);
             BankFeedStatements = new BankFeedStatements(SDKConfiguration);
+            Categories = new Categories(SDKConfiguration);
         }
     }
 }

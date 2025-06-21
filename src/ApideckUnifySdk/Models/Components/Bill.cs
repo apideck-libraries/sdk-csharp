@@ -92,7 +92,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? PoNumber { get; set; } = null;
 
         /// <summary>
-        /// Optional bill reference.
+        /// Optional reference identifier for the transaction.
         /// </summary>
         [JsonProperty("reference")]
         public string? Reference { get; set; } = null;

@@ -135,7 +135,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The categories of the account.
         /// </summary>
         [JsonProperty("categories")]
-        public List<Categories>? Categories { get; set; }
+        public List<Models.Components.Categories>? Categories { get; set; }
 
         [JsonProperty("parent_account")]
         public ParentAccount? ParentAccount { get; set; }
