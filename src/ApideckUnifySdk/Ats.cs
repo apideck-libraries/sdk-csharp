@@ -25,9 +25,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.11.2";
-        private const string _sdkGenVersion = "2.624.0";
-        private const string _openapiDocVersion = "10.17.2";
+        private const string _sdkVersion = "0.12.0";
+        private const string _sdkGenVersion = "2.632.2";
+        private const string _openapiDocVersion = "10.18.0";
         public IJobs Jobs { get; private set; }
         public IApplicants Applicants { get; private set; }
         public IApplications Applications { get; private set; }
