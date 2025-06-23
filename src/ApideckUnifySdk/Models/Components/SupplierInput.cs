@@ -42,6 +42,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
+        /// The category/type of the supplier
+        /// </summary>
+        [JsonProperty("supplier_category")]
+        public string? SupplierCategory { get; set; } = null;
+
+        /// <summary>
         /// The job title of the person.
         /// </summary>
         [JsonProperty("title")]

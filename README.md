@@ -208,6 +208,11 @@ while(res != null)
 * [Update](docs/sdks/bills/README.md#update) - Update Bill
 * [Delete](docs/sdks/bills/README.md#delete) - Delete Bill
 
+#### [Accounting.Categories](docs/sdks/categories/README.md)
+
+* [List](docs/sdks/categories/README.md#list) - List Categories
+* [Get](docs/sdks/categories/README.md#get) - Get Category
+
 #### [Accounting.CompanyInfo](docs/sdks/companyinfo/README.md)
 
 * [Get](docs/sdks/companyinfo/README.md#get) - Get company info

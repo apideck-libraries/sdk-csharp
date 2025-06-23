@@ -105,6 +105,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("line_items")]
         public List<ExpenseLineItemInput> LineItems { get; set; } = default!;
 
+        /// <summary>
+        /// Optional reference identifier for the transaction.
+        /// </summary>
+        [JsonProperty("reference")]
+        public string? Reference { get; set; } = null;
+
         [JsonProperty("custom_fields")]
         public List<CustomField>? CustomFields { get; set; }
 
