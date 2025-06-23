@@ -27,8 +27,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// Full name of the contact.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string? Name { get; set; }
+        [JsonProperty("name")]
+        public string? Name { get; set; } = null;
 
         /// <summary>
         /// The owner of the contact.
