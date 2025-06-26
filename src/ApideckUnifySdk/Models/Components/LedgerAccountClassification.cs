@@ -14,9 +14,9 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// Filter by account classification.
+    /// The classification of account.
     /// </summary>
-    public enum Classification
+    public enum LedgerAccountClassification
     {
         [JsonProperty("asset")]
         Asset,
@@ -40,16 +40,16 @@ namespace ApideckUnifySdk.Models.Components
         Other,
     }
 
-    public static class ClassificationExtension
+    public static class LedgerAccountClassificationExtension
     {
-        public static string Value(this Classification value)
+        public static string Value(this LedgerAccountClassification value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static Classification ToEnum(this string value)
+        public static LedgerAccountClassification ToEnum(this string value)
         {
-            foreach(var field in typeof(Classification).GetFields())
+            foreach(var field in typeof(LedgerAccountClassification).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -62,14 +62,14 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is Classification)
+                    if (enumVal is LedgerAccountClassification)
                     {
-                        return (Classification)enumVal;
+                        return (LedgerAccountClassification)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum Classification");
+            throw new Exception($"Unknown value {value} for enum LedgerAccountClassification");
         }
     }
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 5a7a3e78fa143743ba617851cfacb28f
+  docChecksum: f6f883c9fbf0c7e3a5a4be7117b01b3b
   docVersion: 10.18.0
-  speakeasyVersion: 1.568.0
-  generationVersion: 2.632.2
-  releaseVersion: 0.12.0
-  configChecksum: c8bae2c65bd5b8de675f667b6eba750c
+  speakeasyVersion: 1.570.1
+  generationVersion: 2.638.1
+  releaseVersion: 0.12.1
+  configChecksum: 8408f258d611acef67a7813afdf86642
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -577,6 +577,7 @@ generatedFiles:
   - docs/Models/Components/LeadsSortBy.md
   - docs/Models/Components/LeavingReason.md
   - docs/Models/Components/LedgerAccount.md
+  - docs/Models/Components/LedgerAccountClassification.md
   - docs/Models/Components/LedgerAccountInput.md
   - docs/Models/Components/LedgerAccountSubsidiaries.md
   - docs/Models/Components/LedgerAccountType.md
@@ -2113,6 +2114,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/LeadsSortBy.cs
   - src/ApideckUnifySdk/Models/Components/LeavingReason.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccount.cs
+  - src/ApideckUnifySdk/Models/Components/LedgerAccountClassification.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccountInput.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccountSubsidiaries.cs
   - src/ApideckUnifySdk/Models/Components/LedgerAccountType.cs
@@ -2977,6 +2979,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Utils/FlexibleObjectDeserializer.cs
   - src/ApideckUnifySdk/Utils/HeaderSerializer.cs
   - src/ApideckUnifySdk/Utils/IsoDateTimeSerializer.cs
+  - src/ApideckUnifySdk/Utils/OpenEnumConverter.cs
   - src/ApideckUnifySdk/Utils/RequestBodySerializer.cs
   - src/ApideckUnifySdk/Utils/ResponseBodyDeserializer.cs
   - src/ApideckUnifySdk/Utils/Retries/BackoffStrategy.cs
@@ -3825,7 +3828,7 @@ examples:
         query:
           raw: false
           limit: 20
-          filter: {"updated_since": "2020-09-30T07:43:32.000Z"}
+          filter: {"updated_since": "2020-09-30T07:43:32.000Z", "classification": "asset"}
           sort: {"by": "updated_at", "direction": "desc"}
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
