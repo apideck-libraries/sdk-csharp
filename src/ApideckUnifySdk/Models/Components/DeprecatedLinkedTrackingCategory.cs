@@ -12,7 +12,8 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    [Obsolete("This will be removed in a future release, please migrate away from it as soon as possible.")]
+    
+    [Obsolete("This will be removed in a future release, please migrate away from it as soon as possible")]
     public class DeprecatedLinkedTrackingCategory
     {
 

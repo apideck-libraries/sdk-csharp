@@ -1,6 +1,6 @@
-# Classification
+# LedgerAccountClassification
 
-Filter by account classification.
+The classification of account.
 
 
 ## Values

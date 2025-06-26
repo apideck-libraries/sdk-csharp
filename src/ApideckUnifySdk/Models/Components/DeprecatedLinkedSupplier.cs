@@ -16,7 +16,8 @@ namespace ApideckUnifySdk.Models.Components
     
     /// <summary>
     /// The supplier this entity is linked to.
-    /// </summary>[Obsolete("This will be removed in a future release, please migrate away from it as soon as possible.")]
+    /// </summary>
+    [Obsolete("This will be removed in a future release, please migrate away from it as soon as possible")]
     public class DeprecatedLinkedSupplier
     {
 

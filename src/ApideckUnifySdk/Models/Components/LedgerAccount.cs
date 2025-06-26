@@ -48,7 +48,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The classification of account.
         /// </summary>
         [JsonProperty("classification")]
-        public Classification? Classification { get; set; } = null;
+        public LedgerAccountClassification? Classification { get; set; } = null;
 
         /// <summary>
         /// The type of account.
