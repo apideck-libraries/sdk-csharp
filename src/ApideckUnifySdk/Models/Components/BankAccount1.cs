@@ -13,7 +13,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     
-    public class BankAccount
+    public class BankAccount1
     {
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The type of bank account.
         /// </summary>
         [JsonProperty("account_type")]
-        public AccountType? AccountType { get; set; } = null;
+        public BankAccount1AccountType? AccountType { get; set; } = null;
 
         /// <summary>
         /// The International Bank Account Number (IBAN).

@@ -40,6 +40,6 @@ namespace ApideckUnifySdk.Models.Requests
         public string? ServiceId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public CompanyInput Company { get; set; } = default!;
+        public Company1Input Company1 { get; set; } = default!;
     }
 }

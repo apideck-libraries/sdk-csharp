@@ -13,29 +13,16 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    using System;
     using System.Collections.Generic;
     
-    public class Company
+    public class Company1Input
     {
-
-        /// <summary>
-        /// Unique identifier for the company
-        /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; }
 
         /// <summary>
         /// Name of the company
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
         public string? Name { get; set; }
-
-        /// <summary>
-        /// Number of interactions
-        /// </summary>
-        [JsonProperty("interaction_count")]
-        public long? InteractionCount { get; set; } = null;
 
         /// <summary>
         /// Owner ID
@@ -145,14 +132,8 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("last_name")]
         public string? LastName { get; set; } = null;
 
-        /// <summary>
-        /// Parent ID
-        /// </summary>
-        [JsonProperty("parent_id")]
-        public string? ParentId { get; set; } = null;
-
         [JsonProperty("bank_accounts")]
-        public List<BankAccount>? BankAccounts { get; set; }
+        public List<BankAccount1>? BankAccounts { get; set; }
 
         [JsonProperty("websites")]
         public List<Website>? Websites { get; set; }
@@ -185,18 +166,6 @@ namespace ApideckUnifySdk.Models.Components
         public bool? ReadOnly { get; set; } = null;
 
         /// <summary>
-        /// Last activity date
-        /// </summary>
-        [JsonProperty("last_activity_at")]
-        public DateTime? LastActivityAt { get; set; } = null;
-
-        /// <summary>
-        /// Whether the company is deleted or not
-        /// </summary>
-        [JsonProperty("deleted")]
-        public bool? Deleted { get; set; }
-
-        /// <summary>
         /// A formal salutation for the person. For example, &apos;Mr&apos;, &apos;Mrs&apos;
         /// </summary>
         [JsonProperty("salutation")]
@@ -207,36 +176,6 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("birthday")]
         public LocalDate? Birthday { get; set; } = null;
-
-        /// <summary>
-        /// When custom mappings are configured on the resource, the result is included here.
-        /// </summary>
-        [JsonProperty("custom_mappings")]
-        public Dictionary<string, object>? CustomMappings { get; set; } = null;
-
-        /// <summary>
-        /// Updated by user ID
-        /// </summary>
-        [JsonProperty("updated_by")]
-        public string? UpdatedBy { get; set; } = null;
-
-        /// <summary>
-        /// Created by user ID
-        /// </summary>
-        [JsonProperty("created_by")]
-        public string? CreatedBy { get; set; } = null;
-
-        /// <summary>
-        /// Last updated date
-        /// </summary>
-        [JsonProperty("updated_at")]
-        public DateTime? UpdatedAt { get; set; } = null;
-
-        /// <summary>
-        /// Creation date
-        /// </summary>
-        [JsonProperty("created_at")]
-        public DateTime? CreatedAt { get; set; } = null;
 
         /// <summary>
         /// The pass_through property allows passing service-specific, custom data or structured modifications in request body when creating or updating resources.
