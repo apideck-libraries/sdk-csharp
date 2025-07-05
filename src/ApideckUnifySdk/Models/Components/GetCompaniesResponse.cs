@@ -51,7 +51,7 @@ namespace ApideckUnifySdk.Models.Components
         public string Operation { get; set; } = default!;
 
         [JsonProperty("data")]
-        public List<Company> Data { get; set; } = default!;
+        public List<Company1> Data { get; set; } = default!;
 
         /// <summary>
         /// Response metadata
