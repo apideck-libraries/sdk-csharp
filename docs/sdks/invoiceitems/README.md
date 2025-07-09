@@ -316,7 +316,7 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
             NominalCode = "N091",
             Code = "453",
         },
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",

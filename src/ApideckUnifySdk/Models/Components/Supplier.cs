@@ -142,6 +142,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? PaymentMethod { get; set; } = null;
 
         /// <summary>
+        /// Terms of payment.
+        /// </summary>
+        [JsonProperty("terms")]
+        public string? Terms { get; set; } = null;
+
+        /// <summary>
         /// The channel through which the transaction is processed.
         /// </summary>
         [JsonProperty("channel")]

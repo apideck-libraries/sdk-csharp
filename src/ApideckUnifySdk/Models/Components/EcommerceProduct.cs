@@ -91,7 +91,7 @@ namespace ApideckUnifySdk.Models.Components
         /// An array of tags for the product, used for organization and searching.
         /// </summary>
         [JsonProperty("tags")]
-        public List<string>? Tags { get; set; }
+        public List<string?>? Tags { get; set; }
 
         /// <summary>
         /// An array of categories for the product, used for organization and searching.

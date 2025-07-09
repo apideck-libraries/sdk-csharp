@@ -168,7 +168,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -216,7 +216,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -264,7 +264,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -340,7 +340,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
         TaxCode = "1234",
         Channel = "email",
         Memo = "Thank you for the partnership and have a great day!",
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",
@@ -738,7 +738,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
         TaxCode = "1234",
         Channel = "email",
         Memo = "Thank you for the partnership and have a great day!",
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",

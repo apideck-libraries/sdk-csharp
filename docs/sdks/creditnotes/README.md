@@ -150,7 +150,7 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -239,7 +239,7 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
             Notes = "Address notes or delivery instructions.",
             RowVersion = "1-12345",
         },
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",
@@ -440,7 +440,7 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -546,7 +546,7 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
             Notes = "Address notes or delivery instructions.",
             RowVersion = "1-12345",
         },
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",

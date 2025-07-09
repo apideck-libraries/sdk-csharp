@@ -100,7 +100,7 @@ namespace ApideckUnifySdk.Models.Components
         /// A list of linked tracking categories.
         /// </summary>
         [JsonProperty("tracking_categories")]
-        public List<LinkedTrackingCategory>? TrackingCategories { get; set; } = null;
+        public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         /// <summary>
         /// Accounting period

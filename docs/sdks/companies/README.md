@@ -96,7 +96,7 @@ var sdk = new Apideck(
 
 CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
     ServiceId = "salesforce",
-    Company = new CompanyInput() {
+    Company1 = new Company1Input() {
         Name = "SpaceX",
         OwnerId = "12345",
         Image = "https://www.spacex.com/static/images/share.jpg",
@@ -116,12 +116,12 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
         Acn = "XXX XXX XXX",
         FirstName = "Elon",
         LastName = "Musk",
-        BankAccounts = new List<BankAccount>() {
-            new BankAccount() {
+        BankAccounts = new List<BankAccount1>() {
+            new BankAccount1() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = AccountType.CreditCard,
+                AccountType = BankAccount1AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
@@ -130,11 +130,11 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
                 BankCode = "BNH",
                 Currency = Currency.Usd,
             },
-            new BankAccount() {
+            new BankAccount1() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = AccountType.CreditCard,
+                AccountType = BankAccount1AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
@@ -143,11 +143,11 @@ CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
                 BankCode = "BNH",
                 Currency = Currency.Usd,
             },
-            new BankAccount() {
+            new BankAccount1() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = AccountType.CreditCard,
+                AccountType = BankAccount1AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
@@ -391,7 +391,7 @@ var sdk = new Apideck(
 CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
-    Company = new CompanyInput() {
+    Company1 = new Company1Input() {
         Name = "SpaceX",
         OwnerId = "12345",
         Image = "https://www.spacex.com/static/images/share.jpg",
@@ -411,12 +411,12 @@ CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
         Acn = "XXX XXX XXX",
         FirstName = "Elon",
         LastName = "Musk",
-        BankAccounts = new List<BankAccount>() {
-            new BankAccount() {
+        BankAccounts = new List<BankAccount1>() {
+            new BankAccount1() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = AccountType.CreditCard,
+                AccountType = BankAccount1AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",

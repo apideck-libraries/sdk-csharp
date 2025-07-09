@@ -107,6 +107,12 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         /// <summary>
+        /// Whether tracking categories are enabled for the company on transactions
+        /// </summary>
+        [JsonProperty("tracking_categories_enabled")]
+        public bool? TrackingCategoriesEnabled { get; set; }
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]
