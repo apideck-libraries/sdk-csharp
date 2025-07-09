@@ -234,10 +234,10 @@ namespace ApideckUnifySdk.Models.Components
         public string? PreferredLanguage { get; set; } = null;
 
         [JsonProperty("languages")]
-        public List<string>? Languages { get; set; }
+        public List<string?>? Languages { get; set; }
 
         [JsonProperty("nationalities")]
-        public List<string>? Nationalities { get; set; }
+        public List<string?>? Nationalities { get; set; }
 
         /// <summary>
         /// The URL of the photo of a person.

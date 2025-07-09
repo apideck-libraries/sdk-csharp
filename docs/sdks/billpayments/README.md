@@ -168,7 +168,7 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
         },
         Note = "Some notes about this transaction",
         Number = "123456",
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",

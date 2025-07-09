@@ -113,7 +113,7 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -397,7 +397,7 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -463,7 +463,7 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
         TaxType = "sales",
         TaxCode = "1234",
         Number = "OIT00546",
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",

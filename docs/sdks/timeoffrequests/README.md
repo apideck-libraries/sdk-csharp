@@ -109,7 +109,7 @@ HrisTimeOffRequestsAddRequest req = new HrisTimeOffRequestsAddRequest() {
         Units = Units.Hours,
         Amount = 3.5D,
         DayPart = "morning",
-        Notes = new Models.Components.Notes() {
+        Notes = new ApideckUnifySdk.Models.Components.Notes() {
             Employee = "Relaxing on the beach for a few hours.",
             Manager = "Enjoy!",
         },
@@ -243,7 +243,7 @@ HrisTimeOffRequestsUpdateRequest req = new HrisTimeOffRequestsUpdateRequest() {
         Units = Units.Hours,
         Amount = 3.5D,
         DayPart = "morning",
-        Notes = new Models.Components.Notes() {
+        Notes = new ApideckUnifySdk.Models.Components.Notes() {
             Employee = "Relaxing on the beach for a few hours.",
             Manager = "Enjoy!",
         },

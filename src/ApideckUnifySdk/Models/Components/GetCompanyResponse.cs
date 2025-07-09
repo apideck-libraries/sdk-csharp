@@ -51,7 +51,7 @@ namespace ApideckUnifySdk.Models.Components
         public string Operation { get; set; } = default!;
 
         [JsonProperty("data")]
-        public Company Data { get; set; } = default!;
+        public Company1 Data { get; set; } = default!;
 
         /// <summary>
         /// Raw response from the integration when raw=true query param is provided

@@ -104,7 +104,7 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
         TotalAmount = 275D,
         LineItems = new List<ExpenseLineItemInput>() {
             new ExpenseLineItemInput() {
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -339,7 +339,7 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
         TotalAmount = 275D,
         LineItems = new List<ExpenseLineItemInput>() {
             new ExpenseLineItemInput() {
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",

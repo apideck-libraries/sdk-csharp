@@ -162,10 +162,10 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         Gender = Gender.Male,
         Pronouns = "she,her",
         PreferredLanguage = "EN",
-        Languages = new List<string>() {
+        Languages = new List<string?>() {
             "EN",
         },
-        Nationalities = new List<string>() {
+        Nationalities = new List<string?>() {
             "US",
         },
         PhotoUrl = "https://unavatar.io/elon-musk",
@@ -686,10 +686,10 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         Gender = Gender.Male,
         Pronouns = "she,her",
         PreferredLanguage = "EN",
-        Languages = new List<string>() {
+        Languages = new List<string?>() {
             "EN",
         },
-        Nationalities = new List<string>() {
+        Nationalities = new List<string?>() {
             "US",
         },
         PhotoUrl = "https://unavatar.io/elon-musk",

@@ -168,7 +168,7 @@ AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
                     NominalCode = "N091",
                     Code = "453",
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -507,7 +507,7 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
                     NominalCode = "N091",
                     Code = "453",
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -544,7 +544,7 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
                     NominalCode = "N091",
                     Code = "453",
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -586,7 +586,7 @@ AccountingBillsUpdateRequest req = new AccountingBillsUpdateRequest() {
         },
         DiscountPercentage = 5.5D,
         SourceDocumentUrl = "https://www.invoicesolution.com/bill/123456",
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",

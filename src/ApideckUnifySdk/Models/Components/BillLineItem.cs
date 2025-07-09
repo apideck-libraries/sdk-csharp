@@ -115,7 +115,7 @@ namespace ApideckUnifySdk.Models.Components
         /// A list of linked tracking categories.
         /// </summary>
         [JsonProperty("tracking_categories")]
-        public List<LinkedTrackingCategory>? TrackingCategories { get; set; } = null;
+        public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.

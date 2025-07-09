@@ -29,6 +29,6 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; } = null;
 
         [JsonProperty("values")]
-        public List<string>? Values { get; set; }
+        public List<string?>? Values { get; set; }
     }
 }

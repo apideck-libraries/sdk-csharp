@@ -128,7 +128,7 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
         Balance = 27500D,
         Deposit = 0D,
         CustomerMemo = "Thank you for your business and have a great day!",
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",
@@ -160,7 +160,7 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
@@ -450,7 +450,7 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
         Balance = 27500D,
         Deposit = 0D,
         CustomerMemo = "Thank you for your business and have a great day!",
-        TrackingCategories = new List<LinkedTrackingCategory>() {
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
             new LinkedTrackingCategory() {
                 Id = "123456",
                 Name = "New York",
@@ -482,7 +482,7 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                     Id = "123456",
                     Rate = 10D,
                 },
-                TrackingCategories = new List<LinkedTrackingCategory>() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
                     new LinkedTrackingCategory() {
                         Id = "123456",
                         Name = "New York",
