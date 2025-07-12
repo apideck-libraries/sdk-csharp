@@ -18,31 +18,28 @@ namespace ApideckUnifySdk.Models.Components
     using System.Reflection;
     
 
-    public class FiveType
+    public class ConnectionValue5Type
     {
-        private FiveType(string value) { Value = value; }
+        private ConnectionValue5Type(string value) { Value = value; }
 
         public string Value { get; private set; }
-        public static FiveType Str { get { return new FiveType("str"); } }
+        public static ConnectionValue5Type Str { get { return new ConnectionValue5Type("str"); } }
         
-        public static FiveType Number { get { return new FiveType("number"); } }
+        public static ConnectionValue5Type Integer { get { return new ConnectionValue5Type("integer"); } }
         
-        public static FiveType Boolean { get { return new FiveType("boolean"); } }
+        public static ConnectionValue5Type Number { get { return new ConnectionValue5Type("number"); } }
         
-        public static FiveType MapOfAny { get { return new FiveType("mapOfAny"); } }
-        
-        public static FiveType Null { get { return new FiveType("null"); } }
+        public static ConnectionValue5Type Null { get { return new ConnectionValue5Type("null"); } }
 
         public override string ToString() { return Value; }
-        public static implicit operator String(FiveType v) { return v.Value; }
-        public static FiveType FromString(string v) {
+        public static implicit operator String(ConnectionValue5Type v) { return v.Value; }
+        public static ConnectionValue5Type FromString(string v) {
             switch(v) {
                 case "str": return Str;
+                case "integer": return Integer;
                 case "number": return Number;
-                case "boolean": return Boolean;
-                case "mapOfAny": return MapOfAny;
                 case "null": return Null;
-                default: throw new ArgumentException("Invalid value for FiveType");
+                default: throw new ArgumentException("Invalid value for ConnectionValue5Type");
             }
         }
         public override bool Equals(object? obj)
@@ -51,7 +48,7 @@ namespace ApideckUnifySdk.Models.Components
             {
                 return false;
             }
-            return Value.Equals(((FiveType)obj).Value);
+            return Value.Equals(((ConnectionValue5Type)obj).Value);
         }
 
         public override int GetHashCode()
@@ -61,9 +58,9 @@ namespace ApideckUnifySdk.Models.Components
     }
 
 
-    [JsonConverter(typeof(Five.FiveConverter))]
-    public class Five {
-        public Five(FiveType type) {
+    [JsonConverter(typeof(ConnectionValue5.ConnectionValue5Converter))]
+    public class ConnectionValue5 {
+        public ConnectionValue5(ConnectionValue5Type type) {
             Type = type;
         }
 
@@ -71,58 +68,47 @@ namespace ApideckUnifySdk.Models.Components
         public string? Str { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
+        public long? Integer { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
         public double? Number { get; set; }
 
-        [SpeakeasyMetadata("form:explode=true")]
-        public bool? Boolean { get; set; }
-
-        [SpeakeasyMetadata("form:explode=true")]
-        public Dictionary<string, object>? MapOfAny { get; set; }
-
-        public FiveType Type { get; set; }
+        public ConnectionValue5Type Type { get; set; }
 
 
-        public static Five CreateStr(string str) {
-            FiveType typ = FiveType.Str;
+        public static ConnectionValue5 CreateStr(string str) {
+            ConnectionValue5Type typ = ConnectionValue5Type.Str;
 
-            Five res = new Five(typ);
+            ConnectionValue5 res = new ConnectionValue5(typ);
             res.Str = str;
             return res;
         }
 
-        public static Five CreateNumber(double number) {
-            FiveType typ = FiveType.Number;
+        public static ConnectionValue5 CreateInteger(long integer) {
+            ConnectionValue5Type typ = ConnectionValue5Type.Integer;
 
-            Five res = new Five(typ);
+            ConnectionValue5 res = new ConnectionValue5(typ);
+            res.Integer = integer;
+            return res;
+        }
+
+        public static ConnectionValue5 CreateNumber(double number) {
+            ConnectionValue5Type typ = ConnectionValue5Type.Number;
+
+            ConnectionValue5 res = new ConnectionValue5(typ);
             res.Number = number;
             return res;
         }
 
-        public static Five CreateBoolean(bool boolean) {
-            FiveType typ = FiveType.Boolean;
-
-            Five res = new Five(typ);
-            res.Boolean = boolean;
-            return res;
+        public static ConnectionValue5 CreateNull() {
+            ConnectionValue5Type typ = ConnectionValue5Type.Null;
+            return new ConnectionValue5(typ);
         }
 
-        public static Five CreateMapOfAny(Dictionary<string, object> mapOfAny) {
-            FiveType typ = FiveType.MapOfAny;
-
-            Five res = new Five(typ);
-            res.MapOfAny = mapOfAny;
-            return res;
-        }
-
-        public static Five CreateNull() {
-            FiveType typ = FiveType.Null;
-            return new Five(typ);
-        }
-
-        public class FiveConverter : JsonConverter
+        public class ConnectionValue5Converter : JsonConverter
         {
 
-            public override bool CanConvert(System.Type objectType) => objectType == typeof(Five);
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(ConnectionValue5);
 
             public override bool CanRead => true;
 
@@ -137,7 +123,7 @@ namespace ApideckUnifySdk.Models.Components
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
-                    return new Five(FiveType.Str)
+                    return new ConnectionValue5(ConnectionValue5Type.Str)
                     {
                         Str = json[1..^1]
                     };
@@ -145,8 +131,21 @@ namespace ApideckUnifySdk.Models.Components
 
                 try
                 {
+                    var converted = Convert.ToInt64(json);
+                    return new ConnectionValue5(ConnectionValue5Type.Integer)
+                    {
+                        Integer = converted
+                    };
+                }
+                catch (System.FormatException)
+                {
+                    // try next option
+                }
+
+                try
+                {
                     var converted = Convert.ToDouble(json);
-                    return new Five(FiveType.Number)
+                    return new ConnectionValue5(ConnectionValue5Type.Number)
                     {
                         Number = converted
                     };
@@ -154,39 +153,6 @@ namespace ApideckUnifySdk.Models.Components
                 catch (System.FormatException)
                 {
                     // try next option
-                }
-
-                try
-                {
-                    var converted = Convert.ToBoolean(json);
-                    return new Five(FiveType.Boolean)
-                    {
-                        Boolean = converted
-                    };
-                }
-                catch (System.FormatException)
-                {
-                    // try next option
-                }
-
-                try
-                {
-                    return new Five(FiveType.MapOfAny)
-                    {
-                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new Five(FiveType.MapOfAny), "MapOfAny"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
                 }
 
                 if (fallbackCandidates.Count > 0)
@@ -218,8 +184,8 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
-                Five res = (Five)value;
-                if (FiveType.FromString(res.Type).Equals(FiveType.Null))
+                ConnectionValue5 res = (ConnectionValue5)value;
+                if (ConnectionValue5Type.FromString(res.Type).Equals(ConnectionValue5Type.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
@@ -229,19 +195,14 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+                if (res.Integer != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Integer));
+                    return;
+                }
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
-                    return;
-                }
-                if (res.Boolean != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
-                    return;
-                }
-                if (res.MapOfAny != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
 

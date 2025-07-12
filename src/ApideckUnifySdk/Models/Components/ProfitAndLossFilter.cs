@@ -31,5 +31,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=end_date")]
         public string? EndDate { get; set; }
+
+        /// <summary>
+        /// Filter by location id
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=location_id")]
+        public string? LocationId { get; set; }
     }
 }

@@ -27,8 +27,8 @@ SimpleFormFieldOptionValue.CreateNumber(/* values here */);
 SimpleFormFieldOptionValue.CreateBoolean(/* values here */);
 ```
 
-### ArrayOf5
+### ArrayOfValue5
 
 ```csharp
-SimpleFormFieldOptionValue.CreateArrayOf5(/* values here */);
+SimpleFormFieldOptionValue.CreateArrayOfValue5(/* values here */);
 ```
