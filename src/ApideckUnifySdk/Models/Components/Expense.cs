@@ -117,6 +117,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("reference")]
         public string? Reference { get; set; } = null;
 
+        /// <summary>
+        /// URL link to a source document - shown as &apos;Go to [appName]&apos; in the downstream app. Currently only supported for Xero.
+        /// </summary>
+        [JsonProperty("source_document_url")]
+        public string? SourceDocumentUrl { get; set; } = null;
+
         [JsonProperty("custom_fields")]
         public List<CustomField>? CustomFields { get; set; }
 
