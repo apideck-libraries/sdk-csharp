@@ -9,9 +9,16 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     
-    public class Six
+    public class CategoriesFilter
     {
+
+        /// <summary>
+        /// The type of the category.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=type")]
+        public CategoriesFilterType? Type { get; set; }
     }
 }

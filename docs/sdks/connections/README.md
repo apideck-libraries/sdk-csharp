@@ -139,11 +139,11 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
             { "api_key", "12345xxxxxx" },
         },
         Metadata = new Dictionary<string, object>() {
-            { "plan", "enterprise" },
             { "account", new Dictionary<string, object>() {
                 { "name", "My Company" },
                 { "id", "c01458a5-7276-41ce-bc19-639906b0450a" },
             } },
+            { "plan", "enterprise" },
         },
         Configuration = new List<ConnectionConfiguration>() {
             new ConnectionConfiguration() {
@@ -361,8 +361,8 @@ VaultConnectionsImportRequest req = new VaultConnectionsImportRequest() {
         },
         Metadata = new Dictionary<string, object>() {
             { "account", new Dictionary<string, object>() {
-                { "name", "My Company" },
                 { "id", "c01458a5-7276-41ce-bc19-639906b0450a" },
+                { "name", "My Company" },
             } },
             { "plan", "enterprise" },
         },

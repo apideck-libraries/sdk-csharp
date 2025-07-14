@@ -32,7 +32,7 @@ namespace ApideckUnifySdk.Models.Components
         
         public static SimpleFormFieldOptionValueType Boolean { get { return new SimpleFormFieldOptionValueType("boolean"); } }
         
-        public static SimpleFormFieldOptionValueType ArrayOf5 { get { return new SimpleFormFieldOptionValueType("arrayOf5"); } }
+        public static SimpleFormFieldOptionValueType ArrayOfValue5 { get { return new SimpleFormFieldOptionValueType("arrayOfValue5"); } }
         
         public static SimpleFormFieldOptionValueType Null { get { return new SimpleFormFieldOptionValueType("null"); } }
 
@@ -44,7 +44,7 @@ namespace ApideckUnifySdk.Models.Components
                 case "integer": return Integer;
                 case "number": return Number;
                 case "boolean": return Boolean;
-                case "arrayOf5": return ArrayOf5;
+                case "arrayOfValue5": return ArrayOfValue5;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for SimpleFormFieldOptionValueType");
             }
@@ -84,7 +84,7 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Boolean { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Five>? ArrayOf5 { get; set; }
+        public List<Value5>? ArrayOfValue5 { get; set; }
 
         public SimpleFormFieldOptionValueType Type { get; set; }
 
@@ -121,11 +121,11 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static SimpleFormFieldOptionValue CreateArrayOf5(List<Five> arrayOf5) {
-            SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.ArrayOf5;
+        public static SimpleFormFieldOptionValue CreateArrayOfValue5(List<Value5> arrayOfValue5) {
+            SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.ArrayOfValue5;
 
             SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
-            res.ArrayOf5 = arrayOf5;
+            res.ArrayOfValue5 = arrayOfValue5;
             return res;
         }
 
@@ -199,14 +199,14 @@ namespace ApideckUnifySdk.Models.Components
 
                 try
                 {
-                    return new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.ArrayOf5)
+                    return new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.ArrayOfValue5)
                     {
-                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Five>>(json)
+                        ArrayOfValue5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Value5>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Five>), new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.ArrayOf5), "ArrayOf5"));
+                    fallbackCandidates.Add((typeof(List<Value5>), new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.ArrayOfValue5), "ArrayOfValue5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -272,9 +272,9 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
-                if (res.ArrayOf5 != null)
+                if (res.ArrayOfValue5 != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf5));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfValue5));
                     return;
                 }
 

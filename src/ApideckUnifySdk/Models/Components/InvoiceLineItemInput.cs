@@ -90,6 +90,12 @@ namespace ApideckUnifySdk.Models.Components
         public double? DiscountAmount { get; set; } = null;
 
         /// <summary>
+        /// ID of the category of the line item
+        /// </summary>
+        [JsonProperty("category_id")]
+        public string? CategoryId { get; set; } = null;
+
+        /// <summary>
         /// The ID of the location
         /// </summary>
         [JsonProperty("location_id")]

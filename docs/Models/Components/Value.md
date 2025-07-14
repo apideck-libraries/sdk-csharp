@@ -21,20 +21,14 @@ Value.CreateNumber(/* values here */);
 Value.CreateBoolean(/* values here */);
 ```
 
-### Four
+### MapOfAny
 
 ```csharp
-Value.CreateFour(/* values here */);
+Value.CreateMapOfAny(/* values here */);
 ```
 
-### ArrayOfStr
+### ArrayOf5
 
 ```csharp
-Value.CreateArrayOfStr(/* values here */);
-```
-
-### ArrayOf6
-
-```csharp
-Value.CreateArrayOf6(/* values here */);
+Value.CreateArrayOf5(/* values here */);
 ```
