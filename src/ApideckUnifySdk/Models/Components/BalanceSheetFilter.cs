@@ -40,5 +40,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=period_type")]
         public PeriodType? PeriodType { get; set; }
+
+        /// <summary>
+        /// The ID of the location to include in the resource.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=location_id")]
+        public string? LocationId { get; set; }
     }
 }

@@ -28,6 +28,9 @@ var sdk = new Apideck(
 AccountingCategoriesAllRequest req = new AccountingCategoriesAllRequest() {
     ServiceId = "salesforce",
     Fields = "id,updated_at",
+    Filter = new CategoriesFilter() {
+        Type = CategoriesFilterType.Expense,
+    },
 };
 
 AccountingCategoriesAllResponse? res = await sdk.Accounting.Categories.ListAsync(req);
@@ -82,6 +85,9 @@ AccountingCategoriesOneRequest req = new AccountingCategoriesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
+    Filter = new CategoriesFilter() {
+        Type = CategoriesFilterType.Expense,
+    },
 };
 
 var res = await sdk.Accounting.Categories.GetAsync(req);

@@ -30,11 +30,9 @@ namespace ApideckUnifySdk.Models.Components
         
         public static ValueType Boolean { get { return new ValueType("boolean"); } }
         
-        public static ValueType Four { get { return new ValueType("4"); } }
+        public static ValueType MapOfAny { get { return new ValueType("mapOfAny"); } }
         
-        public static ValueType ArrayOfStr { get { return new ValueType("arrayOfStr"); } }
-        
-        public static ValueType ArrayOf6 { get { return new ValueType("arrayOf6"); } }
+        public static ValueType ArrayOf5 { get { return new ValueType("arrayOf5"); } }
         
         public static ValueType Null { get { return new ValueType("null"); } }
 
@@ -45,9 +43,8 @@ namespace ApideckUnifySdk.Models.Components
                 case "str": return Str;
                 case "number": return Number;
                 case "boolean": return Boolean;
-                case "4": return Four;
-                case "arrayOfStr": return ArrayOfStr;
-                case "arrayOf6": return ArrayOf6;
+                case "mapOfAny": return MapOfAny;
+                case "arrayOf5": return ArrayOf5;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ValueType");
             }
@@ -84,13 +81,10 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Boolean { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public Four? Four { get; set; }
+        public Dictionary<string, object>? MapOfAny { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<string>? ArrayOfStr { get; set; }
-
-        [SpeakeasyMetadata("form:explode=true")]
-        public List<Six>? ArrayOf6 { get; set; }
+        public List<Five?>? ArrayOf5 { get; set; }
 
         public ValueType Type { get; set; }
 
@@ -119,27 +113,19 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static Value CreateFour(Four four) {
-            ValueType typ = ValueType.Four;
+        public static Value CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+            ValueType typ = ValueType.MapOfAny;
 
             Value res = new Value(typ);
-            res.Four = four;
+            res.MapOfAny = mapOfAny;
             return res;
         }
 
-        public static Value CreateArrayOfStr(List<string> arrayOfStr) {
-            ValueType typ = ValueType.ArrayOfStr;
+        public static Value CreateArrayOf5(List<Five?> arrayOf5) {
+            ValueType typ = ValueType.ArrayOf5;
 
             Value res = new Value(typ);
-            res.ArrayOfStr = arrayOfStr;
-            return res;
-        }
-
-        public static Value CreateArrayOf6(List<Six> arrayOf6) {
-            ValueType typ = ValueType.ArrayOf6;
-
-            Value res = new Value(typ);
-            res.ArrayOf6 = arrayOf6;
+            res.ArrayOf5 = arrayOf5;
             return res;
         }
 
@@ -164,26 +150,6 @@ namespace ApideckUnifySdk.Models.Components
                 }
 
                 var fallbackCandidates = new List<(System.Type, object, string)>();
-
-                try
-                {
-                    return new Value(ValueType.Four)
-                    {
-                        Four = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Four>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(Four), new Value(ValueType.Four), "Four"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
 
                 if (json[0] == '"' && json[^1] == '"'){
                     return new Value(ValueType.Str)
@@ -220,14 +186,14 @@ namespace ApideckUnifySdk.Models.Components
 
                 try
                 {
-                    return new Value(ValueType.ArrayOfStr)
+                    return new Value(ValueType.MapOfAny)
                     {
-                        ArrayOfStr = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<string>>(json)
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<string>), new Value(ValueType.ArrayOfStr), "ArrayOfStr"));
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new Value(ValueType.MapOfAny), "MapOfAny"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -240,14 +206,14 @@ namespace ApideckUnifySdk.Models.Components
 
                 try
                 {
-                    return new Value(ValueType.ArrayOf6)
+                    return new Value(ValueType.ArrayOf5)
                     {
-                        ArrayOf6 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Six>>(json)
+                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Five?>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Six>), new Value(ValueType.ArrayOf6), "ArrayOf6"));
+                    fallbackCandidates.Add((typeof(List<Five?>), new Value(ValueType.ArrayOf5), "ArrayOf5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -308,19 +274,14 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
-                if (res.Four != null)
+                if (res.MapOfAny != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.Four));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-                if (res.ArrayOfStr != null)
+                if (res.ArrayOf5 != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfStr));
-                    return;
-                }
-                if (res.ArrayOf6 != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf6));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf5));
                     return;
                 }
 

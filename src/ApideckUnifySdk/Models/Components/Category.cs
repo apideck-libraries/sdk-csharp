@@ -31,6 +31,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
+        /// The type of the category.
+        /// </summary>
+        [JsonProperty("type")]
+        public CategoryType? Type { get; set; }
+
+        /// <summary>
         /// Based on the status some functionality is enabled or disabled.
         /// </summary>
         [JsonProperty("status")]
