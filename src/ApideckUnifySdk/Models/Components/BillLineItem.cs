@@ -118,6 +118,18 @@ namespace ApideckUnifySdk.Models.Components
         public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         /// <summary>
+        /// The customer this entity is linked to.
+        /// </summary>
+        [JsonProperty("customer")]
+        public LinkedCustomer? Customer { get; set; } = null;
+
+        /// <summary>
+        /// Rebilling metadata for this line item.
+        /// </summary>
+        [JsonProperty("rebilling")]
+        public Rebilling? Rebilling { get; set; } = null;
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]
