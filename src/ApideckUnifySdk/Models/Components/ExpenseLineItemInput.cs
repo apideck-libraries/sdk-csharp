@@ -79,5 +79,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("line_number")]
         public long? LineNumber { get; set; } = null;
+
+        /// <summary>
+        /// Rebilling metadata for this line item.
+        /// </summary>
+        [JsonProperty("rebilling")]
+        public Rebilling? Rebilling { get; set; } = null;
     }
 }

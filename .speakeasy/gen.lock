@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: a309a85446f6cd9732ce34745b5f0bbd
-  docVersion: 10.18.2
-  speakeasyVersion: 1.581.0
-  generationVersion: 2.656.5
-  releaseVersion: 0.12.3
-  configChecksum: 13219153f713d1aa7523164b26bb0f2b
+  docChecksum: 1cdf4ae41061f1f4436b2dd63e53c696
+  docVersion: 10.18.3
+  speakeasyVersion: 1.583.0
+  generationVersion: 2.658.3
+  releaseVersion: 0.12.4
+  configChecksum: e20358ce63bc71475e267fae5f4dfb24
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -681,6 +681,8 @@ generatedFiles:
   - docs/Models/Components/PurchaseOrdersFilter.md
   - docs/Models/Components/PurchaseOrdersSort.md
   - docs/Models/Components/PurchaseOrdersSortBy.md
+  - docs/Models/Components/RebillStatus.md
+  - docs/Models/Components/Rebilling.md
   - docs/Models/Components/Reports.md
   - docs/Models/Components/RequestCountAllocation.md
   - docs/Models/Components/RequestRate.md
@@ -2222,6 +2224,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/PurchaseOrdersFilter.cs
   - src/ApideckUnifySdk/Models/Components/PurchaseOrdersSort.cs
   - src/ApideckUnifySdk/Models/Components/PurchaseOrdersSortBy.cs
+  - src/ApideckUnifySdk/Models/Components/RebillStatus.cs
+  - src/ApideckUnifySdk/Models/Components/Rebilling.cs
   - src/ApideckUnifySdk/Models/Components/Reports.cs
   - src/ApideckUnifySdk/Models/Components/RequestCountAllocation.cs
   - src/ApideckUnifySdk/Models/Components/RequestRate.cs
