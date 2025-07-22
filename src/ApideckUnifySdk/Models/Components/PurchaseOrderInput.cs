@@ -148,6 +148,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? PaymentMethod { get; set; } = null;
 
         /// <summary>
+        /// Type of amortization
+        /// </summary>
+        [JsonProperty("amortization_type")]
+        public AmortizationType? AmortizationType { get; set; } = null;
+
+        /// <summary>
         /// Applicable tax id/code override if tax is not supplied on a line item basis.
         /// </summary>
         [JsonProperty("tax_code")]
@@ -164,6 +170,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("memo")]
         public string? Memo { get; set; } = null;
+
+        /// <summary>
+        /// Internal notes for the purchase order.
+        /// </summary>
+        [JsonProperty("notes")]
+        public string? Notes { get; set; } = null;
 
         /// <summary>
         /// A list of linked tracking categories.
