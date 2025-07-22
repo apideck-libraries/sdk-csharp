@@ -107,6 +107,18 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
 
+        /// <summary>
+        /// The ID of the subsidiary
+        /// </summary>
+        [JsonProperty("subsidiary_id")]
+        public string? SubsidiaryId { get; set; } = null;
+
+        /// <summary>
+        /// Whether the line item is prepaid
+        /// </summary>
+        [JsonProperty("prepaid")]
+        public bool? Prepaid { get; set; } = null;
+
         [JsonProperty("item")]
         public LinkedInvoiceItem? Item { get; set; }
 

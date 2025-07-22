@@ -26,9 +26,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.12.4";
-        private const string _sdkGenVersion = "2.658.3";
-        private const string _openapiDocVersion = "10.18.3";
+        private const string _sdkVersion = "0.12.5";
+        private const string _sdkGenVersion = "2.660.0";
+        private const string _openapiDocVersion = "10.18.4";
         public IOrders Orders { get; private set; }
         public IProducts Products { get; private set; }
         public IApideckCustomers Customers { get; private set; }

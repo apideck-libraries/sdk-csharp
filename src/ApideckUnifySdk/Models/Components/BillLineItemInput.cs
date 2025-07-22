@@ -95,6 +95,18 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
 
+        /// <summary>
+        /// The ID of the subsidiary
+        /// </summary>
+        [JsonProperty("subsidiary_id")]
+        public string? SubsidiaryId { get; set; } = null;
+
+        /// <summary>
+        /// ID of the category of the line item
+        /// </summary>
+        [JsonProperty("category_id")]
+        public string? CategoryId { get; set; } = null;
+
         [JsonProperty("item")]
         public LinkedInvoiceItem? Item { get; set; }
 
@@ -103,6 +115,9 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("ledger_account")]
         public LinkedLedgerAccountInput? LedgerAccount { get; set; } = null;
+
+        [JsonProperty("purchase_order")]
+        public LinkedPurchaseOrder? PurchaseOrder { get; set; } = null;
 
         /// <summary>
         /// A list of linked tracking categories.
