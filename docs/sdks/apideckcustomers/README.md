@@ -14,6 +14,7 @@ List Customers
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ecommerce.customersAll" method="get" path="/ecommerce/customers" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -75,6 +76,7 @@ Get Customer
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ecommerce.customersOne" method="get" path="/ecommerce/customers/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

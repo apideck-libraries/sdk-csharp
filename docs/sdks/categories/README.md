@@ -14,6 +14,7 @@ List Categories
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.categoriesAll" method="get" path="/accounting/categories" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -70,6 +71,7 @@ Get Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.categoriesOne" method="get" path="/accounting/categories/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

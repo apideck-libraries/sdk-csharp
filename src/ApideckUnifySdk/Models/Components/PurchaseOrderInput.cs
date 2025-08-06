@@ -108,6 +108,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("line_items")]
         public List<InvoiceLineItemInput>? LineItems { get; set; }
 
+        [JsonProperty("billing_address")]
+        public Address? BillingAddress { get; set; }
+
         [JsonProperty("shipping_address")]
         public Address? ShippingAddress { get; set; }
 
@@ -148,6 +151,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? PaymentMethod { get; set; } = null;
 
         /// <summary>
+        /// Terms of payment.
+        /// </summary>
+        [JsonProperty("terms")]
+        public string? Terms { get; set; } = null;
+
+        /// <summary>
         /// Type of amortization
         /// </summary>
         [JsonProperty("amortization_type")]
@@ -158,6 +167,24 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("tax_code")]
         public string? TaxCode { get; set; } = null;
+
+        /// <summary>
+        /// Method of tax calculation
+        /// </summary>
+        [JsonProperty("tax_method")]
+        public string? TaxMethod { get; set; } = null;
+
+        /// <summary>
+        /// Method of issuance of the purchase order
+        /// </summary>
+        [JsonProperty("issued_method")]
+        public string? IssuedMethod { get; set; } = null;
+
+        /// <summary>
+        /// Email address of the person who issued the purchase order
+        /// </summary>
+        [JsonProperty("issued_email")]
+        public string? IssuedEmail { get; set; } = null;
 
         /// <summary>
         /// The channel through which the transaction is processed.

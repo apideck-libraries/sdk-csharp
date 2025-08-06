@@ -22,6 +22,6 @@ namespace ApideckUnifySdk.Models.Requests
         public string? AppId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public ConsumerInput Consumer { get; set; } = default!;
+        public CreateConsumerRequest CreateConsumerRequest { get; set; } = default!;
     }
 }

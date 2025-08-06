@@ -17,6 +17,7 @@ List Departments
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.departmentsAll" method="get" path="/accounting/departments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -73,6 +74,7 @@ Create Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.departmentsAdd" method="post" path="/accounting/departments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -154,6 +156,7 @@ Get Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.departmentsOne" method="get" path="/accounting/departments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -203,6 +206,7 @@ Update Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.departmentsUpdate" method="patch" path="/accounting/departments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -301,6 +305,7 @@ Delete Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.departmentsDelete" method="delete" path="/accounting/departments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

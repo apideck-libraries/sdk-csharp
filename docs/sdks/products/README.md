@@ -14,6 +14,7 @@ List Products
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ecommerce.productsAll" method="get" path="/ecommerce/products" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -32,6 +33,11 @@ EcommerceProductsAllRequest req = new EcommerceProductsAllRequest() {
         { "search", "San Francisco" },
     },
     Fields = "id,updated_at",
+    Filter = new EcommerceProductsFilter() {
+        Name = "Product Name",
+        UpdatedSince = "2020-09-30T07:43:32.000Z",
+        CreatedSince = "2020-09-30T07:43:32.000Z",
+    },
 };
 
 EcommerceProductsAllResponse? res = await sdk.Ecommerce.Products.ListAsync(req);
@@ -71,6 +77,7 @@ Get Product
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ecommerce.productsOne" method="get" path="/ecommerce/products/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

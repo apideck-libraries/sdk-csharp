@@ -1,4 +1,4 @@
-# ConsumerInput
+# CreateConsumerRequest
 
 
 ## Fields

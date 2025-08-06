@@ -17,6 +17,7 @@ List custom objects
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectsAll" method="get" path="/crm/custom-objects/{object_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -75,6 +76,7 @@ Create custom object
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectsAdd" method="post" path="/crm/custom-objects/{object_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -182,6 +184,7 @@ Get custom object
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectsOne" method="get" path="/crm/custom-objects/{object_id}/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -231,6 +234,7 @@ Update custom object
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectsUpdate" method="patch" path="/crm/custom-objects/{object_id}/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -317,6 +321,7 @@ Delete custom object
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectsDelete" method="delete" path="/crm/custom-objects/{object_id}/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

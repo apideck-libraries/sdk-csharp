@@ -17,6 +17,7 @@ List Tracking Categories
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.trackingCategoriesAll" method="get" path="/accounting/tracking-categories" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create Tracking Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.trackingCategoriesAdd" method="post" path="/accounting/tracking-categories" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -189,6 +191,7 @@ Get Tracking Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.trackingCategoriesOne" method="get" path="/accounting/tracking-categories/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -238,6 +241,7 @@ Update Tracking Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.trackingCategoriesUpdate" method="patch" path="/accounting/tracking-categories/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -317,6 +321,7 @@ Delete Tracking Category
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.trackingCategoriesDelete" method="delete" path="/accounting/tracking-categories/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

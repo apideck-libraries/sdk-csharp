@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 94792ecd1973f11fb4355b737b6c3d63
-  docVersion: 10.18.4
-  speakeasyVersion: 1.584.0
-  generationVersion: 2.660.0
-  releaseVersion: 0.12.5
-  configChecksum: d18f62ed4e3776a2131f7ca8fd8e5870
+  docChecksum: ffad85289ecb22153e96c5201275a350
+  docVersion: 10.20.2
+  speakeasyVersion: 1.598.0
+  generationVersion: 2.674.1
+  releaseVersion: 0.13.0
+  configChecksum: 7876fa451396e9a715a915d392e54f82
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.11.1
+    core: 3.11.2
     deprecations: 2.81.2
     errors: 0.2.1
     flattening: 2.81.3
@@ -121,6 +121,7 @@ generatedFiles:
   - docs/Models/Components/BillsSort.md
   - docs/Models/Components/Blocks.md
   - docs/Models/Components/Branch.md
+  - docs/Models/Components/Budget.md
   - docs/Models/Components/By.md
   - docs/Models/Components/Categories.md
   - docs/Models/Components/CategoriesFilter.md
@@ -172,7 +173,6 @@ generatedFiles:
   - docs/Models/Components/ConnectorsFilter.md
   - docs/Models/Components/Consumer.md
   - docs/Models/Components/ConsumerConnection.md
-  - docs/Models/Components/ConsumerInput.md
   - docs/Models/Components/ConsumerMetadata.md
   - docs/Models/Components/ConsumerRequestCountsInDateRangeResponse.md
   - docs/Models/Components/ConsumerRequestCountsInDateRangeResponseData.md
@@ -202,6 +202,7 @@ generatedFiles:
   - docs/Models/Components/CreateCommentResponse.md
   - docs/Models/Components/CreateCompanyResponse.md
   - docs/Models/Components/CreateConnectionResponse.md
+  - docs/Models/Components/CreateConsumerRequest.md
   - docs/Models/Components/CreateConsumerResponse.md
   - docs/Models/Components/CreateContactResponse.md
   - docs/Models/Components/CreateCreditNoteResponse.md
@@ -227,6 +228,7 @@ generatedFiles:
   - docs/Models/Components/CreatePaymentResponse.md
   - docs/Models/Components/CreatePipelineResponse.md
   - docs/Models/Components/CreatePurchaseOrderResponse.md
+  - docs/Models/Components/CreateQuoteResponse.md
   - docs/Models/Components/CreateSessionResponse.md
   - docs/Models/Components/CreateSessionResponseData.md
   - docs/Models/Components/CreateSharedLinkResponse.md
@@ -311,6 +313,7 @@ generatedFiles:
   - docs/Models/Components/DeletePaymentResponse.md
   - docs/Models/Components/DeletePipelineResponse.md
   - docs/Models/Components/DeletePurchaseOrderResponse.md
+  - docs/Models/Components/DeleteQuoteResponse.md
   - docs/Models/Components/DeleteSharedLinkResponse.md
   - docs/Models/Components/DeleteSubsidiaryResponse.md
   - docs/Models/Components/DeleteSupplierResponse.md
@@ -352,6 +355,7 @@ generatedFiles:
   - docs/Models/Components/EcommerceProductImages.md
   - docs/Models/Components/EcommerceProductOptions.md
   - docs/Models/Components/EcommerceProductVariantsOptions.md
+  - docs/Models/Components/EcommerceProductsFilter.md
   - docs/Models/Components/EcommerceStore.md
   - docs/Models/Components/Email.md
   - docs/Models/Components/EmailType.md
@@ -513,6 +517,8 @@ generatedFiles:
   - docs/Models/Components/GetProfitAndLossResponse.md
   - docs/Models/Components/GetPurchaseOrderResponse.md
   - docs/Models/Components/GetPurchaseOrdersResponse.md
+  - docs/Models/Components/GetQuoteResponse.md
+  - docs/Models/Components/GetQuotesResponse.md
   - docs/Models/Components/GetSharedLinkResponse.md
   - docs/Models/Components/GetSharedLinksResponse.md
   - docs/Models/Components/GetStoreResponse.md
@@ -683,6 +689,12 @@ generatedFiles:
   - docs/Models/Components/PurchaseOrdersFilter.md
   - docs/Models/Components/PurchaseOrdersSort.md
   - docs/Models/Components/PurchaseOrdersSortBy.md
+  - docs/Models/Components/Quote.md
+  - docs/Models/Components/QuoteInput.md
+  - docs/Models/Components/QuoteLineItem.md
+  - docs/Models/Components/QuoteLineItemInput.md
+  - docs/Models/Components/QuoteLineItemType.md
+  - docs/Models/Components/QuoteStatus.md
   - docs/Models/Components/RebillStatus.md
   - docs/Models/Components/Rebilling.md
   - docs/Models/Components/Reports.md
@@ -805,6 +817,7 @@ generatedFiles:
   - docs/Models/Components/UpdatePaymentResponse.md
   - docs/Models/Components/UpdatePipelineResponse.md
   - docs/Models/Components/UpdatePurchaseOrderResponse.md
+  - docs/Models/Components/UpdateQuoteResponse.md
   - docs/Models/Components/UpdateSharedLinkResponse.md
   - docs/Models/Components/UpdateSubsidiaryResponse.md
   - docs/Models/Components/UpdateSupplierResponse.md
@@ -1018,6 +1031,16 @@ generatedFiles:
   - docs/Models/Requests/AccountingPurchaseOrdersOneResponse.md
   - docs/Models/Requests/AccountingPurchaseOrdersUpdateRequest.md
   - docs/Models/Requests/AccountingPurchaseOrdersUpdateResponse.md
+  - docs/Models/Requests/AccountingQuotesAddRequest.md
+  - docs/Models/Requests/AccountingQuotesAddResponse.md
+  - docs/Models/Requests/AccountingQuotesAllRequest.md
+  - docs/Models/Requests/AccountingQuotesAllResponse.md
+  - docs/Models/Requests/AccountingQuotesDeleteRequest.md
+  - docs/Models/Requests/AccountingQuotesDeleteResponse.md
+  - docs/Models/Requests/AccountingQuotesOneRequest.md
+  - docs/Models/Requests/AccountingQuotesOneResponse.md
+  - docs/Models/Requests/AccountingQuotesUpdateRequest.md
+  - docs/Models/Requests/AccountingQuotesUpdateResponse.md
   - docs/Models/Requests/AccountingSubsidiariesAddRequest.md
   - docs/Models/Requests/AccountingSubsidiariesAddResponse.md
   - docs/Models/Requests/AccountingSubsidiariesAllRequest.md
@@ -1498,6 +1521,7 @@ generatedFiles:
   - docs/sdks/products/README.md
   - docs/sdks/profitandloss/README.md
   - docs/sdks/purchaseorders/README.md
+  - docs/sdks/quotes/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/sharedlinks/README.md
   - docs/sdks/sms/README.md
@@ -1666,6 +1690,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/BillsSort.cs
   - src/ApideckUnifySdk/Models/Components/Blocks.cs
   - src/ApideckUnifySdk/Models/Components/Branch.cs
+  - src/ApideckUnifySdk/Models/Components/Budget.cs
   - src/ApideckUnifySdk/Models/Components/By.cs
   - src/ApideckUnifySdk/Models/Components/Categories.cs
   - src/ApideckUnifySdk/Models/Components/CategoriesFilter.cs
@@ -1717,7 +1742,6 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/ConnectorsFilter.cs
   - src/ApideckUnifySdk/Models/Components/Consumer.cs
   - src/ApideckUnifySdk/Models/Components/ConsumerConnection.cs
-  - src/ApideckUnifySdk/Models/Components/ConsumerInput.cs
   - src/ApideckUnifySdk/Models/Components/ConsumerMetadata.cs
   - src/ApideckUnifySdk/Models/Components/ConsumerRequestCountsInDateRangeResponse.cs
   - src/ApideckUnifySdk/Models/Components/ConsumerRequestCountsInDateRangeResponseData.cs
@@ -1747,6 +1771,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/CreateCommentResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateCompanyResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateConnectionResponse.cs
+  - src/ApideckUnifySdk/Models/Components/CreateConsumerRequest.cs
   - src/ApideckUnifySdk/Models/Components/CreateConsumerResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateContactResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateCreditNoteResponse.cs
@@ -1772,6 +1797,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/CreatePaymentResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreatePipelineResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreatePurchaseOrderResponse.cs
+  - src/ApideckUnifySdk/Models/Components/CreateQuoteResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateSessionResponse.cs
   - src/ApideckUnifySdk/Models/Components/CreateSessionResponseData.cs
   - src/ApideckUnifySdk/Models/Components/CreateSharedLinkResponse.cs
@@ -1856,6 +1882,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/DeletePaymentResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeletePipelineResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeletePurchaseOrderResponse.cs
+  - src/ApideckUnifySdk/Models/Components/DeleteQuoteResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteSharedLinkResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteSubsidiaryResponse.cs
   - src/ApideckUnifySdk/Models/Components/DeleteSupplierResponse.cs
@@ -1897,6 +1924,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/EcommerceProductImages.cs
   - src/ApideckUnifySdk/Models/Components/EcommerceProductOptions.cs
   - src/ApideckUnifySdk/Models/Components/EcommerceProductVariantsOptions.cs
+  - src/ApideckUnifySdk/Models/Components/EcommerceProductsFilter.cs
   - src/ApideckUnifySdk/Models/Components/EcommerceStore.cs
   - src/ApideckUnifySdk/Models/Components/Email.cs
   - src/ApideckUnifySdk/Models/Components/EmailType.cs
@@ -2058,6 +2086,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/GetProfitAndLossResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetPurchaseOrderResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetPurchaseOrdersResponse.cs
+  - src/ApideckUnifySdk/Models/Components/GetQuoteResponse.cs
+  - src/ApideckUnifySdk/Models/Components/GetQuotesResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetSharedLinkResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetSharedLinksResponse.cs
   - src/ApideckUnifySdk/Models/Components/GetStoreResponse.cs
@@ -2228,6 +2258,12 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/PurchaseOrdersFilter.cs
   - src/ApideckUnifySdk/Models/Components/PurchaseOrdersSort.cs
   - src/ApideckUnifySdk/Models/Components/PurchaseOrdersSortBy.cs
+  - src/ApideckUnifySdk/Models/Components/Quote.cs
+  - src/ApideckUnifySdk/Models/Components/QuoteInput.cs
+  - src/ApideckUnifySdk/Models/Components/QuoteLineItem.cs
+  - src/ApideckUnifySdk/Models/Components/QuoteLineItemInput.cs
+  - src/ApideckUnifySdk/Models/Components/QuoteLineItemType.cs
+  - src/ApideckUnifySdk/Models/Components/QuoteStatus.cs
   - src/ApideckUnifySdk/Models/Components/RebillStatus.cs
   - src/ApideckUnifySdk/Models/Components/Rebilling.cs
   - src/ApideckUnifySdk/Models/Components/Reports.cs
@@ -2350,6 +2386,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/UpdatePaymentResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdatePipelineResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdatePurchaseOrderResponse.cs
+  - src/ApideckUnifySdk/Models/Components/UpdateQuoteResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateSharedLinkResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateSubsidiaryResponse.cs
   - src/ApideckUnifySdk/Models/Components/UpdateSupplierResponse.cs
@@ -2564,6 +2601,16 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Requests/AccountingPurchaseOrdersOneResponse.cs
   - src/ApideckUnifySdk/Models/Requests/AccountingPurchaseOrdersUpdateRequest.cs
   - src/ApideckUnifySdk/Models/Requests/AccountingPurchaseOrdersUpdateResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesAddRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesAddResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesAllRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesAllResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesDeleteRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesDeleteResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesOneRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesOneResponse.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesUpdateRequest.cs
+  - src/ApideckUnifySdk/Models/Requests/AccountingQuotesUpdateResponse.cs
   - src/ApideckUnifySdk/Models/Requests/AccountingSubsidiariesAddRequest.cs
   - src/ApideckUnifySdk/Models/Requests/AccountingSubsidiariesAddResponse.cs
   - src/ApideckUnifySdk/Models/Requests/AccountingSubsidiariesAllRequest.cs
@@ -2976,6 +3023,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Products.cs
   - src/ApideckUnifySdk/ProfitAndLoss.cs
   - src/ApideckUnifySdk/PurchaseOrders.cs
+  - src/ApideckUnifySdk/Quotes.cs
   - src/ApideckUnifySdk/SDKConfig.cs
   - src/ApideckUnifySdk/Sessions.cs
   - src/ApideckUnifySdk/SharedLinks.cs
@@ -5181,7 +5229,7 @@ examples:
         query:
           raw: false
           limit: 20
-          filter: {"updated_since": "2020-09-30T07:43:32.000Z", "invoice_id": "123"}
+          filter: {"updated_since": "2020-09-30T07:43:32.000Z", "invoice_id": "123", "supplier_id": "123"}
           sort: {"by": "updated_at", "direction": "desc"}
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
@@ -5924,7 +5972,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"po_number": "90000117", "reference": "123456", "supplier": {"id": "12345", "display_name": "Windsurf Shop", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "subsidiary_id": "12345", "company_id": "12345", "status": "open", "issued_date": "2020-09-30", "delivery_date": "2020-09-30", "expected_arrival_date": "2020-09-30", "currency": "USD", "currency_rate": 0.69, "sub_total": 27500, "total_tax": 2500, "total": 27500, "tax_inclusive": true, "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345"}], "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "template_id": "123456", "discount_percentage": 5.5, "bank_account": {"bank_name": "Monzo", "account_number": "123465", "account_name": "SPACEX LLC", "account_type": "credit_card", "iban": "CH2989144532982975332", "bic": "AUDSCHGGXXX", "routing_number": "012345678", "bsb_number": "062-001", "branch_identifier": "001", "bank_code": "BNH", "currency": "USD", "country": "US"}, "accounting_by_row": false, "due_date": "2020-10-30", "payment_method": "cash", "tax_code": "1234", "channel": "email", "memo": "Thank you for the partnership and have a great day!", "notes": "This is a test purchase order", "tracking_categories": [{"id": "123456", "name": "New York"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+        application/json: {"po_number": "90000117", "reference": "123456", "supplier": {"id": "12345", "display_name": "Windsurf Shop", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "subsidiary_id": "12345", "company_id": "12345", "status": "open", "issued_date": "2020-09-30", "delivery_date": "2020-09-30", "expected_arrival_date": "2020-09-30", "currency": "USD", "currency_rate": 0.69, "sub_total": 27500, "total_tax": 2500, "total": 27500, "tax_inclusive": true, "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}], "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345"}], "billing_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "template_id": "123456", "discount_percentage": 5.5, "bank_account": {"bank_name": "Monzo", "account_number": "123465", "account_name": "SPACEX LLC", "account_type": "credit_card", "iban": "CH2989144532982975332", "bic": "AUDSCHGGXXX", "routing_number": "012345678", "bsb_number": "062-001", "branch_identifier": "001", "bank_code": "BNH", "currency": "USD", "country": "US"}, "accounting_by_row": false, "due_date": "2020-10-30", "payment_method": "cash", "terms": "Net 30 days", "tax_code": "1234", "tax_method": "Due to supplier", "issued_method": "Email", "issued_email": "john.doe@example.com", "channel": "email", "memo": "Thank you for the partnership and have a great day!", "notes": "This is a test purchase order", "tracking_categories": [{"id": "123456", "name": "New York"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
       responses:
         "201":
           application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "PurchaseOrders", "operation": "add", "data": {"id": "12345"}}
@@ -5978,7 +6026,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "PurchaseOrders", "operation": "one", "data": {"id": "12345", "downstream_id": "12345", "po_number": "90000117", "reference": "123456", "supplier": {"id": "12345", "display_id": "SUPP00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "subsidiary_id": "12345", "company_id": "12345", "status": "open", "issued_date": "2020-09-30", "delivery_date": "2020-09-30", "expected_arrival_date": "2020-09-30", "currency": "USD", "currency_rate": 0.69, "sub_total": 27500, "total_tax": 2500, "total": 27500, "tax_inclusive": true, "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tracking_categories": null, "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "created_at": "2020-09-30T07:43:32.000Z", "updated_at": "2020-09-30T07:43:32.000Z"}], "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "template_id": "123456", "discount_percentage": 5.5, "bank_account": {"bank_name": "Monzo", "account_number": "123465", "account_name": "SPACEX LLC", "account_type": "credit_card", "iban": "CH2989144532982975332", "bic": "AUDSCHGGXXX", "routing_number": "012345678", "bsb_number": "062-001", "branch_identifier": "001", "bank_code": "BNH", "currency": "USD", "country": "US"}, "accounting_by_row": false, "due_date": "2020-10-30", "payment_method": "cash", "tax_code": "1234", "channel": "email", "memo": "Thank you for the partnership and have a great day!", "notes": "This is a test purchase order", "tracking_categories": [{"id": "123456", "name": "New York"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "PurchaseOrders", "operation": "one", "data": {"id": "12345", "downstream_id": "12345", "po_number": "90000117", "reference": "123456", "supplier": {"id": "12345", "display_id": "SUPP00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "subsidiary_id": "12345", "company_id": "12345", "status": "open", "issued_date": "2020-09-30", "delivery_date": "2020-09-30", "expected_arrival_date": "2020-09-30", "currency": "USD", "currency_rate": 0.69, "sub_total": 27500, "total_tax": 2500, "total": 27500, "tax_inclusive": true, "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tracking_categories": null, "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "created_at": "2020-09-30T07:43:32.000Z", "updated_at": "2020-09-30T07:43:32.000Z"}], "billing_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "template_id": "123456", "discount_percentage": 5.5, "bank_account": {"bank_name": "Monzo", "account_number": "123465", "account_name": "SPACEX LLC", "account_type": "credit_card", "iban": "CH2989144532982975332", "bic": "AUDSCHGGXXX", "routing_number": "012345678", "bsb_number": "062-001", "branch_identifier": "001", "bank_code": "BNH", "currency": "USD", "country": "US"}, "accounting_by_row": false, "due_date": "2020-10-30", "payment_method": "cash", "terms": "Net 30 days", "tax_code": "1234", "tax_method": "Due to supplier", "issued_method": "Email", "issued_email": "john.doe@example.com", "channel": "email", "memo": "Thank you for the partnership and have a great day!", "notes": "This is a test purchase order", "tracking_categories": [{"id": "123456", "name": "New York"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":
@@ -6030,7 +6078,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"po_number": "90000117", "reference": "123456", "supplier": {"id": "12345", "display_name": "Windsurf Shop", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "subsidiary_id": "12345", "company_id": "12345", "status": "open", "issued_date": "2020-09-30", "delivery_date": "2020-09-30", "expected_arrival_date": "2020-09-30", "currency": "USD", "currency_rate": 0.69, "sub_total": 27500, "total_tax": 2500, "total": 27500, "tax_inclusive": true, "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}], "ledger_account": null, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345"}], "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "template_id": "123456", "discount_percentage": 5.5, "bank_account": {"bank_name": "Monzo", "account_number": "123465", "account_name": "SPACEX LLC", "account_type": "credit_card", "iban": "CH2989144532982975332", "bic": "AUDSCHGGXXX", "routing_number": "012345678", "bsb_number": "062-001", "branch_identifier": "001", "bank_code": "BNH", "currency": "USD", "country": "US"}, "accounting_by_row": false, "due_date": "2020-10-30", "payment_method": "cash", "tax_code": "1234", "channel": "email", "memo": "Thank you for the partnership and have a great day!", "notes": "This is a test purchase order", "tracking_categories": [{"id": "123456", "name": "New York"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+        application/json: {"po_number": "90000117", "reference": "123456", "supplier": {"id": "12345", "display_name": "Windsurf Shop", "address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}}, "subsidiary_id": "12345", "company_id": "12345", "status": "open", "issued_date": "2020-09-30", "delivery_date": "2020-09-30", "expected_arrival_date": "2020-09-30", "currency": "USD", "currency_rate": 0.69, "sub_total": 27500, "total_tax": 2500, "total": 27500, "tax_inclusive": true, "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York"}], "ledger_account": null, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345"}], "billing_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "template_id": "123456", "discount_percentage": 5.5, "bank_account": {"bank_name": "Monzo", "account_number": "123465", "account_name": "SPACEX LLC", "account_type": "credit_card", "iban": "CH2989144532982975332", "bic": "AUDSCHGGXXX", "routing_number": "012345678", "bsb_number": "062-001", "branch_identifier": "001", "bank_code": "BNH", "currency": "USD", "country": "US"}, "accounting_by_row": false, "due_date": "2020-10-30", "payment_method": "cash", "terms": "Net 30 days", "tax_code": "1234", "tax_method": "Due to supplier", "issued_method": "Email", "issued_email": "john.doe@example.com", "channel": "email", "memo": "Thank you for the partnership and have a great day!", "notes": "This is a test purchase order", "tracking_categories": [{"id": "123456", "name": "New York"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
       responses:
         "200":
           application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "PurchaseOrders", "operation": "update", "data": {"id": "12345"}}
@@ -7491,7 +7539,7 @@ examples:
         query:
           raw: false
           limit: 20
-          filter: {"updated_since": "2020-09-30T07:43:32.000Z", "invoice_id": "123"}
+          filter: {"updated_since": "2020-09-30T07:43:32.000Z", "invoice_id": "123", "supplier_id": "123"}
           sort: {"by": "updated_at", "direction": "desc"}
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
@@ -8809,7 +8857,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"name": "Elon Musk", "first_name": "Elon", "last_name": "Musk", "middle_name": "D.", "initials": "EM", "birthday": "2000-08-12", "cover_letter": "I submit this application to express my sincere interest in the API developer position. In the previous role, I was responsible for leadership and ...", "photo_url": "https://unavatar.io/elon-musk", "headline": "PepsiCo, Inc, Central Perk", "title": "CEO", "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": null}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "websites": [{"id": "12345", "url": "http://example.com", "type": "primary"}], "social_links": [{"id": "12345", "url": "https://www.twitter.com/apideck", "type": "twitter"}], "stage_id": "12345", "recruiter_id": "12345", "coordinator_id": "12345", "application_ids": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "applications": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "followers": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "sources": ["Job site"], "confidential": false, "anonymized": true, "tags": ["New"], "archived": false, "owner_id": "54321", "record_url": "https://app.intercom.io/contacts/12345", "deleted": true, "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+        application/json: {"name": "Elon Musk", "first_name": "Elon", "last_name": "Musk", "middle_name": "D.", "initials": "EM", "birthday": "2000-08-12", "cover_letter": "I submit this application to express my sincere interest in the API developer position. In the previous role, I was responsible for leadership and ...", "photo_url": "https://unavatar.io/elon-musk", "headline": "PepsiCo, Inc, Central Perk", "title": "CEO", "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": null}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "websites": [{"id": "12345", "url": "http://example.com", "type": "primary"}], "social_links": [{"id": "12345", "url": "https://www.twitter.com/apideck", "type": "twitter"}], "stage_id": "12345", "recruiter_id": "12345", "coordinator_id": "12345", "application_ids": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "followers": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "sources": ["Job site"], "confidential": false, "anonymized": true, "tags": ["New"], "archived": false, "owner_id": "54321", "record_url": "https://app.intercom.io/contacts/12345", "deleted": true, "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
       responses:
         "201":
           application/json: {"status_code": 200, "status": "OK", "service": "lever", "resource": "Applicants", "operation": "add", "data": {"id": "12345"}}
@@ -8865,7 +8913,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "lever", "resource": "Applicants", "operation": "one", "data": {"id": "12345", "name": "Elon Musk", "first_name": "Elon", "last_name": "Musk", "middle_name": "D.", "initials": "EM", "birthday": "2000-08-12", "cover_letter": "I submit this application to express my sincere interest in the API developer position. In the previous role, I was responsible for leadership and ...", "job_url": "https://democompany.recruitee.com/o/example-talent-pool", "photo_url": "https://unavatar.io/elon-musk", "headline": "PepsiCo, Inc, Central Perk", "title": "CEO", "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "websites": [{"id": "12345", "url": "http://example.com", "type": "primary"}], "social_links": [{"id": "12345", "url": "https://www.twitter.com/apideck", "type": "twitter"}], "stage_id": "12345", "recruiter_id": "12345", "coordinator_id": "12345", "application_ids": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "applications": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "followers": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "sources": ["Job site"], "source_id": "12345", "confidential": false, "anonymized": true, "tags": ["New"], "archived": false, "last_interaction_at": "2020-09-30T07:43:32.000Z", "owner_id": "54321", "sourced_by": "12345", "cv_url": "https://recruitee-main.s3.eu-central-1.amazonaws.com/candidates/36615291/pdf_cv_38swhu4w42k1.pdf?response-content-disposition=inline&response-content-type=application%2Fpdf&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYHB7CA5RLR4Y3ON%2F20220514%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20220514T235654Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=72c0621f5976db75b54de487eb821a8e73480d7f2a6a4a9713ab997944b0561f", "record_url": "https://app.intercom.io/contacts/12345", "rejected_at": "2020-09-30T07:43:32.000Z", "deleted": true, "deleted_by": "12345", "deleted_at": "2020-09-30T07:43:32.000Z", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
+          application/json: {"status_code": 200, "status": "OK", "service": "lever", "resource": "Applicants", "operation": "one", "data": {"id": "12345", "name": "Elon Musk", "first_name": "Elon", "last_name": "Musk", "middle_name": "D.", "initials": "EM", "birthday": "2000-08-12", "cover_letter": "I submit this application to express my sincere interest in the API developer position. In the previous role, I was responsible for leadership and ...", "job_url": "https://democompany.recruitee.com/o/example-talent-pool", "photo_url": "https://unavatar.io/elon-musk", "headline": "PepsiCo, Inc, Central Perk", "title": "CEO", "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "websites": [{"id": "12345", "url": "http://example.com", "type": "primary"}], "social_links": [{"id": "12345", "url": "https://www.twitter.com/apideck", "type": "twitter"}], "stage_id": "12345", "recruiter_id": "12345", "coordinator_id": "12345", "application_ids": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "followers": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "sources": ["Job site"], "source_id": "12345", "confidential": false, "anonymized": true, "tags": ["New"], "archived": false, "last_interaction_at": "2020-09-30T07:43:32.000Z", "owner_id": "54321", "sourced_by": "12345", "cv_url": "https://recruitee-main.s3.eu-central-1.amazonaws.com/candidates/36615291/pdf_cv_38swhu4w42k1.pdf?response-content-disposition=inline&response-content-type=application%2Fpdf&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYHB7CA5RLR4Y3ON%2F20220514%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20220514T235654Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=72c0621f5976db75b54de487eb821a8e73480d7f2a6a4a9713ab997944b0561f", "record_url": "https://app.intercom.io/contacts/12345", "rejected_at": "2020-09-30T07:43:32.000Z", "deleted": true, "deleted_by": "12345", "deleted_at": "2020-09-30T07:43:32.000Z", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":
@@ -8917,7 +8965,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"name": "Elon Musk", "first_name": "Elon", "last_name": "Musk", "middle_name": "D.", "initials": "EM", "birthday": "2000-08-12", "cover_letter": "I submit this application to express my sincere interest in the API developer position. In the previous role, I was responsible for leadership and ...", "photo_url": "https://unavatar.io/elon-musk", "headline": "PepsiCo, Inc, Central Perk", "title": "CEO", "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "websites": [{"id": "12345", "url": "http://example.com", "type": "primary"}], "social_links": [{"id": "12345", "url": "https://www.twitter.com/apideck", "type": "twitter"}], "stage_id": "12345", "recruiter_id": "12345", "coordinator_id": "12345", "application_ids": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "applications": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "followers": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "sources": ["Job site"], "confidential": false, "anonymized": true, "tags": ["New"], "archived": false, "owner_id": "54321", "record_url": "https://app.intercom.io/contacts/12345", "deleted": true, "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+        application/json: {"name": "Elon Musk", "first_name": "Elon", "last_name": "Musk", "middle_name": "D.", "initials": "EM", "birthday": "2000-08-12", "cover_letter": "I submit this application to express my sincere interest in the API developer position. In the previous role, I was responsible for leadership and ...", "photo_url": "https://unavatar.io/elon-musk", "headline": "PepsiCo, Inc, Central Perk", "title": "CEO", "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "websites": [{"id": "12345", "url": "http://example.com", "type": "primary"}], "social_links": [{"id": "12345", "url": "https://www.twitter.com/apideck", "type": "twitter"}], "stage_id": "12345", "recruiter_id": "12345", "coordinator_id": "12345", "application_ids": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "followers": ["a0d636c6-43b3-4bde-8c70-85b707d992f4", "a98lfd96-43b3-4bde-8c70-85b707d992e6"], "sources": ["Job site"], "confidential": false, "anonymized": true, "tags": ["New"], "archived": false, "owner_id": "54321", "record_url": "https://app.intercom.io/contacts/12345", "deleted": true, "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
       responses:
         "200":
           application/json: {"status_code": 200, "status": "OK", "service": "lever", "resource": "Applicants", "operation": "update", "data": {"id": "12345"}}
@@ -11513,6 +11561,7 @@ examples:
           limit: 20
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
+          filter: {"name": "Product Name", "updated_since": "2020-09-30T07:43:32.000Z", "created_since": "2020-09-30T07:43:32.000Z"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -17990,6 +18039,137 @@ examples:
       responses:
         "200":
           application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "categories", "operation": "one", "data": {"id": "12345", "name": "Insurance", "type": "expense", "status": "active", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  accounting.quotesAll:
+    speakeasy-default-accounting-quotes-all:
+      parameters:
+        query:
+          raw: false
+          limit: 20
+        header:
+          x-apideck-consumer-id: "test-consumer"
+          x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "Quotes", "operation": "all", "data": [], "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}}, "links": {"previous": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjE%3D", "current": "https://unify.apideck.com/crm/companies", "next": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjM"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  accounting.quotesAdd:
+    speakeasy-default-accounting-quotes-add:
+      parameters:
+        query:
+          raw: false
+        header:
+          x-apideck-consumer-id: "test-consumer"
+          x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+          x-apideck-service-id: "salesforce"
+      requestBody:
+        application/json: {"number": "QT00546", "customer": {"id": "12345", "display_name": "Windsurf Shop", "email": "boring@boring.com"}, "sales_order_id": "123456", "company_id": "12345", "project_id": "12345", "quote_date": "2020-09-30", "expiry_date": "2020-10-30", "terms": "Valid for 30 days", "reference": "INV-2024-001", "status": "draft", "currency": "USD", "currency_rate": 0.69, "tax_inclusive": true, "sub_total": 27500, "total_tax": 2500, "tax_code": "1234", "discount_percentage": 5.5, "discount_amount": 25, "total": 27500, "customer_memo": "Thank you for considering our services!", "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "category_id": "12345", "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345"}], "billing_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "tracking_categories": [{"id": "123456", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "template_id": "123456", "source_document_url": "https://www.quotesolution.com/quote/123456", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+      responses:
+        "201":
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "Quotes", "operation": "add", "data": {"id": "12345"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  accounting.quotesOne:
+    speakeasy-default-accounting-quotes-one:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-consumer-id: "test-consumer"
+          x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "Quotes", "operation": "one", "data": {"id": "12345", "downstream_id": "12345", "number": "QT00546", "customer": {"id": "12345", "display_id": "CUST00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "email": "boring@boring.com"}, "invoice_id": "123456", "sales_order_id": "123456", "company_id": "12345", "project_id": "12345", "quote_date": "2020-09-30", "expiry_date": "2020-10-30", "terms": "Valid for 30 days", "reference": "INV-2024-001", "status": "draft", "currency": "USD", "currency_rate": 0.69, "tax_inclusive": true, "sub_total": 27500, "total_tax": 2500, "tax_code": "1234", "discount_percentage": 5.5, "discount_amount": 25, "total": 27500, "customer_memo": "Thank you for considering our services!", "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "category_id": "12345", "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tracking_categories": [{"id": "123456", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "ledger_account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "created_at": "2020-09-30T07:43:32.000Z", "updated_at": "2020-09-30T07:43:32.000Z"}], "billing_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "tracking_categories": [{"id": "123456", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "template_id": "123456", "source_document_url": "https://www.quotesolution.com/quote/123456", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  accounting.quotesUpdate:
+    speakeasy-default-accounting-quotes-update:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-consumer-id: "test-consumer"
+          x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+          x-apideck-service-id: "salesforce"
+      requestBody:
+        application/json: {"number": "QT00546", "customer": {"id": "12345", "display_name": "Windsurf Shop", "email": "boring@boring.com"}, "sales_order_id": "123456", "company_id": "12345", "project_id": "12345", "quote_date": "2020-09-30", "expiry_date": "2020-10-30", "terms": "Valid for 30 days", "reference": "INV-2024-001", "status": "draft", "currency": "USD", "currency_rate": 0.69, "tax_inclusive": true, "sub_total": 27500, "total_tax": 2500, "tax_code": "1234", "discount_percentage": 5.5, "discount_amount": 25, "total": 27500, "customer_memo": "Thank you for considering our services!", "line_items": [{"id": "12345", "row_id": "12345", "code": "120-C", "line_number": 1, "description": "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.", "type": "sales_item", "tax_amount": 27500, "total_amount": 27500, "quantity": 1, "unit_price": 27500.5, "unit_of_measure": "pc.", "discount_percentage": 0.01, "discount_amount": 19.99, "category_id": "12345", "location_id": "12345", "department_id": "12345", "item": {"id": "12344", "code": "120-C", "name": "Model Y"}, "tax_rate": {"id": "123456", "rate": 10}, "tracking_categories": null, "ledger_account": {"id": "123456", "nominal_code": "N091", "code": "453"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345"}], "billing_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "shipping_address": {"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}, "tracking_categories": [{"id": "123456", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "template_id": "123456", "source_document_url": "https://www.quotesolution.com/quote/123456", "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "Quotes", "operation": "update", "data": {"id": "12345"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  accounting.quotesDelete:
+    speakeasy-default-accounting-quotes-delete:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          raw: false
+        header:
+          x-apideck-consumer-id: "test-consumer"
+          x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "quickbooks", "resource": "Quotes", "operation": "delete", "data": {"id": "12345"}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":

@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Requests
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using System.Collections.Generic;
     
@@ -62,5 +63,11 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")]
         public string? Fields { get; set; } = null;
+
+        /// <summary>
+        /// Apply filters
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
+        public EcommerceProductsFilter? Filter { get; set; }
     }
 }

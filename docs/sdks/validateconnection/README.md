@@ -19,6 +19,7 @@ Note:
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.validateConnectionState" method="post" path="/vault/connections/{unified_api}/{service_id}/validate" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

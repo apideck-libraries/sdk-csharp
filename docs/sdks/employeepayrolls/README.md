@@ -14,6 +14,7 @@ List payrolls for employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.employeePayrollsAll" method="get" path="/hris/payrolls/employees/{employee_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -71,6 +72,7 @@ Get payroll for employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.employeePayrollsOne" method="get" path="/hris/payrolls/employees/{employee_id}/payrolls/{payroll_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

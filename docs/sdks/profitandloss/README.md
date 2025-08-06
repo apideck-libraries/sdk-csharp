@@ -13,6 +13,7 @@ Get Profit and Loss
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.profitAndLossOne" method="get" path="/accounting/profit-and-loss" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

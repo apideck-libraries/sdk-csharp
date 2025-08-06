@@ -17,6 +17,7 @@ List Comments
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketCommentsAll" method="get" path="/issue-tracking/collections/{collection_id}/tickets/{ticket_id}/comments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -80,6 +81,7 @@ Create Comment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketCommentsAdd" method="post" path="/issue-tracking/collections/{collection_id}/tickets/{ticket_id}/comments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -193,6 +195,7 @@ Get Comment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketCommentsOne" method="get" path="/issue-tracking/collections/{collection_id}/tickets/{ticket_id}/comments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -249,6 +252,7 @@ Update Comment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketCommentsUpdate" method="patch" path="/issue-tracking/collections/{collection_id}/tickets/{ticket_id}/comments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -326,6 +330,7 @@ Delete Comment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketCommentsDelete" method="delete" path="/issue-tracking/collections/{collection_id}/tickets/{ticket_id}/comments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

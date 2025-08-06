@@ -21,6 +21,7 @@ OAuth2 supported integrations will contain authorize and revoke links to handle 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.connectionsAll" method="get" path="/vault/connections" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -69,6 +70,7 @@ Get a connection
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.connectionsOne" method="get" path="/vault/connections/{unified_api}/{service_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -117,6 +119,7 @@ Update a connection
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.connectionsUpdate" method="patch" path="/vault/connections/{unified_api}/{service_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -140,8 +143,8 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
         },
         Metadata = new Dictionary<string, object>() {
             { "account", new Dictionary<string, object>() {
-                { "id", "c01458a5-7276-41ce-bc19-639906b0450a" },
                 { "name", "My Company" },
+                { "id", "c01458a5-7276-41ce-bc19-639906b0450a" },
             } },
             { "plan", "enterprise" },
         },
@@ -287,6 +290,7 @@ Deletes a connection
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.connectionsDelete" method="delete" path="/vault/connections/{unified_api}/{service_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -336,6 +340,7 @@ Import an authorized connection.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.connectionsImport" method="post" path="/vault/connections/{unified_api}/{service_id}/import" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -407,6 +412,7 @@ Note:
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.connectionsToken" method="post" path="/vault/connections/{unified_api}/{service_id}/token" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

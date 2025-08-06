@@ -17,6 +17,7 @@ List Suppliers
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.suppliersAll" method="get" path="/accounting/suppliers" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -87,6 +88,7 @@ Create Supplier
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.suppliersAdd" method="post" path="/accounting/suppliers" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -295,6 +297,7 @@ Get Supplier
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.suppliersOne" method="get" path="/accounting/suppliers/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -344,6 +347,7 @@ Update Supplier
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.suppliersUpdate" method="patch" path="/accounting/suppliers/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -543,6 +547,7 @@ Delete Supplier
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.suppliersDelete" method="delete" path="/accounting/suppliers/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

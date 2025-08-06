@@ -17,6 +17,7 @@ Create a consumer
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.consumersAdd" method="post" path="/vault/consumers" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -26,7 +27,7 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Vault.Consumers.CreateAsync(consumer: new ConsumerInput() {
+var res = await sdk.Vault.Consumers.CreateAsync(createConsumerRequest: new CreateConsumerRequest() {
     ConsumerId = "test_consumer_id",
     Metadata = new ConsumerMetadata() {
         AccountName = "SpaceX",
@@ -41,10 +42,10 @@ var res = await sdk.Vault.Consumers.CreateAsync(consumer: new ConsumerInput() {
 
 ### Parameters
 
-| Parameter                                                 | Type                                                      | Required                                                  | Description                                               | Example                                                   |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `Consumer`                                                | [ConsumerInput](../../Models/Components/ConsumerInput.md) | :heavy_check_mark:                                        | N/A                                                       |                                                           |
-| `AppId`                                                   | *string*                                                  | :heavy_minus_sign:                                        | The ID of your Unify application                          | dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX                   |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `CreateConsumerRequest`                                                   | [CreateConsumerRequest](../../Models/Components/CreateConsumerRequest.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `AppId`                                                                   | *string*                                                                  | :heavy_minus_sign:                                                        | The ID of your Unify application                                          | dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX                                   |
 
 ### Response
 
@@ -68,6 +69,7 @@ This endpoint includes all application consumers, along with an aggregated count
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.consumersAll" method="get" path="/vault/consumers" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -118,6 +120,7 @@ Consumer detail including their aggregated counts with the connections they have
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.consumersOne" method="get" path="/vault/consumers/{consumer_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -160,6 +163,7 @@ Update consumer metadata such as name and email.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.consumersUpdate" method="patch" path="/vault/consumers/{consumer_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -213,6 +217,7 @@ Delete consumer and all their connections, including credentials.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.consumersDelete" method="delete" path="/vault/consumers/{consumer_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

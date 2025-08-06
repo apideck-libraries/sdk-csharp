@@ -17,6 +17,7 @@ List Journal Entries
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.journalEntriesAll" method="get" path="/accounting/journal-entries" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -82,6 +83,7 @@ Create Journal Entry
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.journalEntriesAdd" method="post" path="/accounting/journal-entries" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -316,6 +318,7 @@ Get Journal Entry
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.journalEntriesOne" method="get" path="/accounting/journal-entries/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -365,6 +368,7 @@ Update Journal Entry
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.journalEntriesUpdate" method="patch" path="/accounting/journal-entries/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -564,6 +568,7 @@ Delete Journal Entry
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.journalEntriesDelete" method="delete" path="/accounting/journal-entries/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

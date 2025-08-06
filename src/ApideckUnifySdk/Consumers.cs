@@ -34,7 +34,7 @@ namespace ApideckUnifySdk
         /// Create a consumer
         /// </remarks>
         /// </summary>
-        Task<VaultConsumersAddResponse> CreateAsync(ConsumerInput consumer, string? appId = null, RetryConfig? retryConfig = null);
+        Task<VaultConsumersAddResponse> CreateAsync(CreateConsumerRequest createConsumerRequest, string? appId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get all consumers
@@ -79,20 +79,20 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.12.5";
-        private const string _sdkGenVersion = "2.660.0";
-        private const string _openapiDocVersion = "10.18.4";
+        private const string _sdkVersion = "0.13.0";
+        private const string _sdkGenVersion = "2.674.1";
+        private const string _openapiDocVersion = "10.20.2";
 
         public Consumers(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<VaultConsumersAddResponse> CreateAsync(ConsumerInput consumer, string? appId = null, RetryConfig? retryConfig = null)
+        public async Task<VaultConsumersAddResponse> CreateAsync(CreateConsumerRequest createConsumerRequest, string? appId = null, RetryConfig? retryConfig = null)
         {
             var request = new VaultConsumersAddRequest()
             {
-                Consumer = consumer,
+                CreateConsumerRequest = createConsumerRequest,
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
@@ -105,7 +105,7 @@ namespace ApideckUnifySdk
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "Consumer", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "CreateConsumerRequest", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;

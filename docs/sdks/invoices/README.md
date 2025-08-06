@@ -17,6 +17,7 @@ List Invoices
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.invoicesAll" method="get" path="/accounting/invoices" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -84,6 +85,7 @@ Create Invoice
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.invoicesAdd" method="post" path="/accounting/invoices" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -356,6 +358,7 @@ Get Invoice
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.invoicesOne" method="get" path="/accounting/invoices/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -405,6 +408,7 @@ Update Invoice
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.invoicesUpdate" method="patch" path="/accounting/invoices/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -745,6 +749,7 @@ Delete Invoice
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.invoicesDelete" method="delete" path="/accounting/invoices/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

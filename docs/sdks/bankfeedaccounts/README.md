@@ -17,6 +17,7 @@ List Bank Feed Accounts
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedAccountsAll" method="get" path="/accounting/bank-feed-accounts" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create Bank Feed Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedAccountsAdd" method="post" path="/accounting/bank-feed-accounts" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -158,6 +160,7 @@ Get Bank Feed Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedAccountsOne" method="get" path="/accounting/bank-feed-accounts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -207,6 +210,7 @@ Update Bank Feed Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedAccountsUpdate" method="patch" path="/accounting/bank-feed-accounts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -284,6 +288,7 @@ Delete Bank Feed Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedAccountsDelete" method="delete" path="/accounting/bank-feed-accounts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

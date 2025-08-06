@@ -14,6 +14,7 @@ List Collections
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionsAll" method="get" path="/issue-tracking/collections" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -75,6 +76,7 @@ Get Collection
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionsOne" method="get" path="/issue-tracking/collections/{collection_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

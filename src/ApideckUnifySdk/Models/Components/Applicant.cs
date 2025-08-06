@@ -115,6 +115,10 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("application_ids")]
         public List<string>? ApplicationIds { get; set; } = null;
 
+        /// <summary>
+        /// Deprecated: Use application_ids instead. Array of application IDs associated with the applicant.
+        /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("applications")]
         public List<string>? Applications { get; set; } = null;
 

@@ -21,6 +21,8 @@ namespace ApideckUnifySdk.Models.Components
         Bill,
         [JsonProperty("expense")]
         Expense,
+        [JsonProperty("quote")]
+        Quote,
     }
 
     public static class AttachmentReferenceTypeExtension

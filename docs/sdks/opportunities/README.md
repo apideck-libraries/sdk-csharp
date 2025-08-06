@@ -17,6 +17,7 @@ List opportunities
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.opportunitiesAll" method="get" path="/crm/opportunities" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -82,6 +83,7 @@ Create opportunity
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.opportunitiesAdd" method="post" path="/crm/opportunities" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -214,6 +216,7 @@ Get opportunity
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.opportunitiesOne" method="get" path="/crm/opportunities/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -263,6 +266,7 @@ Update opportunity
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.opportunitiesUpdate" method="patch" path="/crm/opportunities/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -404,6 +408,7 @@ Delete opportunity
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.opportunitiesDelete" method="delete" path="/crm/opportunities/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

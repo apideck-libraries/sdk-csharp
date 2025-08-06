@@ -17,6 +17,7 @@ List Subsidiaries
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.subsidiariesAll" method="get" path="/accounting/subsidiaries" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -70,6 +71,7 @@ Create Subsidiary
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.subsidiariesAdd" method="post" path="/accounting/subsidiaries" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -165,6 +167,7 @@ Get Subsidiary
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.subsidiariesOne" method="get" path="/accounting/subsidiaries/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -214,6 +217,7 @@ Update Subsidiary
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.subsidiariesUpdate" method="patch" path="/accounting/subsidiaries/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -292,6 +296,7 @@ Delete Subsidiary
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.subsidiariesDelete" method="delete" path="/accounting/subsidiaries/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

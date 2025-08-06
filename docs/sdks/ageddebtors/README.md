@@ -13,6 +13,7 @@ Get Aged Debtors
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.agedDebtorsOne" method="get" path="/accounting/aged-debtors" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

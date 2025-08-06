@@ -17,6 +17,7 @@ List Tickets
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketsAll" method="get" path="/issue-tracking/collections/{collection_id}/tickets" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -84,6 +85,7 @@ Create Ticket
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketsAdd" method="post" path="/issue-tracking/collections/{collection_id}/tickets" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -230,6 +232,7 @@ Get Ticket
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketsOne" method="get" path="/issue-tracking/collections/{collection_id}/tickets/{ticket_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -280,6 +283,7 @@ Update Ticket
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketsUpdate" method="patch" path="/issue-tracking/collections/{collection_id}/tickets/{ticket_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -418,6 +422,7 @@ Delete Ticket
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTicketsDelete" method="delete" path="/issue-tracking/collections/{collection_id}/tickets/{ticket_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

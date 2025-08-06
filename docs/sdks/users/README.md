@@ -17,6 +17,7 @@ List users
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.usersAll" method="get" path="/crm/users" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create user
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.usersAdd" method="post" path="/crm/users" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -288,6 +290,7 @@ Get user
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.usersOne" method="get" path="/crm/users/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -337,6 +340,7 @@ Update user
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.usersUpdate" method="patch" path="/crm/users/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -516,6 +520,7 @@ Delete user
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.usersDelete" method="delete" path="/crm/users/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

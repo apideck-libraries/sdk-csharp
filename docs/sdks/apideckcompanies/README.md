@@ -17,6 +17,7 @@ List Companies
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.companiesAll" method="get" path="/hris/companies" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create Company
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.companiesAdd" method="post" path="/hris/companies" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -284,6 +286,7 @@ Get Company
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.companiesOne" method="get" path="/hris/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -333,6 +336,7 @@ Update Company
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.companiesUpdate" method="patch" path="/hris/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -544,6 +548,7 @@ Delete Company
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.companiesDelete" method="delete" path="/hris/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

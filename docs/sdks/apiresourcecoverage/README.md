@@ -13,6 +13,7 @@ Get API Resource Coverage
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="connector.apiResourceCoverageOne" method="get" path="/connector/apis/{id}/resources/{resource_id}/coverage" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

@@ -14,6 +14,7 @@ Get consumer request counts within a given datetime range.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.consumerRequestCountsAll" method="get" path="/vault/consumers/{consumer_id}/stats" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

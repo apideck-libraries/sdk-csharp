@@ -17,6 +17,7 @@ List Attachments
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.attachmentsAll" method="get" path="/accounting/attachments/{reference_type}/{reference_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -72,6 +73,7 @@ Upload attachment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.attachmentsUpload" method="post" path="/accounting/attachments/{reference_type}/{reference_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -125,6 +127,7 @@ Get Attachment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.attachmentsOne" method="get" path="/accounting/attachments/{reference_type}/{reference_id}/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -176,6 +179,7 @@ Delete Attachment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.attachmentsDelete" method="delete" path="/accounting/attachments/{reference_type}/{reference_id}/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -226,6 +230,7 @@ Download Attachment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.attachmentsDownload" method="get" path="/accounting/attachments/{reference_type}/{reference_id}/{id}/download" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

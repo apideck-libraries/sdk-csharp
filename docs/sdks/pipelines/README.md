@@ -17,6 +17,7 @@ List pipelines
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.pipelinesAll" method="get" path="/crm/pipelines" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create pipeline
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.pipelinesAdd" method="post" path="/crm/pipelines" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -173,6 +175,7 @@ Get pipeline
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.pipelinesOne" method="get" path="/crm/pipelines/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -222,6 +225,7 @@ Update pipeline
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.pipelinesUpdate" method="patch" path="/crm/pipelines/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -354,6 +358,7 @@ Delete pipeline
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.pipelinesDelete" method="delete" path="/crm/pipelines/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

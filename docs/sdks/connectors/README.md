@@ -14,6 +14,7 @@ List Connectors
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="connector.connectorsAll" method="get" path="/connector/connectors" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -67,6 +68,7 @@ Get Connector
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="connector.connectorsOne" method="get" path="/connector/connectors/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
