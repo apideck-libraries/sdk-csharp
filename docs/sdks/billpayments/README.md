@@ -17,6 +17,7 @@ List Bill Payments
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.billPaymentsAll" method="get" path="/accounting/bill-payments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -83,6 +84,7 @@ Create Bill Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.billPaymentsAdd" method="post" path="/accounting/bill-payments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -268,6 +270,7 @@ Get Bill Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.billPaymentsOne" method="get" path="/accounting/bill-payments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -317,6 +320,7 @@ Update Bill Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.billPaymentsUpdate" method="patch" path="/accounting/bill-payments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -479,6 +483,7 @@ Delete Bill Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.billPaymentsDelete" method="delete" path="/accounting/bill-payments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

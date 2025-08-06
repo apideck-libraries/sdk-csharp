@@ -14,6 +14,7 @@ List Users
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionUsersAll" method="get" path="/issue-tracking/collections/{collection_id}/users" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -72,6 +73,7 @@ Get user
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionUsersOne" method="get" path="/issue-tracking/collections/{collection_id}/users/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

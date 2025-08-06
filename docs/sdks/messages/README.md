@@ -17,6 +17,7 @@ List Messages
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="sms.messagesAll" method="get" path="/sms/messages" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -70,6 +71,7 @@ Create Message
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="sms.messagesAdd" method="post" path="/sms/messages" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -174,6 +176,7 @@ Get Message
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="sms.messagesOne" method="get" path="/sms/messages/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -223,6 +226,7 @@ Update Message
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="sms.messagesUpdate" method="patch" path="/sms/messages/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -312,6 +316,7 @@ Delete Message
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="sms.messagesDelete" method="delete" path="/sms/messages/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

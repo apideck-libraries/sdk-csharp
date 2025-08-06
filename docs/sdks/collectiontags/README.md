@@ -13,6 +13,7 @@ List Tags
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="issueTracking.collectionTagsAll" method="get" path="/issue-tracking/collections/{collection_id}/tags" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

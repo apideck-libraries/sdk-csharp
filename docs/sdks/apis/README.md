@@ -14,6 +14,7 @@ List APIs
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="connector.apisAll" method="get" path="/connector/apis" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -67,6 +68,7 @@ Get API
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="connector.apisOne" method="get" path="/connector/apis/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

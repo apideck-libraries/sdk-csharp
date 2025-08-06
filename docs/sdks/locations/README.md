@@ -17,6 +17,7 @@ List Locations
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.locationsAll" method="get" path="/accounting/locations" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -73,6 +74,7 @@ Create Location
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.locationsAdd" method="post" path="/accounting/locations" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -179,6 +181,7 @@ Get Location
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.locationsOne" method="get" path="/accounting/locations/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -228,6 +231,7 @@ Update Location
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.locationsUpdate" method="patch" path="/accounting/locations/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -406,6 +410,7 @@ Delete Location
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.locationsDelete" method="delete" path="/accounting/locations/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

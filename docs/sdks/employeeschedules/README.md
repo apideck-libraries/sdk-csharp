@@ -13,6 +13,7 @@ List schedules for employee, a schedule is a work pattern, not the actual worked
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.employeeSchedulesAll" method="get" path="/hris/schedules/employees/{employee_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

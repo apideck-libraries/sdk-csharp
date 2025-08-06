@@ -19,6 +19,7 @@ List Files
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.filesAll" method="get" path="/file-storage/files" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -85,6 +86,7 @@ Search Files
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.filesSearch" method="post" path="/file-storage/files/search" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -145,6 +147,7 @@ Get File
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.filesOne" method="get" path="/file-storage/files/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -194,6 +197,7 @@ Rename or move File
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.filesUpdate" method="patch" path="/file-storage/files/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -263,6 +267,7 @@ Delete File
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.filesDelete" method="delete" path="/file-storage/files/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -311,6 +316,7 @@ Download File
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.filesDownload" method="get" path="/file-storage/files/{id}/download" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -360,6 +366,7 @@ Export File
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.filesExport" method="get" path="/file-storage/files/{id}/export" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

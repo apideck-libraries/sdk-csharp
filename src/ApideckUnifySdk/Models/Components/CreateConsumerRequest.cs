@@ -13,7 +13,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     
-    public class ConsumerInput
+    public class CreateConsumerRequest
     {
 
         /// <summary>

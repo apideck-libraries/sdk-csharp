@@ -17,6 +17,7 @@ List Payments
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.paymentsAll" method="get" path="/accounting/payments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -83,6 +84,7 @@ Create Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.paymentsAdd" method="post" path="/accounting/payments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -220,6 +222,7 @@ Get Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.paymentsOne" method="get" path="/accounting/payments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -269,6 +272,7 @@ Update Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.paymentsUpdate" method="patch" path="/accounting/payments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -406,6 +410,7 @@ Delete Payment
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.paymentsDelete" method="delete" path="/accounting/payments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

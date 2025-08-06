@@ -14,6 +14,7 @@ This endpoint returns an custom fields on a connection resource.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.customFieldsAll" method="get" path="/vault/connections/{unified_api}/{service_id}/{resource}/custom-fields" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

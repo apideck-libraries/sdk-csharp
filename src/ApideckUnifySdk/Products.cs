@@ -50,9 +50,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.12.5";
-        private const string _sdkGenVersion = "2.660.0";
-        private const string _openapiDocVersion = "10.18.4";
+        private const string _sdkVersion = "0.13.0";
+        private const string _sdkGenVersion = "2.674.1";
+        private const string _openapiDocVersion = "10.20.2";
 
         public Products(SDKConfig config)
         {
@@ -172,7 +172,8 @@ namespace ApideckUnifySdk
                     Cursor = nextCursor,
                     Limit = request?.Limit,
                     PassThrough = request?.PassThrough,
-                    Fields = request?.Fields
+                    Fields = request?.Fields,
+                    Filter = request?.Filter
                 };
 
                 return await ListAsync (

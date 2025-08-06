@@ -249,6 +249,12 @@ namespace ApideckUnifySdk.Models.Components
         EcommerceCustomerUpdated,
         [JsonProperty("ecommerce.customer.deleted")]
         EcommerceCustomerDeleted,
+        [JsonProperty("accounting.quote.created")]
+        AccountingQuoteCreated,
+        [JsonProperty("accounting.quote.updated")]
+        AccountingQuoteUpdated,
+        [JsonProperty("accounting.quote.deleted")]
+        AccountingQuoteDeleted,
     }
 
     public static class WebhookEventTypeExtension

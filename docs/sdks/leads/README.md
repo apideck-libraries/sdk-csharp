@@ -17,6 +17,7 @@ List leads
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.leadsAll" method="get" path="/crm/leads" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -84,6 +85,7 @@ Create lead
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.leadsAdd" method="post" path="/crm/leads" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -392,6 +394,7 @@ Get lead
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.leadsOne" method="get" path="/crm/leads/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -441,6 +444,7 @@ Update lead
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.leadsUpdate" method="patch" path="/crm/leads/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -708,6 +712,7 @@ Delete lead
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.leadsDelete" method="delete" path="/crm/leads/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

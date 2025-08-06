@@ -13,6 +13,7 @@ This endpoint returns a list of custom mappings.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.customMappingsAll" method="get" path="/vault/custom-mappings/{unified_api}/{service_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

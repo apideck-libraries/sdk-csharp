@@ -13,6 +13,7 @@ Get Connector Resource
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="connector.connectorResourcesOne" method="get" path="/connector/connectors/{id}/resources/{resource_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

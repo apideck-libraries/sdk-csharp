@@ -17,6 +17,7 @@ List DriveGroups
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.driveGroupsAll" method="get" path="/file-storage/drive-groups" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -77,6 +78,7 @@ Create DriveGroup
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.driveGroupsAdd" method="post" path="/file-storage/drive-groups" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -174,6 +176,7 @@ Get DriveGroup
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.driveGroupsOne" method="get" path="/file-storage/drive-groups/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -223,6 +226,7 @@ Update DriveGroup
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.driveGroupsUpdate" method="patch" path="/file-storage/drive-groups/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -342,6 +346,7 @@ Delete DriveGroup
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.driveGroupsDelete" method="delete" path="/file-storage/drive-groups/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

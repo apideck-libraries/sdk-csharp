@@ -115,6 +115,18 @@ namespace ApideckUnifySdk.Models.Components
         public string? SubsidiaryId { get; set; } = null;
 
         /// <summary>
+        /// ID of the shipping of the line item
+        /// </summary>
+        [JsonProperty("shipping_id")]
+        public string? ShippingId { get; set; } = null;
+
+        /// <summary>
+        /// Memo
+        /// </summary>
+        [JsonProperty("memo")]
+        public string? Memo { get; set; } = null;
+
+        /// <summary>
         /// Whether the line item is prepaid
         /// </summary>
         [JsonProperty("prepaid")]
@@ -122,6 +134,36 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("item")]
         public LinkedInvoiceItem? Item { get; set; }
+
+        /// <summary>
+        /// Tax applicable on
+        /// </summary>
+        [JsonProperty("tax_applicable_on")]
+        public string? TaxApplicableOn { get; set; } = null;
+
+        /// <summary>
+        /// Tax recoverability
+        /// </summary>
+        [JsonProperty("tax_recoverability")]
+        public string? TaxRecoverability { get; set; } = null;
+
+        /// <summary>
+        /// Method of tax calculation
+        /// </summary>
+        [JsonProperty("tax_method")]
+        public string? TaxMethod { get; set; } = null;
+
+        /// <summary>
+        /// Budget of the line item
+        /// </summary>
+        [JsonProperty("budget")]
+        public Budget? Budget { get; set; } = null;
+
+        /// <summary>
+        /// ID of the project of the line item
+        /// </summary>
+        [JsonProperty("project_id")]
+        public string? ProjectId { get; set; } = null;
 
         [JsonProperty("tax_rate")]
         public LinkedTaxRate? TaxRate { get; set; }

@@ -13,6 +13,7 @@ Get BalanceSheet
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.balanceSheetOne" method="get" path="/accounting/balance-sheet" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

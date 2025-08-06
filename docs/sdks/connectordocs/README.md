@@ -13,6 +13,7 @@ Get Connector Doc content
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="connector.connectorDocsOne" method="get" path="/connector/connectors/{id}/docs/{doc_id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

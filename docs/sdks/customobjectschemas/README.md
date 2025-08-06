@@ -17,6 +17,7 @@ List custom object schemas
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectSchemasAll" method="get" path="/crm/custom-object-schemas" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -73,6 +74,7 @@ Create custom object schema
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectSchemasAdd" method="post" path="/crm/custom-object-schemas" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -171,6 +173,7 @@ Get custom object schema
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectSchemasOne" method="get" path="/crm/custom-object-schemas/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -219,6 +222,7 @@ Update custom object schema
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectSchemasUpdate" method="patch" path="/crm/custom-object-schemas/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -419,6 +423,7 @@ Delete custom object schema
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.customObjectSchemasDelete" method="delete" path="/crm/custom-object-schemas/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

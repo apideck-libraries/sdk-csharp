@@ -22,6 +22,8 @@ namespace ApideckUnifySdk.Models.Components
         Live,
         [JsonProperty("beta")]
         Beta,
+        [JsonProperty("early-access")]
+        EarlyAccess,
         [JsonProperty("development")]
         Development,
         [JsonProperty("considering")]

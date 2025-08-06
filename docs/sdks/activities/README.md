@@ -17,6 +17,7 @@ List activities
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.activitiesAll" method="get" path="/crm/activities" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -82,6 +83,7 @@ Create activity
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.activitiesAdd" method="post" path="/crm/activities" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -234,6 +236,7 @@ Get activity
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.activitiesOne" method="get" path="/crm/activities/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -283,6 +286,7 @@ Update activity
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.activitiesUpdate" method="patch" path="/crm/activities/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -518,6 +522,7 @@ Delete activity
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.activitiesDelete" method="delete" path="/crm/activities/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

@@ -17,6 +17,7 @@ List contacts
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.contactsAll" method="get" path="/crm/contacts" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -85,6 +86,7 @@ Create contact
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.contactsAdd" method="post" path="/crm/contacts" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -319,6 +321,7 @@ Get contact
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.contactsOne" method="get" path="/crm/contacts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -375,6 +378,7 @@ Update contact
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.contactsUpdate" method="patch" path="/crm/contacts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -668,6 +672,7 @@ Delete contact
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.contactsDelete" method="delete" path="/crm/contacts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

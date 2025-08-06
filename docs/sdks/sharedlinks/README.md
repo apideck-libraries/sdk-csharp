@@ -17,6 +17,7 @@ List SharedLinks
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.sharedLinksAll" method="get" path="/file-storage/shared-links" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create Shared Link
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.sharedLinksAdd" method="post" path="/file-storage/shared-links" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -168,6 +170,7 @@ Get Shared Link
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.sharedLinksOne" method="get" path="/file-storage/shared-links/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -217,6 +220,7 @@ Update Shared Link
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.sharedLinksUpdate" method="patch" path="/file-storage/shared-links/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -315,6 +319,7 @@ Delete Shared Link
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.sharedLinksDelete" method="delete" path="/file-storage/shared-links/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

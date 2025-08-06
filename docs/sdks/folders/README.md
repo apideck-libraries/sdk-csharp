@@ -17,6 +17,7 @@ Create Folder
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.foldersAdd" method="post" path="/file-storage/folders" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -87,6 +88,7 @@ Get Folder
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.foldersOne" method="get" path="/file-storage/folders/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -136,6 +138,7 @@ Rename or move Folder
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.foldersUpdate" method="patch" path="/file-storage/folders/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -213,6 +216,7 @@ Delete Folder
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.foldersDelete" method="delete" path="/file-storage/folders/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -261,6 +265,7 @@ Copy Folder
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.foldersCopy" method="post" path="/file-storage/folders/{id}/copy" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

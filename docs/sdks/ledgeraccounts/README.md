@@ -17,6 +17,7 @@ List Ledger Accounts
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.ledgerAccountsAll" method="get" path="/accounting/ledger-accounts" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -82,6 +83,7 @@ Create Ledger Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.ledgerAccountsAdd" method="post" path="/accounting/ledger-accounts" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -225,6 +227,7 @@ Get Ledger Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.ledgerAccountsOne" method="get" path="/accounting/ledger-accounts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -274,6 +277,7 @@ Update Ledger Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.ledgerAccountsUpdate" method="patch" path="/accounting/ledger-accounts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -408,6 +412,7 @@ Delete Ledger Account
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.ledgerAccountsDelete" method="delete" path="/accounting/ledger-accounts/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

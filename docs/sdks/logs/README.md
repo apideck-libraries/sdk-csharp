@@ -14,6 +14,7 @@ This endpoint includes all consumer request logs.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.logsAll" method="get" path="/vault/logs" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

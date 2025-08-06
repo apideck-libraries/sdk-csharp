@@ -309,6 +309,14 @@ while(res != null)
 * [Update](docs/sdks/purchaseorders/README.md#update) - Update Purchase Order
 * [Delete](docs/sdks/purchaseorders/README.md#delete) - Delete Purchase Order
 
+#### [Accounting.Quotes](docs/sdks/quotes/README.md)
+
+* [List](docs/sdks/quotes/README.md#list) - List Quotes
+* [Create](docs/sdks/quotes/README.md#create) - Create Quote
+* [Get](docs/sdks/quotes/README.md#get) - Get Quote
+* [Update](docs/sdks/quotes/README.md#update) - Update Quote
+* [Delete](docs/sdks/quotes/README.md#delete) - Delete Quote
+
 #### [Accounting.Subsidiaries](docs/sdks/subsidiaries/README.md)
 
 * [List](docs/sdks/subsidiaries/README.md#list) - List Subsidiaries

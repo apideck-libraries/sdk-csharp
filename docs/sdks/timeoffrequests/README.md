@@ -17,6 +17,7 @@ List Time Off Requests
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.timeOffRequestsAll" method="get" path="/hris/time-off-requests" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -82,6 +83,7 @@ Create Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.timeOffRequestsAdd" method="post" path="/hris/time-off-requests" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -164,6 +166,7 @@ Get Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.timeOffRequestsOne" method="get" path="/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -214,6 +217,7 @@ Update Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.timeOffRequestsUpdate" method="patch" path="/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -314,6 +318,7 @@ Delete Time Off Request
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.timeOffRequestsDelete" method="delete" path="/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

@@ -17,6 +17,7 @@ List Expenses
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.expensesAll" method="get" path="/accounting/expenses" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -69,6 +70,7 @@ Create Expense
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.expensesAdd" method="post" path="/accounting/expenses" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -255,6 +257,7 @@ Get Expense
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.expensesOne" method="get" path="/accounting/expenses/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -303,6 +306,7 @@ Update Expense
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.expensesUpdate" method="patch" path="/accounting/expenses/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -455,6 +459,7 @@ Delete Expense
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.expensesDelete" method="delete" path="/accounting/expenses/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

@@ -17,6 +17,7 @@ List Drives
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.drivesAll" method="get" path="/file-storage/drives" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -73,6 +74,7 @@ Create Drive
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.drivesAdd" method="post" path="/file-storage/drives" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -166,6 +168,7 @@ Get Drive
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.drivesOne" method="get" path="/file-storage/drives/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -215,6 +218,7 @@ Update Drive
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.drivesUpdate" method="patch" path="/file-storage/drives/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -283,6 +287,7 @@ Delete Drive
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="fileStorage.drivesDelete" method="delete" path="/file-storage/drives/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

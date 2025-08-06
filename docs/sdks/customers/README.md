@@ -17,6 +17,7 @@ List Customers
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.customersAll" method="get" path="/accounting/customers" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -89,6 +90,7 @@ Create Customer
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.customersAdd" method="post" path="/accounting/customers" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -303,6 +305,7 @@ Get Customer
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.customersOne" method="get" path="/accounting/customers/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -352,6 +355,7 @@ Update Customer
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.customersUpdate" method="patch" path="/accounting/customers/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -586,6 +590,7 @@ Delete Customer
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.customersDelete" method="delete" path="/accounting/customers/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

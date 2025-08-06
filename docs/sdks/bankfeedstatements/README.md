@@ -17,6 +17,7 @@ List Bank Feed Statements
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedStatementsAll" method="get" path="/accounting/bank-feed-statements" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create Bank Feed Statement
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedStatementsAdd" method="post" path="/accounting/bank-feed-statements" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -165,6 +167,7 @@ Get Bank Feed Statement
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedStatementsOne" method="get" path="/accounting/bank-feed-statements/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -214,6 +217,7 @@ Update Bank Feed Statement
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedStatementsUpdate" method="patch" path="/accounting/bank-feed-statements/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -296,6 +300,7 @@ Delete Bank Feed Statement
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.bankFeedStatementsDelete" method="delete" path="/accounting/bank-feed-statements/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

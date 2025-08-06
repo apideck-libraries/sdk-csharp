@@ -13,6 +13,7 @@ Get Store
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ecommerce.storesOne" method="get" path="/ecommerce/store" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

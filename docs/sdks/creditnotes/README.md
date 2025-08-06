@@ -17,6 +17,7 @@ List Credit Notes
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.creditNotesAll" method="get" path="/accounting/credit-notes" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -82,6 +83,7 @@ Create Credit Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.creditNotesAdd" method="post" path="/accounting/credit-notes" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -322,6 +324,7 @@ Get Credit Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.creditNotesOne" method="get" path="/accounting/credit-notes/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -371,6 +374,7 @@ Update Credit Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.creditNotesUpdate" method="patch" path="/accounting/credit-notes/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -625,6 +629,7 @@ Delete Credit Note
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.creditNotesDelete" method="delete" path="/accounting/credit-notes/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

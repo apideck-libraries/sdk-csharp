@@ -14,6 +14,7 @@ List Jobs
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.jobsAll" method="get" path="/ats/jobs" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -71,6 +72,7 @@ Get Job
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.jobsOne" method="get" path="/ats/jobs/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

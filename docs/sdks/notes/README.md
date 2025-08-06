@@ -17,6 +17,7 @@ List notes
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.notesAll" method="get" path="/crm/notes" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create note
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.notesAdd" method="post" path="/crm/notes" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -198,6 +200,7 @@ Get note
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.notesOne" method="get" path="/crm/notes/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -247,6 +250,7 @@ Update note
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.notesUpdate" method="patch" path="/crm/notes/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -372,6 +376,7 @@ Delete note
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.notesDelete" method="delete" path="/crm/notes/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

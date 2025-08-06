@@ -17,6 +17,7 @@ List companies
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.companiesAll" method="get" path="/crm/companies" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -81,6 +82,7 @@ Create company
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.companiesAdd" method="post" path="/crm/companies" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -326,6 +328,7 @@ Get company
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.companiesOne" method="get" path="/crm/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -375,6 +378,7 @@ Update company
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.companiesUpdate" method="patch" path="/crm/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -659,6 +663,7 @@ Delete company
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="crm.companiesDelete" method="delete" path="/crm/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

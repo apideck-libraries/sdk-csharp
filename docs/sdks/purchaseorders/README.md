@@ -17,6 +17,7 @@ List Purchase Orders
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.purchaseOrdersAll" method="get" path="/accounting/purchase-orders" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -82,6 +83,7 @@ Create Purchase Order
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.purchaseOrdersAdd" method="post" path="/accounting/purchase-orders" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -457,6 +459,7 @@ Get Purchase Order
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.purchaseOrdersOne" method="get" path="/accounting/purchase-orders/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -505,6 +508,7 @@ Update Purchase Order
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.purchaseOrdersUpdate" method="patch" path="/accounting/purchase-orders/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -829,6 +833,7 @@ Delete Purchase Order
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.purchaseOrdersDelete" method="delete" path="/accounting/purchase-orders/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

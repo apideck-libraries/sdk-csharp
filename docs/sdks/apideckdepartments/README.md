@@ -17,6 +17,7 @@ List Departments
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.departmentsAll" method="get" path="/hris/departments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -74,6 +75,7 @@ Create Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.departmentsAdd" method="post" path="/hris/departments" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -168,6 +170,7 @@ Get Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.departmentsOne" method="get" path="/hris/departments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -217,6 +220,7 @@ Update Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.departmentsUpdate" method="patch" path="/hris/departments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -286,6 +290,7 @@ Delete Department
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.departmentsDelete" method="delete" path="/hris/departments/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

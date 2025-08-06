@@ -17,6 +17,7 @@ List Applications
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicationsAll" method="get" path="/ats/applications" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -73,6 +74,7 @@ Create Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicationsAdd" method="post" path="/ats/applications" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -153,6 +155,7 @@ Get Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicationsOne" method="get" path="/ats/applications/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -201,6 +204,7 @@ Update Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicationsUpdate" method="patch" path="/ats/applications/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -348,6 +352,7 @@ Delete Application
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicationsDelete" method="delete" path="/ats/applications/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

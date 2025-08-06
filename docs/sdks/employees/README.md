@@ -17,6 +17,7 @@ Apideck operates as a stateless Unified API, which means that the list endpoint 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.employeesAll" method="get" path="/hris/employees" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -91,6 +92,7 @@ Create Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.employeesAdd" method="post" path="/hris/employees" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -558,6 +560,7 @@ Get Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.employeesOne" method="get" path="/hris/employees/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -614,6 +617,7 @@ Update Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.employeesUpdate" method="patch" path="/hris/employees/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -931,6 +935,7 @@ Delete Employee
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="hris.employeesDelete" method="delete" path="/hris/employees/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

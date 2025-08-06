@@ -13,6 +13,7 @@ Get company info
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="accounting.companyInfoOne" method="get" path="/accounting/company-info" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

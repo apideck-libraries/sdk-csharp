@@ -17,6 +17,7 @@ List Applicants
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicantsAll" method="get" path="/ats/applicants" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -77,6 +78,7 @@ Create Applicant
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicantsAdd" method="post" path="/ats/applicants" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -343,6 +345,7 @@ Get Applicant
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicantsOne" method="get" path="/ats/applicants/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -392,6 +395,7 @@ Update Applicant
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicantsUpdate" method="patch" path="/ats/applicants/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -666,6 +670,7 @@ Delete Applicant
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ats.applicantsDelete" method="delete" path="/ats/applicants/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

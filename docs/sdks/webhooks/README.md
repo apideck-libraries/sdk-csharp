@@ -17,6 +17,7 @@ List all webhook subscriptions
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="webhook.webhooksAll" method="get" path="/webhook/webhooks" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -66,6 +67,7 @@ Create a webhook subscription to receive events
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="webhook.webhooksAdd" method="post" path="/webhook/webhooks" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -118,6 +120,7 @@ Get the webhook subscription details
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="webhook.webhooksOne" method="get" path="/webhook/webhooks/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -160,6 +163,7 @@ Update a webhook subscription
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="webhook.webhooksUpdate" method="patch" path="/webhook/webhooks/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -215,6 +219,7 @@ Delete a webhook subscription
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="webhook.webhooksDelete" method="delete" path="/webhook/webhooks/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;

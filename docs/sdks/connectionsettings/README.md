@@ -15,6 +15,7 @@ This endpoint returns custom settings and their defaults required by connection 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.connectionSettingsAll" method="get" path="/vault/connections/{unified_api}/{service_id}/{resource}/config" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -64,6 +65,7 @@ Update default values for a connection's resource settings
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="vault.connectionSettingsUpdate" method="patch" path="/vault/connections/{unified_api}/{service_id}/{resource}/config" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -87,11 +89,11 @@ VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequ
             { "api_key", "12345xxxxxx" },
         },
         Metadata = new Dictionary<string, object>() {
-            { "plan", "enterprise" },
             { "account", new Dictionary<string, object>() {
                 { "name", "My Company" },
                 { "id", "c01458a5-7276-41ce-bc19-639906b0450a" },
             } },
+            { "plan", "enterprise" },
         },
         Configuration = new List<ConnectionConfiguration>() {
             new ConnectionConfiguration() {

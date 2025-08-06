@@ -14,6 +14,7 @@ List Orders
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ecommerce.ordersAll" method="get" path="/ecommerce/orders" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -81,6 +82,7 @@ Get Order
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="ecommerce.ordersOne" method="get" path="/ecommerce/orders/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
