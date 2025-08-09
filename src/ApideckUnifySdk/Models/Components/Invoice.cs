@@ -32,6 +32,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
+        /// Id to be displayed.
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// Invoice type
         /// </summary>
         [JsonProperty("type")]
