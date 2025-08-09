@@ -30,6 +30,8 @@ namespace ApideckUnifySdk.Models.Components
         Shipping,
         [JsonProperty("billing")]
         Billing,
+        [JsonProperty("work")]
+        Work,
         [JsonProperty("other")]
         Other,
     }
