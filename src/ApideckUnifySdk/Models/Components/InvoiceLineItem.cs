@@ -154,16 +154,10 @@ namespace ApideckUnifySdk.Models.Components
         public string? TaxMethod { get; set; } = null;
 
         /// <summary>
-        /// Budget of the line item
+        /// Worktags of the line item. This is currently only supported in Workday.
         /// </summary>
-        [JsonProperty("budget")]
-        public Budget? Budget { get; set; } = null;
-
-        /// <summary>
-        /// ID of the project of the line item
-        /// </summary>
-        [JsonProperty("project_id")]
-        public string? ProjectId { get; set; } = null;
+        [JsonProperty("worktags")]
+        public List<LinkedWorktag?>? Worktags { get; set; }
 
         [JsonProperty("tax_rate")]
         public LinkedTaxRate? TaxRate { get; set; }

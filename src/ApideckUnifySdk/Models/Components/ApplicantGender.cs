@@ -14,28 +14,32 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// Budget of the line item
+    /// The gender represents the gender identity of a person.
     /// </summary>
-    public enum Budget
+    public enum ApplicantGender
     {
-        [JsonProperty("out_of_budget")]
-        OutOfBudget,
-        [JsonProperty("in_budget")]
-        InBudget,
+        [JsonProperty("male")]
+        Male,
+        [JsonProperty("female")]
+        Female,
+        [JsonProperty("unisex")]
+        Unisex,
         [JsonProperty("other")]
         Other,
+        [JsonProperty("not_specified")]
+        NotSpecified,
     }
 
-    public static class BudgetExtension
+    public static class ApplicantGenderExtension
     {
-        public static string Value(this Budget value)
+        public static string Value(this ApplicantGender value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static Budget ToEnum(this string value)
+        public static ApplicantGender ToEnum(this string value)
         {
-            foreach(var field in typeof(Budget).GetFields())
+            foreach(var field in typeof(ApplicantGender).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -48,14 +52,14 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is Budget)
+                    if (enumVal is ApplicantGender)
                     {
-                        return (Budget)enumVal;
+                        return (ApplicantGender)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum Budget");
+            throw new Exception($"Unknown value {value} for enum ApplicantGender");
         }
     }
 

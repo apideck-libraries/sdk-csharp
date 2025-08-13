@@ -32,6 +32,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
+        /// Id to be displayed.
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// Invoice type
         /// </summary>
         [JsonProperty("type")]
@@ -50,10 +56,16 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedCustomer? Customer { get; set; } = null;
 
         /// <summary>
-        /// The company or subsidiary id the transaction belongs to
+        /// The company ID the transaction belongs to
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the department
+        /// </summary>
+        [JsonProperty("department_id")]
+        public string? DepartmentId { get; set; } = null;
 
         /// <summary>
         /// Date invoice was issued - YYYY-MM-DD.

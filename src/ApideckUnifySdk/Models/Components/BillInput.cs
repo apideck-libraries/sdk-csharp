@@ -19,6 +19,12 @@ namespace ApideckUnifySdk.Models.Components
     {
 
         /// <summary>
+        /// Id to be displayed.
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// Reference to supplier bill number
         /// </summary>
         [JsonProperty("bill_number")]
@@ -31,10 +37,16 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplierInput? Supplier { get; set; } = null;
 
         /// <summary>
-        /// The company or subsidiary id the transaction belongs to
+        /// The company ID the transaction belongs to
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the department
+        /// </summary>
+        [JsonProperty("department_id")]
+        public string? DepartmentId { get; set; } = null;
 
         /// <summary>
         /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
@@ -175,6 +187,36 @@ namespace ApideckUnifySdk.Models.Components
         public double? DiscountPercentage { get; set; } = null;
 
         /// <summary>
+        /// Optional bill template
+        /// </summary>
+        [JsonProperty("template_id")]
+        public string? TemplateId { get; set; } = null;
+
+        /// <summary>
+        /// The user who approved the bill
+        /// </summary>
+        [JsonProperty("approved_by")]
+        public string? ApprovedBy { get; set; } = null;
+
+        /// <summary>
+        /// Type of amortization
+        /// </summary>
+        [JsonProperty("amortization_type")]
+        public AmortizationType? AmortizationType { get; set; } = null;
+
+        /// <summary>
+        /// Method of tax calculation
+        /// </summary>
+        [JsonProperty("tax_method")]
+        public string? TaxMethod { get; set; } = null;
+
+        /// <summary>
+        /// Whether the document has been received
+        /// </summary>
+        [JsonProperty("document_received")]
+        public bool? DocumentReceived { get; set; } = null;
+
+        /// <summary>
         /// URL link to a source document - shown as &apos;Go to [appName]&apos; in the downstream app. Currently only supported for Xero.
         /// </summary>
         [JsonProperty("source_document_url")]
@@ -206,5 +248,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("accounting_period")]
         public string? AccountingPeriod { get; set; } = null;
+
+        [JsonProperty("attachments")]
+        public List<LinkedAttachment?>? Attachments { get; set; }
     }
 }

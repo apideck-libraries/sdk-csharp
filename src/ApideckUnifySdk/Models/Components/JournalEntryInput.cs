@@ -37,7 +37,7 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         /// <summary>
-        /// The company or subsidiary id the transaction belongs to
+        /// The company ID the transaction belongs to
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;

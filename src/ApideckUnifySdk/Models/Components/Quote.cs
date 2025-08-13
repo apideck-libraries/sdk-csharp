@@ -56,10 +56,16 @@ namespace ApideckUnifySdk.Models.Components
         public string? SalesOrderId { get; set; } = null;
 
         /// <summary>
-        /// The company or subsidiary id the transaction belongs to
+        /// The company ID the transaction belongs to
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the department
+        /// </summary>
+        [JsonProperty("department_id")]
+        public string? DepartmentId { get; set; } = null;
 
         /// <summary>
         /// The unique identifier for the linked project.

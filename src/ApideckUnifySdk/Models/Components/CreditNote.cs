@@ -37,10 +37,16 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedCustomer? Customer { get; set; } = null;
 
         /// <summary>
-        /// The company or subsidiary id the transaction belongs to
+        /// The company ID the transaction belongs to
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
+
+        /// <summary>
+        /// The ID of the department
+        /// </summary>
+        [JsonProperty("department_id")]
+        public string? DepartmentId { get; set; } = null;
 
         /// <summary>
         /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
