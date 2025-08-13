@@ -114,6 +114,54 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("category_id")]
         public string? CategoryId { get; set; } = null;
 
+        /// <summary>
+        /// ID of the shipping of the line item
+        /// </summary>
+        [JsonProperty("shipping_id")]
+        public string? ShippingId { get; set; } = null;
+
+        /// <summary>
+        /// Memo
+        /// </summary>
+        [JsonProperty("memo")]
+        public string? Memo { get; set; } = null;
+
+        /// <summary>
+        /// Whether the line item is prepaid
+        /// </summary>
+        [JsonProperty("prepaid")]
+        public bool? Prepaid { get; set; } = null;
+
+        /// <summary>
+        /// Tax applicable on
+        /// </summary>
+        [JsonProperty("tax_applicable_on")]
+        public string? TaxApplicableOn { get; set; } = null;
+
+        /// <summary>
+        /// Tax recoverability
+        /// </summary>
+        [JsonProperty("tax_recoverability")]
+        public string? TaxRecoverability { get; set; } = null;
+
+        /// <summary>
+        /// Method of tax calculation
+        /// </summary>
+        [JsonProperty("tax_method")]
+        public string? TaxMethod { get; set; } = null;
+
+        /// <summary>
+        /// Retention amount
+        /// </summary>
+        [JsonProperty("retention_amount")]
+        public double? RetentionAmount { get; set; } = null;
+
+        /// <summary>
+        /// Payment amount
+        /// </summary>
+        [JsonProperty("payment_amount")]
+        public double? PaymentAmount { get; set; } = null;
+
         [JsonProperty("item")]
         public LinkedInvoiceItem? Item { get; set; }
 
@@ -173,5 +221,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; set; } = null;
+
+        /// <summary>
+        /// A list of linked worktags. This is only supported for Workday.
+        /// </summary>
+        [JsonProperty("worktags")]
+        public List<LinkedWorktag?>? Worktags { get; set; }
     }
 }

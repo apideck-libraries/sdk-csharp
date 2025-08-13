@@ -26,6 +26,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
+        /// A formal salutation for the person. For example, &apos;Mr&apos;, &apos;Mrs&apos;
+        /// </summary>
+        [JsonProperty("salutation")]
+        public string? Salutation { get; set; } = null;
+
+        /// <summary>
         /// The first name of the person.
         /// </summary>
         [JsonProperty("first_name")]
@@ -54,6 +60,21 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("birthday")]
         public LocalDate? Birthday { get; set; } = null;
+
+        /// <summary>
+        /// The gender represents the gender identity of a person.
+        /// </summary>
+        [JsonProperty("gender")]
+        public ApplicantGender? Gender { get; set; } = null;
+
+        /// <summary>
+        /// A unique identifier assigned by the government. This field is considered sensitive information and may be subject to special security and privacy restrictions.
+        /// </summary>
+        [JsonProperty("social_security_number")]
+        public string? SocialSecurityNumber { get; set; } = null;
+
+        [JsonProperty("type")]
+        public string? Type { get; set; }
 
         [JsonProperty("cover_letter")]
         public string? CoverLetter { get; set; }
