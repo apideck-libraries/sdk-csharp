@@ -38,6 +38,8 @@ namespace ApideckUnifySdk.Models.Components
         DirectDialIn,
         [JsonProperty("personal")]
         Personal,
+        [JsonProperty("billing")]
+        Billing,
         [JsonProperty("other")]
         Other,
     }

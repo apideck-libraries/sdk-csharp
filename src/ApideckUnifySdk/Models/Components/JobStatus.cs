@@ -26,6 +26,8 @@ namespace ApideckUnifySdk.Models.Components
         Published,
         [JsonProperty("completed")]
         Completed,
+        [JsonProperty("placed")]
+        Placed,
         [JsonProperty("on-hold")]
         OnHold,
         [JsonProperty("private")]

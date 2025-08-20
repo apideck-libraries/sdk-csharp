@@ -213,6 +213,8 @@ namespace ApideckUnifySdk.Models.Components
         FileStorageFileUpdated,
         [JsonProperty("file-storage.file.deleted")]
         FileStorageFileDeleted,
+        [JsonProperty("file-storage.drive.updated")]
+        FileStorageDriveUpdated,
         [JsonProperty("issue-tracking.ticket.created")]
         IssueTrackingTicketCreated,
         [JsonProperty("issue-tracking.ticket.updated")]
