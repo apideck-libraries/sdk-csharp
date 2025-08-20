@@ -17,4 +17,5 @@ The type of phone number
 | `Fax`          | fax            |
 | `DirectDialIn` | direct-dial-in |
 | `Personal`     | personal       |
+| `Billing`      | billing        |
 | `Other`        | other          |

@@ -36,6 +36,12 @@ namespace ApideckUnifySdk.Models.Components
         public SubsidiaryStatus? Status { get; set; }
 
         /// <summary>
+        /// List of currencies supported by this subsidiary
+        /// </summary>
+        [JsonProperty("currencies")]
+        public List<Currency?>? Currencies { get; set; } = null;
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]

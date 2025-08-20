@@ -43,6 +43,12 @@ namespace ApideckUnifySdk.Models.Components
         public SubsidiaryStatus? Status { get; set; }
 
         /// <summary>
+        /// List of currencies supported by this subsidiary
+        /// </summary>
+        [JsonProperty("currencies")]
+        public List<Currency?>? Currencies { get; set; } = null;
+
+        /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.
         /// </summary>
         [JsonProperty("custom_mappings")]
