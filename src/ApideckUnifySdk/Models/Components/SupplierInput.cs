@@ -140,8 +140,26 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("channel")]
         public string? Channel { get; set; } = null;
 
+        /// <summary>
+        /// Method of issuance of the purchase order for the supplier
+        /// </summary>
+        [JsonProperty("issued_method")]
+        public string? IssuedMethod { get; set; } = null;
+
+        /// <summary>
+        /// Email address of the person who issued the purchase order for the supplier
+        /// </summary>
+        [JsonProperty("issued_email")]
+        public string? IssuedEmail { get; set; } = null;
+
         [JsonProperty("custom_fields")]
         public List<CustomField>? CustomFields { get; set; }
+
+        [JsonProperty("tax_details")]
+        public List<LinkedTaxDetail?>? TaxDetails { get; set; }
+
+        [JsonProperty("tax_status_details")]
+        public List<LinkedTaxStatusDetail?>? TaxStatusDetails { get; set; }
 
         /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
@@ -160,5 +178,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("subsidiary_id")]
         public string? SubsidiaryId { get; set; }
+
+        /// <summary>
+        /// The integration system the supplier belongs to.
+        /// </summary>
+        [JsonProperty("integration_system_id")]
+        public string? IntegrationSystemId { get; set; }
     }
 }
