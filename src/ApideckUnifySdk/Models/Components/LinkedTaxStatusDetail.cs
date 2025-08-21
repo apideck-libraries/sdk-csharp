@@ -12,13 +12,19 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     
-    public class Blocks
+    public class LinkedTaxStatusDetail
     {
 
-        [JsonProperty("title")]
-        public string? Title { get; set; }
+        /// <summary>
+        /// The country of the tax status.
+        /// </summary>
+        [JsonProperty("country")]
+        public string? Country { get; set; }
 
-        [JsonProperty("content")]
-        public string? Content { get; set; } = null;
+        /// <summary>
+        /// The transaction tax status.
+        /// </summary>
+        [JsonProperty("transaction_tax_status")]
+        public string? TransactionTaxStatus { get; set; } = null;
     }
 }
