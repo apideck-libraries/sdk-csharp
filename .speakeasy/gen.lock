@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: adbe8651971e100ed9d43a08042577ad
-  docVersion: 10.20.8
+  docChecksum: c2033f5fd8c53756c6569f4d0088bb52
+  docVersion: 10.20.9
   speakeasyVersion: 1.606.0
   generationVersion: 2.686.7
-  releaseVersion: 0.13.2
-  configChecksum: ab2a802f6ddd45d268f04cd452e0d482
+  releaseVersion: 0.13.3
+  configChecksum: ef63e43fde70f7bc4ecaa9cdcd9e3e95
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -18190,4 +18190,3 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `Apideck.Accounting.Subsidiaries.List()`:  `response.data.[].Currencies` **Added**\n* `Apideck.Accounting.Subsidiaries.Create()`: \n  *  `request.Subsidiary.Currencies` **Added**\n* `Apideck.Accounting.Subsidiaries.Get()`:  `response.data.Currencies` **Added**\n* `Apideck.Accounting.Subsidiaries.Update()`: \n  *  `request.Subsidiary.Currencies` **Added**\n"

@@ -32,6 +32,14 @@ namespace ApideckUnifySdk.Models.Components
         OnHold,
         [JsonProperty("private")]
         Private,
+        [JsonProperty("accepting_candidates")]
+        AcceptingCandidates,
+        [JsonProperty("open")]
+        Open,
+        [JsonProperty("closed")]
+        Closed,
+        [JsonProperty("archived")]
+        Archived,
     }
 
     public static class JobStatusExtension
