@@ -16,13 +16,13 @@ namespace ApideckUnifySdk.Models.Components
     {
 
         /// <summary>
-        /// Start date
+        /// Start date of the date range to filter time off requests. When used with end_date, filters for requests within the specified date range.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=start_date")]
         public string? StartDate { get; set; }
 
         /// <summary>
-        /// End date
+        /// End date of the date range to filter time off requests. When used with start_date, filters for requests within the specified date range.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=end_date")]
         public string? EndDate { get; set; }

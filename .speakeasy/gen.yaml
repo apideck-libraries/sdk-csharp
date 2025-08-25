@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.13.4
+  version: 0.14.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: ApideckError
@@ -32,6 +32,7 @@ csharp:
   enableSourceLink: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  httpClientPrefix: Speakeasy
   imports:
     option: openapi
     paths:
