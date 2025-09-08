@@ -170,6 +170,24 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("custom_mappings")]
         public List<CustomMapping>? CustomMappings { get; set; }
 
+        /// <summary>
+        /// The current consent state of the connection
+        /// </summary>
+        [JsonProperty("consent_state")]
+        public ConsentState? ConsentState { get; set; }
+
+        /// <summary>
+        /// Immutable array of consent records for compliance and audit purposes
+        /// </summary>
+        [JsonProperty("consents")]
+        public List<ConsentRecord>? Consents { get; set; }
+
+        [JsonProperty("latest_consent")]
+        public ConsentRecord? LatestConsent { get; set; }
+
+        [JsonProperty("application_data_scopes")]
+        public DataScopes? ApplicationDataScopes { get; set; }
+
         [JsonProperty("updated_at")]
         public double? UpdatedAt { get; set; } = null;
     }

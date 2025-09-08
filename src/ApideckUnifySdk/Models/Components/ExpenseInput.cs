@@ -121,6 +121,12 @@ namespace ApideckUnifySdk.Models.Components
         public List<CustomField>? CustomFields { get; set; }
 
         /// <summary>
+        /// Expense status
+        /// </summary>
+        [JsonProperty("status")]
+        public ExpenseStatus? Status { get; set; } = null;
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]

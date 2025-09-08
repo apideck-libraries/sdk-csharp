@@ -16,17 +16,17 @@ namespace ApideckUnifySdk.Models.Errors
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class UnauthorizedResponseDetailType
     {
         private UnauthorizedResponseDetailType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static UnauthorizedResponseDetailType Str { get { return new UnauthorizedResponseDetailType("str"); } }
-        
+
         public static UnauthorizedResponseDetailType MapOfAny { get { return new UnauthorizedResponseDetailType("mapOfAny"); } }
-        
+
         public static UnauthorizedResponseDetailType Null { get { return new UnauthorizedResponseDetailType("null"); } }
 
         public override string ToString() { return Value; }
@@ -59,8 +59,10 @@ namespace ApideckUnifySdk.Models.Errors
     /// Contains parameter or domain specific information related to the error and why it occurred.
     /// </summary>
     [JsonConverter(typeof(UnauthorizedResponseDetail.UnauthorizedResponseDetailConverter))]
-    public class UnauthorizedResponseDetail {
-        public UnauthorizedResponseDetail(UnauthorizedResponseDetailType type) {
+    public class UnauthorizedResponseDetail
+    {
+        public UnauthorizedResponseDetail(UnauthorizedResponseDetailType type)
+        {
             Type = type;
         }
 
@@ -71,17 +73,16 @@ namespace ApideckUnifySdk.Models.Errors
         public Dictionary<string, object>? MapOfAny { get; set; }
 
         public UnauthorizedResponseDetailType Type { get; set; }
-
-
-        public static UnauthorizedResponseDetail CreateStr(string str) {
+        public static UnauthorizedResponseDetail CreateStr(string str)
+        {
             UnauthorizedResponseDetailType typ = UnauthorizedResponseDetailType.Str;
 
             UnauthorizedResponseDetail res = new UnauthorizedResponseDetail(typ);
             res.Str = str;
             return res;
         }
-
-        public static UnauthorizedResponseDetail CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static UnauthorizedResponseDetail CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             UnauthorizedResponseDetailType typ = UnauthorizedResponseDetailType.MapOfAny;
 
             UnauthorizedResponseDetail res = new UnauthorizedResponseDetail(typ);
@@ -89,7 +90,8 @@ namespace ApideckUnifySdk.Models.Errors
             return res;
         }
 
-        public static UnauthorizedResponseDetail CreateNull() {
+        public static UnauthorizedResponseDetail CreateNull()
+        {
             UnauthorizedResponseDetailType typ = UnauthorizedResponseDetailType.Null;
             return new UnauthorizedResponseDetail(typ);
         }
@@ -167,23 +169,25 @@ namespace ApideckUnifySdk.Models.Errors
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 UnauthorizedResponseDetail res = (UnauthorizedResponseDetail)value;
                 if (UnauthorizedResponseDetailType.FromString(res.Type).Equals(UnauthorizedResponseDetailType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-
             }
 
         }

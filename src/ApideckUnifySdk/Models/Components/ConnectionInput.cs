@@ -43,5 +43,17 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("custom_mappings")]
         public List<CustomMappingInput>? CustomMappings { get; set; }
+
+        /// <summary>
+        /// The current consent state of the connection
+        /// </summary>
+        [JsonProperty("consent_state")]
+        public ConsentState? ConsentState { get; set; }
+
+        [JsonProperty("latest_consent")]
+        public ConsentRecordInput? LatestConsent { get; set; }
+
+        [JsonProperty("application_data_scopes")]
+        public DataScopesInput? ApplicationDataScopes { get; set; }
     }
 }

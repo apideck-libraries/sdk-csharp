@@ -1,0 +1,9 @@
+# UpdateConsentRequest
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `Resources`                                                                               | [UpdateConsentRequestResources](../../Models/Components/UpdateConsentRequestResources.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |                                                                                           |
+| `Granted`                                                                                 | *bool*                                                                                    | :heavy_check_mark:                                                                        | Whether consent is being granted (true) or denied/revoked (false)                         | true                                                                                      |

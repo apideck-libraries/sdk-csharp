@@ -16,17 +16,17 @@ namespace ApideckUnifySdk.Models.Errors
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class UnprocessableResponseDetailType
     {
         private UnprocessableResponseDetailType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static UnprocessableResponseDetailType Str { get { return new UnprocessableResponseDetailType("str"); } }
-        
+
         public static UnprocessableResponseDetailType MapOfAny { get { return new UnprocessableResponseDetailType("mapOfAny"); } }
-        
+
         public static UnprocessableResponseDetailType Null { get { return new UnprocessableResponseDetailType("null"); } }
 
         public override string ToString() { return Value; }
@@ -59,8 +59,10 @@ namespace ApideckUnifySdk.Models.Errors
     /// Contains parameter or domain specific information related to the error and why it occurred.
     /// </summary>
     [JsonConverter(typeof(UnprocessableResponseDetail.UnprocessableResponseDetailConverter))]
-    public class UnprocessableResponseDetail {
-        public UnprocessableResponseDetail(UnprocessableResponseDetailType type) {
+    public class UnprocessableResponseDetail
+    {
+        public UnprocessableResponseDetail(UnprocessableResponseDetailType type)
+        {
             Type = type;
         }
 
@@ -71,17 +73,16 @@ namespace ApideckUnifySdk.Models.Errors
         public Dictionary<string, object>? MapOfAny { get; set; }
 
         public UnprocessableResponseDetailType Type { get; set; }
-
-
-        public static UnprocessableResponseDetail CreateStr(string str) {
+        public static UnprocessableResponseDetail CreateStr(string str)
+        {
             UnprocessableResponseDetailType typ = UnprocessableResponseDetailType.Str;
 
             UnprocessableResponseDetail res = new UnprocessableResponseDetail(typ);
             res.Str = str;
             return res;
         }
-
-        public static UnprocessableResponseDetail CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static UnprocessableResponseDetail CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             UnprocessableResponseDetailType typ = UnprocessableResponseDetailType.MapOfAny;
 
             UnprocessableResponseDetail res = new UnprocessableResponseDetail(typ);
@@ -89,7 +90,8 @@ namespace ApideckUnifySdk.Models.Errors
             return res;
         }
 
-        public static UnprocessableResponseDetail CreateNull() {
+        public static UnprocessableResponseDetail CreateNull()
+        {
             UnprocessableResponseDetailType typ = UnprocessableResponseDetailType.Null;
             return new UnprocessableResponseDetail(typ);
         }
@@ -167,23 +169,25 @@ namespace ApideckUnifySdk.Models.Errors
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 UnprocessableResponseDetail res = (UnprocessableResponseDetail)value;
                 if (UnprocessableResponseDetailType.FromString(res.Type).Equals(UnprocessableResponseDetailType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-
             }
 
         }

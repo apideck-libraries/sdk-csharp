@@ -19,8 +19,8 @@
 | `CrmLeadUpdated`                      | crm.lead.updated                      |
 | `CrmLeadDeleted`                      | crm.lead.deleted                      |
 | `CrmNoteCreated`                      | crm.note.created                      |
-| `CrmNotesUpdated`                     | crm.notes.updated                     |
-| `CrmNotesDeleted`                     | crm.notes.deleted                     |
+| `CrmNoteUpdated`                      | crm.note.updated                      |
+| `CrmNoteDeleted`                      | crm.note.deleted                      |
 | `CrmOpportunityCreated`               | crm.opportunity.created               |
 | `CrmOpportunityUpdated`               | crm.opportunity.updated               |
 | `CrmOpportunityDeleted`               | crm.opportunity.deleted               |

@@ -16,19 +16,19 @@ namespace ApideckUnifySdk.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ConnectionValue5Type
     {
         private ConnectionValue5Type(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ConnectionValue5Type Str { get { return new ConnectionValue5Type("str"); } }
-        
+
         public static ConnectionValue5Type Integer { get { return new ConnectionValue5Type("integer"); } }
-        
+
         public static ConnectionValue5Type Number { get { return new ConnectionValue5Type("number"); } }
-        
+
         public static ConnectionValue5Type Null { get { return new ConnectionValue5Type("null"); } }
 
         public override string ToString() { return Value; }
@@ -59,8 +59,10 @@ namespace ApideckUnifySdk.Models.Components
 
 
     [JsonConverter(typeof(ConnectionValue5.ConnectionValue5Converter))]
-    public class ConnectionValue5 {
-        public ConnectionValue5(ConnectionValue5Type type) {
+    public class ConnectionValue5
+    {
+        public ConnectionValue5(ConnectionValue5Type type)
+        {
             Type = type;
         }
 
@@ -74,25 +76,24 @@ namespace ApideckUnifySdk.Models.Components
         public double? Number { get; set; }
 
         public ConnectionValue5Type Type { get; set; }
-
-
-        public static ConnectionValue5 CreateStr(string str) {
+        public static ConnectionValue5 CreateStr(string str)
+        {
             ConnectionValue5Type typ = ConnectionValue5Type.Str;
 
             ConnectionValue5 res = new ConnectionValue5(typ);
             res.Str = str;
             return res;
         }
-
-        public static ConnectionValue5 CreateInteger(long integer) {
+        public static ConnectionValue5 CreateInteger(long integer)
+        {
             ConnectionValue5Type typ = ConnectionValue5Type.Integer;
 
             ConnectionValue5 res = new ConnectionValue5(typ);
             res.Integer = integer;
             return res;
         }
-
-        public static ConnectionValue5 CreateNumber(double number) {
+        public static ConnectionValue5 CreateNumber(double number)
+        {
             ConnectionValue5Type typ = ConnectionValue5Type.Number;
 
             ConnectionValue5 res = new ConnectionValue5(typ);
@@ -100,7 +101,8 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static ConnectionValue5 CreateNull() {
+        public static ConnectionValue5 CreateNull()
+        {
             ConnectionValue5Type typ = ConnectionValue5Type.Null;
             return new ConnectionValue5(typ);
         }
@@ -184,28 +186,31 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 ConnectionValue5 res = (ConnectionValue5)value;
                 if (ConnectionValue5Type.FromString(res.Type).Equals(ConnectionValue5Type.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Integer != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Integer));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
-
             }
 
         }

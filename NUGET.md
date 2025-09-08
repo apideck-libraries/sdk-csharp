@@ -247,26 +247,15 @@ while(res != null)
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
-
-By default, an API error will raise a `ApideckUnifySdk.Models.Errors.APIException` exception, which has the following properties:
+[`ApideckError`](./src/ApideckUnifySdk/Models/Errors/ApideckError.cs) is the base exception class for all HTTP error responses. It has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
-| `Message`     | *string*              | The error message     |
-| `Request`     | *HttpRequestMessage*  | The HTTP request      |
-| `Response`    | *HttpResponseMessage* | The HTTP response     |
+| `Message`     | *string*              | Error message         |
+| `Request`     | *HttpRequestMessage*  | HTTP request object   |
+| `Response`    | *HttpResponseMessage* | HTTP response object  |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `ListAsync` method throws the following exceptions:
-
-| Error Type                                            | Status Code | Content Type     |
-| ----------------------------------------------------- | ----------- | ---------------- |
-| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400         | application/json |
-| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401         | application/json |
-| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402         | application/json |
-| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404         | application/json |
-| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422         | application/json |
-| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX    | \*/\*            |
+Some exceptions in this SDK include an additional `Payload` field, which will contain deserialized custom error data when present. Possible exceptions are listed in the [Error Classes](#error-classes) section.
 
 ### Example
 
@@ -309,40 +298,57 @@ try
         res = await res.Next!();
     }
 }
-catch (Exception ex)
+catch (ApideckError ex)  // all SDK exceptions inherit from ApideckError
 {
-    if (ex is BadRequestResponse)
+    // ex.ToString() provides a detailed error message
+    System.Console.WriteLine(ex);
+
+    // Base exception fields
+    HttpRequestMessage request = ex.Request;
+    HttpResponseMessage response = ex.Response;
+    var statusCode = (int)response.StatusCode;
+    var responseBody = ex.Body;
+
+    if (ex is BadRequestResponse) // different exceptions may be thrown depending on the method
     {
-        // Handle exception data
-        throw;
+        // Check error data fields
+        BadRequestResponsePayload payload = ex.Payload;
+        double StatusCode = payload.StatusCode;
+        string Error = payload.Error;
+        // ...
     }
-    else if (ex is UnauthorizedResponse)
+
+    // An underlying cause may be provided
+    if (ex.InnerException != null)
     {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is PaymentRequiredResponse)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is NotFoundResponse)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is UnprocessableResponse)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is ApideckUnifySdk.Models.Errors.APIException)
-    {
-        // Handle default exception
-        throw;
+        Exception cause = ex.InnerException;
     }
 }
+catch (System.Net.Http.HttpRequestException ex)
+{
+    // Check ex.InnerException for Network connectivity errors
+}
 ```
+
+### Error Classes
+
+**Primary exceptions:**
+* [`ApideckError`](./src/ApideckUnifySdk/Models/Errors/ApideckError.cs): The base class for HTTP error responses.
+  * [`UnauthorizedResponse`](./src/ApideckUnifySdk/Models/Errors/UnauthorizedResponse.cs): Unauthorized. Status code `401`.
+  * [`PaymentRequiredResponse`](./src/ApideckUnifySdk/Models/Errors/PaymentRequiredResponse.cs): Payment Required. Status code `402`.
+  * [`NotFoundResponse`](./src/ApideckUnifySdk/Models/Errors/NotFoundResponse.cs): The specified resource was not found. Status code `404`. *
+  * [`BadRequestResponse`](./src/ApideckUnifySdk/Models/Errors/BadRequestResponse.cs): Bad Request. Status code `400`. *
+  * [`UnprocessableResponse`](./src/ApideckUnifySdk/Models/Errors/UnprocessableResponse.cs): Unprocessable. Status code `422`. *
+
+<details><summary>Less common exceptions (2)</summary>
+
+* [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
+
+* Inheriting from [`ApideckError`](./src/ApideckUnifySdk/Models/Errors/ApideckError.cs):
+  * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
+</details>
+
+\* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->

@@ -16,17 +16,17 @@ namespace ApideckUnifySdk.Models.Errors
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class NotFoundResponseDetailType
     {
         private NotFoundResponseDetailType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static NotFoundResponseDetailType Str { get { return new NotFoundResponseDetailType("str"); } }
-        
+
         public static NotFoundResponseDetailType MapOfAny { get { return new NotFoundResponseDetailType("mapOfAny"); } }
-        
+
         public static NotFoundResponseDetailType Null { get { return new NotFoundResponseDetailType("null"); } }
 
         public override string ToString() { return Value; }
@@ -59,8 +59,10 @@ namespace ApideckUnifySdk.Models.Errors
     /// Contains parameter or domain specific information related to the error and why it occurred.
     /// </summary>
     [JsonConverter(typeof(NotFoundResponseDetail.NotFoundResponseDetailConverter))]
-    public class NotFoundResponseDetail {
-        public NotFoundResponseDetail(NotFoundResponseDetailType type) {
+    public class NotFoundResponseDetail
+    {
+        public NotFoundResponseDetail(NotFoundResponseDetailType type)
+        {
             Type = type;
         }
 
@@ -71,17 +73,16 @@ namespace ApideckUnifySdk.Models.Errors
         public Dictionary<string, object>? MapOfAny { get; set; }
 
         public NotFoundResponseDetailType Type { get; set; }
-
-
-        public static NotFoundResponseDetail CreateStr(string str) {
+        public static NotFoundResponseDetail CreateStr(string str)
+        {
             NotFoundResponseDetailType typ = NotFoundResponseDetailType.Str;
 
             NotFoundResponseDetail res = new NotFoundResponseDetail(typ);
             res.Str = str;
             return res;
         }
-
-        public static NotFoundResponseDetail CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static NotFoundResponseDetail CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             NotFoundResponseDetailType typ = NotFoundResponseDetailType.MapOfAny;
 
             NotFoundResponseDetail res = new NotFoundResponseDetail(typ);
@@ -89,7 +90,8 @@ namespace ApideckUnifySdk.Models.Errors
             return res;
         }
 
-        public static NotFoundResponseDetail CreateNull() {
+        public static NotFoundResponseDetail CreateNull()
+        {
             NotFoundResponseDetailType typ = NotFoundResponseDetailType.Null;
             return new NotFoundResponseDetail(typ);
         }
@@ -167,23 +169,25 @@ namespace ApideckUnifySdk.Models.Errors
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 NotFoundResponseDetail res = (NotFoundResponseDetail)value;
                 if (NotFoundResponseDetailType.FromString(res.Type).Equals(NotFoundResponseDetailType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-
             }
 
         }

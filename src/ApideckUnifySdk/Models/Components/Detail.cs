@@ -16,17 +16,17 @@ namespace ApideckUnifySdk.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class DetailType
     {
         private DetailType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static DetailType Str { get { return new DetailType("str"); } }
-        
+
         public static DetailType MapOfAny { get { return new DetailType("mapOfAny"); } }
-        
+
         public static DetailType Null { get { return new DetailType("null"); } }
 
         public override string ToString() { return Value; }
@@ -59,8 +59,10 @@ namespace ApideckUnifySdk.Models.Components
     /// Contains parameter or domain specific information related to the error and why it occurred.
     /// </summary>
     [JsonConverter(typeof(Detail.DetailConverter))]
-    public class Detail {
-        public Detail(DetailType type) {
+    public class Detail
+    {
+        public Detail(DetailType type)
+        {
             Type = type;
         }
 
@@ -71,17 +73,16 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, object>? MapOfAny { get; set; }
 
         public DetailType Type { get; set; }
-
-
-        public static Detail CreateStr(string str) {
+        public static Detail CreateStr(string str)
+        {
             DetailType typ = DetailType.Str;
 
             Detail res = new Detail(typ);
             res.Str = str;
             return res;
         }
-
-        public static Detail CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static Detail CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             DetailType typ = DetailType.MapOfAny;
 
             Detail res = new Detail(typ);
@@ -89,7 +90,8 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static Detail CreateNull() {
+        public static Detail CreateNull()
+        {
             DetailType typ = DetailType.Null;
             return new Detail(typ);
         }
@@ -167,23 +169,25 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Detail res = (Detail)value;
                 if (DetailType.FromString(res.Type).Equals(DetailType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-
             }
 
         }
