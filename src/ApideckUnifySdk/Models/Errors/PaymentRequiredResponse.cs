@@ -12,13 +12,10 @@ namespace ApideckUnifySdk.Models.Errors
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    /// <summary>
-    /// Payment Required
-    /// </summary>
-    public class PaymentRequiredResponse : Exception
-    {
+    using System.Net.Http;
 
+    public class PaymentRequiredResponsePayload
+    {
         /// <summary>
         /// HTTP status code
         /// </summary>
@@ -41,8 +38,7 @@ namespace ApideckUnifySdk.Models.Errors
         /// A human-readable message providing more details about the error.
         /// </summary>
         [JsonProperty("message")]
-        private string? _message { get; set; }
-        public override string Message { get {return _message ?? "";} }
+        public string? Message { get; set; }
 
         /// <summary>
         /// Contains parameter or domain specific information related to the error and why it occurred.
@@ -56,4 +52,64 @@ namespace ApideckUnifySdk.Models.Errors
         [JsonProperty("ref")]
         public string? Ref { get; set; }
     }
+
+    /// <summary>
+    /// Payment Required
+    /// </summary>
+    public class PaymentRequiredResponse : ApideckError
+    {
+        /// <summary>
+        ///  The original data that was passed to this exception.
+        /// </summary>
+        public PaymentRequiredResponsePayload Payload { get; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use PaymentRequiredResponse.Payload.StatusCode instead.")]
+        public double? StatusCode { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use PaymentRequiredResponse.Payload.Error instead.")]
+        public string? Error { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use PaymentRequiredResponse.Payload.TypeName instead.")]
+        public string? TypeName { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use PaymentRequiredResponse.Payload.Message instead.")]
+        private string? _message { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use PaymentRequiredResponse.Payload.Detail instead.")]
+        public string? Detail { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use PaymentRequiredResponse.Payload.Ref instead.")]
+        public string? Ref { get; set; }
+
+        private static string ErrorMessage(PaymentRequiredResponsePayload payload, string body)
+        {
+            string? message = payload.Message;
+            if (!string.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            return "API error occurred";
+        }
+
+        public PaymentRequiredResponse(
+            PaymentRequiredResponsePayload payload,
+            HttpRequestMessage request,
+            HttpResponseMessage response,
+            string body
+        ): base(ErrorMessage(payload, body), request, response, body)
+        {
+           Payload = payload;
+
+           #pragma warning disable CS0618
+           StatusCode = payload.StatusCode;
+           Error = payload.Error;
+           TypeName = payload.TypeName;
+           _message = payload.Message;
+           Detail = payload.Detail;
+           Ref = payload.Ref;
+           #pragma warning restore CS0618
+        }
+    }
+
 }

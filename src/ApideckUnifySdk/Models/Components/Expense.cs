@@ -133,6 +133,12 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         /// <summary>
+        /// Expense status
+        /// </summary>
+        [JsonProperty("status")]
+        public ExpenseStatus? Status { get; set; } = null;
+
+        /// <summary>
         /// The date and time when the object was last updated.
         /// </summary>
         [JsonProperty("updated_at")]

@@ -17,23 +17,23 @@ namespace ApideckUnifySdk.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ConnectionValueType
     {
         private ConnectionValueType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ConnectionValueType Str { get { return new ConnectionValueType("str"); } }
-        
+
         public static ConnectionValueType Integer { get { return new ConnectionValueType("integer"); } }
-        
+
         public static ConnectionValueType Number { get { return new ConnectionValueType("number"); } }
-        
+
         public static ConnectionValueType Boolean { get { return new ConnectionValueType("boolean"); } }
-        
+
         public static ConnectionValueType ArrayOfConnectionValue5 { get { return new ConnectionValueType("arrayOfConnectionValue5"); } }
-        
+
         public static ConnectionValueType Null { get { return new ConnectionValueType("null"); } }
 
         public override string ToString() { return Value; }
@@ -66,8 +66,10 @@ namespace ApideckUnifySdk.Models.Components
 
 
     [JsonConverter(typeof(ConnectionValue.ConnectionValueConverter))]
-    public class ConnectionValue {
-        public ConnectionValue(ConnectionValueType type) {
+    public class ConnectionValue
+    {
+        public ConnectionValue(ConnectionValueType type)
+        {
             Type = type;
         }
 
@@ -87,41 +89,40 @@ namespace ApideckUnifySdk.Models.Components
         public List<ConnectionValue5>? ArrayOfConnectionValue5 { get; set; }
 
         public ConnectionValueType Type { get; set; }
-
-
-        public static ConnectionValue CreateStr(string str) {
+        public static ConnectionValue CreateStr(string str)
+        {
             ConnectionValueType typ = ConnectionValueType.Str;
 
             ConnectionValue res = new ConnectionValue(typ);
             res.Str = str;
             return res;
         }
-
-        public static ConnectionValue CreateInteger(long integer) {
+        public static ConnectionValue CreateInteger(long integer)
+        {
             ConnectionValueType typ = ConnectionValueType.Integer;
 
             ConnectionValue res = new ConnectionValue(typ);
             res.Integer = integer;
             return res;
         }
-
-        public static ConnectionValue CreateNumber(double number) {
+        public static ConnectionValue CreateNumber(double number)
+        {
             ConnectionValueType typ = ConnectionValueType.Number;
 
             ConnectionValue res = new ConnectionValue(typ);
             res.Number = number;
             return res;
         }
-
-        public static ConnectionValue CreateBoolean(bool boolean) {
+        public static ConnectionValue CreateBoolean(bool boolean)
+        {
             ConnectionValueType typ = ConnectionValueType.Boolean;
 
             ConnectionValue res = new ConnectionValue(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static ConnectionValue CreateArrayOfConnectionValue5(List<ConnectionValue5> arrayOfConnectionValue5) {
+        public static ConnectionValue CreateArrayOfConnectionValue5(List<ConnectionValue5> arrayOfConnectionValue5)
+        {
             ConnectionValueType typ = ConnectionValueType.ArrayOfConnectionValue5;
 
             ConnectionValue res = new ConnectionValue(typ);
@@ -129,7 +130,8 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static ConnectionValue CreateNull() {
+        public static ConnectionValue CreateNull()
+        {
             ConnectionValueType typ = ConnectionValueType.Null;
             return new ConnectionValue(typ);
         }
@@ -246,38 +248,43 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 ConnectionValue res = (ConnectionValue)value;
                 if (ConnectionValueType.FromString(res.Type).Equals(ConnectionValueType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Integer != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Integer));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.ArrayOfConnectionValue5 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfConnectionValue5));
                     return;
                 }
-
             }
 
         }

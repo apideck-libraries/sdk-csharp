@@ -17,16 +17,17 @@ namespace ApideckUnifySdk.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class FormFieldOptionType
     {
         private FormFieldOptionType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        
+
         public static FormFieldOptionType Simple { get { return new FormFieldOptionType("simple"); } }
+
         public static FormFieldOptionType Group { get { return new FormFieldOptionType("group"); } }
+
         public static FormFieldOptionType Null { get { return new FormFieldOptionType("null"); } }
 
         public override string ToString() { return Value; }
@@ -56,8 +57,10 @@ namespace ApideckUnifySdk.Models.Components
 
 
     [JsonConverter(typeof(FormFieldOption.FormFieldOptionConverter))]
-    public class FormFieldOption {
-        public FormFieldOption(FormFieldOptionType type) {
+    public class FormFieldOption
+    {
+        public FormFieldOption(FormFieldOptionType type)
+        {
             Type = type;
         }
 
@@ -69,28 +72,28 @@ namespace ApideckUnifySdk.Models.Components
 
         public FormFieldOptionType Type { get; set; }
 
-
-        public static FormFieldOption CreateSimple(SimpleFormFieldOption simple) {
+        public static FormFieldOption CreateSimple(SimpleFormFieldOption simple)
+        {
             FormFieldOptionType typ = FormFieldOptionType.Simple;
-        
             string typStr = FormFieldOptionType.Simple.ToString();
-            
             simple.OptionType = OptionTypeExtension.ToEnum(FormFieldOptionType.Simple.ToString());
             FormFieldOption res = new FormFieldOption(typ);
             res.SimpleFormFieldOption = simple;
             return res;
         }
-        public static FormFieldOption CreateGroup(FormFieldOptionGroup groupT) {
+
+        public static FormFieldOption CreateGroup(FormFieldOptionGroup groupT)
+        {
             FormFieldOptionType typ = FormFieldOptionType.Group;
-        
             string typStr = FormFieldOptionType.Group.ToString();
-            
             groupT.OptionType = FormFieldOptionGroupOptionTypeExtension.ToEnum(FormFieldOptionType.Group.ToString());
             FormFieldOption res = new FormFieldOption(typ);
             res.FormFieldOptionGroup = groupT;
             return res;
         }
-        public static FormFieldOption CreateNull() {
+
+        public static FormFieldOption CreateNull()
+        {
             FormFieldOptionType typ = FormFieldOptionType.Null;
             return new FormFieldOption(typ);
         }
@@ -108,13 +111,13 @@ namespace ApideckUnifySdk.Models.Components
                 string discriminator = jo.GetValue("option_type")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == FormFieldOptionType.Simple.ToString())
                 {
-                    SimpleFormFieldOption? simpleFormFieldOption = ResponseBodyDeserializer.Deserialize<SimpleFormFieldOption>(jo.ToString());
-                    return CreateSimple(simpleFormFieldOption!);
+                    SimpleFormFieldOption simpleFormFieldOption = ResponseBodyDeserializer.DeserializeNotNull<SimpleFormFieldOption>(jo.ToString());
+                    return CreateSimple(simpleFormFieldOption);
                 }
                 if (discriminator == FormFieldOptionType.Group.ToString())
                 {
-                    FormFieldOptionGroup? formFieldOptionGroup = ResponseBodyDeserializer.Deserialize<FormFieldOptionGroup>(jo.ToString());
-                    return CreateGroup(formFieldOptionGroup!);
+                    FormFieldOptionGroup formFieldOptionGroup = ResponseBodyDeserializer.DeserializeNotNull<FormFieldOptionGroup>(jo.ToString());
+                    return CreateGroup(formFieldOptionGroup);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -126,23 +129,25 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 FormFieldOption res = (FormFieldOption)value;
                 if (FormFieldOptionType.FromString(res.Type).Equals(FormFieldOptionType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.SimpleFormFieldOption != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.SimpleFormFieldOption));
                     return;
                 }
+
                 if (res.FormFieldOptionGroup != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.FormFieldOptionGroup));
                     return;
                 }
-
             }
 
         }

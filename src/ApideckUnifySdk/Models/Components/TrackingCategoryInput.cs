@@ -24,6 +24,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? ParentId { get; set; } = null;
 
         /// <summary>
+        /// The name of the parent tracking category.
+        /// </summary>
+        [JsonProperty("parent_name")]
+        public string? ParentName { get; set; } = null;
+
+        /// <summary>
         /// The name of the tracking category.
         /// </summary>
         [JsonProperty("name")]

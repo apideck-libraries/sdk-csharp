@@ -20,6 +20,8 @@ namespace ApideckUnifySdk
         public IConsumerRequestCounts ConsumerRequestCounts { get; }
         public IConnections Connections { get; }
         public IValidateConnection ValidateConnection { get; }
+        public IConnectionConsents ConnectionConsents { get; }
+        public IConnectionConsent ConnectionConsent { get; }
         public ICreateCallback CreateCallback { get; }
         public IConnectionSettings ConnectionSettings { get; }
         public ICustomFields CustomFields { get; }
@@ -33,13 +35,15 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.14.0";
-        private const string _sdkGenVersion = "2.687.1";
-        private const string _openapiDocVersion = "10.20.11";
+        private const string _sdkVersion = "0.15.0";
+        private const string _sdkGenVersion = "2.694.1";
+        private const string _openapiDocVersion = "10.20.13";
         public IConsumers Consumers { get; private set; }
         public IConsumerRequestCounts ConsumerRequestCounts { get; private set; }
         public IConnections Connections { get; private set; }
         public IValidateConnection ValidateConnection { get; private set; }
+        public IConnectionConsents ConnectionConsents { get; private set; }
+        public IConnectionConsent ConnectionConsent { get; private set; }
         public ICreateCallback CreateCallback { get; private set; }
         public IConnectionSettings ConnectionSettings { get; private set; }
         public ICustomFields CustomFields { get; private set; }
@@ -55,6 +59,8 @@ namespace ApideckUnifySdk
             ConsumerRequestCounts = new ConsumerRequestCounts(SDKConfiguration);
             Connections = new Connections(SDKConfiguration);
             ValidateConnection = new ValidateConnection(SDKConfiguration);
+            ConnectionConsents = new ConnectionConsents(SDKConfiguration);
+            ConnectionConsent = new ConnectionConsent(SDKConfiguration);
             CreateCallback = new CreateCallback(SDKConfiguration);
             ConnectionSettings = new ConnectionSettings(SDKConfiguration);
             CustomFields = new CustomFields(SDKConfiguration);

@@ -41,6 +41,8 @@ namespace ApideckUnifySdk.Models.Components
         Time,
         [JsonProperty("number")]
         Number,
+        [JsonProperty("password")]
+        Password,
     }
 
     public static class FormFieldTypeExtension

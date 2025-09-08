@@ -16,21 +16,21 @@ namespace ApideckUnifySdk.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class FiveType
     {
         private FiveType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static FiveType Str { get { return new FiveType("str"); } }
-        
+
         public static FiveType Number { get { return new FiveType("number"); } }
-        
+
         public static FiveType Boolean { get { return new FiveType("boolean"); } }
-        
+
         public static FiveType MapOfAny { get { return new FiveType("mapOfAny"); } }
-        
+
         public static FiveType Null { get { return new FiveType("null"); } }
 
         public override string ToString() { return Value; }
@@ -62,8 +62,10 @@ namespace ApideckUnifySdk.Models.Components
 
 
     [JsonConverter(typeof(Five.FiveConverter))]
-    public class Five {
-        public Five(FiveType type) {
+    public class Five
+    {
+        public Five(FiveType type)
+        {
             Type = type;
         }
 
@@ -80,33 +82,32 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, object>? MapOfAny { get; set; }
 
         public FiveType Type { get; set; }
-
-
-        public static Five CreateStr(string str) {
+        public static Five CreateStr(string str)
+        {
             FiveType typ = FiveType.Str;
 
             Five res = new Five(typ);
             res.Str = str;
             return res;
         }
-
-        public static Five CreateNumber(double number) {
+        public static Five CreateNumber(double number)
+        {
             FiveType typ = FiveType.Number;
 
             Five res = new Five(typ);
             res.Number = number;
             return res;
         }
-
-        public static Five CreateBoolean(bool boolean) {
+        public static Five CreateBoolean(bool boolean)
+        {
             FiveType typ = FiveType.Boolean;
 
             Five res = new Five(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static Five CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static Five CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             FiveType typ = FiveType.MapOfAny;
 
             Five res = new Five(typ);
@@ -114,7 +115,8 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static Five CreateNull() {
+        public static Five CreateNull()
+        {
             FiveType typ = FiveType.Null;
             return new Five(typ);
         }
@@ -218,33 +220,37 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Five res = (Five)value;
                 if (FiveType.FromString(res.Type).Equals(FiveType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-
             }
 
         }

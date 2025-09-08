@@ -18,3 +18,4 @@
 | `Date`           | date             |
 | `Time`           | time             |
 | `Number`         | number           |
+| `Password`       | password         |

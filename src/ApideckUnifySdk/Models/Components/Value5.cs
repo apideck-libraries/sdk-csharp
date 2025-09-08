@@ -16,19 +16,19 @@ namespace ApideckUnifySdk.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class Value5Type
     {
         private Value5Type(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static Value5Type Str { get { return new Value5Type("str"); } }
-        
+
         public static Value5Type Integer { get { return new Value5Type("integer"); } }
-        
+
         public static Value5Type Number { get { return new Value5Type("number"); } }
-        
+
         public static Value5Type Null { get { return new Value5Type("null"); } }
 
         public override string ToString() { return Value; }
@@ -59,8 +59,10 @@ namespace ApideckUnifySdk.Models.Components
 
 
     [JsonConverter(typeof(Value5.Value5Converter))]
-    public class Value5 {
-        public Value5(Value5Type type) {
+    public class Value5
+    {
+        public Value5(Value5Type type)
+        {
             Type = type;
         }
 
@@ -74,25 +76,24 @@ namespace ApideckUnifySdk.Models.Components
         public double? Number { get; set; }
 
         public Value5Type Type { get; set; }
-
-
-        public static Value5 CreateStr(string str) {
+        public static Value5 CreateStr(string str)
+        {
             Value5Type typ = Value5Type.Str;
 
             Value5 res = new Value5(typ);
             res.Str = str;
             return res;
         }
-
-        public static Value5 CreateInteger(long integer) {
+        public static Value5 CreateInteger(long integer)
+        {
             Value5Type typ = Value5Type.Integer;
 
             Value5 res = new Value5(typ);
             res.Integer = integer;
             return res;
         }
-
-        public static Value5 CreateNumber(double number) {
+        public static Value5 CreateNumber(double number)
+        {
             Value5Type typ = Value5Type.Number;
 
             Value5 res = new Value5(typ);
@@ -100,7 +101,8 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static Value5 CreateNull() {
+        public static Value5 CreateNull()
+        {
             Value5Type typ = Value5Type.Null;
             return new Value5(typ);
         }
@@ -184,28 +186,31 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Value5 res = (Value5)value;
                 if (Value5Type.FromString(res.Type).Equals(Value5Type.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Integer != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Integer));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
-
             }
 
         }

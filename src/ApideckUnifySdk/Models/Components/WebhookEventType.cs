@@ -43,10 +43,10 @@ namespace ApideckUnifySdk.Models.Components
         CrmLeadDeleted,
         [JsonProperty("crm.note.created")]
         CrmNoteCreated,
-        [JsonProperty("crm.notes.updated")]
-        CrmNotesUpdated,
-        [JsonProperty("crm.notes.deleted")]
-        CrmNotesDeleted,
+        [JsonProperty("crm.note.updated")]
+        CrmNoteUpdated,
+        [JsonProperty("crm.note.deleted")]
+        CrmNoteDeleted,
         [JsonProperty("crm.opportunity.created")]
         CrmOpportunityCreated,
         [JsonProperty("crm.opportunity.updated")]

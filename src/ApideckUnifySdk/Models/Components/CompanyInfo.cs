@@ -113,6 +113,12 @@ namespace ApideckUnifySdk.Models.Components
         public bool? TrackingCategoriesEnabled { get; set; }
 
         /// <summary>
+        /// The mode of tracking categories for the company on transactions
+        /// </summary>
+        [JsonProperty("tracking_categories_mode")]
+        public TrackingCategoriesMode? TrackingCategoriesMode { get; set; }
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]

@@ -22,6 +22,7 @@ List Expenses
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
+using System;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -31,6 +32,10 @@ var sdk = new Apideck(
 
 AccountingExpensesAllRequest req = new AccountingExpensesAllRequest() {
     ServiceId = "salesforce",
+    Filter = new ExpensesFilter() {
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        Status = ExpensesFilterStatus.Draft,
+    },
 };
 
 AccountingExpensesAllResponse? res = await sdk.Accounting.Expenses.ListAsync(req);

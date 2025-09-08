@@ -17,23 +17,23 @@ namespace ApideckUnifySdk.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class SimpleFormFieldOptionValueType
     {
         private SimpleFormFieldOptionValueType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static SimpleFormFieldOptionValueType Str { get { return new SimpleFormFieldOptionValueType("str"); } }
-        
+
         public static SimpleFormFieldOptionValueType Integer { get { return new SimpleFormFieldOptionValueType("integer"); } }
-        
+
         public static SimpleFormFieldOptionValueType Number { get { return new SimpleFormFieldOptionValueType("number"); } }
-        
+
         public static SimpleFormFieldOptionValueType Boolean { get { return new SimpleFormFieldOptionValueType("boolean"); } }
-        
+
         public static SimpleFormFieldOptionValueType ArrayOfValue5 { get { return new SimpleFormFieldOptionValueType("arrayOfValue5"); } }
-        
+
         public static SimpleFormFieldOptionValueType Null { get { return new SimpleFormFieldOptionValueType("null"); } }
 
         public override string ToString() { return Value; }
@@ -66,8 +66,10 @@ namespace ApideckUnifySdk.Models.Components
 
 
     [JsonConverter(typeof(SimpleFormFieldOptionValue.SimpleFormFieldOptionValueConverter))]
-    public class SimpleFormFieldOptionValue {
-        public SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType type) {
+    public class SimpleFormFieldOptionValue
+    {
+        public SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType type)
+        {
             Type = type;
         }
 
@@ -87,41 +89,40 @@ namespace ApideckUnifySdk.Models.Components
         public List<Value5>? ArrayOfValue5 { get; set; }
 
         public SimpleFormFieldOptionValueType Type { get; set; }
-
-
-        public static SimpleFormFieldOptionValue CreateStr(string str) {
+        public static SimpleFormFieldOptionValue CreateStr(string str)
+        {
             SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Str;
 
             SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
             res.Str = str;
             return res;
         }
-
-        public static SimpleFormFieldOptionValue CreateInteger(long integer) {
+        public static SimpleFormFieldOptionValue CreateInteger(long integer)
+        {
             SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Integer;
 
             SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
             res.Integer = integer;
             return res;
         }
-
-        public static SimpleFormFieldOptionValue CreateNumber(double number) {
+        public static SimpleFormFieldOptionValue CreateNumber(double number)
+        {
             SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Number;
 
             SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
             res.Number = number;
             return res;
         }
-
-        public static SimpleFormFieldOptionValue CreateBoolean(bool boolean) {
+        public static SimpleFormFieldOptionValue CreateBoolean(bool boolean)
+        {
             SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Boolean;
 
             SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static SimpleFormFieldOptionValue CreateArrayOfValue5(List<Value5> arrayOfValue5) {
+        public static SimpleFormFieldOptionValue CreateArrayOfValue5(List<Value5> arrayOfValue5)
+        {
             SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.ArrayOfValue5;
 
             SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
@@ -129,7 +130,8 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static SimpleFormFieldOptionValue CreateNull() {
+        public static SimpleFormFieldOptionValue CreateNull()
+        {
             SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Null;
             return new SimpleFormFieldOptionValue(typ);
         }
@@ -246,38 +248,43 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 SimpleFormFieldOptionValue res = (SimpleFormFieldOptionValue)value;
                 if (SimpleFormFieldOptionValueType.FromString(res.Type).Equals(SimpleFormFieldOptionValueType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Integer != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Integer));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.ArrayOfValue5 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfValue5));
                     return;
                 }
-
             }
 
         }

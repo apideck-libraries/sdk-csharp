@@ -17,23 +17,23 @@ namespace ApideckUnifySdk.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ValueType
     {
         private ValueType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ValueType Str { get { return new ValueType("str"); } }
-        
+
         public static ValueType Number { get { return new ValueType("number"); } }
-        
+
         public static ValueType Boolean { get { return new ValueType("boolean"); } }
-        
+
         public static ValueType MapOfAny { get { return new ValueType("mapOfAny"); } }
-        
+
         public static ValueType ArrayOf5 { get { return new ValueType("arrayOf5"); } }
-        
+
         public static ValueType Null { get { return new ValueType("null"); } }
 
         public override string ToString() { return Value; }
@@ -66,8 +66,10 @@ namespace ApideckUnifySdk.Models.Components
 
 
     [JsonConverter(typeof(Value.ValueConverter))]
-    public class Value {
-        public Value(ValueType type) {
+    public class Value
+    {
+        public Value(ValueType type)
+        {
             Type = type;
         }
 
@@ -87,41 +89,40 @@ namespace ApideckUnifySdk.Models.Components
         public List<Five?>? ArrayOf5 { get; set; }
 
         public ValueType Type { get; set; }
-
-
-        public static Value CreateStr(string str) {
+        public static Value CreateStr(string str)
+        {
             ValueType typ = ValueType.Str;
 
             Value res = new Value(typ);
             res.Str = str;
             return res;
         }
-
-        public static Value CreateNumber(double number) {
+        public static Value CreateNumber(double number)
+        {
             ValueType typ = ValueType.Number;
 
             Value res = new Value(typ);
             res.Number = number;
             return res;
         }
-
-        public static Value CreateBoolean(bool boolean) {
+        public static Value CreateBoolean(bool boolean)
+        {
             ValueType typ = ValueType.Boolean;
 
             Value res = new Value(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static Value CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static Value CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             ValueType typ = ValueType.MapOfAny;
 
             Value res = new Value(typ);
             res.MapOfAny = mapOfAny;
             return res;
         }
-
-        public static Value CreateArrayOf5(List<Five?> arrayOf5) {
+        public static Value CreateArrayOf5(List<Five?> arrayOf5)
+        {
             ValueType typ = ValueType.ArrayOf5;
 
             Value res = new Value(typ);
@@ -129,7 +130,8 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static Value CreateNull() {
+        public static Value CreateNull()
+        {
             ValueType typ = ValueType.Null;
             return new Value(typ);
         }
@@ -253,38 +255,43 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Value res = (Value)value;
                 if (ValueType.FromString(res.Type).Equals(ValueType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Number != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Number));
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
+
                 if (res.ArrayOf5 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOf5));
                     return;
                 }
-
             }
 
         }
