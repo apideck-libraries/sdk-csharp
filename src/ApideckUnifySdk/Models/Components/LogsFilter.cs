@@ -10,6 +10,7 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
+    using System.Collections.Generic;
     
     public class LogsFilter
     {
@@ -17,8 +18,17 @@ namespace ApideckUnifySdk.Models.Components
         [SpeakeasyMetadata("queryParam:name=connector_id")]
         public string? ConnectorId { get; set; } = null;
 
+        /// <summary>
+        /// Filter by a single HTTP status code. For backward compatibility - use status_codes for multiple values.
+        /// </summary>
         [SpeakeasyMetadata("queryParam:name=status_code")]
         public double? StatusCode { get; set; } = null;
+
+        /// <summary>
+        /// Filter by multiple HTTP status codes. Values must be between 100-599. Maximum 50 status codes allowed.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=status_codes")]
+        public List<double>? StatusCodes { get; set; } = null;
 
         [SpeakeasyMetadata("queryParam:name=exclude_unified_apis")]
         public string? ExcludeUnifiedApis { get; set; } = null;

@@ -176,6 +176,14 @@ while(res != null)
 
 * [Get](docs/sdks/balancesheet/README.md#get) - Get BalanceSheet
 
+#### [Accounting.BankAccounts](docs/sdks/bankaccounts/README.md)
+
+* [List](docs/sdks/bankaccounts/README.md#list) - List Bank Accounts
+* [Create](docs/sdks/bankaccounts/README.md#create) - Create Bank Account
+* [Get](docs/sdks/bankaccounts/README.md#get) - Get Bank Account
+* [Update](docs/sdks/bankaccounts/README.md#update) - Update Bank Account
+* [Delete](docs/sdks/bankaccounts/README.md#delete) - Delete Bank Account
+
 #### [Accounting.BankFeedAccounts](docs/sdks/bankfeedaccounts/README.md)
 
 * [List](docs/sdks/bankfeedaccounts/README.md#list) - List Bank Feed Accounts
