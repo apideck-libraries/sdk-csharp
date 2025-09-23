@@ -34,6 +34,7 @@ namespace ApideckUnifySdk
         public ILocations Locations { get; }
         public IDepartments Departments { get; }
         public IAttachments Attachments { get; }
+        public IBankAccounts BankAccounts { get; }
         public ITrackingCategories TrackingCategories { get; }
         public IBillPayments BillPayments { get; }
         public IExpenses Expenses { get; }
@@ -49,9 +50,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.15.0";
-        private const string _sdkGenVersion = "2.694.1";
-        private const string _openapiDocVersion = "10.20.13";
+        private const string _sdkVersion = "0.15.1";
+        private const string _sdkGenVersion = "2.709.0";
+        private const string _openapiDocVersion = "10.20.16";
         public ITaxRates TaxRates { get; private set; }
         public IBills Bills { get; private set; }
         public IInvoices Invoices { get; private set; }
@@ -70,6 +71,7 @@ namespace ApideckUnifySdk
         public ILocations Locations { get; private set; }
         public IDepartments Departments { get; private set; }
         public IAttachments Attachments { get; private set; }
+        public IBankAccounts BankAccounts { get; private set; }
         public ITrackingCategories TrackingCategories { get; private set; }
         public IBillPayments BillPayments { get; private set; }
         public IExpenses Expenses { get; private set; }
@@ -101,6 +103,7 @@ namespace ApideckUnifySdk
             Locations = new Locations(SDKConfiguration);
             Departments = new Departments(SDKConfiguration);
             Attachments = new Attachments(SDKConfiguration);
+            BankAccounts = new BankAccounts(SDKConfiguration);
             TrackingCategories = new TrackingCategories(SDKConfiguration);
             BillPayments = new BillPayments(SDKConfiguration);
             Expenses = new Expenses(SDKConfiguration);
