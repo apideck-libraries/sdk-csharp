@@ -108,7 +108,7 @@ IssueTrackingCollectionTicketsAddRequest req = new IssueTrackingCollectionTicket
         Subject = "Technical Support Request",
         Description = "I am facing issues with my internet connection",
         Status = "open",
-        Priority = Priority.High,
+        Priority = TicketPriority.High,
         Assignees = new List<AssigneeInput>() {
             new AssigneeInput() {
                 Id = "12345",
@@ -307,7 +307,7 @@ IssueTrackingCollectionTicketsUpdateRequest req = new IssueTrackingCollectionTic
         Subject = "Technical Support Request",
         Description = "I am facing issues with my internet connection",
         Status = "open",
-        Priority = Priority.High,
+        Priority = TicketPriority.High,
         Assignees = new List<AssigneeInput>() {
             new AssigneeInput() {
                 Id = "12345",

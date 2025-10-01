@@ -34,8 +34,6 @@ namespace ApideckUnifySdk.Models.Components
 
         public static ConnectionValueType ArrayOfConnectionValue5 { get { return new ConnectionValueType("arrayOfConnectionValue5"); } }
 
-        public static ConnectionValueType Null { get { return new ConnectionValueType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(ConnectionValueType v) { return v.Value; }
         public static ConnectionValueType FromString(string v) {
@@ -45,7 +43,6 @@ namespace ApideckUnifySdk.Models.Components
                 case "number": return Number;
                 case "boolean": return Boolean;
                 case "arrayOfConnectionValue5": return ArrayOfConnectionValue5;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ConnectionValueType");
             }
         }
@@ -130,27 +127,20 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static ConnectionValue CreateNull()
-        {
-            ConnectionValueType typ = ConnectionValueType.Null;
-            return new ConnectionValue(typ);
-        }
-
         public class ConnectionValueConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(ConnectionValue);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
@@ -244,17 +234,13 @@ namespace ApideckUnifySdk.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 ConnectionValue res = (ConnectionValue)value;
-                if (ConnectionValueType.FromString(res.Type).Equals(ConnectionValueType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Str != null)
                 {

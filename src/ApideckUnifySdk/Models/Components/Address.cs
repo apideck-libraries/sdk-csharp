@@ -65,6 +65,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Line4 { get; set; } = null;
 
         /// <summary>
+        /// Line 5 of the address
+        /// </summary>
+        [JsonProperty("line5")]
+        public string? Line5 { get; set; } = null;
+
+        /// <summary>
         /// Street number
         /// </summary>
         [JsonProperty("street_number")]

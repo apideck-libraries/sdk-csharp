@@ -24,6 +24,8 @@ namespace ApideckUnifySdk.Models.Components
         Expense,
         [JsonProperty("revenue")]
         Revenue,
+        [JsonProperty("customer")]
+        Customer,
     }
 
     public static class CategoriesFilterTypeExtension

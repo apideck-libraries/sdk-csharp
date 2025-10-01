@@ -26,5 +26,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=number")]
         public string? Number { get; set; }
+
+        /// <summary>
+        /// Supplier ID to filter invoices by
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=supplier_id")]
+        public string? SupplierId { get; set; }
     }
 }

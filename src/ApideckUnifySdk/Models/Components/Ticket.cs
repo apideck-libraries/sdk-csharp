@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Priority of the ticket
         /// </summary>
         [JsonProperty("priority")]
-        public Priority? Priority { get; set; } = null;
+        public TicketPriority? Priority { get; set; } = null;
 
         [JsonProperty("assignees")]
         public List<Assignee>? Assignees { get; set; }

@@ -27,15 +27,12 @@ namespace ApideckUnifySdk.Models.Errors
 
         public static UnprocessableResponseDetailType MapOfAny { get { return new UnprocessableResponseDetailType("mapOfAny"); } }
 
-        public static UnprocessableResponseDetailType Null { get { return new UnprocessableResponseDetailType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(UnprocessableResponseDetailType v) { return v.Value; }
         public static UnprocessableResponseDetailType FromString(string v) {
             switch(v) {
                 case "str": return Str;
                 case "mapOfAny": return MapOfAny;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for UnprocessableResponseDetailType");
             }
         }
@@ -90,27 +87,20 @@ namespace ApideckUnifySdk.Models.Errors
             return res;
         }
 
-        public static UnprocessableResponseDetail CreateNull()
-        {
-            UnprocessableResponseDetailType typ = UnprocessableResponseDetailType.Null;
-            return new UnprocessableResponseDetail(typ);
-        }
-
         public class UnprocessableResponseDetailConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(UnprocessableResponseDetail);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
@@ -165,17 +155,13 @@ namespace ApideckUnifySdk.Models.Errors
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 UnprocessableResponseDetail res = (UnprocessableResponseDetail)value;
-                if (UnprocessableResponseDetailType.FromString(res.Type).Equals(UnprocessableResponseDetailType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Str != null)
                 {

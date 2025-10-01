@@ -10,3 +10,4 @@ The type of the category.
 | `Supplier` | supplier   |
 | `Expense`  | expense    |
 | `Revenue`  | revenue    |
+| `Customer` | customer   |

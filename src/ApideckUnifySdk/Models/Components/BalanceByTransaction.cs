@@ -33,7 +33,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Type of the transaction.
         /// </summary>
         [JsonProperty("transaction_type")]
-        public TransactionType? TransactionType { get; set; }
+        public BalanceByTransactionTransactionType? TransactionType { get; set; }
 
         /// <summary>
         /// Due date of the transaction.

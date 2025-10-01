@@ -22,7 +22,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.15.1
+  version: 0.16.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: ApideckError
@@ -51,3 +51,4 @@ csharp:
   packageTags: ""
   responseFormat: envelope-http
   sourceDirectory: src
+  useNodatime: true

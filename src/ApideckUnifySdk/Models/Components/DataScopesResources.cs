@@ -28,15 +28,12 @@ namespace ApideckUnifySdk.Models.Components
 
         public static DataScopesResourcesType DataScopesResources2 { get { return new DataScopesResourcesType("DataScopesResources_2"); } }
 
-        public static DataScopesResourcesType Null { get { return new DataScopesResourcesType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(DataScopesResourcesType v) { return v.Value; }
         public static DataScopesResourcesType FromString(string v) {
             switch(v) {
                 case "mapOfMapOfDataScopesResources1": return MapOfMapOfDataScopesResources1;
                 case "DataScopesResources_2": return DataScopesResources2;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for DataScopesResourcesType");
             }
         }
@@ -91,27 +88,20 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static DataScopesResources CreateNull()
-        {
-            DataScopesResourcesType typ = DataScopesResourcesType.Null;
-            return new DataScopesResources(typ);
-        }
-
         public class DataScopesResourcesConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(DataScopesResources);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -179,17 +169,13 @@ namespace ApideckUnifySdk.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 DataScopesResources res = (DataScopesResources)value;
-                if (DataScopesResourcesType.FromString(res.Type).Equals(DataScopesResourcesType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.MapOfMapOfDataScopesResources1 != null)
                 {

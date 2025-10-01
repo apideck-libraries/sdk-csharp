@@ -34,7 +34,7 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
-        [JsonProperty("value")]
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
         public Value? Value { get; set; } = null;
     }
 }

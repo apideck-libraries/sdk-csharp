@@ -126,3 +126,6 @@
 | `AccountingQuoteCreated`              | accounting.quote.created              |
 | `AccountingQuoteUpdated`              | accounting.quote.updated              |
 | `AccountingQuoteDeleted`              | accounting.quote.deleted              |
+| `AccountingProjectCreated`            | accounting.project.created            |
+| `AccountingProjectUpdated`            | accounting.project.updated            |
+| `AccountingProjectDeleted`            | accounting.project.deleted            |

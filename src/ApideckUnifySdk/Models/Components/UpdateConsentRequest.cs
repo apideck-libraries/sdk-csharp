@@ -16,7 +16,7 @@ namespace ApideckUnifySdk.Models.Components
     public class UpdateConsentRequest
     {
 
-        [JsonProperty("resources")]
+        [JsonProperty("resources", NullValueHandling = NullValueHandling.Include)]
         public UpdateConsentRequestResources Resources { get; set; } = default!;
 
         /// <summary>

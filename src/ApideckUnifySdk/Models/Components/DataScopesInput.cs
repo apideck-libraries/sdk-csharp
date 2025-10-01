@@ -25,7 +25,7 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// Data scopes resource configuration that can be either detailed field permissions or a wildcard
         /// </summary>
-        [JsonProperty("resources")]
+        [JsonProperty("resources", NullValueHandling = NullValueHandling.Include)]
         public DataScopesResources? Resources { get; set; }
     }
 }

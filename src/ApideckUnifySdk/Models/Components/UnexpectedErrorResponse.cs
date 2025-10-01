@@ -46,7 +46,7 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// Contains parameter or domain specific information related to the error and why it occurred.
         /// </summary>
-        [JsonProperty("detail")]
+        [JsonProperty("detail", NullValueHandling = NullValueHandling.Include)]
         public Models.Components.Detail? Detail { get; set; }
 
         /// <summary>
