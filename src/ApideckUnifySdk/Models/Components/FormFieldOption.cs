@@ -28,15 +28,12 @@ namespace ApideckUnifySdk.Models.Components
 
         public static FormFieldOptionType Group { get { return new FormFieldOptionType("group"); } }
 
-        public static FormFieldOptionType Null { get { return new FormFieldOptionType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(FormFieldOptionType v) { return v.Value; }
         public static FormFieldOptionType FromString(string v) {
             switch(v) {
                 case "simple": return Simple;
                 case "group": return Group;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for FormFieldOptionType");
             }
         }
@@ -92,21 +89,19 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static FormFieldOption CreateNull()
-        {
-            FormFieldOptionType typ = FormFieldOptionType.Null;
-            return new FormFieldOption(typ);
-        }
-
         public class FormFieldOptionConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(FormFieldOption);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    throw new InvalidOperationException("Received unexpected null JSON value");
+                }
+
                 JObject jo = JObject.Load(reader);
                 string discriminator = jo.GetValue("option_type")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == FormFieldOptionType.Simple.ToString())
@@ -125,17 +120,13 @@ namespace ApideckUnifySdk.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 FormFieldOption res = (FormFieldOption)value;
-                if (FormFieldOptionType.FromString(res.Type).Equals(FormFieldOptionType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.SimpleFormFieldOption != null)
                 {

@@ -25,6 +25,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
+        /// The third-party API ID of original entity
+        /// </summary>
+        [JsonProperty("downstream_id")]
+        public string? DownstreamId { get; set; } = null;
+
+        /// <summary>
         /// Journal entry title
         /// </summary>
         [JsonProperty("title")]
@@ -107,6 +113,24 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("accounting_period")]
         public string? AccountingPeriod { get; set; } = null;
+
+        /// <summary>
+        /// Amounts are including tax
+        /// </summary>
+        [JsonProperty("tax_inclusive")]
+        public bool? TaxInclusive { get; set; } = null;
+
+        /// <summary>
+        /// The source type of the journal entry
+        /// </summary>
+        [JsonProperty("source_type")]
+        public string? SourceType { get; set; } = null;
+
+        /// <summary>
+        /// A unique identifier for the source of the journal entry
+        /// </summary>
+        [JsonProperty("source_id")]
+        public string? SourceId { get; set; } = null;
 
         /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.

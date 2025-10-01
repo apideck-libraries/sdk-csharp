@@ -103,6 +103,24 @@ namespace ApideckUnifySdk.Models.Components
         public string? AccountingPeriod { get; set; } = null;
 
         /// <summary>
+        /// Amounts are including tax
+        /// </summary>
+        [JsonProperty("tax_inclusive")]
+        public bool? TaxInclusive { get; set; } = null;
+
+        /// <summary>
+        /// The source type of the journal entry
+        /// </summary>
+        [JsonProperty("source_type")]
+        public string? SourceType { get; set; } = null;
+
+        /// <summary>
+        /// A unique identifier for the source of the journal entry
+        /// </summary>
+        [JsonProperty("source_id")]
+        public string? SourceId { get; set; } = null;
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]

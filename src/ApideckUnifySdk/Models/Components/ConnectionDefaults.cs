@@ -23,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("options")]
         public List<FormFieldOption>? Options { get; set; }
 
-        [JsonProperty("value")]
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
         public ConnectionValue? Value { get; set; }
     }
 }

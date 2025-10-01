@@ -27,15 +27,12 @@ namespace ApideckUnifySdk.Models.Components
 
         public static DetailType MapOfAny { get { return new DetailType("mapOfAny"); } }
 
-        public static DetailType Null { get { return new DetailType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(DetailType v) { return v.Value; }
         public static DetailType FromString(string v) {
             switch(v) {
                 case "str": return Str;
                 case "mapOfAny": return MapOfAny;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for DetailType");
             }
         }
@@ -90,27 +87,20 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static Detail CreateNull()
-        {
-            DetailType typ = DetailType.Null;
-            return new Detail(typ);
-        }
-
         public class DetailConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(Detail);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
@@ -165,17 +155,13 @@ namespace ApideckUnifySdk.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 Detail res = (Detail)value;
-                if (DetailType.FromString(res.Type).Equals(DetailType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Str != null)
                 {

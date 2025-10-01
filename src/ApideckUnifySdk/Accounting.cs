@@ -44,15 +44,16 @@ namespace ApideckUnifySdk
         public IBankFeedStatements BankFeedStatements { get; }
         public ICategories Categories { get; }
         public IQuotes Quotes { get; }
+        public IProjects Projects { get; }
     }
 
     public class Accounting: IAccounting
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.15.1";
-        private const string _sdkGenVersion = "2.709.0";
-        private const string _openapiDocVersion = "10.20.16";
+        private const string _sdkVersion = "0.16.0";
+        private const string _sdkGenVersion = "2.716.16";
+        private const string _openapiDocVersion = "10.21.2";
         public ITaxRates TaxRates { get; private set; }
         public IBills Bills { get; private set; }
         public IInvoices Invoices { get; private set; }
@@ -81,6 +82,7 @@ namespace ApideckUnifySdk
         public IBankFeedStatements BankFeedStatements { get; private set; }
         public ICategories Categories { get; private set; }
         public IQuotes Quotes { get; private set; }
+        public IProjects Projects { get; private set; }
 
         public Accounting(SDKConfig config)
         {
@@ -113,6 +115,7 @@ namespace ApideckUnifySdk
             BankFeedStatements = new BankFeedStatements(SDKConfiguration);
             Categories = new Categories(SDKConfiguration);
             Quotes = new Quotes(SDKConfiguration);
+            Projects = new Projects(SDKConfiguration);
         }
     }
 }

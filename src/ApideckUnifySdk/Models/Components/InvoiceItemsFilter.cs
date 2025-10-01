@@ -26,5 +26,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=type")]
         public InvoiceItemType? Type { get; set; } = null;
+
+        /// <summary>
+        /// The kind of transaction, indicating whether it is a sales transaction or a purchase transaction.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=transaction_type")]
+        public TransactionType? TransactionType { get; set; } = null;
     }
 }

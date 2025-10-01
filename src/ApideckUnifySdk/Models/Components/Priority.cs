@@ -14,18 +14,18 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// Priority of the ticket
+    /// Priority level of the project
     /// </summary>
     public enum Priority
     {
         [JsonProperty("low")]
         Low,
-        [JsonProperty("normal")]
-        Normal,
+        [JsonProperty("medium")]
+        Medium,
         [JsonProperty("high")]
         High,
-        [JsonProperty("urgent")]
-        Urgent,
+        [JsonProperty("critical")]
+        Critical,
     }
 
     public static class PriorityExtension

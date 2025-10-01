@@ -1,13 +1,13 @@
 # Priority
 
-Priority of the ticket
+Priority level of the project
 
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Low`    | low      |
-| `Normal` | normal   |
-| `High`   | high     |
-| `Urgent` | urgent   |
+| Name       | Value      |
+| ---------- | ---------- |
+| `Low`      | low        |
+| `Medium`   | medium     |
+| `High`     | high       |
+| `Critical` | critical   |

@@ -309,6 +309,14 @@ while(res != null)
 
 * [Get](docs/sdks/profitandloss/README.md#get) - Get Profit and Loss
 
+#### [Accounting.Projects](docs/sdks/projects/README.md)
+
+* [List](docs/sdks/projects/README.md#list) - List projects
+* [Create](docs/sdks/projects/README.md#create) - Create project
+* [Get](docs/sdks/projects/README.md#get) - Get project
+* [Update](docs/sdks/projects/README.md#update) - Update project
+* [Delete](docs/sdks/projects/README.md#delete) - Delete project
+
 #### [Accounting.PurchaseOrders](docs/sdks/purchaseorders/README.md)
 
 * [List](docs/sdks/purchaseorders/README.md#list) - List Purchase Orders

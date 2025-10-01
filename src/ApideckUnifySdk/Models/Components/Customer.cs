@@ -55,6 +55,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
+        /// The category/type of the customer
+        /// </summary>
+        [JsonProperty("customer_category")]
+        public string? CustomerCategory { get; set; } = null;
+
+        /// <summary>
         /// The job title of the person.
         /// </summary>
         [JsonProperty("title")]
@@ -146,6 +152,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("payment_method")]
         public string? PaymentMethod { get; set; } = null;
+
+        /// <summary>
+        /// Terms of payment.
+        /// </summary>
+        [JsonProperty("terms")]
+        public string? Terms { get; set; } = null;
 
         /// <summary>
         /// The channel through which the transaction is processed.

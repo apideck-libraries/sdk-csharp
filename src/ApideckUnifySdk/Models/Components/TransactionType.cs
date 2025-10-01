@@ -14,20 +14,14 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// Type of the transaction.
+    /// The kind of transaction, indicating whether it is a sales transaction or a purchase transaction.
     /// </summary>
     public enum TransactionType
     {
-        [JsonProperty("invoice")]
-        Invoice,
-        [JsonProperty("credit_note")]
-        CreditNote,
-        [JsonProperty("bill")]
-        Bill,
-        [JsonProperty("payment")]
-        Payment,
-        [JsonProperty("bill_payment")]
-        BillPayment,
+        [JsonProperty("sale")]
+        Sale,
+        [JsonProperty("purchase")]
+        Purchase,
     }
 
     public static class TransactionTypeExtension

@@ -29,8 +29,6 @@ namespace ApideckUnifySdk.Models.Components
 
         public static Value5Type Number { get { return new Value5Type("number"); } }
 
-        public static Value5Type Null { get { return new Value5Type("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(Value5Type v) { return v.Value; }
         public static Value5Type FromString(string v) {
@@ -38,7 +36,6 @@ namespace ApideckUnifySdk.Models.Components
                 case "str": return Str;
                 case "integer": return Integer;
                 case "number": return Number;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for Value5Type");
             }
         }
@@ -101,27 +98,20 @@ namespace ApideckUnifySdk.Models.Components
             return res;
         }
 
-        public static Value5 CreateNull()
-        {
-            Value5Type typ = Value5Type.Null;
-            return new Value5(typ);
-        }
-
         public class Value5Converter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(Value5);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
@@ -182,17 +172,13 @@ namespace ApideckUnifySdk.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 Value5 res = (Value5)value;
-                if (Value5Type.FromString(res.Type).Equals(Value5Type.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Str != null)
                 {
