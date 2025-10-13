@@ -153,9 +153,6 @@ while(res != null)
 <details open>
 <summary>Available methods</summary>
 
-### [Accounting](docs/sdks/accounting/README.md)
-
-
 #### [Accounting.AgedCreditors](docs/sdks/agedcreditors/README.md)
 
 * [Get](docs/sdks/agedcreditors/README.md#get) - Get Aged Creditors
@@ -365,10 +362,6 @@ while(res != null)
 * [Update](docs/sdks/trackingcategories/README.md#update) - Update Tracking Category
 * [Delete](docs/sdks/trackingcategories/README.md#delete) - Delete Tracking Category
 
-
-### [Ats](docs/sdks/ats/README.md)
-
-
 #### [Ats.Applicants](docs/sdks/applicants/README.md)
 
 * [List](docs/sdks/applicants/README.md#list) - List Applicants
@@ -389,9 +382,6 @@ while(res != null)
 
 * [List](docs/sdks/jobs/README.md#list) - List Jobs
 * [Get](docs/sdks/jobs/README.md#get) - Get Job
-
-### [Connector](docs/sdks/connector/README.md)
-
 
 #### [Connector.ApiResourceCoverage](docs/sdks/apiresourcecoverage/README.md)
 
@@ -418,9 +408,6 @@ while(res != null)
 
 * [List](docs/sdks/connectors/README.md#list) - List Connectors
 * [Get](docs/sdks/connectors/README.md#get) - Get Connector
-
-### [Crm](docs/sdks/crm/README.md)
-
 
 #### [Crm.Activities](docs/sdks/activities/README.md)
 
@@ -502,9 +489,6 @@ while(res != null)
 * [Update](docs/sdks/users/README.md#update) - Update user
 * [Delete](docs/sdks/users/README.md#delete) - Delete user
 
-### [Ecommerce](docs/sdks/ecommerce/README.md)
-
-
 #### [Ecommerce.Customers](docs/sdks/apideckcustomers/README.md)
 
 * [List](docs/sdks/apideckcustomers/README.md#list) - List Customers
@@ -523,9 +507,6 @@ while(res != null)
 #### [Ecommerce.Stores](docs/sdks/stores/README.md)
 
 * [Get](docs/sdks/stores/README.md#get) - Get Store
-
-### [FileStorage](docs/sdks/filestorage/README.md)
-
 
 #### [FileStorage.DriveGroups](docs/sdks/drivegroups/README.md)
 
@@ -577,9 +558,6 @@ while(res != null)
 * [Delete](docs/sdks/uploadsessions/README.md#delete) - Abort Upload Session
 * [Finish](docs/sdks/uploadsessions/README.md#finish) - Finish Upload Session
 
-### [Hris](docs/sdks/hris/README.md)
-
-
 #### [Hris.Companies](docs/sdks/apideckcompanies/README.md)
 
 * [List](docs/sdks/apideckcompanies/README.md#list) - List Companies
@@ -626,9 +604,6 @@ while(res != null)
 * [Update](docs/sdks/timeoffrequests/README.md#update) - Update Time Off Request
 * [Delete](docs/sdks/timeoffrequests/README.md#delete) - Delete Time Off Request
 
-### [IssueTracking](docs/sdks/issuetracking/README.md)
-
-
 #### [IssueTracking.Collections](docs/sdks/collections/README.md)
 
 * [List](docs/sdks/collections/README.md#list) - List Collections
@@ -659,9 +634,6 @@ while(res != null)
 * [List](docs/sdks/collectionusers/README.md#list) - List Users
 * [Get](docs/sdks/collectionusers/README.md#get) - Get user
 
-### [Sms](docs/sdks/sms/README.md)
-
-
 #### [Sms.Messages](docs/sdks/messages/README.md)
 
 * [List](docs/sdks/messages/README.md#list) - List Messages
@@ -669,9 +641,6 @@ while(res != null)
 * [Get](docs/sdks/messages/README.md#get) - Get Message
 * [Update](docs/sdks/messages/README.md#update) - Update Message
 * [Delete](docs/sdks/messages/README.md#delete) - Delete Message
-
-### [Vault](docs/sdks/vault/README.md)
-
 
 #### [Vault.ConnectionConsent](docs/sdks/connectionconsent/README.md)
 
@@ -734,9 +703,6 @@ while(res != null)
 #### [Vault.ValidateConnection](docs/sdks/validateconnection/README.md)
 
 * [State](docs/sdks/validateconnection/README.md#state) - Validate Connection State
-
-### [Webhook](docs/sdks/webhook/README.md)
-
 
 #### [Webhook.Webhooks](docs/sdks/webhooks/README.md)
 

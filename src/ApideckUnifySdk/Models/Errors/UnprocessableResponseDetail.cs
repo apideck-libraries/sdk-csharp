@@ -158,7 +158,6 @@ namespace ApideckUnifySdk.Models.Errors
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 UnprocessableResponseDetail res = (UnprocessableResponseDetail)value;

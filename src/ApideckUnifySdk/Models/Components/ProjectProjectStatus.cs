@@ -28,6 +28,10 @@ namespace ApideckUnifySdk.Models.Components
         Cancelled,
         [JsonProperty("draft")]
         Draft,
+        [JsonProperty("in_progress")]
+        InProgress,
+        [JsonProperty("approved")]
+        Approved,
         [JsonProperty("other")]
         Other,
     }

@@ -18,44 +18,44 @@ namespace ApideckUnifySdk.Models.Components
     /// </summary>
     public enum LedgerAccountType
     {
+        [JsonProperty("accounts_payable")]
+        AccountsPayable,
         [JsonProperty("accounts_receivable")]
         AccountsReceivable,
-        [JsonProperty("revenue")]
-        Revenue,
-        [JsonProperty("sales")]
-        Sales,
-        [JsonProperty("other_income")]
-        OtherIncome,
-        [JsonProperty("bank")]
-        Bank,
-        [JsonProperty("current_asset")]
-        CurrentAsset,
-        [JsonProperty("fixed_asset")]
-        FixedAsset,
-        [JsonProperty("non_current_asset")]
-        NonCurrentAsset,
-        [JsonProperty("other_asset")]
-        OtherAsset,
         [JsonProperty("balancesheet")]
         Balancesheet,
+        [JsonProperty("bank")]
+        Bank,
+        [JsonProperty("costs_of_sales")]
+        CostsOfSales,
+        [JsonProperty("credit_card")]
+        CreditCard,
+        [JsonProperty("current_asset")]
+        CurrentAsset,
+        [JsonProperty("current_liability")]
+        CurrentLiability,
         [JsonProperty("equity")]
         Equity,
         [JsonProperty("expense")]
         Expense,
-        [JsonProperty("other_expense")]
-        OtherExpense,
-        [JsonProperty("costs_of_sales")]
-        CostsOfSales,
-        [JsonProperty("accounts_payable")]
-        AccountsPayable,
-        [JsonProperty("credit_card")]
-        CreditCard,
-        [JsonProperty("current_liability")]
-        CurrentLiability,
+        [JsonProperty("fixed_asset")]
+        FixedAsset,
+        [JsonProperty("non_current_asset")]
+        NonCurrentAsset,
         [JsonProperty("non_current_liability")]
         NonCurrentLiability,
+        [JsonProperty("other_asset")]
+        OtherAsset,
+        [JsonProperty("other_expense")]
+        OtherExpense,
+        [JsonProperty("other_income")]
+        OtherIncome,
         [JsonProperty("other_liability")]
         OtherLiability,
+        [JsonProperty("revenue")]
+        Revenue,
+        [JsonProperty("sales")]
+        Sales,
         [JsonProperty("other")]
         Other,
     }
