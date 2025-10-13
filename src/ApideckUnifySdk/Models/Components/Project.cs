@@ -62,6 +62,12 @@ namespace ApideckUnifySdk.Models.Components
         public ProjectProjectStatus? Status { get; set; } = null;
 
         /// <summary>
+        /// Indicates whether the project is currently active or inactive
+        /// </summary>
+        [JsonProperty("active")]
+        public bool? Active { get; set; } = null;
+
+        /// <summary>
         /// Type or category of the project
         /// </summary>
         [JsonProperty("project_type")]

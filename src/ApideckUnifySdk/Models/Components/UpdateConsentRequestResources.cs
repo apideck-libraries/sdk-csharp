@@ -169,7 +169,6 @@ namespace ApideckUnifySdk.Models.Components
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 UpdateConsentRequestResources res = (UpdateConsentRequestResources)value;

@@ -77,9 +77,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.16.0";
-        private const string _sdkGenVersion = "2.716.16";
-        private const string _openapiDocVersion = "10.21.2";
+        private const string _sdkVersion = "0.17.0";
+        private const string _sdkGenVersion = "2.723.11";
+        private const string _openapiDocVersion = "10.21.4";
 
         public Webhooks(SDKConfig config)
         {
@@ -108,7 +108,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksAll", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksAll", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -122,7 +122,7 @@ namespace ApideckUnifySdk
                     var backoff = new BackoffStrategy(
                         initialIntervalMs: 500L,
                         maxIntervalMs: 60000L,
-                        maxElapsedTimeMs: 3600000L,
+                        maxElapsedTimeMs: 900000L,
                         exponent: 1.5
                     );
                     retryConfig = new RetryConfig(
@@ -402,7 +402,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksAdd", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksAdd", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -416,7 +416,7 @@ namespace ApideckUnifySdk
                     var backoff = new BackoffStrategy(
                         initialIntervalMs: 500L,
                         maxIntervalMs: 60000L,
-                        maxElapsedTimeMs: 3600000L,
+                        maxElapsedTimeMs: 900000L,
                         exponent: 1.5
                     );
                     retryConfig = new RetryConfig(
@@ -664,7 +664,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksOne", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksOne", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -678,7 +678,7 @@ namespace ApideckUnifySdk
                     var backoff = new BackoffStrategy(
                         initialIntervalMs: 500L,
                         maxIntervalMs: 60000L,
-                        maxElapsedTimeMs: 3600000L,
+                        maxElapsedTimeMs: 900000L,
                         exponent: 1.5
                     );
                     retryConfig = new RetryConfig(
@@ -933,7 +933,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksUpdate", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksUpdate", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -947,7 +947,7 @@ namespace ApideckUnifySdk
                     var backoff = new BackoffStrategy(
                         initialIntervalMs: 500L,
                         maxIntervalMs: 60000L,
-                        maxElapsedTimeMs: 3600000L,
+                        maxElapsedTimeMs: 900000L,
                         exponent: 1.5
                     );
                     retryConfig = new RetryConfig(
@@ -1195,7 +1195,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksDelete", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "webhook.webhooksDelete", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1209,7 +1209,7 @@ namespace ApideckUnifySdk
                     var backoff = new BackoffStrategy(
                         initialIntervalMs: 500L,
                         maxIntervalMs: 60000L,
-                        maxElapsedTimeMs: 3600000L,
+                        maxElapsedTimeMs: 900000L,
                         exponent: 1.5
                     );
                     retryConfig = new RetryConfig(

@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using NodaTime;
     using System.Collections.Generic;
     
     public class InvoiceLineItemInput
@@ -88,6 +89,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("discount_amount")]
         public double? DiscountAmount { get; set; } = null;
+
+        /// <summary>
+        /// Date on which the service was provided or performed - YYYY-MM-DD.
+        /// </summary>
+        [JsonProperty("service_date")]
+        public LocalDate? ServiceDate { get; set; } = null;
 
         /// <summary>
         /// ID of the category of the line item
