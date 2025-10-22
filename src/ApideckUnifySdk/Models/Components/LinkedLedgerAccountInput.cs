@@ -32,5 +32,17 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; } = null;
+
+        /// <summary>
+        /// The parent ID of the account.
+        /// </summary>
+        [JsonProperty("parent_id")]
+        public string? ParentId { get; set; } = null;
+
+        /// <summary>
+        /// The display ID of the account.
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
     }
 }

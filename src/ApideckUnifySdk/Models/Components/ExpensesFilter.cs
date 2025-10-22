@@ -21,5 +21,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=status")]
         public ExpensesFilterStatus? Status { get; set; }
+
+        [SpeakeasyMetadata("queryParam:name=type")]
+        public ExpensesFilterType? Type { get; set; }
     }
 }

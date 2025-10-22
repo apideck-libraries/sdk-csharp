@@ -40,7 +40,12 @@ namespace ApideckUnifySdk
         /// Create webhook subscription
         /// 
         /// <remarks>
-        /// Create a webhook subscription to receive events
+        /// Create a webhook subscription to receive events.<br/>
+        /// <br/>
+        /// **Delivery URL Validation**: The provided `delivery_url` will be validated synchronously by sending an HTTP POST request with an HMAC signature. If validation fails (network error, timeout, non-2xx response), the webhook will still be created but with `status: &quot;disabled&quot;` and `disabled_reason: &quot;delivery_url_validation_failed&quot;`.<br/>
+        /// <br/>
+        /// **Important**: Always check the `status` and `disabled_reason` fields in the response to ensure the webhook is active.<br/>
+        /// 
         /// </remarks>
         /// </summary>
         Task<WebhookWebhooksAddResponse> CreateAsync(CreateWebhookRequest createWebhookRequest, string? appId = null, RetryConfig? retryConfig = null);
@@ -58,7 +63,12 @@ namespace ApideckUnifySdk
         /// Update webhook subscription
         /// 
         /// <remarks>
-        /// Update a webhook subscription
+        /// Update a webhook subscription.<br/>
+        /// <br/>
+        /// **Delivery URL Validation**: When updating the `delivery_url`, it will be validated synchronously by sending an HTTP POST request with an HMAC signature. If validation fails (network error, timeout, non-2xx response), the webhook will still be updated but with `status: &quot;disabled&quot;` and `disabled_reason: &quot;delivery_url_validation_failed&quot;`. Validation only occurs when the URL is changed.<br/>
+        /// <br/>
+        /// **Important**: Always check the `status` and `disabled_reason` fields in the response to ensure the webhook is active.<br/>
+        /// 
         /// </remarks>
         /// </summary>
         Task<WebhookWebhooksUpdateResponse> UpdateAsync(string id, UpdateWebhookRequest updateWebhookRequest, string? appId = null, RetryConfig? retryConfig = null);
@@ -77,9 +87,9 @@ namespace ApideckUnifySdk
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.17.0";
-        private const string _sdkGenVersion = "2.723.11";
-        private const string _openapiDocVersion = "10.21.4";
+        private const string _sdkVersion = "0.18.0";
+        private const string _sdkGenVersion = "2.728.0";
+        private const string _openapiDocVersion = "10.21.6";
 
         public Webhooks(SDKConfig config)
         {

@@ -17,19 +17,19 @@ namespace ApideckUnifySdk.Models.Components
     {
 
         /// <summary>
-        /// The name of the bank
+        /// The name of the bank or financial institution
         /// </summary>
         [JsonProperty("bank_name")]
         public string? BankName { get; set; } = null;
 
         /// <summary>
-        /// A bank account number is a number that is tied to your bank account. If you have several bank accounts, such as personal, joint, business (and so on), each account will have a different account number.
+        /// The bank account number
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;
 
         /// <summary>
-        /// The name which you used in opening your bank account.
+        /// The name of the bank account
         /// </summary>
         [JsonProperty("account_name")]
         public string? AccountName { get; set; } = null;
@@ -41,37 +41,37 @@ namespace ApideckUnifySdk.Models.Components
         public AccountType? AccountType { get; set; } = null;
 
         /// <summary>
-        /// The International Bank Account Number (IBAN).
+        /// International Bank Account Number
         /// </summary>
         [JsonProperty("iban")]
         public string? Iban { get; set; } = null;
 
         /// <summary>
-        /// The Bank Identifier Code (BIC).
+        /// Bank Identifier Code / SWIFT Code
         /// </summary>
         [JsonProperty("bic")]
         public string? Bic { get; set; } = null;
 
         /// <summary>
-        /// A routing number is a nine-digit code used to identify a financial institution in the United States.
+        /// Bank routing number (US)
         /// </summary>
         [JsonProperty("routing_number")]
         public string? RoutingNumber { get; set; } = null;
 
         /// <summary>
-        /// A BSB is a 6 digit numeric code used for identifying the branch of an Australian or New Zealand bank or financial institution.
+        /// Bank State Branch number (Australia/New Zealand)
         /// </summary>
         [JsonProperty("bsb_number")]
         public string? BsbNumber { get; set; } = null;
 
         /// <summary>
-        /// A branch identifier is a unique identifier for a branch of a bank or financial institution.
+        /// Bank branch identifier
         /// </summary>
         [JsonProperty("branch_identifier")]
         public string? BranchIdentifier { get; set; } = null;
 
         /// <summary>
-        /// A bank code is a code assigned by a central bank, a bank supervisory body or a Bankers Association in a country to all its licensed member banks or financial institutions.
+        /// Bank code assigned by central bank
         /// </summary>
         [JsonProperty("bank_code")]
         public string? BankCode { get; set; } = null;

@@ -24,6 +24,8 @@ namespace ApideckUnifySdk.Models.Components
         Check,
         [JsonProperty("credit_card")]
         CreditCard,
+        [JsonProperty("other")]
+        Other,
     }
 
     public static class ExpensePaymentTypeExtension

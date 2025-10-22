@@ -30,6 +30,8 @@ namespace ApideckUnifySdk.Models.Components
         LineOfCredit,
         [JsonProperty("other")]
         Other,
+        [JsonProperty("cash")]
+        Cash,
     }
 
     public static class AccountingBankAccountAccountTypeExtension
