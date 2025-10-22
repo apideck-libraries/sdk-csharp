@@ -50,7 +50,7 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("operation")]
         public string Operation { get; set; } = default!;
 
-        [JsonProperty("data")]
+        [JsonProperty("data", NullValueHandling = NullValueHandling.Include)]
         public Expense Data { get; set; } = default!;
 
         /// <summary>

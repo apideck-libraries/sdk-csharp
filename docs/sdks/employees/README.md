@@ -404,12 +404,12 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 Type = "twitter",
             },
         },
-        BankAccounts = new List<BankAccount>() {
-            new BankAccount() {
+        BankAccounts = new List<BankAccount2>() {
+            new BankAccount2() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = AccountType.CreditCard,
+                AccountType = BankAccount2AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
@@ -418,11 +418,11 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 BankCode = "BNH",
                 Currency = Currency.Usd,
             },
-            new BankAccount() {
+            new BankAccount2() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = AccountType.CreditCard,
+                AccountType = BankAccount2AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
@@ -431,11 +431,11 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 BankCode = "BNH",
                 Currency = Currency.Usd,
             },
-            new BankAccount() {
+            new BankAccount2() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = AccountType.CreditCard,
+                AccountType = BankAccount2AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",
@@ -842,12 +842,12 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 Type = "twitter",
             },
         },
-        BankAccounts = new List<BankAccount>() {
-            new BankAccount() {
+        BankAccounts = new List<BankAccount2>() {
+            new BankAccount2() {
                 BankName = "Monzo",
                 AccountNumber = "123465",
                 AccountName = "SPACEX LLC",
-                AccountType = AccountType.CreditCard,
+                AccountType = BankAccount2AccountType.CreditCard,
                 Iban = "CH2989144532982975332",
                 Bic = "AUDSCHGGXXX",
                 RoutingNumber = "012345678",

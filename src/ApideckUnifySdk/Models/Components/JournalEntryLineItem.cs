@@ -99,5 +99,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("line_number")]
         public long? LineNumber { get; set; } = null;
+
+        /// <summary>
+        /// Worktags of the line item. This is currently only supported in Workday.
+        /// </summary>
+        [JsonProperty("worktags")]
+        public List<LinkedWorktag?>? Worktags { get; set; }
     }
 }

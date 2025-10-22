@@ -31,10 +31,10 @@ namespace ApideckUnifySdk.Models.Components
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// The name of the bank account as it appears in the accounting system
+        /// The name of the bank account
         /// </summary>
         [JsonProperty("name")]
-        public string? Name { get; set; }
+        public string? Name { get; set; } = null;
 
         /// <summary>
         /// The bank account number
@@ -47,6 +47,9 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("account_type")]
         public AccountingBankAccountAccountType? AccountType { get; set; }
+
+        [JsonProperty("ledger_account")]
+        public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         /// <summary>
         /// The name of the bank or financial institution

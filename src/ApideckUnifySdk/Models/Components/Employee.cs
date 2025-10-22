@@ -294,7 +294,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<SocialLink>? SocialLinks { get; set; }
 
         [JsonProperty("bank_accounts")]
-        public List<BankAccount>? BankAccounts { get; set; }
+        public List<BankAccount2>? BankAccounts { get; set; }
 
         [JsonProperty("tax_code")]
         public string? TaxCode { get; set; } = null;

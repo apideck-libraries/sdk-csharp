@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
     
     public class ExpenseLineItemInput
@@ -24,10 +25,14 @@ namespace ApideckUnifySdk.Models.Components
         public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         /// <summary>
-        /// The unique identifier for the ledger account.
+        /// The unique identifier for the ledger account. Deprecated, use account instead.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("account_id")]
         public string? AccountId { get; set; }
+
+        [JsonProperty("account")]
+        public LinkedLedgerAccountInput? Account { get; set; } = null;
 
         /// <summary>
         /// The ID of the customer this expense item is linked to.

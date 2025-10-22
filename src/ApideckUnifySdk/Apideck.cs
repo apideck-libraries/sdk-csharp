@@ -51,9 +51,9 @@ namespace ApideckUnifySdk
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.17.0";
-        private const string _sdkGenVersion = "2.723.11";
-        private const string _openapiDocVersion = "10.21.4";
+        private const string _sdkVersion = "0.18.0";
+        private const string _sdkGenVersion = "2.728.0";
+        private const string _openapiDocVersion = "10.21.6";
         public IAccounting Accounting { get; private set; }
         public IAts Ats { get; private set; }
         public ICrm Crm { get; private set; }
@@ -94,6 +94,19 @@ namespace ApideckUnifySdk
             Webhook = new Webhook(SDKConfiguration);
         }
 
+        /// <summary>
+        /// Initializes a new instance of the SDK with optional configuration parameters.
+        /// </summary>
+        /// <param name="apiKey">The security configuration to use for API requests. If provided, this will be used as a static security configuration.</param>
+        /// <param name="apiKeySource">A function that returns the security configuration dynamically. This takes precedence over the static security parameter if both are provided.</param>
+        /// <param name="consumerId">ID of the consumer which you want to get or push data from</param>
+        /// <param name="appId">The ID of your Unify application</param>
+        /// <param name="serverIndex">The index of the server to use from the predefined server list. Must be between 0 and the length of the server list. Defaults to 0 if not specified.</param>
+        /// <param name="serverUrl">A custom server URL to use instead of the predefined server list. If provided with urlParams, the URL will be templated with the provided parameters.</param>
+        /// <param name="urlParams">A dictionary of parameters to use for templating the serverUrl. Only used when serverUrl is provided.</param>
+        /// <param name="client">A custom HTTP client implementation to use for making API requests. If not provided, the default SpeakeasyHttpClient will be used.</param>
+        /// <param name="retryConfig">Configuration for retry behavior when API requests fail. Defines retry strategies, backoff policies, and maximum retry attempts.</param>
+        /// <exception cref="Exception">Thrown when the serverIndex is out of range (less than 0 or greater than or equal to the server list length).</exception>
         public Apideck(string? apiKey = null, Func<string>? apiKeySource = null, string? consumerId = null, string? appId = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (serverIndex != null)

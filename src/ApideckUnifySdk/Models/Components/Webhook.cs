@@ -40,7 +40,7 @@ namespace ApideckUnifySdk.Models.Components
         public Status Status { get; set; } = default!;
 
         /// <summary>
-        /// Indicates if the webhook has has been disabled as it reached its retry limit or if account is over the usage allocated by it&apos;s plan.
+        /// Indicates why the webhook has been disabled. `retry_limit`: webhook reached its retry limit. `usage_limit`: account is over its usage limit. `delivery_url_validation_failed`: delivery URL failed validation during webhook creation or update.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public DisabledReason? DisabledReason { get; set; }

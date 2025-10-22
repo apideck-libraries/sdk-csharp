@@ -12,130 +12,221 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
-    
+    using System.Numerics;
+    using System.Reflection;
+
+    public class ExpenseInputType
+    {
+        private ExpenseInputType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+
+        public static ExpenseInputType Expense1Input { get { return new ExpenseInputType("Expense_1_input"); } }
+
+        public static ExpenseInputType Expense2Input { get { return new ExpenseInputType("Expense_2_input"); } }
+
+        public static ExpenseInputType Expense3 { get { return new ExpenseInputType("Expense_3"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(ExpenseInputType v) { return v.Value; }
+        public static ExpenseInputType FromString(string v) {
+            switch(v) {
+                case "Expense_1_input": return Expense1Input;
+                case "Expense_2_input": return Expense2Input;
+                case "Expense_3": return Expense3;
+                default: throw new ArgumentException("Invalid value for ExpenseInputType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((ExpenseInputType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
+    [JsonConverter(typeof(ExpenseInput.ExpenseInputConverter))]
     public class ExpenseInput
     {
+        public ExpenseInput(ExpenseInputType type)
+        {
+            Type = type;
+        }
 
-        /// <summary>
-        /// Number.
-        /// </summary>
-        [JsonProperty("number")]
-        public string? Number { get; set; } = null;
+        [SpeakeasyMetadata("form:explode=true")]
+        public Expense1Input? Expense1Input { get; set; }
 
-        /// <summary>
-        /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD
-        /// </summary>
-        [JsonProperty("transaction_date", NullValueHandling = NullValueHandling.Include)]
-        public DateTime? TransactionDate { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public Expense2Input? Expense2Input { get; set; }
 
-        /// <summary>
-        /// The unique identifier for the ledger account that this expense should be credited to. 
-        /// </summary>
-        [JsonProperty("account_id")]
-        public string AccountId { get; set; } = default!;
+        [SpeakeasyMetadata("form:explode=true")]
+        public Expense3? Expense3 { get; set; }
 
-        /// <summary>
-        /// The ID of the customer this entity is linked to. Used for expenses that should be marked as billable to customers.
-        /// </summary>
-        [JsonProperty("customer_id")]
-        public string? CustomerId { get; set; }
+        public ExpenseInputType Type { get; set; }
+        public static ExpenseInput CreateExpense1Input(Expense1Input expense1Input)
+        {
+            ExpenseInputType typ = ExpenseInputType.Expense1Input;
 
-        /// <summary>
-        /// The ID of the supplier this entity is linked to.
-        /// </summary>
-        [JsonProperty("supplier_id")]
-        public string? SupplierId { get; set; }
+            ExpenseInput res = new ExpenseInput(typ);
+            res.Expense1Input = expense1Input;
+            return res;
+        }
+        public static ExpenseInput CreateExpense2Input(Expense2Input expense2Input)
+        {
+            ExpenseInputType typ = ExpenseInputType.Expense2Input;
 
-        /// <summary>
-        /// The company ID the transaction belongs to
-        /// </summary>
-        [JsonProperty("company_id")]
-        public string? CompanyId { get; set; } = null;
+            ExpenseInput res = new ExpenseInput(typ);
+            res.Expense2Input = expense2Input;
+            return res;
+        }
+        public static ExpenseInput CreateExpense3(Expense3 expense3)
+        {
+            ExpenseInputType typ = ExpenseInputType.Expense3;
 
-        /// <summary>
-        /// The ID of the department
-        /// </summary>
-        [JsonProperty("department_id")]
-        public string? DepartmentId { get; set; } = null;
+            ExpenseInput res = new ExpenseInput(typ);
+            res.Expense3 = expense3;
+            return res;
+        }
 
-        /// <summary>
-        /// The type of payment for the expense.
-        /// </summary>
-        [JsonProperty("payment_type")]
-        public ExpensePaymentType? PaymentType { get; set; } = null;
+        public class ExpenseInputConverter : JsonConverter
+        {
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(ExpenseInput);
 
-        /// <summary>
-        /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
-        /// </summary>
-        [JsonProperty("currency")]
-        public Currency? Currency { get; set; } = null;
+            public override bool CanRead => true;
 
-        /// <summary>
-        /// Currency Exchange Rate at the time entity was recorded/generated.
-        /// </summary>
-        [JsonProperty("currency_rate")]
-        public double? CurrencyRate { get; set; } = null;
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    throw new InvalidOperationException("Received unexpected null JSON value");
+                }
 
-        /// <summary>
-        /// The type of expense.
-        /// </summary>
-        [JsonProperty("type")]
-        public ExpenseType? Type { get; set; } = null;
+                var json = JRaw.Create(reader).ToString();
+                var fallbackCandidates = new List<(System.Type, object, string)>();
 
-        /// <summary>
-        /// The memo of the expense.
-        /// </summary>
-        [JsonProperty("memo")]
-        public string? Memo { get; set; } = null;
+                try
+                {
+                    return new ExpenseInput(ExpenseInputType.Expense1Input)
+                    {
+                        Expense1Input = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Expense1Input>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Expense1Input), new ExpenseInput(ExpenseInputType.Expense1Input), "Expense1Input"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
 
-        [JsonProperty("tax_rate")]
-        public LinkedTaxRateInput? TaxRate { get; set; }
+                try
+                {
+                    return new ExpenseInput(ExpenseInputType.Expense2Input)
+                    {
+                        Expense2Input = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Expense2Input>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Expense2Input), new ExpenseInput(ExpenseInputType.Expense2Input), "Expense2Input"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
 
-        /// <summary>
-        /// The total amount of the expense line item.
-        /// </summary>
-        [JsonProperty("total_amount")]
-        public double? TotalAmount { get; set; } = null;
+                try
+                {
+                    return new ExpenseInput(ExpenseInputType.Expense3)
+                    {
+                        Expense3 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Expense3>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(Expense3), new ExpenseInput(ExpenseInputType.Expense3), "Expense3"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
 
-        /// <summary>
-        /// Expense line items linked to this expense.
-        /// </summary>
-        [JsonProperty("line_items")]
-        public List<ExpenseLineItemInput> LineItems { get; set; } = default!;
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
 
-        /// <summary>
-        /// Optional reference identifier for the transaction.
-        /// </summary>
-        [JsonProperty("reference")]
-        public string? Reference { get; set; } = null;
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
 
-        /// <summary>
-        /// URL link to a source document - shown as &apos;Go to [appName]&apos; in the downstream app. Currently only supported for Xero.
-        /// </summary>
-        [JsonProperty("source_document_url")]
-        public string? SourceDocumentUrl { get; set; } = null;
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
+                }
 
-        [JsonProperty("custom_fields")]
-        public List<CustomField>? CustomFields { get; set; }
+                ExpenseInput res = (ExpenseInput)value;
 
-        /// <summary>
-        /// Expense status
-        /// </summary>
-        [JsonProperty("status")]
-        public ExpenseStatus? Status { get; set; } = null;
+                if (res.Expense1Input != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Expense1Input));
+                    return;
+                }
 
-        /// <summary>
-        /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
-        /// </summary>
-        [JsonProperty("row_version")]
-        public string? RowVersion { get; set; } = null;
+                if (res.Expense2Input != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Expense2Input));
+                    return;
+                }
 
-        /// <summary>
-        /// The pass_through property allows passing service-specific, custom data or structured modifications in request body when creating or updating resources.
-        /// </summary>
-        [JsonProperty("pass_through")]
-        public List<PassThroughBody>? PassThrough { get; set; }
+                if (res.Expense3 != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Expense3));
+                    return;
+                }
+            }
+
+        }
+
     }
 }
