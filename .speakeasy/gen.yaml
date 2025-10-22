@@ -27,7 +27,7 @@ csharp:
   version: 0.18.0
   additionalDependencies: []
   author: Speakeasy
-  baseErrorName: ApideckError
+  baseErrorName: BaseException
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
   disableNamespacePascalCasingApr2024: true
