@@ -15,3 +15,4 @@ Invoice status
 | `Void`          | void            |
 | `Credit`        | credit          |
 | `Deleted`       | deleted         |
+| `Posted`        | posted          |

@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Errors
     /// <summary>
     /// Unprocessable
     /// </summary>
-    public class UnprocessableResponse : ApideckError
+    public class UnprocessableResponse : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

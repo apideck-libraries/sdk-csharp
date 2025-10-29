@@ -869,7 +869,7 @@ while(res != null)
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-[`ApideckError`](./src/ApideckUnifySdk/Models/Errors/ApideckError.cs) is the base exception class for all HTTP error responses. It has the following properties:
+[`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs) is the base exception class for all HTTP error responses. It has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
@@ -920,7 +920,7 @@ try
         res = await res.Next!();
     }
 }
-catch (ApideckError ex)  // all SDK exceptions inherit from ApideckError
+catch (BaseException ex)  // all SDK exceptions inherit from BaseException
 {
     // ex.ToString() provides a detailed error message
     System.Console.WriteLine(ex);
@@ -955,7 +955,7 @@ catch (System.Net.Http.HttpRequestException ex)
 ### Error Classes
 
 **Primary exceptions:**
-* [`ApideckError`](./src/ApideckUnifySdk/Models/Errors/ApideckError.cs): The base class for HTTP error responses.
+* [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs): The base class for HTTP error responses.
   * [`UnauthorizedResponse`](./src/ApideckUnifySdk/Models/Errors/UnauthorizedResponse.cs): Unauthorized. Status code `401`.
   * [`PaymentRequiredResponse`](./src/ApideckUnifySdk/Models/Errors/PaymentRequiredResponse.cs): Payment Required. Status code `402`.
   * [`NotFoundResponse`](./src/ApideckUnifySdk/Models/Errors/NotFoundResponse.cs): The specified resource was not found. Status code `404`. *
@@ -966,7 +966,7 @@ catch (System.Net.Http.HttpRequestException ex)
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
-* Inheriting from [`ApideckError`](./src/ApideckUnifySdk/Models/Errors/ApideckError.cs):
+* Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

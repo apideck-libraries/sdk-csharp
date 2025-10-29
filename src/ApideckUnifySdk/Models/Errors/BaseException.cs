@@ -14,7 +14,7 @@ namespace ApideckUnifySdk.Models.Errors
     using System.Net.Http;
     using System.Net.Http.Headers;
 
-    public class ApideckError : Exception
+    public class BaseException : Exception
     {
         /// <summary>
         /// Error Message
@@ -36,14 +36,14 @@ namespace ApideckUnifySdk.Models.Errors
         /// </summary>
         public string Body { get; }
 
-        public ApideckError(
+        public BaseException(
             string message,
             HttpRequestMessage request,
             HttpResponseMessage response,
             string body
         ) : this(message, request, response, body, null) {}
 
-        public ApideckError(
+        public BaseException(
             string message,
             HttpRequestMessage request,
             HttpResponseMessage response,

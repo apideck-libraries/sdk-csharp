@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Errors
     /// <summary>
     /// The specified resource was not found
     /// </summary>
-    public class NotFoundResponse : ApideckError
+    public class NotFoundResponse : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.
