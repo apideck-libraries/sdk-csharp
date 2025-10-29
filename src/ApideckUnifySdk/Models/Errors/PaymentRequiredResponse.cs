@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Errors
     /// <summary>
     /// Payment Required
     /// </summary>
-    public class PaymentRequiredResponse : ApideckError
+    public class PaymentRequiredResponse : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

@@ -34,6 +34,8 @@ namespace ApideckUnifySdk.Models.Components
         Credit,
         [JsonProperty("deleted")]
         Deleted,
+        [JsonProperty("posted")]
+        Posted,
     }
 
     public static class InvoiceStatusExtension

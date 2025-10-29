@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Errors
     /// <summary>
     /// Unauthorized
     /// </summary>
-    public class UnauthorizedResponse : ApideckError
+    public class UnauthorizedResponse : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

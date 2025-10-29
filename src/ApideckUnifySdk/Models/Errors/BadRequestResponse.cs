@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Errors
     /// <summary>
     /// Bad Request
     /// </summary>
-    public class BadRequestResponse : ApideckError
+    public class BadRequestResponse : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

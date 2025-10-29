@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: a72cfc70644d3aa2ad0b1fd3f53202be
-  docVersion: 10.21.6
-  speakeasyVersion: 1.638.0
-  generationVersion: 2.728.0
-  releaseVersion: 0.18.0
-  configChecksum: ea98e53cfcc7550eb14770102131d97f
+  docChecksum: 0b8f08924226654aa94e8403c482d651
+  docVersion: 10.21.7
+  speakeasyVersion: 1.642.2
+  generationVersion: 2.731.6
+  releaseVersion: 0.18.1
+  configChecksum: c1020fcefc839a8e53e480b1defe1a21
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -2585,8 +2585,8 @@ generatedFiles:
   - src/ApideckUnifySdk/Models/Components/Websites.cs
   - src/ApideckUnifySdk/Models/Components/WorkPattern.cs
   - src/ApideckUnifySdk/Models/Errors/APIException.cs
-  - src/ApideckUnifySdk/Models/Errors/ApideckError.cs
   - src/ApideckUnifySdk/Models/Errors/BadRequestResponse.cs
+  - src/ApideckUnifySdk/Models/Errors/BaseException.cs
   - src/ApideckUnifySdk/Models/Errors/Detail.cs
   - src/ApideckUnifySdk/Models/Errors/NotFoundResponse.cs
   - src/ApideckUnifySdk/Models/Errors/NotFoundResponseDetail.cs
@@ -18700,4 +18700,3 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Apideck.Accounting.BankAccounts.List()`:  `response.data.[]` **Changed** **Breaking** :warning:\n* `Apideck.Accounting.BankAccounts.Get()`:  `response.data` **Changed** **Breaking** :warning:\n* `Apideck.Accounting.Expenses.List()`: \n  *  `request.Filter` **Changed**\n  *  `response.data.[]` **Changed** **Breaking** :warning:\n* `Apideck.Accounting.Expenses.Create()`: \n  *  `request.Expense` **Changed** **Breaking** :warning:\n* `Apideck.Accounting.Expenses.Get()`:  `response.data` **Changed** **Breaking** :warning:\n* `Apideck.Accounting.Expenses.Update()`: \n  *  `request.Expense` **Changed** **Breaking** :warning:\n* `Apideck.Accounting.Suppliers.Create()`: \n  *  `request.Supplier.Account` **Changed**\n* `Apideck.Accounting.Payments.List()`:  `response.data.[].Account` **Changed**\n* `Apideck.Accounting.Bills.Update()`: \n  *  `request.Bill.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Invoices.List()`:  `response.data.[].LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Invoices.Create()`: \n  *  `request.Invoice.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Invoices.Get()`:  `response.data.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Invoices.Update()`: \n  *  `request.Invoice.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.InvoiceItems.List()`:  `response.data.[].AssetAccount` **Changed**\n* `Apideck.Accounting.InvoiceItems.Create()`: \n  *  `request.InvoiceItem.AssetAccount` **Changed**\n* `Apideck.Accounting.InvoiceItems.Get()`:  `response.data.AssetAccount` **Changed**\n* `Apideck.Accounting.InvoiceItems.Update()`: \n  *  `request.InvoiceItem.AssetAccount` **Changed**\n* `Apideck.Accounting.CreditNotes.List()`:  `response.data.[].Account` **Changed**\n* `Apideck.Accounting.CreditNotes.Create()`: \n  *  `request.CreditNote.Account` **Changed**\n* `Apideck.Accounting.CreditNotes.Get()`:  `response.data.Account` **Changed**\n* `Apideck.Accounting.CreditNotes.Update()`: \n  *  `request.CreditNote.Account` **Changed**\n* `Apideck.Accounting.Customers.List()`:  `response.data.[].Account` **Changed**\n* `Apideck.Accounting.Customers.Create()`: \n  *  `request.Customer.Account` **Changed**\n* `Apideck.Accounting.Customers.Get()`:  `response.data.Account` **Changed**\n* `Apideck.Accounting.Customers.Update()`: \n  *  `request.Customer.Account` **Changed**\n* `Apideck.Accounting.Suppliers.List()`:  `response.data.[].Account` **Changed**\n* `Apideck.Accounting.Bills.Create()`: \n  *  `request.Bill.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Suppliers.Get()`:  `response.data.Account` **Changed**\n* `Apideck.Accounting.Suppliers.Update()`: \n  *  `request.Supplier.Account` **Changed**\n* `Apideck.Accounting.Bills.Get()`:  `response.data.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Payments.Create()`: \n  *  `request.Payment.Account` **Changed**\n* `Apideck.Accounting.Payments.Get()`:  `response.data.Account` **Changed**\n* `Apideck.Accounting.Payments.Update()`: \n  *  `request.Payment.Account` **Changed**\n* `Apideck.Accounting.JournalEntries.List()`:  `response.data.[].LineItems.[]` **Changed**\n* `Apideck.Accounting.JournalEntries.Create()`: \n  *  `request.JournalEntry.LineItems.[]` **Changed**\n* `Apideck.Accounting.JournalEntries.Get()`:  `response.data.LineItems.[]` **Changed**\n* `Apideck.Accounting.JournalEntries.Update()`: \n  *  `request.JournalEntry.LineItems.[]` **Changed**\n* `Apideck.Accounting.PurchaseOrders.List()`:  `response.data.[].LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.PurchaseOrders.Create()`: \n  *  `request.PurchaseOrder.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.PurchaseOrders.Get()`:  `response.data.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.PurchaseOrders.Update()`: \n  *  `request.PurchaseOrder.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.BankAccounts.Create()`: \n  *  `request.AccountingBankAccount` **Changed**\n* `Apideck.Accounting.BankAccounts.Update()`: \n  *  `request.AccountingBankAccount` **Changed**\n* `Apideck.Accounting.BillPayments.List()`:  `response.data.[].Account` **Changed**\n* `Apideck.Accounting.Bills.List()`:  `response.data.[].LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.BillPayments.Create()`: \n  *  `request.BillPayment.Account` **Changed**\n* `Apideck.Accounting.BillPayments.Get()`:  `response.data.Account` **Changed**\n* `Apideck.Accounting.BillPayments.Update()`: \n  *  `request.BillPayment.Account` **Changed**\n* `Apideck.Accounting.Quotes.List()`:  `response.data.[].LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Quotes.Create()`: \n  *  `request.Quote.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Quotes.Get()`:  `response.data.LineItems.[].LedgerAccount` **Changed**\n* `Apideck.Accounting.Quotes.Update()`: \n  *  `request.Quote.LineItems.[].LedgerAccount` **Changed**\n"

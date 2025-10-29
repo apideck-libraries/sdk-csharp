@@ -13,7 +13,7 @@ namespace ApideckUnifySdk.Models.Errors
     using System;
     using System.Net.Http;
 
-    public class APIException : ApideckError
+    public class APIException : BaseException
     {
         /// <summary>
         /// Default API exception.
