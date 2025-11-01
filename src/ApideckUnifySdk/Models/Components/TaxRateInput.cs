@@ -24,6 +24,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
+        /// Display ID of the tax rate
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// Name assigned to identify this tax rate.
         /// </summary>
         [JsonProperty("name")]
