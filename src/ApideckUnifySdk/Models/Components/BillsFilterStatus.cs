@@ -14,38 +14,28 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// Current payment status of the order.
+    /// Filter by bill status
     /// </summary>
-    public enum EcommerceOrderPaymentStatus
+    public enum BillsFilterStatus
     {
-        [JsonProperty("pending")]
-        Pending,
-        [JsonProperty("authorized")]
-        Authorized,
         [JsonProperty("paid")]
         Paid,
-        [JsonProperty("partial")]
-        Partial,
-        [JsonProperty("refunded")]
-        Refunded,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("unknown")]
-        Unknown,
-        [JsonProperty("partially_refunded")]
-        PartiallyRefunded,
+        [JsonProperty("unpaid")]
+        Unpaid,
+        [JsonProperty("partially_paid")]
+        PartiallyPaid,
     }
 
-    public static class EcommerceOrderPaymentStatusExtension
+    public static class BillsFilterStatusExtension
     {
-        public static string Value(this EcommerceOrderPaymentStatus value)
+        public static string Value(this BillsFilterStatus value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static EcommerceOrderPaymentStatus ToEnum(this string value)
+        public static BillsFilterStatus ToEnum(this string value)
         {
-            foreach(var field in typeof(EcommerceOrderPaymentStatus).GetFields())
+            foreach(var field in typeof(BillsFilterStatus).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -58,14 +48,14 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is EcommerceOrderPaymentStatus)
+                    if (enumVal is BillsFilterStatus)
                     {
-                        return (EcommerceOrderPaymentStatus)enumVal;
+                        return (BillsFilterStatus)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum EcommerceOrderPaymentStatus");
+            throw new Exception($"Unknown value {value} for enum BillsFilterStatus");
         }
     }
 

@@ -58,6 +58,9 @@
 | `AccountingBillCreated`               | accounting.bill.created               |
 | `AccountingBillUpdated`               | accounting.bill.updated               |
 | `AccountingBillDeleted`               | accounting.bill.deleted               |
+| `AccountingBillPaymentCreated`        | accounting.bill_payment.created       |
+| `AccountingBillPaymentUpdated`        | accounting.bill_payment.updated       |
+| `AccountingBillPaymentDeleted`        | accounting.bill_payment.deleted       |
 | `AccountingPaymentCreated`            | accounting.payment.created            |
 | `AccountingPaymentUpdated`            | accounting.payment.updated            |
 | `AccountingPaymentDeleted`            | accounting.payment.deleted            |
