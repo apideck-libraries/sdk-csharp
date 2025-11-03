@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Errors
 {
+    using ApideckUnifySdk.Models.Errors;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -25,14 +26,14 @@ namespace ApideckUnifySdk.Models.Errors
 
         public static UnauthorizedResponseDetailType Str { get { return new UnauthorizedResponseDetailType("str"); } }
 
-        public static UnauthorizedResponseDetailType MapOfAny { get { return new UnauthorizedResponseDetailType("mapOfAny"); } }
+        public static UnauthorizedResponseDetailType Two { get { return new UnauthorizedResponseDetailType("2"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(UnauthorizedResponseDetailType v) { return v.Value; }
         public static UnauthorizedResponseDetailType FromString(string v) {
             switch(v) {
                 case "str": return Str;
-                case "mapOfAny": return MapOfAny;
+                case "2": return Two;
                 default: throw new ArgumentException("Invalid value for UnauthorizedResponseDetailType");
             }
         }
@@ -67,7 +68,7 @@ namespace ApideckUnifySdk.Models.Errors
         public string? Str { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public Dictionary<string, object>? MapOfAny { get; set; }
+        public Models.Errors.Two? Two { get; set; }
 
         public UnauthorizedResponseDetailType Type { get; set; }
         public static UnauthorizedResponseDetail CreateStr(string str)
@@ -78,12 +79,12 @@ namespace ApideckUnifySdk.Models.Errors
             res.Str = str;
             return res;
         }
-        public static UnauthorizedResponseDetail CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        public static UnauthorizedResponseDetail CreateTwo(Models.Errors.Two two)
         {
-            UnauthorizedResponseDetailType typ = UnauthorizedResponseDetailType.MapOfAny;
+            UnauthorizedResponseDetailType typ = UnauthorizedResponseDetailType.Two;
 
             UnauthorizedResponseDetail res = new UnauthorizedResponseDetail(typ);
-            res.MapOfAny = mapOfAny;
+            res.Two = two;
             return res;
         }
 
@@ -103,23 +104,16 @@ namespace ApideckUnifySdk.Models.Errors
                 var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
-                if (json[0] == '"' && json[^1] == '"'){
-                    return new UnauthorizedResponseDetail(UnauthorizedResponseDetailType.Str)
-                    {
-                        Str = json[1..^1]
-                    };
-                }
-
                 try
                 {
-                    return new UnauthorizedResponseDetail(UnauthorizedResponseDetailType.MapOfAny)
+                    return new UnauthorizedResponseDetail(UnauthorizedResponseDetailType.Two)
                     {
-                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
+                        Two = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Models.Errors.Two>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new UnauthorizedResponseDetail(UnauthorizedResponseDetailType.MapOfAny), "MapOfAny"));
+                    fallbackCandidates.Add((typeof(Models.Errors.Two), new UnauthorizedResponseDetail(UnauthorizedResponseDetailType.Two), "Two"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -128,6 +122,13 @@ namespace ApideckUnifySdk.Models.Errors
                 catch (Exception)
                 {
                     throw;
+                }
+
+                if (json[0] == '"' && json[^1] == '"'){
+                    return new UnauthorizedResponseDetail(UnauthorizedResponseDetailType.Str)
+                    {
+                        Str = json[1..^1]
+                    };
                 }
 
                 if (fallbackCandidates.Count > 0)
@@ -168,9 +169,9 @@ namespace ApideckUnifySdk.Models.Errors
                     return;
                 }
 
-                if (res.MapOfAny != null)
+                if (res.Two != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Two));
                     return;
                 }
             }

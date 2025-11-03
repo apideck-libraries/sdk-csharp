@@ -11,8 +11,8 @@ Contains parameter or domain specific information related to the error and why i
 UnauthorizedResponseDetail.CreateStr(/* values here */);
 ```
 
-### MapOfAny
+### Two
 
 ```csharp
-UnauthorizedResponseDetail.CreateMapOfAny(/* values here */);
+UnauthorizedResponseDetail.CreateTwo(/* values here */);
 ```

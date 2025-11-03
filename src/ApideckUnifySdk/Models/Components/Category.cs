@@ -31,6 +31,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
+        /// Display ID of the category
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// The type of the category.
         /// </summary>
         [JsonProperty("type")]

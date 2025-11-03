@@ -85,15 +85,15 @@ VaultConnectionSettingsUpdateRequest req = new VaultConnectionSettingsUpdateRequ
     Connection = new ConnectionInput() {
         Enabled = true,
         Settings = new Dictionary<string, object>() {
-            { "instance_url", "https://eu28.salesforce.com" },
             { "api_key", "12345xxxxxx" },
+            { "instance_url", "https://eu28.salesforce.com" },
         },
         Metadata = new Dictionary<string, object>() {
-            { "account", new Dictionary<string, object>() {
-                { "id", "c01458a5-7276-41ce-bc19-639906b0450a" },
-                { "name", "My Company" },
-            } },
             { "plan", "enterprise" },
+            { "account", new Dictionary<string, object>() {
+                { "name", "My Company" },
+                { "id", "c01458a5-7276-41ce-bc19-639906b0450a" },
+            } },
         },
         Configuration = new List<ConnectionConfiguration>() {
             new ConnectionConfiguration() {

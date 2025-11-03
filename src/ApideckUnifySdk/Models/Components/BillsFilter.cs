@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using System;
     
@@ -17,5 +18,11 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
+
+        /// <summary>
+        /// Filter by bill status
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=status")]
+        public BillsFilterStatus? Status { get; set; }
     }
 }

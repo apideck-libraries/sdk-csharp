@@ -32,6 +32,8 @@ namespace ApideckUnifySdk.Models.Components
         Voided,
         [JsonProperty("unknown")]
         Unknown,
+        [JsonProperty("partially_refunded")]
+        PartiallyRefunded,
     }
 
     public static class EcommerceOrderPaymentStatusExtension
