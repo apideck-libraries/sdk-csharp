@@ -31,6 +31,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
+        /// Display ID of the journal entry
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// Journal entry title
         /// </summary>
         [JsonProperty("title")]

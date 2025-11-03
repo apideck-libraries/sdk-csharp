@@ -37,6 +37,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; } = null;
 
         /// <summary>
+        /// Display ID of the subsidiary
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// Based on the status some functionality is enabled or disabled.
         /// </summary>
         [JsonProperty("status")]

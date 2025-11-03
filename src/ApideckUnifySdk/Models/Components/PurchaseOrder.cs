@@ -32,6 +32,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
+        /// Display ID of the purchase order
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// A PO Number uniquely identifies a purchase order and is generally defined by the buyer.
         /// </summary>
         [JsonProperty("po_number")]

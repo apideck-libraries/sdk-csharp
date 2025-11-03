@@ -30,7 +30,7 @@ VaultConnectionConsentUpdateRequest req = new VaultConnectionConsentUpdateReques
     UnifiedApi = "crm",
     UpdateConsentRequest = new UpdateConsentRequest() {
         Resources = UpdateConsentRequestResources.CreateTwo(
-            Two.Wildcard
+            ApideckUnifySdk.Models.Components.Two.Wildcard
         ),
         Granted = true,
     },

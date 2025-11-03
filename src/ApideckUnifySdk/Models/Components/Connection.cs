@@ -161,9 +161,6 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("has_guide")]
         public bool? HasGuide { get; set; }
 
-        [JsonProperty("created_at")]
-        public double? CreatedAt { get; set; }
-
         /// <summary>
         /// List of custom mappings configured for this connection
         /// </summary>
@@ -187,6 +184,27 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("application_data_scopes")]
         public DataScopes? ApplicationDataScopes { get; set; }
+
+        /// <summary>
+        /// Operational health status of the connection
+        /// </summary>
+        [JsonProperty("health")]
+        public Health? Health { get; set; }
+
+        /// <summary>
+        /// Unix timestamp in milliseconds when credentials will be deleted if token refresh continues to fail. A value of 0 indicates no active retention window (connection is healthy or not using OAuth token refresh).
+        /// </summary>
+        [JsonProperty("credentials_expire_at")]
+        public double? CredentialsExpireAt { get; set; }
+
+        /// <summary>
+        /// Unix timestamp in milliseconds of the last failed token refresh attempt. A value of 0 indicates no recent failures. This field is used internally to enforce cooldown periods between retry attempts.
+        /// </summary>
+        [JsonProperty("last_refresh_failed_at")]
+        public double? LastRefreshFailedAt { get; set; }
+
+        [JsonProperty("created_at")]
+        public double? CreatedAt { get; set; }
 
         [JsonProperty("updated_at")]
         public double? UpdatedAt { get; set; } = null;

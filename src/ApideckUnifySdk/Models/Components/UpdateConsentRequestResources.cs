@@ -65,7 +65,7 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, Dictionary<string, One>>? MapOfMapOf1 { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public Two? Two { get; set; }
+        public Models.Components.Two? Two { get; set; }
 
         public UpdateConsentRequestResourcesType Type { get; set; }
         public static UpdateConsentRequestResources CreateMapOfMapOf1(Dictionary<string, Dictionary<string, One>> mapOfMapOf1)
@@ -76,7 +76,7 @@ namespace ApideckUnifySdk.Models.Components
             res.MapOfMapOf1 = mapOfMapOf1;
             return res;
         }
-        public static UpdateConsentRequestResources CreateTwo(Two two)
+        public static UpdateConsentRequestResources CreateTwo(Models.Components.Two two)
         {
             UpdateConsentRequestResourcesType typ = UpdateConsentRequestResourcesType.Two;
 
@@ -125,12 +125,12 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     return new UpdateConsentRequestResources(UpdateConsentRequestResourcesType.Two)
                     {
-                        Two = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Two>(json)
+                        Two = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Models.Components.Two>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Two), new UpdateConsentRequestResources(UpdateConsentRequestResourcesType.Two), "Two"));
+                    fallbackCandidates.Add((typeof(Models.Components.Two), new UpdateConsentRequestResources(UpdateConsentRequestResourcesType.Two), "Two"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {

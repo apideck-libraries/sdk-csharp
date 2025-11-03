@@ -121,6 +121,12 @@ namespace ApideckUnifySdk.Models.Components
         AccountingBillUpdated,
         [JsonProperty("accounting.bill.deleted")]
         AccountingBillDeleted,
+        [JsonProperty("accounting.bill_payment.created")]
+        AccountingBillPaymentCreated,
+        [JsonProperty("accounting.bill_payment.updated")]
+        AccountingBillPaymentUpdated,
+        [JsonProperty("accounting.bill_payment.deleted")]
+        AccountingBillPaymentDeleted,
         [JsonProperty("accounting.payment.created")]
         AccountingPaymentCreated,
         [JsonProperty("accounting.payment.updated")]
