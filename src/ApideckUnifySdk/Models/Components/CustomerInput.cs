@@ -120,7 +120,7 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         [JsonProperty("account")]
-        public LinkedLedgerAccountInput? Account { get; set; } = null;
+        public LinkedLedgerAccount? Account { get; set; } = null;
 
         /// <summary>
         /// The parent customer this entity is linked to.

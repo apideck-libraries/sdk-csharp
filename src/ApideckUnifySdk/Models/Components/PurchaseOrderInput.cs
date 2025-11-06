@@ -127,7 +127,7 @@ namespace ApideckUnifySdk.Models.Components
         public Address? ShippingAddress { get; set; }
 
         [JsonProperty("ledger_account")]
-        public LinkedLedgerAccountInput? LedgerAccount { get; set; } = null;
+        public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         /// <summary>
         /// Optional purchase order template

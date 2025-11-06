@@ -92,145 +92,143 @@ var sdk = new Apideck(
 
 AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
     ServiceId = "salesforce",
-    Expense = ExpenseInput.CreateExpense1Input(
-        new Expense1Input() {
-            Number = "OIT00546",
-            TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
-            AccountId = "123456",
-            CustomerId = "12345",
-            SupplierId = "12345",
-            CompanyId = "12345",
-            DepartmentId = "12345",
-            PaymentType = ExpensePaymentType.Cash,
-            Currency = Currency.Usd,
-            CurrencyRate = 0.69D,
-            Type = ExpenseType.Expense,
-            Memo = "For travel expenses incurred on 2024-05-15",
-            TaxRate = new LinkedTaxRateInput() {
-                Id = "123456",
-                Rate = 10D,
-            },
-            TotalAmount = 275D,
-            LineItems = new List<ExpenseLineItemInput>() {
-                new ExpenseLineItemInput() {
-                    TrackingCategories = new List<LinkedTrackingCategory?>() {
-                        new LinkedTrackingCategory() {
-                            Id = "123456",
-                            Name = "New York",
-                        },
-                        new LinkedTrackingCategory() {
-                            Id = "123456",
-                            Name = "New York",
-                        },
-                        new LinkedTrackingCategory() {
-                            Id = "123456",
-                            Name = "New York",
-                        },
-                    },
-                    AccountId = "123456",
-                    CustomerId = "12345",
-                    DepartmentId = "12345",
-                    LocationId = "12345",
-                    SubsidiaryId = "12345",
-                    TaxRate = new LinkedTaxRateInput() {
+    Expense = new ExpenseInput() {
+        Number = "OIT00546",
+        TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
+        AccountId = "123456",
+        CustomerId = "12345",
+        SupplierId = "12345",
+        CompanyId = "12345",
+        DepartmentId = "12345",
+        PaymentType = ExpensePaymentType.Cash,
+        Currency = Currency.Usd,
+        CurrencyRate = 0.69D,
+        Type = ExpenseType.Expense,
+        Memo = "For travel expenses incurred on 2024-05-15",
+        TaxRate = new LinkedTaxRateInput() {
+            Id = "123456",
+            Rate = 10D,
+        },
+        TotalAmount = 275D,
+        LineItems = new List<ExpenseLineItemInput>() {
+            new ExpenseLineItemInput() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
+                    new LinkedTrackingCategory() {
                         Id = "123456",
-                        Rate = 10D,
+                        Name = "New York",
                     },
-                    Description = "Travel US.",
-                    TotalAmount = 275D,
-                    Billable = true,
-                    LineNumber = 1,
-                },
-            },
-            CustomFields = new List<CustomField>() {
-                new CustomField() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                },
-                new CustomField() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                },
-                new CustomField() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                },
-            },
-            RowVersion = "1-12345",
-            PassThrough = new List<PassThroughBody>() {
-                new PassThroughBody() {
-                    ServiceId = "<id>",
-                    ExtendPaths = new List<ExtendPaths>() {
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
-                        },
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
-                        },
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
-                        },
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
                     },
                 },
-                new PassThroughBody() {
-                    ServiceId = "<id>",
-                    ExtendPaths = new List<ExtendPaths>() {
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
+                AccountId = "123456",
+                CustomerId = "12345",
+                DepartmentId = "12345",
+                LocationId = "12345",
+                SubsidiaryId = "12345",
+                TaxRate = new LinkedTaxRateInput() {
+                    Id = "123456",
+                    Rate = 10D,
+                },
+                Description = "Travel US.",
+                TotalAmount = 275D,
+                Billable = true,
+                LineNumber = 1,
+            },
+        },
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+        },
+        RowVersion = "1-12345",
+        PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
                         },
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
                         },
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
                         },
                     },
                 },
             },
-        }
-    ),
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+        },
+    },
 };
 
 var res = await sdk.Accounting.Expenses.CreateAsync(req);
@@ -331,110 +329,108 @@ var sdk = new Apideck(
 AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
-    Expense = ExpenseInput.CreateExpense1Input(
-        new Expense1Input() {
-            Number = "OIT00546",
-            TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
-            AccountId = "123456",
-            CustomerId = "12345",
-            SupplierId = "12345",
-            CompanyId = "12345",
-            DepartmentId = "12345",
-            PaymentType = ExpensePaymentType.Cash,
-            Currency = Currency.Usd,
-            CurrencyRate = 0.69D,
-            Type = ExpenseType.Expense,
-            Memo = "For travel expenses incurred on 2024-05-15",
-            TaxRate = new LinkedTaxRateInput() {
-                Id = "123456",
-                Rate = 10D,
-            },
-            TotalAmount = 275D,
-            LineItems = new List<ExpenseLineItemInput>() {
-                new ExpenseLineItemInput() {
-                    TrackingCategories = new List<LinkedTrackingCategory?>() {
-                        new LinkedTrackingCategory() {
-                            Id = "123456",
-                            Name = "New York",
-                        },
-                        new LinkedTrackingCategory() {
-                            Id = "123456",
-                            Name = "New York",
-                        },
-                        new LinkedTrackingCategory() {
-                            Id = "123456",
-                            Name = "New York",
-                        },
-                    },
-                    AccountId = "123456",
-                    CustomerId = "12345",
-                    DepartmentId = "12345",
-                    LocationId = "12345",
-                    SubsidiaryId = "12345",
-                    TaxRate = new LinkedTaxRateInput() {
+    Expense = new ExpenseInput() {
+        Number = "OIT00546",
+        TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
+        AccountId = "123456",
+        CustomerId = "12345",
+        SupplierId = "12345",
+        CompanyId = "12345",
+        DepartmentId = "12345",
+        PaymentType = ExpensePaymentType.Cash,
+        Currency = Currency.Usd,
+        CurrencyRate = 0.69D,
+        Type = ExpenseType.Expense,
+        Memo = "For travel expenses incurred on 2024-05-15",
+        TaxRate = new LinkedTaxRateInput() {
+            Id = "123456",
+            Rate = 10D,
+        },
+        TotalAmount = 275D,
+        LineItems = new List<ExpenseLineItemInput>() {
+            new ExpenseLineItemInput() {
+                TrackingCategories = new List<LinkedTrackingCategory?>() {
+                    new LinkedTrackingCategory() {
                         Id = "123456",
-                        Rate = 10D,
+                        Name = "New York",
                     },
-                    Description = "Travel US.",
-                    TotalAmount = 275D,
-                    Billable = true,
-                    LineNumber = 1,
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
+                    new LinkedTrackingCategory() {
+                        Id = "123456",
+                        Name = "New York",
+                    },
                 },
+                AccountId = "123456",
+                CustomerId = "12345",
+                DepartmentId = "12345",
+                LocationId = "12345",
+                SubsidiaryId = "12345",
+                TaxRate = new LinkedTaxRateInput() {
+                    Id = "123456",
+                    Rate = 10D,
+                },
+                Description = "Travel US.",
+                TotalAmount = 275D,
+                Billable = true,
+                LineNumber = 1,
             },
-            CustomFields = new List<CustomField>() {
-                new CustomField() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                },
+        },
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
             },
-            RowVersion = "1-12345",
-            PassThrough = new List<PassThroughBody>() {
-                new PassThroughBody() {
-                    ServiceId = "<id>",
-                    ExtendPaths = new List<ExtendPaths>() {
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
-                        },
-                    },
-                },
-                new PassThroughBody() {
-                    ServiceId = "<id>",
-                    ExtendPaths = new List<ExtendPaths>() {
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
-                        },
-                    },
-                },
-                new PassThroughBody() {
-                    ServiceId = "<id>",
-                    ExtendPaths = new List<ExtendPaths>() {
-                        new ExtendPaths() {
-                            Path = "$.nested.property",
-                            Value = new Dictionary<string, object>() {
-                                { "TaxClassificationRef", new Dictionary<string, object>() {
-                                    { "value", "EUC-99990201-V1-00020000" },
-                                } },
-                            },
+        },
+        RowVersion = "1-12345",
+        PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
                         },
                     },
                 },
             },
-        }
-    ),
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
+        },
+    },
 };
 
 var res = await sdk.Accounting.Expenses.UpdateAsync(req);

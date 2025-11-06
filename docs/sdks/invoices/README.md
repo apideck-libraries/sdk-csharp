@@ -268,7 +268,7 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
             BankCode = "BNH",
             Currency = Currency.Usd,
         },
-        LedgerAccount = new LinkedLedgerAccountInput() {
+        LedgerAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
@@ -500,7 +500,7 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -611,7 +611,7 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
             BankCode = "BNH",
             Currency = Currency.Usd,
         },
-        LedgerAccount = new LinkedLedgerAccountInput() {
+        LedgerAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",

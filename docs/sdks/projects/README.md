@@ -137,6 +137,7 @@ AccountingProjectsAddRequest req = new AccountingProjectsAddRequest() {
         Phase = ProjectPhase.Execution,
         TaxRate = new LinkedTaxRateInput() {
             Id = "123456",
+            Code = "N-T",
             Rate = 10D,
         },
         TrackingCategories = new List<LinkedTrackingCategory?>() {
@@ -330,6 +331,7 @@ AccountingProjectsUpdateRequest req = new AccountingProjectsUpdateRequest() {
         Phase = ProjectPhase.Execution,
         TaxRate = new LinkedTaxRateInput() {
             Id = "123456",
+            Code = "N-T",
             Rate = 10D,
         },
         TrackingCategories = new List<LinkedTrackingCategory?>() {

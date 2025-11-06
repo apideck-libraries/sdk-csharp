@@ -129,17 +129,17 @@ AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
         },
         Quantity = 1D,
         UnitPrice = 27500.5D,
-        AssetAccount = new LinkedLedgerAccountInput() {
+        AssetAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
         },
-        IncomeAccount = new LinkedLedgerAccountInput() {
+        IncomeAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
         },
-        ExpenseAccount = new LinkedLedgerAccountInput() {
+        ExpenseAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
@@ -309,13 +309,13 @@ AccountingInvoiceItemsUpdateRequest req = new AccountingInvoiceItemsUpdateReques
         },
         Quantity = 1D,
         UnitPrice = 27500.5D,
-        AssetAccount = new LinkedLedgerAccountInput() {
+        AssetAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
         },
         IncomeAccount = null,
-        ExpenseAccount = new LinkedLedgerAccountInput() {
+        ExpenseAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",

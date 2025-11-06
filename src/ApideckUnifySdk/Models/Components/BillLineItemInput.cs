@@ -42,10 +42,10 @@ namespace ApideckUnifySdk.Models.Components
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Bill Line Item type
+        /// Line Item type
         /// </summary>
         [JsonProperty("type")]
-        public BillLineItemType? Type { get; set; } = null;
+        public LineItemType? Type { get; set; } = null;
 
         /// <summary>
         /// Tax amount
@@ -162,7 +162,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedTaxRateInput? TaxRate { get; set; }
 
         [JsonProperty("ledger_account")]
-        public LinkedLedgerAccountInput? LedgerAccount { get; set; } = null;
+        public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         [JsonProperty("purchase_order")]
         public LinkedPurchaseOrder? PurchaseOrder { get; set; } = null;

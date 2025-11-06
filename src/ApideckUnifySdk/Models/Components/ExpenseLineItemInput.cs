@@ -32,7 +32,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? AccountId { get; set; }
 
         [JsonProperty("account")]
-        public LinkedLedgerAccountInput? Account { get; set; } = null;
+        public LinkedLedgerAccount? Account { get; set; } = null;
 
         /// <summary>
         /// The ID of the customer this expense item is linked to.
@@ -68,14 +68,36 @@ namespace ApideckUnifySdk.Models.Components
         public string? Description { get; set; } = null;
 
         /// <summary>
+        /// Line Item type
+        /// </summary>
+        [JsonProperty("type")]
+        public LineItemType? Type { get; set; } = null;
+
+        /// <summary>
         /// The total amount of the expense line item.
         /// </summary>
         [JsonProperty("total_amount", NullValueHandling = NullValueHandling.Include)]
         public double? TotalAmount { get; set; }
 
         /// <summary>
+        /// Tax amount
+        /// </summary>
+        [JsonProperty("tax_amount")]
+        public double? TaxAmount { get; set; } = null;
+
+        [JsonProperty("quantity")]
+        public double? Quantity { get; set; } = null;
+
+        [JsonProperty("unit_price")]
+        public double? UnitPrice { get; set; } = null;
+
+        [JsonProperty("item")]
+        public LinkedInvoiceItem? Item { get; set; }
+
+        /// <summary>
         /// Boolean that indicates if the line item is billable or not.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("billable")]
         public bool? Billable { get; set; }
 

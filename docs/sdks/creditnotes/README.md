@@ -121,7 +121,7 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
         DateIssued = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
         DatePaid = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
         Type = CreditNoteType.AccountsReceivableCredit,
-        Account = new LinkedLedgerAccountInput() {
+        Account = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
@@ -162,7 +162,7 @@ AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -413,7 +413,7 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
         DateIssued = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
         DatePaid = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
         Type = CreditNoteType.AccountsReceivableCredit,
-        Account = new LinkedLedgerAccountInput() {
+        Account = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
@@ -450,7 +450,7 @@ AccountingCreditNotesUpdateRequest req = new AccountingCreditNotesUpdateRequest(
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",

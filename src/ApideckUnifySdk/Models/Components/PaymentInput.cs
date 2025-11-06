@@ -75,7 +75,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? AccountsReceivableAccountId { get; set; } = null;
 
         [JsonProperty("account")]
-        public LinkedLedgerAccountInput? Account { get; set; } = null;
+        public LinkedLedgerAccount? Account { get; set; } = null;
 
         /// <summary>
         /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD
