@@ -42,7 +42,7 @@ namespace ApideckUnifySdk.Models.Components
         public AccountingBankAccountAccountType? AccountType { get; set; }
 
         [JsonProperty("ledger_account")]
-        public LinkedLedgerAccountInput? LedgerAccount { get; set; } = null;
+        public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         /// <summary>
         /// The name of the bank or financial institution

@@ -14,30 +14,28 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// The type of payment for the expense.
+    /// Line Item type
     /// </summary>
-    public enum Expense2PaymentType
+    public enum LineItemType
     {
-        [JsonProperty("cash")]
-        Cash,
-        [JsonProperty("check")]
-        Check,
-        [JsonProperty("credit_card")]
-        CreditCard,
+        [JsonProperty("expense_item")]
+        ExpenseItem,
+        [JsonProperty("expense_account")]
+        ExpenseAccount,
         [JsonProperty("other")]
         Other,
     }
 
-    public static class Expense2PaymentTypeExtension
+    public static class LineItemTypeExtension
     {
-        public static string Value(this Expense2PaymentType value)
+        public static string Value(this LineItemType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static Expense2PaymentType ToEnum(this string value)
+        public static LineItemType ToEnum(this string value)
         {
-            foreach(var field in typeof(Expense2PaymentType).GetFields())
+            foreach(var field in typeof(LineItemType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -50,14 +48,14 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is Expense2PaymentType)
+                    if (enumVal is LineItemType)
                     {
-                        return (Expense2PaymentType)enumVal;
+                        return (LineItemType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum Expense2PaymentType");
+            throw new Exception($"Unknown value {value} for enum LineItemType");
         }
     }
 

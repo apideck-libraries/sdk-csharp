@@ -129,7 +129,7 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -415,7 +415,7 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",

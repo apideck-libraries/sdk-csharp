@@ -176,7 +176,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -224,7 +224,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -272,7 +272,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
                         Name = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -316,7 +316,7 @@ AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest(
             Notes = "Address notes or delivery instructions.",
             RowVersion = "1-12345",
         },
-        LedgerAccount = new LinkedLedgerAccountInput() {
+        LedgerAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
@@ -597,7 +597,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                     Rate = 10D,
                 },
                 TrackingCategories = null,
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -656,7 +656,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
                     Rate = 10D,
                 },
                 TrackingCategories = null,
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -716,7 +716,7 @@ AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRe
             Notes = "Address notes or delivery instructions.",
             RowVersion = "1-12345",
         },
-        LedgerAccount = new LinkedLedgerAccountInput() {
+        LedgerAccount = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",

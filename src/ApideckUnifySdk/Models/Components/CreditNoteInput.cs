@@ -127,7 +127,7 @@ namespace ApideckUnifySdk.Models.Components
         public CreditNoteType? Type { get; set; }
 
         [JsonProperty("account")]
-        public LinkedLedgerAccountInput? Account { get; set; } = null;
+        public LinkedLedgerAccount? Account { get; set; } = null;
 
         [JsonProperty("line_items")]
         public List<InvoiceLineItemInput>? LineItems { get; set; }

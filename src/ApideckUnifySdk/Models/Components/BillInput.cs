@@ -118,13 +118,13 @@ namespace ApideckUnifySdk.Models.Components
         public double? Deposit { get; set; } = null;
 
         /// <summary>
-        /// Sub-total amount, normally before tax.
+        /// Subtotal amount, normally before tax.
         /// </summary>
         [JsonProperty("sub_total")]
         public double? SubTotal { get; set; } = null;
 
         /// <summary>
-        /// Total tax amount applied to this bill.
+        /// Total tax amount applied to this transaction.
         /// </summary>
         [JsonProperty("total_tax")]
         public double? TotalTax { get; set; } = null;
@@ -151,7 +151,7 @@ namespace ApideckUnifySdk.Models.Components
         public BillStatus? Status { get; set; } = null;
 
         [JsonProperty("ledger_account")]
-        public LinkedLedgerAccountInput? LedgerAccount { get; set; } = null;
+        public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         /// <summary>
         /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check

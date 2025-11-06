@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         [JsonProperty("ledger_account", NullValueHandling = NullValueHandling.Include)]
-        public LinkedLedgerAccountInput? LedgerAccount { get; set; }
+        public LinkedLedgerAccount? LedgerAccount { get; set; }
 
         /// <summary>
         /// The customer this entity is linked to.

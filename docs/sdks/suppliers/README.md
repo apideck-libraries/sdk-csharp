@@ -206,7 +206,7 @@ AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
         },
         TaxNumber = "US123945459",
         Currency = Currency.Usd,
-        Account = new LinkedLedgerAccountInput() {
+        Account = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",
@@ -469,7 +469,7 @@ AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
         },
         TaxNumber = "US123945459",
         Currency = Currency.Usd,
-        Account = new LinkedLedgerAccountInput() {
+        Account = new LinkedLedgerAccount() {
             Id = "123456",
             NominalCode = "N091",
             Code = "453",

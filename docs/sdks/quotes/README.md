@@ -147,7 +147,7 @@ AccountingQuotesAddRequest req = new AccountingQuotesAddRequest() {
                         ParentName = "New York",
                     },
                 },
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",
@@ -410,7 +410,7 @@ AccountingQuotesUpdateRequest req = new AccountingQuotesUpdateRequest() {
                     Rate = 10D,
                 },
                 TrackingCategories = null,
-                LedgerAccount = new LinkedLedgerAccountInput() {
+                LedgerAccount = new LinkedLedgerAccount() {
                     Id = "123456",
                     NominalCode = "N091",
                     Code = "453",

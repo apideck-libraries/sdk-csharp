@@ -127,7 +127,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         [JsonProperty("ledger_account")]
-        public LinkedLedgerAccountInput? LedgerAccount { get; set; } = null;
+        public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         [JsonProperty("custom_fields")]
         public List<CustomField>? CustomFields { get; set; }

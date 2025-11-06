@@ -98,13 +98,13 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         [JsonProperty("asset_account")]
-        public LinkedLedgerAccountInput? AssetAccount { get; set; } = null;
+        public LinkedLedgerAccount? AssetAccount { get; set; } = null;
 
         [JsonProperty("income_account")]
-        public LinkedLedgerAccountInput? IncomeAccount { get; set; } = null;
+        public LinkedLedgerAccount? IncomeAccount { get; set; } = null;
 
         [JsonProperty("expense_account")]
-        public LinkedLedgerAccountInput? ExpenseAccount { get; set; } = null;
+        public LinkedLedgerAccount? ExpenseAccount { get; set; } = null;
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("tracking_category")]

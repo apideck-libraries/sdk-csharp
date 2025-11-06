@@ -1,6 +1,6 @@
-# BillLineItemType
+# LineItemType
 
-Bill Line Item type
+Line Item type
 
 
 ## Values
