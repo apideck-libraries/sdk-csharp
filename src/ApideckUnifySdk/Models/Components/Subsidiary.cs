@@ -48,6 +48,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("status")]
         public SubsidiaryStatus? Status { get; set; }
 
+        [JsonProperty("address")]
+        public Address? Address { get; set; }
+
         /// <summary>
         /// List of currencies supported by this subsidiary
         /// </summary>
