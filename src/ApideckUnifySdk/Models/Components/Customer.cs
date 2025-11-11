@@ -127,6 +127,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? TaxNumber { get; set; } = null;
 
         /// <summary>
+        /// Whether the entity is subject to taxation
+        /// </summary>
+        [JsonProperty("taxable")]
+        public bool? Taxable { get; set; } = null;
+
+        /// <summary>
         /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
         /// </summary>
         [JsonProperty("currency")]
