@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: a127b1f3e4fd52b93118790c2603c291
-  docVersion: 10.21.14
+  docChecksum: db29eaf7f3b64d56236d11d01eac1adc
+  docVersion: 10.21.15
   speakeasyVersion: 1.653.0
   generationVersion: 2.748.0
-  releaseVersion: 0.19.4
-  configChecksum: d506ced34bb2dd01333fb1f6d3ac182d
+  releaseVersion: 0.19.5
+  configChecksum: 7efb18c2cfc6e57c2484bf8a9fb5679b
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -18687,4 +18687,3 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Apideck.Accounting.Customers.List()`:  `response.data.[].Taxable` **Added**\n* `Apideck.Accounting.Customers.Create()`: \n  *  `request.Customer.Taxable` **Added**\n* `Apideck.Accounting.Customers.Get()`:  `response.data.Taxable` **Added**\n* `Apideck.Accounting.Customers.Update()`: \n  *  `request.Customer.Taxable` **Added**\n* `Apideck.Accounting.Suppliers.List()`:  `response.data.[].Taxable` **Added**\n* `Apideck.Accounting.Suppliers.Create()`: \n  *  `request.Supplier.Taxable` **Added**\n* `Apideck.Accounting.Suppliers.Get()`:  `response.data.Taxable` **Added**\n* `Apideck.Accounting.Suppliers.Update()`: \n  *  `request.Supplier.Taxable` **Added**\n"
