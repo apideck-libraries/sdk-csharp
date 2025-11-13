@@ -198,17 +198,17 @@ HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },
@@ -468,7 +468,7 @@ HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },

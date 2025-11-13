@@ -18,8 +18,12 @@ namespace ApideckUnifySdk.Models.Components
     /// </summary>
     public enum Health
     {
+        [JsonProperty("revoked")]
+        Revoked,
         [JsonProperty("missing_settings")]
         MissingSettings,
+        [JsonProperty("needs_consent")]
+        NeedsConsent,
         [JsonProperty("needs_auth")]
         NeedsAuth,
         [JsonProperty("pending_refresh")]
