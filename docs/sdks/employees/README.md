@@ -370,7 +370,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },
@@ -800,7 +800,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },

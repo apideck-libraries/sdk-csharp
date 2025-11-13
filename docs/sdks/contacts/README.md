@@ -250,7 +250,7 @@ CrmContactsAddRequest req = new CrmContactsAddRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },
@@ -546,17 +546,17 @@ CrmContactsUpdateRequest req = new CrmContactsUpdateRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },

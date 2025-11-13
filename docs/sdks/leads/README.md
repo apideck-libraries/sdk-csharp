@@ -240,12 +240,12 @@ CrmLeadsAddRequest req = new CrmLeadsAddRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },
@@ -600,7 +600,7 @@ CrmLeadsUpdateRequest req = new CrmLeadsUpdateRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },

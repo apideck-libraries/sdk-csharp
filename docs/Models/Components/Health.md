@@ -7,7 +7,9 @@ Operational health status of the connection
 
 | Name              | Value             |
 | ----------------- | ----------------- |
+| `Revoked`         | revoked           |
 | `MissingSettings` | missing_settings  |
+| `NeedsConsent`    | needs_consent     |
 | `NeedsAuth`       | needs_auth        |
 | `PendingRefresh`  | pending_refresh   |
 | `Ok`              | ok                |

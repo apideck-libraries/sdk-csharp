@@ -158,7 +158,7 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },
@@ -432,7 +432,7 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
         Emails = new List<Email>() {
             new Email() {
                 Id = "123",
-                Email = "elon@musk.com",
+                EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
         },
