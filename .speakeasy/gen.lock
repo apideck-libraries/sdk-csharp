@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: ecd482039e1c45a66d454e3ee702eac5
+  docChecksum: caad6e276b21c15b5bbc5d1deb7468e0
   docVersion: 10.21.15
-  speakeasyVersion: 1.656.1
-  generationVersion: 2.753.1
-  releaseVersion: 0.19.6
-  configChecksum: 3e4458b0a9677448694b50ea1625d05e
+  speakeasyVersion: 1.657.0
+  generationVersion: 2.755.0
+  releaseVersion: 0.19.7
+  configChecksum: 696116552656a450b519bbd71029616f
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
