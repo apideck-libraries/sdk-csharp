@@ -23,7 +23,7 @@ namespace ApideckUnifySdk
     /// <summary>
     /// Apideck: The Apideck OpenAPI Spec: SDK Optimized
     /// 
-    /// <see>https://developers.apideck.com} - Apideck Developer Docs</see>
+    /// <see href="https://developers.apideck.com">Apideck Developer Docs</see>
     /// </summary>
     public interface IApideck
     {
@@ -44,15 +44,15 @@ namespace ApideckUnifySdk
     /// <summary>
     /// Apideck: The Apideck OpenAPI Spec: SDK Optimized
     /// 
-    /// <see>https://developers.apideck.com} - Apideck Developer Docs</see>
+    /// <see href="https://developers.apideck.com">Apideck Developer Docs</see>
     /// </summary>
     public class Apideck: IApideck
     {
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.19.6";
-        private const string _sdkGenVersion = "2.753.1";
+        private const string _sdkVersion = "0.19.7";
+        private const string _sdkGenVersion = "2.755.0";
         private const string _openapiDocVersion = "10.21.15";
         public IAccounting Accounting { get; private set; }
         public IAts Ats { get; private set; }
