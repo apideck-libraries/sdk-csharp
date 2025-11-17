@@ -28,6 +28,8 @@ namespace ApideckUnifySdk.Models.Components
         PartiallyPaid,
         [JsonProperty("paid")]
         Paid,
+        [JsonProperty("unpaid")]
+        Unpaid,
         [JsonProperty("void")]
         Void,
         [JsonProperty("credit")]
