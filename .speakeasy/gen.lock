@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 32980ab2e16f23834a021f4a0220f18a
-  docVersion: 10.21.17
-  speakeasyVersion: 1.660.0
-  generationVersion: 2.760.2
-  releaseVersion: 0.19.11
-  configChecksum: b3001eea10bb91623cf5e226a3512f7a
+  docChecksum: fbc79de1908ef8470cee0e8ac97f3d4b
+  docVersion: 10.21.18
+  speakeasyVersion: 1.661.3
+  generationVersion: 2.763.3
+  releaseVersion: 0.19.12
+  configChecksum: 140855f2cb2b0bea2bb4c76a8569bafb
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -14,7 +14,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.0.1
-    core: 3.15.4
+    core: 3.15.5
     deprecations: 2.81.2
     errors: 1.0.0
     flattening: 2.81.3
@@ -3219,6 +3219,7 @@ generatedFiles:
   - src/ApideckUnifySdk/Users.cs
   - src/ApideckUnifySdk/Utils/AnyDeserializer.cs
   - src/ApideckUnifySdk/Utils/BigIntStrConverter.cs
+  - src/ApideckUnifySdk/Utils/Constants.cs
   - src/ApideckUnifySdk/Utils/DecimalStrConverter.cs
   - src/ApideckUnifySdk/Utils/EnumConverter.cs
   - src/ApideckUnifySdk/Utils/FlexibleObjectDeserializer.cs
@@ -3330,7 +3331,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}
+        application/json: {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "country": "US", "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}
       responses:
         "201":
           application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "tax-rates", "operation": "add", "data": {"id": "12345"}}
@@ -3386,7 +3387,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "tax-rates", "operation": "one", "data": {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}}
+          application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "tax-rates", "operation": "one", "data": {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "country": "US", "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":
@@ -3438,7 +3439,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}
+        application/json: {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "country": "US", "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}
       responses:
         "200":
           application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "tax-rates", "operation": "update", "data": {"id": "12345"}}
@@ -5679,7 +5680,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "company-info", "operation": "one", "data": {"id": "12345", "company_name": "SpaceX", "status": "active", "legal_name": "SpaceX Inc.", "country": "US", "sales_tax_number": "111.222.333", "default_sales_tax": {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}, "currency": "USD", "language": "EN", "fiscal_year_start_month": "January", "company_start_date": "2015-06-05", "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "tracking_categories_mode": "disabled", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}}
+          application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "company-info", "operation": "one", "data": {"id": "12345", "company_name": "SpaceX", "status": "active", "legal_name": "SpaceX Inc.", "country": "US", "sales_tax_number": "111.222.333", "default_sales_tax": {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "country": "US", "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}, "currency": "USD", "language": "EN", "fiscal_year_start_month": "January", "company_start_date": "2015-06-05", "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "tracking_categories_mode": "disabled", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror"}
         "401":
@@ -18687,3 +18688,4 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Apideck.Accounting.TaxRates.List()`:  `response.data.[].Country` **Added**\n* `Apideck.Accounting.TaxRates.Create()`: \n  *  `request.TaxRate.Country` **Added**\n* `Apideck.Accounting.TaxRates.Get()`:  `response.data.Country` **Added**\n* `Apideck.Accounting.TaxRates.Update()`: \n  *  `request.TaxRate.Country` **Added**\n* `Apideck.Accounting.CompanyInfo.Get()`:  `response.data.DefaultSalesTax.Country` **Added**\n"
