@@ -54,6 +54,12 @@ namespace ApideckUnifySdk.Models.Components
         public double? EffectiveTaxRate { get; set; } = null;
 
         /// <summary>
+        /// Country code according to ISO 3166-1 alpha-2.
+        /// </summary>
+        [JsonProperty("country")]
+        public string? Country { get; set; } = null;
+
+        /// <summary>
         /// Not compounded sum of the components of a tax rate
         /// </summary>
         [JsonProperty("total_tax_rate")]
