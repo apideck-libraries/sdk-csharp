@@ -25,6 +25,12 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
+        /// The third-party API ID of original entity
+        /// </summary>
+        [JsonProperty("downstream_id")]
+        public string? DownstreamId { get; set; } = null;
+
+        /// <summary>
         /// Display ID for the bank account
         /// </summary>
         [JsonProperty("display_id")]

@@ -14,34 +14,26 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// Status of credit notes
+    /// The accounting method used for the report: cash or accrual.
     /// </summary>
-    public enum CreditNoteStatus
+    public enum ProfitAndLossFilterAccountingMethod
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("authorised")]
-        Authorised,
-        [JsonProperty("partially_paid")]
-        PartiallyPaid,
-        [JsonProperty("paid")]
-        Paid,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("deleted")]
-        Deleted,
+        [JsonProperty("cash")]
+        Cash,
+        [JsonProperty("accrual")]
+        Accrual,
     }
 
-    public static class CreditNoteStatusExtension
+    public static class ProfitAndLossFilterAccountingMethodExtension
     {
-        public static string Value(this CreditNoteStatus value)
+        public static string Value(this ProfitAndLossFilterAccountingMethod value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static CreditNoteStatus ToEnum(this string value)
+        public static ProfitAndLossFilterAccountingMethod ToEnum(this string value)
         {
-            foreach(var field in typeof(CreditNoteStatus).GetFields())
+            foreach(var field in typeof(ProfitAndLossFilterAccountingMethod).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -54,14 +46,14 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is CreditNoteStatus)
+                    if (enumVal is ProfitAndLossFilterAccountingMethod)
                     {
-                        return (CreditNoteStatus)enumVal;
+                        return (ProfitAndLossFilterAccountingMethod)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum CreditNoteStatus");
+            throw new Exception($"Unknown value {value} for enum ProfitAndLossFilterAccountingMethod");
         }
     }
 

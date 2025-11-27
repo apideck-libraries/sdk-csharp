@@ -14,34 +14,36 @@ namespace ApideckUnifySdk.Models.Components
     using System;
     
     /// <summary>
-    /// Status of credit notes
+    /// Filter by account type
     /// </summary>
-    public enum CreditNoteStatus
+    public enum BankAccountsFilterAccountType
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("authorised")]
-        Authorised,
-        [JsonProperty("partially_paid")]
-        PartiallyPaid,
-        [JsonProperty("paid")]
-        Paid,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("deleted")]
-        Deleted,
+        [JsonProperty("checking")]
+        Checking,
+        [JsonProperty("savings")]
+        Savings,
+        [JsonProperty("credit_card")]
+        CreditCard,
+        [JsonProperty("money_market")]
+        MoneyMarket,
+        [JsonProperty("line_of_credit")]
+        LineOfCredit,
+        [JsonProperty("other")]
+        Other,
+        [JsonProperty("cash")]
+        Cash,
     }
 
-    public static class CreditNoteStatusExtension
+    public static class BankAccountsFilterAccountTypeExtension
     {
-        public static string Value(this CreditNoteStatus value)
+        public static string Value(this BankAccountsFilterAccountType value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static CreditNoteStatus ToEnum(this string value)
+        public static BankAccountsFilterAccountType ToEnum(this string value)
         {
-            foreach(var field in typeof(CreditNoteStatus).GetFields())
+            foreach(var field in typeof(BankAccountsFilterAccountType).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -54,14 +56,14 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is CreditNoteStatus)
+                    if (enumVal is BankAccountsFilterAccountType)
                     {
-                        return (CreditNoteStatus)enumVal;
+                        return (BankAccountsFilterAccountType)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum CreditNoteStatus");
+            throw new Exception($"Unknown value {value} for enum BankAccountsFilterAccountType");
         }
     }
 

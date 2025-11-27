@@ -22,6 +22,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
+        /// Filter by account type
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=account_type")]
+        public BankAccountsFilterAccountType? AccountType { get; set; }
+
+        /// <summary>
         /// Filter by account status
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=status")]
