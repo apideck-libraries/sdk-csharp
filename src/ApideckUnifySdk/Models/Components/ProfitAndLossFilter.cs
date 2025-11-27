@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     
     public class ProfitAndLossFilter
@@ -37,5 +38,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=location_id")]
         public string? LocationId { get; set; }
+
+        /// <summary>
+        /// The accounting method used for the report: cash or accrual.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=accounting_method")]
+        public ProfitAndLossFilterAccountingMethod? AccountingMethod { get; set; }
     }
 }

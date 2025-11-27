@@ -34,6 +34,7 @@ AccountingBankAccountsAllRequest req = new AccountingBankAccountsAllRequest() {
     ServiceId = "salesforce",
     Filter = new BankAccountsFilter() {
         Name = "Main Operating",
+        AccountType = BankAccountsFilterAccountType.Checking,
         Status = BankAccountsFilterStatus.Active,
     },
     Sort = new BankAccountsSort() {},

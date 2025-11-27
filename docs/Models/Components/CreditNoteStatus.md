@@ -5,10 +5,11 @@ Status of credit notes
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `Draft`      | draft        |
-| `Authorised` | authorised   |
-| `Paid`       | paid         |
-| `Voided`     | voided       |
-| `Deleted`    | deleted      |
+| Name            | Value           |
+| --------------- | --------------- |
+| `Draft`         | draft           |
+| `Authorised`    | authorised      |
+| `PartiallyPaid` | partially_paid  |
+| `Paid`          | paid            |
+| `Voided`        | voided          |
+| `Deleted`       | deleted         |
