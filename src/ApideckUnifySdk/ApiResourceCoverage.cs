@@ -60,7 +60,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/connector/apis/{id}/resources/{resource_id}/coverage", request);
+            var urlString = URLBuilder.Build(baseUrl, "/connector/apis/{id}/resources/{resource_id}/coverage", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

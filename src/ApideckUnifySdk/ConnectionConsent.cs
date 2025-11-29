@@ -59,7 +59,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/vault/connections/{unified_api}/{service_id}/consent", request);
+            var urlString = URLBuilder.Build(baseUrl, "/vault/connections/{unified_api}/{service_id}/consent", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

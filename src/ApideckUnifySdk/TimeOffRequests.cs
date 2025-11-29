@@ -93,7 +93,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests", request);
+            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -391,7 +391,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests", request);
+            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -659,7 +659,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -921,7 +921,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1189,7 +1189,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/hris/time-off-requests/employees/{employee_id}/time-off-requests/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

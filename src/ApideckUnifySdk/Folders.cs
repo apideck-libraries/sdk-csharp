@@ -95,7 +95,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders", request);
+            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -363,7 +363,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -625,7 +625,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -893,7 +893,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1155,7 +1155,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders/{id}/copy", request);
+            var urlString = URLBuilder.Build(baseUrl, "/file-storage/folders/{id}/copy", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

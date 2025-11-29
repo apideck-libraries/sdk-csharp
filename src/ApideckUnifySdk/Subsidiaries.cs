@@ -93,7 +93,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries", request);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -389,7 +389,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries", request);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -657,7 +657,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -919,7 +919,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1187,7 +1187,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries/{id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/subsidiaries/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
