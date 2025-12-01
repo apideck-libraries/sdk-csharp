@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 5a64228df36ed373024a7e607d7107cf
-  docVersion: 10.21.19
-  speakeasyVersion: 1.662.0
-  generationVersion: 2.763.3
-  releaseVersion: 0.19.13
-  configChecksum: a28a16ce8f6757e8153e6835c1c0a880
+  docChecksum: 82d2a94bf2e121e55493fcc2bc072337
+  docVersion: 10.22.0
+  speakeasyVersion: 1.665.0
+  generationVersion: 2.767.2
+  releaseVersion: 0.20.0
+  configChecksum: e62e590b66a727e60272bc999852875d
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   published: true
 features:
@@ -14,7 +14,7 @@ features:
     additionalDependencies: 0.1.0
     additionalProperties: 0.0.1
     constsAndDefaults: 0.0.1
-    core: 3.15.5
+    core: 3.15.7
     deprecations: 2.81.2
     errors: 1.0.0
     flattening: 2.81.3
@@ -33,7 +33,7 @@ features:
     pagination: 0.2.9
     responseFormat: 0.0.4
     retries: 0.0.1
-    sdkHooks: 0.2.0
+    sdkHooks: 0.3.0
     typeOverrides: 2.81.1
     unions: 1.1.0
 generatedFiles:
@@ -18694,4 +18694,3 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Apideck.Accounting.BalanceSheet.Get()`: \n  *  `request.Filter` **Changed**\n* `Apideck.Accounting.ProfitAndLoss.Get()`: \n  *  `request.Filter` **Changed**\n* `Apideck.Accounting.BankAccounts.List()`: \n  *  `request.Filter` **Changed**\n  *  `response.data.[].DownstreamId` **Added**\n* `Apideck.Accounting.BankAccounts.Get()`:  `response.data.DownstreamId` **Added**\n"

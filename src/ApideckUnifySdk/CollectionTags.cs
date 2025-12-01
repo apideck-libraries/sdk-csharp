@@ -61,7 +61,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/issue-tracking/collections/{collection_id}/tags", request);
+            var urlString = URLBuilder.Build(baseUrl, "/issue-tracking/collections/{collection_id}/tags", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
