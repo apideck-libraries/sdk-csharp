@@ -1,5 +1,4 @@
-# Contacts
-(*Crm.Contacts*)
+# Crm.Contacts
 
 ## Overview
 

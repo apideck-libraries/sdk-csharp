@@ -1,5 +1,4 @@
-# Suppliers
-(*Accounting.Suppliers*)
+# Accounting.Suppliers
 
 ## Overview
 

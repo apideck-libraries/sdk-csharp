@@ -1,5 +1,4 @@
-# Files
-(*FileStorage.Files*)
+# FileStorage.Files
 
 ## Overview
 

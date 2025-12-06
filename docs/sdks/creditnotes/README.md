@@ -1,5 +1,4 @@
-# CreditNotes
-(*Accounting.CreditNotes*)
+# Accounting.CreditNotes
 
 ## Overview
 

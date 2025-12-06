@@ -1,5 +1,4 @@
-# BankAccounts
-(*Accounting.BankAccounts*)
+# Accounting.BankAccounts
 
 ## Overview
 

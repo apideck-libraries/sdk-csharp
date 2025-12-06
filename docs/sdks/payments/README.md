@@ -1,5 +1,4 @@
-# Payments
-(*Accounting.Payments*)
+# Accounting.Payments
 
 ## Overview
 

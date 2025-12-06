@@ -1,5 +1,4 @@
-# Users
-(*Crm.Users*)
+# Crm.Users
 
 ## Overview
 

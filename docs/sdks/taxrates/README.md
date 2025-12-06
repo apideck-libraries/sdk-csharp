@@ -1,5 +1,4 @@
-# TaxRates
-(*Accounting.TaxRates*)
+# Accounting.TaxRates
 
 ## Overview
 

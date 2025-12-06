@@ -1,5 +1,4 @@
-# LedgerAccounts
-(*Accounting.LedgerAccounts*)
+# Accounting.LedgerAccounts
 
 ## Overview
 
