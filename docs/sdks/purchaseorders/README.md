@@ -1,5 +1,4 @@
-# PurchaseOrders
-(*Accounting.PurchaseOrders*)
+# Accounting.PurchaseOrders
 
 ## Overview
 

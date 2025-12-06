@@ -1,5 +1,4 @@
-# Activities
-(*Crm.Activities*)
+# Crm.Activities
 
 ## Overview
 

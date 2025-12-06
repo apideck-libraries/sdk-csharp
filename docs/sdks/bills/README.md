@@ -1,5 +1,4 @@
-# Bills
-(*Accounting.Bills*)
+# Accounting.Bills
 
 ## Overview
 

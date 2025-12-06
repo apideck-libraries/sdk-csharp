@@ -1,5 +1,4 @@
-# Invoices
-(*Accounting.Invoices*)
+# Accounting.Invoices
 
 ## Overview
 

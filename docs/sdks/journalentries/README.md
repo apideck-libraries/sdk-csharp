@@ -1,5 +1,4 @@
-# JournalEntries
-(*Accounting.JournalEntries*)
+# Accounting.JournalEntries
 
 ## Overview
 

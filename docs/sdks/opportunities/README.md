@@ -1,5 +1,4 @@
-# Opportunities
-(*Crm.Opportunities*)
+# Crm.Opportunities
 
 ## Overview
 
