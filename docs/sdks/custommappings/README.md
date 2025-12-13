@@ -1,5 +1,4 @@
-# CustomMappings
-(*Vault.CustomMappings*)
+# Vault.CustomMappings
 
 ## Overview
 

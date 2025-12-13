@@ -1,5 +1,4 @@
-# Folders
-(*FileStorage.Folders*)
+# FileStorage.Folders
 
 ## Overview
 
