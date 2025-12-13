@@ -1,5 +1,4 @@
-# Applications
-(*Ats.Applications*)
+# Ats.Applications
 
 ## Overview
 

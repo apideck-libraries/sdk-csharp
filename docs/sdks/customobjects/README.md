@@ -1,5 +1,4 @@
-# CustomObjects
-(*Crm.CustomObjects*)
+# Crm.CustomObjects
 
 ## Overview
 

@@ -1,5 +1,4 @@
-# Payrolls
-(*Hris.Payrolls*)
+# Hris.Payrolls
 
 ## Overview
 
