@@ -1,5 +1,4 @@
-# EmployeePayrolls
-(*Hris.EmployeePayrolls*)
+# Hris.EmployeePayrolls
 
 ## Overview
 

@@ -1,5 +1,4 @@
-# JournalEntries
-(*Accounting.JournalEntries*)
+# Accounting.JournalEntries
 
 ## Overview
 
@@ -185,14 +184,16 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
         AccountingPeriod = "01-24",
         RowVersion = "1-12345",
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -480,14 +481,16 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
         AccountingPeriod = "01-24",
         RowVersion = "1-12345",
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {

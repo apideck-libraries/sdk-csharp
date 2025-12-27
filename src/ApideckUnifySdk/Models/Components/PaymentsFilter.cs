@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using System;
     
@@ -23,5 +24,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=supplier_id")]
         public string? SupplierId { get; set; }
+
+        [SpeakeasyMetadata("queryParam:name=type")]
+        public PaymentsFilterType? Type { get; set; }
     }
 }

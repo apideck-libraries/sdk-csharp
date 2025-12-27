@@ -12,29 +12,181 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using Newtonsoft.Json.Linq;
+    using System;
+    using System.Collections.Generic;
+    using System.Numerics;
+    using System.Reflection;
+
+    public class CustomFieldType
+    {
+        private CustomFieldType(string value) { Value = value; }
+
+        public string Value { get; private set; }
+
+        public static CustomFieldType CustomField1 { get { return new CustomFieldType("CustomField_1"); } }
+
+        public static CustomFieldType CustomField2 { get { return new CustomFieldType("CustomField_2"); } }
+
+        public override string ToString() { return Value; }
+        public static implicit operator String(CustomFieldType v) { return v.Value; }
+        public static CustomFieldType FromString(string v) {
+            switch(v) {
+                case "CustomField_1": return CustomField1;
+                case "CustomField_2": return CustomField2;
+                default: throw new ArgumentException("Invalid value for CustomFieldType");
+            }
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+            return Value.Equals(((CustomFieldType)obj).Value);
+        }
+
+        public override int GetHashCode()
+        {
+            return Value.GetHashCode();
+        }
+    }
+
+
+    [JsonConverter(typeof(CustomField.CustomFieldConverter))]
     public class CustomField
     {
+        public CustomField(CustomFieldType type)
+        {
+            Type = type;
+        }
 
-        /// <summary>
-        /// Unique identifier for the custom field.
-        /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Include)]
-        public string? Id { get; set; }
+        [SpeakeasyMetadata("form:explode=true")]
+        public CustomField1? CustomField1 { get; set; }
 
-        /// <summary>
-        /// Name of the custom field.
-        /// </summary>
-        [JsonProperty("name")]
-        public string? Name { get; set; } = null;
+        [SpeakeasyMetadata("form:explode=true")]
+        public CustomField2? CustomField2 { get; set; }
 
-        /// <summary>
-        /// More information about the custom field
-        /// </summary>
-        [JsonProperty("description")]
-        public string? Description { get; set; } = null;
+        public CustomFieldType Type { get; set; }
+        public static CustomField CreateCustomField1(CustomField1 customField1)
+        {
+            CustomFieldType typ = CustomFieldType.CustomField1;
 
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public Value? Value { get; set; } = null;
+            CustomField res = new CustomField(typ);
+            res.CustomField1 = customField1;
+            return res;
+        }
+        public static CustomField CreateCustomField2(CustomField2 customField2)
+        {
+            CustomFieldType typ = CustomFieldType.CustomField2;
+
+            CustomField res = new CustomField(typ);
+            res.CustomField2 = customField2;
+            return res;
+        }
+
+        public class CustomFieldConverter : JsonConverter
+        {
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(CustomField);
+
+            public override bool CanRead => true;
+
+            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
+            {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    throw new InvalidOperationException("Received unexpected null JSON value");
+                }
+
+                var json = JRaw.Create(reader).ToString();
+                var fallbackCandidates = new List<(System.Type, object, string)>();
+
+                try
+                {
+                    return new CustomField(CustomFieldType.CustomField1)
+                    {
+                        CustomField1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CustomField1>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(CustomField1), new CustomField(CustomFieldType.CustomField1), "CustomField1"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new CustomField(CustomFieldType.CustomField2)
+                    {
+                        CustomField2 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CustomField2>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(CustomField2), new CustomField(CustomFieldType.CustomField2), "CustomField2"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                if (fallbackCandidates.Count > 0)
+                {
+                    fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
+                    foreach(var (deserializationType, returnObject, propertyName) in fallbackCandidates)
+                    {
+                        try
+                        {
+                            return ResponseBodyDeserializer.DeserializeUndiscriminatedUnionFallback(deserializationType, returnObject, propertyName, json);
+                        }
+                        catch (ResponseBodyDeserializer.DeserializationException)
+                        {
+                            // try next fallback option
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+                }
+
+                throw new InvalidOperationException("Could not deserialize into any supported types.");
+            }
+
+            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
+            {
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
+                }
+
+                CustomField res = (CustomField)value;
+
+                if (res.CustomField1 != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CustomField1));
+                    return;
+                }
+
+                if (res.CustomField2 != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.CustomField2));
+                    return;
+                }
+            }
+
+        }
+
     }
 }

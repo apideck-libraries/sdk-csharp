@@ -1,5 +1,4 @@
-# Departments
-(*Accounting.Departments*)
+# Accounting.Departments
 
 ## Overview
 

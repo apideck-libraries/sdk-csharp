@@ -43,6 +43,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
+        /// The third-party API ID of original entity
+        /// </summary>
+        [JsonProperty("downstream_id")]
+        public string? DownstreamId { get; set; } = null;
+
+        /// <summary>
         /// Based on the status some functionality is enabled or disabled.
         /// </summary>
         [JsonProperty("status")]

@@ -1,5 +1,4 @@
-# DriveGroups
-(*FileStorage.DriveGroups*)
+# FileStorage.DriveGroups
 
 ## Overview
 
