@@ -31,6 +31,18 @@ namespace ApideckUnifySdk.Models.Components
         public string? ParentId { get; set; } = null;
 
         /// <summary>
+        /// Id to be displayed.
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
+        /// The third-party API ID of original entity
+        /// </summary>
+        [JsonProperty("downstream_id")]
+        public string? DownstreamId { get; set; } = null;
+
+        /// <summary>
         /// The name of the company.
         /// </summary>
         [JsonProperty("company_name")]

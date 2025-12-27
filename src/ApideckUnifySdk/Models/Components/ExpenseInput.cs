@@ -19,6 +19,12 @@ namespace ApideckUnifySdk.Models.Components
     {
 
         /// <summary>
+        /// Id to be displayed.
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// Number.
         /// </summary>
         [JsonProperty("number")]
@@ -37,17 +43,14 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("account_id")]
         public string? AccountId { get; set; }
 
+        /// <summary>
+        /// A flexible account reference that can represent either a ledger account (GL account) or a bank account, depending on the connector&apos;s requirements.
+        /// </summary>
         [JsonProperty("account")]
-        public LinkedLedgerAccount? Account { get; set; } = null;
+        public LinkedFinancialAccountInput? Account { get; set; } = null;
 
         [JsonProperty("bank_account")]
         public LinkedBankAccount? BankAccount { get; set; } = null;
-
-        /// <summary>
-        /// The ID of the customer this entity is linked to. Used for expenses that should be marked as billable to customers.
-        /// </summary>
-        [JsonProperty("customer_id")]
-        public string? CustomerId { get; set; }
 
         /// <summary>
         /// The ID of the supplier this entity is linked to. Deprecated, use supplier instead.
@@ -73,6 +76,9 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
+
+        [JsonProperty("department")]
+        public LinkedDepartmentInput? Department { get; set; } = null;
 
         /// <summary>
         /// The type of payment for the expense.

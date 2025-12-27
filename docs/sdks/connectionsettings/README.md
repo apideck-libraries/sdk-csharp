@@ -1,5 +1,4 @@
-# ConnectionSettings
-(*Vault.ConnectionSettings*)
+# Vault.ConnectionSettings
 
 ## Overview
 

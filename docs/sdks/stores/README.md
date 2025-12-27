@@ -1,5 +1,4 @@
-# Stores
-(*Ecommerce.Stores*)
+# Ecommerce.Stores
 
 ## Overview
 
