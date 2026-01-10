@@ -9,6 +9,7 @@ Status of credit notes
 | --------------- | --------------- |
 | `Draft`         | draft           |
 | `Authorised`    | authorised      |
+| `Posted`        | posted          |
 | `PartiallyPaid` | partially_paid  |
 | `Paid`          | paid            |
 | `Voided`        | voided          |

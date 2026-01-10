@@ -1,5 +1,4 @@
-# ConnectorDocs
-(*Connector.ConnectorDocs*)
+# Connector.ConnectorDocs
 
 ## Overview
 

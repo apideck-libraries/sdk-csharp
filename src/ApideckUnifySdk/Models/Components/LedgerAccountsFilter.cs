@@ -16,6 +16,12 @@ namespace ApideckUnifySdk.Models.Components
     public class LedgerAccountsFilter
     {
 
+        /// <summary>
+        /// Filter by ledger account name
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=name")]
+        public string? Name { get; set; }
+
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
 

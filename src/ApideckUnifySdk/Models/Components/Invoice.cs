@@ -62,6 +62,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
+        /// The ID of the location
+        /// </summary>
+        [JsonProperty("location_id")]
+        public string? LocationId { get; set; } = null;
+
+        /// <summary>
         /// The ID of the department
         /// </summary>
         [JsonProperty("department_id")]
