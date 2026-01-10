@@ -1,5 +1,4 @@
-# TimeOffRequests
-(*Hris.TimeOffRequests*)
+# Hris.TimeOffRequests
 
 ## Overview
 

@@ -1,5 +1,4 @@
-# Expenses
-(*Accounting.Expenses*)
+# Accounting.Expenses
 
 ## Overview
 
@@ -96,7 +95,6 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
         Number = "OIT00546",
         TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
         AccountId = "123456",
-        CustomerId = "12345",
         SupplierId = "12345",
         CompanyId = "12345",
         DepartmentId = "12345",
@@ -130,42 +128,46 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
                 CustomerId = "12345",
                 DepartmentId = "12345",
                 LocationId = "12345",
-                SubsidiaryId = "12345",
                 TaxRate = new LinkedTaxRateInput() {
                     Id = "123456",
                     Rate = 10D,
                 },
                 Description = "Travel US.",
                 TotalAmount = 275D,
-                Billable = true,
                 LineNumber = 1,
             },
         },
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -333,7 +335,6 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
         Number = "OIT00546",
         TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
         AccountId = "123456",
-        CustomerId = "12345",
         SupplierId = "12345",
         CompanyId = "12345",
         DepartmentId = "12345",
@@ -367,26 +368,26 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
                 CustomerId = "12345",
                 DepartmentId = "12345",
                 LocationId = "12345",
-                SubsidiaryId = "12345",
                 TaxRate = new LinkedTaxRateInput() {
                     Id = "123456",
                     Rate = 10D,
                 },
                 Description = "Travel US.",
                 TotalAmount = 275D,
-                Billable = true,
                 LineNumber = 1,
             },
         },
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {

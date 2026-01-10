@@ -27,8 +27,8 @@ ConnectionValue.CreateNumber(/* values here */);
 ConnectionValue.CreateBoolean(/* values here */);
 ```
 
-### ArrayOfConnectionValue5
+### ArrayOfValue5
 
 ```csharp
-ConnectionValue.CreateArrayOfConnectionValue5(/* values here */);
+ConnectionValue.CreateArrayOfValue5(/* values here */);
 ```

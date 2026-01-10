@@ -1,5 +1,4 @@
-# CollectionUsers
-(*IssueTracking.CollectionUsers*)
+# IssueTracking.CollectionUsers
 
 ## Overview
 

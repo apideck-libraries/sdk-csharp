@@ -1,5 +1,4 @@
-# Orders
-(*Ecommerce.Orders*)
+# Ecommerce.Orders
 
 ## Overview
 

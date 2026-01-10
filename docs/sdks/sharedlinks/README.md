@@ -1,5 +1,4 @@
-# SharedLinks
-(*FileStorage.SharedLinks*)
+# FileStorage.SharedLinks
 
 ## Overview
 

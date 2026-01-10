@@ -1,5 +1,4 @@
-# Connections
-(*Vault.Connections*)
+# Vault.Connections
 
 ## Overview
 
@@ -138,8 +137,8 @@ VaultConnectionsUpdateRequest req = new VaultConnectionsUpdateRequest() {
     Connection = new ConnectionInput() {
         Enabled = true,
         Settings = new Dictionary<string, object>() {
-            { "api_key", "12345xxxxxx" },
             { "instance_url", "https://eu28.salesforce.com" },
+            { "api_key", "12345xxxxxx" },
         },
         Metadata = new Dictionary<string, object>() {
             { "account", new Dictionary<string, object>() {
