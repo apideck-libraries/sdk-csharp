@@ -51,6 +51,10 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingAgedCreditorsOneResponse> GetAsync(AccountingAgedCreditorsOneRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AccountingAgedCreditorsOneRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

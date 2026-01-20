@@ -138,6 +138,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? SubsidiaryId { get; set; } = null;
 
         /// <summary>
+        /// ID of the category of the item
+        /// </summary>
+        [JsonProperty("category_id")]
+        public string? CategoryId { get; set; } = null;
+
+        /// <summary>
         /// The ID of the tax schedule
         /// </summary>
         [JsonProperty("tax_schedule_id")]

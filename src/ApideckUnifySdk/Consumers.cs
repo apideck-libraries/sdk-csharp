@@ -91,6 +91,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConsumersAddResponse> CreateAsync(CreateConsumerRequest createConsumerRequest, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (createConsumerRequest == null) throw new ArgumentNullException(nameof(createConsumerRequest));
+
             var request = new VaultConsumersAddRequest()
             {
                 CreateConsumerRequest = createConsumerRequest,
@@ -648,6 +650,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConsumersOneResponse> GetAsync(string consumerId, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (consumerId == null) throw new ArgumentNullException(nameof(consumerId));
+
             var request = new VaultConsumersOneRequest()
             {
                 ConsumerId = consumerId,
@@ -910,6 +914,9 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConsumersUpdateResponse> UpdateAsync(string consumerId, UpdateConsumerRequest updateConsumerRequest, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (consumerId == null) throw new ArgumentNullException(nameof(consumerId));
+            if (updateConsumerRequest == null) throw new ArgumentNullException(nameof(updateConsumerRequest));
+
             var request = new VaultConsumersUpdateRequest()
             {
                 ConsumerId = consumerId,
@@ -1179,6 +1186,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConsumersDeleteResponse> DeleteAsync(string consumerId, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (consumerId == null) throw new ArgumentNullException(nameof(consumerId));
+
             var request = new VaultConsumersDeleteRequest()
             {
                 ConsumerId = consumerId,

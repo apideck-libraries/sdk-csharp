@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
         public string Label { get; set; } = default!;
 
         [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public SimpleFormFieldOptionValue? Value { get; set; }
+        public Value? Value { get; set; }
 
         [JsonProperty("option_type")]
         public OptionType OptionType { get; set; } = default!;

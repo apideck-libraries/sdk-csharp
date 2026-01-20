@@ -57,10 +57,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultValidateConnectionStateResponse> StateAsync(VaultValidateConnectionStateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new VaultValidateConnectionStateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

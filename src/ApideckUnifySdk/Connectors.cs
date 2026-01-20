@@ -312,6 +312,8 @@ namespace ApideckUnifySdk
 
         public async Task<ConnectorConnectorsOneResponse> GetAsync(string id, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+
             var request = new ConnectorConnectorsOneRequest()
             {
                 Id = id,

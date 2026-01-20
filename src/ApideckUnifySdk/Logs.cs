@@ -54,6 +54,10 @@ namespace ApideckUnifySdk
 
         public async Task<VaultLogsAllResponse> ListAsync(VaultLogsAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new VaultLogsAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

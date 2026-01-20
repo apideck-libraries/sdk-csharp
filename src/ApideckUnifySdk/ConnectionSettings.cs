@@ -61,10 +61,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionSettingsAllResponse> ListAsync(VaultConnectionSettingsAllRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new VaultConnectionSettingsAllRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -323,10 +321,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionSettingsUpdateResponse> UpdateAsync(VaultConnectionSettingsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new VaultConnectionSettingsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageDriveGroupsAllResponse> ListAsync(FileStorageDriveGroupsAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new FileStorageDriveGroupsAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -383,10 +387,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageDriveGroupsAddResponse> CreateAsync(FileStorageDriveGroupsAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageDriveGroupsAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -651,10 +653,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageDriveGroupsOneResponse> GetAsync(FileStorageDriveGroupsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageDriveGroupsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -913,10 +913,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageDriveGroupsUpdateResponse> UpdateAsync(FileStorageDriveGroupsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageDriveGroupsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1181,10 +1179,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageDriveGroupsDeleteResponse> DeleteAsync(FileStorageDriveGroupsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageDriveGroupsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

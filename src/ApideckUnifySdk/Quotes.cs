@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingQuotesAllResponse> ListAsync(AccountingQuotesAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AccountingQuotesAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -380,10 +384,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingQuotesAddResponse> CreateAsync(AccountingQuotesAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingQuotesAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -648,10 +650,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingQuotesOneResponse> GetAsync(AccountingQuotesOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingQuotesOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -910,10 +910,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingQuotesUpdateResponse> UpdateAsync(AccountingQuotesUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingQuotesUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1178,10 +1176,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingQuotesDeleteResponse> DeleteAsync(AccountingQuotesDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingQuotesDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

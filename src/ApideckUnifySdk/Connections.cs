@@ -371,6 +371,9 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionsOneResponse> GetAsync(string serviceId, string unifiedApi, string? consumerId = null, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (serviceId == null) throw new ArgumentNullException(nameof(serviceId));
+            if (unifiedApi == null) throw new ArgumentNullException(nameof(unifiedApi));
+
             var request = new VaultConnectionsOneRequest()
             {
                 ServiceId = serviceId,
@@ -636,10 +639,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionsUpdateResponse> UpdateAsync(VaultConnectionsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new VaultConnectionsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -904,6 +905,9 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionsDeleteResponse> DeleteAsync(string serviceId, string unifiedApi, string? consumerId = null, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (serviceId == null) throw new ArgumentNullException(nameof(serviceId));
+            if (unifiedApi == null) throw new ArgumentNullException(nameof(unifiedApi));
+
             var request = new VaultConnectionsDeleteRequest()
             {
                 ServiceId = serviceId,
@@ -1151,10 +1155,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionsImportResponse> ImportsAsync(VaultConnectionsImportRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new VaultConnectionsImportRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1419,10 +1421,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionsTokenResponse> TokenAsync(VaultConnectionsTokenRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new VaultConnectionsTokenRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

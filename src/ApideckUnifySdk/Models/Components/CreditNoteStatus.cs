@@ -22,6 +22,8 @@ namespace ApideckUnifySdk.Models.Components
         Draft,
         [JsonProperty("authorised")]
         Authorised,
+        [JsonProperty("posted")]
+        Posted,
         [JsonProperty("partially_paid")]
         PartiallyPaid,
         [JsonProperty("paid")]

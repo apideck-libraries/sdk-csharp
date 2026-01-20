@@ -1,5 +1,4 @@
-# CollectionTickets
-(*IssueTracking.CollectionTickets*)
+# IssueTracking.CollectionTickets
 
 ## Overview
 

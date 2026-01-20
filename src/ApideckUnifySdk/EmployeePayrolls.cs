@@ -60,10 +60,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisEmployeePayrollsAllResponse> ListAsync(HrisEmployeePayrollsAllRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisEmployeePayrollsAllRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -322,10 +320,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisEmployeePayrollsOneResponse> GetAsync(HrisEmployeePayrollsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisEmployeePayrollsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

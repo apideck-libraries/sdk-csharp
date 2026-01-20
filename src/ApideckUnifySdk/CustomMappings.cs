@@ -51,6 +51,9 @@ namespace ApideckUnifySdk
 
         public async Task<VaultCustomMappingsAllResponse> ListAsync(string unifiedApi, string serviceId, string? consumerId = null, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (unifiedApi == null) throw new ArgumentNullException(nameof(unifiedApi));
+            if (serviceId == null) throw new ArgumentNullException(nameof(serviceId));
+
             var request = new VaultCustomMappingsAllRequest()
             {
                 UnifiedApi = unifiedApi,

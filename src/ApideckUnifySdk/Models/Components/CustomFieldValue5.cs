@@ -9,7 +9,6 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
-    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -18,32 +17,32 @@ namespace ApideckUnifySdk.Models.Components
     using System.Numerics;
     using System.Reflection;
 
-    public class SimpleFormFieldOptionValueType
+    public class CustomFieldValue5Type
     {
-        private SimpleFormFieldOptionValueType(string value) { Value = value; }
+        private CustomFieldValue5Type(string value) { Value = value; }
 
         public string Value { get; private set; }
 
-        public static SimpleFormFieldOptionValueType Str { get { return new SimpleFormFieldOptionValueType("str"); } }
+        public static CustomFieldValue5Type Str { get { return new CustomFieldValue5Type("str"); } }
 
-        public static SimpleFormFieldOptionValueType Integer { get { return new SimpleFormFieldOptionValueType("integer"); } }
+        public static CustomFieldValue5Type Number { get { return new CustomFieldValue5Type("number"); } }
 
-        public static SimpleFormFieldOptionValueType Number { get { return new SimpleFormFieldOptionValueType("number"); } }
+        public static CustomFieldValue5Type Boolean { get { return new CustomFieldValue5Type("boolean"); } }
 
-        public static SimpleFormFieldOptionValueType Boolean { get { return new SimpleFormFieldOptionValueType("boolean"); } }
+        public static CustomFieldValue5Type MapOfAny { get { return new CustomFieldValue5Type("mapOfAny"); } }
 
-        public static SimpleFormFieldOptionValueType ArrayOfValue5 { get { return new SimpleFormFieldOptionValueType("arrayOfValue5"); } }
+        public static CustomFieldValue5Type Null { get { return new CustomFieldValue5Type("null"); } }
 
         public override string ToString() { return Value; }
-        public static implicit operator String(SimpleFormFieldOptionValueType v) { return v.Value; }
-        public static SimpleFormFieldOptionValueType FromString(string v) {
+        public static implicit operator String(CustomFieldValue5Type v) { return v.Value; }
+        public static CustomFieldValue5Type FromString(string v) {
             switch(v) {
                 case "str": return Str;
-                case "integer": return Integer;
                 case "number": return Number;
                 case "boolean": return Boolean;
-                case "arrayOfValue5": return ArrayOfValue5;
-                default: throw new ArgumentException("Invalid value for SimpleFormFieldOptionValueType");
+                case "mapOfAny": return MapOfAny;
+                case "null": return Null;
+                default: throw new ArgumentException("Invalid value for CustomFieldValue5Type");
             }
         }
         public override bool Equals(object? obj)
@@ -52,7 +51,7 @@ namespace ApideckUnifySdk.Models.Components
             {
                 return false;
             }
-            return Value.Equals(((SimpleFormFieldOptionValueType)obj).Value);
+            return Value.Equals(((CustomFieldValue5Type)obj).Value);
         }
 
         public override int GetHashCode()
@@ -62,10 +61,10 @@ namespace ApideckUnifySdk.Models.Components
     }
 
 
-    [JsonConverter(typeof(SimpleFormFieldOptionValue.SimpleFormFieldOptionValueConverter))]
-    public class SimpleFormFieldOptionValue
+    [JsonConverter(typeof(CustomFieldValue5.CustomFieldValue5Converter))]
+    public class CustomFieldValue5
     {
-        public SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType type)
+        public CustomFieldValue5(CustomFieldValue5Type type)
         {
             Type = type;
         }
@@ -74,62 +73,57 @@ namespace ApideckUnifySdk.Models.Components
         public string? Str { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public long? Integer { get; set; }
-
-        [SpeakeasyMetadata("form:explode=true")]
         public double? Number { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public bool? Boolean { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Value5>? ArrayOfValue5 { get; set; }
+        public Dictionary<string, object>? MapOfAny { get; set; }
 
-        public SimpleFormFieldOptionValueType Type { get; set; }
-        public static SimpleFormFieldOptionValue CreateStr(string str)
+        public CustomFieldValue5Type Type { get; set; }
+        public static CustomFieldValue5 CreateStr(string str)
         {
-            SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Str;
+            CustomFieldValue5Type typ = CustomFieldValue5Type.Str;
 
-            SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
+            CustomFieldValue5 res = new CustomFieldValue5(typ);
             res.Str = str;
             return res;
         }
-        public static SimpleFormFieldOptionValue CreateInteger(long integer)
+        public static CustomFieldValue5 CreateNumber(double number)
         {
-            SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Integer;
+            CustomFieldValue5Type typ = CustomFieldValue5Type.Number;
 
-            SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
-            res.Integer = integer;
-            return res;
-        }
-        public static SimpleFormFieldOptionValue CreateNumber(double number)
-        {
-            SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Number;
-
-            SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
+            CustomFieldValue5 res = new CustomFieldValue5(typ);
             res.Number = number;
             return res;
         }
-        public static SimpleFormFieldOptionValue CreateBoolean(bool boolean)
+        public static CustomFieldValue5 CreateBoolean(bool boolean)
         {
-            SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.Boolean;
+            CustomFieldValue5Type typ = CustomFieldValue5Type.Boolean;
 
-            SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
+            CustomFieldValue5 res = new CustomFieldValue5(typ);
             res.Boolean = boolean;
             return res;
         }
-        public static SimpleFormFieldOptionValue CreateArrayOfValue5(List<Value5> arrayOfValue5)
+        public static CustomFieldValue5 CreateMapOfAny(Dictionary<string, object> mapOfAny)
         {
-            SimpleFormFieldOptionValueType typ = SimpleFormFieldOptionValueType.ArrayOfValue5;
+            CustomFieldValue5Type typ = CustomFieldValue5Type.MapOfAny;
 
-            SimpleFormFieldOptionValue res = new SimpleFormFieldOptionValue(typ);
-            res.ArrayOfValue5 = arrayOfValue5;
+            CustomFieldValue5 res = new CustomFieldValue5(typ);
+            res.MapOfAny = mapOfAny;
             return res;
         }
 
-        public class SimpleFormFieldOptionValueConverter : JsonConverter
+        public static CustomFieldValue5 CreateNull()
         {
-            public override bool CanConvert(System.Type objectType) => objectType == typeof(SimpleFormFieldOptionValue);
+            CustomFieldValue5Type typ = CustomFieldValue5Type.Null;
+            return new CustomFieldValue5(typ);
+        }
+
+        public class CustomFieldValue5Converter : JsonConverter
+        {
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(CustomFieldValue5);
 
             public override bool CanRead => true;
 
@@ -137,14 +131,14 @@ namespace ApideckUnifySdk.Models.Components
             {
                 if (reader.TokenType == JsonToken.Null)
                 {
-                    throw new InvalidOperationException("Received unexpected null JSON value");
+                    return null;
                 }
 
                 var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
-                    return new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.Str)
+                    return new CustomFieldValue5(CustomFieldValue5Type.Str)
                     {
                         Str = json[1..^1]
                     };
@@ -152,21 +146,8 @@ namespace ApideckUnifySdk.Models.Components
 
                 try
                 {
-                    var converted = Convert.ToInt64(json);
-                    return new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.Integer)
-                    {
-                        Integer = converted
-                    };
-                }
-                catch (System.FormatException)
-                {
-                    // try next option
-                }
-
-                try
-                {
                     var converted = Convert.ToDouble(json);
-                    return new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.Number)
+                    return new CustomFieldValue5(CustomFieldValue5Type.Number)
                     {
                         Number = converted
                     };
@@ -179,7 +160,7 @@ namespace ApideckUnifySdk.Models.Components
                 try
                 {
                     var converted = Convert.ToBoolean(json);
-                    return new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.Boolean)
+                    return new CustomFieldValue5(CustomFieldValue5Type.Boolean)
                     {
                         Boolean = converted
                     };
@@ -191,14 +172,14 @@ namespace ApideckUnifySdk.Models.Components
 
                 try
                 {
-                    return new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.ArrayOfValue5)
+                    return new CustomFieldValue5(CustomFieldValue5Type.MapOfAny)
                     {
-                        ArrayOfValue5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Value5>>(json)
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Value5>), new SimpleFormFieldOptionValue(SimpleFormFieldOptionValueType.ArrayOfValue5), "ArrayOfValue5"));
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new CustomFieldValue5(CustomFieldValue5Type.MapOfAny), "MapOfAny"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -236,20 +217,20 @@ namespace ApideckUnifySdk.Models.Components
             {
                 if (value == null)
                 {
-                    throw new InvalidOperationException("Unexpected null JSON value.");
+                    writer.WriteRawValue("null");
+                    return;
                 }
 
-                SimpleFormFieldOptionValue res = (SimpleFormFieldOptionValue)value;
+                CustomFieldValue5 res = (CustomFieldValue5)value;
+                if (CustomFieldValue5Type.FromString(res.Type).Equals(CustomFieldValue5Type.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
 
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
-                    return;
-                }
-
-                if (res.Integer != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.Integer));
                     return;
                 }
 
@@ -265,9 +246,9 @@ namespace ApideckUnifySdk.Models.Components
                     return;
                 }
 
-                if (res.ArrayOfValue5 != null)
+                if (res.MapOfAny != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfValue5));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
             }

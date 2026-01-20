@@ -62,6 +62,10 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingCategoriesAllResponse> ListAsync(AccountingCategoriesAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AccountingCategoriesAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -355,10 +359,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingCategoriesOneResponse> GetAsync(AccountingCategoriesOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingCategoriesOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

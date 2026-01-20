@@ -1,5 +1,4 @@
-# CreateCallback
-(*Vault.CreateCallback*)
+# Vault.CreateCallback
 
 ## Overview
 

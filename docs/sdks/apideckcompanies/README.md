@@ -1,5 +1,4 @@
-# ApideckCompanies
-(*Hris.Companies*)
+# Hris.Companies
 
 ## Overview
 

@@ -62,10 +62,8 @@ namespace ApideckUnifySdk
 
         public async Task<IssueTrackingCollectionUsersAllResponse> ListAsync(IssueTrackingCollectionUsersAllRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new IssueTrackingCollectionUsersAllRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -360,10 +358,8 @@ namespace ApideckUnifySdk
 
         public async Task<IssueTrackingCollectionUsersOneResponse> GetAsync(IssueTrackingCollectionUsersOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new IssueTrackingCollectionUsersOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

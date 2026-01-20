@@ -32,7 +32,7 @@ namespace ApideckUnifySdk.Models.Components
 
         public static ConnectionValueType Boolean { get { return new ConnectionValueType("boolean"); } }
 
-        public static ConnectionValueType ArrayOfConnectionValue5 { get { return new ConnectionValueType("arrayOfConnectionValue5"); } }
+        public static ConnectionValueType ArrayOfValue5 { get { return new ConnectionValueType("arrayOfValue5"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(ConnectionValueType v) { return v.Value; }
@@ -42,7 +42,7 @@ namespace ApideckUnifySdk.Models.Components
                 case "integer": return Integer;
                 case "number": return Number;
                 case "boolean": return Boolean;
-                case "arrayOfConnectionValue5": return ArrayOfConnectionValue5;
+                case "arrayOfValue5": return ArrayOfValue5;
                 default: throw new ArgumentException("Invalid value for ConnectionValueType");
             }
         }
@@ -83,7 +83,7 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Boolean { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<ConnectionValue5>? ArrayOfConnectionValue5 { get; set; }
+        public List<Value5>? ArrayOfValue5 { get; set; }
 
         public ConnectionValueType Type { get; set; }
         public static ConnectionValue CreateStr(string str)
@@ -118,12 +118,12 @@ namespace ApideckUnifySdk.Models.Components
             res.Boolean = boolean;
             return res;
         }
-        public static ConnectionValue CreateArrayOfConnectionValue5(List<ConnectionValue5> arrayOfConnectionValue5)
+        public static ConnectionValue CreateArrayOfValue5(List<Value5> arrayOfValue5)
         {
-            ConnectionValueType typ = ConnectionValueType.ArrayOfConnectionValue5;
+            ConnectionValueType typ = ConnectionValueType.ArrayOfValue5;
 
             ConnectionValue res = new ConnectionValue(typ);
-            res.ArrayOfConnectionValue5 = arrayOfConnectionValue5;
+            res.ArrayOfValue5 = arrayOfValue5;
             return res;
         }
 
@@ -191,14 +191,14 @@ namespace ApideckUnifySdk.Models.Components
 
                 try
                 {
-                    return new ConnectionValue(ConnectionValueType.ArrayOfConnectionValue5)
+                    return new ConnectionValue(ConnectionValueType.ArrayOfValue5)
                     {
-                        ArrayOfConnectionValue5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<ConnectionValue5>>(json)
+                        ArrayOfValue5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Value5>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<ConnectionValue5>), new ConnectionValue(ConnectionValueType.ArrayOfConnectionValue5), "ArrayOfConnectionValue5"));
+                    fallbackCandidates.Add((typeof(List<Value5>), new ConnectionValue(ConnectionValueType.ArrayOfValue5), "ArrayOfValue5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -265,9 +265,9 @@ namespace ApideckUnifySdk.Models.Components
                     return;
                 }
 
-                if (res.ArrayOfConnectionValue5 != null)
+                if (res.ArrayOfValue5 != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfConnectionValue5));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ArrayOfValue5));
                     return;
                 }
             }

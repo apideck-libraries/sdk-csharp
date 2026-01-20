@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<HrisTimeOffRequestsAllResponse> ListAsync(HrisTimeOffRequestsAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new HrisTimeOffRequestsAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -383,10 +387,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisTimeOffRequestsAddResponse> CreateAsync(HrisTimeOffRequestsAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisTimeOffRequestsAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -651,10 +653,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisTimeOffRequestsOneResponse> GetAsync(HrisTimeOffRequestsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisTimeOffRequestsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -913,10 +913,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisTimeOffRequestsUpdateResponse> UpdateAsync(HrisTimeOffRequestsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisTimeOffRequestsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1181,10 +1179,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisTimeOffRequestsDeleteResponse> DeleteAsync(HrisTimeOffRequestsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisTimeOffRequestsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

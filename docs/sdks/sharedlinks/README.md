@@ -1,11 +1,10 @@
-# SharedLinks
-(*FileStorage.SharedLinks*)
+# FileStorage.SharedLinks
 
 ## Overview
 
 ### Available Operations
 
-* [List](#list) - List SharedLinks
+* [List](#list) - List Shared Links
 * [Create](#create) - Create Shared Link
 * [Get](#get) - Get Shared Link
 * [Update](#update) - Update Shared Link
@@ -13,7 +12,7 @@
 
 ## List
 
-List SharedLinks
+List Shared Links
 
 ### Example Usage
 

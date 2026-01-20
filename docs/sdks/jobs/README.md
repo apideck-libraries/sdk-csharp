@@ -1,5 +1,4 @@
-# Jobs
-(*Ats.Jobs*)
+# Ats.Jobs
 
 ## Overview
 

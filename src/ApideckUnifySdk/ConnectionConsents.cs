@@ -51,6 +51,9 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionConsentsAllResponse> ListAsync(string serviceId, string unifiedApi, string? consumerId = null, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (serviceId == null) throw new ArgumentNullException(nameof(serviceId));
+            if (unifiedApi == null) throw new ArgumentNullException(nameof(unifiedApi));
+
             var request = new VaultConnectionConsentsAllRequest()
             {
                 ServiceId = serviceId,

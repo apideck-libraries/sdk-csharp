@@ -38,5 +38,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("display_order")]
         public long? DisplayOrder { get; set; } = null;
+
+        /// <summary>
+        /// Whether the Pipeline Stage is archived or not.
+        /// </summary>
+        [JsonProperty("archived")]
+        public bool? Archived { get; set; } = null;
     }
 }

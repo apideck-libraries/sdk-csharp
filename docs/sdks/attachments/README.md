@@ -1,5 +1,4 @@
-# Attachments
-(*Accounting.Attachments*)
+# Accounting.Attachments
 
 ## Overview
 

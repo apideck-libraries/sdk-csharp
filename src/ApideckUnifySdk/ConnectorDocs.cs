@@ -51,6 +51,9 @@ namespace ApideckUnifySdk
 
         public async Task<ConnectorConnectorDocsOneResponse> GetAsync(string id, string docId, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+            if (docId == null) throw new ArgumentNullException(nameof(docId));
+
             var request = new ConnectorConnectorDocsOneRequest()
             {
                 Id = id,

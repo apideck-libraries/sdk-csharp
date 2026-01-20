@@ -35,10 +35,17 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedLedgerAccount? Account { get; set; } = null;
 
         /// <summary>
-        /// The ID of the customer this expense item is linked to.
+        /// The ID of the customer this expense item is linked to. Deprecated in favor of `customer`.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("customer_id")]
         public string? CustomerId { get; set; }
+
+        /// <summary>
+        /// The customer this entity is linked to.
+        /// </summary>
+        [JsonProperty("customer")]
+        public LinkedCustomerInput? Customer { get; set; } = null;
 
         /// <summary>
         /// The ID of the department
@@ -46,17 +53,17 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
 
+        [JsonProperty("department")]
+        public LinkedDepartmentInput? Department { get; set; } = null;
+
         /// <summary>
         /// The ID of the location
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
-        /// <summary>
-        /// The ID of the subsidiary
-        /// </summary>
-        [JsonProperty("subsidiary_id")]
-        public string? SubsidiaryId { get; set; } = null;
+        [JsonProperty("location")]
+        public LinkedLocationInput? Location { get; set; } = null;
 
         [JsonProperty("tax_rate")]
         public LinkedTaxRateInput? TaxRate { get; set; }
@@ -93,13 +100,6 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("item")]
         public LinkedInvoiceItem? Item { get; set; }
-
-        /// <summary>
-        /// Boolean that indicates if the line item is billable or not.
-        /// </summary>
-        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
-        [JsonProperty("billable")]
-        public bool? Billable { get; set; }
 
         /// <summary>
         /// Line number of the resource

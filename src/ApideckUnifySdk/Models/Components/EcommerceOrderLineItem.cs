@@ -47,8 +47,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The name of the product or variant associated with the line item.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string? Name { get; set; }
+        [JsonProperty("name")]
+        public string? Name { get; set; } = null;
 
         /// <summary>
         /// The description of the product or variant associated with the line item.

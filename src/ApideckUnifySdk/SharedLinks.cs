@@ -28,10 +28,10 @@ namespace ApideckUnifySdk
     {
 
         /// <summary>
-        /// List SharedLinks
+        /// List Shared Links
         /// 
         /// <remarks>
-        /// List SharedLinks
+        /// List Shared Links
         /// </remarks>
         /// </summary>
         Task<FileStorageSharedLinksAllResponse> ListAsync(FileStorageSharedLinksAllRequest? request = null, RetryConfig? retryConfig = null);
@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageSharedLinksAllResponse> ListAsync(FileStorageSharedLinksAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new FileStorageSharedLinksAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -382,10 +386,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageSharedLinksAddResponse> CreateAsync(FileStorageSharedLinksAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageSharedLinksAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -650,10 +652,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageSharedLinksOneResponse> GetAsync(FileStorageSharedLinksOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageSharedLinksOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -912,10 +912,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageSharedLinksUpdateResponse> UpdateAsync(FileStorageSharedLinksUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageSharedLinksUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1180,10 +1178,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageSharedLinksDeleteResponse> DeleteAsync(FileStorageSharedLinksDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageSharedLinksDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

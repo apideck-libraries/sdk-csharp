@@ -89,10 +89,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCustomObjectsAllResponse> ListAsync(CrmCustomObjectsAllRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCustomObjectsAllRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -387,10 +385,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCustomObjectsAddResponse> CreateAsync(CrmCustomObjectsAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCustomObjectsAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -655,10 +651,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCustomObjectsOneResponse> GetAsync(CrmCustomObjectsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCustomObjectsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -917,10 +911,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCustomObjectsUpdateResponse> UpdateAsync(CrmCustomObjectsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCustomObjectsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1185,10 +1177,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCustomObjectsDeleteResponse> DeleteAsync(CrmCustomObjectsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCustomObjectsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

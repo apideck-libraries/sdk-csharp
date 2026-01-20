@@ -52,6 +52,10 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConsumerRequestCountsAllResponse> ListAsync(string consumerId, string startDatetime, string endDatetime, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (consumerId == null) throw new ArgumentNullException(nameof(consumerId));
+            if (startDatetime == null) throw new ArgumentNullException(nameof(startDatetime));
+            if (endDatetime == null) throw new ArgumentNullException(nameof(endDatetime));
+
             var request = new VaultConsumerRequestCountsAllRequest()
             {
                 ConsumerId = consumerId,

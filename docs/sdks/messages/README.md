@@ -1,5 +1,4 @@
-# Messages
-(*Sms.Messages*)
+# Sms.Messages
 
 ## Overview
 

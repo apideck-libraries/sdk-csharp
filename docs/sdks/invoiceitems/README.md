@@ -1,5 +1,4 @@
-# InvoiceItems
-(*Accounting.InvoiceItems*)
+# Accounting.InvoiceItems
 
 ## Overview
 

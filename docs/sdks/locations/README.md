@@ -1,5 +1,4 @@
-# Locations
-(*Accounting.Locations*)
+# Accounting.Locations
 
 ## Overview
 

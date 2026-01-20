@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
     
     public class Stages
     {
@@ -44,5 +45,23 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("display_order")]
         public long? DisplayOrder { get; set; } = null;
+
+        /// <summary>
+        /// Whether the Pipeline Stage is archived or not.
+        /// </summary>
+        [JsonProperty("archived")]
+        public bool? Archived { get; set; } = null;
+
+        /// <summary>
+        /// The date and time when the Pipeline Stage was created.
+        /// </summary>
+        [JsonProperty("created_at")]
+        public DateTime? CreatedAt { get; set; } = null;
+
+        /// <summary>
+        /// The date and time when the Pipeline Stage was last updated.
+        /// </summary>
+        [JsonProperty("updated_at")]
+        public DateTime? UpdatedAt { get; set; } = null;
     }
 }

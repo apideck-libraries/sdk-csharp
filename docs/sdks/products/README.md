@@ -1,5 +1,4 @@
-# Products
-(*Ecommerce.Products*)
+# Ecommerce.Products
 
 ## Overview
 

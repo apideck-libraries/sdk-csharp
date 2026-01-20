@@ -51,6 +51,10 @@ namespace ApideckUnifySdk
 
         public async Task<EcommerceStoresOneResponse> GetAsync(EcommerceStoresOneRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new EcommerceStoresOneRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
