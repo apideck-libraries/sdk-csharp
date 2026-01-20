@@ -1,5 +1,4 @@
-# LedgerAccounts
-(*Accounting.LedgerAccounts*)
+# Accounting.LedgerAccounts
 
 ## Overview
 
@@ -141,14 +140,16 @@ AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest(
         SubAccount = false,
         LastReconciliationDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -336,22 +337,26 @@ AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRe
         SubAccount = false,
         LastReconciliationDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {

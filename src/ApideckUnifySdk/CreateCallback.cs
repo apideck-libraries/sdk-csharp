@@ -52,10 +52,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultCreateCallbackStateResponse> StateAsync(VaultCreateCallbackStateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new VaultCreateCallbackStateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

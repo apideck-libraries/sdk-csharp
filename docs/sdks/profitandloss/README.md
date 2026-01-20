@@ -1,5 +1,4 @@
-# ProfitAndLoss
-(*Accounting.ProfitAndLoss*)
+# Accounting.ProfitAndLoss
 
 ## Overview
 

@@ -51,6 +51,10 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingCompanyInfoOneResponse> GetAsync(AccountingCompanyInfoOneRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AccountingCompanyInfoOneRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

@@ -25,6 +25,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
+        /// Id to be displayed.
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
         /// Number.
         /// </summary>
         [JsonProperty("number")]
@@ -43,17 +49,11 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("account_id")]
         public string? AccountId { get; set; }
 
-        [JsonProperty("account")]
-        public LinkedLedgerAccount? Account { get; set; } = null;
-
-        [JsonProperty("bank_account")]
-        public LinkedBankAccount? BankAccount { get; set; } = null;
-
         /// <summary>
-        /// The ID of the customer this entity is linked to. Used for expenses that should be marked as billable to customers.
+        /// A flexible account reference that can represent either a ledger account (GL account) or a bank account, depending on the connector&apos;s requirements.
         /// </summary>
-        [JsonProperty("customer_id")]
-        public string? CustomerId { get; set; }
+        [JsonProperty("account")]
+        public LinkedFinancialAccount? Account { get; set; } = null;
 
         /// <summary>
         /// The ID of the supplier this entity is linked to. Deprecated, use supplier instead.
@@ -74,11 +74,17 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
+        [JsonProperty("location")]
+        public LinkedLocation? Location { get; set; } = null;
+
         /// <summary>
         /// The ID of the department
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
+
+        [JsonProperty("department")]
+        public LinkedDepartment? Department { get; set; } = null;
 
         /// <summary>
         /// The type of payment for the expense.
@@ -136,6 +142,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("total_amount")]
         public double? TotalAmount { get; set; } = null;
+
+        /// <summary>
+        /// A list of linked tracking categories.
+        /// </summary>
+        [JsonProperty("tracking_categories")]
+        public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         /// <summary>
         /// Expense line items linked to this expense.

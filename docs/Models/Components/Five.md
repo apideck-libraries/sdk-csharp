@@ -9,20 +9,14 @@
 Five.CreateStr(/* values here */);
 ```
 
+### Integer
+
+```csharp
+Five.CreateInteger(/* values here */);
+```
+
 ### Number
 
 ```csharp
 Five.CreateNumber(/* values here */);
-```
-
-### Boolean
-
-```csharp
-Five.CreateBoolean(/* values here */);
-```
-
-### MapOfAny
-
-```csharp
-Five.CreateMapOfAny(/* values here */);
 ```

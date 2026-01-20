@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<CrmUsersAllResponse> ListAsync(CrmUsersAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new CrmUsersAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -382,10 +386,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmUsersAddResponse> CreateAsync(CrmUsersAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmUsersAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -650,10 +652,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmUsersOneResponse> GetAsync(CrmUsersOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmUsersOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -912,10 +912,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmUsersUpdateResponse> UpdateAsync(CrmUsersUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmUsersUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1180,10 +1178,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmUsersDeleteResponse> DeleteAsync(CrmUsersDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmUsersDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

@@ -51,10 +51,8 @@ namespace ApideckUnifySdk
 
         public async Task<VaultConnectionConsentUpdateResponse> UpdateAsync(VaultConnectionConsentUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new VaultConnectionConsentUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

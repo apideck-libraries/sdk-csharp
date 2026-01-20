@@ -62,6 +62,10 @@ namespace ApideckUnifySdk
 
         public async Task<AtsJobsAllResponse> ListAsync(AtsJobsAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AtsJobsAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -355,10 +359,8 @@ namespace ApideckUnifySdk
 
         public async Task<AtsJobsOneResponse> GetAsync(AtsJobsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AtsJobsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

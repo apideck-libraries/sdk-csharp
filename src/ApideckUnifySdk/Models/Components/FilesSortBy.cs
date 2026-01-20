@@ -18,6 +18,8 @@ namespace ApideckUnifySdk.Models.Components
     /// </summary>
     public enum FilesSortBy
     {
+        [JsonProperty("created_at")]
+        CreatedAt,
         [JsonProperty("updated_at")]
         UpdatedAt,
         [JsonProperty("name")]

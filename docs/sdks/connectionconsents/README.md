@@ -1,5 +1,4 @@
-# ConnectionConsents
-(*Vault.ConnectionConsents*)
+# Vault.ConnectionConsents
 
 ## Overview
 

@@ -1,5 +1,4 @@
-# ConnectorResources
-(*Connector.ConnectorResources*)
+# Connector.ConnectorResources
 
 ## Overview
 

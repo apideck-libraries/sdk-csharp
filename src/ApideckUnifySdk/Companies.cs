@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCompaniesAllResponse> ListAsync(CrmCompaniesAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new CrmCompaniesAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -384,10 +388,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCompaniesAddResponse> CreateAsync(CrmCompaniesAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCompaniesAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -652,10 +654,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCompaniesOneResponse> GetAsync(CrmCompaniesOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCompaniesOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -914,10 +914,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCompaniesUpdateResponse> UpdateAsync(CrmCompaniesUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCompaniesUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1182,10 +1180,8 @@ namespace ApideckUnifySdk
 
         public async Task<CrmCompaniesDeleteResponse> DeleteAsync(CrmCompaniesDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new CrmCompaniesDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

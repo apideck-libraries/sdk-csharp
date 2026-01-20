@@ -1,5 +1,4 @@
-# BankAccounts
-(*Accounting.BankAccounts*)
+# Accounting.BankAccounts
 
 ## Overview
 
@@ -124,14 +123,16 @@ AccountingBankAccountsAddRequest req = new AccountingBankAccountsAddRequest() {
         Status = AccountingBankAccountStatus.Active,
         Description = "Primary operating account for daily transactions",
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
     },
 };
@@ -182,6 +183,9 @@ var sdk = new Apideck(
 
 AccountingBankAccountsOneRequest req = new AccountingBankAccountsOneRequest() {
     Id = "<id>",
+    Filter = new BankAccountFilter() {
+        AccountType = BankAccountFilterAccountType.Checking,
+    },
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
@@ -262,14 +266,16 @@ AccountingBankAccountsUpdateRequest req = new AccountingBankAccountsUpdateReques
         Status = AccountingBankAccountStatus.Active,
         Description = "Primary operating account for daily transactions",
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
     },
 };

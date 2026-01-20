@@ -53,10 +53,8 @@ namespace ApideckUnifySdk
 
         public async Task<IssueTrackingCollectionTagsAllResponse> ListAsync(IssueTrackingCollectionTagsAllRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new IssueTrackingCollectionTagsAllRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

@@ -1,5 +1,4 @@
-# Quotes
-(*Accounting.Quotes*)
+# Accounting.Quotes
 
 ## Overview
 
@@ -153,14 +152,16 @@ AccountingQuotesAddRequest req = new AccountingQuotesAddRequest() {
                     Code = "453",
                 },
                 CustomFields = new List<CustomField>() {
-                    new CustomField() {
-                        Id = "2389328923893298",
-                        Name = "employee_level",
-                        Description = "Employee Level",
-                        Value = Value.CreateStr(
-                            "Uses Salesforce and Marketo"
-                        ),
-                    },
+                    CustomField.CreateCustomField1(
+                        new CustomField1() {
+                            Id = "2389328923893298",
+                            Name = "employee_level",
+                            Description = "Employee Level",
+                            Value = CustomField1Value.CreateStr(
+                                "Uses Salesforce and Marketo"
+                            ),
+                        }
+                    ),
                 },
                 RowVersion = "1-12345",
             },
@@ -230,14 +231,16 @@ AccountingQuotesAddRequest req = new AccountingQuotesAddRequest() {
         TemplateId = "123456",
         SourceDocumentUrl = "https://www.quotesolution.com/quote/123456",
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -416,14 +419,16 @@ AccountingQuotesUpdateRequest req = new AccountingQuotesUpdateRequest() {
                     Code = "453",
                 },
                 CustomFields = new List<CustomField>() {
-                    new CustomField() {
-                        Id = "2389328923893298",
-                        Name = "employee_level",
-                        Description = "Employee Level",
-                        Value = Value.CreateStr(
-                            "Uses Salesforce and Marketo"
-                        ),
-                    },
+                    CustomField.CreateCustomField1(
+                        new CustomField1() {
+                            Id = "2389328923893298",
+                            Name = "employee_level",
+                            Description = "Employee Level",
+                            Value = CustomField1Value.CreateStr(
+                                "Uses Salesforce and Marketo"
+                            ),
+                        }
+                    ),
                 },
                 RowVersion = "1-12345",
             },
@@ -493,14 +498,16 @@ AccountingQuotesUpdateRequest req = new AccountingQuotesUpdateRequest() {
         TemplateId = "123456",
         SourceDocumentUrl = "https://www.quotesolution.com/quote/123456",
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {

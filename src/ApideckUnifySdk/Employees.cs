@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<HrisEmployeesAllResponse> ListAsync(HrisEmployeesAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new HrisEmployeesAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -384,10 +388,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisEmployeesAddResponse> CreateAsync(HrisEmployeesAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisEmployeesAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -652,10 +654,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisEmployeesOneResponse> GetAsync(HrisEmployeesOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisEmployeesOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -914,10 +914,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisEmployeesUpdateResponse> UpdateAsync(HrisEmployeesUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisEmployeesUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1182,10 +1180,8 @@ namespace ApideckUnifySdk
 
         public async Task<HrisEmployeesDeleteResponse> DeleteAsync(HrisEmployeesDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new HrisEmployeesDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

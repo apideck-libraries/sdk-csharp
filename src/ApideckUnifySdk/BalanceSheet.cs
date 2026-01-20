@@ -51,6 +51,10 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingBalanceSheetOneResponse> GetAsync(AccountingBalanceSheetOneRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AccountingBalanceSheetOneRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

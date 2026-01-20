@@ -89,10 +89,8 @@ namespace ApideckUnifySdk
 
         public async Task<IssueTrackingCollectionTicketCommentsAllResponse> ListAsync(IssueTrackingCollectionTicketCommentsAllRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new IssueTrackingCollectionTicketCommentsAllRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -389,10 +387,8 @@ namespace ApideckUnifySdk
 
         public async Task<IssueTrackingCollectionTicketCommentsAddResponse> CreateAsync(IssueTrackingCollectionTicketCommentsAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new IssueTrackingCollectionTicketCommentsAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -657,10 +653,8 @@ namespace ApideckUnifySdk
 
         public async Task<IssueTrackingCollectionTicketCommentsOneResponse> GetAsync(IssueTrackingCollectionTicketCommentsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new IssueTrackingCollectionTicketCommentsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -956,10 +950,8 @@ namespace ApideckUnifySdk
 
         public async Task<IssueTrackingCollectionTicketCommentsUpdateResponse> UpdateAsync(IssueTrackingCollectionTicketCommentsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new IssueTrackingCollectionTicketCommentsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1224,10 +1216,8 @@ namespace ApideckUnifySdk
 
         public async Task<IssueTrackingCollectionTicketCommentsDeleteResponse> DeleteAsync(IssueTrackingCollectionTicketCommentsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new IssueTrackingCollectionTicketCommentsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

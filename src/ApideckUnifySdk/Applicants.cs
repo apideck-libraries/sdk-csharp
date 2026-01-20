@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<AtsApplicantsAllResponse> ListAsync(AtsApplicantsAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AtsApplicantsAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -383,10 +387,8 @@ namespace ApideckUnifySdk
 
         public async Task<AtsApplicantsAddResponse> CreateAsync(AtsApplicantsAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AtsApplicantsAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -651,10 +653,8 @@ namespace ApideckUnifySdk
 
         public async Task<AtsApplicantsOneResponse> GetAsync(AtsApplicantsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AtsApplicantsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -913,10 +913,8 @@ namespace ApideckUnifySdk
 
         public async Task<AtsApplicantsUpdateResponse> UpdateAsync(AtsApplicantsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AtsApplicantsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1181,10 +1179,8 @@ namespace ApideckUnifySdk
 
         public async Task<AtsApplicantsDeleteResponse> DeleteAsync(AtsApplicantsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AtsApplicantsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

@@ -22,6 +22,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
+        /// The code of the tracking category.
+        /// </summary>
+        [JsonProperty("code")]
+        public string? Code { get; set; } = null;
+
+        /// <summary>
         /// The name of the tracking category.
         /// </summary>
         [JsonProperty("name")]

@@ -1,5 +1,4 @@
-# AgedDebtors
-(*Accounting.AgedDebtors*)
+# Accounting.AgedDebtors
 
 ## Overview
 

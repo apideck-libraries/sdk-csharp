@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Requests
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     
     public class AccountingBankAccountsOneRequest
@@ -19,6 +20,12 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=id")]
         public string Id { get; set; } = default!;
+
+        /// <summary>
+        /// Apply filters
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
+        public BankAccountFilter? Filter { get; set; }
 
         /// <summary>
         /// ID of the consumer which you want to get or push data from

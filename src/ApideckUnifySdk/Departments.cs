@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingDepartmentsAllResponse> ListAsync(AccountingDepartmentsAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AccountingDepartmentsAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -382,10 +386,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingDepartmentsAddResponse> CreateAsync(AccountingDepartmentsAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingDepartmentsAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -650,10 +652,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingDepartmentsOneResponse> GetAsync(AccountingDepartmentsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingDepartmentsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -912,10 +912,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingDepartmentsUpdateResponse> UpdateAsync(AccountingDepartmentsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingDepartmentsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1180,10 +1178,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingDepartmentsDeleteResponse> DeleteAsync(AccountingDepartmentsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingDepartmentsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

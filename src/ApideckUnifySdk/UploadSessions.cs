@@ -111,10 +111,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageUploadSessionsAddResponse> CreateAsync(FileStorageUploadSessionsAddRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageUploadSessionsAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -384,10 +382,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageUploadSessionsOneResponse> GetAsync(FileStorageUploadSessionsOneRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageUploadSessionsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -651,10 +647,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageUploadSessionsUploadResponse> UploadAsync(FileStorageUploadSessionsUploadRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageUploadSessionsUploadRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -924,10 +918,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageUploadSessionsDeleteResponse> DeleteAsync(FileStorageUploadSessionsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageUploadSessionsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1186,10 +1178,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageUploadSessionsFinishResponse> FinishAsync(FileStorageUploadSessionsFinishRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageUploadSessionsFinishRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

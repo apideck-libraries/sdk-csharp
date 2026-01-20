@@ -387,6 +387,8 @@ namespace ApideckUnifySdk
 
         public async Task<WebhookWebhooksAddResponse> CreateAsync(CreateWebhookRequest createWebhookRequest, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (createWebhookRequest == null) throw new ArgumentNullException(nameof(createWebhookRequest));
+
             var request = new WebhookWebhooksAddRequest()
             {
                 CreateWebhookRequest = createWebhookRequest,
@@ -656,6 +658,8 @@ namespace ApideckUnifySdk
 
         public async Task<WebhookWebhooksOneResponse> GetAsync(string id, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+
             var request = new WebhookWebhooksOneRequest()
             {
                 Id = id,
@@ -918,6 +922,9 @@ namespace ApideckUnifySdk
 
         public async Task<WebhookWebhooksUpdateResponse> UpdateAsync(string id, UpdateWebhookRequest updateWebhookRequest, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+            if (updateWebhookRequest == null) throw new ArgumentNullException(nameof(updateWebhookRequest));
+
             var request = new WebhookWebhooksUpdateRequest()
             {
                 Id = id,
@@ -1187,6 +1194,8 @@ namespace ApideckUnifySdk
 
         public async Task<WebhookWebhooksDeleteResponse> DeleteAsync(string id, string? appId = null, RetryConfig? retryConfig = null)
         {
+            if (id == null) throw new ArgumentNullException(nameof(id));
+
             var request = new WebhookWebhooksDeleteRequest()
             {
                 Id = id,

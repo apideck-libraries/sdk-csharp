@@ -1,5 +1,4 @@
-# EmployeeSchedules
-(*Hris.EmployeeSchedules*)
+# Hris.EmployeeSchedules
 
 ## Overview
 

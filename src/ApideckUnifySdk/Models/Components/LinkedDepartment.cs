@@ -12,31 +12,31 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     
-    public class LinkedBankAccount
+    public class LinkedDepartment
     {
 
         /// <summary>
-        /// The unique identifier for the bank account.
+        /// A unique identifier for an object.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The name of the bank account
+        /// Id to be displayed.
+        /// </summary>
+        [JsonProperty("display_id")]
+        public string? DisplayId { get; set; } = null;
+
+        /// <summary>
+        /// The name of the resource.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// The bank account number
+        /// The third-party API ID of original entity
         /// </summary>
-        [JsonProperty("account_number")]
-        public string? AccountNumber { get; set; } = null;
-
-        /// <summary>
-        /// The name of the bank or financial institution
-        /// </summary>
-        [JsonProperty("bank_name")]
-        public string? BankName { get; set; } = null;
+        [JsonProperty("downstream_id")]
+        public string? DownstreamId { get; set; } = null;
     }
 }

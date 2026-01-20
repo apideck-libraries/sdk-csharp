@@ -95,10 +95,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingAttachmentsAllResponse> ListAsync(AccountingAttachmentsAllRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingAttachmentsAllRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -393,10 +391,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingAttachmentsUploadResponse> UploadAsync(AccountingAttachmentsUploadRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingAttachmentsUploadRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -666,10 +662,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingAttachmentsOneResponse> GetAsync(AccountingAttachmentsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingAttachmentsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -928,10 +922,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingAttachmentsDeleteResponse> DeleteAsync(AccountingAttachmentsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingAttachmentsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1190,10 +1182,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingAttachmentsDownloadResponse> DownloadAsync(AccountingAttachmentsDownloadRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingAttachmentsDownloadRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

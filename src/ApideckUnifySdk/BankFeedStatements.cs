@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingBankFeedStatementsAllResponse> ListAsync(AccountingBankFeedStatementsAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AccountingBankFeedStatementsAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -382,10 +386,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingBankFeedStatementsAddResponse> CreateAsync(AccountingBankFeedStatementsAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingBankFeedStatementsAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -650,10 +652,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingBankFeedStatementsOneResponse> GetAsync(AccountingBankFeedStatementsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingBankFeedStatementsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -912,10 +912,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingBankFeedStatementsUpdateResponse> UpdateAsync(AccountingBankFeedStatementsUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingBankFeedStatementsUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1180,10 +1178,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingBankFeedStatementsDeleteResponse> DeleteAsync(AccountingBankFeedStatementsDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingBankFeedStatementsDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

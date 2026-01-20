@@ -154,15 +154,15 @@ while(res != null)
 <details open>
 <summary>Available methods</summary>
 
-#### [Accounting.AgedCreditors](docs/sdks/agedcreditors/README.md)
+### [Accounting.AgedCreditors](docs/sdks/agedcreditors/README.md)
 
 * [Get](docs/sdks/agedcreditors/README.md#get) - Get Aged Creditors
 
-#### [Accounting.AgedDebtors](docs/sdks/ageddebtors/README.md)
+### [Accounting.AgedDebtors](docs/sdks/ageddebtors/README.md)
 
 * [Get](docs/sdks/ageddebtors/README.md#get) - Get Aged Debtors
 
-#### [Accounting.Attachments](docs/sdks/attachments/README.md)
+### [Accounting.Attachments](docs/sdks/attachments/README.md)
 
 * [List](docs/sdks/attachments/README.md#list) - List Attachments
 * [Upload](docs/sdks/attachments/README.md#upload) - Upload attachment
@@ -170,11 +170,11 @@ while(res != null)
 * [Delete](docs/sdks/attachments/README.md#delete) - Delete Attachment
 * [Download](docs/sdks/attachments/README.md#download) - Download Attachment
 
-#### [Accounting.BalanceSheet](docs/sdks/balancesheet/README.md)
+### [Accounting.BalanceSheet](docs/sdks/balancesheet/README.md)
 
 * [Get](docs/sdks/balancesheet/README.md#get) - Get BalanceSheet
 
-#### [Accounting.BankAccounts](docs/sdks/bankaccounts/README.md)
+### [Accounting.BankAccounts](docs/sdks/bankaccounts/README.md)
 
 * [List](docs/sdks/bankaccounts/README.md#list) - List Bank Accounts
 * [Create](docs/sdks/bankaccounts/README.md#create) - Create Bank Account
@@ -182,7 +182,7 @@ while(res != null)
 * [Update](docs/sdks/bankaccounts/README.md#update) - Update Bank Account
 * [Delete](docs/sdks/bankaccounts/README.md#delete) - Delete Bank Account
 
-#### [Accounting.BankFeedAccounts](docs/sdks/bankfeedaccounts/README.md)
+### [Accounting.BankFeedAccounts](docs/sdks/bankfeedaccounts/README.md)
 
 * [List](docs/sdks/bankfeedaccounts/README.md#list) - List Bank Feed Accounts
 * [Create](docs/sdks/bankfeedaccounts/README.md#create) - Create Bank Feed Account
@@ -190,7 +190,7 @@ while(res != null)
 * [Update](docs/sdks/bankfeedaccounts/README.md#update) - Update Bank Feed Account
 * [Delete](docs/sdks/bankfeedaccounts/README.md#delete) - Delete Bank Feed Account
 
-#### [Accounting.BankFeedStatements](docs/sdks/bankfeedstatements/README.md)
+### [Accounting.BankFeedStatements](docs/sdks/bankfeedstatements/README.md)
 
 * [List](docs/sdks/bankfeedstatements/README.md#list) - List Bank Feed Statements
 * [Create](docs/sdks/bankfeedstatements/README.md#create) - Create Bank Feed Statement
@@ -198,7 +198,7 @@ while(res != null)
 * [Update](docs/sdks/bankfeedstatements/README.md#update) - Update Bank Feed Statement
 * [Delete](docs/sdks/bankfeedstatements/README.md#delete) - Delete Bank Feed Statement
 
-#### [Accounting.BillPayments](docs/sdks/billpayments/README.md)
+### [Accounting.BillPayments](docs/sdks/billpayments/README.md)
 
 * [List](docs/sdks/billpayments/README.md#list) - List Bill Payments
 * [Create](docs/sdks/billpayments/README.md#create) - Create Bill Payment
@@ -206,7 +206,7 @@ while(res != null)
 * [Update](docs/sdks/billpayments/README.md#update) - Update Bill Payment
 * [Delete](docs/sdks/billpayments/README.md#delete) - Delete Bill Payment
 
-#### [Accounting.Bills](docs/sdks/bills/README.md)
+### [Accounting.Bills](docs/sdks/bills/README.md)
 
 * [List](docs/sdks/bills/README.md#list) - List Bills
 * [Create](docs/sdks/bills/README.md#create) - Create Bill
@@ -214,16 +214,16 @@ while(res != null)
 * [Update](docs/sdks/bills/README.md#update) - Update Bill
 * [Delete](docs/sdks/bills/README.md#delete) - Delete Bill
 
-#### [Accounting.Categories](docs/sdks/categories/README.md)
+### [Accounting.Categories](docs/sdks/categories/README.md)
 
 * [List](docs/sdks/categories/README.md#list) - List Categories
 * [Get](docs/sdks/categories/README.md#get) - Get Category
 
-#### [Accounting.CompanyInfo](docs/sdks/companyinfo/README.md)
+### [Accounting.CompanyInfo](docs/sdks/companyinfo/README.md)
 
 * [Get](docs/sdks/companyinfo/README.md#get) - Get company info
 
-#### [Accounting.CreditNotes](docs/sdks/creditnotes/README.md)
+### [Accounting.CreditNotes](docs/sdks/creditnotes/README.md)
 
 * [List](docs/sdks/creditnotes/README.md#list) - List Credit Notes
 * [Create](docs/sdks/creditnotes/README.md#create) - Create Credit Note
@@ -231,7 +231,7 @@ while(res != null)
 * [Update](docs/sdks/creditnotes/README.md#update) - Update Credit Note
 * [Delete](docs/sdks/creditnotes/README.md#delete) - Delete Credit Note
 
-#### [Accounting.Customers](docs/sdks/customers/README.md)
+### [Accounting.Customers](docs/sdks/customers/README.md)
 
 * [List](docs/sdks/customers/README.md#list) - List Customers
 * [Create](docs/sdks/customers/README.md#create) - Create Customer
@@ -239,7 +239,7 @@ while(res != null)
 * [Update](docs/sdks/customers/README.md#update) - Update Customer
 * [Delete](docs/sdks/customers/README.md#delete) - Delete Customer
 
-#### [Accounting.Departments](docs/sdks/departments/README.md)
+### [Accounting.Departments](docs/sdks/departments/README.md)
 
 * [List](docs/sdks/departments/README.md#list) - List Departments
 * [Create](docs/sdks/departments/README.md#create) - Create Department
@@ -247,7 +247,7 @@ while(res != null)
 * [Update](docs/sdks/departments/README.md#update) - Update Department
 * [Delete](docs/sdks/departments/README.md#delete) - Delete Department
 
-#### [Accounting.Expenses](docs/sdks/expenses/README.md)
+### [Accounting.Expenses](docs/sdks/expenses/README.md)
 
 * [List](docs/sdks/expenses/README.md#list) - List Expenses
 * [Create](docs/sdks/expenses/README.md#create) - Create Expense
@@ -255,7 +255,7 @@ while(res != null)
 * [Update](docs/sdks/expenses/README.md#update) - Update Expense
 * [Delete](docs/sdks/expenses/README.md#delete) - Delete Expense
 
-#### [Accounting.InvoiceItems](docs/sdks/invoiceitems/README.md)
+### [Accounting.InvoiceItems](docs/sdks/invoiceitems/README.md)
 
 * [List](docs/sdks/invoiceitems/README.md#list) - List Invoice Items
 * [Create](docs/sdks/invoiceitems/README.md#create) - Create Invoice Item
@@ -263,7 +263,7 @@ while(res != null)
 * [Update](docs/sdks/invoiceitems/README.md#update) - Update Invoice Item
 * [Delete](docs/sdks/invoiceitems/README.md#delete) - Delete Invoice Item
 
-#### [Accounting.Invoices](docs/sdks/invoices/README.md)
+### [Accounting.Invoices](docs/sdks/invoices/README.md)
 
 * [List](docs/sdks/invoices/README.md#list) - List Invoices
 * [Create](docs/sdks/invoices/README.md#create) - Create Invoice
@@ -271,7 +271,7 @@ while(res != null)
 * [Update](docs/sdks/invoices/README.md#update) - Update Invoice
 * [Delete](docs/sdks/invoices/README.md#delete) - Delete Invoice
 
-#### [Accounting.JournalEntries](docs/sdks/journalentries/README.md)
+### [Accounting.JournalEntries](docs/sdks/journalentries/README.md)
 
 * [List](docs/sdks/journalentries/README.md#list) - List Journal Entries
 * [Create](docs/sdks/journalentries/README.md#create) - Create Journal Entry
@@ -279,7 +279,7 @@ while(res != null)
 * [Update](docs/sdks/journalentries/README.md#update) - Update Journal Entry
 * [Delete](docs/sdks/journalentries/README.md#delete) - Delete Journal Entry
 
-#### [Accounting.LedgerAccounts](docs/sdks/ledgeraccounts/README.md)
+### [Accounting.LedgerAccounts](docs/sdks/ledgeraccounts/README.md)
 
 * [List](docs/sdks/ledgeraccounts/README.md#list) - List Ledger Accounts
 * [Create](docs/sdks/ledgeraccounts/README.md#create) - Create Ledger Account
@@ -287,7 +287,7 @@ while(res != null)
 * [Update](docs/sdks/ledgeraccounts/README.md#update) - Update Ledger Account
 * [Delete](docs/sdks/ledgeraccounts/README.md#delete) - Delete Ledger Account
 
-#### [Accounting.Locations](docs/sdks/locations/README.md)
+### [Accounting.Locations](docs/sdks/locations/README.md)
 
 * [List](docs/sdks/locations/README.md#list) - List Locations
 * [Create](docs/sdks/locations/README.md#create) - Create Location
@@ -295,7 +295,7 @@ while(res != null)
 * [Update](docs/sdks/locations/README.md#update) - Update Location
 * [Delete](docs/sdks/locations/README.md#delete) - Delete Location
 
-#### [Accounting.Payments](docs/sdks/payments/README.md)
+### [Accounting.Payments](docs/sdks/payments/README.md)
 
 * [List](docs/sdks/payments/README.md#list) - List Payments
 * [Create](docs/sdks/payments/README.md#create) - Create Payment
@@ -303,11 +303,11 @@ while(res != null)
 * [Update](docs/sdks/payments/README.md#update) - Update Payment
 * [Delete](docs/sdks/payments/README.md#delete) - Delete Payment
 
-#### [Accounting.ProfitAndLoss](docs/sdks/profitandloss/README.md)
+### [Accounting.ProfitAndLoss](docs/sdks/profitandloss/README.md)
 
 * [Get](docs/sdks/profitandloss/README.md#get) - Get Profit and Loss
 
-#### [Accounting.Projects](docs/sdks/projects/README.md)
+### [Accounting.Projects](docs/sdks/projects/README.md)
 
 * [List](docs/sdks/projects/README.md#list) - List projects
 * [Create](docs/sdks/projects/README.md#create) - Create project
@@ -315,7 +315,7 @@ while(res != null)
 * [Update](docs/sdks/projects/README.md#update) - Update project
 * [Delete](docs/sdks/projects/README.md#delete) - Delete project
 
-#### [Accounting.PurchaseOrders](docs/sdks/purchaseorders/README.md)
+### [Accounting.PurchaseOrders](docs/sdks/purchaseorders/README.md)
 
 * [List](docs/sdks/purchaseorders/README.md#list) - List Purchase Orders
 * [Create](docs/sdks/purchaseorders/README.md#create) - Create Purchase Order
@@ -323,7 +323,7 @@ while(res != null)
 * [Update](docs/sdks/purchaseorders/README.md#update) - Update Purchase Order
 * [Delete](docs/sdks/purchaseorders/README.md#delete) - Delete Purchase Order
 
-#### [Accounting.Quotes](docs/sdks/quotes/README.md)
+### [Accounting.Quotes](docs/sdks/quotes/README.md)
 
 * [List](docs/sdks/quotes/README.md#list) - List Quotes
 * [Create](docs/sdks/quotes/README.md#create) - Create Quote
@@ -331,7 +331,7 @@ while(res != null)
 * [Update](docs/sdks/quotes/README.md#update) - Update Quote
 * [Delete](docs/sdks/quotes/README.md#delete) - Delete Quote
 
-#### [Accounting.Subsidiaries](docs/sdks/subsidiaries/README.md)
+### [Accounting.Subsidiaries](docs/sdks/subsidiaries/README.md)
 
 * [List](docs/sdks/subsidiaries/README.md#list) - List Subsidiaries
 * [Create](docs/sdks/subsidiaries/README.md#create) - Create Subsidiary
@@ -339,7 +339,7 @@ while(res != null)
 * [Update](docs/sdks/subsidiaries/README.md#update) - Update Subsidiary
 * [Delete](docs/sdks/subsidiaries/README.md#delete) - Delete Subsidiary
 
-#### [Accounting.Suppliers](docs/sdks/suppliers/README.md)
+### [Accounting.Suppliers](docs/sdks/suppliers/README.md)
 
 * [List](docs/sdks/suppliers/README.md#list) - List Suppliers
 * [Create](docs/sdks/suppliers/README.md#create) - Create Supplier
@@ -347,7 +347,7 @@ while(res != null)
 * [Update](docs/sdks/suppliers/README.md#update) - Update Supplier
 * [Delete](docs/sdks/suppliers/README.md#delete) - Delete Supplier
 
-#### [Accounting.TaxRates](docs/sdks/taxrates/README.md)
+### [Accounting.TaxRates](docs/sdks/taxrates/README.md)
 
 * [List](docs/sdks/taxrates/README.md#list) - List Tax Rates
 * [Create](docs/sdks/taxrates/README.md#create) - Create Tax Rate
@@ -355,7 +355,7 @@ while(res != null)
 * [Update](docs/sdks/taxrates/README.md#update) - Update Tax Rate
 * [Delete](docs/sdks/taxrates/README.md#delete) - Delete Tax Rate
 
-#### [Accounting.TrackingCategories](docs/sdks/trackingcategories/README.md)
+### [Accounting.TrackingCategories](docs/sdks/trackingcategories/README.md)
 
 * [List](docs/sdks/trackingcategories/README.md#list) - List Tracking Categories
 * [Create](docs/sdks/trackingcategories/README.md#create) - Create Tracking Category
@@ -363,7 +363,7 @@ while(res != null)
 * [Update](docs/sdks/trackingcategories/README.md#update) - Update Tracking Category
 * [Delete](docs/sdks/trackingcategories/README.md#delete) - Delete Tracking Category
 
-#### [Ats.Applicants](docs/sdks/applicants/README.md)
+### [Ats.Applicants](docs/sdks/applicants/README.md)
 
 * [List](docs/sdks/applicants/README.md#list) - List Applicants
 * [Create](docs/sdks/applicants/README.md#create) - Create Applicant
@@ -371,7 +371,7 @@ while(res != null)
 * [Update](docs/sdks/applicants/README.md#update) - Update Applicant
 * [Delete](docs/sdks/applicants/README.md#delete) - Delete Applicant
 
-#### [Ats.Applications](docs/sdks/applications/README.md)
+### [Ats.Applications](docs/sdks/applications/README.md)
 
 * [List](docs/sdks/applications/README.md#list) - List Applications
 * [Create](docs/sdks/applications/README.md#create) - Create Application
@@ -379,38 +379,38 @@ while(res != null)
 * [Update](docs/sdks/applications/README.md#update) - Update Application
 * [Delete](docs/sdks/applications/README.md#delete) - Delete Application
 
-#### [Ats.Jobs](docs/sdks/jobs/README.md)
+### [Ats.Jobs](docs/sdks/jobs/README.md)
 
 * [List](docs/sdks/jobs/README.md#list) - List Jobs
 * [Get](docs/sdks/jobs/README.md#get) - Get Job
 
-#### [Connector.ApiResourceCoverage](docs/sdks/apiresourcecoverage/README.md)
+### [Connector.ApiResourceCoverage](docs/sdks/apiresourcecoverage/README.md)
 
 * [Get](docs/sdks/apiresourcecoverage/README.md#get) - Get API Resource Coverage
 
-#### [Connector.ApiResources](docs/sdks/apiresources/README.md)
+### [Connector.ApiResources](docs/sdks/apiresources/README.md)
 
 * [Get](docs/sdks/apiresources/README.md#get) - Get API Resource
 
-#### [Connector.Apis](docs/sdks/apis/README.md)
+### [Connector.Apis](docs/sdks/apis/README.md)
 
 * [List](docs/sdks/apis/README.md#list) - List APIs
 * [Get](docs/sdks/apis/README.md#get) - Get API
 
-#### [Connector.ConnectorDocs](docs/sdks/connectordocs/README.md)
+### [Connector.ConnectorDocs](docs/sdks/connectordocs/README.md)
 
 * [Get](docs/sdks/connectordocs/README.md#get) - Get Connector Doc content
 
-#### [Connector.ConnectorResources](docs/sdks/connectorresources/README.md)
+### [Connector.ConnectorResources](docs/sdks/connectorresources/README.md)
 
 * [Get](docs/sdks/connectorresources/README.md#get) - Get Connector Resource
 
-#### [Connector.Connectors](docs/sdks/connectors/README.md)
+### [Connector.Connectors](docs/sdks/connectors/README.md)
 
 * [List](docs/sdks/connectors/README.md#list) - List Connectors
 * [Get](docs/sdks/connectors/README.md#get) - Get Connector
 
-#### [Crm.Activities](docs/sdks/activities/README.md)
+### [Crm.Activities](docs/sdks/activities/README.md)
 
 * [List](docs/sdks/activities/README.md#list) - List activities
 * [Create](docs/sdks/activities/README.md#create) - Create activity
@@ -418,7 +418,7 @@ while(res != null)
 * [Update](docs/sdks/activities/README.md#update) - Update activity
 * [Delete](docs/sdks/activities/README.md#delete) - Delete activity
 
-#### [Crm.Companies](docs/sdks/companies/README.md)
+### [Crm.Companies](docs/sdks/companies/README.md)
 
 * [List](docs/sdks/companies/README.md#list) - List companies
 * [Create](docs/sdks/companies/README.md#create) - Create company
@@ -426,7 +426,7 @@ while(res != null)
 * [Update](docs/sdks/companies/README.md#update) - Update company
 * [Delete](docs/sdks/companies/README.md#delete) - Delete company
 
-#### [Crm.Contacts](docs/sdks/contacts/README.md)
+### [Crm.Contacts](docs/sdks/contacts/README.md)
 
 * [List](docs/sdks/contacts/README.md#list) - List contacts
 * [Create](docs/sdks/contacts/README.md#create) - Create contact
@@ -434,7 +434,7 @@ while(res != null)
 * [Update](docs/sdks/contacts/README.md#update) - Update contact
 * [Delete](docs/sdks/contacts/README.md#delete) - Delete contact
 
-#### [Crm.CustomObjects](docs/sdks/customobjects/README.md)
+### [Crm.CustomObjects](docs/sdks/customobjects/README.md)
 
 * [List](docs/sdks/customobjects/README.md#list) - List custom objects
 * [Create](docs/sdks/customobjects/README.md#create) - Create custom object
@@ -442,7 +442,7 @@ while(res != null)
 * [Update](docs/sdks/customobjects/README.md#update) - Update custom object
 * [Delete](docs/sdks/customobjects/README.md#delete) - Delete custom object
 
-#### [Crm.CustomObjectSchemas](docs/sdks/customobjectschemas/README.md)
+### [Crm.CustomObjectSchemas](docs/sdks/customobjectschemas/README.md)
 
 * [List](docs/sdks/customobjectschemas/README.md#list) - List custom object schemas
 * [Create](docs/sdks/customobjectschemas/README.md#create) - Create custom object schema
@@ -450,7 +450,7 @@ while(res != null)
 * [Update](docs/sdks/customobjectschemas/README.md#update) - Update custom object schema
 * [Delete](docs/sdks/customobjectschemas/README.md#delete) - Delete custom object schema
 
-#### [Crm.Leads](docs/sdks/leads/README.md)
+### [Crm.Leads](docs/sdks/leads/README.md)
 
 * [List](docs/sdks/leads/README.md#list) - List leads
 * [Create](docs/sdks/leads/README.md#create) - Create lead
@@ -458,7 +458,7 @@ while(res != null)
 * [Update](docs/sdks/leads/README.md#update) - Update lead
 * [Delete](docs/sdks/leads/README.md#delete) - Delete lead
 
-#### [Crm.Notes](docs/sdks/notes/README.md)
+### [Crm.Notes](docs/sdks/notes/README.md)
 
 * [List](docs/sdks/notes/README.md#list) - List notes
 * [Create](docs/sdks/notes/README.md#create) - Create note
@@ -466,7 +466,7 @@ while(res != null)
 * [Update](docs/sdks/notes/README.md#update) - Update note
 * [Delete](docs/sdks/notes/README.md#delete) - Delete note
 
-#### [Crm.Opportunities](docs/sdks/opportunities/README.md)
+### [Crm.Opportunities](docs/sdks/opportunities/README.md)
 
 * [List](docs/sdks/opportunities/README.md#list) - List opportunities
 * [Create](docs/sdks/opportunities/README.md#create) - Create opportunity
@@ -474,7 +474,7 @@ while(res != null)
 * [Update](docs/sdks/opportunities/README.md#update) - Update opportunity
 * [Delete](docs/sdks/opportunities/README.md#delete) - Delete opportunity
 
-#### [Crm.Pipelines](docs/sdks/pipelines/README.md)
+### [Crm.Pipelines](docs/sdks/pipelines/README.md)
 
 * [List](docs/sdks/pipelines/README.md#list) - List pipelines
 * [Create](docs/sdks/pipelines/README.md#create) - Create pipeline
@@ -482,7 +482,7 @@ while(res != null)
 * [Update](docs/sdks/pipelines/README.md#update) - Update pipeline
 * [Delete](docs/sdks/pipelines/README.md#delete) - Delete pipeline
 
-#### [Crm.Users](docs/sdks/users/README.md)
+### [Crm.Users](docs/sdks/users/README.md)
 
 * [List](docs/sdks/users/README.md#list) - List users
 * [Create](docs/sdks/users/README.md#create) - Create user
@@ -490,26 +490,26 @@ while(res != null)
 * [Update](docs/sdks/users/README.md#update) - Update user
 * [Delete](docs/sdks/users/README.md#delete) - Delete user
 
-#### [Ecommerce.Customers](docs/sdks/apideckcustomers/README.md)
+### [Ecommerce.Customers](docs/sdks/apideckcustomers/README.md)
 
 * [List](docs/sdks/apideckcustomers/README.md#list) - List Customers
 * [Get](docs/sdks/apideckcustomers/README.md#get) - Get Customer
 
-#### [Ecommerce.Orders](docs/sdks/orders/README.md)
+### [Ecommerce.Orders](docs/sdks/orders/README.md)
 
 * [List](docs/sdks/orders/README.md#list) - List Orders
 * [Get](docs/sdks/orders/README.md#get) - Get Order
 
-#### [Ecommerce.Products](docs/sdks/products/README.md)
+### [Ecommerce.Products](docs/sdks/products/README.md)
 
 * [List](docs/sdks/products/README.md#list) - List Products
 * [Get](docs/sdks/products/README.md#get) - Get Product
 
-#### [Ecommerce.Stores](docs/sdks/stores/README.md)
+### [Ecommerce.Stores](docs/sdks/stores/README.md)
 
 * [Get](docs/sdks/stores/README.md#get) - Get Store
 
-#### [FileStorage.DriveGroups](docs/sdks/drivegroups/README.md)
+### [FileStorage.DriveGroups](docs/sdks/drivegroups/README.md)
 
 * [List](docs/sdks/drivegroups/README.md#list) - List DriveGroups
 * [Create](docs/sdks/drivegroups/README.md#create) - Create DriveGroup
@@ -517,7 +517,7 @@ while(res != null)
 * [Update](docs/sdks/drivegroups/README.md#update) - Update DriveGroup
 * [Delete](docs/sdks/drivegroups/README.md#delete) - Delete DriveGroup
 
-#### [FileStorage.Drives](docs/sdks/drives/README.md)
+### [FileStorage.Drives](docs/sdks/drives/README.md)
 
 * [List](docs/sdks/drives/README.md#list) - List Drives
 * [Create](docs/sdks/drives/README.md#create) - Create Drive
@@ -525,7 +525,7 @@ while(res != null)
 * [Update](docs/sdks/drives/README.md#update) - Update Drive
 * [Delete](docs/sdks/drives/README.md#delete) - Delete Drive
 
-#### [FileStorage.Files](docs/sdks/files/README.md)
+### [FileStorage.Files](docs/sdks/files/README.md)
 
 * [List](docs/sdks/files/README.md#list) - List Files
 * [Search](docs/sdks/files/README.md#search) - Search Files
@@ -535,7 +535,7 @@ while(res != null)
 * [Download](docs/sdks/files/README.md#download) - Download File
 * [Export](docs/sdks/files/README.md#export) - Export File
 
-#### [FileStorage.Folders](docs/sdks/folders/README.md)
+### [FileStorage.Folders](docs/sdks/folders/README.md)
 
 * [Create](docs/sdks/folders/README.md#create) - Create Folder
 * [Get](docs/sdks/folders/README.md#get) - Get Folder
@@ -543,15 +543,15 @@ while(res != null)
 * [Delete](docs/sdks/folders/README.md#delete) - Delete Folder
 * [Copy](docs/sdks/folders/README.md#copy) - Copy Folder
 
-#### [FileStorage.SharedLinks](docs/sdks/sharedlinks/README.md)
+### [FileStorage.SharedLinks](docs/sdks/sharedlinks/README.md)
 
-* [List](docs/sdks/sharedlinks/README.md#list) - List SharedLinks
+* [List](docs/sdks/sharedlinks/README.md#list) - List Shared Links
 * [Create](docs/sdks/sharedlinks/README.md#create) - Create Shared Link
 * [Get](docs/sdks/sharedlinks/README.md#get) - Get Shared Link
 * [Update](docs/sdks/sharedlinks/README.md#update) - Update Shared Link
 * [Delete](docs/sdks/sharedlinks/README.md#delete) - Delete Shared Link
 
-#### [FileStorage.UploadSessions](docs/sdks/uploadsessions/README.md)
+### [FileStorage.UploadSessions](docs/sdks/uploadsessions/README.md)
 
 * [Create](docs/sdks/uploadsessions/README.md#create) - Start Upload Session
 * [Get](docs/sdks/uploadsessions/README.md#get) - Get Upload Session
@@ -559,7 +559,7 @@ while(res != null)
 * [Delete](docs/sdks/uploadsessions/README.md#delete) - Abort Upload Session
 * [Finish](docs/sdks/uploadsessions/README.md#finish) - Finish Upload Session
 
-#### [Hris.Companies](docs/sdks/apideckcompanies/README.md)
+### [Hris.Companies](docs/sdks/apideckcompanies/README.md)
 
 * [List](docs/sdks/apideckcompanies/README.md#list) - List Companies
 * [Create](docs/sdks/apideckcompanies/README.md#create) - Create Company
@@ -567,7 +567,7 @@ while(res != null)
 * [Update](docs/sdks/apideckcompanies/README.md#update) - Update Company
 * [Delete](docs/sdks/apideckcompanies/README.md#delete) - Delete Company
 
-#### [Hris.Departments](docs/sdks/apideckdepartments/README.md)
+### [Hris.Departments](docs/sdks/apideckdepartments/README.md)
 
 * [List](docs/sdks/apideckdepartments/README.md#list) - List Departments
 * [Create](docs/sdks/apideckdepartments/README.md#create) - Create Department
@@ -575,12 +575,12 @@ while(res != null)
 * [Update](docs/sdks/apideckdepartments/README.md#update) - Update Department
 * [Delete](docs/sdks/apideckdepartments/README.md#delete) - Delete Department
 
-#### [Hris.EmployeePayrolls](docs/sdks/employeepayrolls/README.md)
+### [Hris.EmployeePayrolls](docs/sdks/employeepayrolls/README.md)
 
 * [List](docs/sdks/employeepayrolls/README.md#list) - List Employee Payrolls
 * [Get](docs/sdks/employeepayrolls/README.md#get) - Get Employee Payroll
 
-#### [Hris.Employees](docs/sdks/employees/README.md)
+### [Hris.Employees](docs/sdks/employees/README.md)
 
 * [List](docs/sdks/employees/README.md#list) - List Employees
 * [Create](docs/sdks/employees/README.md#create) - Create Employee
@@ -588,16 +588,16 @@ while(res != null)
 * [Update](docs/sdks/employees/README.md#update) - Update Employee
 * [Delete](docs/sdks/employees/README.md#delete) - Delete Employee
 
-#### [Hris.EmployeeSchedules](docs/sdks/employeeschedules/README.md)
+### [Hris.EmployeeSchedules](docs/sdks/employeeschedules/README.md)
 
 * [List](docs/sdks/employeeschedules/README.md#list) - List Employee Schedules
 
-#### [Hris.Payrolls](docs/sdks/payrolls/README.md)
+### [Hris.Payrolls](docs/sdks/payrolls/README.md)
 
 * [List](docs/sdks/payrolls/README.md#list) - List Payroll
 * [Get](docs/sdks/payrolls/README.md#get) - Get Payroll
 
-#### [Hris.TimeOffRequests](docs/sdks/timeoffrequests/README.md)
+### [Hris.TimeOffRequests](docs/sdks/timeoffrequests/README.md)
 
 * [List](docs/sdks/timeoffrequests/README.md#list) - List Time Off Requests
 * [Create](docs/sdks/timeoffrequests/README.md#create) - Create Time Off Request
@@ -605,16 +605,16 @@ while(res != null)
 * [Update](docs/sdks/timeoffrequests/README.md#update) - Update Time Off Request
 * [Delete](docs/sdks/timeoffrequests/README.md#delete) - Delete Time Off Request
 
-#### [IssueTracking.Collections](docs/sdks/collections/README.md)
+### [IssueTracking.Collections](docs/sdks/collections/README.md)
 
 * [List](docs/sdks/collections/README.md#list) - List Collections
 * [Get](docs/sdks/collections/README.md#get) - Get Collection
 
-#### [IssueTracking.CollectionTags](docs/sdks/collectiontags/README.md)
+### [IssueTracking.CollectionTags](docs/sdks/collectiontags/README.md)
 
 * [List](docs/sdks/collectiontags/README.md#list) - List Tags
 
-#### [IssueTracking.CollectionTicketComments](docs/sdks/collectionticketcomments/README.md)
+### [IssueTracking.CollectionTicketComments](docs/sdks/collectionticketcomments/README.md)
 
 * [List](docs/sdks/collectionticketcomments/README.md#list) - List Comments
 * [Create](docs/sdks/collectionticketcomments/README.md#create) - Create Comment
@@ -622,7 +622,7 @@ while(res != null)
 * [Update](docs/sdks/collectionticketcomments/README.md#update) - Update Comment
 * [Delete](docs/sdks/collectionticketcomments/README.md#delete) - Delete Comment
 
-#### [IssueTracking.CollectionTickets](docs/sdks/collectiontickets/README.md)
+### [IssueTracking.CollectionTickets](docs/sdks/collectiontickets/README.md)
 
 * [List](docs/sdks/collectiontickets/README.md#list) - List Tickets
 * [Create](docs/sdks/collectiontickets/README.md#create) - Create Ticket
@@ -630,12 +630,12 @@ while(res != null)
 * [Update](docs/sdks/collectiontickets/README.md#update) - Update Ticket
 * [Delete](docs/sdks/collectiontickets/README.md#delete) - Delete Ticket
 
-#### [IssueTracking.CollectionUsers](docs/sdks/collectionusers/README.md)
+### [IssueTracking.CollectionUsers](docs/sdks/collectionusers/README.md)
 
 * [List](docs/sdks/collectionusers/README.md#list) - List Users
 * [Get](docs/sdks/collectionusers/README.md#get) - Get user
 
-#### [Sms.Messages](docs/sdks/messages/README.md)
+### [Sms.Messages](docs/sdks/messages/README.md)
 
 * [List](docs/sdks/messages/README.md#list) - List Messages
 * [Create](docs/sdks/messages/README.md#create) - Create Message
@@ -643,19 +643,19 @@ while(res != null)
 * [Update](docs/sdks/messages/README.md#update) - Update Message
 * [Delete](docs/sdks/messages/README.md#delete) - Delete Message
 
-#### [Vault.ConnectionConsent](docs/sdks/connectionconsent/README.md)
+### [Vault.ConnectionConsent](docs/sdks/connectionconsent/README.md)
 
 * [Update](docs/sdks/connectionconsent/README.md#update) - Update consent state
 
-#### [Vault.ConnectionConsents](docs/sdks/connectionconsents/README.md)
+### [Vault.ConnectionConsents](docs/sdks/connectionconsents/README.md)
 
 * [List](docs/sdks/connectionconsents/README.md#list) - Get consent records
 
-#### [Vault.ConnectionCustomMappings](docs/sdks/connectioncustommappings/README.md)
+### [Vault.ConnectionCustomMappings](docs/sdks/connectioncustommappings/README.md)
 
 * [List](docs/sdks/connectioncustommappings/README.md#list) - List connection custom mappings
 
-#### [Vault.Connections](docs/sdks/connections/README.md)
+### [Vault.Connections](docs/sdks/connections/README.md)
 
 * [List](docs/sdks/connections/README.md#list) - Get all connections
 * [Get](docs/sdks/connections/README.md#get) - Get connection
@@ -664,16 +664,16 @@ while(res != null)
 * [Imports](docs/sdks/connections/README.md#imports) - Import connection
 * [Token](docs/sdks/connections/README.md#token) - Authorize Access Token
 
-#### [Vault.ConnectionSettings](docs/sdks/connectionsettings/README.md)
+### [Vault.ConnectionSettings](docs/sdks/connectionsettings/README.md)
 
 * [List](docs/sdks/connectionsettings/README.md#list) - Get resource settings
 * [Update](docs/sdks/connectionsettings/README.md#update) - Update settings
 
-#### [Vault.ConsumerRequestCounts](docs/sdks/consumerrequestcounts/README.md)
+### [Vault.ConsumerRequestCounts](docs/sdks/consumerrequestcounts/README.md)
 
 * [List](docs/sdks/consumerrequestcounts/README.md#list) - Consumer request counts
 
-#### [Vault.Consumers](docs/sdks/consumers/README.md)
+### [Vault.Consumers](docs/sdks/consumers/README.md)
 
 * [Create](docs/sdks/consumers/README.md#create) - Create consumer
 * [List](docs/sdks/consumers/README.md#list) - Get all consumers
@@ -681,31 +681,31 @@ while(res != null)
 * [Update](docs/sdks/consumers/README.md#update) - Update consumer
 * [Delete](docs/sdks/consumers/README.md#delete) - Delete consumer
 
-#### [Vault.CreateCallback](docs/sdks/createcallback/README.md)
+### [Vault.CreateCallback](docs/sdks/createcallback/README.md)
 
 * [State](docs/sdks/createcallback/README.md#state) - Create Callback State
 
-#### [Vault.CustomFields](docs/sdks/customfields/README.md)
+### [Vault.CustomFields](docs/sdks/customfields/README.md)
 
 * [List](docs/sdks/customfields/README.md#list) - Get resource custom fields
 
-#### [Vault.CustomMappings](docs/sdks/custommappings/README.md)
+### [Vault.CustomMappings](docs/sdks/custommappings/README.md)
 
 * [List](docs/sdks/custommappings/README.md#list) - List custom mappings
 
-#### [Vault.Logs](docs/sdks/logs/README.md)
+### [Vault.Logs](docs/sdks/logs/README.md)
 
 * [List](docs/sdks/logs/README.md#list) - Get all consumer request logs
 
-#### [Vault.Sessions](docs/sdks/sessions/README.md)
+### [Vault.Sessions](docs/sdks/sessions/README.md)
 
 * [Create](docs/sdks/sessions/README.md#create) - Create Session
 
-#### [Vault.ValidateConnection](docs/sdks/validateconnection/README.md)
+### [Vault.ValidateConnection](docs/sdks/validateconnection/README.md)
 
 * [State](docs/sdks/validateconnection/README.md#state) - Validate Connection State
 
-#### [Webhook.Webhooks](docs/sdks/webhooks/README.md)
+### [Webhook.Webhooks](docs/sdks/webhooks/README.md)
 
 * [List](docs/sdks/webhooks/README.md#list) - List webhook subscriptions
 * [Create](docs/sdks/webhooks/README.md#create) - Create webhook subscription

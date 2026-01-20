@@ -1,5 +1,4 @@
-# BillPayments
-(*Accounting.BillPayments*)
+# Accounting.BillPayments
 
 ## Overview
 
@@ -177,30 +176,36 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
             },
         },
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
         DisplayId = "123456",
@@ -409,14 +414,16 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
         Number = "123456",
         TrackingCategories = null,
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
         DisplayId = "123456",

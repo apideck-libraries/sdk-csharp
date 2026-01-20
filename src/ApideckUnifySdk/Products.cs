@@ -62,6 +62,10 @@ namespace ApideckUnifySdk
 
         public async Task<EcommerceProductsAllResponse> ListAsync(EcommerceProductsAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new EcommerceProductsAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -356,10 +360,8 @@ namespace ApideckUnifySdk
 
         public async Task<EcommerceProductsOneResponse> GetAsync(EcommerceProductsOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new EcommerceProductsOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

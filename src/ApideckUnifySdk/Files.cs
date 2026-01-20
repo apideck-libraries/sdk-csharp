@@ -107,6 +107,10 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFilesAllResponse> ListAsync(FileStorageFilesAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new FileStorageFilesAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -402,10 +406,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFilesSearchResponse> SearchAsync(FileStorageFilesSearchRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFilesSearchRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -670,10 +672,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFilesOneResponse> GetAsync(FileStorageFilesOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFilesOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -932,10 +932,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFilesUpdateResponse> UpdateAsync(FileStorageFilesUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFilesUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1200,10 +1198,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFilesDeleteResponse> DeleteAsync(FileStorageFilesDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFilesDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1462,10 +1458,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFilesDownloadResponse> DownloadAsync(FileStorageFilesDownloadRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFilesDownloadRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1713,10 +1707,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFilesExportResponse> ExportAsync(FileStorageFilesExportRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFilesExportRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

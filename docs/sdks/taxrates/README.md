@@ -1,5 +1,4 @@
-# TaxRates
-(*Accounting.TaxRates*)
+# Accounting.TaxRates
 
 ## Overview
 
@@ -162,14 +161,16 @@ AccountingTaxRatesAddRequest req = new AccountingTaxRatesAddRequest() {
             },
         },
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
     },
 };
@@ -368,22 +369,26 @@ AccountingTaxRatesUpdateRequest req = new AccountingTaxRatesUpdateRequest() {
             },
         },
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
     },
 };

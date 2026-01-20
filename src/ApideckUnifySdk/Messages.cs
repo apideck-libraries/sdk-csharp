@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<SmsMessagesAllResponse> ListAsync(SmsMessagesAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new SmsMessagesAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -381,10 +385,8 @@ namespace ApideckUnifySdk
 
         public async Task<SmsMessagesAddResponse> CreateAsync(SmsMessagesAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new SmsMessagesAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -649,10 +651,8 @@ namespace ApideckUnifySdk
 
         public async Task<SmsMessagesOneResponse> GetAsync(SmsMessagesOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new SmsMessagesOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -911,10 +911,8 @@ namespace ApideckUnifySdk
 
         public async Task<SmsMessagesUpdateResponse> UpdateAsync(SmsMessagesUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new SmsMessagesUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1179,10 +1177,8 @@ namespace ApideckUnifySdk
 
         public async Task<SmsMessagesDeleteResponse> DeleteAsync(SmsMessagesDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new SmsMessagesDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

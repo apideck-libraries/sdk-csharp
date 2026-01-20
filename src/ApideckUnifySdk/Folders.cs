@@ -87,10 +87,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFoldersAddResponse> CreateAsync(FileStorageFoldersAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFoldersAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -355,10 +353,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFoldersOneResponse> GetAsync(FileStorageFoldersOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFoldersOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -617,10 +613,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFoldersUpdateResponse> UpdateAsync(FileStorageFoldersUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFoldersUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -885,10 +879,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFoldersDeleteResponse> DeleteAsync(FileStorageFoldersDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFoldersDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1147,10 +1139,8 @@ namespace ApideckUnifySdk
 
         public async Task<FileStorageFoldersCopyResponse> CopyAsync(FileStorageFoldersCopyRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new FileStorageFoldersCopyRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             

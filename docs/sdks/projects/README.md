@@ -1,5 +1,4 @@
-# Projects
-(*Accounting.Projects*)
+# Accounting.Projects
 
 ## Overview
 
@@ -188,14 +187,16 @@ AccountingProjectsAddRequest req = new AccountingProjectsAddRequest() {
         },
         TeamSize = 8,
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
     },
@@ -382,14 +383,16 @@ AccountingProjectsUpdateRequest req = new AccountingProjectsUpdateRequest() {
         },
         TeamSize = 8,
         CustomFields = new List<CustomField>() {
-            new CustomField() {
-                Id = "2389328923893298",
-                Name = "employee_level",
-                Description = "Employee Level",
-                Value = Value.CreateStr(
-                    "Uses Salesforce and Marketo"
-                ),
-            },
+            CustomField.CreateCustomField1(
+                new CustomField1() {
+                    Id = "2389328923893298",
+                    Name = "employee_level",
+                    Description = "Employee Level",
+                    Value = CustomField1Value.CreateStr(
+                        "Uses Salesforce and Marketo"
+                    ),
+                }
+            ),
         },
         RowVersion = "1-12345",
     },

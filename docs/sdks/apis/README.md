@@ -1,5 +1,4 @@
-# Apis
-(*Connector.Apis*)
+# Connector.Apis
 
 ## Overview
 

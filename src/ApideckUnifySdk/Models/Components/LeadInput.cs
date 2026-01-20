@@ -48,6 +48,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
+        /// The contact the lead is associated with.
+        /// </summary>
+        [JsonProperty("contact_id")]
+        public string? ContactId { get; set; } = null;
+
+        /// <summary>
         /// The identifier of the lead.
         /// </summary>
         [JsonProperty("lead_id")]

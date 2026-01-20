@@ -89,6 +89,10 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingPurchaseOrdersAllResponse> ListAsync(AccountingPurchaseOrdersAllRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new AccountingPurchaseOrdersAllRequest();
+            }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -383,10 +387,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingPurchaseOrdersAddResponse> CreateAsync(AccountingPurchaseOrdersAddRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingPurchaseOrdersAddRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -651,10 +653,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingPurchaseOrdersOneResponse> GetAsync(AccountingPurchaseOrdersOneRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingPurchaseOrdersOneRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -913,10 +913,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingPurchaseOrdersUpdateResponse> UpdateAsync(AccountingPurchaseOrdersUpdateRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingPurchaseOrdersUpdateRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
@@ -1181,10 +1179,8 @@ namespace ApideckUnifySdk
 
         public async Task<AccountingPurchaseOrdersDeleteResponse> DeleteAsync(AccountingPurchaseOrdersDeleteRequest request, RetryConfig? retryConfig = null)
         {
-            if (request == null)
-            {
-                request = new AccountingPurchaseOrdersDeleteRequest();
-            }
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
             
