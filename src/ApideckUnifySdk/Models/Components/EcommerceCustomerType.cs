@@ -12,48 +12,65 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum EcommerceCustomerType
-    {
-        [JsonProperty("billing")]
-        Billing,
-        [JsonProperty("shipping")]
-        Shipping,
-        [JsonProperty("other")]
-        Other,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class EcommerceCustomerTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EcommerceCustomerType : IEquatable<EcommerceCustomerType>
     {
-        public static string Value(this EcommerceCustomerType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly EcommerceCustomerType Billing = new EcommerceCustomerType("billing");
+        public static readonly EcommerceCustomerType Shipping = new EcommerceCustomerType("shipping");
+        public static readonly EcommerceCustomerType Other = new EcommerceCustomerType("other");
 
-        public static EcommerceCustomerType ToEnum(this string value)
-        {
-            foreach(var field in typeof(EcommerceCustomerType).GetFields())
+        private static readonly Dictionary <string, EcommerceCustomerType> _knownValues =
+            new Dictionary <string, EcommerceCustomerType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["billing"] = Billing,
+                ["shipping"] = Shipping,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EcommerceCustomerType> _values =
+            new ConcurrentDictionary<string, EcommerceCustomerType>(_knownValues);
 
-                    if (enumVal is EcommerceCustomerType)
-                    {
-                        return (EcommerceCustomerType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EcommerceCustomerType");
+        private EcommerceCustomerType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EcommerceCustomerType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EcommerceCustomerType(value));
+        }
+
+        public static implicit operator EcommerceCustomerType(string value) => Of(value);
+        public static implicit operator string(EcommerceCustomerType ecommercecustomertype) => ecommercecustomertype.Value;
+
+        public static EcommerceCustomerType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EcommerceCustomerType);
+
+        public bool Equals(EcommerceCustomerType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Ledger Accounts
+    /// The field on which to sort the Ledger Accounts.
     /// </summary>
-    public enum LedgerAccountsSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class LedgerAccountsSortBy : IEquatable<LedgerAccountsSortBy>
     {
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-    }
+        public static readonly LedgerAccountsSortBy CreatedAt = new LedgerAccountsSortBy("created_at");
+        public static readonly LedgerAccountsSortBy UpdatedAt = new LedgerAccountsSortBy("updated_at");
 
-    public static class LedgerAccountsSortByExtension
-    {
-        public static string Value(this LedgerAccountsSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static LedgerAccountsSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(LedgerAccountsSortBy).GetFields())
+        private static readonly Dictionary <string, LedgerAccountsSortBy> _knownValues =
+            new Dictionary <string, LedgerAccountsSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, LedgerAccountsSortBy> _values =
+            new ConcurrentDictionary<string, LedgerAccountsSortBy>(_knownValues);
 
-                    if (enumVal is LedgerAccountsSortBy)
-                    {
-                        return (LedgerAccountsSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum LedgerAccountsSortBy");
+        private LedgerAccountsSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static LedgerAccountsSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new LedgerAccountsSortBy(value));
+        }
+
+        public static implicit operator LedgerAccountsSortBy(string value) => Of(value);
+        public static implicit operator string(LedgerAccountsSortBy ledgeraccountssortby) => ledgeraccountssortby.Value;
+
+        public static LedgerAccountsSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as LedgerAccountsSortBy);
+
+        public bool Equals(LedgerAccountsSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

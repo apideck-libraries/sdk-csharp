@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class JournalEntryLineItem
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,13 +26,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// User defined description
+        /// User defined description.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Tax amount
+        /// Tax amount.
         /// </summary>
         [JsonProperty("tax_amount")]
         public double? TaxAmount { get; set; } = null;
@@ -83,19 +84,19 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplier? Supplier { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location
+        /// The ID of the location.
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// Line number of the resource
+        /// Line number of the resource.
         /// </summary>
         [JsonProperty("line_number")]
         public long? LineNumber { get; set; } = null;

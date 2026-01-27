@@ -12,33 +12,32 @@ namespace ApideckUnifySdk.Models.Errors
     using ApideckUnifySdk.Models.Errors;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Debug information including request/response details and OAuth timing metadata
+    /// Debug information including request/response details and OAuth timing metadata.
     /// </summary>
     public class Debug
     {
-
         /// <summary>
-        /// HTTP request details
+        /// HTTP request details.
         /// </summary>
         [JsonProperty("request")]
         public Request? Request { get; set; }
 
         /// <summary>
-        /// HTTP response details
+        /// HTTP response details.
         /// </summary>
         [JsonProperty("response")]
         public Response? Response { get; set; }
 
         /// <summary>
-        /// Error message from downstream provider or network layer
+        /// Error message from downstream provider or network layer.
         /// </summary>
         [JsonProperty("message")]
         public string? Message { get; set; }
 
         /// <summary>
-        /// Error code (e.g., ETIMEDOUT, ECONNREFUSED)
+        /// Error code (e.g., ETIMEDOUT, ECONNREFUSED).
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; }

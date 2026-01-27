@@ -12,24 +12,23 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class DataScopes
     {
-
         /// <summary>
-        /// Whether Data Scopes is enabled for this application
+        /// Whether Data Scopes is enabled for this application.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// ISO timestamp of when the Data Scopes configuration was last modified
+        /// ISO timestamp of when the Data Scopes configuration was last modified.
         /// </summary>
         [JsonProperty("updated_at")]
         public string? UpdatedAt { get; set; }
 
         /// <summary>
-        /// Data scopes resource configuration that can be either detailed field permissions or a wildcard
+        /// Data scopes resource configuration that can be either detailed field permissions or a wildcard.
         /// </summary>
         [JsonProperty("resources", NullValueHandling = NullValueHandling.Include)]
         public DataScopesResources? Resources { get; set; }

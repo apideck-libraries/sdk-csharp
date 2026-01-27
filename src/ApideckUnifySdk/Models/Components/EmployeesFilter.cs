@@ -11,72 +11,76 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class EmployeesFilter
     {
-
         /// <summary>
-        /// Company ID to filter on
+        /// Company ID to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=company_id")]
         public string? CompanyId { get; set; }
 
         /// <summary>
-        /// Email to filter on
+        /// Email to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=email")]
         public string? Email { get; set; }
 
         /// <summary>
-        /// First Name to filter on
+        /// First Name to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=first_name")]
         public string? FirstName { get; set; }
 
         /// <summary>
-        /// Job title to filter on
+        /// Job title to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=title")]
         public string? Title { get; set; }
 
         /// <summary>
-        /// Last Name to filter on
+        /// Last Name to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=last_name")]
         public string? LastName { get; set; }
 
         /// <summary>
-        /// Manager id to filter on
+        /// Manager id to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=manager_id")]
         public string? ManagerId { get; set; }
 
         /// <summary>
-        /// Employment status to filter on
+        /// Employment status to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=employment_status")]
         public EmployeesFilterEmploymentStatus? EmploymentStatus { get; set; }
 
         /// <summary>
-        /// Employee number to filter on
+        /// Employee number to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=employee_number")]
         public string? EmployeeNumber { get; set; }
 
         /// <summary>
-        /// ID of the department to filter on
+        /// ID of the department to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=department_id")]
         public string? DepartmentId { get; set; }
 
         /// <summary>
-        /// City to filter on
+        /// City to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=city")]
         public string? City { get; set; }
 
         /// <summary>
-        /// Country to filter on
+        /// Country to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=country")]
         public string? Country { get; set; }

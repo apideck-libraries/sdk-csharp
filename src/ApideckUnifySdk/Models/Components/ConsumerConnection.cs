@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class ConsumerConnection
     {
-
         [JsonProperty("id")]
         public string? Id { get; set; }
 
@@ -45,7 +47,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? ConsumerId { get; set; }
 
         /// <summary>
-        /// Type of authorization used by the connector
+        /// Type of authorization used by the connector.
         /// </summary>
         [JsonProperty("auth_type")]
         public AuthType? AuthType { get; set; }
@@ -54,13 +56,13 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Connection settings. Values will persist to `form_fields` with corresponding id
+        /// Connection settings. Values will persist to `form_fields` with corresponding id.
         /// </summary>
         [JsonProperty("settings")]
         public Dictionary<string, object>? Settings { get; set; } = null;
 
         /// <summary>
-        /// Attach your own consumer specific metadata
+        /// Attach your own consumer specific metadata.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, object>? Metadata { get; set; } = null;

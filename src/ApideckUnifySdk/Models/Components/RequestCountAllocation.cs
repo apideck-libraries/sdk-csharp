@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class RequestCountAllocation
     {
-
         [JsonProperty("unify")]
         public double? Unify { get; set; }
 

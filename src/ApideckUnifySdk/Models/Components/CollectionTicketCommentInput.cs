@@ -13,12 +13,11 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CollectionTicketCommentInput
     {
-
         /// <summary>
-        /// Body of the comment
+        /// Body of the comment.
         /// </summary>
         [JsonProperty("body")]
         public string? Body { get; set; } = null;

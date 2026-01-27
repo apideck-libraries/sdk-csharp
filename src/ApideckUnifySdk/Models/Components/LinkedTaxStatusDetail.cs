@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedTaxStatusDetail
     {
-
         /// <summary>
         /// The country of the tax status.
         /// </summary>

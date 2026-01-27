@@ -12,46 +12,63 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum ShowAs
-    {
-        [JsonProperty("free")]
-        Free,
-        [JsonProperty("busy")]
-        Busy,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class ShowAsExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ShowAs : IEquatable<ShowAs>
     {
-        public static string Value(this ShowAs value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly ShowAs Free = new ShowAs("free");
+        public static readonly ShowAs Busy = new ShowAs("busy");
 
-        public static ShowAs ToEnum(this string value)
-        {
-            foreach(var field in typeof(ShowAs).GetFields())
+        private static readonly Dictionary <string, ShowAs> _knownValues =
+            new Dictionary <string, ShowAs> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["free"] = Free,
+                ["busy"] = Busy
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ShowAs> _values =
+            new ConcurrentDictionary<string, ShowAs>(_knownValues);
 
-                    if (enumVal is ShowAs)
-                    {
-                        return (ShowAs)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ShowAs");
+        private ShowAs(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ShowAs Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ShowAs(value));
+        }
+
+        public static implicit operator ShowAs(string value) => Of(value);
+        public static implicit operator string(ShowAs showas) => showas.Value;
+
+        public static ShowAs[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ShowAs);
+
+        public bool Equals(ShowAs? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

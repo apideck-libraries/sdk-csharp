@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class ParentAccount
     {
-
         /// <summary>
         /// The ID of the parent account.
         /// </summary>
@@ -28,7 +27,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
-        /// The human readable display ID used when displaying the parent account
+        /// The human readable display ID used when displaying the parent account.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; }

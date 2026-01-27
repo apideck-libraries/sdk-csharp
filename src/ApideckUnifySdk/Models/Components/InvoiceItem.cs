@@ -14,11 +14,12 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class InvoiceItem
     {
-
         /// <summary>
         /// The ID of the item.
         /// </summary>
@@ -26,49 +27,49 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// Item name
+        /// Item name.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// A short description of the item
+        /// A short description of the item.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Display ID of the item
+        /// Display ID of the item.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// User defined item code
+        /// User defined item code.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; } = null;
 
         /// <summary>
-        /// Item will be available on sales transactions
+        /// Item will be available on sales transactions.
         /// </summary>
         [JsonProperty("sold")]
         public bool? Sold { get; set; } = null;
 
         /// <summary>
-        /// Item is available for purchase transactions
+        /// Item is available for purchase transactions.
         /// </summary>
         [JsonProperty("purchased")]
         public bool? Purchased { get; set; } = null;
 
         /// <summary>
-        /// Item is inventoried
+        /// Item is inventoried.
         /// </summary>
         [JsonProperty("tracked")]
         public bool? Tracked { get; set; } = null;
 
         /// <summary>
-        /// If true, transactions for this item are taxable
+        /// If true, transactions for this item are taxable.
         /// </summary>
         [JsonProperty("taxable")]
         public bool? Taxable { get; set; } = null;
@@ -80,7 +81,7 @@ namespace ApideckUnifySdk.Models.Components
         public LocalDate? InventoryDate { get; set; } = null;
 
         /// <summary>
-        /// Item type
+        /// Item type.
         /// </summary>
         [JsonProperty("type")]
         public InvoiceItemTypeType? Type { get; set; } = null;
@@ -126,31 +127,31 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Active { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location
+        /// The ID of the location.
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the subsidiary
+        /// The ID of the subsidiary.
         /// </summary>
         [JsonProperty("subsidiary_id")]
         public string? SubsidiaryId { get; set; } = null;
 
         /// <summary>
-        /// ID of the category of the item
+        /// ID of the category of the item.
         /// </summary>
         [JsonProperty("category_id")]
         public string? CategoryId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the tax schedule
+        /// The ID of the tax schedule.
         /// </summary>
         [JsonProperty("tax_schedule_id")]
         public string? TaxScheduleId { get; set; } = null;

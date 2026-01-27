@@ -10,10 +10,9 @@
 namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class EcommerceOrdersOneRequest
     {
-
         /// <summary>
         /// ID of the record you are acting upon.
         /// </summary>
@@ -21,13 +20,13 @@ namespace ApideckUnifySdk.Models.Requests
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// ID of the consumer which you want to get or push data from
+        /// ID of the consumer which you want to get or push data from.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
         public string? ConsumerId { get; set; }
 
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
@@ -39,13 +38,13 @@ namespace ApideckUnifySdk.Models.Requests
         public string? ServiceId { get; set; }
 
         /// <summary>
-        /// Include raw response. Mostly used for debugging purposes
+        /// Include raw response. Mostly used for debugging purposes.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
         public bool? Raw { get; set; } = false;
 
         /// <summary>
-        /// The &apos;fields&apos; parameter allows API users to specify the fields they want to include in the API response. If this parameter is not present, the API will return all available fields. If this parameter is present, only the fields specified in the comma-separated string will be included in the response. Nested properties can also be requested by using a dot notation. &lt;br /&gt;&lt;br /&gt;Example: `fields=name,email,addresses.city`&lt;br /&gt;&lt;br /&gt;In the example above, the response will only include the fields &quot;name&quot;, &quot;email&quot; and &quot;addresses.city&quot;. If any other fields are available, they will be excluded.
+        /// The 'fields' parameter allows API users to specify the fields they want to include in the API response. If this parameter is not present, the API will return all available fields. If this parameter is present, only the fields specified in the comma-separated string will be included in the response. Nested properties can also be requested by using a dot notation. &lt;br /&gt;&lt;br /&gt;Example: `fields=name,email,addresses.city`&lt;br /&gt;&lt;br /&gt;In the example above, the response will only include the fields "name", "email" and "addresses.city". If any other fields are available, they will be excluded.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")]
         public string? Fields { get; set; } = null;

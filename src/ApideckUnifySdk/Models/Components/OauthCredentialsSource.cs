@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Location of the OAuth client credentials. For most connectors the OAuth client credentials are stored on integration and managed by the application owner. For others they are stored on connection and managed by the consumer in Vault.
     /// </summary>
-    public enum OauthCredentialsSource
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class OauthCredentialsSource : IEquatable<OauthCredentialsSource>
     {
-        [JsonProperty("integration")]
-        Integration,
-        [JsonProperty("connection")]
-        Connection,
-    }
+        public static readonly OauthCredentialsSource Integration = new OauthCredentialsSource("integration");
+        public static readonly OauthCredentialsSource Connection = new OauthCredentialsSource("connection");
 
-    public static class OauthCredentialsSourceExtension
-    {
-        public static string Value(this OauthCredentialsSource value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static OauthCredentialsSource ToEnum(this string value)
-        {
-            foreach(var field in typeof(OauthCredentialsSource).GetFields())
+        private static readonly Dictionary <string, OauthCredentialsSource> _knownValues =
+            new Dictionary <string, OauthCredentialsSource> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["integration"] = Integration,
+                ["connection"] = Connection
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, OauthCredentialsSource> _values =
+            new ConcurrentDictionary<string, OauthCredentialsSource>(_knownValues);
 
-                    if (enumVal is OauthCredentialsSource)
-                    {
-                        return (OauthCredentialsSource)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum OauthCredentialsSource");
+        private OauthCredentialsSource(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static OauthCredentialsSource Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new OauthCredentialsSource(value));
+        }
+
+        public static implicit operator OauthCredentialsSource(string value) => Of(value);
+        public static implicit operator string(OauthCredentialsSource oauthcredentialssource) => oauthcredentialssource.Value;
+
+        public static OauthCredentialsSource[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as OauthCredentialsSource);
+
+        public bool Equals(OauthCredentialsSource? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

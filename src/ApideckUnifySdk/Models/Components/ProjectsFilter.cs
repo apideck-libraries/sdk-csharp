@@ -11,31 +11,34 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
+    using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class ProjectsFilter
     {
-
         /// <summary>
-        /// Name of project to search for
+        /// Name of project to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Status of projects to filter by
+        /// Status of projects to filter by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=status")]
         public ProjectStatus? Status { get; set; }
 
         /// <summary>
-        /// Filter projects by customer ID
+        /// Filter projects by customer ID.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=customer_id")]
         public string? CustomerId { get; set; }
 
         /// <summary>
-        /// Return projects modified after this date
+        /// Return projects modified after this date.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }

@@ -24,32 +24,69 @@ namespace ApideckUnifySdk
 
     public interface IApiResources
     {
-
         /// <summary>
-        /// Get API Resource
-        /// 
-        /// <remarks>
-        /// Get API Resource
-        /// </remarks>
+        /// Get API Resource.
         /// </summary>
-        Task<ConnectorApiResourcesOneResponse> GetAsync(string id, string resourceId, string? appId = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Get API Resource.
+        /// </remarks>
+        /// <param name="id">ID of the record you are acting upon.</param>
+        /// <param name="resourceId">ID of the resource you are acting upon.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ConnectorApiResourcesOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/> or <paramref name="resourceId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ConnectorApiResourcesOneResponse> GetAsync(
+            string id,
+            string resourceId,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class ApiResources: IApiResources
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public ApiResources(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<ConnectorApiResourcesOneResponse> GetAsync(string id, string resourceId, string? appId = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Get API Resource.
+        /// </summary>
+        /// <remarks>
+        /// Get API Resource.
+        /// </remarks>
+        /// <param name="id">ID of the record you are acting upon.</param>
+        /// <param name="resourceId">ID of the resource you are acting upon.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ConnectorApiResourcesOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/> or <paramref name="resourceId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ConnectorApiResourcesOneResponse> GetAsync(
+            string id,
+            string resourceId,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (id == null) throw new ArgumentNullException(nameof(id));
             if (resourceId == null) throw new ArgumentNullException(nameof(resourceId));
@@ -61,7 +98,7 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/connector/apis/{id}/resources/{resource_id}", request, null);
 
@@ -121,7 +158,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -274,5 +311,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

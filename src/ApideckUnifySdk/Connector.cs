@@ -17,26 +17,60 @@ namespace ApideckUnifySdk
     public interface IConnector
     {
         public IConnectors Connectors { get; }
+
         public IConnectorDocs ConnectorDocs { get; }
+
         public IConnectorResources ConnectorResources { get; }
+
         public IApis Apis { get; }
+
         public IApiResources ApiResources { get; }
+
         public IApiResourceCoverage ApiResourceCoverage { get; }
     }
 
     public class Connector: IConnector
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Connectors SubSDK.
+        /// <see cref="IConnectors"/>
+        /// </summary>
         public IConnectors Connectors { get; private set; }
+
+        /// <summary>
+        /// ConnectorDocs SubSDK.
+        /// <see cref="IConnectorDocs"/>
+        /// </summary>
         public IConnectorDocs ConnectorDocs { get; private set; }
+
+        /// <summary>
+        /// ConnectorResources SubSDK.
+        /// <see cref="IConnectorResources"/>
+        /// </summary>
         public IConnectorResources ConnectorResources { get; private set; }
+
+        /// <summary>
+        /// Apis SubSDK.
+        /// <see cref="IApis"/>
+        /// </summary>
         public IApis Apis { get; private set; }
+
+        /// <summary>
+        /// ApiResources SubSDK.
+        /// <see cref="IApiResources"/>
+        /// </summary>
         public IApiResources ApiResources { get; private set; }
+
+        /// <summary>
+        /// ApiResourceCoverage SubSDK.
+        /// <see cref="IApiResourceCoverage"/>
+        /// </summary>
         public IApiResourceCoverage ApiResourceCoverage { get; private set; }
 
         public Connector(SDKConfig config)

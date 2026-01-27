@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Leads
+    /// The field on which to sort the Leads.
     /// </summary>
-    public enum LeadsSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class LeadsSortBy : IEquatable<LeadsSortBy>
     {
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-        [JsonProperty("name")]
-        Name,
-        [JsonProperty("first_name")]
-        FirstName,
-        [JsonProperty("last_name")]
-        LastName,
-        [JsonProperty("email")]
-        Email,
-    }
+        public static readonly LeadsSortBy CreatedAt = new LeadsSortBy("created_at");
+        public static readonly LeadsSortBy UpdatedAt = new LeadsSortBy("updated_at");
+        public static readonly LeadsSortBy Name = new LeadsSortBy("name");
+        public static readonly LeadsSortBy FirstName = new LeadsSortBy("first_name");
+        public static readonly LeadsSortBy LastName = new LeadsSortBy("last_name");
+        public static readonly LeadsSortBy Email = new LeadsSortBy("email");
 
-    public static class LeadsSortByExtension
-    {
-        public static string Value(this LeadsSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static LeadsSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(LeadsSortBy).GetFields())
+        private static readonly Dictionary <string, LeadsSortBy> _knownValues =
+            new Dictionary <string, LeadsSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt,
+                ["name"] = Name,
+                ["first_name"] = FirstName,
+                ["last_name"] = LastName,
+                ["email"] = Email
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, LeadsSortBy> _values =
+            new ConcurrentDictionary<string, LeadsSortBy>(_knownValues);
 
-                    if (enumVal is LeadsSortBy)
-                    {
-                        return (LeadsSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum LeadsSortBy");
+        private LeadsSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static LeadsSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new LeadsSortBy(value));
+        }
+
+        public static implicit operator LeadsSortBy(string value) => Of(value);
+        public static implicit operator string(LeadsSortBy leadssortby) => leadssortby.Value;
+
+        public static LeadsSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as LeadsSortBy);
+
+        public bool Equals(LeadsSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

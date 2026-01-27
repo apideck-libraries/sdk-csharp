@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class CollectionUser
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -24,25 +23,25 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// Full name of the user
+        /// Full name of the user.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// First name of the user
+        /// First name of the user.
         /// </summary>
         [JsonProperty("first_name")]
         public string? FirstName { get; set; } = null;
 
         /// <summary>
-        /// Last name of the user
+        /// Last name of the user.
         /// </summary>
         [JsonProperty("last_name")]
         public string? LastName { get; set; } = null;
 
         /// <summary>
-        /// Email address of the user
+        /// Email address of the user.
         /// </summary>
         [JsonProperty("email")]
         public string? Email { get; set; } = null;

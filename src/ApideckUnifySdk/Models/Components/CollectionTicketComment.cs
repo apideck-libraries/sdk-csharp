@@ -14,10 +14,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class CollectionTicketComment
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,7 +24,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// Body of the comment
+        /// Body of the comment.
         /// </summary>
         [JsonProperty("body")]
         public string? Body { get; set; } = null;

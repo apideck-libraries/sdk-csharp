@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Supplier
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,19 +26,19 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
-        /// Display ID
+        /// Display ID.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// Display name
+        /// Display name.
         /// </summary>
         [JsonProperty("display_name")]
         public string? DisplayName { get; set; } = null;
@@ -49,13 +50,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyName { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// The category/type of the supplier
+        /// The category/type of the supplier.
         /// </summary>
         [JsonProperty("supplier_category")]
         public string? SupplierCategory { get; set; } = null;
@@ -88,7 +89,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Suffix { get; set; } = null;
 
         /// <summary>
-        /// Is this an individual or business supplier
+        /// Is this an individual or business supplier.
         /// </summary>
         [JsonProperty("individual")]
         public bool? Individual { get; set; } = null;
@@ -109,7 +110,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<BankAccount>? BankAccounts { get; set; }
 
         /// <summary>
-        /// Some notes about this supplier
+        /// Some notes about this supplier.
         /// </summary>
         [JsonProperty("notes")]
         public string? Notes { get; set; } = null;
@@ -121,7 +122,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? TaxNumber { get; set; } = null;
 
         /// <summary>
-        /// Whether the entity is subject to taxation
+        /// Whether the entity is subject to taxation.
         /// </summary>
         [JsonProperty("taxable")]
         public bool? Taxable { get; set; } = null;
@@ -136,13 +137,13 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedLedgerAccount? Account { get; set; } = null;
 
         /// <summary>
-        /// Supplier status
+        /// Supplier status.
         /// </summary>
         [JsonProperty("status")]
         public SupplierStatus? Status { get; set; } = null;
 
         /// <summary>
-        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check
+        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check.
         /// </summary>
         [JsonProperty("payment_method")]
         public string? PaymentMethod { get; set; } = null;
@@ -160,13 +161,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Channel { get; set; } = null;
 
         /// <summary>
-        /// Method of issuance of the purchase order for the supplier
+        /// Method of issuance of the purchase order for the supplier.
         /// </summary>
         [JsonProperty("issued_method")]
         public string? IssuedMethod { get; set; } = null;
 
         /// <summary>
-        /// Email address of the person who issued the purchase order for the supplier
+        /// Email address of the person who issued the purchase order for the supplier.
         /// </summary>
         [JsonProperty("issued_email")]
         public string? IssuedEmail { get; set; } = null;

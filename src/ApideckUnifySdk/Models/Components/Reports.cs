@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Reports
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,19 +26,19 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// The name of the report
+        /// The name of the report.
         /// </summary>
         [JsonProperty("report_name")]
         public string? ReportName { get; set; }
 
         /// <summary>
-        /// The start date of the report
+        /// The start date of the report.
         /// </summary>
         [JsonProperty("start_date")]
         public string? StartDate { get; set; }
 
         /// <summary>
-        /// The start date of the report
+        /// The start date of the report.
         /// </summary>
         [JsonProperty("end_date")]
         public string EndDate { get; set; } = default!;
@@ -67,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
         public BalanceSheetEquityAccount Equity { get; set; } = default!;
 
         /// <summary>
-        /// The net assets of the balance sheet
+        /// The net assets of the balance sheet.
         /// </summary>
         [JsonProperty("net_assets")]
         public double? NetAssets { get; set; }

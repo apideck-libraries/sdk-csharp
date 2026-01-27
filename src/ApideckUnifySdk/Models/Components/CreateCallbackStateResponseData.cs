@@ -11,12 +11,11 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class CreateCallbackStateResponseData
     {
-
         /// <summary>
-        /// Callback state
+        /// Callback state.
         /// </summary>
         [JsonProperty("state")]
         public string? State { get; set; }

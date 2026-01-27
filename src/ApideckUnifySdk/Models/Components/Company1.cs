@@ -14,49 +14,50 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Company1
     {
-
         /// <summary>
-        /// Unique identifier for the company
+        /// Unique identifier for the company.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Name of the company
+        /// Name of the company.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Number of interactions
+        /// Number of interactions.
         /// </summary>
         [JsonProperty("interaction_count")]
         public long? InteractionCount { get; set; } = null;
 
         /// <summary>
-        /// Owner ID
+        /// Owner ID.
         /// </summary>
         [JsonProperty("owner_id")]
         public string? OwnerId { get; set; } = null;
 
         /// <summary>
-        /// The Image URL of the company
+        /// The Image URL of the company.
         /// </summary>
         [JsonProperty("image")]
         public string? Image { get; set; } = null;
 
         /// <summary>
-        /// A description of the company
+        /// A description of the company.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The VAT number of the company
+        /// The VAT number of the company.
         /// </summary>
         [JsonProperty("vat_number")]
         public string? VatNumber { get; set; } = null;
@@ -68,25 +69,25 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         /// <summary>
-        /// The status of the company
+        /// The status of the company.
         /// </summary>
         [JsonProperty("status")]
         public string? Status { get; set; } = null;
 
         /// <summary>
-        /// The fax number of the company
+        /// The fax number of the company.
         /// </summary>
         [JsonProperty("fax")]
         public string? Fax { get; set; } = null;
 
         /// <summary>
-        /// The annual revenue of the company
+        /// The annual revenue of the company.
         /// </summary>
         [JsonProperty("annual_revenue")]
         public string? AnnualRevenue { get; set; } = null;
 
         /// <summary>
-        /// Number of employees
+        /// Number of employees.
         /// </summary>
         [JsonProperty("number_of_employees")]
         public string? NumberOfEmployees { get; set; } = null;
@@ -146,7 +147,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? LastName { get; set; } = null;
 
         /// <summary>
-        /// Parent ID
+        /// Parent ID.
         /// </summary>
         [JsonProperty("parent_id")]
         public string? ParentId { get; set; } = null;
@@ -179,25 +180,25 @@ namespace ApideckUnifySdk.Models.Components
         public List<string>? Tags { get; set; } = null;
 
         /// <summary>
-        /// Whether the company is read-only or not
+        /// Whether the company is read-only or not.
         /// </summary>
         [JsonProperty("read_only")]
         public bool? ReadOnly { get; set; } = null;
 
         /// <summary>
-        /// Last activity date
+        /// Last activity date.
         /// </summary>
         [JsonProperty("last_activity_at")]
         public DateTime? LastActivityAt { get; set; } = null;
 
         /// <summary>
-        /// Whether the company is deleted or not
+        /// Whether the company is deleted or not.
         /// </summary>
         [JsonProperty("deleted")]
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// A formal salutation for the person. For example, &apos;Mr&apos;, &apos;Mrs&apos;
+        /// A formal salutation for the person. For example, 'Mr', 'Mrs'
         /// </summary>
         [JsonProperty("salutation")]
         public string? Salutation { get; set; } = null;
@@ -215,25 +216,25 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         /// <summary>
-        /// Updated by user ID
+        /// Updated by user ID.
         /// </summary>
         [JsonProperty("updated_by")]
         public string? UpdatedBy { get; set; } = null;
 
         /// <summary>
-        /// Created by user ID
+        /// Created by user ID.
         /// </summary>
         [JsonProperty("created_by")]
         public string? CreatedBy { get; set; } = null;
 
         /// <summary>
-        /// Last updated date
+        /// Last updated date.
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTime? UpdatedAt { get; set; } = null;
 
         /// <summary>
-        /// Creation date
+        /// Creation date.
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; } = null;

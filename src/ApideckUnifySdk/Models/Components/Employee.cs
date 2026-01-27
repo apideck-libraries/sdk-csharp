@@ -14,11 +14,12 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Employee
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -26,7 +27,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
@@ -68,7 +69,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Initials { get; set; } = null;
 
         /// <summary>
-        /// A formal salutation for the person. For example, &apos;Mr&apos;, &apos;Mrs&apos;
+        /// A formal salutation for the person. For example, 'Mr', 'Mrs'
         /// </summary>
         [JsonProperty("salutation")]
         public string? Salutation { get; set; } = null;
@@ -138,13 +139,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyName { get; set; } = null;
 
         /// <summary>
-        /// A Start Date is the date that the employee started working at the company
+        /// A Start Date is the date that the employee started working at the company.
         /// </summary>
         [JsonProperty("employment_start_date")]
         public string? EmploymentStartDate { get; set; } = null;
 
         /// <summary>
-        /// An End Date is the date that the employee ended working at the company
+        /// An End Date is the date that the employee ended working at the company.
         /// </summary>
         [JsonProperty("employment_end_date")]
         public string? EmploymentEndDate { get; set; } = null;
@@ -171,7 +172,7 @@ namespace ApideckUnifySdk.Models.Components
         public EmploymentRole? EmploymentRole { get; set; }
 
         /// <summary>
-        /// The ethnicity of the employee
+        /// The ethnicity of the employee.
         /// </summary>
         [JsonProperty("ethnicity")]
         public string? Ethnicity { get; set; } = null;
@@ -228,7 +229,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Pronouns { get; set; } = null;
 
         /// <summary>
-        /// language code according to ISO 639-1. For the United States - EN
+        /// language code according to ISO 639-1. For the United States - EN.
         /// </summary>
         [JsonProperty("preferred_language")]
         public string? PreferredLanguage { get; set; } = null;
@@ -303,13 +304,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? TaxId { get; set; } = null;
 
         /// <summary>
-        /// Indicate the employee&apos;s dietary preference.
+        /// Indicate the employee's dietary preference.
         /// </summary>
         [JsonProperty("dietary_preference")]
         public string? DietaryPreference { get; set; } = null;
 
         /// <summary>
-        /// Indicate the employee&apos;s food allergies.
+        /// Indicate the employee's food allergies.
         /// </summary>
         [JsonProperty("food_allergies")]
         public List<string>? FoodAllergies { get; set; } = null;

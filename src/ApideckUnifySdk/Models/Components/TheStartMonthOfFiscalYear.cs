@@ -12,69 +12,86 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The start month of fiscal year.
     /// </summary>
-    public enum TheStartMonthOfFiscalYear
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class TheStartMonthOfFiscalYear : IEquatable<TheStartMonthOfFiscalYear>
     {
-        [JsonProperty("January")]
-        January,
-        [JsonProperty("February")]
-        February,
-        [JsonProperty("March")]
-        March,
-        [JsonProperty("April")]
-        April,
-        [JsonProperty("May")]
-        May,
-        [JsonProperty("June")]
-        June,
-        [JsonProperty("July")]
-        July,
-        [JsonProperty("August")]
-        August,
-        [JsonProperty("September")]
-        September,
-        [JsonProperty("October")]
-        October,
-        [JsonProperty("November")]
-        November,
-        [JsonProperty("December")]
-        December,
-    }
+        public static readonly TheStartMonthOfFiscalYear January = new TheStartMonthOfFiscalYear("January");
+        public static readonly TheStartMonthOfFiscalYear February = new TheStartMonthOfFiscalYear("February");
+        public static readonly TheStartMonthOfFiscalYear March = new TheStartMonthOfFiscalYear("March");
+        public static readonly TheStartMonthOfFiscalYear April = new TheStartMonthOfFiscalYear("April");
+        public static readonly TheStartMonthOfFiscalYear May = new TheStartMonthOfFiscalYear("May");
+        public static readonly TheStartMonthOfFiscalYear June = new TheStartMonthOfFiscalYear("June");
+        public static readonly TheStartMonthOfFiscalYear July = new TheStartMonthOfFiscalYear("July");
+        public static readonly TheStartMonthOfFiscalYear August = new TheStartMonthOfFiscalYear("August");
+        public static readonly TheStartMonthOfFiscalYear September = new TheStartMonthOfFiscalYear("September");
+        public static readonly TheStartMonthOfFiscalYear October = new TheStartMonthOfFiscalYear("October");
+        public static readonly TheStartMonthOfFiscalYear November = new TheStartMonthOfFiscalYear("November");
+        public static readonly TheStartMonthOfFiscalYear December = new TheStartMonthOfFiscalYear("December");
 
-    public static class TheStartMonthOfFiscalYearExtension
-    {
-        public static string Value(this TheStartMonthOfFiscalYear value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static TheStartMonthOfFiscalYear ToEnum(this string value)
-        {
-            foreach(var field in typeof(TheStartMonthOfFiscalYear).GetFields())
+        private static readonly Dictionary <string, TheStartMonthOfFiscalYear> _knownValues =
+            new Dictionary <string, TheStartMonthOfFiscalYear> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["January"] = January,
+                ["February"] = February,
+                ["March"] = March,
+                ["April"] = April,
+                ["May"] = May,
+                ["June"] = June,
+                ["July"] = July,
+                ["August"] = August,
+                ["September"] = September,
+                ["October"] = October,
+                ["November"] = November,
+                ["December"] = December
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, TheStartMonthOfFiscalYear> _values =
+            new ConcurrentDictionary<string, TheStartMonthOfFiscalYear>(_knownValues);
 
-                    if (enumVal is TheStartMonthOfFiscalYear)
-                    {
-                        return (TheStartMonthOfFiscalYear)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum TheStartMonthOfFiscalYear");
+        private TheStartMonthOfFiscalYear(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static TheStartMonthOfFiscalYear Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new TheStartMonthOfFiscalYear(value));
+        }
+
+        public static implicit operator TheStartMonthOfFiscalYear(string value) => Of(value);
+        public static implicit operator string(TheStartMonthOfFiscalYear thestartmonthoffiscalyear) => thestartmonthoffiscalyear.Value;
+
+        public static TheStartMonthOfFiscalYear[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as TheStartMonthOfFiscalYear);
+
+        public bool Equals(TheStartMonthOfFiscalYear? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }
