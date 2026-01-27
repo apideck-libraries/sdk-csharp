@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The unit of time off requested. Possible values include: `hours`, `days`, or `other`.
     /// </summary>
-    public enum Units
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Units : IEquatable<Units>
     {
-        [JsonProperty("days")]
-        Days,
-        [JsonProperty("hours")]
-        Hours,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly Units Days = new Units("days");
+        public static readonly Units Hours = new Units("hours");
+        public static readonly Units Other = new Units("other");
 
-    public static class UnitsExtension
-    {
-        public static string Value(this Units value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Units ToEnum(this string value)
-        {
-            foreach(var field in typeof(Units).GetFields())
+        private static readonly Dictionary <string, Units> _knownValues =
+            new Dictionary <string, Units> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["days"] = Days,
+                ["hours"] = Hours,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Units> _values =
+            new ConcurrentDictionary<string, Units>(_knownValues);
 
-                    if (enumVal is Units)
-                    {
-                        return (Units)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Units");
+        private Units(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Units Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Units(value));
+        }
+
+        public static implicit operator Units(string value) => Of(value);
+        public static implicit operator string(Units units) => units.Value;
+
+        public static Units[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Units);
+
+        public bool Equals(Units? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

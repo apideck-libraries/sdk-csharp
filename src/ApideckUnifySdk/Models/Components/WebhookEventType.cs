@@ -12,296 +12,313 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum WebhookEventType
-    {
-        [JsonProperty("*")]
-        Wildcard,
-        [JsonProperty("crm.activity.created")]
-        CrmActivityCreated,
-        [JsonProperty("crm.activity.updated")]
-        CrmActivityUpdated,
-        [JsonProperty("crm.activity.deleted")]
-        CrmActivityDeleted,
-        [JsonProperty("crm.company.created")]
-        CrmCompanyCreated,
-        [JsonProperty("crm.company.updated")]
-        CrmCompanyUpdated,
-        [JsonProperty("crm.company.deleted")]
-        CrmCompanyDeleted,
-        [JsonProperty("crm.contact.created")]
-        CrmContactCreated,
-        [JsonProperty("crm.contact.updated")]
-        CrmContactUpdated,
-        [JsonProperty("crm.contact.deleted")]
-        CrmContactDeleted,
-        [JsonProperty("crm.lead.created")]
-        CrmLeadCreated,
-        [JsonProperty("crm.lead.updated")]
-        CrmLeadUpdated,
-        [JsonProperty("crm.lead.deleted")]
-        CrmLeadDeleted,
-        [JsonProperty("crm.note.created")]
-        CrmNoteCreated,
-        [JsonProperty("crm.note.updated")]
-        CrmNoteUpdated,
-        [JsonProperty("crm.note.deleted")]
-        CrmNoteDeleted,
-        [JsonProperty("crm.opportunity.created")]
-        CrmOpportunityCreated,
-        [JsonProperty("crm.opportunity.updated")]
-        CrmOpportunityUpdated,
-        [JsonProperty("crm.opportunity.deleted")]
-        CrmOpportunityDeleted,
-        [JsonProperty("lead.lead.created")]
-        LeadLeadCreated,
-        [JsonProperty("lead.lead.updated")]
-        LeadLeadUpdated,
-        [JsonProperty("lead.lead.deleted")]
-        LeadLeadDeleted,
-        [JsonProperty("vault.connection.created")]
-        VaultConnectionCreated,
-        [JsonProperty("vault.connection.updated")]
-        VaultConnectionUpdated,
-        [JsonProperty("vault.connection.disabled")]
-        VaultConnectionDisabled,
-        [JsonProperty("vault.connection.deleted")]
-        VaultConnectionDeleted,
-        [JsonProperty("vault.connection.callable")]
-        VaultConnectionCallable,
-        [JsonProperty("vault.connection.revoked")]
-        VaultConnectionRevoked,
-        [JsonProperty("vault.connection.token_refresh.failed")]
-        VaultConnectionTokenRefreshFailed,
-        [JsonProperty("ats.job.created")]
-        AtsJobCreated,
-        [JsonProperty("ats.job.updated")]
-        AtsJobUpdated,
-        [JsonProperty("ats.job.deleted")]
-        AtsJobDeleted,
-        [JsonProperty("ats.applicant.created")]
-        AtsApplicantCreated,
-        [JsonProperty("ats.applicant.updated")]
-        AtsApplicantUpdated,
-        [JsonProperty("ats.applicant.deleted")]
-        AtsApplicantDeleted,
-        [JsonProperty("accounting.customer.created")]
-        AccountingCustomerCreated,
-        [JsonProperty("accounting.customer.updated")]
-        AccountingCustomerUpdated,
-        [JsonProperty("accounting.customer.deleted")]
-        AccountingCustomerDeleted,
-        [JsonProperty("accounting.invoice.created")]
-        AccountingInvoiceCreated,
-        [JsonProperty("accounting.invoice.updated")]
-        AccountingInvoiceUpdated,
-        [JsonProperty("accounting.invoice.deleted")]
-        AccountingInvoiceDeleted,
-        [JsonProperty("accounting.invoice_item.created")]
-        AccountingInvoiceItemCreated,
-        [JsonProperty("accounting.invoice_item.updated")]
-        AccountingInvoiceItemUpdated,
-        [JsonProperty("accounting.invoice_item.deleted")]
-        AccountingInvoiceItemDeleted,
-        [JsonProperty("accounting.ledger_account.created")]
-        AccountingLedgerAccountCreated,
-        [JsonProperty("accounting.ledger_account.updated")]
-        AccountingLedgerAccountUpdated,
-        [JsonProperty("accounting.ledger_account.deleted")]
-        AccountingLedgerAccountDeleted,
-        [JsonProperty("accounting.tax_rate.created")]
-        AccountingTaxRateCreated,
-        [JsonProperty("accounting.tax_rate.updated")]
-        AccountingTaxRateUpdated,
-        [JsonProperty("accounting.tax_rate.deleted")]
-        AccountingTaxRateDeleted,
-        [JsonProperty("accounting.bill.created")]
-        AccountingBillCreated,
-        [JsonProperty("accounting.bill.updated")]
-        AccountingBillUpdated,
-        [JsonProperty("accounting.bill.deleted")]
-        AccountingBillDeleted,
-        [JsonProperty("accounting.bill_payment.created")]
-        AccountingBillPaymentCreated,
-        [JsonProperty("accounting.bill_payment.updated")]
-        AccountingBillPaymentUpdated,
-        [JsonProperty("accounting.bill_payment.deleted")]
-        AccountingBillPaymentDeleted,
-        [JsonProperty("accounting.payment.created")]
-        AccountingPaymentCreated,
-        [JsonProperty("accounting.payment.updated")]
-        AccountingPaymentUpdated,
-        [JsonProperty("accounting.payment.deleted")]
-        AccountingPaymentDeleted,
-        [JsonProperty("accounting.supplier.created")]
-        AccountingSupplierCreated,
-        [JsonProperty("accounting.supplier.updated")]
-        AccountingSupplierUpdated,
-        [JsonProperty("accounting.supplier.deleted")]
-        AccountingSupplierDeleted,
-        [JsonProperty("accounting.purchase_order.created")]
-        AccountingPurchaseOrderCreated,
-        [JsonProperty("accounting.purchase_order.updated")]
-        AccountingPurchaseOrderUpdated,
-        [JsonProperty("accounting.purchase_order.deleted")]
-        AccountingPurchaseOrderDeleted,
-        [JsonProperty("accounting.credit_note.created")]
-        AccountingCreditNoteCreated,
-        [JsonProperty("accounting.credit_note.updated")]
-        AccountingCreditNoteUpdated,
-        [JsonProperty("accounting.credit_note.deleted")]
-        AccountingCreditNoteDeleted,
-        [JsonProperty("pos.order.created")]
-        PosOrderCreated,
-        [JsonProperty("pos.order.updated")]
-        PosOrderUpdated,
-        [JsonProperty("pos.order.deleted")]
-        PosOrderDeleted,
-        [JsonProperty("pos.product.created")]
-        PosProductCreated,
-        [JsonProperty("pos.product.updated")]
-        PosProductUpdated,
-        [JsonProperty("pos.product.deleted")]
-        PosProductDeleted,
-        [JsonProperty("pos.payment.created")]
-        PosPaymentCreated,
-        [JsonProperty("pos.payment.updated")]
-        PosPaymentUpdated,
-        [JsonProperty("pos.payment.deleted")]
-        PosPaymentDeleted,
-        [JsonProperty("pos.merchant.created")]
-        PosMerchantCreated,
-        [JsonProperty("pos.merchant.updated")]
-        PosMerchantUpdated,
-        [JsonProperty("pos.merchant.deleted")]
-        PosMerchantDeleted,
-        [JsonProperty("pos.location.created")]
-        PosLocationCreated,
-        [JsonProperty("pos.location.updated")]
-        PosLocationUpdated,
-        [JsonProperty("pos.location.deleted")]
-        PosLocationDeleted,
-        [JsonProperty("pos.item.created")]
-        PosItemCreated,
-        [JsonProperty("pos.item.updated")]
-        PosItemUpdated,
-        [JsonProperty("pos.item.deleted")]
-        PosItemDeleted,
-        [JsonProperty("pos.modifier.created")]
-        PosModifierCreated,
-        [JsonProperty("pos.modifier.updated")]
-        PosModifierUpdated,
-        [JsonProperty("pos.modifier.deleted")]
-        PosModifierDeleted,
-        [JsonProperty("pos.modifier-group.created")]
-        PosModifierGroupCreated,
-        [JsonProperty("pos.modifier-group.updated")]
-        PosModifierGroupUpdated,
-        [JsonProperty("pos.modifier-group.deleted")]
-        PosModifierGroupDeleted,
-        [JsonProperty("hris.employee.created")]
-        HrisEmployeeCreated,
-        [JsonProperty("hris.employee.updated")]
-        HrisEmployeeUpdated,
-        [JsonProperty("hris.employee.deleted")]
-        HrisEmployeeDeleted,
-        [JsonProperty("hris.employee.terminated")]
-        HrisEmployeeTerminated,
-        [JsonProperty("hris.company.created")]
-        HrisCompanyCreated,
-        [JsonProperty("hris.company.updated")]
-        HrisCompanyUpdated,
-        [JsonProperty("hris.company.deleted")]
-        HrisCompanyDeleted,
-        [JsonProperty("file-storage.file.created")]
-        FileStorageFileCreated,
-        [JsonProperty("file-storage.file.updated")]
-        FileStorageFileUpdated,
-        [JsonProperty("file-storage.file.deleted")]
-        FileStorageFileDeleted,
-        [JsonProperty("file-storage.drive.updated")]
-        FileStorageDriveUpdated,
-        [JsonProperty("issue-tracking.ticket.created")]
-        IssueTrackingTicketCreated,
-        [JsonProperty("issue-tracking.ticket.updated")]
-        IssueTrackingTicketUpdated,
-        [JsonProperty("issue-tracking.ticket.deleted")]
-        IssueTrackingTicketDeleted,
-        [JsonProperty("ats.application.created")]
-        AtsApplicationCreated,
-        [JsonProperty("ats.application.updated")]
-        AtsApplicationUpdated,
-        [JsonProperty("ats.application.deleted")]
-        AtsApplicationDeleted,
-        [JsonProperty("accounting.expense.created")]
-        AccountingExpenseCreated,
-        [JsonProperty("accounting.expense.updated")]
-        AccountingExpenseUpdated,
-        [JsonProperty("accounting.expense.deleted")]
-        AccountingExpenseDeleted,
-        [JsonProperty("ecommerce.order.created")]
-        EcommerceOrderCreated,
-        [JsonProperty("ecommerce.order.updated")]
-        EcommerceOrderUpdated,
-        [JsonProperty("ecommerce.order.deleted")]
-        EcommerceOrderDeleted,
-        [JsonProperty("ecommerce.product.created")]
-        EcommerceProductCreated,
-        [JsonProperty("ecommerce.product.updated")]
-        EcommerceProductUpdated,
-        [JsonProperty("ecommerce.product.deleted")]
-        EcommerceProductDeleted,
-        [JsonProperty("ecommerce.customer.created")]
-        EcommerceCustomerCreated,
-        [JsonProperty("ecommerce.customer.updated")]
-        EcommerceCustomerUpdated,
-        [JsonProperty("ecommerce.customer.deleted")]
-        EcommerceCustomerDeleted,
-        [JsonProperty("accounting.quote.created")]
-        AccountingQuoteCreated,
-        [JsonProperty("accounting.quote.updated")]
-        AccountingQuoteUpdated,
-        [JsonProperty("accounting.quote.deleted")]
-        AccountingQuoteDeleted,
-        [JsonProperty("accounting.project.created")]
-        AccountingProjectCreated,
-        [JsonProperty("accounting.project.updated")]
-        AccountingProjectUpdated,
-        [JsonProperty("accounting.project.deleted")]
-        AccountingProjectDeleted,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class WebhookEventTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class WebhookEventType : IEquatable<WebhookEventType>
     {
-        public static string Value(this WebhookEventType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly WebhookEventType Wildcard = new WebhookEventType("*");
+        public static readonly WebhookEventType CrmActivityCreated = new WebhookEventType("crm.activity.created");
+        public static readonly WebhookEventType CrmActivityUpdated = new WebhookEventType("crm.activity.updated");
+        public static readonly WebhookEventType CrmActivityDeleted = new WebhookEventType("crm.activity.deleted");
+        public static readonly WebhookEventType CrmCompanyCreated = new WebhookEventType("crm.company.created");
+        public static readonly WebhookEventType CrmCompanyUpdated = new WebhookEventType("crm.company.updated");
+        public static readonly WebhookEventType CrmCompanyDeleted = new WebhookEventType("crm.company.deleted");
+        public static readonly WebhookEventType CrmContactCreated = new WebhookEventType("crm.contact.created");
+        public static readonly WebhookEventType CrmContactUpdated = new WebhookEventType("crm.contact.updated");
+        public static readonly WebhookEventType CrmContactDeleted = new WebhookEventType("crm.contact.deleted");
+        public static readonly WebhookEventType CrmLeadCreated = new WebhookEventType("crm.lead.created");
+        public static readonly WebhookEventType CrmLeadUpdated = new WebhookEventType("crm.lead.updated");
+        public static readonly WebhookEventType CrmLeadDeleted = new WebhookEventType("crm.lead.deleted");
+        public static readonly WebhookEventType CrmNoteCreated = new WebhookEventType("crm.note.created");
+        public static readonly WebhookEventType CrmNoteUpdated = new WebhookEventType("crm.note.updated");
+        public static readonly WebhookEventType CrmNoteDeleted = new WebhookEventType("crm.note.deleted");
+        public static readonly WebhookEventType CrmOpportunityCreated = new WebhookEventType("crm.opportunity.created");
+        public static readonly WebhookEventType CrmOpportunityUpdated = new WebhookEventType("crm.opportunity.updated");
+        public static readonly WebhookEventType CrmOpportunityDeleted = new WebhookEventType("crm.opportunity.deleted");
+        public static readonly WebhookEventType LeadLeadCreated = new WebhookEventType("lead.lead.created");
+        public static readonly WebhookEventType LeadLeadUpdated = new WebhookEventType("lead.lead.updated");
+        public static readonly WebhookEventType LeadLeadDeleted = new WebhookEventType("lead.lead.deleted");
+        public static readonly WebhookEventType VaultConnectionCreated = new WebhookEventType("vault.connection.created");
+        public static readonly WebhookEventType VaultConnectionUpdated = new WebhookEventType("vault.connection.updated");
+        public static readonly WebhookEventType VaultConnectionDisabled = new WebhookEventType("vault.connection.disabled");
+        public static readonly WebhookEventType VaultConnectionDeleted = new WebhookEventType("vault.connection.deleted");
+        public static readonly WebhookEventType VaultConnectionCallable = new WebhookEventType("vault.connection.callable");
+        public static readonly WebhookEventType VaultConnectionRevoked = new WebhookEventType("vault.connection.revoked");
+        public static readonly WebhookEventType VaultConnectionTokenRefreshFailed = new WebhookEventType("vault.connection.token_refresh.failed");
+        public static readonly WebhookEventType AtsJobCreated = new WebhookEventType("ats.job.created");
+        public static readonly WebhookEventType AtsJobUpdated = new WebhookEventType("ats.job.updated");
+        public static readonly WebhookEventType AtsJobDeleted = new WebhookEventType("ats.job.deleted");
+        public static readonly WebhookEventType AtsApplicantCreated = new WebhookEventType("ats.applicant.created");
+        public static readonly WebhookEventType AtsApplicantUpdated = new WebhookEventType("ats.applicant.updated");
+        public static readonly WebhookEventType AtsApplicantDeleted = new WebhookEventType("ats.applicant.deleted");
+        public static readonly WebhookEventType AccountingCustomerCreated = new WebhookEventType("accounting.customer.created");
+        public static readonly WebhookEventType AccountingCustomerUpdated = new WebhookEventType("accounting.customer.updated");
+        public static readonly WebhookEventType AccountingCustomerDeleted = new WebhookEventType("accounting.customer.deleted");
+        public static readonly WebhookEventType AccountingInvoiceCreated = new WebhookEventType("accounting.invoice.created");
+        public static readonly WebhookEventType AccountingInvoiceUpdated = new WebhookEventType("accounting.invoice.updated");
+        public static readonly WebhookEventType AccountingInvoiceDeleted = new WebhookEventType("accounting.invoice.deleted");
+        public static readonly WebhookEventType AccountingInvoiceItemCreated = new WebhookEventType("accounting.invoice_item.created");
+        public static readonly WebhookEventType AccountingInvoiceItemUpdated = new WebhookEventType("accounting.invoice_item.updated");
+        public static readonly WebhookEventType AccountingInvoiceItemDeleted = new WebhookEventType("accounting.invoice_item.deleted");
+        public static readonly WebhookEventType AccountingLedgerAccountCreated = new WebhookEventType("accounting.ledger_account.created");
+        public static readonly WebhookEventType AccountingLedgerAccountUpdated = new WebhookEventType("accounting.ledger_account.updated");
+        public static readonly WebhookEventType AccountingLedgerAccountDeleted = new WebhookEventType("accounting.ledger_account.deleted");
+        public static readonly WebhookEventType AccountingTaxRateCreated = new WebhookEventType("accounting.tax_rate.created");
+        public static readonly WebhookEventType AccountingTaxRateUpdated = new WebhookEventType("accounting.tax_rate.updated");
+        public static readonly WebhookEventType AccountingTaxRateDeleted = new WebhookEventType("accounting.tax_rate.deleted");
+        public static readonly WebhookEventType AccountingBillCreated = new WebhookEventType("accounting.bill.created");
+        public static readonly WebhookEventType AccountingBillUpdated = new WebhookEventType("accounting.bill.updated");
+        public static readonly WebhookEventType AccountingBillDeleted = new WebhookEventType("accounting.bill.deleted");
+        public static readonly WebhookEventType AccountingBillPaymentCreated = new WebhookEventType("accounting.bill_payment.created");
+        public static readonly WebhookEventType AccountingBillPaymentUpdated = new WebhookEventType("accounting.bill_payment.updated");
+        public static readonly WebhookEventType AccountingBillPaymentDeleted = new WebhookEventType("accounting.bill_payment.deleted");
+        public static readonly WebhookEventType AccountingPaymentCreated = new WebhookEventType("accounting.payment.created");
+        public static readonly WebhookEventType AccountingPaymentUpdated = new WebhookEventType("accounting.payment.updated");
+        public static readonly WebhookEventType AccountingPaymentDeleted = new WebhookEventType("accounting.payment.deleted");
+        public static readonly WebhookEventType AccountingSupplierCreated = new WebhookEventType("accounting.supplier.created");
+        public static readonly WebhookEventType AccountingSupplierUpdated = new WebhookEventType("accounting.supplier.updated");
+        public static readonly WebhookEventType AccountingSupplierDeleted = new WebhookEventType("accounting.supplier.deleted");
+        public static readonly WebhookEventType AccountingPurchaseOrderCreated = new WebhookEventType("accounting.purchase_order.created");
+        public static readonly WebhookEventType AccountingPurchaseOrderUpdated = new WebhookEventType("accounting.purchase_order.updated");
+        public static readonly WebhookEventType AccountingPurchaseOrderDeleted = new WebhookEventType("accounting.purchase_order.deleted");
+        public static readonly WebhookEventType AccountingCreditNoteCreated = new WebhookEventType("accounting.credit_note.created");
+        public static readonly WebhookEventType AccountingCreditNoteUpdated = new WebhookEventType("accounting.credit_note.updated");
+        public static readonly WebhookEventType AccountingCreditNoteDeleted = new WebhookEventType("accounting.credit_note.deleted");
+        public static readonly WebhookEventType PosOrderCreated = new WebhookEventType("pos.order.created");
+        public static readonly WebhookEventType PosOrderUpdated = new WebhookEventType("pos.order.updated");
+        public static readonly WebhookEventType PosOrderDeleted = new WebhookEventType("pos.order.deleted");
+        public static readonly WebhookEventType PosProductCreated = new WebhookEventType("pos.product.created");
+        public static readonly WebhookEventType PosProductUpdated = new WebhookEventType("pos.product.updated");
+        public static readonly WebhookEventType PosProductDeleted = new WebhookEventType("pos.product.deleted");
+        public static readonly WebhookEventType PosPaymentCreated = new WebhookEventType("pos.payment.created");
+        public static readonly WebhookEventType PosPaymentUpdated = new WebhookEventType("pos.payment.updated");
+        public static readonly WebhookEventType PosPaymentDeleted = new WebhookEventType("pos.payment.deleted");
+        public static readonly WebhookEventType PosMerchantCreated = new WebhookEventType("pos.merchant.created");
+        public static readonly WebhookEventType PosMerchantUpdated = new WebhookEventType("pos.merchant.updated");
+        public static readonly WebhookEventType PosMerchantDeleted = new WebhookEventType("pos.merchant.deleted");
+        public static readonly WebhookEventType PosLocationCreated = new WebhookEventType("pos.location.created");
+        public static readonly WebhookEventType PosLocationUpdated = new WebhookEventType("pos.location.updated");
+        public static readonly WebhookEventType PosLocationDeleted = new WebhookEventType("pos.location.deleted");
+        public static readonly WebhookEventType PosItemCreated = new WebhookEventType("pos.item.created");
+        public static readonly WebhookEventType PosItemUpdated = new WebhookEventType("pos.item.updated");
+        public static readonly WebhookEventType PosItemDeleted = new WebhookEventType("pos.item.deleted");
+        public static readonly WebhookEventType PosModifierCreated = new WebhookEventType("pos.modifier.created");
+        public static readonly WebhookEventType PosModifierUpdated = new WebhookEventType("pos.modifier.updated");
+        public static readonly WebhookEventType PosModifierDeleted = new WebhookEventType("pos.modifier.deleted");
+        public static readonly WebhookEventType PosModifierGroupCreated = new WebhookEventType("pos.modifier-group.created");
+        public static readonly WebhookEventType PosModifierGroupUpdated = new WebhookEventType("pos.modifier-group.updated");
+        public static readonly WebhookEventType PosModifierGroupDeleted = new WebhookEventType("pos.modifier-group.deleted");
+        public static readonly WebhookEventType HrisEmployeeCreated = new WebhookEventType("hris.employee.created");
+        public static readonly WebhookEventType HrisEmployeeUpdated = new WebhookEventType("hris.employee.updated");
+        public static readonly WebhookEventType HrisEmployeeDeleted = new WebhookEventType("hris.employee.deleted");
+        public static readonly WebhookEventType HrisEmployeeTerminated = new WebhookEventType("hris.employee.terminated");
+        public static readonly WebhookEventType HrisCompanyCreated = new WebhookEventType("hris.company.created");
+        public static readonly WebhookEventType HrisCompanyUpdated = new WebhookEventType("hris.company.updated");
+        public static readonly WebhookEventType HrisCompanyDeleted = new WebhookEventType("hris.company.deleted");
+        public static readonly WebhookEventType FileStorageFileCreated = new WebhookEventType("file-storage.file.created");
+        public static readonly WebhookEventType FileStorageFileUpdated = new WebhookEventType("file-storage.file.updated");
+        public static readonly WebhookEventType FileStorageFileDeleted = new WebhookEventType("file-storage.file.deleted");
+        public static readonly WebhookEventType FileStorageDriveUpdated = new WebhookEventType("file-storage.drive.updated");
+        public static readonly WebhookEventType IssueTrackingTicketCreated = new WebhookEventType("issue-tracking.ticket.created");
+        public static readonly WebhookEventType IssueTrackingTicketUpdated = new WebhookEventType("issue-tracking.ticket.updated");
+        public static readonly WebhookEventType IssueTrackingTicketDeleted = new WebhookEventType("issue-tracking.ticket.deleted");
+        public static readonly WebhookEventType AtsApplicationCreated = new WebhookEventType("ats.application.created");
+        public static readonly WebhookEventType AtsApplicationUpdated = new WebhookEventType("ats.application.updated");
+        public static readonly WebhookEventType AtsApplicationDeleted = new WebhookEventType("ats.application.deleted");
+        public static readonly WebhookEventType AccountingExpenseCreated = new WebhookEventType("accounting.expense.created");
+        public static readonly WebhookEventType AccountingExpenseUpdated = new WebhookEventType("accounting.expense.updated");
+        public static readonly WebhookEventType AccountingExpenseDeleted = new WebhookEventType("accounting.expense.deleted");
+        public static readonly WebhookEventType EcommerceOrderCreated = new WebhookEventType("ecommerce.order.created");
+        public static readonly WebhookEventType EcommerceOrderUpdated = new WebhookEventType("ecommerce.order.updated");
+        public static readonly WebhookEventType EcommerceOrderDeleted = new WebhookEventType("ecommerce.order.deleted");
+        public static readonly WebhookEventType EcommerceProductCreated = new WebhookEventType("ecommerce.product.created");
+        public static readonly WebhookEventType EcommerceProductUpdated = new WebhookEventType("ecommerce.product.updated");
+        public static readonly WebhookEventType EcommerceProductDeleted = new WebhookEventType("ecommerce.product.deleted");
+        public static readonly WebhookEventType EcommerceCustomerCreated = new WebhookEventType("ecommerce.customer.created");
+        public static readonly WebhookEventType EcommerceCustomerUpdated = new WebhookEventType("ecommerce.customer.updated");
+        public static readonly WebhookEventType EcommerceCustomerDeleted = new WebhookEventType("ecommerce.customer.deleted");
+        public static readonly WebhookEventType AccountingQuoteCreated = new WebhookEventType("accounting.quote.created");
+        public static readonly WebhookEventType AccountingQuoteUpdated = new WebhookEventType("accounting.quote.updated");
+        public static readonly WebhookEventType AccountingQuoteDeleted = new WebhookEventType("accounting.quote.deleted");
+        public static readonly WebhookEventType AccountingProjectCreated = new WebhookEventType("accounting.project.created");
+        public static readonly WebhookEventType AccountingProjectUpdated = new WebhookEventType("accounting.project.updated");
+        public static readonly WebhookEventType AccountingProjectDeleted = new WebhookEventType("accounting.project.deleted");
 
-        public static WebhookEventType ToEnum(this string value)
-        {
-            foreach(var field in typeof(WebhookEventType).GetFields())
+        private static readonly Dictionary <string, WebhookEventType> _knownValues =
+            new Dictionary <string, WebhookEventType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["*"] = Wildcard,
+                ["crm.activity.created"] = CrmActivityCreated,
+                ["crm.activity.updated"] = CrmActivityUpdated,
+                ["crm.activity.deleted"] = CrmActivityDeleted,
+                ["crm.company.created"] = CrmCompanyCreated,
+                ["crm.company.updated"] = CrmCompanyUpdated,
+                ["crm.company.deleted"] = CrmCompanyDeleted,
+                ["crm.contact.created"] = CrmContactCreated,
+                ["crm.contact.updated"] = CrmContactUpdated,
+                ["crm.contact.deleted"] = CrmContactDeleted,
+                ["crm.lead.created"] = CrmLeadCreated,
+                ["crm.lead.updated"] = CrmLeadUpdated,
+                ["crm.lead.deleted"] = CrmLeadDeleted,
+                ["crm.note.created"] = CrmNoteCreated,
+                ["crm.note.updated"] = CrmNoteUpdated,
+                ["crm.note.deleted"] = CrmNoteDeleted,
+                ["crm.opportunity.created"] = CrmOpportunityCreated,
+                ["crm.opportunity.updated"] = CrmOpportunityUpdated,
+                ["crm.opportunity.deleted"] = CrmOpportunityDeleted,
+                ["lead.lead.created"] = LeadLeadCreated,
+                ["lead.lead.updated"] = LeadLeadUpdated,
+                ["lead.lead.deleted"] = LeadLeadDeleted,
+                ["vault.connection.created"] = VaultConnectionCreated,
+                ["vault.connection.updated"] = VaultConnectionUpdated,
+                ["vault.connection.disabled"] = VaultConnectionDisabled,
+                ["vault.connection.deleted"] = VaultConnectionDeleted,
+                ["vault.connection.callable"] = VaultConnectionCallable,
+                ["vault.connection.revoked"] = VaultConnectionRevoked,
+                ["vault.connection.token_refresh.failed"] = VaultConnectionTokenRefreshFailed,
+                ["ats.job.created"] = AtsJobCreated,
+                ["ats.job.updated"] = AtsJobUpdated,
+                ["ats.job.deleted"] = AtsJobDeleted,
+                ["ats.applicant.created"] = AtsApplicantCreated,
+                ["ats.applicant.updated"] = AtsApplicantUpdated,
+                ["ats.applicant.deleted"] = AtsApplicantDeleted,
+                ["accounting.customer.created"] = AccountingCustomerCreated,
+                ["accounting.customer.updated"] = AccountingCustomerUpdated,
+                ["accounting.customer.deleted"] = AccountingCustomerDeleted,
+                ["accounting.invoice.created"] = AccountingInvoiceCreated,
+                ["accounting.invoice.updated"] = AccountingInvoiceUpdated,
+                ["accounting.invoice.deleted"] = AccountingInvoiceDeleted,
+                ["accounting.invoice_item.created"] = AccountingInvoiceItemCreated,
+                ["accounting.invoice_item.updated"] = AccountingInvoiceItemUpdated,
+                ["accounting.invoice_item.deleted"] = AccountingInvoiceItemDeleted,
+                ["accounting.ledger_account.created"] = AccountingLedgerAccountCreated,
+                ["accounting.ledger_account.updated"] = AccountingLedgerAccountUpdated,
+                ["accounting.ledger_account.deleted"] = AccountingLedgerAccountDeleted,
+                ["accounting.tax_rate.created"] = AccountingTaxRateCreated,
+                ["accounting.tax_rate.updated"] = AccountingTaxRateUpdated,
+                ["accounting.tax_rate.deleted"] = AccountingTaxRateDeleted,
+                ["accounting.bill.created"] = AccountingBillCreated,
+                ["accounting.bill.updated"] = AccountingBillUpdated,
+                ["accounting.bill.deleted"] = AccountingBillDeleted,
+                ["accounting.bill_payment.created"] = AccountingBillPaymentCreated,
+                ["accounting.bill_payment.updated"] = AccountingBillPaymentUpdated,
+                ["accounting.bill_payment.deleted"] = AccountingBillPaymentDeleted,
+                ["accounting.payment.created"] = AccountingPaymentCreated,
+                ["accounting.payment.updated"] = AccountingPaymentUpdated,
+                ["accounting.payment.deleted"] = AccountingPaymentDeleted,
+                ["accounting.supplier.created"] = AccountingSupplierCreated,
+                ["accounting.supplier.updated"] = AccountingSupplierUpdated,
+                ["accounting.supplier.deleted"] = AccountingSupplierDeleted,
+                ["accounting.purchase_order.created"] = AccountingPurchaseOrderCreated,
+                ["accounting.purchase_order.updated"] = AccountingPurchaseOrderUpdated,
+                ["accounting.purchase_order.deleted"] = AccountingPurchaseOrderDeleted,
+                ["accounting.credit_note.created"] = AccountingCreditNoteCreated,
+                ["accounting.credit_note.updated"] = AccountingCreditNoteUpdated,
+                ["accounting.credit_note.deleted"] = AccountingCreditNoteDeleted,
+                ["pos.order.created"] = PosOrderCreated,
+                ["pos.order.updated"] = PosOrderUpdated,
+                ["pos.order.deleted"] = PosOrderDeleted,
+                ["pos.product.created"] = PosProductCreated,
+                ["pos.product.updated"] = PosProductUpdated,
+                ["pos.product.deleted"] = PosProductDeleted,
+                ["pos.payment.created"] = PosPaymentCreated,
+                ["pos.payment.updated"] = PosPaymentUpdated,
+                ["pos.payment.deleted"] = PosPaymentDeleted,
+                ["pos.merchant.created"] = PosMerchantCreated,
+                ["pos.merchant.updated"] = PosMerchantUpdated,
+                ["pos.merchant.deleted"] = PosMerchantDeleted,
+                ["pos.location.created"] = PosLocationCreated,
+                ["pos.location.updated"] = PosLocationUpdated,
+                ["pos.location.deleted"] = PosLocationDeleted,
+                ["pos.item.created"] = PosItemCreated,
+                ["pos.item.updated"] = PosItemUpdated,
+                ["pos.item.deleted"] = PosItemDeleted,
+                ["pos.modifier.created"] = PosModifierCreated,
+                ["pos.modifier.updated"] = PosModifierUpdated,
+                ["pos.modifier.deleted"] = PosModifierDeleted,
+                ["pos.modifier-group.created"] = PosModifierGroupCreated,
+                ["pos.modifier-group.updated"] = PosModifierGroupUpdated,
+                ["pos.modifier-group.deleted"] = PosModifierGroupDeleted,
+                ["hris.employee.created"] = HrisEmployeeCreated,
+                ["hris.employee.updated"] = HrisEmployeeUpdated,
+                ["hris.employee.deleted"] = HrisEmployeeDeleted,
+                ["hris.employee.terminated"] = HrisEmployeeTerminated,
+                ["hris.company.created"] = HrisCompanyCreated,
+                ["hris.company.updated"] = HrisCompanyUpdated,
+                ["hris.company.deleted"] = HrisCompanyDeleted,
+                ["file-storage.file.created"] = FileStorageFileCreated,
+                ["file-storage.file.updated"] = FileStorageFileUpdated,
+                ["file-storage.file.deleted"] = FileStorageFileDeleted,
+                ["file-storage.drive.updated"] = FileStorageDriveUpdated,
+                ["issue-tracking.ticket.created"] = IssueTrackingTicketCreated,
+                ["issue-tracking.ticket.updated"] = IssueTrackingTicketUpdated,
+                ["issue-tracking.ticket.deleted"] = IssueTrackingTicketDeleted,
+                ["ats.application.created"] = AtsApplicationCreated,
+                ["ats.application.updated"] = AtsApplicationUpdated,
+                ["ats.application.deleted"] = AtsApplicationDeleted,
+                ["accounting.expense.created"] = AccountingExpenseCreated,
+                ["accounting.expense.updated"] = AccountingExpenseUpdated,
+                ["accounting.expense.deleted"] = AccountingExpenseDeleted,
+                ["ecommerce.order.created"] = EcommerceOrderCreated,
+                ["ecommerce.order.updated"] = EcommerceOrderUpdated,
+                ["ecommerce.order.deleted"] = EcommerceOrderDeleted,
+                ["ecommerce.product.created"] = EcommerceProductCreated,
+                ["ecommerce.product.updated"] = EcommerceProductUpdated,
+                ["ecommerce.product.deleted"] = EcommerceProductDeleted,
+                ["ecommerce.customer.created"] = EcommerceCustomerCreated,
+                ["ecommerce.customer.updated"] = EcommerceCustomerUpdated,
+                ["ecommerce.customer.deleted"] = EcommerceCustomerDeleted,
+                ["accounting.quote.created"] = AccountingQuoteCreated,
+                ["accounting.quote.updated"] = AccountingQuoteUpdated,
+                ["accounting.quote.deleted"] = AccountingQuoteDeleted,
+                ["accounting.project.created"] = AccountingProjectCreated,
+                ["accounting.project.updated"] = AccountingProjectUpdated,
+                ["accounting.project.deleted"] = AccountingProjectDeleted
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, WebhookEventType> _values =
+            new ConcurrentDictionary<string, WebhookEventType>(_knownValues);
 
-                    if (enumVal is WebhookEventType)
-                    {
-                        return (WebhookEventType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum WebhookEventType");
+        private WebhookEventType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static WebhookEventType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new WebhookEventType(value));
+        }
+
+        public static implicit operator WebhookEventType(string value) => Of(value);
+        public static implicit operator string(WebhookEventType webhookeventtype) => webhookeventtype.Value;
+
+        public static WebhookEventType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as WebhookEventType);
+
+        public bool Equals(WebhookEventType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

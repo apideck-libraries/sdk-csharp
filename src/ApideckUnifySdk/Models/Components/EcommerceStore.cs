@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class EcommerceStore
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -24,19 +23,19 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The store&apos;s name
+        /// The store's name.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// The store&apos;s website URL
+        /// The store's website URL.
         /// </summary>
         [JsonProperty("store_url")]
         public string? StoreUrl { get; set; } = null;
 
         /// <summary>
-        /// The store&apos;s admin login URL
+        /// The store's admin login URL.
         /// </summary>
         [JsonProperty("admin_url")]
         public string? AdminUrl { get; set; } = null;

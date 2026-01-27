@@ -12,69 +12,86 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Status of the delivery of the message.
     /// </summary>
-    public enum MessageStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class MessageStatus : IEquatable<MessageStatus>
     {
-        [JsonProperty("accepted")]
-        Accepted,
-        [JsonProperty("scheduled")]
-        Scheduled,
-        [JsonProperty("canceled")]
-        Canceled,
-        [JsonProperty("queued")]
-        Queued,
-        [JsonProperty("sending")]
-        Sending,
-        [JsonProperty("sent")]
-        Sent,
-        [JsonProperty("failed")]
-        Failed,
-        [JsonProperty("delivered")]
-        Delivered,
-        [JsonProperty("undelivered")]
-        Undelivered,
-        [JsonProperty("receiving")]
-        Receiving,
-        [JsonProperty("received")]
-        Received,
-        [JsonProperty("read")]
-        Read,
-    }
+        public static readonly MessageStatus Accepted = new MessageStatus("accepted");
+        public static readonly MessageStatus Scheduled = new MessageStatus("scheduled");
+        public static readonly MessageStatus Canceled = new MessageStatus("canceled");
+        public static readonly MessageStatus Queued = new MessageStatus("queued");
+        public static readonly MessageStatus Sending = new MessageStatus("sending");
+        public static readonly MessageStatus Sent = new MessageStatus("sent");
+        public static readonly MessageStatus Failed = new MessageStatus("failed");
+        public static readonly MessageStatus Delivered = new MessageStatus("delivered");
+        public static readonly MessageStatus Undelivered = new MessageStatus("undelivered");
+        public static readonly MessageStatus Receiving = new MessageStatus("receiving");
+        public static readonly MessageStatus Received = new MessageStatus("received");
+        public static readonly MessageStatus Read = new MessageStatus("read");
 
-    public static class MessageStatusExtension
-    {
-        public static string Value(this MessageStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static MessageStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(MessageStatus).GetFields())
+        private static readonly Dictionary <string, MessageStatus> _knownValues =
+            new Dictionary <string, MessageStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["accepted"] = Accepted,
+                ["scheduled"] = Scheduled,
+                ["canceled"] = Canceled,
+                ["queued"] = Queued,
+                ["sending"] = Sending,
+                ["sent"] = Sent,
+                ["failed"] = Failed,
+                ["delivered"] = Delivered,
+                ["undelivered"] = Undelivered,
+                ["receiving"] = Receiving,
+                ["received"] = Received,
+                ["read"] = Read
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, MessageStatus> _values =
+            new ConcurrentDictionary<string, MessageStatus>(_knownValues);
 
-                    if (enumVal is MessageStatus)
-                    {
-                        return (MessageStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum MessageStatus");
+        private MessageStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static MessageStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new MessageStatus(value));
+        }
+
+        public static implicit operator MessageStatus(string value) => Of(value);
+        public static implicit operator string(MessageStatus messagestatus) => messagestatus.Value;
+
+        public static MessageStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as MessageStatus);
+
+        public bool Equals(MessageStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

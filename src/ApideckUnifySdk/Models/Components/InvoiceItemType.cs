@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of invoice item, indicating whether it is an inventory item, a service, or another type.
     /// </summary>
-    public enum InvoiceItemType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class InvoiceItemType : IEquatable<InvoiceItemType>
     {
-        [JsonProperty("inventory")]
-        Inventory,
-        [JsonProperty("service")]
-        Service,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly InvoiceItemType Inventory = new InvoiceItemType("inventory");
+        public static readonly InvoiceItemType Service = new InvoiceItemType("service");
+        public static readonly InvoiceItemType Other = new InvoiceItemType("other");
 
-    public static class InvoiceItemTypeExtension
-    {
-        public static string Value(this InvoiceItemType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static InvoiceItemType ToEnum(this string value)
-        {
-            foreach(var field in typeof(InvoiceItemType).GetFields())
+        private static readonly Dictionary <string, InvoiceItemType> _knownValues =
+            new Dictionary <string, InvoiceItemType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["inventory"] = Inventory,
+                ["service"] = Service,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, InvoiceItemType> _values =
+            new ConcurrentDictionary<string, InvoiceItemType>(_knownValues);
 
-                    if (enumVal is InvoiceItemType)
-                    {
-                        return (InvoiceItemType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum InvoiceItemType");
+        private InvoiceItemType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static InvoiceItemType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new InvoiceItemType(value));
+        }
+
+        public static implicit operator InvoiceItemType(string value) => Of(value);
+        public static implicit operator string(InvoiceItemType invoiceitemtype) => invoiceitemtype.Value;
+
+        public static InvoiceItemType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as InvoiceItemType);
+
+        public bool Equals(InvoiceItemType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

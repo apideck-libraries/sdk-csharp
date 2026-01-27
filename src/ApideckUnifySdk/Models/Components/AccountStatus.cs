@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The status of the account.
     /// </summary>
-    public enum AccountStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class AccountStatus : IEquatable<AccountStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("archived")]
-        Archived,
-    }
+        public static readonly AccountStatus Active = new AccountStatus("active");
+        public static readonly AccountStatus Inactive = new AccountStatus("inactive");
+        public static readonly AccountStatus Archived = new AccountStatus("archived");
 
-    public static class AccountStatusExtension
-    {
-        public static string Value(this AccountStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static AccountStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(AccountStatus).GetFields())
+        private static readonly Dictionary <string, AccountStatus> _knownValues =
+            new Dictionary <string, AccountStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["archived"] = Archived
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, AccountStatus> _values =
+            new ConcurrentDictionary<string, AccountStatus>(_knownValues);
 
-                    if (enumVal is AccountStatus)
-                    {
-                        return (AccountStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum AccountStatus");
+        private AccountStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static AccountStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new AccountStatus(value));
+        }
+
+        public static implicit operator AccountStatus(string value) => Of(value);
+        public static implicit operator string(AccountStatus accountstatus) => accountstatus.Value;
+
+        public static AccountStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as AccountStatus);
+
+        public bool Equals(AccountStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

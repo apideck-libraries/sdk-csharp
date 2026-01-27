@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class PipelineStages
     {
-
         /// <summary>
         /// The name of the Pipeline Stage.
         /// </summary>

@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Employment status to filter on
+    /// Employment status to filter on.
     /// </summary>
-    public enum EmployeesFilterEmploymentStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EmployeesFilterEmploymentStatus : IEquatable<EmployeesFilterEmploymentStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("terminated")]
-        Terminated,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly EmployeesFilterEmploymentStatus Active = new EmployeesFilterEmploymentStatus("active");
+        public static readonly EmployeesFilterEmploymentStatus Inactive = new EmployeesFilterEmploymentStatus("inactive");
+        public static readonly EmployeesFilterEmploymentStatus Terminated = new EmployeesFilterEmploymentStatus("terminated");
+        public static readonly EmployeesFilterEmploymentStatus Other = new EmployeesFilterEmploymentStatus("other");
 
-    public static class EmployeesFilterEmploymentStatusExtension
-    {
-        public static string Value(this EmployeesFilterEmploymentStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EmployeesFilterEmploymentStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(EmployeesFilterEmploymentStatus).GetFields())
+        private static readonly Dictionary <string, EmployeesFilterEmploymentStatus> _knownValues =
+            new Dictionary <string, EmployeesFilterEmploymentStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["terminated"] = Terminated,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EmployeesFilterEmploymentStatus> _values =
+            new ConcurrentDictionary<string, EmployeesFilterEmploymentStatus>(_knownValues);
 
-                    if (enumVal is EmployeesFilterEmploymentStatus)
-                    {
-                        return (EmployeesFilterEmploymentStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EmployeesFilterEmploymentStatus");
+        private EmployeesFilterEmploymentStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EmployeesFilterEmploymentStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EmployeesFilterEmploymentStatus(value));
+        }
+
+        public static implicit operator EmployeesFilterEmploymentStatus(string value) => Of(value);
+        public static implicit operator string(EmployeesFilterEmploymentStatus employeesfilteremploymentstatus) => employeesfilteremploymentstatus.Value;
+
+        public static EmployeesFilterEmploymentStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EmployeesFilterEmploymentStatus);
+
+        public bool Equals(EmployeesFilterEmploymentStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class EmployeePayroll
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -24,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// ID of the employee
+        /// ID of the employee.
         /// </summary>
         [JsonProperty("employee_id")]
         public string? EmployeeId { get; set; } = null;

@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of period to include in the resource: month, quarter, year.
     /// </summary>
-    public enum PeriodType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PeriodType : IEquatable<PeriodType>
     {
-        [JsonProperty("month")]
-        Month,
-        [JsonProperty("quarter")]
-        Quarter,
-        [JsonProperty("year")]
-        Year,
-    }
+        public static readonly PeriodType Month = new PeriodType("month");
+        public static readonly PeriodType Quarter = new PeriodType("quarter");
+        public static readonly PeriodType Year = new PeriodType("year");
 
-    public static class PeriodTypeExtension
-    {
-        public static string Value(this PeriodType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PeriodType ToEnum(this string value)
-        {
-            foreach(var field in typeof(PeriodType).GetFields())
+        private static readonly Dictionary <string, PeriodType> _knownValues =
+            new Dictionary <string, PeriodType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["month"] = Month,
+                ["quarter"] = Quarter,
+                ["year"] = Year
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PeriodType> _values =
+            new ConcurrentDictionary<string, PeriodType>(_knownValues);
 
-                    if (enumVal is PeriodType)
-                    {
-                        return (PeriodType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PeriodType");
+        private PeriodType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PeriodType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PeriodType(value));
+        }
+
+        public static implicit operator PeriodType(string value) => Of(value);
+        public static implicit operator string(PeriodType periodtype) => periodtype.Value;
+
+        public static PeriodType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PeriodType);
+
+        public bool Equals(PeriodType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

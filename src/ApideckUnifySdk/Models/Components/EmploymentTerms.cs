@@ -12,62 +12,79 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum EmploymentTerms
-    {
-        [JsonProperty("full-time")]
-        FullTime,
-        [JsonProperty("part-time")]
-        PartTime,
-        [JsonProperty("internship")]
-        Internship,
-        [JsonProperty("contractor")]
-        Contractor,
-        [JsonProperty("employee")]
-        Employee,
-        [JsonProperty("freelance")]
-        Freelance,
-        [JsonProperty("temp")]
-        Temp,
-        [JsonProperty("seasonal")]
-        Seasonal,
-        [JsonProperty("volunteer")]
-        Volunteer,
-        [JsonProperty("other")]
-        Other,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class EmploymentTermsExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EmploymentTerms : IEquatable<EmploymentTerms>
     {
-        public static string Value(this EmploymentTerms value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly EmploymentTerms FullTime = new EmploymentTerms("full-time");
+        public static readonly EmploymentTerms PartTime = new EmploymentTerms("part-time");
+        public static readonly EmploymentTerms Internship = new EmploymentTerms("internship");
+        public static readonly EmploymentTerms Contractor = new EmploymentTerms("contractor");
+        public static readonly EmploymentTerms Employee = new EmploymentTerms("employee");
+        public static readonly EmploymentTerms Freelance = new EmploymentTerms("freelance");
+        public static readonly EmploymentTerms Temp = new EmploymentTerms("temp");
+        public static readonly EmploymentTerms Seasonal = new EmploymentTerms("seasonal");
+        public static readonly EmploymentTerms Volunteer = new EmploymentTerms("volunteer");
+        public static readonly EmploymentTerms Other = new EmploymentTerms("other");
 
-        public static EmploymentTerms ToEnum(this string value)
-        {
-            foreach(var field in typeof(EmploymentTerms).GetFields())
+        private static readonly Dictionary <string, EmploymentTerms> _knownValues =
+            new Dictionary <string, EmploymentTerms> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["full-time"] = FullTime,
+                ["part-time"] = PartTime,
+                ["internship"] = Internship,
+                ["contractor"] = Contractor,
+                ["employee"] = Employee,
+                ["freelance"] = Freelance,
+                ["temp"] = Temp,
+                ["seasonal"] = Seasonal,
+                ["volunteer"] = Volunteer,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EmploymentTerms> _values =
+            new ConcurrentDictionary<string, EmploymentTerms>(_knownValues);
 
-                    if (enumVal is EmploymentTerms)
-                    {
-                        return (EmploymentTerms)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EmploymentTerms");
+        private EmploymentTerms(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EmploymentTerms Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EmploymentTerms(value));
+        }
+
+        public static implicit operator EmploymentTerms(string value) => Of(value);
+        public static implicit operator string(EmploymentTerms employmentterms) => employmentterms.Value;
+
+        public static EmploymentTerms[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EmploymentTerms);
+
+        public bool Equals(EmploymentTerms? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

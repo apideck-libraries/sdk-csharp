@@ -12,61 +12,78 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Journal entry status
+    /// Journal entry status.
     /// </summary>
-    public enum JournalEntryStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class JournalEntryStatus : IEquatable<JournalEntryStatus>
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("pending_approval")]
-        PendingApproval,
-        [JsonProperty("approved")]
-        Approved,
-        [JsonProperty("posted")]
-        Posted,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("rejected")]
-        Rejected,
-        [JsonProperty("deleted")]
-        Deleted,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly JournalEntryStatus Draft = new JournalEntryStatus("draft");
+        public static readonly JournalEntryStatus PendingApproval = new JournalEntryStatus("pending_approval");
+        public static readonly JournalEntryStatus Approved = new JournalEntryStatus("approved");
+        public static readonly JournalEntryStatus Posted = new JournalEntryStatus("posted");
+        public static readonly JournalEntryStatus Voided = new JournalEntryStatus("voided");
+        public static readonly JournalEntryStatus Rejected = new JournalEntryStatus("rejected");
+        public static readonly JournalEntryStatus Deleted = new JournalEntryStatus("deleted");
+        public static readonly JournalEntryStatus Other = new JournalEntryStatus("other");
 
-    public static class JournalEntryStatusExtension
-    {
-        public static string Value(this JournalEntryStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static JournalEntryStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(JournalEntryStatus).GetFields())
+        private static readonly Dictionary <string, JournalEntryStatus> _knownValues =
+            new Dictionary <string, JournalEntryStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["pending_approval"] = PendingApproval,
+                ["approved"] = Approved,
+                ["posted"] = Posted,
+                ["voided"] = Voided,
+                ["rejected"] = Rejected,
+                ["deleted"] = Deleted,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, JournalEntryStatus> _values =
+            new ConcurrentDictionary<string, JournalEntryStatus>(_knownValues);
 
-                    if (enumVal is JournalEntryStatus)
-                    {
-                        return (JournalEntryStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum JournalEntryStatus");
+        private JournalEntryStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static JournalEntryStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new JournalEntryStatus(value));
+        }
+
+        public static implicit operator JournalEntryStatus(string value) => Of(value);
+        public static implicit operator string(JournalEntryStatus journalentrystatus) => journalentrystatus.Value;
+
+        public static JournalEntryStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as JournalEntryStatus);
+
+        public bool Equals(JournalEntryStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

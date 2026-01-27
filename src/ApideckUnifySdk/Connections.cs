@@ -24,87 +24,211 @@ namespace ApideckUnifySdk
 
     public interface IConnections
     {
-
         /// <summary>
-        /// Get all connections
-        /// 
+        /// Get all connections.
+        /// </summary>
         /// <remarks>
         /// This endpoint includes all the configured integrations and contains the required assets<br/>
         /// to build an integrations page where your users can install integrations.<br/>
-        /// OAuth2 supported integrations will contain authorize and revoke links to handle the authentication flows.<br/>
-        /// 
+        /// OAuth2 supported integrations will contain authorize and revoke links to handle the authentication flows.
         /// </remarks>
-        /// </summary>
-        Task<VaultConnectionsAllResponse> ListAsync(string? consumerId = null, string? appId = null, string? api = null, bool? configured = null, RetryConfig? retryConfig = null);
+        /// <param name="consumerId">ID of the consumer which you want to get or push data from.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="api">Scope results to Unified API.</param>
+        /// <param name="configured">Scopes results to connections that have been configured or not.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConnectionsAllResponse> ListAsync(
+            string? consumerId = null,
+            string? appId = null,
+            string? api = null,
+            bool? configured = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get connection
-        /// 
+        /// Get connection.
+        /// </summary>
         /// <remarks>
-        /// Get a connection
+        /// Get a connection.
         /// </remarks>
-        /// </summary>
-        Task<VaultConnectionsOneResponse> GetAsync(string serviceId, string unifiedApi, string? consumerId = null, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="serviceId">Service ID of the resource to return.</param>
+        /// <param name="unifiedApi">Unified API.</param>
+        /// <param name="consumerId">ID of the consumer which you want to get or push data from.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="serviceId"/> or <paramref name="unifiedApi"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConnectionsOneResponse> GetAsync(
+            string serviceId,
+            string unifiedApi,
+            string? consumerId = null,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update connection
-        /// 
+        /// Update connection.
+        /// </summary>
         /// <remarks>
-        /// Update a connection
+        /// Update a connection.
         /// </remarks>
-        /// </summary>
-        Task<VaultConnectionsUpdateResponse> UpdateAsync(VaultConnectionsUpdateRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="VaultConnectionsUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConnectionsUpdateResponse> UpdateAsync(
+            VaultConnectionsUpdateRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Deletes a connection
-        /// 
+        /// Deletes a connection.
+        /// </summary>
         /// <remarks>
-        /// Deletes a connection
+        /// Deletes a connection.
         /// </remarks>
-        /// </summary>
-        Task<VaultConnectionsDeleteResponse> DeleteAsync(string serviceId, string unifiedApi, string? consumerId = null, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="serviceId">Service ID of the resource to return.</param>
+        /// <param name="unifiedApi">Unified API.</param>
+        /// <param name="consumerId">ID of the consumer which you want to get or push data from.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="serviceId"/> or <paramref name="unifiedApi"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConnectionsDeleteResponse> DeleteAsync(
+            string serviceId,
+            string unifiedApi,
+            string? consumerId = null,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Import connection
-        /// 
+        /// Import connection.
+        /// </summary>
         /// <remarks>
-        /// Import an authorized connection.<br/>
-        /// 
+        /// Import an authorized connection.
         /// </remarks>
-        /// </summary>
-        Task<VaultConnectionsImportResponse> ImportsAsync(VaultConnectionsImportRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="VaultConnectionsImportRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsImportResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConnectionsImportResponse> ImportsAsync(
+            VaultConnectionsImportRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Authorize Access Token
-        /// 
+        /// Authorize Access Token.
+        /// </summary>
         /// <remarks>
         /// Triggers exchanging persisted connection credentials for an access token and store it in Vault. Currently supported for connections with the `client_credentials` or `password` OAuth grant type.<br/>
         /// <br/>
         /// Note:<br/>
         ///   - Do not include any credentials in the request body. This operation does not persist changes, but only triggers the exchange of persisted connection credentials for an access token.<br/>
         ///   - The access token will not be returned in the response. A 200 response code indicates the authorization was successful and that a valid access token was stored on the connection.<br/>
-        ///   - The access token will be used for subsequent API requests.<br/>
-        /// 
+        ///   - The access token will be used for subsequent API requests.
         /// </remarks>
-        /// </summary>
-        Task<VaultConnectionsTokenResponse> TokenAsync(VaultConnectionsTokenRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="VaultConnectionsTokenRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsTokenResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConnectionsTokenResponse> TokenAsync(
+            VaultConnectionsTokenRequest request,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Connections: IConnections
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Connections(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<VaultConnectionsAllResponse> ListAsync(string? consumerId = null, string? appId = null, string? api = null, bool? configured = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Get all connections.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint includes all the configured integrations and contains the required assets<br/>
+        /// to build an integrations page where your users can install integrations.<br/>
+        /// OAuth2 supported integrations will contain authorize and revoke links to handle the authentication flows.
+        /// </remarks>
+        /// <param name="consumerId">ID of the consumer which you want to get or push data from.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="api">Scope results to Unified API.</param>
+        /// <param name="configured">Scopes results to connections that have been configured or not.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConnectionsAllResponse> ListAsync(
+            string? consumerId = null,
+            string? appId = null,
+            string? api = null,
+            bool? configured = null,
+            RetryConfig? retryConfig = null
+        )
         {
             var request = new VaultConnectionsAllRequest()
             {
@@ -115,7 +239,7 @@ namespace ApideckUnifySdk
             };
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/connections", request, null);
 
@@ -175,7 +299,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -369,7 +493,35 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConnectionsOneResponse> GetAsync(string serviceId, string unifiedApi, string? consumerId = null, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get connection.
+        /// </summary>
+        /// <remarks>
+        /// Get a connection.
+        /// </remarks>
+        /// <param name="serviceId">Service ID of the resource to return.</param>
+        /// <param name="unifiedApi">Unified API.</param>
+        /// <param name="consumerId">ID of the consumer which you want to get or push data from.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="serviceId"/> or <paramref name="unifiedApi"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConnectionsOneResponse> GetAsync(
+            string serviceId,
+            string unifiedApi,
+            string? consumerId = null,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (serviceId == null) throw new ArgumentNullException(nameof(serviceId));
             if (unifiedApi == null) throw new ArgumentNullException(nameof(unifiedApi));
@@ -383,7 +535,7 @@ namespace ApideckUnifySdk
             };
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/connections/{unified_api}/{service_id}", request, null);
 
@@ -443,7 +595,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -637,13 +789,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConnectionsUpdateResponse> UpdateAsync(VaultConnectionsUpdateRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update connection.
+        /// </summary>
+        /// <remarks>
+        /// Update a connection.
+        /// </remarks>
+        /// <param name="request">A <see cref="VaultConnectionsUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConnectionsUpdateResponse> UpdateAsync(
+            VaultConnectionsUpdateRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/connections/{unified_api}/{service_id}", request, null);
 
@@ -709,7 +882,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -903,7 +1076,35 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConnectionsDeleteResponse> DeleteAsync(string serviceId, string unifiedApi, string? consumerId = null, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Deletes a connection.
+        /// </summary>
+        /// <remarks>
+        /// Deletes a connection.
+        /// </remarks>
+        /// <param name="serviceId">Service ID of the resource to return.</param>
+        /// <param name="unifiedApi">Unified API.</param>
+        /// <param name="consumerId">ID of the consumer which you want to get or push data from.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="serviceId"/> or <paramref name="unifiedApi"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConnectionsDeleteResponse> DeleteAsync(
+            string serviceId,
+            string unifiedApi,
+            string? consumerId = null,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (serviceId == null) throw new ArgumentNullException(nameof(serviceId));
             if (unifiedApi == null) throw new ArgumentNullException(nameof(unifiedApi));
@@ -917,7 +1118,7 @@ namespace ApideckUnifySdk
             };
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/connections/{unified_api}/{service_id}", request, null);
 
@@ -977,7 +1178,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1153,13 +1354,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConnectionsImportResponse> ImportsAsync(VaultConnectionsImportRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Import connection.
+        /// </summary>
+        /// <remarks>
+        /// Import an authorized connection.
+        /// </remarks>
+        /// <param name="request">A <see cref="VaultConnectionsImportRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsImportResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConnectionsImportResponse> ImportsAsync(
+            VaultConnectionsImportRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/connections/{unified_api}/{service_id}/import", request, null);
 
@@ -1225,7 +1447,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1419,13 +1641,39 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConnectionsTokenResponse> TokenAsync(VaultConnectionsTokenRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Authorize Access Token.
+        /// </summary>
+        /// <remarks>
+        /// Triggers exchanging persisted connection credentials for an access token and store it in Vault. Currently supported for connections with the `client_credentials` or `password` OAuth grant type.<br/>
+        /// <br/>
+        /// Note:<br/>
+        ///   - Do not include any credentials in the request body. This operation does not persist changes, but only triggers the exchange of persisted connection credentials for an access token.<br/>
+        ///   - The access token will not be returned in the response. A 200 response code indicates the authorization was successful and that a valid access token was stored on the connection.<br/>
+        ///   - The access token will be used for subsequent API requests.
+        /// </remarks>
+        /// <param name="request">A <see cref="VaultConnectionsTokenRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConnectionsTokenResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConnectionsTokenResponse> TokenAsync(
+            VaultConnectionsTokenRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/connections/{unified_api}/{service_id}/token", request, null);
 
@@ -1491,7 +1739,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1684,5 +1932,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

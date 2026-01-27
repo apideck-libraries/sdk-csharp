@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Suppliers
+    /// The field on which to sort the Suppliers.
     /// </summary>
-    public enum SuppliersSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class SuppliersSortBy : IEquatable<SuppliersSortBy>
     {
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-    }
+        public static readonly SuppliersSortBy CreatedAt = new SuppliersSortBy("created_at");
+        public static readonly SuppliersSortBy UpdatedAt = new SuppliersSortBy("updated_at");
 
-    public static class SuppliersSortByExtension
-    {
-        public static string Value(this SuppliersSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static SuppliersSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(SuppliersSortBy).GetFields())
+        private static readonly Dictionary <string, SuppliersSortBy> _knownValues =
+            new Dictionary <string, SuppliersSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, SuppliersSortBy> _values =
+            new ConcurrentDictionary<string, SuppliersSortBy>(_knownValues);
 
-                    if (enumVal is SuppliersSortBy)
-                    {
-                        return (SuppliersSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum SuppliersSortBy");
+        private SuppliersSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static SuppliersSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new SuppliersSortBy(value));
+        }
+
+        public static implicit operator SuppliersSortBy(string value) => Of(value);
+        public static implicit operator string(SuppliersSortBy supplierssortby) => supplierssortby.Value;
+
+        public static SuppliersSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as SuppliersSortBy);
+
+        public bool Equals(SuppliersSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

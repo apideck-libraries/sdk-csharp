@@ -12,10 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class EmployeeCompensationInput
     {
-
         /// <summary>
         /// The amount paid per payment unit.
         /// </summary>
@@ -41,7 +44,7 @@ namespace ApideckUnifySdk.Models.Components
         public FlsaStatus? FlsaStatus { get; set; } = null;
 
         /// <summary>
-        /// The date on which a change to an employee&apos;s compensation takes effect.
+        /// The date on which a change to an employee's compensation takes effect.
         /// </summary>
         [JsonProperty("effective_date")]
         public string? EffectiveDate { get; set; } = null;

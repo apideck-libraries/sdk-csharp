@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class Notes
     {
-
         [JsonProperty("employee")]
         public string? Employee { get; set; } = null;
 

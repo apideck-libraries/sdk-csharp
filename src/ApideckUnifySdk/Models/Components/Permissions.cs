@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Permissions the current user has on this file.
     /// </summary>
     public class Permissions
     {
-
         /// <summary>
         /// Whether the current user can download this file.
         /// </summary>

@@ -12,59 +12,76 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The type of bank account
+    /// The type of bank account.
     /// </summary>
-    public enum AccountingBankAccountAccountType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class AccountingBankAccountAccountType : IEquatable<AccountingBankAccountAccountType>
     {
-        [JsonProperty("checking")]
-        Checking,
-        [JsonProperty("savings")]
-        Savings,
-        [JsonProperty("credit_card")]
-        CreditCard,
-        [JsonProperty("money_market")]
-        MoneyMarket,
-        [JsonProperty("line_of_credit")]
-        LineOfCredit,
-        [JsonProperty("other")]
-        Other,
-        [JsonProperty("cash")]
-        Cash,
-    }
+        public static readonly AccountingBankAccountAccountType Checking = new AccountingBankAccountAccountType("checking");
+        public static readonly AccountingBankAccountAccountType Savings = new AccountingBankAccountAccountType("savings");
+        public static readonly AccountingBankAccountAccountType CreditCard = new AccountingBankAccountAccountType("credit_card");
+        public static readonly AccountingBankAccountAccountType MoneyMarket = new AccountingBankAccountAccountType("money_market");
+        public static readonly AccountingBankAccountAccountType LineOfCredit = new AccountingBankAccountAccountType("line_of_credit");
+        public static readonly AccountingBankAccountAccountType Other = new AccountingBankAccountAccountType("other");
+        public static readonly AccountingBankAccountAccountType Cash = new AccountingBankAccountAccountType("cash");
 
-    public static class AccountingBankAccountAccountTypeExtension
-    {
-        public static string Value(this AccountingBankAccountAccountType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static AccountingBankAccountAccountType ToEnum(this string value)
-        {
-            foreach(var field in typeof(AccountingBankAccountAccountType).GetFields())
+        private static readonly Dictionary <string, AccountingBankAccountAccountType> _knownValues =
+            new Dictionary <string, AccountingBankAccountAccountType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["checking"] = Checking,
+                ["savings"] = Savings,
+                ["credit_card"] = CreditCard,
+                ["money_market"] = MoneyMarket,
+                ["line_of_credit"] = LineOfCredit,
+                ["other"] = Other,
+                ["cash"] = Cash
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, AccountingBankAccountAccountType> _values =
+            new ConcurrentDictionary<string, AccountingBankAccountAccountType>(_knownValues);
 
-                    if (enumVal is AccountingBankAccountAccountType)
-                    {
-                        return (AccountingBankAccountAccountType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum AccountingBankAccountAccountType");
+        private AccountingBankAccountAccountType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static AccountingBankAccountAccountType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new AccountingBankAccountAccountType(value));
+        }
+
+        public static implicit operator AccountingBankAccountAccountType(string value) => Of(value);
+        public static implicit operator string(AccountingBankAccountAccountType accountingbankaccountaccounttype) => accountingbankaccountaccounttype.Value;
+
+        public static AccountingBankAccountAccountType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as AccountingBankAccountAccountType);
+
+        public bool Equals(AccountingBankAccountAccountType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

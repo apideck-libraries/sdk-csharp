@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Audience for the doc.
     /// </summary>
-    public enum Audience
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Audience : IEquatable<Audience>
     {
-        [JsonProperty("application_owner")]
-        ApplicationOwner,
-        [JsonProperty("consumer")]
-        Consumer,
-    }
+        public static readonly Audience ApplicationOwner = new Audience("application_owner");
+        public static readonly Audience Consumer = new Audience("consumer");
 
-    public static class AudienceExtension
-    {
-        public static string Value(this Audience value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Audience ToEnum(this string value)
-        {
-            foreach(var field in typeof(Audience).GetFields())
+        private static readonly Dictionary <string, Audience> _knownValues =
+            new Dictionary <string, Audience> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["application_owner"] = ApplicationOwner,
+                ["consumer"] = Consumer
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Audience> _values =
+            new ConcurrentDictionary<string, Audience>(_knownValues);
 
-                    if (enumVal is Audience)
-                    {
-                        return (Audience)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Audience");
+        private Audience(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Audience Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Audience(value));
+        }
+
+        public static implicit operator Audience(string value) => Of(value);
+        public static implicit operator string(Audience audience) => audience.Value;
+
+        public static Audience[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Audience);
+
+        public bool Equals(Audience? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

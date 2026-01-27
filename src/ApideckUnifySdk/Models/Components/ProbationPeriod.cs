@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    
+
     public class ProbationPeriod
     {
-
         /// <summary>
         /// The date that the employee started their probation period at the company.
         /// </summary>

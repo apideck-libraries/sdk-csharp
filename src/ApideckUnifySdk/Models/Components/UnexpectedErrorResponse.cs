@@ -12,27 +12,26 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Unexpected error
+    /// Unexpected error.
     /// </summary>
     public class UnexpectedErrorResponse
     {
-
         /// <summary>
-        /// HTTP status code
+        /// HTTP status code.
         /// </summary>
         [JsonProperty("status_code")]
         public double? StatusCode { get; set; }
 
         /// <summary>
-        /// Contains an explanation of the status_code as defined in HTTP/1.1 standard (RFC 7231)
+        /// Contains an explanation of the status_code as defined in HTTP/1.1 standard (RFC 7231).
         /// </summary>
         [JsonProperty("error")]
         public string? Error { get; set; }
 
         /// <summary>
-        /// The type of error returned
+        /// The type of error returned.
         /// </summary>
         [JsonProperty("type_name")]
         public string? TypeName { get; set; }
@@ -50,7 +49,7 @@ namespace ApideckUnifySdk.Models.Components
         public Models.Components.Detail? Detail { get; set; }
 
         /// <summary>
-        /// Link to documentation of error type
+        /// Link to documentation of error type.
         /// </summary>
         [JsonProperty("ref")]
         public string? Ref { get; set; }

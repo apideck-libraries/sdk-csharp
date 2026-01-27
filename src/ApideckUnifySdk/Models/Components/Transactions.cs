@@ -13,12 +13,14 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Transactions
     {
-
         /// <summary>
-        /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD
+        /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD.
         /// </summary>
         [JsonProperty("posted_date")]
         public DateTime PostedDate { get; set; } = default!;

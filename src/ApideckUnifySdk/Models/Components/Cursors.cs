@@ -11,27 +11,26 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Cursors to navigate to previous or next pages through the API
+    /// Cursors to navigate to previous or next pages through the API.
     /// </summary>
     public class Cursors
     {
-
         /// <summary>
-        /// Cursor to navigate to the previous page of results through the API
+        /// Cursor to navigate to the previous page of results through the API.
         /// </summary>
         [JsonProperty("previous")]
         public string? Previous { get; set; } = null;
 
         /// <summary>
-        /// Cursor to navigate to the current page of results through the API
+        /// Cursor to navigate to the current page of results through the API.
         /// </summary>
         [JsonProperty("current")]
         public string? Current { get; set; } = null;
 
         /// <summary>
-        /// Cursor to navigate to the next page of results through the API
+        /// Cursor to navigate to the next page of results through the API.
         /// </summary>
         [JsonProperty("next")]
         public string? Next { get; set; } = null;

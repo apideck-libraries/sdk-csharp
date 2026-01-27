@@ -12,13 +12,16 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// A flexible account reference that can represent either a ledger account (GL account) or a bank account, depending on the connector&apos;s requirements.
+    /// A flexible account reference that can represent either a ledger account (GL account) or a bank account, depending on the connector's requirements.
     /// </summary>
     public class LinkedFinancialAccount
     {
-
         /// <summary>
         /// The unique identifier for the account. This can be a ledger account ID or bank account ID depending on the `type` field.
         /// </summary>
@@ -32,7 +35,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedFinancialAccountAccountType? Type { get; set; } = null;
 
         /// <summary>
-        /// The account code of the account
+        /// The account code of the account.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; }
@@ -44,7 +47,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// The bank account number
+        /// The bank account number.
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;
@@ -56,7 +59,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
