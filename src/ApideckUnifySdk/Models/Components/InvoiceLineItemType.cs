@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Item type
+    /// Item type.
     /// </summary>
-    public enum InvoiceLineItemType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class InvoiceLineItemType : IEquatable<InvoiceLineItemType>
     {
-        [JsonProperty("sales_item")]
-        SalesItem,
-        [JsonProperty("discount")]
-        Discount,
-        [JsonProperty("info")]
-        Info,
-        [JsonProperty("sub_total")]
-        SubTotal,
-        [JsonProperty("service")]
-        Service,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly InvoiceLineItemType SalesItem = new InvoiceLineItemType("sales_item");
+        public static readonly InvoiceLineItemType Discount = new InvoiceLineItemType("discount");
+        public static readonly InvoiceLineItemType Info = new InvoiceLineItemType("info");
+        public static readonly InvoiceLineItemType SubTotal = new InvoiceLineItemType("sub_total");
+        public static readonly InvoiceLineItemType Service = new InvoiceLineItemType("service");
+        public static readonly InvoiceLineItemType Other = new InvoiceLineItemType("other");
 
-    public static class InvoiceLineItemTypeExtension
-    {
-        public static string Value(this InvoiceLineItemType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static InvoiceLineItemType ToEnum(this string value)
-        {
-            foreach(var field in typeof(InvoiceLineItemType).GetFields())
+        private static readonly Dictionary <string, InvoiceLineItemType> _knownValues =
+            new Dictionary <string, InvoiceLineItemType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["sales_item"] = SalesItem,
+                ["discount"] = Discount,
+                ["info"] = Info,
+                ["sub_total"] = SubTotal,
+                ["service"] = Service,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, InvoiceLineItemType> _values =
+            new ConcurrentDictionary<string, InvoiceLineItemType>(_knownValues);
 
-                    if (enumVal is InvoiceLineItemType)
-                    {
-                        return (InvoiceLineItemType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum InvoiceLineItemType");
+        private InvoiceLineItemType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static InvoiceLineItemType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new InvoiceLineItemType(value));
+        }
+
+        public static implicit operator InvoiceLineItemType(string value) => Of(value);
+        public static implicit operator string(InvoiceLineItemType invoicelineitemtype) => invoicelineitemtype.Value;
+
+        public static InvoiceLineItemType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as InvoiceLineItemType);
+
+        public bool Equals(InvoiceLineItemType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

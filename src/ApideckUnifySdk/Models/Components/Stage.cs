@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class Stage
     {
-
         /// <summary>
         /// Stage the candidate should be in. If omitted, the default stage for this job will be used.
         /// </summary>

@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class AccountingBankAccount
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,31 +26,31 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
-        /// Display ID for the bank account
+        /// Display ID for the bank account.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// The name of the bank account
+        /// The name of the bank account.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// The bank account number
+        /// The bank account number.
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;
 
         /// <summary>
-        /// The type of bank account
+        /// The type of bank account.
         /// </summary>
         [JsonProperty("account_type")]
         public AccountingBankAccountAccountType? AccountType { get; set; }
@@ -58,7 +59,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         /// <summary>
-        /// The name of the bank or financial institution
+        /// The name of the bank or financial institution.
         /// </summary>
         [JsonProperty("bank_name")]
         public string? BankName { get; set; } = null;
@@ -70,55 +71,55 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         /// <summary>
-        /// The current balance of the bank account
+        /// The current balance of the bank account.
         /// </summary>
         [JsonProperty("balance")]
         public double? Balance { get; set; } = null;
 
         /// <summary>
-        /// The available balance (considering pending transactions and overdraft)
+        /// The available balance (considering pending transactions and overdraft).
         /// </summary>
         [JsonProperty("available_balance")]
         public double? AvailableBalance { get; set; } = null;
 
         /// <summary>
-        /// The overdraft limit for the account
+        /// The overdraft limit for the account.
         /// </summary>
         [JsonProperty("overdraft_limit")]
         public double? OverdraftLimit { get; set; } = null;
 
         /// <summary>
-        /// Bank routing number (US)
+        /// Bank routing number (US).
         /// </summary>
         [JsonProperty("routing_number")]
         public string? RoutingNumber { get; set; } = null;
 
         /// <summary>
-        /// International Bank Account Number
+        /// International Bank Account Number.
         /// </summary>
         [JsonProperty("iban")]
         public string? Iban { get; set; } = null;
 
         /// <summary>
-        /// Bank Identifier Code / SWIFT Code
+        /// Bank Identifier Code / SWIFT Code.
         /// </summary>
         [JsonProperty("bic")]
         public string? Bic { get; set; } = null;
 
         /// <summary>
-        /// Bank State Branch number (Australia/New Zealand)
+        /// Bank State Branch number (Australia/New Zealand).
         /// </summary>
         [JsonProperty("bsb_number")]
         public string? BsbNumber { get; set; } = null;
 
         /// <summary>
-        /// Bank branch identifier
+        /// Bank branch identifier.
         /// </summary>
         [JsonProperty("branch_identifier")]
         public string? BranchIdentifier { get; set; } = null;
 
         /// <summary>
-        /// Bank code assigned by central bank
+        /// Bank code assigned by central bank.
         /// </summary>
         [JsonProperty("bank_code")]
         public string? BankCode { get; set; } = null;
@@ -130,13 +131,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Country { get; set; } = null;
 
         /// <summary>
-        /// The status of the bank account
+        /// The status of the bank account.
         /// </summary>
         [JsonProperty("status")]
         public AccountingBankAccountStatus? Status { get; set; } = null;
 
         /// <summary>
-        /// Description or notes about the bank account
+        /// Description or notes about the bank account.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;

@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class Images
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>

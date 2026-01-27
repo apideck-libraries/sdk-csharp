@@ -12,39 +12,38 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Bank Account deleted
+    /// Bank Account deleted.
     /// </summary>
     public class DeleteBankAccountResponse
     {
-
         /// <summary>
-        /// HTTP Response Status Code
+        /// HTTP Response Status Code.
         /// </summary>
         [JsonProperty("status_code")]
         public long StatusCode { get; set; } = default!;
 
         /// <summary>
-        /// HTTP Response Status
+        /// HTTP Response Status.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; } = default!;
 
         /// <summary>
-        /// Apideck ID of service provider
+        /// Apideck ID of service provider.
         /// </summary>
         [JsonProperty("service")]
         public string? Service { get; set; }
 
         /// <summary>
-        /// Unified API resource name
+        /// Unified API resource name.
         /// </summary>
         [JsonProperty("resource")]
         public string? Resource { get; set; }
 
         /// <summary>
-        /// Operation performed
+        /// Operation performed.
         /// </summary>
         [JsonProperty("operation")]
         public string? Operation { get; set; }

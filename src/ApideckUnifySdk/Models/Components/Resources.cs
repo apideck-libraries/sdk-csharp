@@ -12,10 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Resources
     {
-
         /// <summary>
         /// ID of the resource, typically a lowercased version of its name.
         /// </summary>
@@ -23,7 +26,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// Name of the resource (plural)
+        /// Name of the resource (plural).
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
@@ -35,7 +38,7 @@ namespace ApideckUnifySdk.Models.Components
         public ResourceStatus? Status { get; set; }
 
         /// <summary>
-        /// Exclude from mapping coverage
+        /// Exclude from mapping coverage.
         /// </summary>
         [JsonProperty("excluded_from_coverage")]
         public bool? ExcludedFromCoverage { get; set; }

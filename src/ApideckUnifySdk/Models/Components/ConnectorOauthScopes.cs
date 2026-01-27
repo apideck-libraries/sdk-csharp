@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// OAuth scopes required for the connector. Add these scopes to your OAuth app.
     /// </summary>
     public class ConnectorOauthScopes
     {
-
         /// <summary>
         /// ID of the OAuth scope.
         /// </summary>

@@ -11,24 +11,23 @@ namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+
     public class AccountingExpensesAllRequest
     {
-
         /// <summary>
-        /// Include raw response. Mostly used for debugging purposes
+        /// Include raw response. Mostly used for debugging purposes.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
         public bool? Raw { get; set; } = false;
 
         /// <summary>
-        /// ID of the consumer which you want to get or push data from
+        /// ID of the consumer which you want to get or push data from.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
         public string? ConsumerId { get; set; }
 
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
@@ -46,13 +45,13 @@ namespace ApideckUnifySdk.Models.Requests
         public string? Cursor { get; set; } = null;
 
         /// <summary>
-        /// Number of results to return. Minimum 1, Maximum 200, Default 20
+        /// Number of results to return. Minimum 1, Maximum 200, Default 20.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
 
         /// <summary>
-        /// Apply filters
+        /// Apply filters.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
         public ExpensesFilter? Filter { get; set; }

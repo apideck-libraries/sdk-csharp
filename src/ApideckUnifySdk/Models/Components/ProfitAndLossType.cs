@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The type of profit and loss
+    /// The type of profit and loss.
     /// </summary>
-    public enum ProfitAndLossType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ProfitAndLossType : IEquatable<ProfitAndLossType>
     {
-        [JsonProperty("Section")]
-        Section,
-        [JsonProperty("Record")]
-        Record,
-    }
+        public static readonly ProfitAndLossType Section = new ProfitAndLossType("Section");
+        public static readonly ProfitAndLossType Record = new ProfitAndLossType("Record");
 
-    public static class ProfitAndLossTypeExtension
-    {
-        public static string Value(this ProfitAndLossType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ProfitAndLossType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ProfitAndLossType).GetFields())
+        private static readonly Dictionary <string, ProfitAndLossType> _knownValues =
+            new Dictionary <string, ProfitAndLossType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["Section"] = Section,
+                ["Record"] = Record
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ProfitAndLossType> _values =
+            new ConcurrentDictionary<string, ProfitAndLossType>(_knownValues);
 
-                    if (enumVal is ProfitAndLossType)
-                    {
-                        return (ProfitAndLossType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ProfitAndLossType");
+        private ProfitAndLossType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ProfitAndLossType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ProfitAndLossType(value));
+        }
+
+        public static implicit operator ProfitAndLossType(string value) => Of(value);
+        public static implicit operator string(ProfitAndLossType profitandlosstype) => profitandlosstype.Value;
+
+        public static ProfitAndLossType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ProfitAndLossType);
+
+        public bool Equals(ProfitAndLossType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

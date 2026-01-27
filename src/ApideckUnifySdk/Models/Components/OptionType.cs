@@ -12,44 +12,61 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum OptionType
-    {
-        [JsonProperty("simple")]
-        Simple,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class OptionTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class OptionType : IEquatable<OptionType>
     {
-        public static string Value(this OptionType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly OptionType Simple = new OptionType("simple");
 
-        public static OptionType ToEnum(this string value)
-        {
-            foreach(var field in typeof(OptionType).GetFields())
+        private static readonly Dictionary <string, OptionType> _knownValues =
+            new Dictionary <string, OptionType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["simple"] = Simple
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, OptionType> _values =
+            new ConcurrentDictionary<string, OptionType>(_knownValues);
 
-                    if (enumVal is OptionType)
-                    {
-                        return (OptionType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum OptionType");
+        private OptionType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static OptionType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new OptionType(value));
+        }
+
+        public static implicit operator OptionType(string value) => Of(value);
+        public static implicit operator string(OptionType optiontype) => optiontype.Value;
+
+        public static OptionType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as OptionType);
+
+        public bool Equals(OptionType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

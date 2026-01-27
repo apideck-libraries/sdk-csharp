@@ -17,24 +17,52 @@ namespace ApideckUnifySdk
     public interface IIssueTracking
     {
         public ICollections Collections { get; }
+
         public ICollectionTickets CollectionTickets { get; }
+
         public ICollectionTicketComments CollectionTicketComments { get; }
+
         public ICollectionUsers CollectionUsers { get; }
+
         public ICollectionTags CollectionTags { get; }
     }
 
     public class IssueTracking: IIssueTracking
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Collections SubSDK.
+        /// <see cref="ICollections"/>
+        /// </summary>
         public ICollections Collections { get; private set; }
+
+        /// <summary>
+        /// CollectionTickets SubSDK.
+        /// <see cref="ICollectionTickets"/>
+        /// </summary>
         public ICollectionTickets CollectionTickets { get; private set; }
+
+        /// <summary>
+        /// CollectionTicketComments SubSDK.
+        /// <see cref="ICollectionTicketComments"/>
+        /// </summary>
         public ICollectionTicketComments CollectionTicketComments { get; private set; }
+
+        /// <summary>
+        /// CollectionUsers SubSDK.
+        /// <see cref="ICollectionUsers"/>
+        /// </summary>
         public ICollectionUsers CollectionUsers { get; private set; }
+
+        /// <summary>
+        /// CollectionTags SubSDK.
+        /// <see cref="ICollectionTags"/>
+        /// </summary>
         public ICollectionTags CollectionTags { get; private set; }
 
         public IssueTracking(SDKConfig config)

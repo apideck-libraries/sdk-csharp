@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class CreditNoteInput
     {
-
         /// <summary>
         /// Credit note number.
         /// </summary>
@@ -31,19 +32,19 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedCustomerInput? Customer { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location
+        /// The ID of the location.
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
@@ -61,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? CurrencyRate { get; set; } = null;
 
         /// <summary>
-        /// Amounts are including tax
+        /// Amounts are including tax.
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;
@@ -73,7 +74,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? SubTotal { get; set; } = null;
 
         /// <summary>
-        /// Amount of transaction
+        /// Amount of transaction.
         /// </summary>
         [JsonProperty("total_amount")]
         public double TotalAmount { get; set; } = default!;
@@ -103,7 +104,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? RemainingCredit { get; set; } = null;
 
         /// <summary>
-        /// Status of credit notes
+        /// Status of credit notes.
         /// </summary>
         [JsonProperty("status")]
         public CreditNoteStatus? Status { get; set; }
@@ -115,19 +116,19 @@ namespace ApideckUnifySdk.Models.Components
         public string? Reference { get; set; } = null;
 
         /// <summary>
-        /// Date credit note issued - YYYY:MM::DDThh:mm:ss.sTZD
+        /// Date credit note issued - YYYY:MM::DDThh:mm:ss.sTZD.
         /// </summary>
         [JsonProperty("date_issued")]
         public DateTime? DateIssued { get; set; }
 
         /// <summary>
-        /// Date credit note paid - YYYY:MM::DDThh:mm:ss.sTZD
+        /// Date credit note paid - YYYY:MM::DDThh:mm:ss.sTZD.
         /// </summary>
         [JsonProperty("date_paid")]
         public DateTime? DatePaid { get; set; } = null;
 
         /// <summary>
-        /// Type of payment
+        /// Type of payment.
         /// </summary>
         [JsonProperty("type")]
         public CreditNoteType? Type { get; set; }

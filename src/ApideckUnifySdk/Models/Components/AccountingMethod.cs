@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The accounting method used for the report: cash or accrual.
     /// </summary>
-    public enum AccountingMethod
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class AccountingMethod : IEquatable<AccountingMethod>
     {
-        [JsonProperty("cash")]
-        Cash,
-        [JsonProperty("accrual")]
-        Accrual,
-    }
+        public static readonly AccountingMethod Cash = new AccountingMethod("cash");
+        public static readonly AccountingMethod Accrual = new AccountingMethod("accrual");
 
-    public static class AccountingMethodExtension
-    {
-        public static string Value(this AccountingMethod value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static AccountingMethod ToEnum(this string value)
-        {
-            foreach(var field in typeof(AccountingMethod).GetFields())
+        private static readonly Dictionary <string, AccountingMethod> _knownValues =
+            new Dictionary <string, AccountingMethod> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["cash"] = Cash,
+                ["accrual"] = Accrual
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, AccountingMethod> _values =
+            new ConcurrentDictionary<string, AccountingMethod>(_knownValues);
 
-                    if (enumVal is AccountingMethod)
-                    {
-                        return (AccountingMethod)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum AccountingMethod");
+        private AccountingMethod(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static AccountingMethod Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new AccountingMethod(value));
+        }
+
+        public static implicit operator AccountingMethod(string value) => Of(value);
+        public static implicit operator string(AccountingMethod accountingmethod) => accountingmethod.Value;
+
+        public static AccountingMethod[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as AccountingMethod);
+
+        public bool Equals(AccountingMethod? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

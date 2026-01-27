@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class WorkPattern
     {
-
         [JsonProperty("odd_weeks")]
         public OddWeeks? OddWeeks { get; set; }
 

@@ -17,34 +17,92 @@ namespace ApideckUnifySdk
     public interface ICrm
     {
         public ICompanies Companies { get; }
+
         public IContacts Contacts { get; }
+
         public IOpportunities Opportunities { get; }
+
         public ILeads Leads { get; }
+
         public IPipelines Pipelines { get; }
+
         public INotes Notes { get; }
+
         public IUsers Users { get; }
+
         public IActivities Activities { get; }
+
         public ICustomObjectSchemas CustomObjectSchemas { get; }
+
         public ICustomObjects CustomObjects { get; }
     }
 
     public class Crm: ICrm
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Companies SubSDK.
+        /// <see cref="ICompanies"/>
+        /// </summary>
         public ICompanies Companies { get; private set; }
+
+        /// <summary>
+        /// Contacts SubSDK.
+        /// <see cref="IContacts"/>
+        /// </summary>
         public IContacts Contacts { get; private set; }
+
+        /// <summary>
+        /// Opportunities SubSDK.
+        /// <see cref="IOpportunities"/>
+        /// </summary>
         public IOpportunities Opportunities { get; private set; }
+
+        /// <summary>
+        /// Leads SubSDK.
+        /// <see cref="ILeads"/>
+        /// </summary>
         public ILeads Leads { get; private set; }
+
+        /// <summary>
+        /// Pipelines SubSDK.
+        /// <see cref="IPipelines"/>
+        /// </summary>
         public IPipelines Pipelines { get; private set; }
+
+        /// <summary>
+        /// Notes SubSDK.
+        /// <see cref="INotes"/>
+        /// </summary>
         public INotes Notes { get; private set; }
+
+        /// <summary>
+        /// Users SubSDK.
+        /// <see cref="IUsers"/>
+        /// </summary>
         public IUsers Users { get; private set; }
+
+        /// <summary>
+        /// Activities SubSDK.
+        /// <see cref="IActivities"/>
+        /// </summary>
         public IActivities Activities { get; private set; }
+
+        /// <summary>
+        /// CustomObjectSchemas SubSDK.
+        /// <see cref="ICustomObjectSchemas"/>
+        /// </summary>
         public ICustomObjectSchemas CustomObjectSchemas { get; private set; }
+
+        /// <summary>
+        /// CustomObjects SubSDK.
+        /// <see cref="ICustomObjects"/>
+        /// </summary>
         public ICustomObjects CustomObjects { get; private set; }
 
         public Crm(SDKConfig config)

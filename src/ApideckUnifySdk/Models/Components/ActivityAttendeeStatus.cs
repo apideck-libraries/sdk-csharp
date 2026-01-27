@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Status of the attendee
+    /// Status of the attendee.
     /// </summary>
-    public enum ActivityAttendeeStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ActivityAttendeeStatus : IEquatable<ActivityAttendeeStatus>
     {
-        [JsonProperty("accepted")]
-        Accepted,
-        [JsonProperty("tentative")]
-        Tentative,
-        [JsonProperty("declined")]
-        Declined,
-    }
+        public static readonly ActivityAttendeeStatus Accepted = new ActivityAttendeeStatus("accepted");
+        public static readonly ActivityAttendeeStatus Tentative = new ActivityAttendeeStatus("tentative");
+        public static readonly ActivityAttendeeStatus Declined = new ActivityAttendeeStatus("declined");
 
-    public static class ActivityAttendeeStatusExtension
-    {
-        public static string Value(this ActivityAttendeeStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ActivityAttendeeStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ActivityAttendeeStatus).GetFields())
+        private static readonly Dictionary <string, ActivityAttendeeStatus> _knownValues =
+            new Dictionary <string, ActivityAttendeeStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["accepted"] = Accepted,
+                ["tentative"] = Tentative,
+                ["declined"] = Declined
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ActivityAttendeeStatus> _values =
+            new ConcurrentDictionary<string, ActivityAttendeeStatus>(_knownValues);
 
-                    if (enumVal is ActivityAttendeeStatus)
-                    {
-                        return (ActivityAttendeeStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ActivityAttendeeStatus");
+        private ActivityAttendeeStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ActivityAttendeeStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ActivityAttendeeStatus(value));
+        }
+
+        public static implicit operator ActivityAttendeeStatus(string value) => Of(value);
+        public static implicit operator string(ActivityAttendeeStatus activityattendeestatus) => activityattendeestatus.Value;
+
+        public static ActivityAttendeeStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ActivityAttendeeStatus);
+
+        public bool Equals(ActivityAttendeeStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

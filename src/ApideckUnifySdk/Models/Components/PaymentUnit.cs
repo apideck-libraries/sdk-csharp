@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Unit of measurement for employee compensation.
     /// </summary>
-    public enum PaymentUnit
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PaymentUnit : IEquatable<PaymentUnit>
     {
-        [JsonProperty("hour")]
-        Hour,
-        [JsonProperty("week")]
-        Week,
-        [JsonProperty("month")]
-        Month,
-        [JsonProperty("year")]
-        Year,
-        [JsonProperty("paycheck")]
-        Paycheck,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly PaymentUnit Hour = new PaymentUnit("hour");
+        public static readonly PaymentUnit Week = new PaymentUnit("week");
+        public static readonly PaymentUnit Month = new PaymentUnit("month");
+        public static readonly PaymentUnit Year = new PaymentUnit("year");
+        public static readonly PaymentUnit Paycheck = new PaymentUnit("paycheck");
+        public static readonly PaymentUnit Other = new PaymentUnit("other");
 
-    public static class PaymentUnitExtension
-    {
-        public static string Value(this PaymentUnit value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PaymentUnit ToEnum(this string value)
-        {
-            foreach(var field in typeof(PaymentUnit).GetFields())
+        private static readonly Dictionary <string, PaymentUnit> _knownValues =
+            new Dictionary <string, PaymentUnit> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["hour"] = Hour,
+                ["week"] = Week,
+                ["month"] = Month,
+                ["year"] = Year,
+                ["paycheck"] = Paycheck,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PaymentUnit> _values =
+            new ConcurrentDictionary<string, PaymentUnit>(_knownValues);
 
-                    if (enumVal is PaymentUnit)
-                    {
-                        return (PaymentUnit)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PaymentUnit");
+        private PaymentUnit(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PaymentUnit Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PaymentUnit(value));
+        }
+
+        public static implicit operator PaymentUnit(string value) => Of(value);
+        public static implicit operator string(PaymentUnit paymentunit) => paymentunit.Value;
+
+        public static PaymentUnit[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PaymentUnit);
+
+        public bool Equals(PaymentUnit? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

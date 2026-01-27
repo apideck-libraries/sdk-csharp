@@ -11,12 +11,11 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class CustomMappingInput
     {
-
         /// <summary>
-        /// Target Field Mapping value
+        /// Target Field Mapping value.
         /// </summary>
         [JsonProperty("value")]
         public string? Value { get; set; }

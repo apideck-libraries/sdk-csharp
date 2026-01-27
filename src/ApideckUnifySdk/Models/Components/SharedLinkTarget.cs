@@ -12,10 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class SharedLinkTarget
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -23,13 +26,13 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The name of the file
+        /// The name of the file.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// The type of resource. Could be file, folder or url
+        /// The type of resource. Could be file, folder or url.
         /// </summary>
         [JsonProperty("type")]
         public FileType? Type { get; set; } = null;

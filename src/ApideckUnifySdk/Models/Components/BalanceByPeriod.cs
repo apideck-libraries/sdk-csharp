@@ -14,10 +14,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System.Collections.Generic;
-    
+
     public class BalanceByPeriod
     {
-
         /// <summary>
         /// The starting date of the period. If not provided, it represents the oldest period, where all transactions due before the specified `end_date` are included.
         /// </summary>

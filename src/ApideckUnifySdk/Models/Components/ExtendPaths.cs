@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class ExtendPaths
     {
-
         /// <summary>
         /// JSONPath string specifying where to apply the value.
         /// </summary>

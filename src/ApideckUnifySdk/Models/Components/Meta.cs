@@ -12,21 +12,20 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Response metadata
+    /// Response metadata.
     /// </summary>
     public class Meta
     {
-
         /// <summary>
-        /// Number of items returned in the data property of the response
+        /// Number of items returned in the data property of the response.
         /// </summary>
         [JsonProperty("items_on_page")]
         public long? ItemsOnPage { get; set; }
 
         /// <summary>
-        /// Cursors to navigate to previous or next pages through the API
+        /// Cursors to navigate to previous or next pages through the API.
         /// </summary>
         [JsonProperty("cursors")]
         public Cursors? Cursors { get; set; }

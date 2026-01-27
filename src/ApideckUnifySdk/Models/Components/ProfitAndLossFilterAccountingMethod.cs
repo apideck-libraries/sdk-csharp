@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The accounting method used for the report: cash or accrual.
     /// </summary>
-    public enum ProfitAndLossFilterAccountingMethod
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ProfitAndLossFilterAccountingMethod : IEquatable<ProfitAndLossFilterAccountingMethod>
     {
-        [JsonProperty("cash")]
-        Cash,
-        [JsonProperty("accrual")]
-        Accrual,
-    }
+        public static readonly ProfitAndLossFilterAccountingMethod Cash = new ProfitAndLossFilterAccountingMethod("cash");
+        public static readonly ProfitAndLossFilterAccountingMethod Accrual = new ProfitAndLossFilterAccountingMethod("accrual");
 
-    public static class ProfitAndLossFilterAccountingMethodExtension
-    {
-        public static string Value(this ProfitAndLossFilterAccountingMethod value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ProfitAndLossFilterAccountingMethod ToEnum(this string value)
-        {
-            foreach(var field in typeof(ProfitAndLossFilterAccountingMethod).GetFields())
+        private static readonly Dictionary <string, ProfitAndLossFilterAccountingMethod> _knownValues =
+            new Dictionary <string, ProfitAndLossFilterAccountingMethod> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["cash"] = Cash,
+                ["accrual"] = Accrual
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ProfitAndLossFilterAccountingMethod> _values =
+            new ConcurrentDictionary<string, ProfitAndLossFilterAccountingMethod>(_knownValues);
 
-                    if (enumVal is ProfitAndLossFilterAccountingMethod)
-                    {
-                        return (ProfitAndLossFilterAccountingMethod)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ProfitAndLossFilterAccountingMethod");
+        private ProfitAndLossFilterAccountingMethod(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ProfitAndLossFilterAccountingMethod Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ProfitAndLossFilterAccountingMethod(value));
+        }
+
+        public static implicit operator ProfitAndLossFilterAccountingMethod(string value) => Of(value);
+        public static implicit operator string(ProfitAndLossFilterAccountingMethod profitandlossfilteraccountingmethod) => profitandlossfilteraccountingmethod.Value;
+
+        public static ProfitAndLossFilterAccountingMethod[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ProfitAndLossFilterAccountingMethod);
+
+        public bool Equals(ProfitAndLossFilterAccountingMethod? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

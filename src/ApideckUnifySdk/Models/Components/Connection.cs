@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Connection
     {
-
         /// <summary>
         /// The unique identifier of the connection.
         /// </summary>
@@ -30,7 +32,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? ServiceId { get; set; }
 
         /// <summary>
-        /// The name of the connection
+        /// The name of the connection.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
@@ -57,13 +59,13 @@ namespace ApideckUnifySdk.Models.Components
         public IntegrationState? IntegrationState { get; set; }
 
         /// <summary>
-        /// Type of authorization used by the connector
+        /// Type of authorization used by the connector.
         /// </summary>
         [JsonProperty("auth_type")]
         public AuthType? AuthType { get; set; }
 
         /// <summary>
-        /// OAuth grant type used by the connector. More info: https://oauth.net/2/grant-types
+        /// OAuth grant type used by the connector. More info: https://oauth.net/2/grant-types.
         /// </summary>
         [JsonProperty("oauth_grant_type")]
         public OAuthGrantType? OauthGrantType { get; set; }
@@ -81,43 +83,43 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// The website URL of the connection
+        /// The website URL of the connection.
         /// </summary>
         [JsonProperty("website")]
         public string? Website { get; set; }
 
         /// <summary>
-        /// A visual icon of the connection, that will be shown in the Vault
+        /// A visual icon of the connection, that will be shown in the Vault.
         /// </summary>
         [JsonProperty("icon")]
         public string? Icon { get; set; }
 
         /// <summary>
-        /// The logo of the connection, that will be shown in the Vault
+        /// The logo of the connection, that will be shown in the Vault.
         /// </summary>
         [JsonProperty("logo")]
         public string? Logo { get; set; }
 
         /// <summary>
-        /// The OAuth redirect URI. Redirect your users to this URI to let them authorize your app in the connector&apos;s UI. Before you can use this URI, you must add `redirect_uri` as a query parameter to the `authorize_url`. Be sure to URL encode the `redirect_uri` part. Your users will be redirected to this `redirect_uri` after they granted access to your app in the connector&apos;s UI.
+        /// The OAuth redirect URI. Redirect your users to this URI to let them authorize your app in the connector's UI. Before you can use this URI, you must add `redirect_uri` as a query parameter to the `authorize_url`. Be sure to URL encode the `redirect_uri` part. Your users will be redirected to this `redirect_uri` after they granted access to your app in the connector's UI.
         /// </summary>
         [JsonProperty("authorize_url")]
         public string? AuthorizeUrl { get; set; } = null;
 
         /// <summary>
-        /// The OAuth revoke URI. Redirect your users to this URI to revoke this connection. Before you can use this URI, you must add `redirect_uri` as a query parameter. Your users will be redirected to this `redirect_uri` after they granted access to your app in the connector&apos;s UI.
+        /// The OAuth revoke URI. Redirect your users to this URI to revoke this connection. Before you can use this URI, you must add `redirect_uri` as a query parameter. Your users will be redirected to this `redirect_uri` after they granted access to your app in the connector's UI.
         /// </summary>
         [JsonProperty("revoke_url")]
         public string? RevokeUrl { get; set; } = null;
 
         /// <summary>
-        /// Connection settings. Values will persist to `form_fields` with corresponding id
+        /// Connection settings. Values will persist to `form_fields` with corresponding id.
         /// </summary>
         [JsonProperty("settings")]
         public Dictionary<string, object>? Settings { get; set; } = null;
 
         /// <summary>
-        /// Attach your own consumer specific metadata
+        /// Attach your own consumer specific metadata.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, object>? Metadata { get; set; } = null;
@@ -147,7 +149,7 @@ namespace ApideckUnifySdk.Models.Components
         public bool? SchemaSupport { get; set; }
 
         /// <summary>
-        /// List of settings that are required to be configured on integration before authorization can occur
+        /// List of settings that are required to be configured on integration before authorization can occur.
         /// </summary>
         [JsonProperty("settings_required_for_authorization")]
         public List<string>? SettingsRequiredForAuthorization { get; set; }
@@ -162,19 +164,19 @@ namespace ApideckUnifySdk.Models.Components
         public bool? HasGuide { get; set; }
 
         /// <summary>
-        /// List of custom mappings configured for this connection
+        /// List of custom mappings configured for this connection.
         /// </summary>
         [JsonProperty("custom_mappings")]
         public List<CustomMapping>? CustomMappings { get; set; }
 
         /// <summary>
-        /// The current consent state of the connection
+        /// The current consent state of the connection.
         /// </summary>
         [JsonProperty("consent_state")]
         public ConsentState? ConsentState { get; set; }
 
         /// <summary>
-        /// Immutable array of consent records for compliance and audit purposes
+        /// Immutable array of consent records for compliance and audit purposes.
         /// </summary>
         [JsonProperty("consents")]
         public List<ConsentRecord>? Consents { get; set; }
@@ -186,7 +188,7 @@ namespace ApideckUnifySdk.Models.Components
         public DataScopes? ApplicationDataScopes { get; set; }
 
         /// <summary>
-        /// Operational health status of the connection
+        /// Operational health status of the connection.
         /// </summary>
         [JsonProperty("health")]
         public Health? Health { get; set; }

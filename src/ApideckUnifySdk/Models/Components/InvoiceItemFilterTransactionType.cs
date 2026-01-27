@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The kind of transaction, indicating whether it is a sales transaction or a purchase transaction.
     /// </summary>
-    public enum InvoiceItemFilterTransactionType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class InvoiceItemFilterTransactionType : IEquatable<InvoiceItemFilterTransactionType>
     {
-        [JsonProperty("sale")]
-        Sale,
-        [JsonProperty("purchase")]
-        Purchase,
-    }
+        public static readonly InvoiceItemFilterTransactionType Sale = new InvoiceItemFilterTransactionType("sale");
+        public static readonly InvoiceItemFilterTransactionType Purchase = new InvoiceItemFilterTransactionType("purchase");
 
-    public static class InvoiceItemFilterTransactionTypeExtension
-    {
-        public static string Value(this InvoiceItemFilterTransactionType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static InvoiceItemFilterTransactionType ToEnum(this string value)
-        {
-            foreach(var field in typeof(InvoiceItemFilterTransactionType).GetFields())
+        private static readonly Dictionary <string, InvoiceItemFilterTransactionType> _knownValues =
+            new Dictionary <string, InvoiceItemFilterTransactionType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["sale"] = Sale,
+                ["purchase"] = Purchase
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, InvoiceItemFilterTransactionType> _values =
+            new ConcurrentDictionary<string, InvoiceItemFilterTransactionType>(_knownValues);
 
-                    if (enumVal is InvoiceItemFilterTransactionType)
-                    {
-                        return (InvoiceItemFilterTransactionType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum InvoiceItemFilterTransactionType");
+        private InvoiceItemFilterTransactionType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static InvoiceItemFilterTransactionType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new InvoiceItemFilterTransactionType(value));
+        }
+
+        public static implicit operator InvoiceItemFilterTransactionType(string value) => Of(value);
+        public static implicit operator string(InvoiceItemFilterTransactionType invoiceitemfiltertransactiontype) => invoiceitemfiltertransactiontype.Value;
+
+        public static InvoiceItemFilterTransactionType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as InvoiceItemFilterTransactionType);
+
+        public bool Equals(InvoiceItemFilterTransactionType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// An object representing a discount applied to an ecommerce order or product.
     /// </summary>
     public class EcommerceDiscount
     {
-
         /// <summary>
         /// The code used to apply the discount.
         /// </summary>

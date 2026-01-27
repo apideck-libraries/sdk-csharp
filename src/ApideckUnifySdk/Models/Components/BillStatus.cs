@@ -12,63 +12,80 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Invoice status
+    /// Invoice status.
     /// </summary>
-    public enum BillStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BillStatus : IEquatable<BillStatus>
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("submitted")]
-        Submitted,
-        [JsonProperty("authorised")]
-        Authorised,
-        [JsonProperty("partially_paid")]
-        PartiallyPaid,
-        [JsonProperty("paid")]
-        Paid,
-        [JsonProperty("void")]
-        Void,
-        [JsonProperty("credit")]
-        Credit,
-        [JsonProperty("deleted")]
-        Deleted,
-        [JsonProperty("posted")]
-        Posted,
-    }
+        public static readonly BillStatus Draft = new BillStatus("draft");
+        public static readonly BillStatus Submitted = new BillStatus("submitted");
+        public static readonly BillStatus Authorised = new BillStatus("authorised");
+        public static readonly BillStatus PartiallyPaid = new BillStatus("partially_paid");
+        public static readonly BillStatus Paid = new BillStatus("paid");
+        public static readonly BillStatus Void = new BillStatus("void");
+        public static readonly BillStatus Credit = new BillStatus("credit");
+        public static readonly BillStatus Deleted = new BillStatus("deleted");
+        public static readonly BillStatus Posted = new BillStatus("posted");
 
-    public static class BillStatusExtension
-    {
-        public static string Value(this BillStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BillStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(BillStatus).GetFields())
+        private static readonly Dictionary <string, BillStatus> _knownValues =
+            new Dictionary <string, BillStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["submitted"] = Submitted,
+                ["authorised"] = Authorised,
+                ["partially_paid"] = PartiallyPaid,
+                ["paid"] = Paid,
+                ["void"] = Void,
+                ["credit"] = Credit,
+                ["deleted"] = Deleted,
+                ["posted"] = Posted
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BillStatus> _values =
+            new ConcurrentDictionary<string, BillStatus>(_knownValues);
 
-                    if (enumVal is BillStatus)
-                    {
-                        return (BillStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BillStatus");
+        private BillStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BillStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BillStatus(value));
+        }
+
+        public static implicit operator BillStatus(string value) => Of(value);
+        public static implicit operator string(BillStatus billstatus) => billstatus.Value;
+
+        public static BillStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BillStatus);
+
+        public bool Equals(BillStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

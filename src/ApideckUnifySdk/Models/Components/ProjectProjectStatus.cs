@@ -12,61 +12,78 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Current status of the project
+    /// Current status of the project.
     /// </summary>
-    public enum ProjectProjectStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ProjectProjectStatus : IEquatable<ProjectProjectStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("completed")]
-        Completed,
-        [JsonProperty("on_hold")]
-        OnHold,
-        [JsonProperty("cancelled")]
-        Cancelled,
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("in_progress")]
-        InProgress,
-        [JsonProperty("approved")]
-        Approved,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly ProjectProjectStatus Active = new ProjectProjectStatus("active");
+        public static readonly ProjectProjectStatus Completed = new ProjectProjectStatus("completed");
+        public static readonly ProjectProjectStatus OnHold = new ProjectProjectStatus("on_hold");
+        public static readonly ProjectProjectStatus Cancelled = new ProjectProjectStatus("cancelled");
+        public static readonly ProjectProjectStatus Draft = new ProjectProjectStatus("draft");
+        public static readonly ProjectProjectStatus InProgress = new ProjectProjectStatus("in_progress");
+        public static readonly ProjectProjectStatus Approved = new ProjectProjectStatus("approved");
+        public static readonly ProjectProjectStatus Other = new ProjectProjectStatus("other");
 
-    public static class ProjectProjectStatusExtension
-    {
-        public static string Value(this ProjectProjectStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ProjectProjectStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ProjectProjectStatus).GetFields())
+        private static readonly Dictionary <string, ProjectProjectStatus> _knownValues =
+            new Dictionary <string, ProjectProjectStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["completed"] = Completed,
+                ["on_hold"] = OnHold,
+                ["cancelled"] = Cancelled,
+                ["draft"] = Draft,
+                ["in_progress"] = InProgress,
+                ["approved"] = Approved,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ProjectProjectStatus> _values =
+            new ConcurrentDictionary<string, ProjectProjectStatus>(_knownValues);
 
-                    if (enumVal is ProjectProjectStatus)
-                    {
-                        return (ProjectProjectStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ProjectProjectStatus");
+        private ProjectProjectStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ProjectProjectStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ProjectProjectStatus(value));
+        }
+
+        public static implicit operator ProjectProjectStatus(string value) => Of(value);
+        public static implicit operator string(ProjectProjectStatus projectprojectstatus) => projectprojectstatus.Value;
+
+        public static ProjectProjectStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ProjectProjectStatus);
+
+        public bool Equals(ProjectProjectStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

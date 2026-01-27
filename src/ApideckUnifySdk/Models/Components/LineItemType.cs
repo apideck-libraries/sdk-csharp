@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Line Item type
+    /// Line Item type.
     /// </summary>
-    public enum LineItemType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class LineItemType : IEquatable<LineItemType>
     {
-        [JsonProperty("expense_item")]
-        ExpenseItem,
-        [JsonProperty("expense_account")]
-        ExpenseAccount,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly LineItemType ExpenseItem = new LineItemType("expense_item");
+        public static readonly LineItemType ExpenseAccount = new LineItemType("expense_account");
+        public static readonly LineItemType Other = new LineItemType("other");
 
-    public static class LineItemTypeExtension
-    {
-        public static string Value(this LineItemType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static LineItemType ToEnum(this string value)
-        {
-            foreach(var field in typeof(LineItemType).GetFields())
+        private static readonly Dictionary <string, LineItemType> _knownValues =
+            new Dictionary <string, LineItemType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["expense_item"] = ExpenseItem,
+                ["expense_account"] = ExpenseAccount,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, LineItemType> _values =
+            new ConcurrentDictionary<string, LineItemType>(_knownValues);
 
-                    if (enumVal is LineItemType)
-                    {
-                        return (LineItemType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum LineItemType");
+        private LineItemType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static LineItemType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new LineItemType(value));
+        }
+
+        public static implicit operator LineItemType(string value) => Of(value);
+        public static implicit operator string(LineItemType lineitemtype) => lineitemtype.Value;
+
+        public static LineItemType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as LineItemType);
+
+        public bool Equals(LineItemType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

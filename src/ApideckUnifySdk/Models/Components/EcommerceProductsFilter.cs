@@ -10,24 +10,23 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class EcommerceProductsFilter
     {
-
         /// <summary>
-        /// Product name to filter on
+        /// Product name to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Minimum date the product was last modified
+        /// Minimum date the product was last modified.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public string? UpdatedSince { get; set; }
 
         /// <summary>
-        /// Minimum date the product was created
+        /// Minimum date the product was created.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=created_since")]
         public string? CreatedSince { get; set; }

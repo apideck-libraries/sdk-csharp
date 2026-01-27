@@ -19,19 +19,19 @@ namespace ApideckUnifySdk.Models.Errors
     public class BadRequestResponsePayload
     {
         /// <summary>
-        /// HTTP status code
+        /// HTTP status code.
         /// </summary>
         [JsonProperty("status_code")]
         public double? StatusCode { get; set; }
 
         /// <summary>
-        /// Contains an explanation of the status_code as defined in HTTP/1.1 standard (RFC 7231)
+        /// Contains an explanation of the status_code as defined in HTTP/1.1 standard (RFC 7231).
         /// </summary>
         [JsonProperty("error")]
         public string? Error { get; set; }
 
         /// <summary>
-        /// The type of error returned
+        /// The type of error returned.
         /// </summary>
         [JsonProperty("type_name")]
         public string? TypeName { get; set; }
@@ -49,14 +49,14 @@ namespace ApideckUnifySdk.Models.Errors
         public Models.Errors.Detail? Detail { get; set; }
 
         /// <summary>
-        /// Link to documentation of error type
+        /// Link to documentation of error type.
         /// </summary>
         [JsonProperty("ref")]
         public string? Ref { get; set; }
     }
 
     /// <summary>
-    /// Bad Request
+    /// Bad Request.
     /// </summary>
     public class BadRequestResponse : BaseException
     {
@@ -113,5 +113,4 @@ namespace ApideckUnifySdk.Models.Errors
            #pragma warning restore CS0618
         }
     }
-
 }

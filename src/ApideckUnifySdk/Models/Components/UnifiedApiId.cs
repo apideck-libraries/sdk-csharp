@@ -12,99 +12,116 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Name of Apideck Unified API
+    /// Name of Apideck Unified API.
     /// </summary>
-    public enum UnifiedApiId
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class UnifiedApiId : IEquatable<UnifiedApiId>
     {
-        [JsonProperty("accounting")]
-        Accounting,
-        [JsonProperty("ats")]
-        Ats,
-        [JsonProperty("calendar")]
-        Calendar,
-        [JsonProperty("crm")]
-        Crm,
-        [JsonProperty("csp")]
-        Csp,
-        [JsonProperty("customer-support")]
-        CustomerSupport,
-        [JsonProperty("ecommerce")]
-        Ecommerce,
-        [JsonProperty("email")]
-        Email,
-        [JsonProperty("email-marketing")]
-        EmailMarketing,
-        [JsonProperty("expense-management")]
-        ExpenseManagement,
-        [JsonProperty("file-storage")]
-        FileStorage,
-        [JsonProperty("form")]
-        Form,
-        [JsonProperty("hris")]
-        Hris,
-        [JsonProperty("lead")]
-        Lead,
-        [JsonProperty("payroll")]
-        Payroll,
-        [JsonProperty("pos")]
-        Pos,
-        [JsonProperty("procurement")]
-        Procurement,
-        [JsonProperty("project-management")]
-        ProjectManagement,
-        [JsonProperty("script")]
-        Script,
-        [JsonProperty("sms")]
-        Sms,
-        [JsonProperty("spreadsheet")]
-        Spreadsheet,
-        [JsonProperty("team-messaging")]
-        TeamMessaging,
-        [JsonProperty("issue-tracking")]
-        IssueTracking,
-        [JsonProperty("time-registration")]
-        TimeRegistration,
-        [JsonProperty("transactional-email")]
-        TransactionalEmail,
-        [JsonProperty("vault")]
-        Vault,
-        [JsonProperty("data-warehouse")]
-        DataWarehouse,
-    }
+        public static readonly UnifiedApiId Accounting = new UnifiedApiId("accounting");
+        public static readonly UnifiedApiId Ats = new UnifiedApiId("ats");
+        public static readonly UnifiedApiId Calendar = new UnifiedApiId("calendar");
+        public static readonly UnifiedApiId Crm = new UnifiedApiId("crm");
+        public static readonly UnifiedApiId Csp = new UnifiedApiId("csp");
+        public static readonly UnifiedApiId CustomerSupport = new UnifiedApiId("customer-support");
+        public static readonly UnifiedApiId Ecommerce = new UnifiedApiId("ecommerce");
+        public static readonly UnifiedApiId Email = new UnifiedApiId("email");
+        public static readonly UnifiedApiId EmailMarketing = new UnifiedApiId("email-marketing");
+        public static readonly UnifiedApiId ExpenseManagement = new UnifiedApiId("expense-management");
+        public static readonly UnifiedApiId FileStorage = new UnifiedApiId("file-storage");
+        public static readonly UnifiedApiId Form = new UnifiedApiId("form");
+        public static readonly UnifiedApiId Hris = new UnifiedApiId("hris");
+        public static readonly UnifiedApiId Lead = new UnifiedApiId("lead");
+        public static readonly UnifiedApiId Payroll = new UnifiedApiId("payroll");
+        public static readonly UnifiedApiId Pos = new UnifiedApiId("pos");
+        public static readonly UnifiedApiId Procurement = new UnifiedApiId("procurement");
+        public static readonly UnifiedApiId ProjectManagement = new UnifiedApiId("project-management");
+        public static readonly UnifiedApiId Script = new UnifiedApiId("script");
+        public static readonly UnifiedApiId Sms = new UnifiedApiId("sms");
+        public static readonly UnifiedApiId Spreadsheet = new UnifiedApiId("spreadsheet");
+        public static readonly UnifiedApiId TeamMessaging = new UnifiedApiId("team-messaging");
+        public static readonly UnifiedApiId IssueTracking = new UnifiedApiId("issue-tracking");
+        public static readonly UnifiedApiId TimeRegistration = new UnifiedApiId("time-registration");
+        public static readonly UnifiedApiId TransactionalEmail = new UnifiedApiId("transactional-email");
+        public static readonly UnifiedApiId Vault = new UnifiedApiId("vault");
+        public static readonly UnifiedApiId DataWarehouse = new UnifiedApiId("data-warehouse");
 
-    public static class UnifiedApiIdExtension
-    {
-        public static string Value(this UnifiedApiId value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static UnifiedApiId ToEnum(this string value)
-        {
-            foreach(var field in typeof(UnifiedApiId).GetFields())
+        private static readonly Dictionary <string, UnifiedApiId> _knownValues =
+            new Dictionary <string, UnifiedApiId> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["accounting"] = Accounting,
+                ["ats"] = Ats,
+                ["calendar"] = Calendar,
+                ["crm"] = Crm,
+                ["csp"] = Csp,
+                ["customer-support"] = CustomerSupport,
+                ["ecommerce"] = Ecommerce,
+                ["email"] = Email,
+                ["email-marketing"] = EmailMarketing,
+                ["expense-management"] = ExpenseManagement,
+                ["file-storage"] = FileStorage,
+                ["form"] = Form,
+                ["hris"] = Hris,
+                ["lead"] = Lead,
+                ["payroll"] = Payroll,
+                ["pos"] = Pos,
+                ["procurement"] = Procurement,
+                ["project-management"] = ProjectManagement,
+                ["script"] = Script,
+                ["sms"] = Sms,
+                ["spreadsheet"] = Spreadsheet,
+                ["team-messaging"] = TeamMessaging,
+                ["issue-tracking"] = IssueTracking,
+                ["time-registration"] = TimeRegistration,
+                ["transactional-email"] = TransactionalEmail,
+                ["vault"] = Vault,
+                ["data-warehouse"] = DataWarehouse
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, UnifiedApiId> _values =
+            new ConcurrentDictionary<string, UnifiedApiId>(_knownValues);
 
-                    if (enumVal is UnifiedApiId)
-                    {
-                        return (UnifiedApiId)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum UnifiedApiId");
+        private UnifiedApiId(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static UnifiedApiId Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new UnifiedApiId(value));
+        }
+
+        public static implicit operator UnifiedApiId(string value) => Of(value);
+        public static implicit operator string(UnifiedApiId unifiedapiid) => unifiedapiid.Value;
+
+        public static UnifiedApiId[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as UnifiedApiId);
+
+        public bool Equals(UnifiedApiId? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

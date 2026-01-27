@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class Credentials
     {
-
         /// <summary>
         /// The refresh token can be used to obtain a new access token.
         /// </summary>
@@ -23,7 +22,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? RefreshToken { get; set; } = null;
 
         /// <summary>
-        /// Access token
+        /// Access token.
         /// </summary>
         [JsonProperty("access_token")]
         public string? AccessToken { get; set; }

@@ -14,11 +14,12 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Applicant
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -32,7 +33,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
-        /// A formal salutation for the person. For example, &apos;Mr&apos;, &apos;Mrs&apos;
+        /// A formal salutation for the person. For example, 'Mr', 'Mrs'
         /// </summary>
         [JsonProperty("salutation")]
         public string? Salutation { get; set; } = null;
@@ -95,7 +96,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? PhotoUrl { get; set; } = null;
 
         /// <summary>
-        /// Typically a list of previous companies where the contact has worked or schools that the contact has attended
+        /// Typically a list of previous companies where the contact has worked or schools that the contact has attended.
         /// </summary>
         [JsonProperty("headline")]
         public string? Headline { get; set; }

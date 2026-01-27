@@ -10,12 +10,11 @@
 namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class ConnectorConnectorDocsOneRequest
     {
-
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
@@ -27,7 +26,7 @@ namespace ApideckUnifySdk.Models.Requests
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// ID of the Doc
+        /// ID of the Doc.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=doc_id")]
         public string DocId { get; set; } = default!;

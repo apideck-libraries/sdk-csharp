@@ -12,49 +12,51 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class BillLineItemInput
     {
-
         /// <summary>
-        /// Row ID
+        /// Row ID.
         /// </summary>
         [JsonProperty("row_id")]
         public string? RowId { get; set; }
 
         /// <summary>
-        /// User defined item code
+        /// User defined item code.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; } = null;
 
         /// <summary>
-        /// Line number in the invoice
+        /// Line number in the invoice.
         /// </summary>
         [JsonProperty("line_number")]
         public long? LineNumber { get; set; } = null;
 
         /// <summary>
-        /// User defined description
+        /// User defined description.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Line Item type
+        /// Line Item type.
         /// </summary>
         [JsonProperty("type")]
         public LineItemType? Type { get; set; } = null;
 
         /// <summary>
-        /// Tax amount
+        /// Tax amount.
         /// </summary>
         [JsonProperty("tax_amount")]
         public double? TaxAmount { get; set; } = null;
 
         /// <summary>
-        /// Total amount of the line item
+        /// Total amount of the line item.
         /// </summary>
         [JsonProperty("total_amount")]
         public double? TotalAmount { get; set; } = null;
@@ -84,73 +86,73 @@ namespace ApideckUnifySdk.Models.Components
         public double? DiscountAmount { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location
+        /// The ID of the location.
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the subsidiary
+        /// The ID of the subsidiary.
         /// </summary>
         [JsonProperty("subsidiary_id")]
         public string? SubsidiaryId { get; set; } = null;
 
         /// <summary>
-        /// ID of the category of the line item
+        /// ID of the category of the line item.
         /// </summary>
         [JsonProperty("category_id")]
         public string? CategoryId { get; set; } = null;
 
         /// <summary>
-        /// ID of the shipping of the line item
+        /// ID of the shipping of the line item.
         /// </summary>
         [JsonProperty("shipping_id")]
         public string? ShippingId { get; set; } = null;
 
         /// <summary>
-        /// Memo
+        /// Memo.
         /// </summary>
         [JsonProperty("memo")]
         public string? Memo { get; set; } = null;
 
         /// <summary>
-        /// Whether the line item is prepaid
+        /// Whether the line item is prepaid.
         /// </summary>
         [JsonProperty("prepaid")]
         public bool? Prepaid { get; set; } = null;
 
         /// <summary>
-        /// Tax applicable on
+        /// Tax applicable on.
         /// </summary>
         [JsonProperty("tax_applicable_on")]
         public string? TaxApplicableOn { get; set; } = null;
 
         /// <summary>
-        /// Tax recoverability
+        /// Tax recoverability.
         /// </summary>
         [JsonProperty("tax_recoverability")]
         public string? TaxRecoverability { get; set; } = null;
 
         /// <summary>
-        /// Method of tax calculation
+        /// Method of tax calculation.
         /// </summary>
         [JsonProperty("tax_method")]
         public string? TaxMethod { get; set; } = null;
 
         /// <summary>
-        /// Retention amount
+        /// Retention amount.
         /// </summary>
         [JsonProperty("retention_amount")]
         public double? RetentionAmount { get; set; } = null;
 
         /// <summary>
-        /// Payment amount
+        /// Payment amount.
         /// </summary>
         [JsonProperty("payment_amount")]
         public double? PaymentAmount { get; set; } = null;

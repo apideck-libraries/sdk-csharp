@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class FormField
     {
-
         /// <summary>
         /// The unique identifier of the form field.
         /// </summary>
@@ -24,19 +23,19 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// The label of the field
+        /// The label of the field.
         /// </summary>
         [JsonProperty("label")]
         public string? Label { get; set; }
 
         /// <summary>
-        /// The placeholder for the form field
+        /// The placeholder for the form field.
         /// </summary>
         [JsonProperty("placeholder")]
         public string? Placeholder { get; set; } = null;
 
         /// <summary>
-        /// The description of the form field
+        /// The description of the form field.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
@@ -45,7 +44,7 @@ namespace ApideckUnifySdk.Models.Components
         public FormFieldType? Type { get; set; }
 
         /// <summary>
-        /// Indicates if the form field is required, which means it must be filled in before the form can be submitted
+        /// Indicates if the form field is required, which means it must be filled in before the form can be submitted.
         /// </summary>
         [JsonProperty("required")]
         public bool? Required { get; set; }

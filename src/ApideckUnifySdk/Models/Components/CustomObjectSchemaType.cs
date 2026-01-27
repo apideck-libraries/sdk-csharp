@@ -12,66 +12,83 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum CustomObjectSchemaType
-    {
-        [JsonProperty("string")]
-        String,
-        [JsonProperty("number")]
-        Number,
-        [JsonProperty("integer")]
-        Integer,
-        [JsonProperty("boolean")]
-        Boolean,
-        [JsonProperty("date")]
-        Date,
-        [JsonProperty("datetime")]
-        Datetime,
-        [JsonProperty("currency")]
-        Currency,
-        [JsonProperty("email")]
-        Email,
-        [JsonProperty("phone")]
-        Phone,
-        [JsonProperty("reference")]
-        Reference,
-        [JsonProperty("select")]
-        Select,
-        [JsonProperty("multiselect")]
-        Multiselect,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class CustomObjectSchemaTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CustomObjectSchemaType : IEquatable<CustomObjectSchemaType>
     {
-        public static string Value(this CustomObjectSchemaType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly CustomObjectSchemaType String = new CustomObjectSchemaType("string");
+        public static readonly CustomObjectSchemaType Number = new CustomObjectSchemaType("number");
+        public static readonly CustomObjectSchemaType Integer = new CustomObjectSchemaType("integer");
+        public static readonly CustomObjectSchemaType Boolean = new CustomObjectSchemaType("boolean");
+        public static readonly CustomObjectSchemaType Date = new CustomObjectSchemaType("date");
+        public static readonly CustomObjectSchemaType Datetime = new CustomObjectSchemaType("datetime");
+        public static readonly CustomObjectSchemaType Currency = new CustomObjectSchemaType("currency");
+        public static readonly CustomObjectSchemaType Email = new CustomObjectSchemaType("email");
+        public static readonly CustomObjectSchemaType Phone = new CustomObjectSchemaType("phone");
+        public static readonly CustomObjectSchemaType Reference = new CustomObjectSchemaType("reference");
+        public static readonly CustomObjectSchemaType Select = new CustomObjectSchemaType("select");
+        public static readonly CustomObjectSchemaType Multiselect = new CustomObjectSchemaType("multiselect");
 
-        public static CustomObjectSchemaType ToEnum(this string value)
-        {
-            foreach(var field in typeof(CustomObjectSchemaType).GetFields())
+        private static readonly Dictionary <string, CustomObjectSchemaType> _knownValues =
+            new Dictionary <string, CustomObjectSchemaType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["string"] = String,
+                ["number"] = Number,
+                ["integer"] = Integer,
+                ["boolean"] = Boolean,
+                ["date"] = Date,
+                ["datetime"] = Datetime,
+                ["currency"] = Currency,
+                ["email"] = Email,
+                ["phone"] = Phone,
+                ["reference"] = Reference,
+                ["select"] = Select,
+                ["multiselect"] = Multiselect
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CustomObjectSchemaType> _values =
+            new ConcurrentDictionary<string, CustomObjectSchemaType>(_knownValues);
 
-                    if (enumVal is CustomObjectSchemaType)
-                    {
-                        return (CustomObjectSchemaType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CustomObjectSchemaType");
+        private CustomObjectSchemaType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static CustomObjectSchemaType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CustomObjectSchemaType(value));
+        }
+
+        public static implicit operator CustomObjectSchemaType(string value) => Of(value);
+        public static implicit operator string(CustomObjectSchemaType customobjectschematype) => customobjectschematype.Value;
+
+        public static CustomObjectSchemaType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CustomObjectSchemaType);
+
+        public bool Equals(CustomObjectSchemaType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

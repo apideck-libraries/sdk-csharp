@@ -13,21 +13,20 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// Consumer
+    /// Consumer.
     /// </summary>
     public class GetConsumerResponse
     {
-
         /// <summary>
-        /// HTTP Response Status Code
+        /// HTTP Response Status Code.
         /// </summary>
         [JsonProperty("status_code")]
         public long StatusCode { get; set; } = default!;
 
         /// <summary>
-        /// HTTP Response Status
+        /// HTTP Response Status.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; } = default!;
@@ -36,7 +35,7 @@ namespace ApideckUnifySdk.Models.Components
         public Consumer Data { get; set; } = default!;
 
         /// <summary>
-        /// Raw response from the integration when raw=true query param is provided
+        /// Raw response from the integration when raw=true query param is provided.
         /// </summary>
         [JsonProperty("_raw")]
         public Dictionary<string, object>? Raw { get; set; } = null;

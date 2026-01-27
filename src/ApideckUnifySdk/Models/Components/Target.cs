@@ -12,46 +12,63 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum Target
-    {
-        [JsonProperty("custom_fields")]
-        CustomFields,
-        [JsonProperty("resource")]
-        Resource,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class TargetExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Target : IEquatable<Target>
     {
-        public static string Value(this Target value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly Target CustomFields = new Target("custom_fields");
+        public static readonly Target Resource = new Target("resource");
 
-        public static Target ToEnum(this string value)
-        {
-            foreach(var field in typeof(Target).GetFields())
+        private static readonly Dictionary <string, Target> _knownValues =
+            new Dictionary <string, Target> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["custom_fields"] = CustomFields,
+                ["resource"] = Resource
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Target> _values =
+            new ConcurrentDictionary<string, Target>(_knownValues);
 
-                    if (enumVal is Target)
-                    {
-                        return (Target)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Target");
+        private Target(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Target Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Target(value));
+        }
+
+        public static implicit operator Target(string value) => Of(value);
+        public static implicit operator string(Target target) => target.Value;
+
+        public static Target[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Target);
+
+        public bool Equals(Target? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

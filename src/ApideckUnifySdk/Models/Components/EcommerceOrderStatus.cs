@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Current status of the order.
     /// </summary>
-    public enum EcommerceOrderStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EcommerceOrderStatus : IEquatable<EcommerceOrderStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("completed")]
-        Completed,
-        [JsonProperty("cancelled")]
-        Cancelled,
-        [JsonProperty("archived")]
-        Archived,
-        [JsonProperty("unknown")]
-        Unknown,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly EcommerceOrderStatus Active = new EcommerceOrderStatus("active");
+        public static readonly EcommerceOrderStatus Completed = new EcommerceOrderStatus("completed");
+        public static readonly EcommerceOrderStatus Cancelled = new EcommerceOrderStatus("cancelled");
+        public static readonly EcommerceOrderStatus Archived = new EcommerceOrderStatus("archived");
+        public static readonly EcommerceOrderStatus Unknown = new EcommerceOrderStatus("unknown");
+        public static readonly EcommerceOrderStatus Other = new EcommerceOrderStatus("other");
 
-    public static class EcommerceOrderStatusExtension
-    {
-        public static string Value(this EcommerceOrderStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EcommerceOrderStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(EcommerceOrderStatus).GetFields())
+        private static readonly Dictionary <string, EcommerceOrderStatus> _knownValues =
+            new Dictionary <string, EcommerceOrderStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["completed"] = Completed,
+                ["cancelled"] = Cancelled,
+                ["archived"] = Archived,
+                ["unknown"] = Unknown,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EcommerceOrderStatus> _values =
+            new ConcurrentDictionary<string, EcommerceOrderStatus>(_knownValues);
 
-                    if (enumVal is EcommerceOrderStatus)
-                    {
-                        return (EcommerceOrderStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EcommerceOrderStatus");
+        private EcommerceOrderStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EcommerceOrderStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EcommerceOrderStatus(value));
+        }
+
+        public static implicit operator EcommerceOrderStatus(string value) => Of(value);
+        public static implicit operator string(EcommerceOrderStatus ecommerceorderstatus) => ecommerceorderstatus.Value;
+
+        public static EcommerceOrderStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EcommerceOrderStatus);
+
+        public bool Equals(EcommerceOrderStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

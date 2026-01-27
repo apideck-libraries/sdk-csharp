@@ -12,13 +12,16 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Rebilling metadata for this line item.
     /// </summary>
     public class Rebilling
     {
-
         /// <summary>
         /// Whether this line item is eligible for rebilling.
         /// </summary>

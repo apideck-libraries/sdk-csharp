@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Status of projects to filter by
+    /// Status of projects to filter by.
     /// </summary>
-    public enum ProjectStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ProjectStatus : IEquatable<ProjectStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("completed")]
-        Completed,
-        [JsonProperty("on_hold")]
-        OnHold,
-        [JsonProperty("cancelled")]
-        Cancelled,
-        [JsonProperty("draft")]
-        Draft,
-    }
+        public static readonly ProjectStatus Active = new ProjectStatus("active");
+        public static readonly ProjectStatus Completed = new ProjectStatus("completed");
+        public static readonly ProjectStatus OnHold = new ProjectStatus("on_hold");
+        public static readonly ProjectStatus Cancelled = new ProjectStatus("cancelled");
+        public static readonly ProjectStatus Draft = new ProjectStatus("draft");
 
-    public static class ProjectStatusExtension
-    {
-        public static string Value(this ProjectStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ProjectStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ProjectStatus).GetFields())
+        private static readonly Dictionary <string, ProjectStatus> _knownValues =
+            new Dictionary <string, ProjectStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["completed"] = Completed,
+                ["on_hold"] = OnHold,
+                ["cancelled"] = Cancelled,
+                ["draft"] = Draft
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ProjectStatus> _values =
+            new ConcurrentDictionary<string, ProjectStatus>(_knownValues);
 
-                    if (enumVal is ProjectStatus)
-                    {
-                        return (ProjectStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ProjectStatus");
+        private ProjectStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ProjectStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ProjectStatus(value));
+        }
+
+        public static implicit operator ProjectStatus(string value) => Of(value);
+        public static implicit operator string(ProjectStatus projectstatus) => projectstatus.Value;
+
+        public static ProjectStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ProjectStatus);
+
+        public bool Equals(ProjectStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

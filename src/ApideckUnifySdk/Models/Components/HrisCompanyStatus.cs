@@ -12,50 +12,67 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum HrisCompanyStatus
-    {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("trial")]
-        Trial,
-        [JsonProperty("other")]
-        Other,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class HrisCompanyStatusExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class HrisCompanyStatus : IEquatable<HrisCompanyStatus>
     {
-        public static string Value(this HrisCompanyStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly HrisCompanyStatus Active = new HrisCompanyStatus("active");
+        public static readonly HrisCompanyStatus Inactive = new HrisCompanyStatus("inactive");
+        public static readonly HrisCompanyStatus Trial = new HrisCompanyStatus("trial");
+        public static readonly HrisCompanyStatus Other = new HrisCompanyStatus("other");
 
-        public static HrisCompanyStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(HrisCompanyStatus).GetFields())
+        private static readonly Dictionary <string, HrisCompanyStatus> _knownValues =
+            new Dictionary <string, HrisCompanyStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["trial"] = Trial,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, HrisCompanyStatus> _values =
+            new ConcurrentDictionary<string, HrisCompanyStatus>(_knownValues);
 
-                    if (enumVal is HrisCompanyStatus)
-                    {
-                        return (HrisCompanyStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum HrisCompanyStatus");
+        private HrisCompanyStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static HrisCompanyStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new HrisCompanyStatus(value));
+        }
+
+        public static implicit operator HrisCompanyStatus(string value) => Of(value);
+        public static implicit operator string(HrisCompanyStatus hriscompanystatus) => hriscompanystatus.Value;
+
+        public static HrisCompanyStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as HrisCompanyStatus);
+
+        public bool Equals(HrisCompanyStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

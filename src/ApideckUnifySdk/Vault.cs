@@ -17,40 +17,116 @@ namespace ApideckUnifySdk
     public interface IVault
     {
         public IConsumers Consumers { get; }
+
         public IConsumerRequestCounts ConsumerRequestCounts { get; }
+
         public IConnections Connections { get; }
+
         public IValidateConnection ValidateConnection { get; }
+
         public IConnectionConsents ConnectionConsents { get; }
+
         public IConnectionConsent ConnectionConsent { get; }
+
         public ICreateCallback CreateCallback { get; }
+
         public IConnectionSettings ConnectionSettings { get; }
+
         public ICustomFields CustomFields { get; }
+
         public IConnectionCustomMappings ConnectionCustomMappings { get; }
+
         public ICustomMappings CustomMappings { get; }
+
         public ISessions Sessions { get; }
+
         public ILogs Logs { get; }
     }
 
     public class Vault: IVault
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Consumers SubSDK.
+        /// <see cref="IConsumers"/>
+        /// </summary>
         public IConsumers Consumers { get; private set; }
+
+        /// <summary>
+        /// ConsumerRequestCounts SubSDK.
+        /// <see cref="IConsumerRequestCounts"/>
+        /// </summary>
         public IConsumerRequestCounts ConsumerRequestCounts { get; private set; }
+
+        /// <summary>
+        /// Connections SubSDK.
+        /// <see cref="IConnections"/>
+        /// </summary>
         public IConnections Connections { get; private set; }
+
+        /// <summary>
+        /// ValidateConnection SubSDK.
+        /// <see cref="IValidateConnection"/>
+        /// </summary>
         public IValidateConnection ValidateConnection { get; private set; }
+
+        /// <summary>
+        /// ConnectionConsents SubSDK.
+        /// <see cref="IConnectionConsents"/>
+        /// </summary>
         public IConnectionConsents ConnectionConsents { get; private set; }
+
+        /// <summary>
+        /// ConnectionConsent SubSDK.
+        /// <see cref="IConnectionConsent"/>
+        /// </summary>
         public IConnectionConsent ConnectionConsent { get; private set; }
+
+        /// <summary>
+        /// CreateCallback SubSDK.
+        /// <see cref="ICreateCallback"/>
+        /// </summary>
         public ICreateCallback CreateCallback { get; private set; }
+
+        /// <summary>
+        /// ConnectionSettings SubSDK.
+        /// <see cref="IConnectionSettings"/>
+        /// </summary>
         public IConnectionSettings ConnectionSettings { get; private set; }
+
+        /// <summary>
+        /// CustomFields SubSDK.
+        /// <see cref="ICustomFields"/>
+        /// </summary>
         public ICustomFields CustomFields { get; private set; }
+
+        /// <summary>
+        /// ConnectionCustomMappings SubSDK.
+        /// <see cref="IConnectionCustomMappings"/>
+        /// </summary>
         public IConnectionCustomMappings ConnectionCustomMappings { get; private set; }
+
+        /// <summary>
+        /// CustomMappings SubSDK.
+        /// <see cref="ICustomMappings"/>
+        /// </summary>
         public ICustomMappings CustomMappings { get; private set; }
+
+        /// <summary>
+        /// Sessions SubSDK.
+        /// <see cref="ISessions"/>
+        /// </summary>
         public ISessions Sessions { get; private set; }
+
+        /// <summary>
+        /// Logs SubSDK.
+        /// <see cref="ILogs"/>
+        /// </summary>
         public ILogs Logs { get; private set; }
 
         public Vault(SDKConfig config)

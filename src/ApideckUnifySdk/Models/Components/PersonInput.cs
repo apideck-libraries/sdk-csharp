@@ -13,10 +13,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class PersonInput
     {
-
         /// <summary>
         /// The first name of the person.
         /// </summary>
@@ -42,19 +45,19 @@ namespace ApideckUnifySdk.Models.Components
         public Gender? Gender { get; set; } = null;
 
         /// <summary>
-        /// Initials of the person
+        /// Initials of the person.
         /// </summary>
         [JsonProperty("initials")]
         public string? Initials { get; set; } = null;
 
         /// <summary>
-        /// Date of birth
+        /// Date of birth.
         /// </summary>
         [JsonProperty("birthday")]
         public LocalDate? Birthday { get; set; } = null;
 
         /// <summary>
-        /// Date of death
+        /// Date of death.
         /// </summary>
         [JsonProperty("deceased_on")]
         public LocalDate? DeceasedOn { get; set; } = null;

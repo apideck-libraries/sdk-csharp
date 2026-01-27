@@ -14,11 +14,12 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Project
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -26,73 +27,73 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
-        /// Name of the project
+        /// Name of the project.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// User-friendly project identifier
+        /// User-friendly project identifier.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// External reference identifier for the project
+        /// External reference identifier for the project.
         /// </summary>
         [JsonProperty("reference_id")]
         public string? ReferenceId { get; set; } = null;
 
         /// <summary>
-        /// Detailed description of the project
+        /// Detailed description of the project.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Current status of the project
+        /// Current status of the project.
         /// </summary>
         [JsonProperty("status")]
         public ProjectProjectStatus? Status { get; set; } = null;
 
         /// <summary>
-        /// Indicates whether the project is currently active or inactive
+        /// Indicates whether the project is currently active or inactive.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; } = null;
 
         /// <summary>
-        /// Type or category of the project
+        /// Type or category of the project.
         /// </summary>
         [JsonProperty("project_type")]
         public ProjectType? ProjectType { get; set; } = null;
 
         /// <summary>
-        /// Priority level of the project
+        /// Priority level of the project.
         /// </summary>
         [JsonProperty("priority")]
         public Priority? Priority { get; set; } = null;
 
         /// <summary>
-        /// Percentage of project completion (0-100)
+        /// Percentage of project completion (0-100).
         /// </summary>
         [JsonProperty("completion_percentage")]
         public double? CompletionPercentage { get; set; } = null;
 
         /// <summary>
-        /// Start date of the project
+        /// Start date of the project.
         /// </summary>
         [JsonProperty("start_date")]
         public LocalDate? StartDate { get; set; } = null;
 
         /// <summary>
-        /// Expected or actual end date of the project
+        /// Expected or actual end date of the project.
         /// </summary>
         [JsonProperty("end_date")]
         public LocalDate? EndDate { get; set; } = null;
@@ -104,25 +105,25 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedCustomer? Customer { get; set; } = null;
 
         /// <summary>
-        /// Department or organizational unit associated with the project
+        /// Department or organizational unit associated with the project.
         /// </summary>
         [JsonProperty("department")]
         public ProjectDepartment? Department { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// ID of the user who owns/manages this project
+        /// ID of the user who owns/manages this project.
         /// </summary>
         [JsonProperty("owner_id")]
         public string? OwnerId { get; set; } = null;
 
         /// <summary>
-        /// Parent project if this is a subproject
+        /// Parent project if this is a subproject.
         /// </summary>
         [JsonProperty("parent_project")]
         public ParentProject? ParentProject { get; set; } = null;
@@ -134,55 +135,55 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         /// <summary>
-        /// Total budgeted amount for the project
+        /// Total budgeted amount for the project.
         /// </summary>
         [JsonProperty("budget_amount")]
         public double? BudgetAmount { get; set; } = null;
 
         /// <summary>
-        /// Approved budget amount for the project
+        /// Approved budget amount for the project.
         /// </summary>
         [JsonProperty("approved_amount")]
         public double? ApprovedAmount { get; set; } = null;
 
         /// <summary>
-        /// Total actual amount spent on the project
+        /// Total actual amount spent on the project.
         /// </summary>
         [JsonProperty("actual_amount")]
         public double? ActualAmount { get; set; } = null;
 
         /// <summary>
-        /// Total budgeted hours for the project
+        /// Total budgeted hours for the project.
         /// </summary>
         [JsonProperty("budget_hours")]
         public double? BudgetHours { get; set; } = null;
 
         /// <summary>
-        /// Total actual hours worked on the project
+        /// Total actual hours worked on the project.
         /// </summary>
         [JsonProperty("actual_hours")]
         public double? ActualHours { get; set; } = null;
 
         /// <summary>
-        /// Default hourly rate for project work
+        /// Default hourly rate for project work.
         /// </summary>
         [JsonProperty("hourly_rate")]
         public double? HourlyRate { get; set; } = null;
 
         /// <summary>
-        /// Method used for billing this project
+        /// Method used for billing this project.
         /// </summary>
         [JsonProperty("billing_method")]
         public BillingMethod? BillingMethod { get; set; } = null;
 
         /// <summary>
-        /// Indicates if the project is billable to the customer
+        /// Indicates if the project is billable to the customer.
         /// </summary>
         [JsonProperty("is_billable")]
         public bool? IsBillable { get; set; } = true;
 
         /// <summary>
-        /// Current phase of the project lifecycle
+        /// Current phase of the project lifecycle.
         /// </summary>
         [JsonProperty("phase")]
         public ProjectPhase? Phase { get; set; } = null;
@@ -197,43 +198,43 @@ namespace ApideckUnifySdk.Models.Components
         public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         /// <summary>
-        /// Tags associated with the project
+        /// Tags associated with the project.
         /// </summary>
         [JsonProperty("tags")]
         public List<string>? Tags { get; set; }
 
         /// <summary>
-        /// Additional notes about the project
+        /// Additional notes about the project.
         /// </summary>
         [JsonProperty("notes")]
         public string? Notes { get; set; } = null;
 
         /// <summary>
-        /// Contract or agreement number associated with the project
+        /// Contract or agreement number associated with the project.
         /// </summary>
         [JsonProperty("contract_number")]
         public string? ContractNumber { get; set; } = null;
 
         /// <summary>
-        /// Expected profit margin percentage for the project
+        /// Expected profit margin percentage for the project.
         /// </summary>
         [JsonProperty("profit_margin")]
         public double? ProfitMargin { get; set; } = null;
 
         /// <summary>
-        /// Current status of project schedule compared to plan
+        /// Current status of project schedule compared to plan.
         /// </summary>
         [JsonProperty("schedule_status")]
         public ScheduleStatus? ScheduleStatus { get; set; } = null;
 
         /// <summary>
-        /// An array of addresses associated with the project (billing, job site, etc.)
+        /// An array of addresses associated with the project (billing, job site, etc.).
         /// </summary>
         [JsonProperty("addresses")]
         public List<Address>? Addresses { get; set; }
 
         /// <summary>
-        /// Number of team members assigned to the project
+        /// Number of team members assigned to the project.
         /// </summary>
         [JsonProperty("team_size")]
         public long? TeamSize { get; set; } = null;

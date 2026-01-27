@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Type or category of the project
+    /// Type or category of the project.
     /// </summary>
-    public enum ProjectType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ProjectType : IEquatable<ProjectType>
     {
-        [JsonProperty("client_project")]
-        ClientProject,
-        [JsonProperty("internal_project")]
-        InternalProject,
-        [JsonProperty("maintenance")]
-        Maintenance,
-        [JsonProperty("research_development")]
-        ResearchDevelopment,
-        [JsonProperty("training")]
-        Training,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly ProjectType ClientProject = new ProjectType("client_project");
+        public static readonly ProjectType InternalProject = new ProjectType("internal_project");
+        public static readonly ProjectType Maintenance = new ProjectType("maintenance");
+        public static readonly ProjectType ResearchDevelopment = new ProjectType("research_development");
+        public static readonly ProjectType Training = new ProjectType("training");
+        public static readonly ProjectType Other = new ProjectType("other");
 
-    public static class ProjectTypeExtension
-    {
-        public static string Value(this ProjectType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ProjectType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ProjectType).GetFields())
+        private static readonly Dictionary <string, ProjectType> _knownValues =
+            new Dictionary <string, ProjectType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["client_project"] = ClientProject,
+                ["internal_project"] = InternalProject,
+                ["maintenance"] = Maintenance,
+                ["research_development"] = ResearchDevelopment,
+                ["training"] = Training,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ProjectType> _values =
+            new ConcurrentDictionary<string, ProjectType>(_knownValues);
 
-                    if (enumVal is ProjectType)
-                    {
-                        return (ProjectType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ProjectType");
+        private ProjectType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ProjectType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ProjectType(value));
+        }
+
+        public static implicit operator ProjectType(string value) => Of(value);
+        public static implicit operator string(ProjectType projecttype) => projecttype.Value;
+
+        public static ProjectType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ProjectType);
+
+        public bool Equals(ProjectType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }
