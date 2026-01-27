@@ -13,13 +13,15 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class PurchaseOrderInput
     {
-
         /// <summary>
-        /// Display ID of the purchase order
+        /// Display ID of the purchase order.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
@@ -43,25 +45,25 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplierInput? Supplier { get; set; } = null;
 
         /// <summary>
-        /// The ID of the subsidiary
+        /// The ID of the subsidiary.
         /// </summary>
         [JsonProperty("subsidiary_id")]
         public string? SubsidiaryId { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location
+        /// The ID of the location.
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
@@ -118,7 +120,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? Total { get; set; } = null;
 
         /// <summary>
-        /// Amounts are including tax
+        /// Amounts are including tax.
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;
@@ -136,7 +138,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         /// <summary>
-        /// Optional purchase order template
+        /// Optional purchase order template.
         /// </summary>
         [JsonProperty("template_id")]
         public string? TemplateId { get; set; } = null;
@@ -163,7 +165,7 @@ namespace ApideckUnifySdk.Models.Components
         public LocalDate? DueDate { get; set; } = null;
 
         /// <summary>
-        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check
+        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check.
         /// </summary>
         [JsonProperty("payment_method")]
         public string? PaymentMethod { get; set; } = null;
@@ -175,7 +177,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Terms { get; set; } = null;
 
         /// <summary>
-        /// Type of amortization
+        /// Type of amortization.
         /// </summary>
         [JsonProperty("amortization_type")]
         public PurchaseOrderAmortizationType? AmortizationType { get; set; } = null;
@@ -187,19 +189,19 @@ namespace ApideckUnifySdk.Models.Components
         public string? TaxCode { get; set; } = null;
 
         /// <summary>
-        /// Method of tax calculation
+        /// Method of tax calculation.
         /// </summary>
         [JsonProperty("tax_method")]
         public string? TaxMethod { get; set; } = null;
 
         /// <summary>
-        /// Method of issuance of the purchase order
+        /// Method of issuance of the purchase order.
         /// </summary>
         [JsonProperty("issued_method")]
         public string? IssuedMethod { get; set; } = null;
 
         /// <summary>
-        /// Email address of the person who issued the purchase order
+        /// Email address of the person who issued the purchase order.
         /// </summary>
         [JsonProperty("issued_email")]
         public string? IssuedEmail { get; set; } = null;

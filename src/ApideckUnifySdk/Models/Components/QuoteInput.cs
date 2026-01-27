@@ -13,11 +13,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class QuoteInput
     {
-
         /// <summary>
         /// Quote number.
         /// </summary>
@@ -37,13 +39,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? SalesOrderId { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
@@ -79,7 +81,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Reference { get; set; } = null;
 
         /// <summary>
-        /// Quote status
+        /// Quote status.
         /// </summary>
         [JsonProperty("status")]
         public QuoteStatus? Status { get; set; } = null;
@@ -97,7 +99,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? CurrencyRate { get; set; } = null;
 
         /// <summary>
-        /// Amounts are including tax
+        /// Amounts are including tax.
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;
@@ -139,7 +141,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? Total { get; set; } = null;
 
         /// <summary>
-        /// Customer memo
+        /// Customer memo.
         /// </summary>
         [JsonProperty("customer_memo")]
         public string? CustomerMemo { get; set; } = null;
@@ -160,13 +162,13 @@ namespace ApideckUnifySdk.Models.Components
         public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         /// <summary>
-        /// Optional quote template
+        /// Optional quote template.
         /// </summary>
         [JsonProperty("template_id")]
         public string? TemplateId { get; set; } = null;
 
         /// <summary>
-        /// URL link to a source document - shown as &apos;Go to [appName]&apos; in the downstream app.
+        /// URL link to a source document - shown as 'Go to [appName]' in the downstream app.
         /// </summary>
         [JsonProperty("source_document_url")]
         public string? SourceDocumentUrl { get; set; } = null;

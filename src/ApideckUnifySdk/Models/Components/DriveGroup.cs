@@ -14,10 +14,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class DriveGroup
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,13 +24,13 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The name of the drive group
+        /// The name of the drive group.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// The display name of the drive group
+        /// The display name of the drive group.
         /// </summary>
         [JsonProperty("display_name")]
         public string? DisplayName { get; set; } = null;

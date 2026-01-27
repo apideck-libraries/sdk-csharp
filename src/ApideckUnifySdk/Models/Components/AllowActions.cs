@@ -12,50 +12,67 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum AllowActions
-    {
-        [JsonProperty("delete")]
-        Delete,
-        [JsonProperty("disconnect")]
-        Disconnect,
-        [JsonProperty("reauthorize")]
-        Reauthorize,
-        [JsonProperty("disable")]
-        Disable,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class AllowActionsExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class AllowActions : IEquatable<AllowActions>
     {
-        public static string Value(this AllowActions value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly AllowActions Delete = new AllowActions("delete");
+        public static readonly AllowActions Disconnect = new AllowActions("disconnect");
+        public static readonly AllowActions Reauthorize = new AllowActions("reauthorize");
+        public static readonly AllowActions Disable = new AllowActions("disable");
 
-        public static AllowActions ToEnum(this string value)
-        {
-            foreach(var field in typeof(AllowActions).GetFields())
+        private static readonly Dictionary <string, AllowActions> _knownValues =
+            new Dictionary <string, AllowActions> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["delete"] = Delete,
+                ["disconnect"] = Disconnect,
+                ["reauthorize"] = Reauthorize,
+                ["disable"] = Disable
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, AllowActions> _values =
+            new ConcurrentDictionary<string, AllowActions>(_knownValues);
 
-                    if (enumVal is AllowActions)
-                    {
-                        return (AllowActions)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum AllowActions");
+        private AllowActions(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static AllowActions Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new AllowActions(value));
+        }
+
+        public static implicit operator AllowActions(string value) => Of(value);
+        public static implicit operator string(AllowActions allowactions) => allowactions.Value;
+
+        public static AllowActions[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as AllowActions);
+
+        public bool Equals(AllowActions? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,10 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Log
     {
-
         /// <summary>
         /// Indicates if the request was made via REST or Graphql endpoint.
         /// </summary>
@@ -47,7 +50,7 @@ namespace ApideckUnifySdk.Models.Components
         public double Duration { get; set; } = default!;
 
         /// <summary>
-        /// If error occurred, this is brief explanation
+        /// If error occurred, this is brief explanation.
         /// </summary>
         [JsonProperty("error_message")]
         public string? ErrorMessage { get; set; } = null;
@@ -89,7 +92,7 @@ namespace ApideckUnifySdk.Models.Components
         public Operation Operation { get; set; } = default!;
 
         /// <summary>
-        /// When request is a child request, this UUID indicates it&apos;s parent request.
+        /// When request is a child request, this UUID indicates it's parent request.
         /// </summary>
         [JsonProperty("parent_id", NullValueHandling = NullValueHandling.Include)]
         public string? ParentId { get; set; }

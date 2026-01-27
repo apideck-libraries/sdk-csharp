@@ -14,11 +14,12 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class QuoteLineItem
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -26,43 +27,43 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// Row ID
+        /// Row ID.
         /// </summary>
         [JsonProperty("row_id")]
         public string? RowId { get; set; }
 
         /// <summary>
-        /// User defined item code
+        /// User defined item code.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; } = null;
 
         /// <summary>
-        /// Line number of the resource
+        /// Line number of the resource.
         /// </summary>
         [JsonProperty("line_number")]
         public long? LineNumber { get; set; } = null;
 
         /// <summary>
-        /// User defined description
+        /// User defined description.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Item type
+        /// Item type.
         /// </summary>
         [JsonProperty("type")]
         public QuoteLineItemType? Type { get; set; } = null;
 
         /// <summary>
-        /// Tax amount
+        /// Tax amount.
         /// </summary>
         [JsonProperty("tax_amount")]
         public double? TaxAmount { get; set; } = null;
 
         /// <summary>
-        /// Total amount of the line item
+        /// Total amount of the line item.
         /// </summary>
         [JsonProperty("total_amount")]
         public double? TotalAmount { get; set; } = null;
@@ -98,19 +99,19 @@ namespace ApideckUnifySdk.Models.Components
         public LocalDate? ServiceDate { get; set; } = null;
 
         /// <summary>
-        /// ID of the category of the line item
+        /// ID of the category of the line item.
         /// </summary>
         [JsonProperty("category_id")]
         public string? CategoryId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location
+        /// The ID of the location.
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;

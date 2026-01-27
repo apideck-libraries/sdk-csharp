@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// OAuth grant type used by the connector. More info: https://oauth.net/2/grant-types
+    /// OAuth grant type used by the connector. More info: https://oauth.net/2/grant-types.
     /// </summary>
-    public enum ConnectorOauthGrantType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ConnectorOauthGrantType : IEquatable<ConnectorOauthGrantType>
     {
-        [JsonProperty("authorization_code")]
-        AuthorizationCode,
-        [JsonProperty("client_credentials")]
-        ClientCredentials,
-        [JsonProperty("password")]
-        Password,
-    }
+        public static readonly ConnectorOauthGrantType AuthorizationCode = new ConnectorOauthGrantType("authorization_code");
+        public static readonly ConnectorOauthGrantType ClientCredentials = new ConnectorOauthGrantType("client_credentials");
+        public static readonly ConnectorOauthGrantType Password = new ConnectorOauthGrantType("password");
 
-    public static class ConnectorOauthGrantTypeExtension
-    {
-        public static string Value(this ConnectorOauthGrantType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ConnectorOauthGrantType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ConnectorOauthGrantType).GetFields())
+        private static readonly Dictionary <string, ConnectorOauthGrantType> _knownValues =
+            new Dictionary <string, ConnectorOauthGrantType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["authorization_code"] = AuthorizationCode,
+                ["client_credentials"] = ClientCredentials,
+                ["password"] = Password
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ConnectorOauthGrantType> _values =
+            new ConcurrentDictionary<string, ConnectorOauthGrantType>(_knownValues);
 
-                    if (enumVal is ConnectorOauthGrantType)
-                    {
-                        return (ConnectorOauthGrantType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ConnectorOauthGrantType");
+        private ConnectorOauthGrantType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ConnectorOauthGrantType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ConnectorOauthGrantType(value));
+        }
+
+        public static implicit operator ConnectorOauthGrantType(string value) => Of(value);
+        public static implicit operator string(ConnectorOauthGrantType connectoroauthgranttype) => connectoroauthgranttype.Value;
+
+        public static ConnectorOauthGrantType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ConnectorOauthGrantType);
+
+        public bool Equals(ConnectorOauthGrantType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

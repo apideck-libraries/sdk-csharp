@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedResources
     {
-
         /// <summary>
         /// ID of the resource, typically a lowercased version of name.
         /// </summary>

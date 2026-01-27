@@ -14,11 +14,12 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Opportunity
     {
-
         /// <summary>
         /// A unique identifier for the opportunity.
         /// </summary>
@@ -44,13 +45,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The type of the opportunity
+        /// The type of the opportunity.
         /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; } = null;
 
         /// <summary>
-        /// The monetary value associated with the opportunity
+        /// The monetary value associated with the opportunity.
         /// </summary>
         [JsonProperty("monetary_amount")]
         public double? MonetaryAmount { get; set; } = null;
@@ -68,7 +69,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? WinProbability { get; set; } = null;
 
         /// <summary>
-        /// The expected revenue from the opportunity
+        /// The expected revenue from the opportunity.
         /// </summary>
         [JsonProperty("expected_revenue")]
         public double? ExpectedRevenue { get; set; } = null;
@@ -104,7 +105,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? WonReason { get; set; } = null;
 
         /// <summary>
-        /// The unique identifier of the pipeline associated with the opportunity
+        /// The unique identifier of the pipeline associated with the opportunity.
         /// </summary>
         [JsonProperty("pipeline_id")]
         public string? PipelineId { get; set; } = null;

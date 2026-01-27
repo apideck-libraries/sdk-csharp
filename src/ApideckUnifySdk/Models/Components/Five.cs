@@ -54,7 +54,6 @@ namespace ApideckUnifySdk.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(Five.FiveConverter))]
     public class Five
     {

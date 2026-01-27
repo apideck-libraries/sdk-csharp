@@ -10,12 +10,11 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class CompaniesFilter
     {
-
         /// <summary>
-        /// Name of the company to filter on
+        /// Name of the company to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=name")]
         public string? Name { get; set; }

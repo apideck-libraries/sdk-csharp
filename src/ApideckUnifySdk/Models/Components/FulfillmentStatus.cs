@@ -12,59 +12,76 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Current fulfillment status of the order.
     /// </summary>
-    public enum FulfillmentStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class FulfillmentStatus : IEquatable<FulfillmentStatus>
     {
-        [JsonProperty("pending")]
-        Pending,
-        [JsonProperty("shipped")]
-        Shipped,
-        [JsonProperty("partial")]
-        Partial,
-        [JsonProperty("delivered")]
-        Delivered,
-        [JsonProperty("cancelled")]
-        Cancelled,
-        [JsonProperty("returned")]
-        Returned,
-        [JsonProperty("unknown")]
-        Unknown,
-    }
+        public static readonly FulfillmentStatus Pending = new FulfillmentStatus("pending");
+        public static readonly FulfillmentStatus Shipped = new FulfillmentStatus("shipped");
+        public static readonly FulfillmentStatus Partial = new FulfillmentStatus("partial");
+        public static readonly FulfillmentStatus Delivered = new FulfillmentStatus("delivered");
+        public static readonly FulfillmentStatus Cancelled = new FulfillmentStatus("cancelled");
+        public static readonly FulfillmentStatus Returned = new FulfillmentStatus("returned");
+        public static readonly FulfillmentStatus Unknown = new FulfillmentStatus("unknown");
 
-    public static class FulfillmentStatusExtension
-    {
-        public static string Value(this FulfillmentStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static FulfillmentStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(FulfillmentStatus).GetFields())
+        private static readonly Dictionary <string, FulfillmentStatus> _knownValues =
+            new Dictionary <string, FulfillmentStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["pending"] = Pending,
+                ["shipped"] = Shipped,
+                ["partial"] = Partial,
+                ["delivered"] = Delivered,
+                ["cancelled"] = Cancelled,
+                ["returned"] = Returned,
+                ["unknown"] = Unknown
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, FulfillmentStatus> _values =
+            new ConcurrentDictionary<string, FulfillmentStatus>(_knownValues);
 
-                    if (enumVal is FulfillmentStatus)
-                    {
-                        return (FulfillmentStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum FulfillmentStatus");
+        private FulfillmentStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static FulfillmentStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new FulfillmentStatus(value));
+        }
+
+        public static implicit operator FulfillmentStatus(string value) => Of(value);
+        public static implicit operator string(FulfillmentStatus fulfillmentstatus) => fulfillmentstatus.Value;
+
+        public static FulfillmentStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as FulfillmentStatus);
+
+        public bool Equals(FulfillmentStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

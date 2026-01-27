@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Type of amortization
+    /// Type of amortization.
     /// </summary>
-    public enum PurchaseOrderAmortizationType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PurchaseOrderAmortizationType : IEquatable<PurchaseOrderAmortizationType>
     {
-        [JsonProperty("manual")]
-        Manual,
-        [JsonProperty("receipt")]
-        Receipt,
-        [JsonProperty("schedule")]
-        Schedule,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly PurchaseOrderAmortizationType Manual = new PurchaseOrderAmortizationType("manual");
+        public static readonly PurchaseOrderAmortizationType Receipt = new PurchaseOrderAmortizationType("receipt");
+        public static readonly PurchaseOrderAmortizationType Schedule = new PurchaseOrderAmortizationType("schedule");
+        public static readonly PurchaseOrderAmortizationType Other = new PurchaseOrderAmortizationType("other");
 
-    public static class PurchaseOrderAmortizationTypeExtension
-    {
-        public static string Value(this PurchaseOrderAmortizationType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PurchaseOrderAmortizationType ToEnum(this string value)
-        {
-            foreach(var field in typeof(PurchaseOrderAmortizationType).GetFields())
+        private static readonly Dictionary <string, PurchaseOrderAmortizationType> _knownValues =
+            new Dictionary <string, PurchaseOrderAmortizationType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["manual"] = Manual,
+                ["receipt"] = Receipt,
+                ["schedule"] = Schedule,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PurchaseOrderAmortizationType> _values =
+            new ConcurrentDictionary<string, PurchaseOrderAmortizationType>(_knownValues);
 
-                    if (enumVal is PurchaseOrderAmortizationType)
-                    {
-                        return (PurchaseOrderAmortizationType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PurchaseOrderAmortizationType");
+        private PurchaseOrderAmortizationType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PurchaseOrderAmortizationType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PurchaseOrderAmortizationType(value));
+        }
+
+        public static implicit operator PurchaseOrderAmortizationType(string value) => Of(value);
+        public static implicit operator string(PurchaseOrderAmortizationType purchaseorderamortizationtype) => purchaseorderamortizationtype.Value;
+
+        public static PurchaseOrderAmortizationType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PurchaseOrderAmortizationType);
+
+        public bool Equals(PurchaseOrderAmortizationType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Indicates the status of the job.
     /// </summary>
-    public enum EmployeeJobStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EmployeeJobStatus : IEquatable<EmployeeJobStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly EmployeeJobStatus Active = new EmployeeJobStatus("active");
+        public static readonly EmployeeJobStatus Inactive = new EmployeeJobStatus("inactive");
+        public static readonly EmployeeJobStatus Other = new EmployeeJobStatus("other");
 
-    public static class EmployeeJobStatusExtension
-    {
-        public static string Value(this EmployeeJobStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EmployeeJobStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(EmployeeJobStatus).GetFields())
+        private static readonly Dictionary <string, EmployeeJobStatus> _knownValues =
+            new Dictionary <string, EmployeeJobStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EmployeeJobStatus> _values =
+            new ConcurrentDictionary<string, EmployeeJobStatus>(_knownValues);
 
-                    if (enumVal is EmployeeJobStatus)
-                    {
-                        return (EmployeeJobStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EmployeeJobStatus");
+        private EmployeeJobStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EmployeeJobStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EmployeeJobStatus(value));
+        }
+
+        public static implicit operator EmployeeJobStatus(string value) => Of(value);
+        public static implicit operator string(EmployeeJobStatus employeejobstatus) => employeejobstatus.Value;
+
+        public static EmployeeJobStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EmployeeJobStatus);
+
+        public bool Equals(EmployeeJobStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -13,66 +13,65 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CustomObjectSchema
     {
-
         /// <summary>
-        /// The unique identifier of the custom object schema
+        /// The unique identifier of the custom object schema.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The name of the custom object schema
+        /// The name of the custom object schema.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// The description of the custom object schema
+        /// The description of the custom object schema.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The fields defined in the schema
+        /// The fields defined in the schema.
         /// </summary>
         [JsonProperty("fields")]
         public List<Fields>? Fields { get; set; }
 
         /// <summary>
-        /// Whether the custom object schema is visible in the UI
+        /// Whether the custom object schema is visible in the UI.
         /// </summary>
         [JsonProperty("visible")]
         public bool? Visible { get; set; } = null;
 
         /// <summary>
-        /// Whether the custom object schema is active
+        /// Whether the custom object schema is active.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; } = null;
 
         /// <summary>
-        /// The ID of the user who created the custom object schema
+        /// The ID of the user who created the custom object schema.
         /// </summary>
         [JsonProperty("created_by")]
         public string? CreatedBy { get; set; } = null;
 
         /// <summary>
-        /// The ID of the user who last updated the custom object schema
+        /// The ID of the user who last updated the custom object schema.
         /// </summary>
         [JsonProperty("updated_by")]
         public string? UpdatedBy { get; set; } = null;
 
         /// <summary>
-        /// The timestamp when the custom object schema was last updated
+        /// The timestamp when the custom object schema was last updated.
         /// </summary>
         [JsonProperty("updated_at")]
         public string? UpdatedAt { get; set; } = null;
 
         /// <summary>
-        /// The timestamp when the custom object schema was created
+        /// The timestamp when the custom object schema was created.
         /// </summary>
         [JsonProperty("created_at")]
         public string? CreatedAt { get; set; } = null;

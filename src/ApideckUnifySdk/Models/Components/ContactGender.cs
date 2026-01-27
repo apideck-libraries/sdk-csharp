@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The gender of the contact.
     /// </summary>
-    public enum ContactGender
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ContactGender : IEquatable<ContactGender>
     {
-        [JsonProperty("male")]
-        Male,
-        [JsonProperty("female")]
-        Female,
-        [JsonProperty("unisex")]
-        Unisex,
-    }
+        public static readonly ContactGender Male = new ContactGender("male");
+        public static readonly ContactGender Female = new ContactGender("female");
+        public static readonly ContactGender Unisex = new ContactGender("unisex");
 
-    public static class ContactGenderExtension
-    {
-        public static string Value(this ContactGender value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ContactGender ToEnum(this string value)
-        {
-            foreach(var field in typeof(ContactGender).GetFields())
+        private static readonly Dictionary <string, ContactGender> _knownValues =
+            new Dictionary <string, ContactGender> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["male"] = Male,
+                ["female"] = Female,
+                ["unisex"] = Unisex
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ContactGender> _values =
+            new ConcurrentDictionary<string, ContactGender>(_knownValues);
 
-                    if (enumVal is ContactGender)
-                    {
-                        return (ContactGender)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ContactGender");
+        private ContactGender(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ContactGender Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ContactGender(value));
+        }
+
+        public static implicit operator ContactGender(string value) => Of(value);
+        public static implicit operator string(ContactGender contactgender) => contactgender.Value;
+
+        public static ContactGender[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ContactGender);
+
+        public bool Equals(ContactGender? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

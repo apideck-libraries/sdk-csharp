@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class PassThroughBody
     {
-
         /// <summary>
         /// Identifier for the service to which this pass_through should be applied.
         /// </summary>

@@ -12,13 +12,15 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class UnifiedApis
     {
-
         /// <summary>
-        /// Name of Apideck Unified API
+        /// Name of Apideck Unified API.
         /// </summary>
         [JsonProperty("id")]
         public UnifiedApiId? Id { get; set; }
@@ -30,7 +32,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
-        /// Indicates whether a connector only supports authentication. In this case the connector is not mapped to a Unified API, but can be used with the Proxy API
+        /// Indicates whether a connector only supports authentication. In this case the connector is not mapped to a Unified API, but can be used with the Proxy API.
         /// </summary>
         [JsonProperty("auth_only")]
         public bool? AuthOnly { get; set; }

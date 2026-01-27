@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The current status of the bank feed statement.
     /// </summary>
-    public enum StatementStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class StatementStatus : IEquatable<StatementStatus>
     {
-        [JsonProperty("pending")]
-        Pending,
-        [JsonProperty("rejected")]
-        Rejected,
-        [JsonProperty("success")]
-        Success,
-    }
+        public static readonly StatementStatus Pending = new StatementStatus("pending");
+        public static readonly StatementStatus Rejected = new StatementStatus("rejected");
+        public static readonly StatementStatus Success = new StatementStatus("success");
 
-    public static class StatementStatusExtension
-    {
-        public static string Value(this StatementStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static StatementStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(StatementStatus).GetFields())
+        private static readonly Dictionary <string, StatementStatus> _knownValues =
+            new Dictionary <string, StatementStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["pending"] = Pending,
+                ["rejected"] = Rejected,
+                ["success"] = Success
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, StatementStatus> _values =
+            new ConcurrentDictionary<string, StatementStatus>(_knownValues);
 
-                    if (enumVal is StatementStatus)
-                    {
-                        return (StatementStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum StatementStatus");
+        private StatementStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static StatementStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new StatementStatus(value));
+        }
+
+        public static implicit operator StatementStatus(string value) => Of(value);
+        public static implicit operator string(StatementStatus statementstatus) => statementstatus.Value;
+
+        public static StatementStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as StatementStatus);
+
+        public bool Equals(StatementStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

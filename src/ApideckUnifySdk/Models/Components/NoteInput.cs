@@ -13,12 +13,11 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class NoteInput
     {
-
         /// <summary>
-        /// The title of the note
+        /// The title of the note.
         /// </summary>
         [JsonProperty("title")]
         public string? Title { get; set; } = null;

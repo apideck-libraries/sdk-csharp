@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class ProfitAndLoss
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -24,19 +26,19 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// The name of the report
+        /// The name of the report.
         /// </summary>
         [JsonProperty("report_name")]
         public string ReportName { get; set; } = default!;
 
         /// <summary>
-        /// The start date of the report
+        /// The start date of the report.
         /// </summary>
         [JsonProperty("start_date")]
         public string? StartDate { get; set; }
 
         /// <summary>
-        /// The end date of the report
+        /// The end date of the report.
         /// </summary>
         [JsonProperty("end_date")]
         public string? EndDate { get; set; }
@@ -48,37 +50,37 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         /// <summary>
-        /// The operating income accounts
+        /// The operating income accounts.
         /// </summary>
         [JsonProperty("income")]
         public Income Income { get; set; } = default!;
 
         /// <summary>
-        /// The cost of goods sold accounts
+        /// The cost of goods sold accounts.
         /// </summary>
         [JsonProperty("cost_of_goods_sold")]
         public CostOfGoodsSold? CostOfGoodsSold { get; set; }
 
         /// <summary>
-        /// The operating expenses accounts
+        /// The operating expenses accounts.
         /// </summary>
         [JsonProperty("expenses")]
         public Models.Components.Expenses Expenses { get; set; } = default!;
 
         /// <summary>
-        /// The other income accounts
+        /// The other income accounts.
         /// </summary>
         [JsonProperty("other_income")]
         public OtherIncome? OtherIncome { get; set; }
 
         /// <summary>
-        /// The other expenses accounts
+        /// The other expenses accounts.
         /// </summary>
         [JsonProperty("other_expenses")]
         public OtherExpenses? OtherExpenses { get; set; }
 
         /// <summary>
-        /// The accounts not categorized in the other sections
+        /// The accounts not categorized in the other sections.
         /// </summary>
         [JsonProperty("uncategorized_accounts")]
         public UncategorizedAccounts? UncategorizedAccounts { get; set; }
@@ -99,7 +101,7 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         /// <summary>
-        /// The customer id
+        /// The customer id.
         /// </summary>
         [JsonProperty("customer")]
         public string? Customer { get; set; }

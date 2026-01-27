@@ -11,10 +11,14 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class InvoiceItemFilter
     {
-
         /// <summary>
         /// The type of invoice item, indicating whether it is an inventory item, a service, or another type.
         /// </summary>

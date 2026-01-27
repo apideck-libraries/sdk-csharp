@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The window unit for the rate.
     /// </summary>
-    public enum Unit
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Unit : IEquatable<Unit>
     {
-        [JsonProperty("second")]
-        Second,
-        [JsonProperty("minute")]
-        Minute,
-        [JsonProperty("hour")]
-        Hour,
-        [JsonProperty("day")]
-        Day,
-    }
+        public static readonly Unit Second = new Unit("second");
+        public static readonly Unit Minute = new Unit("minute");
+        public static readonly Unit Hour = new Unit("hour");
+        public static readonly Unit Day = new Unit("day");
 
-    public static class UnitExtension
-    {
-        public static string Value(this Unit value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Unit ToEnum(this string value)
-        {
-            foreach(var field in typeof(Unit).GetFields())
+        private static readonly Dictionary <string, Unit> _knownValues =
+            new Dictionary <string, Unit> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["second"] = Second,
+                ["minute"] = Minute,
+                ["hour"] = Hour,
+                ["day"] = Day
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Unit> _values =
+            new ConcurrentDictionary<string, Unit>(_knownValues);
 
-                    if (enumVal is Unit)
-                    {
-                        return (Unit)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Unit");
+        private Unit(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Unit Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Unit(value));
+        }
+
+        public static implicit operator Unit(string value) => Of(value);
+        public static implicit operator string(Unit unit) => unit.Value;
+
+        public static Unit[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Unit);
+
+        public bool Equals(Unit? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

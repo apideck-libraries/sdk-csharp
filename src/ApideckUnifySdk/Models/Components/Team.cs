@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The team the person is currently in.
     /// </summary>
     public class Team
     {
-
         /// <summary>
         /// The unique identifier of the team.
         /// </summary>

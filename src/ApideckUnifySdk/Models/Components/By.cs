@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Bills
+    /// The field on which to sort the Bills.
     /// </summary>
-    public enum By
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class By : IEquatable<By>
     {
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-        [JsonProperty("created_at")]
-        CreatedAt,
-    }
+        public static readonly By UpdatedAt = new By("updated_at");
+        public static readonly By CreatedAt = new By("created_at");
 
-    public static class ByExtension
-    {
-        public static string Value(this By value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static By ToEnum(this string value)
-        {
-            foreach(var field in typeof(By).GetFields())
+        private static readonly Dictionary <string, By> _knownValues =
+            new Dictionary <string, By> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["updated_at"] = UpdatedAt,
+                ["created_at"] = CreatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, By> _values =
+            new ConcurrentDictionary<string, By>(_knownValues);
 
-                    if (enumVal is By)
-                    {
-                        return (By)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum By");
+        private By(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static By Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new By(value));
+        }
+
+        public static implicit operator By(string value) => Of(value);
+        public static implicit operator string(By by) => by.Value;
+
+        public static By[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as By);
+
+        public bool Equals(By? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

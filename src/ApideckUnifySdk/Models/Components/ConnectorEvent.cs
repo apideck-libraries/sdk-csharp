@@ -12,28 +12,30 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     /// <summary>
     /// Unify event that is supported on the connector. Events are delivered via Webhooks.
     /// </summary>
     public class ConnectorEvent
     {
-
         /// <summary>
-        /// Unify event type
+        /// Unify event type.
         /// </summary>
         [JsonProperty("event_type")]
         public string? EventType { get; set; }
 
         /// <summary>
-        /// Unify event source
+        /// Unify event source.
         /// </summary>
         [JsonProperty("event_source")]
         public EventSource? EventSource { get; set; }
 
         /// <summary>
-        /// Downstream event type
+        /// Downstream event type.
         /// </summary>
         [JsonProperty("downstream_event_type")]
         public string? DownstreamEventType { get; set; }
@@ -42,7 +44,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<string>? Resources { get; set; }
 
         /// <summary>
-        /// Unify entity type
+        /// Unify entity type.
         /// </summary>
         [JsonProperty("entity_type")]
         public string? EntityType { get; set; }

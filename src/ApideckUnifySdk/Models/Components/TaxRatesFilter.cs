@@ -10,36 +10,35 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class TaxRatesFilter
     {
-
         /// <summary>
-        /// Boolean to describe if tax rate can be used for asset accounts
+        /// Boolean to describe if tax rate can be used for asset accounts.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=assets")]
         public bool? Assets { get; set; }
 
         /// <summary>
-        /// Boolean to describe if tax rate can be used for equity accounts
+        /// Boolean to describe if tax rate can be used for equity accounts.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=equity")]
         public bool? Equity { get; set; }
 
         /// <summary>
-        /// Boolean to describe if tax rate can be used for expense accounts
+        /// Boolean to describe if tax rate can be used for expense accounts.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=expenses")]
         public bool? Expenses { get; set; }
 
         /// <summary>
-        /// Boolean to describe if tax rate can be used for liability accounts
+        /// Boolean to describe if tax rate can be used for liability accounts.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=liabilities")]
         public bool? Liabilities { get; set; }
 
         /// <summary>
-        /// Boolean to describe if tax rate can be used for revenue accounts
+        /// Boolean to describe if tax rate can be used for revenue accounts.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=revenue")]
         public bool? Revenue { get; set; }

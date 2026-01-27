@@ -12,13 +12,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     /// <summary>
     /// Represents the tracking information associated with an ecommerce order.
     /// </summary>
     public class TrackingItem
     {
-
         /// <summary>
         /// The name or code of the carrier or shipping company that is handling the shipment.
         /// </summary>
@@ -26,13 +25,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Provider { get; set; }
 
         /// <summary>
-        ///  The tracking number associated with the shipment, which can be used to track the progress of the delivery.
+        /// The tracking number associated with the shipment, which can be used to track the progress of the delivery.
         /// </summary>
         [JsonProperty("number", NullValueHandling = NullValueHandling.Include)]
         public string? Number { get; set; }
 
         /// <summary>
-        /// The URL of the carrier&apos;s tracking page, which can be used to view detailed information about the shipment&apos;s progress.
+        /// The URL of the carrier's tracking page, which can be used to view detailed information about the shipment's progress.
         /// </summary>
         [JsonProperty("url")]
         public string? Url { get; set; } = null;

@@ -12,59 +12,76 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Filter by account type
+    /// Filter by account type.
     /// </summary>
-    public enum BankAccountsFilterAccountType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BankAccountsFilterAccountType : IEquatable<BankAccountsFilterAccountType>
     {
-        [JsonProperty("checking")]
-        Checking,
-        [JsonProperty("savings")]
-        Savings,
-        [JsonProperty("credit_card")]
-        CreditCard,
-        [JsonProperty("money_market")]
-        MoneyMarket,
-        [JsonProperty("line_of_credit")]
-        LineOfCredit,
-        [JsonProperty("other")]
-        Other,
-        [JsonProperty("cash")]
-        Cash,
-    }
+        public static readonly BankAccountsFilterAccountType Checking = new BankAccountsFilterAccountType("checking");
+        public static readonly BankAccountsFilterAccountType Savings = new BankAccountsFilterAccountType("savings");
+        public static readonly BankAccountsFilterAccountType CreditCard = new BankAccountsFilterAccountType("credit_card");
+        public static readonly BankAccountsFilterAccountType MoneyMarket = new BankAccountsFilterAccountType("money_market");
+        public static readonly BankAccountsFilterAccountType LineOfCredit = new BankAccountsFilterAccountType("line_of_credit");
+        public static readonly BankAccountsFilterAccountType Other = new BankAccountsFilterAccountType("other");
+        public static readonly BankAccountsFilterAccountType Cash = new BankAccountsFilterAccountType("cash");
 
-    public static class BankAccountsFilterAccountTypeExtension
-    {
-        public static string Value(this BankAccountsFilterAccountType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BankAccountsFilterAccountType ToEnum(this string value)
-        {
-            foreach(var field in typeof(BankAccountsFilterAccountType).GetFields())
+        private static readonly Dictionary <string, BankAccountsFilterAccountType> _knownValues =
+            new Dictionary <string, BankAccountsFilterAccountType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["checking"] = Checking,
+                ["savings"] = Savings,
+                ["credit_card"] = CreditCard,
+                ["money_market"] = MoneyMarket,
+                ["line_of_credit"] = LineOfCredit,
+                ["other"] = Other,
+                ["cash"] = Cash
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BankAccountsFilterAccountType> _values =
+            new ConcurrentDictionary<string, BankAccountsFilterAccountType>(_knownValues);
 
-                    if (enumVal is BankAccountsFilterAccountType)
-                    {
-                        return (BankAccountsFilterAccountType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BankAccountsFilterAccountType");
+        private BankAccountsFilterAccountType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BankAccountsFilterAccountType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BankAccountsFilterAccountType(value));
+        }
+
+        public static implicit operator BankAccountsFilterAccountType(string value) => Of(value);
+        public static implicit operator string(BankAccountsFilterAccountType bankaccountsfilteraccounttype) => bankaccountsfilteraccounttype.Value;
+
+        public static BankAccountsFilterAccountType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BankAccountsFilterAccountType);
+
+        public bool Equals(BankAccountsFilterAccountType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

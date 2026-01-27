@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Method used for billing this project
+    /// Method used for billing this project.
     /// </summary>
-    public enum BillingMethod
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BillingMethod : IEquatable<BillingMethod>
     {
-        [JsonProperty("fixed_price")]
-        FixedPrice,
-        [JsonProperty("time_and_materials")]
-        TimeAndMaterials,
-        [JsonProperty("milestone_based")]
-        MilestoneBased,
-        [JsonProperty("retainer")]
-        Retainer,
-        [JsonProperty("non_billable")]
-        NonBillable,
-    }
+        public static readonly BillingMethod FixedPrice = new BillingMethod("fixed_price");
+        public static readonly BillingMethod TimeAndMaterials = new BillingMethod("time_and_materials");
+        public static readonly BillingMethod MilestoneBased = new BillingMethod("milestone_based");
+        public static readonly BillingMethod Retainer = new BillingMethod("retainer");
+        public static readonly BillingMethod NonBillable = new BillingMethod("non_billable");
 
-    public static class BillingMethodExtension
-    {
-        public static string Value(this BillingMethod value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BillingMethod ToEnum(this string value)
-        {
-            foreach(var field in typeof(BillingMethod).GetFields())
+        private static readonly Dictionary <string, BillingMethod> _knownValues =
+            new Dictionary <string, BillingMethod> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["fixed_price"] = FixedPrice,
+                ["time_and_materials"] = TimeAndMaterials,
+                ["milestone_based"] = MilestoneBased,
+                ["retainer"] = Retainer,
+                ["non_billable"] = NonBillable
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BillingMethod> _values =
+            new ConcurrentDictionary<string, BillingMethod>(_knownValues);
 
-                    if (enumVal is BillingMethod)
-                    {
-                        return (BillingMethod)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BillingMethod");
+        private BillingMethod(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BillingMethod Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BillingMethod(value));
+        }
+
+        public static implicit operator BillingMethod(string value) => Of(value);
+        public static implicit operator string(BillingMethod billingmethod) => billingmethod.Value;
+
+        public static BillingMethod[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BillingMethod);
+
+        public bool Equals(BillingMethod? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

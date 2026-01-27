@@ -10,12 +10,11 @@
 namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class ConnectorConnectorsOneRequest
     {
-
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }

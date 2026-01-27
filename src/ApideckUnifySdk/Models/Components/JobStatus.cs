@@ -12,67 +12,84 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The status of the job.
     /// </summary>
-    public enum JobStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class JobStatus : IEquatable<JobStatus>
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("internal")]
-        Internal,
-        [JsonProperty("published")]
-        Published,
-        [JsonProperty("completed")]
-        Completed,
-        [JsonProperty("placed")]
-        Placed,
-        [JsonProperty("on-hold")]
-        OnHold,
-        [JsonProperty("private")]
-        Private,
-        [JsonProperty("accepting_candidates")]
-        AcceptingCandidates,
-        [JsonProperty("open")]
-        Open,
-        [JsonProperty("closed")]
-        Closed,
-        [JsonProperty("archived")]
-        Archived,
-    }
+        public static readonly JobStatus Draft = new JobStatus("draft");
+        public static readonly JobStatus Internal = new JobStatus("internal");
+        public static readonly JobStatus Published = new JobStatus("published");
+        public static readonly JobStatus Completed = new JobStatus("completed");
+        public static readonly JobStatus Placed = new JobStatus("placed");
+        public static readonly JobStatus OnHold = new JobStatus("on-hold");
+        public static readonly JobStatus Private = new JobStatus("private");
+        public static readonly JobStatus AcceptingCandidates = new JobStatus("accepting_candidates");
+        public static readonly JobStatus Open = new JobStatus("open");
+        public static readonly JobStatus Closed = new JobStatus("closed");
+        public static readonly JobStatus Archived = new JobStatus("archived");
 
-    public static class JobStatusExtension
-    {
-        public static string Value(this JobStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static JobStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(JobStatus).GetFields())
+        private static readonly Dictionary <string, JobStatus> _knownValues =
+            new Dictionary <string, JobStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["internal"] = Internal,
+                ["published"] = Published,
+                ["completed"] = Completed,
+                ["placed"] = Placed,
+                ["on-hold"] = OnHold,
+                ["private"] = Private,
+                ["accepting_candidates"] = AcceptingCandidates,
+                ["open"] = Open,
+                ["closed"] = Closed,
+                ["archived"] = Archived
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, JobStatus> _values =
+            new ConcurrentDictionary<string, JobStatus>(_knownValues);
 
-                    if (enumVal is JobStatus)
-                    {
-                        return (JobStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum JobStatus");
+        private JobStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static JobStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new JobStatus(value));
+        }
+
+        public static implicit operator JobStatus(string value) => Of(value);
+        public static implicit operator string(JobStatus jobstatus) => jobstatus.Value;
+
+        public static JobStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as JobStatus);
+
+        public bool Equals(JobStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

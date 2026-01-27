@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Item type
+    /// Item type.
     /// </summary>
-    public enum QuoteLineItemType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class QuoteLineItemType : IEquatable<QuoteLineItemType>
     {
-        [JsonProperty("sales_item")]
-        SalesItem,
-        [JsonProperty("discount")]
-        Discount,
-        [JsonProperty("info")]
-        Info,
-        [JsonProperty("sub_total")]
-        SubTotal,
-        [JsonProperty("service")]
-        Service,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly QuoteLineItemType SalesItem = new QuoteLineItemType("sales_item");
+        public static readonly QuoteLineItemType Discount = new QuoteLineItemType("discount");
+        public static readonly QuoteLineItemType Info = new QuoteLineItemType("info");
+        public static readonly QuoteLineItemType SubTotal = new QuoteLineItemType("sub_total");
+        public static readonly QuoteLineItemType Service = new QuoteLineItemType("service");
+        public static readonly QuoteLineItemType Other = new QuoteLineItemType("other");
 
-    public static class QuoteLineItemTypeExtension
-    {
-        public static string Value(this QuoteLineItemType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static QuoteLineItemType ToEnum(this string value)
-        {
-            foreach(var field in typeof(QuoteLineItemType).GetFields())
+        private static readonly Dictionary <string, QuoteLineItemType> _knownValues =
+            new Dictionary <string, QuoteLineItemType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["sales_item"] = SalesItem,
+                ["discount"] = Discount,
+                ["info"] = Info,
+                ["sub_total"] = SubTotal,
+                ["service"] = Service,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, QuoteLineItemType> _values =
+            new ConcurrentDictionary<string, QuoteLineItemType>(_knownValues);
 
-                    if (enumVal is QuoteLineItemType)
-                    {
-                        return (QuoteLineItemType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum QuoteLineItemType");
+        private QuoteLineItemType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static QuoteLineItemType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new QuoteLineItemType(value));
+        }
+
+        public static implicit operator QuoteLineItemType(string value) => Of(value);
+        public static implicit operator string(QuoteLineItemType quotelineitemtype) => quotelineitemtype.Value;
+
+        public static QuoteLineItemType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as QuoteLineItemType);
+
+        public bool Equals(QuoteLineItemType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }
