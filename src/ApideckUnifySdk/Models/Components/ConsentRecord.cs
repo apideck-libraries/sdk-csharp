@@ -12,30 +12,29 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class ConsentRecord
     {
-
         /// <summary>
-        /// Unique identifier for this consent record
+        /// Unique identifier for this consent record.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// ISO timestamp when consent was recorded
+        /// ISO timestamp when consent was recorded.
         /// </summary>
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Whether consent was granted (true) or denied/revoked (false)
+        /// Whether consent was granted (true) or denied/revoked (false).
         /// </summary>
         [JsonProperty("granted")]
         public bool Granted { get; set; } = default!;
 
         /// <summary>
-        /// Data scopes resource configuration that can be either detailed field permissions or a wildcard
+        /// Data scopes resource configuration that can be either detailed field permissions or a wildcard.
         /// </summary>
         [JsonProperty("resources", NullValueHandling = NullValueHandling.Include)]
         public DataScopesResources Resources { get; set; } = default!;

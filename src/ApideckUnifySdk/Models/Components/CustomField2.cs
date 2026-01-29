@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class CustomField2
     {
-
         /// <summary>
         /// Unique identifier for the custom field.
         /// </summary>
@@ -29,7 +28,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
-        /// More information about the custom field
+        /// More information about the custom field.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;

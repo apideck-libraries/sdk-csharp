@@ -10,10 +10,9 @@
 namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class CrmCustomObjectsOneRequest
     {
-
         /// <summary>
         /// ID of the record you are acting upon.
         /// </summary>
@@ -21,13 +20,13 @@ namespace ApideckUnifySdk.Models.Requests
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// ID of the consumer which you want to get or push data from
+        /// ID of the consumer which you want to get or push data from.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
         public string? ConsumerId { get; set; }
 
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
@@ -39,13 +38,13 @@ namespace ApideckUnifySdk.Models.Requests
         public string? ServiceId { get; set; }
 
         /// <summary>
-        /// Include raw response. Mostly used for debugging purposes
+        /// Include raw response. Mostly used for debugging purposes.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
         public bool? Raw { get; set; } = false;
 
         /// <summary>
-        /// The id of the custom object to query
+        /// The id of the custom object to query.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=object_id")]
         public string ObjectId { get; set; } = default!;

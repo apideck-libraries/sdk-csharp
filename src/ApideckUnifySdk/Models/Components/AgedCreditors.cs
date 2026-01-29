@@ -15,10 +15,9 @@ namespace ApideckUnifySdk.Models.Components
     using NodaTime;
     using System;
     using System.Collections.Generic;
-    
+
     public class AgedCreditors
     {
-
         /// <summary>
         /// The exact date and time the report was generated.
         /// </summary>

@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The mode of tracking categories for the company on transactions
+    /// The mode of tracking categories for the company on transactions.
     /// </summary>
-    public enum TrackingCategoriesMode
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class TrackingCategoriesMode : IEquatable<TrackingCategoriesMode>
     {
-        [JsonProperty("transaction")]
-        Transaction,
-        [JsonProperty("line")]
-        Line,
-        [JsonProperty("both")]
-        Both,
-        [JsonProperty("disabled")]
-        Disabled,
-    }
+        public static readonly TrackingCategoriesMode Transaction = new TrackingCategoriesMode("transaction");
+        public static readonly TrackingCategoriesMode Line = new TrackingCategoriesMode("line");
+        public static readonly TrackingCategoriesMode Both = new TrackingCategoriesMode("both");
+        public static readonly TrackingCategoriesMode Disabled = new TrackingCategoriesMode("disabled");
 
-    public static class TrackingCategoriesModeExtension
-    {
-        public static string Value(this TrackingCategoriesMode value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static TrackingCategoriesMode ToEnum(this string value)
-        {
-            foreach(var field in typeof(TrackingCategoriesMode).GetFields())
+        private static readonly Dictionary <string, TrackingCategoriesMode> _knownValues =
+            new Dictionary <string, TrackingCategoriesMode> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["transaction"] = Transaction,
+                ["line"] = Line,
+                ["both"] = Both,
+                ["disabled"] = Disabled
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, TrackingCategoriesMode> _values =
+            new ConcurrentDictionary<string, TrackingCategoriesMode>(_knownValues);
 
-                    if (enumVal is TrackingCategoriesMode)
-                    {
-                        return (TrackingCategoriesMode)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum TrackingCategoriesMode");
+        private TrackingCategoriesMode(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static TrackingCategoriesMode Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new TrackingCategoriesMode(value));
+        }
+
+        public static implicit operator TrackingCategoriesMode(string value) => Of(value);
+        public static implicit operator string(TrackingCategoriesMode trackingcategoriesmode) => trackingcategoriesmode.Value;
+
+        public static TrackingCategoriesMode[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as TrackingCategoriesMode);
+
+        public bool Equals(TrackingCategoriesMode? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class Variants
     {
-
         /// <summary>
         /// A unique identifier for the variant of the product.
         /// </summary>

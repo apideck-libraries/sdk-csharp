@@ -10,24 +10,23 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class FilesFilter
     {
-
         /// <summary>
-        /// ID of the drive to filter on
+        /// ID of the drive to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=drive_id")]
         public string? DriveId { get; set; }
 
         /// <summary>
-        /// ID of the folder to filter on. The root folder has an alias &quot;root&quot;
+        /// ID of the folder to filter on. The root folder has an alias "root"
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=folder_id")]
         public string? FolderId { get; set; }
 
         /// <summary>
-        /// Only return files and folders that are shared
+        /// Only return files and folders that are shared.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=shared")]
         public bool? Shared { get; set; }

@@ -13,21 +13,20 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// Logs
+    /// Logs.
     /// </summary>
     public class GetLogsResponse
     {
-
         /// <summary>
-        /// HTTP Response Status Code
+        /// HTTP Response Status Code.
         /// </summary>
         [JsonProperty("status_code")]
         public long StatusCode { get; set; } = default!;
 
         /// <summary>
-        /// HTTP Response Status
+        /// HTTP Response Status.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; } = default!;
@@ -36,19 +35,19 @@ namespace ApideckUnifySdk.Models.Components
         public List<Log> Data { get; set; } = default!;
 
         /// <summary>
-        /// Response metadata
+        /// Response metadata.
         /// </summary>
         [JsonProperty("meta")]
         public Meta? Meta { get; set; }
 
         /// <summary>
-        /// Links to navigate to previous or next pages through the API
+        /// Links to navigate to previous or next pages through the API.
         /// </summary>
         [JsonProperty("links")]
         public Links? Links { get; set; }
 
         /// <summary>
-        /// Raw response from the integration when raw=true query param is provided
+        /// Raw response from the integration when raw=true query param is provided.
         /// </summary>
         [JsonProperty("_raw")]
         public Dictionary<string, object>? Raw { get; set; } = null;

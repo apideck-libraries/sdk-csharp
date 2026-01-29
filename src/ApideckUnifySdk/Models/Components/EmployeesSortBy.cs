@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Employees
+    /// The field on which to sort the Employees.
     /// </summary>
-    public enum EmployeesSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EmployeesSortBy : IEquatable<EmployeesSortBy>
     {
-        [JsonProperty("first_name")]
-        FirstName,
-        [JsonProperty("last_name")]
-        LastName,
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-    }
+        public static readonly EmployeesSortBy FirstName = new EmployeesSortBy("first_name");
+        public static readonly EmployeesSortBy LastName = new EmployeesSortBy("last_name");
+        public static readonly EmployeesSortBy CreatedAt = new EmployeesSortBy("created_at");
+        public static readonly EmployeesSortBy UpdatedAt = new EmployeesSortBy("updated_at");
 
-    public static class EmployeesSortByExtension
-    {
-        public static string Value(this EmployeesSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EmployeesSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(EmployeesSortBy).GetFields())
+        private static readonly Dictionary <string, EmployeesSortBy> _knownValues =
+            new Dictionary <string, EmployeesSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["first_name"] = FirstName,
+                ["last_name"] = LastName,
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EmployeesSortBy> _values =
+            new ConcurrentDictionary<string, EmployeesSortBy>(_knownValues);
 
-                    if (enumVal is EmployeesSortBy)
-                    {
-                        return (EmployeesSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EmployeesSortBy");
+        private EmployeesSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EmployeesSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EmployeesSortBy(value));
+        }
+
+        public static implicit operator EmployeesSortBy(string value) => Of(value);
+        public static implicit operator string(EmployeesSortBy employeessortby) => employeessortby.Value;
+
+        public static EmployeesSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EmployeesSortBy);
+
+        public bool Equals(EmployeesSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

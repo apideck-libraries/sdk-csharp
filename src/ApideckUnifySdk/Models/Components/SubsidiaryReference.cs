@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class SubsidiaryReference
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>

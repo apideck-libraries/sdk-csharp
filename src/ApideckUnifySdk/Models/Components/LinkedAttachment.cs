@@ -11,12 +11,11 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedAttachment
     {
-
         /// <summary>
-        /// The name of the file
+        /// The name of the file.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;

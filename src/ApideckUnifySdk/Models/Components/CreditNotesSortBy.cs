@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Customers
+    /// The field on which to sort the Customers.
     /// </summary>
-    public enum CreditNotesSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CreditNotesSortBy : IEquatable<CreditNotesSortBy>
     {
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-    }
+        public static readonly CreditNotesSortBy CreatedAt = new CreditNotesSortBy("created_at");
+        public static readonly CreditNotesSortBy UpdatedAt = new CreditNotesSortBy("updated_at");
 
-    public static class CreditNotesSortByExtension
-    {
-        public static string Value(this CreditNotesSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static CreditNotesSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(CreditNotesSortBy).GetFields())
+        private static readonly Dictionary <string, CreditNotesSortBy> _knownValues =
+            new Dictionary <string, CreditNotesSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CreditNotesSortBy> _values =
+            new ConcurrentDictionary<string, CreditNotesSortBy>(_knownValues);
 
-                    if (enumVal is CreditNotesSortBy)
-                    {
-                        return (CreditNotesSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CreditNotesSortBy");
+        private CreditNotesSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static CreditNotesSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CreditNotesSortBy(value));
+        }
+
+        public static implicit operator CreditNotesSortBy(string value) => Of(value);
+        public static implicit operator string(CreditNotesSortBy creditnotessortby) => creditnotessortby.Value;
+
+        public static CreditNotesSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CreditNotesSortBy);
+
+        public bool Equals(CreditNotesSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

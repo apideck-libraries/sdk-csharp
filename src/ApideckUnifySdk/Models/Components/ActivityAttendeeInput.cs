@@ -12,60 +12,63 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class ActivityAttendeeInput
     {
-
         /// <summary>
-        /// Full name of the attendee
+        /// Full name of the attendee.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// First name of the attendee
+        /// First name of the attendee.
         /// </summary>
         [JsonProperty("first_name")]
         public string? FirstName { get; set; } = null;
 
         /// <summary>
-        /// Middle name of the attendee
+        /// Middle name of the attendee.
         /// </summary>
         [JsonProperty("middle_name")]
         public string? MiddleName { get; set; } = null;
 
         /// <summary>
-        /// Last name of the attendee
+        /// Last name of the attendee.
         /// </summary>
         [JsonProperty("last_name")]
         public string? LastName { get; set; } = null;
 
         /// <summary>
-        /// Prefix of the attendee
+        /// Prefix of the attendee.
         /// </summary>
         [JsonProperty("prefix")]
         public string? Prefix { get; set; } = null;
 
         /// <summary>
-        /// Suffix of the attendee
+        /// Suffix of the attendee.
         /// </summary>
         [JsonProperty("suffix")]
         public string? Suffix { get; set; } = null;
 
         /// <summary>
-        /// Email address of the attendee
+        /// Email address of the attendee.
         /// </summary>
         [JsonProperty("email_address")]
         public string? EmailAddress { get; set; } = null;
 
         /// <summary>
-        /// Whether the attendee is the organizer of the activity
+        /// Whether the attendee is the organizer of the activity.
         /// </summary>
         [JsonProperty("is_organizer")]
         public bool? IsOrganizer { get; set; } = null;
 
         /// <summary>
-        /// Status of the attendee
+        /// Status of the attendee.
         /// </summary>
         [JsonProperty("status")]
         public ActivityAttendeeStatus? Status { get; set; } = null;

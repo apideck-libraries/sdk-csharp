@@ -12,61 +12,78 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field to sort by
+    /// The field to sort by.
     /// </summary>
-    public enum ProjectsSortSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ProjectsSortSortBy : IEquatable<ProjectsSortSortBy>
     {
-        [JsonProperty("name")]
-        Name,
-        [JsonProperty("status")]
-        Status,
-        [JsonProperty("start_date")]
-        StartDate,
-        [JsonProperty("end_date")]
-        EndDate,
-        [JsonProperty("budget_amount")]
-        BudgetAmount,
-        [JsonProperty("actual_amount")]
-        ActualAmount,
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-    }
+        public static readonly ProjectsSortSortBy Name = new ProjectsSortSortBy("name");
+        public static readonly ProjectsSortSortBy Status = new ProjectsSortSortBy("status");
+        public static readonly ProjectsSortSortBy StartDate = new ProjectsSortSortBy("start_date");
+        public static readonly ProjectsSortSortBy EndDate = new ProjectsSortSortBy("end_date");
+        public static readonly ProjectsSortSortBy BudgetAmount = new ProjectsSortSortBy("budget_amount");
+        public static readonly ProjectsSortSortBy ActualAmount = new ProjectsSortSortBy("actual_amount");
+        public static readonly ProjectsSortSortBy CreatedAt = new ProjectsSortSortBy("created_at");
+        public static readonly ProjectsSortSortBy UpdatedAt = new ProjectsSortSortBy("updated_at");
 
-    public static class ProjectsSortSortByExtension
-    {
-        public static string Value(this ProjectsSortSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ProjectsSortSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(ProjectsSortSortBy).GetFields())
+        private static readonly Dictionary <string, ProjectsSortSortBy> _knownValues =
+            new Dictionary <string, ProjectsSortSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["name"] = Name,
+                ["status"] = Status,
+                ["start_date"] = StartDate,
+                ["end_date"] = EndDate,
+                ["budget_amount"] = BudgetAmount,
+                ["actual_amount"] = ActualAmount,
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ProjectsSortSortBy> _values =
+            new ConcurrentDictionary<string, ProjectsSortSortBy>(_knownValues);
 
-                    if (enumVal is ProjectsSortSortBy)
-                    {
-                        return (ProjectsSortSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ProjectsSortSortBy");
+        private ProjectsSortSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ProjectsSortSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ProjectsSortSortBy(value));
+        }
+
+        public static implicit operator ProjectsSortSortBy(string value) => Of(value);
+        public static implicit operator string(ProjectsSortSortBy projectssortsortby) => projectssortsortby.Value;
+
+        public static ProjectsSortSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ProjectsSortSortBy);
+
+        public bool Equals(ProjectsSortSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

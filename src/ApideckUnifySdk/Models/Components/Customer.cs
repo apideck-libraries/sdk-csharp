@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Customer
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,19 +26,19 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
-        /// Display ID
+        /// Display ID.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// Display name
+        /// Display name.
         /// </summary>
         [JsonProperty("display_name")]
         public string? DisplayName { get; set; } = null;
@@ -49,13 +50,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? CompanyName { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// The category/type of the customer
+        /// The category/type of the customer.
         /// </summary>
         [JsonProperty("customer_category")]
         public string? CustomerCategory { get; set; } = null;
@@ -88,7 +89,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Suffix { get; set; } = null;
 
         /// <summary>
-        /// Is this an individual or business customer
+        /// Is this an individual or business customer.
         /// </summary>
         [JsonProperty("individual")]
         public bool? Individual { get; set; } = null;
@@ -115,7 +116,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<BankAccount>? BankAccounts { get; set; }
 
         /// <summary>
-        /// Some notes about this customer
+        /// Some notes about this customer.
         /// </summary>
         [JsonProperty("notes")]
         public string? Notes { get; set; } = null;
@@ -127,7 +128,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? TaxNumber { get; set; } = null;
 
         /// <summary>
-        /// Whether the entity is subject to taxation
+        /// Whether the entity is subject to taxation.
         /// </summary>
         [JsonProperty("taxable")]
         public bool? Taxable { get; set; } = null;
@@ -148,13 +149,13 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedParentCustomer? Parent { get; set; } = null;
 
         /// <summary>
-        /// Customer status
+        /// Customer status.
         /// </summary>
         [JsonProperty("status")]
         public CustomerStatusStatus? Status { get; set; } = null;
 
         /// <summary>
-        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check
+        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check.
         /// </summary>
         [JsonProperty("payment_method")]
         public string? PaymentMethod { get; set; } = null;

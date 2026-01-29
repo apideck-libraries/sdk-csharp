@@ -11,12 +11,11 @@ namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+
     public class ConnectorConnectorsAllRequest
     {
-
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
@@ -28,13 +27,13 @@ namespace ApideckUnifySdk.Models.Requests
         public string? Cursor { get; set; } = null;
 
         /// <summary>
-        /// Number of results to return. Minimum 1, Maximum 200, Default 20
+        /// Number of results to return. Minimum 1, Maximum 200, Default 20.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
 
         /// <summary>
-        /// Apply filters
+        /// Apply filters.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
         public ConnectorsFilter? Filter { get; set; }

@@ -13,18 +13,17 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class Note
     {
-
         /// <summary>
-        /// The unique identifier of the note
+        /// The unique identifier of the note.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The title of the note
+        /// The title of the note.
         /// </summary>
         [JsonProperty("title")]
         public string? Title { get; set; } = null;
@@ -96,13 +95,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? CreatedBy { get; set; } = null;
 
         /// <summary>
-        /// The timestamp when the note was last updated
+        /// The timestamp when the note was last updated.
         /// </summary>
         [JsonProperty("updated_at")]
         public string? UpdatedAt { get; set; } = null;
 
         /// <summary>
-        /// The timestamp when the note was created
+        /// The timestamp when the note was created.
         /// </summary>
         [JsonProperty("created_at")]
         public string? CreatedAt { get; set; } = null;

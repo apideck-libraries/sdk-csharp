@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class Benefit
     {
-
         /// <summary>
         /// The name of the benefit.
         /// </summary>

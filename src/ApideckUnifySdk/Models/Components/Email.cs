@@ -12,24 +12,27 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Email
     {
-
         /// <summary>
-        /// Unique identifier for the email address
+        /// Unique identifier for the email address.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// Email address
+        /// Email address.
         /// </summary>
         [JsonProperty("email", NullValueHandling = NullValueHandling.Include)]
         public string? EmailValue { get; set; }
 
         /// <summary>
-        /// Email type
+        /// Email type.
         /// </summary>
         [JsonProperty("type")]
         public EmailType? Type { get; set; } = null;

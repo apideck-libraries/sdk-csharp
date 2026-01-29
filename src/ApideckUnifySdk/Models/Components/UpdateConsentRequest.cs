@@ -12,15 +12,14 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class UpdateConsentRequest
     {
-
         [JsonProperty("resources", NullValueHandling = NullValueHandling.Include)]
         public UpdateConsentRequestResources Resources { get; set; } = default!;
 
         /// <summary>
-        /// Whether consent is being granted (true) or denied/revoked (false)
+        /// Whether consent is being granted (true) or denied/revoked (false).
         /// </summary>
         [JsonProperty("granted")]
         public bool Granted { get; set; } = default!;

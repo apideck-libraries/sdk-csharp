@@ -13,13 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// A single line item of an ecommerce order, representing a product or variant with associated options, quantity, and pricing information.
     /// </summary>
     public class EcommerceOrderLineItem
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>

@@ -12,65 +12,82 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The classification of account.
     /// </summary>
-    public enum LedgerAccountClassification
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class LedgerAccountClassification : IEquatable<LedgerAccountClassification>
     {
-        [JsonProperty("asset")]
-        Asset,
-        [JsonProperty("equity")]
-        Equity,
-        [JsonProperty("expense")]
-        Expense,
-        [JsonProperty("liability")]
-        Liability,
-        [JsonProperty("revenue")]
-        Revenue,
-        [JsonProperty("income")]
-        Income,
-        [JsonProperty("other_income")]
-        OtherIncome,
-        [JsonProperty("other_expense")]
-        OtherExpense,
-        [JsonProperty("costs_of_sales")]
-        CostsOfSales,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly LedgerAccountClassification Asset = new LedgerAccountClassification("asset");
+        public static readonly LedgerAccountClassification Equity = new LedgerAccountClassification("equity");
+        public static readonly LedgerAccountClassification Expense = new LedgerAccountClassification("expense");
+        public static readonly LedgerAccountClassification Liability = new LedgerAccountClassification("liability");
+        public static readonly LedgerAccountClassification Revenue = new LedgerAccountClassification("revenue");
+        public static readonly LedgerAccountClassification Income = new LedgerAccountClassification("income");
+        public static readonly LedgerAccountClassification OtherIncome = new LedgerAccountClassification("other_income");
+        public static readonly LedgerAccountClassification OtherExpense = new LedgerAccountClassification("other_expense");
+        public static readonly LedgerAccountClassification CostsOfSales = new LedgerAccountClassification("costs_of_sales");
+        public static readonly LedgerAccountClassification Other = new LedgerAccountClassification("other");
 
-    public static class LedgerAccountClassificationExtension
-    {
-        public static string Value(this LedgerAccountClassification value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static LedgerAccountClassification ToEnum(this string value)
-        {
-            foreach(var field in typeof(LedgerAccountClassification).GetFields())
+        private static readonly Dictionary <string, LedgerAccountClassification> _knownValues =
+            new Dictionary <string, LedgerAccountClassification> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["asset"] = Asset,
+                ["equity"] = Equity,
+                ["expense"] = Expense,
+                ["liability"] = Liability,
+                ["revenue"] = Revenue,
+                ["income"] = Income,
+                ["other_income"] = OtherIncome,
+                ["other_expense"] = OtherExpense,
+                ["costs_of_sales"] = CostsOfSales,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, LedgerAccountClassification> _values =
+            new ConcurrentDictionary<string, LedgerAccountClassification>(_knownValues);
 
-                    if (enumVal is LedgerAccountClassification)
-                    {
-                        return (LedgerAccountClassification)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum LedgerAccountClassification");
+        private LedgerAccountClassification(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static LedgerAccountClassification Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new LedgerAccountClassification(value));
+        }
+
+        public static implicit operator LedgerAccountClassification(string value) => Of(value);
+        public static implicit operator string(LedgerAccountClassification ledgeraccountclassification) => ledgeraccountclassification.Value;
+
+        public static LedgerAccountClassification[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as LedgerAccountClassification);
+
+        public bool Equals(LedgerAccountClassification? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

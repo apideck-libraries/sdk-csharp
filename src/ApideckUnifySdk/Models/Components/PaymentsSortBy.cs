@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Payments
+    /// The field on which to sort the Payments.
     /// </summary>
-    public enum PaymentsSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PaymentsSortBy : IEquatable<PaymentsSortBy>
     {
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-        [JsonProperty("created_at")]
-        CreatedAt,
-    }
+        public static readonly PaymentsSortBy UpdatedAt = new PaymentsSortBy("updated_at");
+        public static readonly PaymentsSortBy CreatedAt = new PaymentsSortBy("created_at");
 
-    public static class PaymentsSortByExtension
-    {
-        public static string Value(this PaymentsSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PaymentsSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(PaymentsSortBy).GetFields())
+        private static readonly Dictionary <string, PaymentsSortBy> _knownValues =
+            new Dictionary <string, PaymentsSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["updated_at"] = UpdatedAt,
+                ["created_at"] = CreatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PaymentsSortBy> _values =
+            new ConcurrentDictionary<string, PaymentsSortBy>(_knownValues);
 
-                    if (enumVal is PaymentsSortBy)
-                    {
-                        return (PaymentsSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PaymentsSortBy");
+        private PaymentsSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PaymentsSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PaymentsSortBy(value));
+        }
+
+        public static implicit operator PaymentsSortBy(string value) => Of(value);
+        public static implicit operator string(PaymentsSortBy paymentssortby) => paymentssortby.Value;
+
+        public static PaymentsSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PaymentsSortBy);
+
+        public bool Equals(PaymentsSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

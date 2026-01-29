@@ -11,24 +11,23 @@ namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+
     public class VaultSessionsCreateRequest
     {
-
         /// <summary>
-        /// ID of the consumer which you want to get or push data from
+        /// ID of the consumer which you want to get or push data from.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
         public string? ConsumerId { get; set; }
 
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
 
         /// <summary>
-        /// Additional redirect uri and/or consumer metadata
+        /// Additional redirect uri and/or consumer metadata.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public Session? Session { get; set; }

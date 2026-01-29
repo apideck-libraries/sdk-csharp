@@ -12,59 +12,76 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Status of credit notes
+    /// Status of credit notes.
     /// </summary>
-    public enum CreditNoteStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CreditNoteStatus : IEquatable<CreditNoteStatus>
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("authorised")]
-        Authorised,
-        [JsonProperty("posted")]
-        Posted,
-        [JsonProperty("partially_paid")]
-        PartiallyPaid,
-        [JsonProperty("paid")]
-        Paid,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("deleted")]
-        Deleted,
-    }
+        public static readonly CreditNoteStatus Draft = new CreditNoteStatus("draft");
+        public static readonly CreditNoteStatus Authorised = new CreditNoteStatus("authorised");
+        public static readonly CreditNoteStatus Posted = new CreditNoteStatus("posted");
+        public static readonly CreditNoteStatus PartiallyPaid = new CreditNoteStatus("partially_paid");
+        public static readonly CreditNoteStatus Paid = new CreditNoteStatus("paid");
+        public static readonly CreditNoteStatus Voided = new CreditNoteStatus("voided");
+        public static readonly CreditNoteStatus Deleted = new CreditNoteStatus("deleted");
 
-    public static class CreditNoteStatusExtension
-    {
-        public static string Value(this CreditNoteStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static CreditNoteStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(CreditNoteStatus).GetFields())
+        private static readonly Dictionary <string, CreditNoteStatus> _knownValues =
+            new Dictionary <string, CreditNoteStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["authorised"] = Authorised,
+                ["posted"] = Posted,
+                ["partially_paid"] = PartiallyPaid,
+                ["paid"] = Paid,
+                ["voided"] = Voided,
+                ["deleted"] = Deleted
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CreditNoteStatus> _values =
+            new ConcurrentDictionary<string, CreditNoteStatus>(_knownValues);
 
-                    if (enumVal is CreditNoteStatus)
-                    {
-                        return (CreditNoteStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CreditNoteStatus");
+        private CreditNoteStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static CreditNoteStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CreditNoteStatus(value));
+        }
+
+        public static implicit operator CreditNoteStatus(string value) => Of(value);
+        public static implicit operator string(CreditNoteStatus creditnotestatus) => creditnotestatus.Value;
+
+        public static CreditNoteStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CreditNoteStatus);
+
+        public bool Equals(CreditNoteStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

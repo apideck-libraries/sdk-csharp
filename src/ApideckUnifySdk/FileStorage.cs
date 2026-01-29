@@ -17,26 +17,60 @@ namespace ApideckUnifySdk
     public interface IFileStorage
     {
         public IFiles Files { get; }
+
         public IFolders Folders { get; }
+
         public ISharedLinks SharedLinks { get; }
+
         public IUploadSessions UploadSessions { get; }
+
         public IDrives Drives { get; }
+
         public IDriveGroups DriveGroups { get; }
     }
 
     public class FileStorage: IFileStorage
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Files SubSDK.
+        /// <see cref="IFiles"/>
+        /// </summary>
         public IFiles Files { get; private set; }
+
+        /// <summary>
+        /// Folders SubSDK.
+        /// <see cref="IFolders"/>
+        /// </summary>
         public IFolders Folders { get; private set; }
+
+        /// <summary>
+        /// SharedLinks SubSDK.
+        /// <see cref="ISharedLinks"/>
+        /// </summary>
         public ISharedLinks SharedLinks { get; private set; }
+
+        /// <summary>
+        /// UploadSessions SubSDK.
+        /// <see cref="IUploadSessions"/>
+        /// </summary>
         public IUploadSessions UploadSessions { get; private set; }
+
+        /// <summary>
+        /// Drives SubSDK.
+        /// <see cref="IDrives"/>
+        /// </summary>
         public IDrives Drives { get; private set; }
+
+        /// <summary>
+        /// DriveGroups SubSDK.
+        /// <see cref="IDriveGroups"/>
+        /// </summary>
         public IDriveGroups DriveGroups { get; private set; }
 
         public FileStorage(SDKConfig config)

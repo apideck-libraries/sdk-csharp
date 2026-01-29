@@ -14,11 +14,12 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Job
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -41,7 +42,7 @@ namespace ApideckUnifySdk.Models.Components
         public long? Sequence { get; set; }
 
         /// <summary>
-        /// The visibility of the job
+        /// The visibility of the job.
         /// </summary>
         [JsonProperty("visibility")]
         public Visibility? Visibility { get; set; }
@@ -59,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Code { get; set; }
 
         /// <summary>
-        /// language code according to ISO 639-1. For the United States - EN
+        /// language code according to ISO 639-1. For the United States - EN.
         /// </summary>
         [JsonProperty("language")]
         public string? Language { get; set; } = null;
@@ -86,7 +87,7 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Remote { get; set; } = null;
 
         /// <summary>
-        /// A job&apos;s Requisition ID (Req ID) allows your organization to identify and track a job based on alphanumeric naming conventions unique to your company&apos;s internal processes.
+        /// A job's Requisition ID (Req ID) allows your organization to identify and track a job based on alphanumeric naming conventions unique to your company's internal processes.
         /// </summary>
         [JsonProperty("requisition_id")]
         public string? RequisitionId { get; set; }
@@ -101,7 +102,7 @@ namespace ApideckUnifySdk.Models.Components
         public Branch? Branch { get; set; }
 
         /// <summary>
-        /// The recruiter is generally someone who is tasked to help the hiring manager find and screen qualified applicant
+        /// The recruiter is generally someone who is tasked to help the hiring manager find and screen qualified applicant.
         /// </summary>
         [JsonProperty("recruiters")]
         public List<string>? Recruiters { get; set; } = null;
@@ -119,7 +120,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The job description in HTML format
+        /// The job description in HTML format.
         /// </summary>
         [JsonProperty("description_html")]
         public string? DescriptionHtml { get; set; } = null;
@@ -131,7 +132,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Closing { get; set; } = null;
 
         /// <summary>
-        /// The closing section of the job description in HTML format
+        /// The closing section of the job description in HTML format.
         /// </summary>
         [JsonProperty("closing_html")]
         public string? ClosingHtml { get; set; } = null;
@@ -143,14 +144,14 @@ namespace ApideckUnifySdk.Models.Components
         public Salary? Salary { get; set; }
 
         /// <summary>
-        /// URL of the job description
+        /// URL of the job description.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("url")]
         public string? Url { get; set; } = null;
 
         /// <summary>
-        /// URL of the job portal
+        /// URL of the job portal.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("job_portal_url")]

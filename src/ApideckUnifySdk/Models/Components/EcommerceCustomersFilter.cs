@@ -10,20 +10,26 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+    using System.Collections.Generic;
+
     public class EcommerceCustomersFilter
     {
-
         /// <summary>
-        /// Customer email address to filter on
+        /// Customer email address to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=email")]
         public string? Email { get; set; }
 
         /// <summary>
-        /// Customer phone number to filter on
+        /// Customer phone number to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=phone_number")]
         public string? PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Filter by customer IDs.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=customer_ids")]
+        public List<string>? CustomerIds { get; set; }
     }
 }

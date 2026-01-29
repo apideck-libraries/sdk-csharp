@@ -12,11 +12,10 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    [Obsolete("This will be removed in a future release, please migrate away from it as soon as possible")]
+
+    [Obsolete("This field is deprecated and may be removed in a future version.")]
     public class DeprecatedLinkedTrackingCategory
     {
-
         /// <summary>
         /// The unique identifier for the tracking category.
         /// </summary>

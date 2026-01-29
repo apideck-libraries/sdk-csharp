@@ -11,21 +11,20 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Department or organizational unit associated with the project
+    /// Department or organizational unit associated with the project.
     /// </summary>
     public class ProjectDepartment
     {
-
         /// <summary>
-        /// Unique identifier for the department
+        /// Unique identifier for the department.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Name of the department
+        /// Name of the department.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }

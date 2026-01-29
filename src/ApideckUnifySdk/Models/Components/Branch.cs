@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Details of the branch for which the job is created.
     /// </summary>
     public class Branch
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>

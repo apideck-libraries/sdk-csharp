@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Type of authorization used by the connector
+    /// Type of authorization used by the connector.
     /// </summary>
-    public enum ConnectorAuthType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ConnectorAuthType : IEquatable<ConnectorAuthType>
     {
-        [JsonProperty("oauth2")]
-        Oauth2,
-        [JsonProperty("apiKey")]
-        ApiKey,
-        [JsonProperty("basic")]
-        Basic,
-        [JsonProperty("custom")]
-        Custom,
-        [JsonProperty("none")]
-        None,
-    }
+        public static readonly ConnectorAuthType Oauth2 = new ConnectorAuthType("oauth2");
+        public static readonly ConnectorAuthType ApiKey = new ConnectorAuthType("apiKey");
+        public static readonly ConnectorAuthType Basic = new ConnectorAuthType("basic");
+        public static readonly ConnectorAuthType Custom = new ConnectorAuthType("custom");
+        public static readonly ConnectorAuthType None = new ConnectorAuthType("none");
 
-    public static class ConnectorAuthTypeExtension
-    {
-        public static string Value(this ConnectorAuthType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ConnectorAuthType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ConnectorAuthType).GetFields())
+        private static readonly Dictionary <string, ConnectorAuthType> _knownValues =
+            new Dictionary <string, ConnectorAuthType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["oauth2"] = Oauth2,
+                ["apiKey"] = ApiKey,
+                ["basic"] = Basic,
+                ["custom"] = Custom,
+                ["none"] = None
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ConnectorAuthType> _values =
+            new ConcurrentDictionary<string, ConnectorAuthType>(_knownValues);
 
-                    if (enumVal is ConnectorAuthType)
-                    {
-                        return (ConnectorAuthType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ConnectorAuthType");
+        private ConnectorAuthType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ConnectorAuthType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ConnectorAuthType(value));
+        }
+
+        public static implicit operator ConnectorAuthType(string value) => Of(value);
+        public static implicit operator string(ConnectorAuthType connectorauthtype) => connectorauthtype.Value;
+
+        public static ConnectorAuthType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ConnectorAuthType);
+
+        public bool Equals(ConnectorAuthType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

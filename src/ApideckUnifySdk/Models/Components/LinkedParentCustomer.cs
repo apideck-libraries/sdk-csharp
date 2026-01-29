@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The parent customer this entity is linked to.
     /// </summary>
     public class LinkedParentCustomer
     {
-
         /// <summary>
         /// The parent ID of the customer this entity is linked to.
         /// </summary>

@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedTrackingCategory
     {
-
         /// <summary>
         /// The unique identifier for the tracking category.
         /// </summary>

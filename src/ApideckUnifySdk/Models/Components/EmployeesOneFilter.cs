@@ -10,12 +10,11 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class EmployeesOneFilter
     {
-
         /// <summary>
-        /// Company ID to filter on
+        /// Company ID to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=company_id")]
         public string? CompanyId { get; set; }

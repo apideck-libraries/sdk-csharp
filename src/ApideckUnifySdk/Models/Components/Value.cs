@@ -61,7 +61,6 @@ namespace ApideckUnifySdk.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(Value.ValueConverter))]
     public class Value
     {

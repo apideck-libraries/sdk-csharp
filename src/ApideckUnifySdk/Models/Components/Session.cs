@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class Session
     {
-
         /// <summary>
         /// The metadata of the consumer. This is used to display the consumer in the sidebar. This is optional, but recommended.
         /// </summary>

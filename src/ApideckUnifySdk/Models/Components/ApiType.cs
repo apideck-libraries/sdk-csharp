@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Indicates whether the API is a Unified API. If unified_api is false, the API is a Platform API.
     /// </summary>
-    public enum ApiType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ApiType : IEquatable<ApiType>
     {
-        [JsonProperty("platform")]
-        Platform,
-        [JsonProperty("unified")]
-        Unified,
-    }
+        public static readonly ApiType Platform = new ApiType("platform");
+        public static readonly ApiType Unified = new ApiType("unified");
 
-    public static class ApiTypeExtension
-    {
-        public static string Value(this ApiType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ApiType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ApiType).GetFields())
+        private static readonly Dictionary <string, ApiType> _knownValues =
+            new Dictionary <string, ApiType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["platform"] = Platform,
+                ["unified"] = Unified
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ApiType> _values =
+            new ConcurrentDictionary<string, ApiType>(_knownValues);
 
-                    if (enumVal is ApiType)
-                    {
-                        return (ApiType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ApiType");
+        private ApiType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ApiType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ApiType(value));
+        }
+
+        public static implicit operator ApiType(string value) => Of(value);
+        public static implicit operator string(ApiType apitype) => apitype.Value;
+
+        public static ApiType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ApiType);
+
+        public bool Equals(ApiType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

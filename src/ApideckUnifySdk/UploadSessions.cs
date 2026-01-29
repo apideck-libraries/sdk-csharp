@@ -24,51 +24,128 @@ namespace ApideckUnifySdk
 
     public interface IUploadSessions
     {
-
         /// <summary>
-        /// Start Upload Session
-        /// 
+        /// Start Upload Session.
+        /// </summary>
         /// <remarks>
         /// Start an Upload Session. Upload sessions are used to upload large files, use the <a href="#operation/filesUpload">Upload File</a> endpoint to upload smaller files (up to 100MB). Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
         /// </remarks>
-        /// </summary>
-        Task<FileStorageUploadSessionsAddResponse> CreateAsync(FileStorageUploadSessionsAddRequest request, string? serverUrl = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="FileStorageUploadSessionsAddRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageUploadSessionsAddResponse> CreateAsync(
+            FileStorageUploadSessionsAddRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get Upload Session
-        /// 
+        /// Get Upload Session.
+        /// </summary>
         /// <remarks>
         /// Get Upload Session. Use the `part_size` to split your file into parts. Upload the parts to the <a href="#operation/uploadSessionsUpload">Upload part of File</a> endpoint. Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
         /// </remarks>
-        /// </summary>
-        Task<FileStorageUploadSessionsOneResponse> GetAsync(FileStorageUploadSessionsOneRequest request, string? serverUrl = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="FileStorageUploadSessionsOneRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageUploadSessionsOneResponse> GetAsync(
+            FileStorageUploadSessionsOneRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Upload part of File to Upload Session
-        /// 
+        /// Upload part of File to Upload Session.
+        /// </summary>
         /// <remarks>
         /// Upload part of File to Upload Session (max 100MB). Get `part_size` from <a href="#operation/uploadSessionsOne">Get Upload Session</a> first. Every File part (except the last one) uploaded to this endpoint should have Content-Length equal to `part_size`. Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
         /// </remarks>
-        /// </summary>
-        Task<FileStorageUploadSessionsUploadResponse> UploadAsync(FileStorageUploadSessionsUploadRequest request, string? serverUrl = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="FileStorageUploadSessionsUploadRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsUploadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageUploadSessionsUploadResponse> UploadAsync(
+            FileStorageUploadSessionsUploadRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Abort Upload Session
-        /// 
+        /// Abort Upload Session.
+        /// </summary>
         /// <remarks>
         /// Abort Upload Session. Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
         /// </remarks>
-        /// </summary>
-        Task<FileStorageUploadSessionsDeleteResponse> DeleteAsync(FileStorageUploadSessionsDeleteRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="FileStorageUploadSessionsDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageUploadSessionsDeleteResponse> DeleteAsync(
+            FileStorageUploadSessionsDeleteRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Finish Upload Session
-        /// 
+        /// Finish Upload Session.
+        /// </summary>
         /// <remarks>
         /// Finish Upload Session. Only call this endpoint after all File parts have been uploaded to <a href="#operation/uploadSessionsUpload">Upload part of File</a>. Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
         /// </remarks>
-        /// </summary>
-        Task<FileStorageUploadSessionsFinishResponse> FinishAsync(FileStorageUploadSessionsFinishRequest request, string? serverUrl = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="FileStorageUploadSessionsFinishRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsFinishResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageUploadSessionsFinishResponse> FinishAsync(
+            FileStorageUploadSessionsFinishRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class UploadSessions: IUploadSessions
@@ -79,43 +156,68 @@ namespace ApideckUnifySdk
         public static readonly string[] FileStorageUploadSessionsAddServerList = {
             "https://upload.apideck.com",
         };
+
         /// <summary>
         /// List of server URLs available for the fileStorage.uploadSessionsOne operation.
         /// </summary>
         public static readonly string[] FileStorageUploadSessionsOneServerList = {
             "https://upload.apideck.com",
         };
+
         /// <summary>
         /// List of server URLs available for the fileStorage.uploadSessionsUpload operation.
         /// </summary>
         public static readonly string[] FileStorageUploadSessionsUploadServerList = {
             "https://upload.apideck.com",
         };
+
         /// <summary>
         /// List of server URLs available for the fileStorage.uploadSessionsFinish operation.
         /// </summary>
         public static readonly string[] FileStorageUploadSessionsFinishServerList = {
             "https://upload.apideck.com",
         };
-        public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
+        public SDKConfig SDKConfiguration { get; private set; }
 
         public UploadSessions(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<FileStorageUploadSessionsAddResponse> CreateAsync(FileStorageUploadSessionsAddRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Start Upload Session.
+        /// </summary>
+        /// <remarks>
+        /// Start an Upload Session. Upload sessions are used to upload large files, use the <a href="#operation/filesUpload">Upload File</a> endpoint to upload smaller files (up to 100MB). Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageUploadSessionsAddRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageUploadSessionsAddResponse> CreateAsync(
+            FileStorageUploadSessionsAddRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = Utilities.TemplateUrl(FileStorageUploadSessionsAddServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
@@ -186,7 +288,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -380,13 +482,36 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageUploadSessionsOneResponse> GetAsync(FileStorageUploadSessionsOneRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get Upload Session.
+        /// </summary>
+        /// <remarks>
+        /// Get Upload Session. Use the `part_size` to split your file into parts. Upload the parts to the <a href="#operation/uploadSessionsUpload">Upload part of File</a> endpoint. Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageUploadSessionsOneRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageUploadSessionsOneResponse> GetAsync(
+            FileStorageUploadSessionsOneRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = Utilities.TemplateUrl(FileStorageUploadSessionsOneServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
@@ -451,7 +576,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -645,13 +770,36 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageUploadSessionsUploadResponse> UploadAsync(FileStorageUploadSessionsUploadRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Upload part of File to Upload Session.
+        /// </summary>
+        /// <remarks>
+        /// Upload part of File to Upload Session (max 100MB). Get `part_size` from <a href="#operation/uploadSessionsOne">Get Upload Session</a> first. Every File part (except the last one) uploaded to this endpoint should have Content-Length equal to `part_size`. Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageUploadSessionsUploadRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsUploadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageUploadSessionsUploadResponse> UploadAsync(
+            FileStorageUploadSessionsUploadRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = Utilities.TemplateUrl(FileStorageUploadSessionsUploadServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
@@ -722,7 +870,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -916,13 +1064,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageUploadSessionsDeleteResponse> DeleteAsync(FileStorageUploadSessionsDeleteRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Abort Upload Session.
+        /// </summary>
+        /// <remarks>
+        /// Abort Upload Session. Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageUploadSessionsDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageUploadSessionsDeleteResponse> DeleteAsync(
+            FileStorageUploadSessionsDeleteRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/file-storage/upload-sessions/{id}", request, null);
 
@@ -982,7 +1151,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1176,13 +1345,36 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageUploadSessionsFinishResponse> FinishAsync(FileStorageUploadSessionsFinishRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Finish Upload Session.
+        /// </summary>
+        /// <remarks>
+        /// Finish Upload Session. Only call this endpoint after all File parts have been uploaded to <a href="#operation/uploadSessionsUpload">Upload part of File</a>. Note that the base URL is upload.apideck.com instead of unify.apideck.com. For more information on uploads, refer to the <a href="/guides/file-upload">file upload guide</a>.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageUploadSessionsFinishRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageUploadSessionsFinishResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageUploadSessionsFinishResponse> FinishAsync(
+            FileStorageUploadSessionsFinishRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = Utilities.TemplateUrl(FileStorageUploadSessionsFinishServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
@@ -1253,7 +1445,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1446,5 +1638,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

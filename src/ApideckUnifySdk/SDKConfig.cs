@@ -17,6 +17,9 @@ namespace ApideckUnifySdk
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Main configuration for the SDK.
+    /// </summary>
     public struct SDKConfig
     {
         /// <summary>
@@ -46,7 +49,7 @@ namespace ApideckUnifySdk
             ServerIndex = 0;
             ConsumerId = null;
             AppId = null;
-            UserAgent = "speakeasy-sdk/csharp 0.21.0 2.797.1 10.23.10 ApideckUnifySdk";
+            UserAgent = "speakeasy-sdk/csharp 0.22.0 2.801.2 10.23.6 ApideckUnifySdk";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

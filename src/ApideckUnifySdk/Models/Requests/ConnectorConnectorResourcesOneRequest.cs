@@ -11,12 +11,16 @@ namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class ConnectorConnectorResourcesOneRequest
     {
-
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
@@ -34,7 +38,7 @@ namespace ApideckUnifySdk.Models.Requests
         public string ResourceId { get; set; } = default!;
 
         /// <summary>
-        /// Specify unified API for the connector resource. This is useful when a resource appears in multiple APIs
+        /// Specify unified API for the connector resource. This is useful when a resource appears in multiple APIs.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=unified_api")]
         public UnifiedApiId? UnifiedApi { get; set; }

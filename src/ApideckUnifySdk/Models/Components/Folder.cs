@@ -14,10 +14,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class Folder
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,37 +24,37 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
-        /// The name of the folder
+        /// The name of the folder.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Optional description of the folder
+        /// Optional description of the folder.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The full path of the folder (includes the folder name)
+        /// The full path of the folder (includes the folder name).
         /// </summary>
         [JsonProperty("path")]
         public string? Path { get; set; } = null;
 
         /// <summary>
-        /// The size of the folder in bytes
+        /// The size of the folder in bytes.
         /// </summary>
         [JsonProperty("size")]
         public long? Size { get; set; } = null;
 
         /// <summary>
-        /// Whether the current user can download the contents of this folder
+        /// Whether the current user can download the contents of this folder.
         /// </summary>
         [JsonProperty("downloadable")]
         public bool? Downloadable { get; set; } = null;
@@ -64,13 +63,13 @@ namespace ApideckUnifySdk.Models.Components
         public Owner? Owner { get; set; }
 
         /// <summary>
-        /// The parent folders of the file, starting from the root
+        /// The parent folders of the file, starting from the root.
         /// </summary>
         [JsonProperty("parent_folders")]
         public List<LinkedFolder> ParentFolders { get; set; } = default!;
 
         /// <summary>
-        /// Whether the list of parent folder is complete. Some connectors only return the direct parent of a folder
+        /// Whether the list of parent folder is complete. Some connectors only return the direct parent of a folder.
         /// </summary>
         [JsonProperty("parent_folders_complete")]
         public bool? ParentFoldersComplete { get; set; }

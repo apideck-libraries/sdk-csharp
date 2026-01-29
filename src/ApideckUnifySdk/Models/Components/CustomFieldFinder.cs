@@ -11,36 +11,35 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class CustomFieldFinder
     {
-
         /// <summary>
-        /// Custom Field ID
+        /// Custom Field ID.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Custom Field name to use as a label if provided
+        /// Custom Field name to use as a label if provided.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// More information about the custom field
+        /// More information about the custom field.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Custom Field value
+        /// Custom Field value.
         /// </summary>
         [JsonProperty("value")]
         public object? Value { get; set; }
 
         /// <summary>
-        /// JSONPath finder for retrieving this value when mapping a response payload from downstream
+        /// JSONPath finder for retrieving this value when mapping a response payload from downstream.
         /// </summary>
         [JsonProperty("finder")]
         public string? Finder { get; set; }
