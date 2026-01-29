@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The scope of the shared link.
     /// </summary>
-    public enum Scope
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Scope : IEquatable<Scope>
     {
-        [JsonProperty("public")]
-        Public,
-        [JsonProperty("company")]
-        Company,
-    }
+        public static readonly Scope Public = new Scope("public");
+        public static readonly Scope Company = new Scope("company");
 
-    public static class ScopeExtension
-    {
-        public static string Value(this Scope value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Scope ToEnum(this string value)
-        {
-            foreach(var field in typeof(Scope).GetFields())
+        private static readonly Dictionary <string, Scope> _knownValues =
+            new Dictionary <string, Scope> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["public"] = Public,
+                ["company"] = Company
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Scope> _values =
+            new ConcurrentDictionary<string, Scope>(_knownValues);
 
-                    if (enumVal is Scope)
-                    {
-                        return (Scope)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Scope");
+        private Scope(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Scope Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Scope(value));
+        }
+
+        public static implicit operator Scope(string value) => Of(value);
+        public static implicit operator string(Scope scope) => scope.Value;
+
+        public static Scope[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Scope);
+
+        public bool Equals(Scope? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

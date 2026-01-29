@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Filter by bill status
+    /// Filter by bill status.
     /// </summary>
-    public enum BillsFilterStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BillsFilterStatus : IEquatable<BillsFilterStatus>
     {
-        [JsonProperty("paid")]
-        Paid,
-        [JsonProperty("unpaid")]
-        Unpaid,
-        [JsonProperty("partially_paid")]
-        PartiallyPaid,
-    }
+        public static readonly BillsFilterStatus Paid = new BillsFilterStatus("paid");
+        public static readonly BillsFilterStatus Unpaid = new BillsFilterStatus("unpaid");
+        public static readonly BillsFilterStatus PartiallyPaid = new BillsFilterStatus("partially_paid");
 
-    public static class BillsFilterStatusExtension
-    {
-        public static string Value(this BillsFilterStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BillsFilterStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(BillsFilterStatus).GetFields())
+        private static readonly Dictionary <string, BillsFilterStatus> _knownValues =
+            new Dictionary <string, BillsFilterStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["paid"] = Paid,
+                ["unpaid"] = Unpaid,
+                ["partially_paid"] = PartiallyPaid
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BillsFilterStatus> _values =
+            new ConcurrentDictionary<string, BillsFilterStatus>(_knownValues);
 
-                    if (enumVal is BillsFilterStatus)
-                    {
-                        return (BillsFilterStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BillsFilterStatus");
+        private BillsFilterStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BillsFilterStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BillsFilterStatus(value));
+        }
+
+        public static implicit operator BillsFilterStatus(string value) => Of(value);
+        public static implicit operator string(BillsFilterStatus billsfilterstatus) => billsfilterstatus.Value;
+
+        public static BillsFilterStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BillsFilterStatus);
+
+        public bool Equals(BillsFilterStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

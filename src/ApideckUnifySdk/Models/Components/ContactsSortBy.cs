@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Contacts
+    /// The field on which to sort the Contacts.
     /// </summary>
-    public enum ContactsSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ContactsSortBy : IEquatable<ContactsSortBy>
     {
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-        [JsonProperty("name")]
-        Name,
-        [JsonProperty("first_name")]
-        FirstName,
-        [JsonProperty("last_name")]
-        LastName,
-        [JsonProperty("email")]
-        Email,
-    }
+        public static readonly ContactsSortBy CreatedAt = new ContactsSortBy("created_at");
+        public static readonly ContactsSortBy UpdatedAt = new ContactsSortBy("updated_at");
+        public static readonly ContactsSortBy Name = new ContactsSortBy("name");
+        public static readonly ContactsSortBy FirstName = new ContactsSortBy("first_name");
+        public static readonly ContactsSortBy LastName = new ContactsSortBy("last_name");
+        public static readonly ContactsSortBy Email = new ContactsSortBy("email");
 
-    public static class ContactsSortByExtension
-    {
-        public static string Value(this ContactsSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ContactsSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(ContactsSortBy).GetFields())
+        private static readonly Dictionary <string, ContactsSortBy> _knownValues =
+            new Dictionary <string, ContactsSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt,
+                ["name"] = Name,
+                ["first_name"] = FirstName,
+                ["last_name"] = LastName,
+                ["email"] = Email
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ContactsSortBy> _values =
+            new ConcurrentDictionary<string, ContactsSortBy>(_knownValues);
 
-                    if (enumVal is ContactsSortBy)
-                    {
-                        return (ContactsSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ContactsSortBy");
+        private ContactsSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ContactsSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ContactsSortBy(value));
+        }
+
+        public static implicit operator ContactsSortBy(string value) => Of(value);
+        public static implicit operator string(ContactsSortBy contactssortby) => contactssortby.Value;
+
+        public static ContactsSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ContactsSortBy);
+
+        public bool Equals(ContactsSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

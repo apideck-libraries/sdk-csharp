@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The gender represents the gender identity of a person.
     /// </summary>
-    public enum ApplicantGender
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ApplicantGender : IEquatable<ApplicantGender>
     {
-        [JsonProperty("male")]
-        Male,
-        [JsonProperty("female")]
-        Female,
-        [JsonProperty("unisex")]
-        Unisex,
-        [JsonProperty("other")]
-        Other,
-        [JsonProperty("not_specified")]
-        NotSpecified,
-    }
+        public static readonly ApplicantGender Male = new ApplicantGender("male");
+        public static readonly ApplicantGender Female = new ApplicantGender("female");
+        public static readonly ApplicantGender Unisex = new ApplicantGender("unisex");
+        public static readonly ApplicantGender Other = new ApplicantGender("other");
+        public static readonly ApplicantGender NotSpecified = new ApplicantGender("not_specified");
 
-    public static class ApplicantGenderExtension
-    {
-        public static string Value(this ApplicantGender value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ApplicantGender ToEnum(this string value)
-        {
-            foreach(var field in typeof(ApplicantGender).GetFields())
+        private static readonly Dictionary <string, ApplicantGender> _knownValues =
+            new Dictionary <string, ApplicantGender> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["male"] = Male,
+                ["female"] = Female,
+                ["unisex"] = Unisex,
+                ["other"] = Other,
+                ["not_specified"] = NotSpecified
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ApplicantGender> _values =
+            new ConcurrentDictionary<string, ApplicantGender>(_knownValues);
 
-                    if (enumVal is ApplicantGender)
-                    {
-                        return (ApplicantGender)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ApplicantGender");
+        private ApplicantGender(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ApplicantGender Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ApplicantGender(value));
+        }
+
+        public static implicit operator ApplicantGender(string value) => Of(value);
+        public static implicit operator string(ApplicantGender applicantgender) => applicantgender.Value;
+
+        public static ApplicantGender[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ApplicantGender);
+
+        public bool Equals(ApplicantGender? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

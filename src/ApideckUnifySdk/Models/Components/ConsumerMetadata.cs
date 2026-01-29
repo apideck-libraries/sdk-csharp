@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The metadata of the consumer. This is used to display the consumer in the sidebar. This is optional, but recommended.
     /// </summary>
     public class ConsumerMetadata
     {
-
         /// <summary>
         /// The name of the account as shown in the sidebar.
         /// </summary>
@@ -37,7 +36,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Email { get; set; }
 
         /// <summary>
-        /// The avatar of the user in the sidebar. Must be a valid URL
+        /// The avatar of the user in the sidebar. Must be a valid URL.
         /// </summary>
         [JsonProperty("image")]
         public string? Image { get; set; }

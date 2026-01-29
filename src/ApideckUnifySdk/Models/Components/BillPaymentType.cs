@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Type of payment
+    /// Type of payment.
     /// </summary>
-    public enum BillPaymentType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BillPaymentType : IEquatable<BillPaymentType>
     {
-        [JsonProperty("accounts_payable_credit")]
-        AccountsPayableCredit,
-        [JsonProperty("accounts_payable_overpayment")]
-        AccountsPayableOverpayment,
-        [JsonProperty("accounts_payable_prepayment")]
-        AccountsPayablePrepayment,
-        [JsonProperty("accounts_payable")]
-        AccountsPayable,
-    }
+        public static readonly BillPaymentType AccountsPayableCredit = new BillPaymentType("accounts_payable_credit");
+        public static readonly BillPaymentType AccountsPayableOverpayment = new BillPaymentType("accounts_payable_overpayment");
+        public static readonly BillPaymentType AccountsPayablePrepayment = new BillPaymentType("accounts_payable_prepayment");
+        public static readonly BillPaymentType AccountsPayable = new BillPaymentType("accounts_payable");
 
-    public static class BillPaymentTypeExtension
-    {
-        public static string Value(this BillPaymentType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BillPaymentType ToEnum(this string value)
-        {
-            foreach(var field in typeof(BillPaymentType).GetFields())
+        private static readonly Dictionary <string, BillPaymentType> _knownValues =
+            new Dictionary <string, BillPaymentType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["accounts_payable_credit"] = AccountsPayableCredit,
+                ["accounts_payable_overpayment"] = AccountsPayableOverpayment,
+                ["accounts_payable_prepayment"] = AccountsPayablePrepayment,
+                ["accounts_payable"] = AccountsPayable
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BillPaymentType> _values =
+            new ConcurrentDictionary<string, BillPaymentType>(_knownValues);
 
-                    if (enumVal is BillPaymentType)
-                    {
-                        return (BillPaymentType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BillPaymentType");
+        private BillPaymentType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BillPaymentType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BillPaymentType(value));
+        }
+
+        public static implicit operator BillPaymentType(string value) => Of(value);
+        public static implicit operator string(BillPaymentType billpaymenttype) => billpaymenttype.Value;
+
+        public static BillPaymentType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BillPaymentType);
+
+        public bool Equals(BillPaymentType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

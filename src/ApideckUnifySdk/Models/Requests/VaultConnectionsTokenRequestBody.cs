@@ -10,7 +10,7 @@
 namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class VaultConnectionsTokenRequestBody
     {
     }

@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Status of the resource. Resources with status live or beta are callable.
     /// </summary>
-    public enum ResourceStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ResourceStatus : IEquatable<ResourceStatus>
     {
-        [JsonProperty("live")]
-        Live,
-        [JsonProperty("beta")]
-        Beta,
-        [JsonProperty("development")]
-        Development,
-        [JsonProperty("upcoming")]
-        Upcoming,
-        [JsonProperty("considering")]
-        Considering,
-    }
+        public static readonly ResourceStatus Live = new ResourceStatus("live");
+        public static readonly ResourceStatus Beta = new ResourceStatus("beta");
+        public static readonly ResourceStatus Development = new ResourceStatus("development");
+        public static readonly ResourceStatus Upcoming = new ResourceStatus("upcoming");
+        public static readonly ResourceStatus Considering = new ResourceStatus("considering");
 
-    public static class ResourceStatusExtension
-    {
-        public static string Value(this ResourceStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ResourceStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ResourceStatus).GetFields())
+        private static readonly Dictionary <string, ResourceStatus> _knownValues =
+            new Dictionary <string, ResourceStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["live"] = Live,
+                ["beta"] = Beta,
+                ["development"] = Development,
+                ["upcoming"] = Upcoming,
+                ["considering"] = Considering
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ResourceStatus> _values =
+            new ConcurrentDictionary<string, ResourceStatus>(_knownValues);
 
-                    if (enumVal is ResourceStatus)
-                    {
-                        return (ResourceStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ResourceStatus");
+        private ResourceStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ResourceStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ResourceStatus(value));
+        }
+
+        public static implicit operator ResourceStatus(string value) => Of(value);
+        public static implicit operator string(ResourceStatus resourcestatus) => resourcestatus.Value;
+
+        public static ResourceStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ResourceStatus);
+
+        public bool Equals(ResourceStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

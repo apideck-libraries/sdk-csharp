@@ -17,72 +17,244 @@ namespace ApideckUnifySdk
     public interface IAccounting
     {
         public ITaxRates TaxRates { get; }
+
         public IBills Bills { get; }
+
         public IInvoices Invoices { get; }
+
         public ILedgerAccounts LedgerAccounts { get; }
+
         public IInvoiceItems InvoiceItems { get; }
+
         public ICreditNotes CreditNotes { get; }
+
         public ICustomers Customers { get; }
+
         public ISuppliers Suppliers { get; }
+
         public IPayments Payments { get; }
+
         public ICompanyInfo CompanyInfo { get; }
+
         public IBalanceSheet BalanceSheet { get; }
+
         public IProfitAndLoss ProfitAndLoss { get; }
+
         public IJournalEntries JournalEntries { get; }
+
         public IPurchaseOrders PurchaseOrders { get; }
+
         public ISubsidiaries Subsidiaries { get; }
+
         public ILocations Locations { get; }
+
         public IDepartments Departments { get; }
+
         public IAttachments Attachments { get; }
+
         public IBankAccounts BankAccounts { get; }
+
         public ITrackingCategories TrackingCategories { get; }
+
         public IBillPayments BillPayments { get; }
+
         public IExpenses Expenses { get; }
+
         public IAgedCreditors AgedCreditors { get; }
+
         public IAgedDebtors AgedDebtors { get; }
+
         public IBankFeedAccounts BankFeedAccounts { get; }
+
         public IBankFeedStatements BankFeedStatements { get; }
+
         public ICategories Categories { get; }
+
         public IQuotes Quotes { get; }
+
         public IProjects Projects { get; }
     }
 
     public class Accounting: IAccounting
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// TaxRates SubSDK.
+        /// <see cref="ITaxRates"/>
+        /// </summary>
         public ITaxRates TaxRates { get; private set; }
+
+        /// <summary>
+        /// Bills SubSDK.
+        /// <see cref="IBills"/>
+        /// </summary>
         public IBills Bills { get; private set; }
+
+        /// <summary>
+        /// Invoices SubSDK.
+        /// <see cref="IInvoices"/>
+        /// </summary>
         public IInvoices Invoices { get; private set; }
+
+        /// <summary>
+        /// LedgerAccounts SubSDK.
+        /// <see cref="ILedgerAccounts"/>
+        /// </summary>
         public ILedgerAccounts LedgerAccounts { get; private set; }
+
+        /// <summary>
+        /// InvoiceItems SubSDK.
+        /// <see cref="IInvoiceItems"/>
+        /// </summary>
         public IInvoiceItems InvoiceItems { get; private set; }
+
+        /// <summary>
+        /// CreditNotes SubSDK.
+        /// <see cref="ICreditNotes"/>
+        /// </summary>
         public ICreditNotes CreditNotes { get; private set; }
+
+        /// <summary>
+        /// Customers SubSDK.
+        /// <see cref="ICustomers"/>
+        /// </summary>
         public ICustomers Customers { get; private set; }
+
+        /// <summary>
+        /// Suppliers SubSDK.
+        /// <see cref="ISuppliers"/>
+        /// </summary>
         public ISuppliers Suppliers { get; private set; }
+
+        /// <summary>
+        /// Payments SubSDK.
+        /// <see cref="IPayments"/>
+        /// </summary>
         public IPayments Payments { get; private set; }
+
+        /// <summary>
+        /// CompanyInfo SubSDK.
+        /// <see cref="ICompanyInfo"/>
+        /// </summary>
         public ICompanyInfo CompanyInfo { get; private set; }
+
+        /// <summary>
+        /// BalanceSheet SubSDK.
+        /// <see cref="IBalanceSheet"/>
+        /// </summary>
         public IBalanceSheet BalanceSheet { get; private set; }
+
+        /// <summary>
+        /// ProfitAndLoss SubSDK.
+        /// <see cref="IProfitAndLoss"/>
+        /// </summary>
         public IProfitAndLoss ProfitAndLoss { get; private set; }
+
+        /// <summary>
+        /// JournalEntries SubSDK.
+        /// <see cref="IJournalEntries"/>
+        /// </summary>
         public IJournalEntries JournalEntries { get; private set; }
+
+        /// <summary>
+        /// PurchaseOrders SubSDK.
+        /// <see cref="IPurchaseOrders"/>
+        /// </summary>
         public IPurchaseOrders PurchaseOrders { get; private set; }
+
+        /// <summary>
+        /// Subsidiaries SubSDK.
+        /// <see cref="ISubsidiaries"/>
+        /// </summary>
         public ISubsidiaries Subsidiaries { get; private set; }
+
+        /// <summary>
+        /// Locations SubSDK.
+        /// <see cref="ILocations"/>
+        /// </summary>
         public ILocations Locations { get; private set; }
+
+        /// <summary>
+        /// Departments SubSDK.
+        /// <see cref="IDepartments"/>
+        /// </summary>
         public IDepartments Departments { get; private set; }
+
+        /// <summary>
+        /// Attachments SubSDK.
+        /// <see cref="IAttachments"/>
+        /// </summary>
         public IAttachments Attachments { get; private set; }
+
+        /// <summary>
+        /// BankAccounts SubSDK.
+        /// <see cref="IBankAccounts"/>
+        /// </summary>
         public IBankAccounts BankAccounts { get; private set; }
+
+        /// <summary>
+        /// TrackingCategories SubSDK.
+        /// <see cref="ITrackingCategories"/>
+        /// </summary>
         public ITrackingCategories TrackingCategories { get; private set; }
+
+        /// <summary>
+        /// BillPayments SubSDK.
+        /// <see cref="IBillPayments"/>
+        /// </summary>
         public IBillPayments BillPayments { get; private set; }
+
+        /// <summary>
+        /// Expenses SubSDK.
+        /// <see cref="IExpenses"/>
+        /// </summary>
         public IExpenses Expenses { get; private set; }
+
+        /// <summary>
+        /// AgedCreditors SubSDK.
+        /// <see cref="IAgedCreditors"/>
+        /// </summary>
         public IAgedCreditors AgedCreditors { get; private set; }
+
+        /// <summary>
+        /// AgedDebtors SubSDK.
+        /// <see cref="IAgedDebtors"/>
+        /// </summary>
         public IAgedDebtors AgedDebtors { get; private set; }
+
+        /// <summary>
+        /// BankFeedAccounts SubSDK.
+        /// <see cref="IBankFeedAccounts"/>
+        /// </summary>
         public IBankFeedAccounts BankFeedAccounts { get; private set; }
+
+        /// <summary>
+        /// BankFeedStatements SubSDK.
+        /// <see cref="IBankFeedStatements"/>
+        /// </summary>
         public IBankFeedStatements BankFeedStatements { get; private set; }
+
+        /// <summary>
+        /// Categories SubSDK.
+        /// <see cref="ICategories"/>
+        /// </summary>
         public ICategories Categories { get; private set; }
+
+        /// <summary>
+        /// Quotes SubSDK.
+        /// <see cref="IQuotes"/>
+        /// </summary>
         public IQuotes Quotes { get; private set; }
+
+        /// <summary>
+        /// Projects SubSDK.
+        /// <see cref="IProjects"/>
+        /// </summary>
         public IProjects Projects { get; private set; }
 
         public Accounting(SDKConfig config)

@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Type of the transaction.
     /// </summary>
-    public enum BalanceByTransactionTransactionType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BalanceByTransactionTransactionType : IEquatable<BalanceByTransactionTransactionType>
     {
-        [JsonProperty("invoice")]
-        Invoice,
-        [JsonProperty("credit_note")]
-        CreditNote,
-        [JsonProperty("bill")]
-        Bill,
-        [JsonProperty("payment")]
-        Payment,
-        [JsonProperty("bill_payment")]
-        BillPayment,
-    }
+        public static readonly BalanceByTransactionTransactionType Invoice = new BalanceByTransactionTransactionType("invoice");
+        public static readonly BalanceByTransactionTransactionType CreditNote = new BalanceByTransactionTransactionType("credit_note");
+        public static readonly BalanceByTransactionTransactionType Bill = new BalanceByTransactionTransactionType("bill");
+        public static readonly BalanceByTransactionTransactionType Payment = new BalanceByTransactionTransactionType("payment");
+        public static readonly BalanceByTransactionTransactionType BillPayment = new BalanceByTransactionTransactionType("bill_payment");
 
-    public static class BalanceByTransactionTransactionTypeExtension
-    {
-        public static string Value(this BalanceByTransactionTransactionType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BalanceByTransactionTransactionType ToEnum(this string value)
-        {
-            foreach(var field in typeof(BalanceByTransactionTransactionType).GetFields())
+        private static readonly Dictionary <string, BalanceByTransactionTransactionType> _knownValues =
+            new Dictionary <string, BalanceByTransactionTransactionType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["invoice"] = Invoice,
+                ["credit_note"] = CreditNote,
+                ["bill"] = Bill,
+                ["payment"] = Payment,
+                ["bill_payment"] = BillPayment
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BalanceByTransactionTransactionType> _values =
+            new ConcurrentDictionary<string, BalanceByTransactionTransactionType>(_knownValues);
 
-                    if (enumVal is BalanceByTransactionTransactionType)
-                    {
-                        return (BalanceByTransactionTransactionType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BalanceByTransactionTransactionType");
+        private BalanceByTransactionTransactionType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BalanceByTransactionTransactionType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BalanceByTransactionTransactionType(value));
+        }
+
+        public static implicit operator BalanceByTransactionTransactionType(string value) => Of(value);
+        public static implicit operator string(BalanceByTransactionTransactionType balancebytransactiontransactiontype) => balancebytransactiontransactiontype.Value;
+
+        public static BalanceByTransactionTransactionType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BalanceByTransactionTransactionType);
+
+        public bool Equals(BalanceByTransactionTransactionType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

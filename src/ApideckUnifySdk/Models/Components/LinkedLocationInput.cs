@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedLocationInput
     {
-
         /// <summary>
         /// The unique identifier for the location.
         /// </summary>

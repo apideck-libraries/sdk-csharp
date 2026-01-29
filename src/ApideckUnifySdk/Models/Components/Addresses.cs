@@ -12,10 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Addresses
     {
-
         [JsonProperty("type")]
         public EcommerceCustomerType? Type { get; set; }
 
@@ -26,37 +29,37 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// First line of the street address of the customer
+        /// First line of the street address of the customer.
         /// </summary>
         [JsonProperty("line1")]
         public string? Line1 { get; set; } = null;
 
         /// <summary>
-        /// Second line of the street address of the customer
+        /// Second line of the street address of the customer.
         /// </summary>
         [JsonProperty("line2")]
         public string? Line2 { get; set; } = null;
 
         /// <summary>
-        /// City of the customer
+        /// City of the customer.
         /// </summary>
         [JsonProperty("city")]
         public string? City { get; set; } = null;
 
         /// <summary>
-        /// State of the customer
+        /// State of the customer.
         /// </summary>
         [JsonProperty("state")]
         public string? State { get; set; } = null;
 
         /// <summary>
-        /// Postal code of the customer
+        /// Postal code of the customer.
         /// </summary>
         [JsonProperty("postal_code")]
         public string? PostalCode { get; set; } = null;
 
         /// <summary>
-        /// Country of the customer
+        /// Country of the customer.
         /// </summary>
         [JsonProperty("country")]
         public string? Country { get; set; } = null;

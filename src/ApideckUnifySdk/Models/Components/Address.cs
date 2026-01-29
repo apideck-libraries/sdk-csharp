@@ -12,10 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Address
     {
-
         /// <summary>
         /// Unique identifier for the address.
         /// </summary>
@@ -29,7 +32,7 @@ namespace ApideckUnifySdk.Models.Components
         public Models.Components.Type? Type { get; set; } = null;
 
         /// <summary>
-        /// The address string. Some APIs don&apos;t provide structured address data.
+        /// The address string. Some APIs don't provide structured address data.
         /// </summary>
         [JsonProperty("string")]
         public string? String { get; set; } = null;
@@ -47,31 +50,31 @@ namespace ApideckUnifySdk.Models.Components
         public string? Line1 { get; set; } = null;
 
         /// <summary>
-        /// Line 2 of the address
+        /// Line 2 of the address.
         /// </summary>
         [JsonProperty("line2")]
         public string? Line2 { get; set; } = null;
 
         /// <summary>
-        /// Line 3 of the address
+        /// Line 3 of the address.
         /// </summary>
         [JsonProperty("line3")]
         public string? Line3 { get; set; } = null;
 
         /// <summary>
-        /// Line 4 of the address
+        /// Line 4 of the address.
         /// </summary>
         [JsonProperty("line4")]
         public string? Line4 { get; set; } = null;
 
         /// <summary>
-        /// Line 5 of the address
+        /// Line 5 of the address.
         /// </summary>
         [JsonProperty("line5")]
         public string? Line5 { get; set; } = null;
 
         /// <summary>
-        /// Street number
+        /// Street number.
         /// </summary>
         [JsonProperty("street_number")]
         public string? StreetNumber { get; set; } = null;
@@ -83,7 +86,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? City { get; set; } = null;
 
         /// <summary>
-        /// Name of state
+        /// Name of state.
         /// </summary>
         [JsonProperty("state")]
         public string? State { get; set; } = null;
@@ -101,61 +104,61 @@ namespace ApideckUnifySdk.Models.Components
         public string? Country { get; set; } = null;
 
         /// <summary>
-        /// Latitude of the address
+        /// Latitude of the address.
         /// </summary>
         [JsonProperty("latitude")]
         public string? Latitude { get; set; } = null;
 
         /// <summary>
-        /// Longitude of the address
+        /// Longitude of the address.
         /// </summary>
         [JsonProperty("longitude")]
         public string? Longitude { get; set; } = null;
 
         /// <summary>
-        /// Address field that holds a sublocality, such as a county
+        /// Address field that holds a sublocality, such as a county.
         /// </summary>
         [JsonProperty("county")]
         public string? County { get; set; } = null;
 
         /// <summary>
-        /// Name of the contact person at the address
+        /// Name of the contact person at the address.
         /// </summary>
         [JsonProperty("contact_name")]
         public string? ContactName { get; set; } = null;
 
         /// <summary>
-        /// Salutation of the contact person at the address
+        /// Salutation of the contact person at the address.
         /// </summary>
         [JsonProperty("salutation")]
         public string? Salutation { get; set; } = null;
 
         /// <summary>
-        /// Phone number of the address
+        /// Phone number of the address.
         /// </summary>
         [JsonProperty("phone_number")]
         public string? PhoneNumber { get; set; } = null;
 
         /// <summary>
-        /// Fax number of the address
+        /// Fax number of the address.
         /// </summary>
         [JsonProperty("fax")]
         public string? Fax { get; set; } = null;
 
         /// <summary>
-        /// Email address of the address
+        /// Email address of the address.
         /// </summary>
         [JsonProperty("email")]
         public string? Email { get; set; } = null;
 
         /// <summary>
-        /// Website of the address
+        /// Website of the address.
         /// </summary>
         [JsonProperty("website")]
         public string? Website { get; set; } = null;
 
         /// <summary>
-        /// Additional notes
+        /// Additional notes.
         /// </summary>
         [JsonProperty("notes")]
         public string? Notes { get; set; } = null;

@@ -13,19 +13,20 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class JournalEntryInput
     {
-
         /// <summary>
-        /// Display ID of the journal entry
+        /// Display ID of the journal entry.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// Journal entry title
+        /// Journal entry title.
         /// </summary>
         [JsonProperty("title")]
         public string? Title { get; set; } = null;
@@ -43,19 +44,19 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// Requires a minimum of 2 line items that sum to 0
+        /// Requires a minimum of 2 line items that sum to 0.
         /// </summary>
         [JsonProperty("line_items")]
         public List<JournalEntryLineItemInput>? LineItems { get; set; }
 
         /// <summary>
-        /// Journal entry status
+        /// Journal entry status.
         /// </summary>
         [JsonProperty("status")]
         public JournalEntryStatus? Status { get; set; } = null;
@@ -73,13 +74,13 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? PostedAt { get; set; }
 
         /// <summary>
-        /// Journal symbol of the entry. For example IND for indirect costs
+        /// Journal symbol of the entry. For example IND for indirect costs.
         /// </summary>
         [JsonProperty("journal_symbol")]
         public string? JournalSymbol { get; set; } = null;
 
         /// <summary>
-        /// The specific category of tax associated with a transaction like sales or purchase
+        /// The specific category of tax associated with a transaction like sales or purchase.
         /// </summary>
         [JsonProperty("tax_type")]
         public string? TaxType { get; set; } = null;
@@ -103,25 +104,25 @@ namespace ApideckUnifySdk.Models.Components
         public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
         /// <summary>
-        /// Accounting period
+        /// Accounting period.
         /// </summary>
         [JsonProperty("accounting_period")]
         public string? AccountingPeriod { get; set; } = null;
 
         /// <summary>
-        /// Amounts are including tax
+        /// Amounts are including tax.
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;
 
         /// <summary>
-        /// The source type of the journal entry
+        /// The source type of the journal entry.
         /// </summary>
         [JsonProperty("source_type")]
         public string? SourceType { get; set; } = null;
 
         /// <summary>
-        /// A unique identifier for the source of the journal entry
+        /// A unique identifier for the source of the journal entry.
         /// </summary>
         [JsonProperty("source_id")]
         public string? SourceId { get; set; } = null;

@@ -11,18 +11,22 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class BankAccountsSort
     {
-
         /// <summary>
-        /// The field to sort by
+        /// The field to sort by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=by")]
         public SortBy? By { get; set; } = ApideckUnifySdk.Models.Components.SortBy.UpdatedAt;
 
         /// <summary>
-        /// The direction in which to sort the results
+        /// The direction in which to sort the results.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=direction")]
         public SortDirection? Direction { get; set; } = ApideckUnifySdk.Models.Components.SortDirection.Asc;

@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class ContactInput
     {
-
         /// <summary>
         /// Full name of the contact.
         /// </summary>
@@ -97,7 +98,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Department { get; set; } = null;
 
         /// <summary>
-        /// language code according to ISO 639-1. For the United States - EN
+        /// language code according to ISO 639-1. For the United States - EN.
         /// </summary>
         [JsonProperty("language")]
         public string? Language { get; set; } = null;

@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class PaymentInput
     {
-
         /// <summary>
         /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
         /// </summary>
@@ -31,7 +32,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? CurrencyRate { get; set; } = null;
 
         /// <summary>
-        /// The total amount of the transaction or record
+        /// The total amount of the transaction or record.
         /// </summary>
         [JsonProperty("total_amount", NullValueHandling = NullValueHandling.Include)]
         public double? TotalAmount { get; set; }
@@ -43,13 +44,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Reference { get; set; } = null;
 
         /// <summary>
-        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check
+        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check.
         /// </summary>
         [JsonProperty("payment_method")]
         public string? PaymentMethod { get; set; } = null;
 
         /// <summary>
-        /// Optional reference message returned by payment method on processing
+        /// Optional reference message returned by payment method on processing.
         /// </summary>
         [JsonProperty("payment_method_reference")]
         public string? PaymentMethodReference { get; set; } = null;
@@ -78,7 +79,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedLedgerAccount? Account { get; set; } = null;
 
         /// <summary>
-        /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD
+        /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD.
         /// </summary>
         [JsonProperty("transaction_date", NullValueHandling = NullValueHandling.Include)]
         public DateTime? TransactionDate { get; set; }
@@ -97,7 +98,7 @@ namespace ApideckUnifySdk.Models.Components
         public DeprecatedLinkedSupplierInput? Supplier { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
@@ -109,13 +110,13 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Reconciled { get; set; } = null;
 
         /// <summary>
-        /// Status of payment
+        /// Status of payment.
         /// </summary>
         [JsonProperty("status")]
         public PaymentStatus? Status { get; set; }
 
         /// <summary>
-        /// Type of payment
+        /// Type of payment.
         /// </summary>
         [JsonProperty("type")]
         public PaymentType? Type { get; set; }
@@ -124,13 +125,13 @@ namespace ApideckUnifySdk.Models.Components
         public List<AllocationInput>? Allocations { get; set; }
 
         /// <summary>
-        /// Note associated with the transaction
+        /// Note associated with the transaction.
         /// </summary>
         [JsonProperty("note")]
         public string? Note { get; set; } = null;
 
         /// <summary>
-        /// Number associated with the transaction
+        /// Number associated with the transaction.
         /// </summary>
         [JsonProperty("number")]
         public string? Number { get; set; } = null;

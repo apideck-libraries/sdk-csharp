@@ -12,61 +12,78 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Quote status
+    /// Quote status.
     /// </summary>
-    public enum QuoteStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class QuoteStatus : IEquatable<QuoteStatus>
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("sent")]
-        Sent,
-        [JsonProperty("accepted")]
-        Accepted,
-        [JsonProperty("rejected")]
-        Rejected,
-        [JsonProperty("expired")]
-        Expired,
-        [JsonProperty("converted")]
-        Converted,
-        [JsonProperty("void")]
-        Void,
-        [JsonProperty("deleted")]
-        Deleted,
-    }
+        public static readonly QuoteStatus Draft = new QuoteStatus("draft");
+        public static readonly QuoteStatus Sent = new QuoteStatus("sent");
+        public static readonly QuoteStatus Accepted = new QuoteStatus("accepted");
+        public static readonly QuoteStatus Rejected = new QuoteStatus("rejected");
+        public static readonly QuoteStatus Expired = new QuoteStatus("expired");
+        public static readonly QuoteStatus Converted = new QuoteStatus("converted");
+        public static readonly QuoteStatus Void = new QuoteStatus("void");
+        public static readonly QuoteStatus Deleted = new QuoteStatus("deleted");
 
-    public static class QuoteStatusExtension
-    {
-        public static string Value(this QuoteStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static QuoteStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(QuoteStatus).GetFields())
+        private static readonly Dictionary <string, QuoteStatus> _knownValues =
+            new Dictionary <string, QuoteStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["sent"] = Sent,
+                ["accepted"] = Accepted,
+                ["rejected"] = Rejected,
+                ["expired"] = Expired,
+                ["converted"] = Converted,
+                ["void"] = Void,
+                ["deleted"] = Deleted
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, QuoteStatus> _values =
+            new ConcurrentDictionary<string, QuoteStatus>(_knownValues);
 
-                    if (enumVal is QuoteStatus)
-                    {
-                        return (QuoteStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum QuoteStatus");
+        private QuoteStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static QuoteStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new QuoteStatus(value));
+        }
+
+        public static implicit operator QuoteStatus(string value) => Of(value);
+        public static implicit operator string(QuoteStatus quotestatus) => quotestatus.Value;
+
+        public static QuoteStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as QuoteStatus);
+
+        public bool Equals(QuoteStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

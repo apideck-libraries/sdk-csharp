@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class ConsumerRequestCountsInDateRangeResponseData
     {
-
         [JsonProperty("application_id")]
         public string? ApplicationId { get; set; }
 

@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using System;
-    
+
     public class InvoicesFilter
     {
-
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
 
@@ -22,13 +21,13 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? CreatedSince { get; set; }
 
         /// <summary>
-        /// Invoice number to search for
+        /// Invoice number to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=number")]
         public string? Number { get; set; }
 
         /// <summary>
-        /// Supplier ID to filter invoices by
+        /// Supplier ID to filter invoices by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=supplier_id")]
         public string? SupplierId { get; set; }

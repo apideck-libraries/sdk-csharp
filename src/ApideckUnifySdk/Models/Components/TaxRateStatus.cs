@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Tax rate status
+    /// Tax rate status.
     /// </summary>
-    public enum TaxRateStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class TaxRateStatus : IEquatable<TaxRateStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("archived")]
-        Archived,
-    }
+        public static readonly TaxRateStatus Active = new TaxRateStatus("active");
+        public static readonly TaxRateStatus Inactive = new TaxRateStatus("inactive");
+        public static readonly TaxRateStatus Archived = new TaxRateStatus("archived");
 
-    public static class TaxRateStatusExtension
-    {
-        public static string Value(this TaxRateStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static TaxRateStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(TaxRateStatus).GetFields())
+        private static readonly Dictionary <string, TaxRateStatus> _knownValues =
+            new Dictionary <string, TaxRateStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["archived"] = Archived
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, TaxRateStatus> _values =
+            new ConcurrentDictionary<string, TaxRateStatus>(_knownValues);
 
-                    if (enumVal is TaxRateStatus)
-                    {
-                        return (TaxRateStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum TaxRateStatus");
+        private TaxRateStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static TaxRateStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new TaxRateStatus(value));
+        }
+
+        public static implicit operator TaxRateStatus(string value) => Of(value);
+        public static implicit operator string(TaxRateStatus taxratestatus) => taxratestatus.Value;
+
+        public static TaxRateStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as TaxRateStatus);
+
+        public bool Equals(TaxRateStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

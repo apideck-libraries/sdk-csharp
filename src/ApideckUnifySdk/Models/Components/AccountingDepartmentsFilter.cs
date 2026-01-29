@@ -10,12 +10,11 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class AccountingDepartmentsFilter
     {
-
         /// <summary>
-        /// Id of the subsidiary to search for
+        /// Id of the subsidiary to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=subsidiary")]
         public string? Subsidiary { get; set; }

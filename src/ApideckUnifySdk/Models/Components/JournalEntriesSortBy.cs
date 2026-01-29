@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The field on which to sort the Journal Entries.
     /// </summary>
-    public enum JournalEntriesSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class JournalEntriesSortBy : IEquatable<JournalEntriesSortBy>
     {
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-    }
+        public static readonly JournalEntriesSortBy CreatedAt = new JournalEntriesSortBy("created_at");
+        public static readonly JournalEntriesSortBy UpdatedAt = new JournalEntriesSortBy("updated_at");
 
-    public static class JournalEntriesSortByExtension
-    {
-        public static string Value(this JournalEntriesSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static JournalEntriesSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(JournalEntriesSortBy).GetFields())
+        private static readonly Dictionary <string, JournalEntriesSortBy> _knownValues =
+            new Dictionary <string, JournalEntriesSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, JournalEntriesSortBy> _values =
+            new ConcurrentDictionary<string, JournalEntriesSortBy>(_knownValues);
 
-                    if (enumVal is JournalEntriesSortBy)
-                    {
-                        return (JournalEntriesSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum JournalEntriesSortBy");
+        private JournalEntriesSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static JournalEntriesSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new JournalEntriesSortBy(value));
+        }
+
+        public static implicit operator JournalEntriesSortBy(string value) => Of(value);
+        public static implicit operator string(JournalEntriesSortBy journalentriessortby) => journalentriessortby.Value;
+
+        public static JournalEntriesSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as JournalEntriesSortBy);
+
+        public bool Equals(JournalEntriesSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

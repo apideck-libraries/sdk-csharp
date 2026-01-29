@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class EcommerceProductVariantsOptions
     {
-
         /// <summary>
         /// A unique identifier for the option of the variant.
         /// </summary>

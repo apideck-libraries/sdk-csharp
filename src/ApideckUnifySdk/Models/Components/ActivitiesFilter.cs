@@ -11,24 +11,23 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using System;
-    
+
     public class ActivitiesFilter
     {
-
         /// <summary>
-        /// Company ID to filter on
+        /// Company ID to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=company_id")]
         public string? CompanyId { get; set; }
 
         /// <summary>
-        /// Owner ID to filter on
+        /// Owner ID to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=owner_id")]
         public string? OwnerId { get; set; }
 
         /// <summary>
-        /// Primary contact ID to filter on
+        /// Primary contact ID to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=contact_id")]
         public string? ContactId { get; set; }
@@ -37,7 +36,7 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? UpdatedSince { get; set; }
 
         /// <summary>
-        /// Type to filter on
+        /// Type to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=type")]
         public string? Type { get; set; }

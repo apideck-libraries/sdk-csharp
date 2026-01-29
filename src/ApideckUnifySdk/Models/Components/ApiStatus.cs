@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Status of the API. APIs with status live or beta are callable.
     /// </summary>
-    public enum ApiStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ApiStatus : IEquatable<ApiStatus>
     {
-        [JsonProperty("live")]
-        Live,
-        [JsonProperty("beta")]
-        Beta,
-        [JsonProperty("development")]
-        Development,
-        [JsonProperty("considering")]
-        Considering,
-    }
+        public static readonly ApiStatus Live = new ApiStatus("live");
+        public static readonly ApiStatus Beta = new ApiStatus("beta");
+        public static readonly ApiStatus Development = new ApiStatus("development");
+        public static readonly ApiStatus Considering = new ApiStatus("considering");
 
-    public static class ApiStatusExtension
-    {
-        public static string Value(this ApiStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ApiStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ApiStatus).GetFields())
+        private static readonly Dictionary <string, ApiStatus> _knownValues =
+            new Dictionary <string, ApiStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["live"] = Live,
+                ["beta"] = Beta,
+                ["development"] = Development,
+                ["considering"] = Considering
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ApiStatus> _values =
+            new ConcurrentDictionary<string, ApiStatus>(_knownValues);
 
-                    if (enumVal is ApiStatus)
-                    {
-                        return (ApiStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ApiStatus");
+        private ApiStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ApiStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ApiStatus(value));
+        }
+
+        public static implicit operator ApiStatus(string value) => Of(value);
+        public static implicit operator string(ApiStatus apistatus) => apistatus.Value;
+
+        public static ApiStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ApiStatus);
+
+        public bool Equals(ApiStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

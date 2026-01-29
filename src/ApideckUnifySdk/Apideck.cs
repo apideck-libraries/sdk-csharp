@@ -19,53 +19,94 @@ namespace ApideckUnifySdk
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-
     /// <summary>
-    /// Apideck: The Apideck OpenAPI Spec: SDK Optimized
-    /// 
+    /// Apideck: The Apideck OpenAPI Spec: SDK Optimized<br/>
     /// <see href="https://developers.apideck.com">Apideck Developer Docs</see>
     /// </summary>
     public interface IApideck
     {
         public IAccounting Accounting { get; }
+
         public IAts Ats { get; }
+
         public ICrm Crm { get; }
+
         public IEcommerce Ecommerce { get; }
+
         public IFileStorage FileStorage { get; }
+
         public IHris Hris { get; }
+
         public ISms Sms { get; }
+
         public IIssueTracking IssueTracking { get; }
+
         public IConnector Connector { get; }
+
         public IVault Vault { get; }
+
         public IWebhook Webhook { get; }
     }
 
-
     /// <summary>
-    /// Apideck: The Apideck OpenAPI Spec: SDK Optimized
-    /// 
+    /// Apideck: The Apideck OpenAPI Spec: SDK Optimized<br/>
     /// <see href="https://developers.apideck.com">Apideck Developer Docs</see>
     /// </summary>
     public class Apideck: IApideck
     {
+        /// <summary>
+        /// The main SDK Configuration.
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// The Accounting sub-SDK.
+        /// </summary>
         public IAccounting Accounting { get; private set; }
+        /// <summary>
+        /// The Ats sub-SDK.
+        /// </summary>
         public IAts Ats { get; private set; }
+        /// <summary>
+        /// The Crm sub-SDK.
+        /// </summary>
         public ICrm Crm { get; private set; }
+        /// <summary>
+        /// The Ecommerce sub-SDK.
+        /// </summary>
         public IEcommerce Ecommerce { get; private set; }
+        /// <summary>
+        /// The FileStorage sub-SDK.
+        /// </summary>
         public IFileStorage FileStorage { get; private set; }
+        /// <summary>
+        /// The Hris sub-SDK.
+        /// </summary>
         public IHris Hris { get; private set; }
+        /// <summary>
+        /// The Sms sub-SDK.
+        /// </summary>
         public ISms Sms { get; private set; }
+        /// <summary>
+        /// The IssueTracking sub-SDK.
+        /// </summary>
         public IIssueTracking IssueTracking { get; private set; }
+        /// <summary>
+        /// The Connector sub-SDK.
+        /// </summary>
         public IConnector Connector { get; private set; }
+        /// <summary>
+        /// The Vault sub-SDK.
+        /// </summary>
         public IVault Vault { get; private set; }
+        /// <summary>
+        /// The Webhook sub-SDK.
+        /// </summary>
         public IWebhook Webhook { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the SDK based on a <see cref="SDKConfig"/> configuration object.
+        /// </summary>
+        /// <param name="config">The SDK configuration object.</param>
         public Apideck(SDKConfig config)
         {
             SDKConfiguration = config;
@@ -99,21 +140,32 @@ namespace ApideckUnifySdk
         /// </summary>
         /// <param name="apiKey">The security configuration to use for API requests. If provided, this will be used as a static security configuration.</param>
         /// <param name="apiKeySource">A function that returns the security configuration dynamically. This takes precedence over the static security parameter if both are provided.</param>
-        /// <param name="consumerId">ID of the consumer which you want to get or push data from</param>
-        /// <param name="appId">The ID of your Unify application</param>
+        /// <param name="consumerId">ID of the consumer which you want to get or push data from.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
         /// <param name="serverIndex">The index of the server to use from the predefined server list. Must be between 0 and the length of the server list. Defaults to 0 if not specified.</param>
         /// <param name="serverUrl">A custom server URL to use instead of the predefined server list. If provided with urlParams, the URL will be templated with the provided parameters.</param>
         /// <param name="urlParams">A dictionary of parameters to use for templating the serverUrl. Only used when serverUrl is provided.</param>
         /// <param name="client">A custom HTTP client implementation to use for making API requests. If not provided, the default SpeakeasyHttpClient will be used.</param>
         /// <param name="retryConfig">Configuration for retry behavior when API requests fail. Defines retry strategies, backoff policies, and maximum retry attempts.</param>
-        /// <exception cref="Exception">Thrown when the serverIndex is out of range (less than 0 or greater than or equal to the server list length).</exception>
-        public Apideck(string? apiKey = null, Func<string>? apiKeySource = null, string? consumerId = null, string? appId = null, int? serverIndex = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        /// <exception cref="ArgumentOutOfRangeException">Invalid value provided for <paramref name="serverIndex"/>: must be between 0 (inclusive) and 1 (exclusive).</exception>
+        /// <exception cref="ArgumentException">None of <paramref name="apiKey"/> and <paramref name="apiKeySource"/> were provided.</exception>
+        public Apideck(
+            string? apiKey = null,
+            Func<string>? apiKeySource = null,
+            string? consumerId = null,
+            string? appId = null,
+            int? serverIndex = null,
+            string? serverUrl = null,
+            Dictionary<string, string>? urlParams = null,
+            ISpeakeasyHttpClient? client = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (serverIndex != null)
             {
                 if (serverIndex.Value < 0 || serverIndex.Value >= SDKConfig.ServerList.Length)
                 {
-                    throw new Exception($"Invalid server index {serverIndex.Value}");
+                    throw new ArgumentOutOfRangeException($"Invalid server index {serverIndex}: must be between 0 (inclusive) and {SDKConfig.ServerList.Length} (exclusive)." );
                 }
             }
 
@@ -136,7 +188,7 @@ namespace ApideckUnifySdk
             }
             else
             {
-                throw new Exception("apiKey and apiKeySource cannot both be null");
+                throw new ArgumentException("apiKey and apiKeySource cannot both be null");
             }
 
             SDKConfiguration = new SDKConfig(client)
@@ -187,22 +239,31 @@ namespace ApideckUnifySdk
             SDKConfiguration = config;
         }
 
+        /// <summary>
+        /// Builder class for constructing an instance of the SDK.
+        /// </summary>
         public class SDKBuilder
         {
             private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
 
             public SDKBuilder() { }
 
+            /// <summary>
+            /// Overrides the default server by index.
+            /// </summary>
             public SDKBuilder WithServerIndex(int serverIndex)
             {
                 if (serverIndex < 0 || serverIndex >= SDKConfig.ServerList.Length)
                 {
-                    throw new Exception($"Invalid server index {serverIndex}");
+                    throw new ArgumentOutOfRangeException($"Invalid server index {serverIndex}: must be between 0 (inclusive) and {SDKConfig.ServerList.Length} (exclusive)." );
                 }
                 _sdkConfig.ServerIndex = serverIndex;
                 return this;
             }
 
+            /// <summary>
+            /// Overrides the default server URL for the SDK.
+            /// </summary>
             public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
             {
                 if (serverVariables != null)
@@ -212,47 +273,66 @@ namespace ApideckUnifySdk
                 _sdkConfig.ServerUrl = serverUrl;
                 return this;
             }
-
+            /// <summary>
+            /// Sets the ConsumerId global parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithConsumerId(string consumerId)
             {
                 _sdkConfig.ConsumerId = consumerId;
                 return this;
             }
-
+            /// <summary>
+            /// Sets the AppId global parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithAppId(string appId)
             {
                 _sdkConfig.AppId = appId;
                 return this;
             }
 
+            /// <summary>
+            /// Sets the apiKeySource security parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithApiKeySource(Func<string> apiKeySource)
             {
                 _sdkConfig.SecuritySource = () => new ApideckUnifySdk.Models.Components.Security() { ApiKey = apiKeySource() };
                 return this;
             }
 
+            /// <summary>
+            /// Sets the apiKey security parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithApiKey(string apiKey)
             {
                 _sdkConfig.SecuritySource = () => new ApideckUnifySdk.Models.Components.Security() { ApiKey = apiKey };
                 return this;
             }
 
+            /// <summary>
+            /// Sets a custom HTTP client to be used by the SDK.
+            /// </summary>
             public SDKBuilder WithClient(ISpeakeasyHttpClient client)
             {
                 _sdkConfig.Client = client;
                 return this;
             }
 
+            /// <summary>
+            /// Sets the retry configuration for the SDK.
+            /// </summary>
             public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
             {
                 _sdkConfig.RetryConfig = retryConfig;
                 return this;
             }
 
+            /// <summary>
+            /// Builds and returns the SDK instance.
+            /// </summary>
             public Apideck Build()
             {
               if (_sdkConfig.SecuritySource == null) {
-                  throw new Exception("securitySource cannot be null. One of `ApiKey` or `apiKeySource` needs to be defined.");
+                  throw new ArgumentException("securitySource cannot be null. One of `ApiKey` or `apiKeySource` needs to be defined.");
               }
               return new Apideck(_sdkConfig);
             }

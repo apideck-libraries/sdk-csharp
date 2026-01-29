@@ -11,43 +11,46 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
+    using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class CustomersFilter
     {
-
         /// <summary>
-        /// Company Name of customer to search for
+        /// Company Name of customer to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=company_name")]
         public string? CompanyName { get; set; }
 
         /// <summary>
-        /// Display Name of customer to search for
+        /// Display Name of customer to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=display_name")]
         public string? DisplayName { get; set; }
 
         /// <summary>
-        /// First name of customer to search for
+        /// First name of customer to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=first_name")]
         public string? FirstName { get; set; }
 
         /// <summary>
-        /// Last name of customer to search for
+        /// Last name of customer to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=last_name")]
         public string? LastName { get; set; }
 
         /// <summary>
-        /// Email of customer to search for
+        /// Email of customer to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=email")]
         public string? Email { get; set; }
 
         /// <summary>
-        /// Status of customer to filter on
+        /// Status of customer to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=status")]
         public CustomersFilterStatus? Status { get; set; } = null;
@@ -56,7 +59,7 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? UpdatedSince { get; set; }
 
         /// <summary>
-        /// Supplier ID of customer to search for
+        /// Supplier ID of customer to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=supplier_id")]
         public string? SupplierId { get; set; }

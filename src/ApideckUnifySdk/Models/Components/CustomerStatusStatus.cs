@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Customer status
+    /// Customer status.
     /// </summary>
-    public enum CustomerStatusStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CustomerStatusStatus : IEquatable<CustomerStatusStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("archived")]
-        Archived,
-        [JsonProperty("gdpr-erasure-request")]
-        GdprErasureRequest,
-        [JsonProperty("unknown")]
-        Unknown,
-    }
+        public static readonly CustomerStatusStatus Active = new CustomerStatusStatus("active");
+        public static readonly CustomerStatusStatus Inactive = new CustomerStatusStatus("inactive");
+        public static readonly CustomerStatusStatus Archived = new CustomerStatusStatus("archived");
+        public static readonly CustomerStatusStatus GdprErasureRequest = new CustomerStatusStatus("gdpr-erasure-request");
+        public static readonly CustomerStatusStatus Unknown = new CustomerStatusStatus("unknown");
 
-    public static class CustomerStatusStatusExtension
-    {
-        public static string Value(this CustomerStatusStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static CustomerStatusStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(CustomerStatusStatus).GetFields())
+        private static readonly Dictionary <string, CustomerStatusStatus> _knownValues =
+            new Dictionary <string, CustomerStatusStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["archived"] = Archived,
+                ["gdpr-erasure-request"] = GdprErasureRequest,
+                ["unknown"] = Unknown
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CustomerStatusStatus> _values =
+            new ConcurrentDictionary<string, CustomerStatusStatus>(_knownValues);
 
-                    if (enumVal is CustomerStatusStatus)
-                    {
-                        return (CustomerStatusStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CustomerStatusStatus");
+        private CustomerStatusStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static CustomerStatusStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CustomerStatusStatus(value));
+        }
+
+        public static implicit operator CustomerStatusStatus(string value) => Of(value);
+        public static implicit operator string(CustomerStatusStatus customerstatusstatus) => customerstatusstatus.Value;
+
+        public static CustomerStatusStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CustomerStatusStatus);
+
+        public bool Equals(CustomerStatusStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

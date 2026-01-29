@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class OddWeeks
     {
-
         [JsonProperty("hours_monday")]
         public double? HoursMonday { get; set; }
 

@@ -13,10 +13,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class BalanceByTransaction
     {
-
         /// <summary>
         /// Unique identifier for the transaction.
         /// </summary>

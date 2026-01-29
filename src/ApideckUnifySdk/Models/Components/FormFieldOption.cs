@@ -52,7 +52,6 @@ namespace ApideckUnifySdk.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(FormFieldOption.FormFieldOptionConverter))]
     public class FormFieldOption
     {
@@ -73,7 +72,7 @@ namespace ApideckUnifySdk.Models.Components
         {
             FormFieldOptionType typ = FormFieldOptionType.Simple;
             string typStr = FormFieldOptionType.Simple.ToString();
-            simple.OptionType = OptionTypeExtension.ToEnum(FormFieldOptionType.Simple.ToString());
+            simple.OptionType = OptionType.Of(FormFieldOptionType.Simple.ToString());
             FormFieldOption res = new FormFieldOption(typ);
             res.SimpleFormFieldOption = simple;
             return res;
@@ -83,7 +82,7 @@ namespace ApideckUnifySdk.Models.Components
         {
             FormFieldOptionType typ = FormFieldOptionType.Group;
             string typStr = FormFieldOptionType.Group.ToString();
-            groupT.OptionType = FormFieldOptionGroupOptionTypeExtension.ToEnum(FormFieldOptionType.Group.ToString());
+            groupT.OptionType = FormFieldOptionGroupOptionType.Of(FormFieldOptionType.Group.ToString());
             FormFieldOption res = new FormFieldOption(typ);
             res.FormFieldOptionGroup = groupT;
             return res;

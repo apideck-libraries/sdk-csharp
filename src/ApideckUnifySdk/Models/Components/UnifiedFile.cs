@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class UnifiedFile
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,31 +26,31 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
 
         /// <summary>
-        /// The name of the file
+        /// The name of the file.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Optional description of the file
+        /// Optional description of the file.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The type of resource. Could be file, folder or url
+        /// The type of resource. Could be file, folder or url.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
         public FileType? Type { get; set; }
 
         /// <summary>
-        /// The full path of the file or folder (includes the file name)
+        /// The full path of the file or folder (includes the file name).
         /// </summary>
         [JsonProperty("path")]
         public string? Path { get; set; } = null;
@@ -61,13 +62,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? MimeType { get; set; } = null;
 
         /// <summary>
-        /// Whether the current user can download this file
+        /// Whether the current user can download this file.
         /// </summary>
         [JsonProperty("downloadable")]
         public bool? Downloadable { get; set; }
 
         /// <summary>
-        /// The size of the file in bytes
+        /// The size of the file in bytes.
         /// </summary>
         [JsonProperty("size")]
         public long? Size { get; set; } = null;
@@ -76,13 +77,13 @@ namespace ApideckUnifySdk.Models.Components
         public Owner? Owner { get; set; }
 
         /// <summary>
-        /// The parent folders of the file, starting from the root
+        /// The parent folders of the file, starting from the root.
         /// </summary>
         [JsonProperty("parent_folders")]
         public List<LinkedFolder>? ParentFolders { get; set; }
 
         /// <summary>
-        /// Whether the list of parent folders is complete. Some connectors only return the direct parent of a file
+        /// Whether the list of parent folders is complete. Some connectors only return the direct parent of a file.
         /// </summary>
         [JsonProperty("parent_folders_complete")]
         public bool? ParentFoldersComplete { get; set; }

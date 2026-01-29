@@ -14,11 +14,12 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using NodaTime;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Invoice
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -26,7 +27,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;
@@ -38,7 +39,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// Invoice type
+        /// Invoice type.
         /// </summary>
         [JsonProperty("type")]
         public InvoiceType? Type { get; set; } = null;
@@ -56,19 +57,19 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedCustomer? Customer { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location
+        /// The ID of the location.
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
@@ -104,7 +105,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Reference { get; set; } = null;
 
         /// <summary>
-        /// Invoice status
+        /// Invoice status.
         /// </summary>
         [JsonProperty("status")]
         public InvoiceStatus? Status { get; set; } = null;
@@ -128,7 +129,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? CurrencyRate { get; set; } = null;
 
         /// <summary>
-        /// Amounts are including tax
+        /// Amounts are including tax.
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;
@@ -182,7 +183,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? Deposit { get; set; } = null;
 
         /// <summary>
-        /// Customer memo
+        /// Customer memo.
         /// </summary>
         [JsonProperty("customer_memo")]
         public string? CustomerMemo { get; set; } = null;
@@ -207,25 +208,25 @@ namespace ApideckUnifySdk.Models.Components
         public Address? ShippingAddress { get; set; }
 
         /// <summary>
-        /// Optional invoice template
+        /// Optional invoice template.
         /// </summary>
         [JsonProperty("template_id")]
         public string? TemplateId { get; set; } = null;
 
         /// <summary>
-        /// URL link to a source document - shown as &apos;Go to [appName]&apos; in the downstream app. Currently only supported for Xero.
+        /// URL link to a source document - shown as 'Go to [appName]' in the downstream app. Currently only supported for Xero.
         /// </summary>
         [JsonProperty("source_document_url")]
         public string? SourceDocumentUrl { get; set; } = null;
 
         /// <summary>
-        /// IDs of payments made on the invoice
+        /// IDs of payments made on the invoice.
         /// </summary>
         [JsonProperty("payment_allocations")]
         public List<PaymentAllocations>? PaymentAllocations { get; set; } = null;
 
         /// <summary>
-        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check
+        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check.
         /// </summary>
         [JsonProperty("payment_method")]
         public string? PaymentMethod { get; set; } = null;
@@ -237,7 +238,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Channel { get; set; } = null;
 
         /// <summary>
-        /// language code according to ISO 639-1. For the United States - EN
+        /// language code according to ISO 639-1. For the United States - EN.
         /// </summary>
         [JsonProperty("language")]
         public string? Language { get; set; } = null;

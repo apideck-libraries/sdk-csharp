@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class UploadSession
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>

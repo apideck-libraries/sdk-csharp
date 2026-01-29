@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The type of website
+    /// The type of website.
     /// </summary>
-    public enum ApplicantType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ApplicantType : IEquatable<ApplicantType>
     {
-        [JsonProperty("primary")]
-        Primary,
-        [JsonProperty("secondary")]
-        Secondary,
-        [JsonProperty("work")]
-        Work,
-        [JsonProperty("personal")]
-        Personal,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly ApplicantType Primary = new ApplicantType("primary");
+        public static readonly ApplicantType Secondary = new ApplicantType("secondary");
+        public static readonly ApplicantType Work = new ApplicantType("work");
+        public static readonly ApplicantType Personal = new ApplicantType("personal");
+        public static readonly ApplicantType Other = new ApplicantType("other");
 
-    public static class ApplicantTypeExtension
-    {
-        public static string Value(this ApplicantType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ApplicantType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ApplicantType).GetFields())
+        private static readonly Dictionary <string, ApplicantType> _knownValues =
+            new Dictionary <string, ApplicantType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["primary"] = Primary,
+                ["secondary"] = Secondary,
+                ["work"] = Work,
+                ["personal"] = Personal,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ApplicantType> _values =
+            new ConcurrentDictionary<string, ApplicantType>(_knownValues);
 
-                    if (enumVal is ApplicantType)
-                    {
-                        return (ApplicantType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ApplicantType");
+        private ApplicantType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ApplicantType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ApplicantType(value));
+        }
+
+        public static implicit operator ApplicantType(string value) => Of(value);
+        public static implicit operator string(ApplicantType applicanttype) => applicanttype.Value;
+
+        public static ApplicantType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ApplicantType);
+
+        public bool Equals(ApplicantType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

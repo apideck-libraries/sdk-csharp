@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The employment status of the employee, indicating whether they are currently employed, inactive, terminated, or in another status.
     /// </summary>
-    public enum EmploymentStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EmploymentStatus : IEquatable<EmploymentStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("terminated")]
-        Terminated,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly EmploymentStatus Active = new EmploymentStatus("active");
+        public static readonly EmploymentStatus Inactive = new EmploymentStatus("inactive");
+        public static readonly EmploymentStatus Terminated = new EmploymentStatus("terminated");
+        public static readonly EmploymentStatus Other = new EmploymentStatus("other");
 
-    public static class EmploymentStatusExtension
-    {
-        public static string Value(this EmploymentStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EmploymentStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(EmploymentStatus).GetFields())
+        private static readonly Dictionary <string, EmploymentStatus> _knownValues =
+            new Dictionary <string, EmploymentStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["terminated"] = Terminated,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EmploymentStatus> _values =
+            new ConcurrentDictionary<string, EmploymentStatus>(_knownValues);
 
-                    if (enumVal is EmploymentStatus)
-                    {
-                        return (EmploymentStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EmploymentStatus");
+        private EmploymentStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EmploymentStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EmploymentStatus(value));
+        }
+
+        public static implicit operator EmploymentStatus(string value) => Of(value);
+        public static implicit operator string(EmploymentStatus employmentstatus) => employmentstatus.Value;
+
+        public static EmploymentStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EmploymentStatus);
+
+        public bool Equals(EmploymentStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

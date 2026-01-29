@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The work schedule of the employee.
     /// </summary>
-    public enum EmploymentSubType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EmploymentSubType : IEquatable<EmploymentSubType>
     {
-        [JsonProperty("full_time")]
-        FullTime,
-        [JsonProperty("part_time")]
-        PartTime,
-        [JsonProperty("hourly")]
-        Hourly,
-        [JsonProperty("other")]
-        Other,
-        [JsonProperty("not_specified")]
-        NotSpecified,
-    }
+        public static readonly EmploymentSubType FullTime = new EmploymentSubType("full_time");
+        public static readonly EmploymentSubType PartTime = new EmploymentSubType("part_time");
+        public static readonly EmploymentSubType Hourly = new EmploymentSubType("hourly");
+        public static readonly EmploymentSubType Other = new EmploymentSubType("other");
+        public static readonly EmploymentSubType NotSpecified = new EmploymentSubType("not_specified");
 
-    public static class EmploymentSubTypeExtension
-    {
-        public static string Value(this EmploymentSubType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EmploymentSubType ToEnum(this string value)
-        {
-            foreach(var field in typeof(EmploymentSubType).GetFields())
+        private static readonly Dictionary <string, EmploymentSubType> _knownValues =
+            new Dictionary <string, EmploymentSubType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["full_time"] = FullTime,
+                ["part_time"] = PartTime,
+                ["hourly"] = Hourly,
+                ["other"] = Other,
+                ["not_specified"] = NotSpecified
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EmploymentSubType> _values =
+            new ConcurrentDictionary<string, EmploymentSubType>(_knownValues);
 
-                    if (enumVal is EmploymentSubType)
-                    {
-                        return (EmploymentSubType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EmploymentSubType");
+        private EmploymentSubType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EmploymentSubType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EmploymentSubType(value));
+        }
+
+        public static implicit operator EmploymentSubType(string value) => Of(value);
+        public static implicit operator string(EmploymentSubType employmentsubtype) => employmentsubtype.Value;
+
+        public static EmploymentSubType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EmploymentSubType);
+
+        public bool Equals(EmploymentSubType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }
