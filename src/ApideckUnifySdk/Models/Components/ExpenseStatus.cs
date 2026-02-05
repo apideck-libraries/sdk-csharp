@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Expense status
+    /// Expense status.
     /// </summary>
-    public enum ExpenseStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ExpenseStatus : IEquatable<ExpenseStatus>
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("posted")]
-        Posted,
-    }
+        public static readonly ExpenseStatus Draft = new ExpenseStatus("draft");
+        public static readonly ExpenseStatus Posted = new ExpenseStatus("posted");
 
-    public static class ExpenseStatusExtension
-    {
-        public static string Value(this ExpenseStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ExpenseStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ExpenseStatus).GetFields())
+        private static readonly Dictionary <string, ExpenseStatus> _knownValues =
+            new Dictionary <string, ExpenseStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["posted"] = Posted
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ExpenseStatus> _values =
+            new ConcurrentDictionary<string, ExpenseStatus>(_knownValues);
 
-                    if (enumVal is ExpenseStatus)
-                    {
-                        return (ExpenseStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ExpenseStatus");
+        private ExpenseStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ExpenseStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ExpenseStatus(value));
+        }
+
+        public static implicit operator ExpenseStatus(string value) => Of(value);
+        public static implicit operator string(ExpenseStatus expensestatus) => expensestatus.Value;
+
+        public static ExpenseStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ExpenseStatus);
+
+        public bool Equals(ExpenseStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

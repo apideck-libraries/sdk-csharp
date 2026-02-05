@@ -12,42 +12,45 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class PhoneNumber
     {
-
         /// <summary>
-        /// Unique identifier of the phone number
+        /// Unique identifier of the phone number.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// The country code of the phone number, e.g. +1
+        /// The country code of the phone number, e.g. +1.
         /// </summary>
         [JsonProperty("country_code")]
         public string? CountryCode { get; set; } = null;
 
         /// <summary>
-        /// The area code of the phone number, e.g. 323
+        /// The area code of the phone number, e.g. 323.
         /// </summary>
         [JsonProperty("area_code")]
         public string? AreaCode { get; set; } = null;
 
         /// <summary>
-        /// The phone number
+        /// The phone number.
         /// </summary>
         [JsonProperty("number")]
         public string Number { get; set; } = default!;
 
         /// <summary>
-        /// The extension of the phone number
+        /// The extension of the phone number.
         /// </summary>
         [JsonProperty("extension")]
         public string? Extension { get; set; } = null;
 
         /// <summary>
-        /// The type of phone number
+        /// The type of phone number.
         /// </summary>
         [JsonProperty("type")]
         public PhoneNumberType? Type { get; set; } = null;

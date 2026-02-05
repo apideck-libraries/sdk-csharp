@@ -26,70 +26,172 @@ namespace ApideckUnifySdk
 
     public interface IConsumers
     {
-
         /// <summary>
-        /// Create consumer
-        /// 
-        /// <remarks>
-        /// Create a consumer
-        /// </remarks>
+        /// Create consumer.
         /// </summary>
-        Task<VaultConsumersAddResponse> CreateAsync(CreateConsumerRequest createConsumerRequest, string? appId = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Get all consumers
-        /// 
         /// <remarks>
-        /// This endpoint includes all application consumers, along with an aggregated count of requests made.<br/>
-        /// 
+        /// Create a consumer.
         /// </remarks>
-        /// </summary>
-        Task<VaultConsumersAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = 20, RetryConfig? retryConfig = null);
+        /// <param name="createConsumerRequest">A <see cref="CreateConsumerRequest"/> parameter.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createConsumerRequest"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConsumersAddResponse> CreateAsync(
+            CreateConsumerRequest createConsumerRequest,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get consumer
-        /// 
+        /// Get all consumers.
+        /// </summary>
         /// <remarks>
-        /// Consumer detail including their aggregated counts with the connections they have authorized.<br/>
-        /// 
+        /// This endpoint includes all application consumers, along with an aggregated count of requests made.
         /// </remarks>
-        /// </summary>
-        Task<VaultConsumersOneResponse> GetAsync(string consumerId, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="cursor">Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.</param>
+        /// <param name="limit">Number of results to return. Minimum 1, Maximum 200, Default 20.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConsumersAllResponse> ListAsync(
+            string? appId = null,
+            string? cursor = null,
+            long? limit = 20,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update consumer
-        /// 
+        /// Get consumer.
+        /// </summary>
+        /// <remarks>
+        /// Consumer detail including their aggregated counts with the connections they have authorized.
+        /// </remarks>
+        /// <param name="consumerId">ID of the consumer to return.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="consumerId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConsumersOneResponse> GetAsync(
+            string consumerId,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
+
+        /// <summary>
+        /// Update consumer.
+        /// </summary>
         /// <remarks>
         /// Update consumer metadata such as name and email.
         /// </remarks>
-        /// </summary>
-        Task<VaultConsumersUpdateResponse> UpdateAsync(string consumerId, UpdateConsumerRequest updateConsumerRequest, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="consumerId">ID of the consumer to return.</param>
+        /// <param name="updateConsumerRequest">A <see cref="UpdateConsumerRequest"/> parameter.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="consumerId"/> or <paramref name="updateConsumerRequest"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConsumersUpdateResponse> UpdateAsync(
+            string consumerId,
+            UpdateConsumerRequest updateConsumerRequest,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete consumer
-        /// 
+        /// Delete consumer.
+        /// </summary>
         /// <remarks>
         /// Delete consumer and all their connections, including credentials.
         /// </remarks>
-        /// </summary>
-        Task<VaultConsumersDeleteResponse> DeleteAsync(string consumerId, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="consumerId">ID of the consumer to return.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="consumerId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<VaultConsumersDeleteResponse> DeleteAsync(
+            string consumerId,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Consumers: IConsumers
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Consumers(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<VaultConsumersAddResponse> CreateAsync(CreateConsumerRequest createConsumerRequest, string? appId = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// Create consumer.
+        /// </summary>
+        /// <remarks>
+        /// Create a consumer.
+        /// </remarks>
+        /// <param name="createConsumerRequest">A <see cref="CreateConsumerRequest"/> parameter.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createConsumerRequest"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConsumersAddResponse> CreateAsync(
+            CreateConsumerRequest createConsumerRequest,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (createConsumerRequest == null) throw new ArgumentNullException(nameof(createConsumerRequest));
 
@@ -99,9 +201,8 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/vault/consumers";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -166,7 +267,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -360,7 +461,32 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConsumersAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = 20, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get all consumers.
+        /// </summary>
+        /// <remarks>
+        /// This endpoint includes all application consumers, along with an aggregated count of requests made.
+        /// </remarks>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="cursor">Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.</param>
+        /// <param name="limit">Number of results to return. Minimum 1, Maximum 200, Default 20.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConsumersAllResponse> ListAsync(
+            string? appId = null,
+            string? cursor = null,
+            long? limit = 20,
+            RetryConfig? retryConfig = null
+        )
         {
             var request = new VaultConsumersAllRequest()
             {
@@ -369,7 +495,7 @@ namespace ApideckUnifySdk
                 Limit = limit,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/consumers", request, null);
 
@@ -429,7 +555,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -648,7 +774,31 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConsumersOneResponse> GetAsync(string consumerId, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get consumer.
+        /// </summary>
+        /// <remarks>
+        /// Consumer detail including their aggregated counts with the connections they have authorized.
+        /// </remarks>
+        /// <param name="consumerId">ID of the consumer to return.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="consumerId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConsumersOneResponse> GetAsync(
+            string consumerId,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (consumerId == null) throw new ArgumentNullException(nameof(consumerId));
 
@@ -658,7 +808,7 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/consumers/{consumer_id}", request, null);
 
@@ -718,7 +868,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -912,7 +1062,33 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConsumersUpdateResponse> UpdateAsync(string consumerId, UpdateConsumerRequest updateConsumerRequest, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update consumer.
+        /// </summary>
+        /// <remarks>
+        /// Update consumer metadata such as name and email.
+        /// </remarks>
+        /// <param name="consumerId">ID of the consumer to return.</param>
+        /// <param name="updateConsumerRequest">A <see cref="UpdateConsumerRequest"/> parameter.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="consumerId"/> or <paramref name="updateConsumerRequest"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConsumersUpdateResponse> UpdateAsync(
+            string consumerId,
+            UpdateConsumerRequest updateConsumerRequest,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (consumerId == null) throw new ArgumentNullException(nameof(consumerId));
             if (updateConsumerRequest == null) throw new ArgumentNullException(nameof(updateConsumerRequest));
@@ -924,7 +1100,7 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/consumers/{consumer_id}", request, null);
 
@@ -990,7 +1166,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1184,7 +1360,31 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<VaultConsumersDeleteResponse> DeleteAsync(string consumerId, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete consumer.
+        /// </summary>
+        /// <remarks>
+        /// Delete consumer and all their connections, including credentials.
+        /// </remarks>
+        /// <param name="consumerId">ID of the consumer to return.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="VaultConsumersDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="consumerId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<VaultConsumersDeleteResponse> DeleteAsync(
+            string consumerId,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (consumerId == null) throw new ArgumentNullException(nameof(consumerId));
 
@@ -1194,7 +1394,7 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/vault/consumers/{consumer_id}", request, null);
 
@@ -1254,7 +1454,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1447,5 +1647,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

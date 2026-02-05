@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Filter by account status
+    /// Filter by account status.
     /// </summary>
-    public enum BankAccountsFilterStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BankAccountsFilterStatus : IEquatable<BankAccountsFilterStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("closed")]
-        Closed,
-    }
+        public static readonly BankAccountsFilterStatus Active = new BankAccountsFilterStatus("active");
+        public static readonly BankAccountsFilterStatus Inactive = new BankAccountsFilterStatus("inactive");
+        public static readonly BankAccountsFilterStatus Closed = new BankAccountsFilterStatus("closed");
 
-    public static class BankAccountsFilterStatusExtension
-    {
-        public static string Value(this BankAccountsFilterStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BankAccountsFilterStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(BankAccountsFilterStatus).GetFields())
+        private static readonly Dictionary <string, BankAccountsFilterStatus> _knownValues =
+            new Dictionary <string, BankAccountsFilterStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["closed"] = Closed
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BankAccountsFilterStatus> _values =
+            new ConcurrentDictionary<string, BankAccountsFilterStatus>(_knownValues);
 
-                    if (enumVal is BankAccountsFilterStatus)
-                    {
-                        return (BankAccountsFilterStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BankAccountsFilterStatus");
+        private BankAccountsFilterStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BankAccountsFilterStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BankAccountsFilterStatus(value));
+        }
+
+        public static implicit operator BankAccountsFilterStatus(string value) => Of(value);
+        public static implicit operator string(BankAccountsFilterStatus bankaccountsfilterstatus) => bankaccountsfilterstatus.Value;
+
+        public static BankAccountsFilterStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BankAccountsFilterStatus);
+
+        public bool Equals(BankAccountsFilterStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

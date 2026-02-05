@@ -12,20 +12,19 @@ namespace ApideckUnifySdk.Models.Requests
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class AccountingTrackingCategoriesAddResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Tracking category created
+        /// Tracking category created.
         /// </summary>
         public CreateTrackingCategoryResponse? CreateTrackingCategoryResponse { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
     }

@@ -26,51 +26,122 @@ namespace ApideckUnifySdk
 
     public interface IAttachments
     {
+        /// <summary>
+        /// List Attachments.
+        /// </summary>
+        /// <remarks>
+        /// List Attachments.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingAttachmentsAllResponse> ListAsync(
+            AccountingAttachmentsAllRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// List Attachments
-        /// 
-        /// <remarks>
-        /// List Attachments
-        /// </remarks>
+        /// Upload attachment.
         /// </summary>
-        Task<AccountingAttachmentsAllResponse> ListAsync(AccountingAttachmentsAllRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Upload attachment.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsUploadRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsUploadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingAttachmentsUploadResponse> UploadAsync(
+            AccountingAttachmentsUploadRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Upload attachment
-        /// 
-        /// <remarks>
-        /// Upload attachment
-        /// </remarks>
+        /// Get Attachment.
         /// </summary>
-        Task<AccountingAttachmentsUploadResponse> UploadAsync(AccountingAttachmentsUploadRequest request, string? serverUrl = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Get Attachment.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingAttachmentsOneResponse> GetAsync(
+            AccountingAttachmentsOneRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get Attachment
-        /// 
-        /// <remarks>
-        /// Get Attachment
-        /// </remarks>
+        /// Delete Attachment.
         /// </summary>
-        Task<AccountingAttachmentsOneResponse> GetAsync(AccountingAttachmentsOneRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Delete Attachment.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingAttachmentsDeleteResponse> DeleteAsync(
+            AccountingAttachmentsDeleteRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete Attachment
-        /// 
-        /// <remarks>
-        /// Delete Attachment
-        /// </remarks>
+        /// Download Attachment.
         /// </summary>
-        Task<AccountingAttachmentsDeleteResponse> DeleteAsync(AccountingAttachmentsDeleteRequest request, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Download Attachment
-        /// 
         /// <remarks>
-        /// Download Attachment
+        /// Download Attachment.
         /// </remarks>
-        /// </summary>
-        Task<AccountingAttachmentsDownloadResponse> DownloadAsync(AccountingAttachmentsDownloadRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="AccountingAttachmentsDownloadRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsDownloadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingAttachmentsDownloadResponse> DownloadAsync(
+            AccountingAttachmentsDownloadRequest request,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Attachments: IAttachments
@@ -81,25 +152,45 @@ namespace ApideckUnifySdk
         public static readonly string[] AccountingAttachmentsUploadServerList = {
             "https://upload.apideck.com",
         };
-        public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
+        public SDKConfig SDKConfiguration { get; private set; }
 
         public Attachments(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<AccountingAttachmentsAllResponse> ListAsync(AccountingAttachmentsAllRequest request, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List Attachments.
+        /// </summary>
+        /// <remarks>
+        /// List Attachments.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingAttachmentsAllResponse> ListAsync(
+            AccountingAttachmentsAllRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/attachments/{reference_type}/{reference_id}", request, null);
 
@@ -159,7 +250,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -389,13 +480,36 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AccountingAttachmentsUploadResponse> UploadAsync(AccountingAttachmentsUploadRequest request, string? serverUrl = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Upload attachment.
+        /// </summary>
+        /// <remarks>
+        /// Upload attachment.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsUploadRequest"/> parameter.</param>
+        /// <param name="serverUrl">The server URL to use for this operation. If not provided, the default server URL will be used.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsUploadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingAttachmentsUploadResponse> UploadAsync(
+            AccountingAttachmentsUploadRequest request,
+            string? serverUrl = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = Utilities.TemplateUrl(AccountingAttachmentsUploadServerList[0], new Dictionary<string, string>(){
             });
             if (serverUrl != null)
@@ -466,7 +580,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -660,13 +774,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AccountingAttachmentsOneResponse> GetAsync(AccountingAttachmentsOneRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get Attachment.
+        /// </summary>
+        /// <remarks>
+        /// Get Attachment.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingAttachmentsOneResponse> GetAsync(
+            AccountingAttachmentsOneRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/attachments/{reference_type}/{reference_id}/{id}", request, null);
 
@@ -726,7 +861,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -920,13 +1055,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AccountingAttachmentsDeleteResponse> DeleteAsync(AccountingAttachmentsDeleteRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete Attachment.
+        /// </summary>
+        /// <remarks>
+        /// Delete Attachment.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingAttachmentsDeleteResponse> DeleteAsync(
+            AccountingAttachmentsDeleteRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/attachments/{reference_type}/{reference_id}/{id}", request, null);
 
@@ -986,7 +1142,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1180,13 +1336,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AccountingAttachmentsDownloadResponse> DownloadAsync(AccountingAttachmentsDownloadRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Download Attachment.
+        /// </summary>
+        /// <remarks>
+        /// Download Attachment.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingAttachmentsDownloadRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingAttachmentsDownloadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingAttachmentsDownloadResponse> DownloadAsync(
+            AccountingAttachmentsDownloadRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/attachments/{reference_type}/{reference_id}/{id}/download", request, null);
 
@@ -1246,7 +1423,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1428,5 +1605,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

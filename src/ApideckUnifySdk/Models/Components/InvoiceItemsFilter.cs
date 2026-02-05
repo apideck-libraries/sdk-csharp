@@ -11,12 +11,16 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class InvoiceItemsFilter
     {
-
         /// <summary>
-        /// Name of Invoice Items to search for
+        /// Name of Invoice Items to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=name")]
         public string? Name { get; set; }

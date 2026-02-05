@@ -12,13 +12,16 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The order this entity is linked to.
     /// </summary>
     public class LinkedEcommerceOrder
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>

@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Message
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -82,7 +83,7 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? ScheduledAt { get; set; }
 
         /// <summary>
-        /// The date and time that the message was sent
+        /// The date and time that the message was sent.
         /// </summary>
         [JsonProperty("sent_at")]
         public DateTime? SentAt { get; set; }

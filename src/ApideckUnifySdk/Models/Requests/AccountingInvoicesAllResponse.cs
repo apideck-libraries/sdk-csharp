@@ -14,21 +14,20 @@ namespace ApideckUnifySdk.Models.Requests
     using Newtonsoft.Json;
     using System;
     using System.Threading.Tasks;
-    
+
     public class AccountingInvoicesAllResponse
     {
         public Func<Task<AccountingInvoicesAllResponse?>>? Next {get;set;}
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Invoices
+        /// Invoices.
         /// </summary>
         public GetInvoicesResponse? GetInvoicesResponse { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
     }

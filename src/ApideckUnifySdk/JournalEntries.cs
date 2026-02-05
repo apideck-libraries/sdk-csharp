@@ -26,68 +26,155 @@ namespace ApideckUnifySdk
 
     public interface IJournalEntries
     {
+        /// <summary>
+        /// List Journal Entries.
+        /// </summary>
+        /// <remarks>
+        /// List Journal Entries.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingJournalEntriesAllResponse> ListAsync(
+            AccountingJournalEntriesAllRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// List Journal Entries
-        /// 
-        /// <remarks>
-        /// List Journal Entries
-        /// </remarks>
+        /// Create Journal Entry.
         /// </summary>
-        Task<AccountingJournalEntriesAllResponse> ListAsync(AccountingJournalEntriesAllRequest? request = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Create Journal Entry.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesAddRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingJournalEntriesAddResponse> CreateAsync(
+            AccountingJournalEntriesAddRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create Journal Entry
-        /// 
-        /// <remarks>
-        /// Create Journal Entry
-        /// </remarks>
+        /// Get Journal Entry.
         /// </summary>
-        Task<AccountingJournalEntriesAddResponse> CreateAsync(AccountingJournalEntriesAddRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Get Journal Entry.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingJournalEntriesOneResponse> GetAsync(
+            AccountingJournalEntriesOneRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get Journal Entry
-        /// 
-        /// <remarks>
-        /// Get Journal Entry
-        /// </remarks>
+        /// Update Journal Entry.
         /// </summary>
-        Task<AccountingJournalEntriesOneResponse> GetAsync(AccountingJournalEntriesOneRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Update Journal Entry.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingJournalEntriesUpdateResponse> UpdateAsync(
+            AccountingJournalEntriesUpdateRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update Journal Entry
-        /// 
-        /// <remarks>
-        /// Update Journal Entry
-        /// </remarks>
+        /// Delete Journal Entry.
         /// </summary>
-        Task<AccountingJournalEntriesUpdateResponse> UpdateAsync(AccountingJournalEntriesUpdateRequest request, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Delete Journal Entry
-        /// 
         /// <remarks>
-        /// Delete Journal Entry
+        /// Delete Journal Entry.
         /// </remarks>
-        /// </summary>
-        Task<AccountingJournalEntriesDeleteResponse> DeleteAsync(AccountingJournalEntriesDeleteRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="AccountingJournalEntriesDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AccountingJournalEntriesDeleteResponse> DeleteAsync(
+            AccountingJournalEntriesDeleteRequest request,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class JournalEntries: IJournalEntries
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public JournalEntries(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<AccountingJournalEntriesAllResponse> ListAsync(AccountingJournalEntriesAllRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List Journal Entries.
+        /// </summary>
+        /// <remarks>
+        /// List Journal Entries.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingJournalEntriesAllResponse> ListAsync(
+            AccountingJournalEntriesAllRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null)
             {
@@ -95,7 +182,7 @@ namespace ApideckUnifySdk
             }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/journal-entries", request, null);
 
@@ -155,7 +242,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -386,13 +473,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AccountingJournalEntriesAddResponse> CreateAsync(AccountingJournalEntriesAddRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Create Journal Entry.
+        /// </summary>
+        /// <remarks>
+        /// Create Journal Entry.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesAddRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingJournalEntriesAddResponse> CreateAsync(
+            AccountingJournalEntriesAddRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/journal-entries", request, null);
 
@@ -458,7 +566,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -652,13 +760,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AccountingJournalEntriesOneResponse> GetAsync(AccountingJournalEntriesOneRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get Journal Entry.
+        /// </summary>
+        /// <remarks>
+        /// Get Journal Entry.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingJournalEntriesOneResponse> GetAsync(
+            AccountingJournalEntriesOneRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/journal-entries/{id}", request, null);
 
@@ -718,7 +847,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -912,13 +1041,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AccountingJournalEntriesUpdateResponse> UpdateAsync(AccountingJournalEntriesUpdateRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update Journal Entry.
+        /// </summary>
+        /// <remarks>
+        /// Update Journal Entry.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingJournalEntriesUpdateResponse> UpdateAsync(
+            AccountingJournalEntriesUpdateRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/journal-entries/{id}", request, null);
 
@@ -984,7 +1134,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1178,13 +1328,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AccountingJournalEntriesDeleteResponse> DeleteAsync(AccountingJournalEntriesDeleteRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete Journal Entry.
+        /// </summary>
+        /// <remarks>
+        /// Delete Journal Entry.
+        /// </remarks>
+        /// <param name="request">A <see cref="AccountingJournalEntriesDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AccountingJournalEntriesDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AccountingJournalEntriesDeleteResponse> DeleteAsync(
+            AccountingJournalEntriesDeleteRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/accounting/journal-entries/{id}", request, null);
 
@@ -1244,7 +1415,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1437,5 +1608,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

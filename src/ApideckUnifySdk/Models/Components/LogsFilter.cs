@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using System.Collections.Generic;
-    
+
     public class LogsFilter
     {
-
         [SpeakeasyMetadata("queryParam:name=connector_id")]
         public string? ConnectorId { get; set; } = null;
 

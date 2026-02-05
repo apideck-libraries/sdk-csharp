@@ -12,20 +12,19 @@ namespace ApideckUnifySdk.Models.Requests
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class FileStorageFilesExportResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// File Download
+        /// File Download.
         /// </summary>
         public byte[]? GetFileDownloadResponse { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
     }

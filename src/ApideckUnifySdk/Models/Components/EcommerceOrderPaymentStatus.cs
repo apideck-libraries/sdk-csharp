@@ -12,61 +12,78 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Current payment status of the order.
     /// </summary>
-    public enum EcommerceOrderPaymentStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EcommerceOrderPaymentStatus : IEquatable<EcommerceOrderPaymentStatus>
     {
-        [JsonProperty("pending")]
-        Pending,
-        [JsonProperty("authorized")]
-        Authorized,
-        [JsonProperty("paid")]
-        Paid,
-        [JsonProperty("partial")]
-        Partial,
-        [JsonProperty("refunded")]
-        Refunded,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("unknown")]
-        Unknown,
-        [JsonProperty("partially_refunded")]
-        PartiallyRefunded,
-    }
+        public static readonly EcommerceOrderPaymentStatus Pending = new EcommerceOrderPaymentStatus("pending");
+        public static readonly EcommerceOrderPaymentStatus Authorized = new EcommerceOrderPaymentStatus("authorized");
+        public static readonly EcommerceOrderPaymentStatus Paid = new EcommerceOrderPaymentStatus("paid");
+        public static readonly EcommerceOrderPaymentStatus Partial = new EcommerceOrderPaymentStatus("partial");
+        public static readonly EcommerceOrderPaymentStatus Refunded = new EcommerceOrderPaymentStatus("refunded");
+        public static readonly EcommerceOrderPaymentStatus Voided = new EcommerceOrderPaymentStatus("voided");
+        public static readonly EcommerceOrderPaymentStatus Unknown = new EcommerceOrderPaymentStatus("unknown");
+        public static readonly EcommerceOrderPaymentStatus PartiallyRefunded = new EcommerceOrderPaymentStatus("partially_refunded");
 
-    public static class EcommerceOrderPaymentStatusExtension
-    {
-        public static string Value(this EcommerceOrderPaymentStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EcommerceOrderPaymentStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(EcommerceOrderPaymentStatus).GetFields())
+        private static readonly Dictionary <string, EcommerceOrderPaymentStatus> _knownValues =
+            new Dictionary <string, EcommerceOrderPaymentStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["pending"] = Pending,
+                ["authorized"] = Authorized,
+                ["paid"] = Paid,
+                ["partial"] = Partial,
+                ["refunded"] = Refunded,
+                ["voided"] = Voided,
+                ["unknown"] = Unknown,
+                ["partially_refunded"] = PartiallyRefunded
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EcommerceOrderPaymentStatus> _values =
+            new ConcurrentDictionary<string, EcommerceOrderPaymentStatus>(_knownValues);
 
-                    if (enumVal is EcommerceOrderPaymentStatus)
-                    {
-                        return (EcommerceOrderPaymentStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EcommerceOrderPaymentStatus");
+        private EcommerceOrderPaymentStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EcommerceOrderPaymentStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EcommerceOrderPaymentStatus(value));
+        }
+
+        public static implicit operator EcommerceOrderPaymentStatus(string value) => Of(value);
+        public static implicit operator string(EcommerceOrderPaymentStatus ecommerceorderpaymentstatus) => ecommerceorderpaymentstatus.Value;
+
+        public static EcommerceOrderPaymentStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EcommerceOrderPaymentStatus);
+
+        public bool Equals(EcommerceOrderPaymentStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

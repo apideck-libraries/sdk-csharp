@@ -26,86 +26,201 @@ namespace ApideckUnifySdk
 
     public interface IFiles
     {
+        /// <summary>
+        /// List Files.
+        /// </summary>
+        /// <remarks>
+        /// List Files.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageFilesAllResponse> ListAsync(
+            FileStorageFilesAllRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// List Files
-        /// 
-        /// <remarks>
-        /// List Files
-        /// </remarks>
+        /// Search Files.
         /// </summary>
-        Task<FileStorageFilesAllResponse> ListAsync(FileStorageFilesAllRequest? request = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Search Files.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesSearchRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesSearchResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageFilesSearchResponse> SearchAsync(
+            FileStorageFilesSearchRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Search Files
-        /// 
-        /// <remarks>
-        /// Search Files
-        /// </remarks>
+        /// Get File.
         /// </summary>
-        Task<FileStorageFilesSearchResponse> SearchAsync(FileStorageFilesSearchRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Get File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageFilesOneResponse> GetAsync(
+            FileStorageFilesOneRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get File
-        /// 
-        /// <remarks>
-        /// Get File
-        /// </remarks>
+        /// Rename or move File.
         /// </summary>
-        Task<FileStorageFilesOneResponse> GetAsync(FileStorageFilesOneRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Rename or move File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageFilesUpdateResponse> UpdateAsync(
+            FileStorageFilesUpdateRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Rename or move File
-        /// 
-        /// <remarks>
-        /// Rename or move File
-        /// </remarks>
+        /// Delete File.
         /// </summary>
-        Task<FileStorageFilesUpdateResponse> UpdateAsync(FileStorageFilesUpdateRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Delete File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageFilesDeleteResponse> DeleteAsync(
+            FileStorageFilesDeleteRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete File
-        /// 
-        /// <remarks>
-        /// Delete File
-        /// </remarks>
+        /// Download File.
         /// </summary>
-        Task<FileStorageFilesDeleteResponse> DeleteAsync(FileStorageFilesDeleteRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Download File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesDownloadRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesDownloadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageFilesDownloadResponse> DownloadAsync(
+            FileStorageFilesDownloadRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Download File
-        /// 
-        /// <remarks>
-        /// Download File
-        /// </remarks>
+        /// Export File.
         /// </summary>
-        Task<FileStorageFilesDownloadResponse> DownloadAsync(FileStorageFilesDownloadRequest request, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Export File
-        /// 
         /// <remarks>
-        /// Export File
+        /// Export File.
         /// </remarks>
-        /// </summary>
-        Task<FileStorageFilesExportResponse> ExportAsync(FileStorageFilesExportRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="FileStorageFilesExportRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesExportResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<FileStorageFilesExportResponse> ExportAsync(
+            FileStorageFilesExportRequest request,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Files: IFiles
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Files(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<FileStorageFilesAllResponse> ListAsync(FileStorageFilesAllRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List Files.
+        /// </summary>
+        /// <remarks>
+        /// List Files.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageFilesAllResponse> ListAsync(
+            FileStorageFilesAllRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null)
             {
@@ -113,7 +228,7 @@ namespace ApideckUnifySdk
             }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/file-storage/files", request, null);
 
@@ -173,7 +288,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -404,13 +519,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageFilesSearchResponse> SearchAsync(FileStorageFilesSearchRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Search Files.
+        /// </summary>
+        /// <remarks>
+        /// Search Files.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesSearchRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesSearchResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageFilesSearchResponse> SearchAsync(
+            FileStorageFilesSearchRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/file-storage/files/search", request, null);
 
@@ -476,7 +612,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -670,13 +806,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageFilesOneResponse> GetAsync(FileStorageFilesOneRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get File.
+        /// </summary>
+        /// <remarks>
+        /// Get File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageFilesOneResponse> GetAsync(
+            FileStorageFilesOneRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/file-storage/files/{id}", request, null);
 
@@ -736,7 +893,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -930,13 +1087,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageFilesUpdateResponse> UpdateAsync(FileStorageFilesUpdateRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Rename or move File.
+        /// </summary>
+        /// <remarks>
+        /// Rename or move File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageFilesUpdateResponse> UpdateAsync(
+            FileStorageFilesUpdateRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/file-storage/files/{id}", request, null);
 
@@ -1002,7 +1180,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1196,13 +1374,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageFilesDeleteResponse> DeleteAsync(FileStorageFilesDeleteRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete File.
+        /// </summary>
+        /// <remarks>
+        /// Delete File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageFilesDeleteResponse> DeleteAsync(
+            FileStorageFilesDeleteRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/file-storage/files/{id}", request, null);
 
@@ -1262,7 +1461,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1456,13 +1655,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageFilesDownloadResponse> DownloadAsync(FileStorageFilesDownloadRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Download File.
+        /// </summary>
+        /// <remarks>
+        /// Download File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesDownloadRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesDownloadResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageFilesDownloadResponse> DownloadAsync(
+            FileStorageFilesDownloadRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/file-storage/files/{id}/download", request, null);
 
@@ -1522,7 +1742,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1705,13 +1925,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<FileStorageFilesExportResponse> ExportAsync(FileStorageFilesExportRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Export File.
+        /// </summary>
+        /// <remarks>
+        /// Export File.
+        /// </remarks>
+        /// <param name="request">A <see cref="FileStorageFilesExportRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="FileStorageFilesExportResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<FileStorageFilesExportResponse> ExportAsync(
+            FileStorageFilesExportRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/file-storage/files/{id}/export", request, null);
 
@@ -1771,7 +2012,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1953,5 +2194,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

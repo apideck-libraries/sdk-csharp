@@ -17,28 +17,68 @@ namespace ApideckUnifySdk
     public interface IHris
     {
         public IEmployees Employees { get; }
+
         public IApideckCompanies Companies { get; }
+
         public IApideckDepartments Departments { get; }
+
         public IPayrolls Payrolls { get; }
+
         public IEmployeePayrolls EmployeePayrolls { get; }
+
         public IEmployeeSchedules EmployeeSchedules { get; }
+
         public ITimeOffRequests TimeOffRequests { get; }
     }
 
     public class Hris: IHris
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Employees SubSDK.
+        /// <see cref="IEmployees"/>
+        /// </summary>
         public IEmployees Employees { get; private set; }
+
+        /// <summary>
+        /// Companies SubSDK.
+        /// <see cref="IApideckCompanies"/>
+        /// </summary>
         public IApideckCompanies Companies { get; private set; }
+
+        /// <summary>
+        /// Departments SubSDK.
+        /// <see cref="IApideckDepartments"/>
+        /// </summary>
         public IApideckDepartments Departments { get; private set; }
+
+        /// <summary>
+        /// Payrolls SubSDK.
+        /// <see cref="IPayrolls"/>
+        /// </summary>
         public IPayrolls Payrolls { get; private set; }
+
+        /// <summary>
+        /// EmployeePayrolls SubSDK.
+        /// <see cref="IEmployeePayrolls"/>
+        /// </summary>
         public IEmployeePayrolls EmployeePayrolls { get; private set; }
+
+        /// <summary>
+        /// EmployeeSchedules SubSDK.
+        /// <see cref="IEmployeeSchedules"/>
+        /// </summary>
         public IEmployeeSchedules EmployeeSchedules { get; private set; }
+
+        /// <summary>
+        /// TimeOffRequests SubSDK.
+        /// <see cref="ITimeOffRequests"/>
+        /// </summary>
         public ITimeOffRequests TimeOffRequests { get; private set; }
 
         public Hris(SDKConfig config)

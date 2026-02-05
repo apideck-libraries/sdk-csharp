@@ -13,24 +13,23 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CustomObject
     {
-
         /// <summary>
-        /// The unique identifier of the custom object
+        /// The unique identifier of the custom object.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// The unique identifier of the owner of the custom object
+        /// The unique identifier of the owner of the custom object.
         /// </summary>
         [JsonProperty("owner_id")]
         public string? OwnerId { get; set; }
 
         /// <summary>
-        /// The name of the custom object
+        /// The name of the custom object.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
@@ -39,25 +38,25 @@ namespace ApideckUnifySdk.Models.Components
         public List<CustomObjectFields>? Fields { get; set; }
 
         /// <summary>
-        /// The unique identifier of the user who last updated the custom object
+        /// The unique identifier of the user who last updated the custom object.
         /// </summary>
         [JsonProperty("updated_by")]
         public string? UpdatedBy { get; set; }
 
         /// <summary>
-        /// The unique identifier of the user who created the custom object
+        /// The unique identifier of the user who created the custom object.
         /// </summary>
         [JsonProperty("created_by")]
         public string? CreatedBy { get; set; }
 
         /// <summary>
-        /// The timestamp when the custom object was last updated
+        /// The timestamp when the custom object was last updated.
         /// </summary>
         [JsonProperty("updated_at")]
         public string? UpdatedAt { get; set; } = null;
 
         /// <summary>
-        /// The timestamp when the custom object was created
+        /// The timestamp when the custom object was created.
         /// </summary>
         [JsonProperty("created_at")]
         public string? CreatedAt { get; set; } = null;

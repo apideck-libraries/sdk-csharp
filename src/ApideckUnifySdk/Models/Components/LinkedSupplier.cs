@@ -12,13 +12,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The supplier this entity is linked to.
     /// </summary>
     public class LinkedSupplier
     {
-
         /// <summary>
         /// The ID of the supplier this entity is linked to.
         /// </summary>

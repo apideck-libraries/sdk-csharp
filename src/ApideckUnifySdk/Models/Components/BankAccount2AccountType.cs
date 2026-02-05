@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of bank account.
     /// </summary>
-    public enum BankAccount2AccountType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BankAccount2AccountType : IEquatable<BankAccount2AccountType>
     {
-        [JsonProperty("bank_account")]
-        BankAccount,
-        [JsonProperty("credit_card")]
-        CreditCard,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly BankAccount2AccountType BankAccount = new BankAccount2AccountType("bank_account");
+        public static readonly BankAccount2AccountType CreditCard = new BankAccount2AccountType("credit_card");
+        public static readonly BankAccount2AccountType Other = new BankAccount2AccountType("other");
 
-    public static class BankAccount2AccountTypeExtension
-    {
-        public static string Value(this BankAccount2AccountType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BankAccount2AccountType ToEnum(this string value)
-        {
-            foreach(var field in typeof(BankAccount2AccountType).GetFields())
+        private static readonly Dictionary <string, BankAccount2AccountType> _knownValues =
+            new Dictionary <string, BankAccount2AccountType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["bank_account"] = BankAccount,
+                ["credit_card"] = CreditCard,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BankAccount2AccountType> _values =
+            new ConcurrentDictionary<string, BankAccount2AccountType>(_knownValues);
 
-                    if (enumVal is BankAccount2AccountType)
-                    {
-                        return (BankAccount2AccountType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BankAccount2AccountType");
+        private BankAccount2AccountType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BankAccount2AccountType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BankAccount2AccountType(value));
+        }
+
+        public static implicit operator BankAccount2AccountType(string value) => Of(value);
+        public static implicit operator string(BankAccount2AccountType bankaccount2accounttype) => bankaccount2accounttype.Value;
+
+        public static BankAccount2AccountType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BankAccount2AccountType);
+
+        public bool Equals(BankAccount2AccountType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

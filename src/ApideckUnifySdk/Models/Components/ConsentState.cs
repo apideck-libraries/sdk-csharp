@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The current consent state of the connection
+    /// The current consent state of the connection.
     /// </summary>
-    public enum ConsentState
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ConsentState : IEquatable<ConsentState>
     {
-        [JsonProperty("implicit")]
-        Implicit,
-        [JsonProperty("pending")]
-        Pending,
-        [JsonProperty("granted")]
-        Granted,
-        [JsonProperty("denied")]
-        Denied,
-        [JsonProperty("revoked")]
-        Revoked,
-        [JsonProperty("requires_reconsent")]
-        RequiresReconsent,
-    }
+        public static readonly ConsentState Implicit = new ConsentState("implicit");
+        public static readonly ConsentState Pending = new ConsentState("pending");
+        public static readonly ConsentState Granted = new ConsentState("granted");
+        public static readonly ConsentState Denied = new ConsentState("denied");
+        public static readonly ConsentState Revoked = new ConsentState("revoked");
+        public static readonly ConsentState RequiresReconsent = new ConsentState("requires_reconsent");
 
-    public static class ConsentStateExtension
-    {
-        public static string Value(this ConsentState value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ConsentState ToEnum(this string value)
-        {
-            foreach(var field in typeof(ConsentState).GetFields())
+        private static readonly Dictionary <string, ConsentState> _knownValues =
+            new Dictionary <string, ConsentState> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["implicit"] = Implicit,
+                ["pending"] = Pending,
+                ["granted"] = Granted,
+                ["denied"] = Denied,
+                ["revoked"] = Revoked,
+                ["requires_reconsent"] = RequiresReconsent
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ConsentState> _values =
+            new ConcurrentDictionary<string, ConsentState>(_knownValues);
 
-                    if (enumVal is ConsentState)
-                    {
-                        return (ConsentState)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ConsentState");
+        private ConsentState(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ConsentState Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ConsentState(value));
+        }
+
+        public static implicit operator ConsentState(string value) => Of(value);
+        public static implicit operator string(ConsentState consentstate) => consentstate.Value;
+
+        public static ConsentState[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ConsentState);
+
+        public bool Equals(ConsentState? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

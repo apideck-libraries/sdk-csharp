@@ -14,21 +14,20 @@ namespace ApideckUnifySdk.Models.Requests
     using Newtonsoft.Json;
     using System;
     using System.Threading.Tasks;
-    
+
     public class AtsJobsAllResponse
     {
         public Func<Task<AtsJobsAllResponse?>>? Next {get;set;}
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Jobs
+        /// Jobs.
         /// </summary>
         public GetJobsResponse? GetJobsResponse { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
     }

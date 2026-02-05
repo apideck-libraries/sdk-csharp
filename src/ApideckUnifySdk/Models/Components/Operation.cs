@@ -11,21 +11,20 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The request as defined in OpenApi Spec.
     /// </summary>
     public class Operation
     {
-
         /// <summary>
-        /// The OpenApi Operation Id associated with the request
+        /// The OpenApi Operation Id associated with the request.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The OpenApi Operation name associated with the request
+        /// The OpenApi Operation name associated with the request.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;

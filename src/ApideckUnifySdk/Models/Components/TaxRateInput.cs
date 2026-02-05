@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class TaxRateInput
     {
-
         /// <summary>
         /// ID assigned to identify this tax rate.
         /// </summary>
@@ -24,7 +26,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// Display ID of the tax rate
+        /// Display ID of the tax rate.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
@@ -42,13 +44,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Code { get; set; } = null;
 
         /// <summary>
-        /// Description of tax rate
+        /// Description of tax rate.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Effective tax rate
+        /// Effective tax rate.
         /// </summary>
         [JsonProperty("effective_tax_rate")]
         public double? EffectiveTaxRate { get; set; } = null;
@@ -60,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Country { get; set; } = null;
 
         /// <summary>
-        /// Not compounded sum of the components of a tax rate
+        /// Not compounded sum of the components of a tax rate.
         /// </summary>
         [JsonProperty("total_tax_rate")]
         public double? TotalTaxRate { get; set; } = null;
@@ -81,13 +83,13 @@ namespace ApideckUnifySdk.Models.Components
         public List<Components>? Components { get; set; } = null;
 
         /// <summary>
-        /// Tax type used to indicate the source of tax collected or paid
+        /// Tax type used to indicate the source of tax collected or paid.
         /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; } = null;
 
         /// <summary>
-        /// Report Tax type to aggregate tax collected or paid for reporting purposes
+        /// Report Tax type to aggregate tax collected or paid for reporting purposes.
         /// </summary>
         [JsonProperty("report_tax_type")]
         public string? ReportTaxType { get; set; } = null;
@@ -99,7 +101,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? OriginalTaxRateId { get; set; } = null;
 
         /// <summary>
-        /// Tax rate status
+        /// Tax rate status.
         /// </summary>
         [JsonProperty("status")]
         public TaxRateStatus? Status { get; set; } = null;

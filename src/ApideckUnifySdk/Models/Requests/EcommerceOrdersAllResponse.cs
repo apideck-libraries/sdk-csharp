@@ -14,21 +14,20 @@ namespace ApideckUnifySdk.Models.Requests
     using Newtonsoft.Json;
     using System;
     using System.Threading.Tasks;
-    
+
     public class EcommerceOrdersAllResponse
     {
         public Func<Task<EcommerceOrdersAllResponse?>>? Next {get;set;}
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Orders
+        /// Orders.
         /// </summary>
         public GetEcommerceOrdersResponse? GetEcommerceOrdersResponse { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
     }

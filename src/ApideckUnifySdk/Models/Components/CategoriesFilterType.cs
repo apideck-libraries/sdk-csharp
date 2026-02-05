@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of the category.
     /// </summary>
-    public enum CategoriesFilterType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CategoriesFilterType : IEquatable<CategoriesFilterType>
     {
-        [JsonProperty("supplier")]
-        Supplier,
-        [JsonProperty("expense")]
-        Expense,
-        [JsonProperty("revenue")]
-        Revenue,
-        [JsonProperty("customer")]
-        Customer,
-    }
+        public static readonly CategoriesFilterType Supplier = new CategoriesFilterType("supplier");
+        public static readonly CategoriesFilterType Expense = new CategoriesFilterType("expense");
+        public static readonly CategoriesFilterType Revenue = new CategoriesFilterType("revenue");
+        public static readonly CategoriesFilterType Customer = new CategoriesFilterType("customer");
 
-    public static class CategoriesFilterTypeExtension
-    {
-        public static string Value(this CategoriesFilterType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static CategoriesFilterType ToEnum(this string value)
-        {
-            foreach(var field in typeof(CategoriesFilterType).GetFields())
+        private static readonly Dictionary <string, CategoriesFilterType> _knownValues =
+            new Dictionary <string, CategoriesFilterType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["supplier"] = Supplier,
+                ["expense"] = Expense,
+                ["revenue"] = Revenue,
+                ["customer"] = Customer
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CategoriesFilterType> _values =
+            new ConcurrentDictionary<string, CategoriesFilterType>(_knownValues);
 
-                    if (enumVal is CategoriesFilterType)
-                    {
-                        return (CategoriesFilterType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CategoriesFilterType");
+        private CategoriesFilterType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static CategoriesFilterType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CategoriesFilterType(value));
+        }
+
+        public static implicit operator CategoriesFilterType(string value) => Of(value);
+        public static implicit operator string(CategoriesFilterType categoriesfiltertype) => categoriesfiltertype.Value;
+
+        public static CategoriesFilterType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CategoriesFilterType);
+
+        public bool Equals(CategoriesFilterType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -21,13 +21,14 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.21.0
+  version: 0.22.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -57,6 +58,7 @@ csharp:
   outputModelSuffix: output
   packageName: ApideckUnifySdk
   packageTags: ""
+  respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
   sourceDirectory: src
   useNodatime: true

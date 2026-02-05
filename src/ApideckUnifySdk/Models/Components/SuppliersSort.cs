@@ -11,18 +11,22 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class SuppliersSort
     {
-
         /// <summary>
-        /// The field on which to sort the Suppliers
+        /// The field on which to sort the Suppliers.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=by")]
         public SuppliersSortBy? By { get; set; }
 
         /// <summary>
-        /// The direction in which to sort the results
+        /// The direction in which to sort the results.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=direction")]
         public SortDirection? Direction { get; set; } = ApideckUnifySdk.Models.Components.SortDirection.Asc;

@@ -12,58 +12,75 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum ExpensesFilterStatus
-    {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("pending_approval")]
-        PendingApproval,
-        [JsonProperty("approved")]
-        Approved,
-        [JsonProperty("posted")]
-        Posted,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("rejected")]
-        Rejected,
-        [JsonProperty("deleted")]
-        Deleted,
-        [JsonProperty("other")]
-        Other,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class ExpensesFilterStatusExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ExpensesFilterStatus : IEquatable<ExpensesFilterStatus>
     {
-        public static string Value(this ExpensesFilterStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly ExpensesFilterStatus Draft = new ExpensesFilterStatus("draft");
+        public static readonly ExpensesFilterStatus PendingApproval = new ExpensesFilterStatus("pending_approval");
+        public static readonly ExpensesFilterStatus Approved = new ExpensesFilterStatus("approved");
+        public static readonly ExpensesFilterStatus Posted = new ExpensesFilterStatus("posted");
+        public static readonly ExpensesFilterStatus Voided = new ExpensesFilterStatus("voided");
+        public static readonly ExpensesFilterStatus Rejected = new ExpensesFilterStatus("rejected");
+        public static readonly ExpensesFilterStatus Deleted = new ExpensesFilterStatus("deleted");
+        public static readonly ExpensesFilterStatus Other = new ExpensesFilterStatus("other");
 
-        public static ExpensesFilterStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ExpensesFilterStatus).GetFields())
+        private static readonly Dictionary <string, ExpensesFilterStatus> _knownValues =
+            new Dictionary <string, ExpensesFilterStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["pending_approval"] = PendingApproval,
+                ["approved"] = Approved,
+                ["posted"] = Posted,
+                ["voided"] = Voided,
+                ["rejected"] = Rejected,
+                ["deleted"] = Deleted,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ExpensesFilterStatus> _values =
+            new ConcurrentDictionary<string, ExpensesFilterStatus>(_knownValues);
 
-                    if (enumVal is ExpensesFilterStatus)
-                    {
-                        return (ExpensesFilterStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ExpensesFilterStatus");
+        private ExpensesFilterStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ExpensesFilterStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ExpensesFilterStatus(value));
+        }
+
+        public static implicit operator ExpensesFilterStatus(string value) => Of(value);
+        public static implicit operator string(ExpensesFilterStatus expensesfilterstatus) => expensesfilterstatus.Value;
+
+        public static ExpensesFilterStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ExpensesFilterStatus);
+
+        public bool Equals(ExpensesFilterStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

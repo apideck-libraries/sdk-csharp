@@ -12,85 +12,102 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of account.
     /// </summary>
-    public enum LedgerAccountType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class LedgerAccountType : IEquatable<LedgerAccountType>
     {
-        [JsonProperty("accounts_payable")]
-        AccountsPayable,
-        [JsonProperty("accounts_receivable")]
-        AccountsReceivable,
-        [JsonProperty("balancesheet")]
-        Balancesheet,
-        [JsonProperty("bank")]
-        Bank,
-        [JsonProperty("costs_of_sales")]
-        CostsOfSales,
-        [JsonProperty("credit_card")]
-        CreditCard,
-        [JsonProperty("current_asset")]
-        CurrentAsset,
-        [JsonProperty("current_liability")]
-        CurrentLiability,
-        [JsonProperty("equity")]
-        Equity,
-        [JsonProperty("expense")]
-        Expense,
-        [JsonProperty("fixed_asset")]
-        FixedAsset,
-        [JsonProperty("non_current_asset")]
-        NonCurrentAsset,
-        [JsonProperty("non_current_liability")]
-        NonCurrentLiability,
-        [JsonProperty("other_asset")]
-        OtherAsset,
-        [JsonProperty("other_expense")]
-        OtherExpense,
-        [JsonProperty("other_income")]
-        OtherIncome,
-        [JsonProperty("other_liability")]
-        OtherLiability,
-        [JsonProperty("revenue")]
-        Revenue,
-        [JsonProperty("sales")]
-        Sales,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly LedgerAccountType AccountsPayable = new LedgerAccountType("accounts_payable");
+        public static readonly LedgerAccountType AccountsReceivable = new LedgerAccountType("accounts_receivable");
+        public static readonly LedgerAccountType Balancesheet = new LedgerAccountType("balancesheet");
+        public static readonly LedgerAccountType Bank = new LedgerAccountType("bank");
+        public static readonly LedgerAccountType CostsOfSales = new LedgerAccountType("costs_of_sales");
+        public static readonly LedgerAccountType CreditCard = new LedgerAccountType("credit_card");
+        public static readonly LedgerAccountType CurrentAsset = new LedgerAccountType("current_asset");
+        public static readonly LedgerAccountType CurrentLiability = new LedgerAccountType("current_liability");
+        public static readonly LedgerAccountType Equity = new LedgerAccountType("equity");
+        public static readonly LedgerAccountType Expense = new LedgerAccountType("expense");
+        public static readonly LedgerAccountType FixedAsset = new LedgerAccountType("fixed_asset");
+        public static readonly LedgerAccountType NonCurrentAsset = new LedgerAccountType("non_current_asset");
+        public static readonly LedgerAccountType NonCurrentLiability = new LedgerAccountType("non_current_liability");
+        public static readonly LedgerAccountType OtherAsset = new LedgerAccountType("other_asset");
+        public static readonly LedgerAccountType OtherExpense = new LedgerAccountType("other_expense");
+        public static readonly LedgerAccountType OtherIncome = new LedgerAccountType("other_income");
+        public static readonly LedgerAccountType OtherLiability = new LedgerAccountType("other_liability");
+        public static readonly LedgerAccountType Revenue = new LedgerAccountType("revenue");
+        public static readonly LedgerAccountType Sales = new LedgerAccountType("sales");
+        public static readonly LedgerAccountType Other = new LedgerAccountType("other");
 
-    public static class LedgerAccountTypeExtension
-    {
-        public static string Value(this LedgerAccountType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static LedgerAccountType ToEnum(this string value)
-        {
-            foreach(var field in typeof(LedgerAccountType).GetFields())
+        private static readonly Dictionary <string, LedgerAccountType> _knownValues =
+            new Dictionary <string, LedgerAccountType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["accounts_payable"] = AccountsPayable,
+                ["accounts_receivable"] = AccountsReceivable,
+                ["balancesheet"] = Balancesheet,
+                ["bank"] = Bank,
+                ["costs_of_sales"] = CostsOfSales,
+                ["credit_card"] = CreditCard,
+                ["current_asset"] = CurrentAsset,
+                ["current_liability"] = CurrentLiability,
+                ["equity"] = Equity,
+                ["expense"] = Expense,
+                ["fixed_asset"] = FixedAsset,
+                ["non_current_asset"] = NonCurrentAsset,
+                ["non_current_liability"] = NonCurrentLiability,
+                ["other_asset"] = OtherAsset,
+                ["other_expense"] = OtherExpense,
+                ["other_income"] = OtherIncome,
+                ["other_liability"] = OtherLiability,
+                ["revenue"] = Revenue,
+                ["sales"] = Sales,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, LedgerAccountType> _values =
+            new ConcurrentDictionary<string, LedgerAccountType>(_knownValues);
 
-                    if (enumVal is LedgerAccountType)
-                    {
-                        return (LedgerAccountType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum LedgerAccountType");
+        private LedgerAccountType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static LedgerAccountType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new LedgerAccountType(value));
+        }
+
+        public static implicit operator LedgerAccountType(string value) => Of(value);
+        public static implicit operator string(LedgerAccountType ledgeraccounttype) => ledgeraccounttype.Value;
+
+        public static LedgerAccountType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as LedgerAccountType);
+
+        public bool Equals(LedgerAccountType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

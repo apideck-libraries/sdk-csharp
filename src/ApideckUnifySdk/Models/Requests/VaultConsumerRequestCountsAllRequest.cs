@@ -10,30 +10,29 @@
 namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class VaultConsumerRequestCountsAllRequest
     {
-
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
 
         /// <summary>
-        /// ID of the consumer to return
+        /// ID of the consumer to return.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=consumer_id")]
         public string ConsumerId { get; set; } = default!;
 
         /// <summary>
-        /// Scopes results to requests that happened after datetime
+        /// Scopes results to requests that happened after datetime.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=start_datetime")]
         public string StartDatetime { get; set; } = default!;
 
         /// <summary>
-        /// Scopes results to requests that happened before datetime
+        /// Scopes results to requests that happened before datetime.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=end_datetime")]
         public string EndDatetime { get; set; } = default!;

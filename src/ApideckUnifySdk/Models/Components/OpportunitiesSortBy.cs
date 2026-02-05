@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Opportunities
+    /// The field on which to sort the Opportunities.
     /// </summary>
-    public enum OpportunitiesSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class OpportunitiesSortBy : IEquatable<OpportunitiesSortBy>
     {
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-        [JsonProperty("title")]
-        Title,
-        [JsonProperty("win_probability")]
-        WinProbability,
-        [JsonProperty("monetary_amount")]
-        MonetaryAmount,
-        [JsonProperty("status")]
-        Status,
-    }
+        public static readonly OpportunitiesSortBy CreatedAt = new OpportunitiesSortBy("created_at");
+        public static readonly OpportunitiesSortBy UpdatedAt = new OpportunitiesSortBy("updated_at");
+        public static readonly OpportunitiesSortBy Title = new OpportunitiesSortBy("title");
+        public static readonly OpportunitiesSortBy WinProbability = new OpportunitiesSortBy("win_probability");
+        public static readonly OpportunitiesSortBy MonetaryAmount = new OpportunitiesSortBy("monetary_amount");
+        public static readonly OpportunitiesSortBy Status = new OpportunitiesSortBy("status");
 
-    public static class OpportunitiesSortByExtension
-    {
-        public static string Value(this OpportunitiesSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static OpportunitiesSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(OpportunitiesSortBy).GetFields())
+        private static readonly Dictionary <string, OpportunitiesSortBy> _knownValues =
+            new Dictionary <string, OpportunitiesSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt,
+                ["title"] = Title,
+                ["win_probability"] = WinProbability,
+                ["monetary_amount"] = MonetaryAmount,
+                ["status"] = Status
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, OpportunitiesSortBy> _values =
+            new ConcurrentDictionary<string, OpportunitiesSortBy>(_knownValues);
 
-                    if (enumVal is OpportunitiesSortBy)
-                    {
-                        return (OpportunitiesSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum OpportunitiesSortBy");
+        private OpportunitiesSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static OpportunitiesSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new OpportunitiesSortBy(value));
+        }
+
+        public static implicit operator OpportunitiesSortBy(string value) => Of(value);
+        public static implicit operator string(OpportunitiesSortBy opportunitiessortby) => opportunitiessortby.Value;
+
+        public static OpportunitiesSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as OpportunitiesSortBy);
+
+        public bool Equals(OpportunitiesSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

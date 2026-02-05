@@ -14,21 +14,20 @@ namespace ApideckUnifySdk.Models.Requests
     using Newtonsoft.Json;
     using System;
     using System.Threading.Tasks;
-    
+
     public class HrisTimeOffRequestsAllResponse
     {
         public Func<Task<HrisTimeOffRequestsAllResponse?>>? Next {get;set;}
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// TimeOffRequests
+        /// TimeOffRequests.
         /// </summary>
         public GetTimeOffRequestsResponse? GetTimeOffRequestsResponse { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
     }

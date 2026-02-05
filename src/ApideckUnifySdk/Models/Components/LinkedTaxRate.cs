@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedTaxRate
     {
-
         /// <summary>
         /// The ID of the object.
         /// </summary>
@@ -22,19 +21,19 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// Tax rate code
+        /// Tax rate code.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; } = null;
 
         /// <summary>
-        /// Name of the tax rate
+        /// Name of the tax rate.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// Rate of the tax rate
+        /// Rate of the tax rate.
         /// </summary>
         [JsonProperty("rate")]
         public double? Rate { get; set; } = null;

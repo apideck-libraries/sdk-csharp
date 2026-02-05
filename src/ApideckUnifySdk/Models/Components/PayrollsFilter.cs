@@ -10,18 +10,17 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class PayrollsFilter
     {
-
         /// <summary>
-        /// Return payrolls whose pay period is after the start date
+        /// Return payrolls whose pay period is after the start date.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=start_date")]
         public string? StartDate { get; set; }
 
         /// <summary>
-        /// Return payrolls whose pay period is before the end date
+        /// Return payrolls whose pay period is before the end date.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=end_date")]
         public string? EndDate { get; set; }

@@ -13,13 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// The customer this entity is linked to.
     /// </summary>
     public class LinkedEcommerceCustomer
     {
-
         /// <summary>
         /// The ID of the customer this entity is linked to.
         /// </summary>
@@ -27,25 +26,25 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// Full name of the customer
+        /// Full name of the customer.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// First name of the customer
+        /// First name of the customer.
         /// </summary>
         [JsonProperty("first_name")]
         public string? FirstName { get; set; } = null;
 
         /// <summary>
-        /// Last name of the customer
+        /// Last name of the customer.
         /// </summary>
         [JsonProperty("last_name")]
         public string? LastName { get; set; } = null;
 
         /// <summary>
-        /// Company name of the customer
+        /// Company name of the customer.
         /// </summary>
         [JsonProperty("company_name")]
         public string? CompanyName { get; set; } = null;

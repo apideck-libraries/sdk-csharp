@@ -10,36 +10,35 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class AgedReportFilter
     {
-
         /// <summary>
-        /// Filter by customer id
+        /// Filter by customer id.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=customer_id")]
         public string? CustomerId { get; set; }
 
         /// <summary>
-        /// Filter by supplier id
+        /// Filter by supplier id.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=supplier_id")]
         public string? SupplierId { get; set; }
 
         /// <summary>
-        /// The cutoff date for considering transactions
+        /// The cutoff date for considering transactions.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=report_as_of_date")]
         public string? ReportAsOfDate { get; set; }
 
         /// <summary>
-        /// Number of periods to split the aged creditors report into
+        /// Number of periods to split the aged creditors report into.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=period_count")]
         public long? PeriodCount { get; set; }
 
         /// <summary>
-        /// Length of each period in days
+        /// Length of each period in days.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=period_length")]
         public long? PeriodLength { get; set; }

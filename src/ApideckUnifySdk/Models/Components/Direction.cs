@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The direction of the message.
     /// </summary>
-    public enum Direction
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Direction : IEquatable<Direction>
     {
-        [JsonProperty("inbound")]
-        Inbound,
-        [JsonProperty("outbound-api")]
-        OutboundApi,
-        [JsonProperty("outbound-call")]
-        OutboundCall,
-        [JsonProperty("outbound-reply")]
-        OutboundReply,
-        [JsonProperty("unknown")]
-        Unknown,
-    }
+        public static readonly Direction Inbound = new Direction("inbound");
+        public static readonly Direction OutboundApi = new Direction("outbound-api");
+        public static readonly Direction OutboundCall = new Direction("outbound-call");
+        public static readonly Direction OutboundReply = new Direction("outbound-reply");
+        public static readonly Direction Unknown = new Direction("unknown");
 
-    public static class DirectionExtension
-    {
-        public static string Value(this Direction value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Direction ToEnum(this string value)
-        {
-            foreach(var field in typeof(Direction).GetFields())
+        private static readonly Dictionary <string, Direction> _knownValues =
+            new Dictionary <string, Direction> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["inbound"] = Inbound,
+                ["outbound-api"] = OutboundApi,
+                ["outbound-call"] = OutboundCall,
+                ["outbound-reply"] = OutboundReply,
+                ["unknown"] = Unknown
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Direction> _values =
+            new ConcurrentDictionary<string, Direction>(_knownValues);
 
-                    if (enumVal is Direction)
-                    {
-                        return (Direction)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Direction");
+        private Direction(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Direction Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Direction(value));
+        }
+
+        public static implicit operator Direction(string value) => Of(value);
+        public static implicit operator string(Direction direction) => direction.Value;
+
+        public static Direction[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Direction);
+
+        public bool Equals(Direction? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Current status of project schedule compared to plan
+    /// Current status of project schedule compared to plan.
     /// </summary>
-    public enum ScheduleStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ScheduleStatus : IEquatable<ScheduleStatus>
     {
-        [JsonProperty("ahead_of_schedule")]
-        AheadOfSchedule,
-        [JsonProperty("on_schedule")]
-        OnSchedule,
-        [JsonProperty("behind_schedule")]
-        BehindSchedule,
-        [JsonProperty("critical_delay")]
-        CriticalDelay,
-    }
+        public static readonly ScheduleStatus AheadOfSchedule = new ScheduleStatus("ahead_of_schedule");
+        public static readonly ScheduleStatus OnSchedule = new ScheduleStatus("on_schedule");
+        public static readonly ScheduleStatus BehindSchedule = new ScheduleStatus("behind_schedule");
+        public static readonly ScheduleStatus CriticalDelay = new ScheduleStatus("critical_delay");
 
-    public static class ScheduleStatusExtension
-    {
-        public static string Value(this ScheduleStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ScheduleStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ScheduleStatus).GetFields())
+        private static readonly Dictionary <string, ScheduleStatus> _knownValues =
+            new Dictionary <string, ScheduleStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["ahead_of_schedule"] = AheadOfSchedule,
+                ["on_schedule"] = OnSchedule,
+                ["behind_schedule"] = BehindSchedule,
+                ["critical_delay"] = CriticalDelay
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ScheduleStatus> _values =
+            new ConcurrentDictionary<string, ScheduleStatus>(_knownValues);
 
-                    if (enumVal is ScheduleStatus)
-                    {
-                        return (ScheduleStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ScheduleStatus");
+        private ScheduleStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ScheduleStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ScheduleStatus(value));
+        }
+
+        public static implicit operator ScheduleStatus(string value) => Of(value);
+        public static implicit operator string(ScheduleStatus schedulestatus) => schedulestatus.Value;
+
+        public static ScheduleStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ScheduleStatus);
+
+        public bool Equals(ScheduleStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

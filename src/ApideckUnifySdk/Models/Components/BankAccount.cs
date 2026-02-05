@@ -12,24 +12,27 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class BankAccount
     {
-
         /// <summary>
-        /// The name of the bank or financial institution
+        /// The name of the bank or financial institution.
         /// </summary>
         [JsonProperty("bank_name")]
         public string? BankName { get; set; } = null;
 
         /// <summary>
-        /// The bank account number
+        /// The bank account number.
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;
 
         /// <summary>
-        /// The name of the bank account
+        /// The name of the bank account.
         /// </summary>
         [JsonProperty("account_name")]
         public string? AccountName { get; set; } = null;
@@ -41,37 +44,37 @@ namespace ApideckUnifySdk.Models.Components
         public AccountType? AccountType { get; set; } = null;
 
         /// <summary>
-        /// International Bank Account Number
+        /// International Bank Account Number.
         /// </summary>
         [JsonProperty("iban")]
         public string? Iban { get; set; } = null;
 
         /// <summary>
-        /// Bank Identifier Code / SWIFT Code
+        /// Bank Identifier Code / SWIFT Code.
         /// </summary>
         [JsonProperty("bic")]
         public string? Bic { get; set; } = null;
 
         /// <summary>
-        /// Bank routing number (US)
+        /// Bank routing number (US).
         /// </summary>
         [JsonProperty("routing_number")]
         public string? RoutingNumber { get; set; } = null;
 
         /// <summary>
-        /// Bank State Branch number (Australia/New Zealand)
+        /// Bank State Branch number (Australia/New Zealand).
         /// </summary>
         [JsonProperty("bsb_number")]
         public string? BsbNumber { get; set; } = null;
 
         /// <summary>
-        /// Bank branch identifier
+        /// Bank branch identifier.
         /// </summary>
         [JsonProperty("branch_identifier")]
         public string? BranchIdentifier { get; set; } = null;
 
         /// <summary>
-        /// Bank code assigned by central bank
+        /// Bank code assigned by central bank.
         /// </summary>
         [JsonProperty("bank_code")]
         public string? BankCode { get; set; } = null;

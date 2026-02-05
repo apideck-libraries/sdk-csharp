@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class AccountingDepartment
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -58,7 +59,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Code { get; set; }
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;

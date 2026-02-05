@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// A balance sheet liabilities account represents the financial position of a company at a specific point in time.
     /// </summary>
     public class BalanceSheetLiabilitiesAccount
     {
-
         /// <summary>
         /// The unique identifier for the account.
         /// </summary>
@@ -25,7 +24,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// The account code of the account
+        /// The account code of the account.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; }
@@ -37,13 +36,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; }
 
         /// <summary>
-        /// The amount or value of the item
+        /// The amount or value of the item.
         /// </summary>
         [JsonProperty("value")]
         public double? Value { get; set; }
 
         /// <summary>
-        /// A list of balance sheet accounts
+        /// A list of balance sheet accounts.
         /// </summary>
         [JsonProperty("items")]
         public object? Items { get; set; }

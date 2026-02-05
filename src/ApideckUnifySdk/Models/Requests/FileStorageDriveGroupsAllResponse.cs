@@ -14,21 +14,20 @@ namespace ApideckUnifySdk.Models.Requests
     using Newtonsoft.Json;
     using System;
     using System.Threading.Tasks;
-    
+
     public class FileStorageDriveGroupsAllResponse
     {
         public Func<Task<FileStorageDriveGroupsAllResponse?>>? Next {get;set;}
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// DriveGroups
+        /// DriveGroups.
         /// </summary>
         public GetDriveGroupsResponse? GetDriveGroupsResponse { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
     }

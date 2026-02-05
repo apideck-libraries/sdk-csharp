@@ -11,60 +11,59 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class CustomMapping
     {
-
         /// <summary>
-        /// Target Field ID
+        /// Target Field ID.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Target Field name to use as a label
+        /// Target Field name to use as a label.
         /// </summary>
         [JsonProperty("label")]
         public string? Label { get; set; }
 
         /// <summary>
-        /// Target Field description
+        /// Target Field description.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// Target Field Mapping value
+        /// Target Field Mapping value.
         /// </summary>
         [JsonProperty("value")]
         public string? Value { get; set; }
 
         /// <summary>
-        /// Target Field Key
+        /// Target Field Key.
         /// </summary>
         [JsonProperty("key")]
         public string? Key { get; set; }
 
         /// <summary>
-        /// Target Field Mapping is required
+        /// Target Field Mapping is required.
         /// </summary>
         [JsonProperty("required")]
         public bool? Required { get; set; }
 
         /// <summary>
-        /// This mapping represents a finder for a custom field
+        /// This mapping represents a finder for a custom field.
         /// </summary>
         [JsonProperty("custom_field")]
         public bool? CustomField { get; set; }
 
         /// <summary>
-        /// Consumer ID
+        /// Consumer ID.
         /// </summary>
         [JsonProperty("consumer_id")]
         public string? ConsumerId { get; set; } = null;
 
         /// <summary>
-        /// Target Field Mapping example value from downstream
+        /// Target Field Mapping example value from downstream.
         /// </summary>
         [JsonProperty("example")]
         public string? Example { get; set; } = null;

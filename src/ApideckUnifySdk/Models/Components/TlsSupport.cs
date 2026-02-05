@@ -11,15 +11,14 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class TlsSupport
     {
-
         [JsonProperty("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// Description of the TLS support
+        /// Description of the TLS support.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; }

@@ -12,24 +12,23 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using System;
     using System.Collections.Generic;
-    
+
     public class IssuesFilter
     {
-
         /// <summary>
-        /// Filter by ticket status, can be `open`, `closed` or `all`. Will passthrough if none of the above match
+        /// Filter by ticket status, can be `open`, `closed` or `all`. Will passthrough if none of the above match.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=status")]
         public List<string>? Status { get; set; }
 
         /// <summary>
-        /// Only return tickets since a specific date
+        /// Only return tickets since a specific date.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=since")]
         public DateTime? Since { get; set; }
 
         /// <summary>
-        /// Only return tickets assigned to a specific user
+        /// Only return tickets assigned to a specific user.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=assignee_id")]
         public string? AssigneeId { get; set; }

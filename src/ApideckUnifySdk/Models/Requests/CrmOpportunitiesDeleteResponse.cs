@@ -12,20 +12,19 @@ namespace ApideckUnifySdk.Models.Requests
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class CrmOpportunitiesDeleteResponse
     {
-
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Opportunity deleted
+        /// Opportunity deleted.
         /// </summary>
         public DeleteOpportunityResponse? DeleteOpportunityResponse { get; set; }
 
         /// <summary>
-        /// Unexpected error
+        /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
     }

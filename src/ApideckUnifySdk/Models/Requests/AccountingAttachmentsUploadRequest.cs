@@ -11,10 +11,14 @@ namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class AccountingAttachmentsUploadRequest
     {
-
         /// <summary>
         /// The reference type of the document.
         /// </summary>
@@ -28,25 +32,25 @@ namespace ApideckUnifySdk.Models.Requests
         public string ReferenceId { get; set; } = default!;
 
         /// <summary>
-        /// Include raw response. Mostly used for debugging purposes
+        /// Include raw response. Mostly used for debugging purposes.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=raw")]
         public bool? Raw { get; set; } = false;
 
         /// <summary>
-        /// Metadata to attach to the attachment file (JSON string)
+        /// Metadata to attach to the attachment file (JSON string).
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-metadata")]
         public string? XApideckMetadata { get; set; }
 
         /// <summary>
-        /// ID of the consumer which you want to get or push data from
+        /// ID of the consumer which you want to get or push data from.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
         public string? ConsumerId { get; set; }
 
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }

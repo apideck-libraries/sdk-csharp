@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class Collection
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -24,25 +23,25 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The collections&apos;s parent ID
+        /// The collections's parent ID.
         /// </summary>
         [JsonProperty("parent_id")]
         public string? ParentId { get; set; } = null;
 
         /// <summary>
-        /// The collections&apos;s type
+        /// The collections's type.
         /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; } = null;
 
         /// <summary>
-        /// Name of the collection
+        /// Name of the collection.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// Description of the collection
+        /// Description of the collection.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;

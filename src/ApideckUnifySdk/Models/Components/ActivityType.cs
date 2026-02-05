@@ -12,63 +12,80 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The type of the activity
+    /// The type of the activity.
     /// </summary>
-    public enum ActivityType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ActivityType : IEquatable<ActivityType>
     {
-        [JsonProperty("call")]
-        Call,
-        [JsonProperty("meeting")]
-        Meeting,
-        [JsonProperty("email")]
-        Email,
-        [JsonProperty("note")]
-        Note,
-        [JsonProperty("task")]
-        Task,
-        [JsonProperty("deadline")]
-        Deadline,
-        [JsonProperty("send-letter")]
-        SendLetter,
-        [JsonProperty("send-quote")]
-        SendQuote,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly ActivityType Call = new ActivityType("call");
+        public static readonly ActivityType Meeting = new ActivityType("meeting");
+        public static readonly ActivityType Email = new ActivityType("email");
+        public static readonly ActivityType Note = new ActivityType("note");
+        public static readonly ActivityType Task = new ActivityType("task");
+        public static readonly ActivityType Deadline = new ActivityType("deadline");
+        public static readonly ActivityType SendLetter = new ActivityType("send-letter");
+        public static readonly ActivityType SendQuote = new ActivityType("send-quote");
+        public static readonly ActivityType Other = new ActivityType("other");
 
-    public static class ActivityTypeExtension
-    {
-        public static string Value(this ActivityType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ActivityType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ActivityType).GetFields())
+        private static readonly Dictionary <string, ActivityType> _knownValues =
+            new Dictionary <string, ActivityType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["call"] = Call,
+                ["meeting"] = Meeting,
+                ["email"] = Email,
+                ["note"] = Note,
+                ["task"] = Task,
+                ["deadline"] = Deadline,
+                ["send-letter"] = SendLetter,
+                ["send-quote"] = SendQuote,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ActivityType> _values =
+            new ConcurrentDictionary<string, ActivityType>(_knownValues);
 
-                    if (enumVal is ActivityType)
-                    {
-                        return (ActivityType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ActivityType");
+        private ActivityType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ActivityType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ActivityType(value));
+        }
+
+        public static implicit operator ActivityType(string value) => Of(value);
+        public static implicit operator string(ActivityType activitytype) => activitytype.Value;
+
+        public static ActivityType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ActivityType);
+
+        public bool Equals(ActivityType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

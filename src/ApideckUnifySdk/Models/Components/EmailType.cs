@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Email type
+    /// Email type.
     /// </summary>
-    public enum EmailType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EmailType : IEquatable<EmailType>
     {
-        [JsonProperty("primary")]
-        Primary,
-        [JsonProperty("secondary")]
-        Secondary,
-        [JsonProperty("work")]
-        Work,
-        [JsonProperty("personal")]
-        Personal,
-        [JsonProperty("billing")]
-        Billing,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly EmailType Primary = new EmailType("primary");
+        public static readonly EmailType Secondary = new EmailType("secondary");
+        public static readonly EmailType Work = new EmailType("work");
+        public static readonly EmailType Personal = new EmailType("personal");
+        public static readonly EmailType Billing = new EmailType("billing");
+        public static readonly EmailType Other = new EmailType("other");
 
-    public static class EmailTypeExtension
-    {
-        public static string Value(this EmailType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EmailType ToEnum(this string value)
-        {
-            foreach(var field in typeof(EmailType).GetFields())
+        private static readonly Dictionary <string, EmailType> _knownValues =
+            new Dictionary <string, EmailType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["primary"] = Primary,
+                ["secondary"] = Secondary,
+                ["work"] = Work,
+                ["personal"] = Personal,
+                ["billing"] = Billing,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EmailType> _values =
+            new ConcurrentDictionary<string, EmailType>(_knownValues);
 
-                    if (enumVal is EmailType)
-                    {
-                        return (EmailType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EmailType");
+        private EmailType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EmailType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EmailType(value));
+        }
+
+        public static implicit operator EmailType(string value) => Of(value);
+        public static implicit operator string(EmailType emailtype) => emailtype.Value;
+
+        public static EmailType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EmailType);
+
+        public bool Equals(EmailType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

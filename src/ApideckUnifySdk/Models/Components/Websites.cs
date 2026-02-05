@@ -12,24 +12,27 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class Websites
     {
-
         /// <summary>
-        /// Unique identifier for the website
+        /// Unique identifier for the website.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// The website URL
+        /// The website URL.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; } = default!;
 
         /// <summary>
-        /// The type of website
+        /// The type of website.
         /// </summary>
         [JsonProperty("type")]
         public ApplicantType? Type { get; set; } = null;

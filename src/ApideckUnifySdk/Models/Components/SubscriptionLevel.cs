@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Received events are scoped to connection or across integration.
     /// </summary>
-    public enum SubscriptionLevel
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class SubscriptionLevel : IEquatable<SubscriptionLevel>
     {
-        [JsonProperty("connection")]
-        Connection,
-        [JsonProperty("integration")]
-        Integration,
-    }
+        public static readonly SubscriptionLevel Connection = new SubscriptionLevel("connection");
+        public static readonly SubscriptionLevel Integration = new SubscriptionLevel("integration");
 
-    public static class SubscriptionLevelExtension
-    {
-        public static string Value(this SubscriptionLevel value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static SubscriptionLevel ToEnum(this string value)
-        {
-            foreach(var field in typeof(SubscriptionLevel).GetFields())
+        private static readonly Dictionary <string, SubscriptionLevel> _knownValues =
+            new Dictionary <string, SubscriptionLevel> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["connection"] = Connection,
+                ["integration"] = Integration
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, SubscriptionLevel> _values =
+            new ConcurrentDictionary<string, SubscriptionLevel>(_knownValues);
 
-                    if (enumVal is SubscriptionLevel)
-                    {
-                        return (SubscriptionLevel)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum SubscriptionLevel");
+        private SubscriptionLevel(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static SubscriptionLevel Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new SubscriptionLevel(value));
+        }
+
+        public static implicit operator SubscriptionLevel(string value) => Of(value);
+        public static implicit operator string(SubscriptionLevel subscriptionlevel) => subscriptionlevel.Value;
+
+        public static SubscriptionLevel[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as SubscriptionLevel);
+
+        public bool Equals(SubscriptionLevel? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

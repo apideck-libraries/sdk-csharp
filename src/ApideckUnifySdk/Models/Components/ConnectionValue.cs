@@ -61,7 +61,6 @@ namespace ApideckUnifySdk.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(ConnectionValue.ConnectionValueConverter))]
     public class ConnectionValue
     {

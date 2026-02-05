@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Ticket
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,31 +26,31 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The ticket&apos;s parent ID
+        /// The ticket's parent ID.
         /// </summary>
         [JsonProperty("parent_id")]
         public string? ParentId { get; set; } = null;
 
         /// <summary>
-        /// The ticket&apos;s collection ID
+        /// The ticket's collection ID.
         /// </summary>
         [JsonProperty("collection_id")]
         public string? CollectionId { get; set; } = null;
 
         /// <summary>
-        /// The ticket&apos;s type
+        /// The ticket's type.
         /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; } = null;
 
         /// <summary>
-        /// Subject of the ticket
+        /// Subject of the ticket.
         /// </summary>
         [JsonProperty("subject")]
         public string? Subject { get; set; } = null;
 
         /// <summary>
-        /// The ticket&apos;s description. HTML version of description is mapped if supported by the third-party platform
+        /// The ticket's description. HTML version of description is mapped if supported by the third-party platform.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
@@ -61,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Status { get; set; } = null;
 
         /// <summary>
-        /// Priority of the ticket
+        /// Priority of the ticket.
         /// </summary>
         [JsonProperty("priority")]
         public TicketPriority? Priority { get; set; } = null;
@@ -88,13 +89,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? CreatedBy { get; set; } = null;
 
         /// <summary>
-        /// Due date of the ticket
+        /// Due date of the ticket.
         /// </summary>
         [JsonProperty("due_date")]
         public DateTime? DueDate { get; set; } = null;
 
         /// <summary>
-        /// When the ticket was completed
+        /// When the ticket was completed.
         /// </summary>
         [JsonProperty("completed_at")]
         public DateTime? CompletedAt { get; set; } = null;

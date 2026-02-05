@@ -12,58 +12,75 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum PaymentsFilterType
-    {
-        [JsonProperty("accounts_receivable")]
-        AccountsReceivable,
-        [JsonProperty("accounts_payable")]
-        AccountsPayable,
-        [JsonProperty("accounts_receivable_credit")]
-        AccountsReceivableCredit,
-        [JsonProperty("accounts_payable_credit")]
-        AccountsPayableCredit,
-        [JsonProperty("accounts_receivable_overpayment")]
-        AccountsReceivableOverpayment,
-        [JsonProperty("accounts_payable_overpayment")]
-        AccountsPayableOverpayment,
-        [JsonProperty("accounts_receivable_prepayment")]
-        AccountsReceivablePrepayment,
-        [JsonProperty("accounts_payable_prepayment")]
-        AccountsPayablePrepayment,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class PaymentsFilterTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PaymentsFilterType : IEquatable<PaymentsFilterType>
     {
-        public static string Value(this PaymentsFilterType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly PaymentsFilterType AccountsReceivable = new PaymentsFilterType("accounts_receivable");
+        public static readonly PaymentsFilterType AccountsPayable = new PaymentsFilterType("accounts_payable");
+        public static readonly PaymentsFilterType AccountsReceivableCredit = new PaymentsFilterType("accounts_receivable_credit");
+        public static readonly PaymentsFilterType AccountsPayableCredit = new PaymentsFilterType("accounts_payable_credit");
+        public static readonly PaymentsFilterType AccountsReceivableOverpayment = new PaymentsFilterType("accounts_receivable_overpayment");
+        public static readonly PaymentsFilterType AccountsPayableOverpayment = new PaymentsFilterType("accounts_payable_overpayment");
+        public static readonly PaymentsFilterType AccountsReceivablePrepayment = new PaymentsFilterType("accounts_receivable_prepayment");
+        public static readonly PaymentsFilterType AccountsPayablePrepayment = new PaymentsFilterType("accounts_payable_prepayment");
 
-        public static PaymentsFilterType ToEnum(this string value)
-        {
-            foreach(var field in typeof(PaymentsFilterType).GetFields())
+        private static readonly Dictionary <string, PaymentsFilterType> _knownValues =
+            new Dictionary <string, PaymentsFilterType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["accounts_receivable"] = AccountsReceivable,
+                ["accounts_payable"] = AccountsPayable,
+                ["accounts_receivable_credit"] = AccountsReceivableCredit,
+                ["accounts_payable_credit"] = AccountsPayableCredit,
+                ["accounts_receivable_overpayment"] = AccountsReceivableOverpayment,
+                ["accounts_payable_overpayment"] = AccountsPayableOverpayment,
+                ["accounts_receivable_prepayment"] = AccountsReceivablePrepayment,
+                ["accounts_payable_prepayment"] = AccountsPayablePrepayment
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PaymentsFilterType> _values =
+            new ConcurrentDictionary<string, PaymentsFilterType>(_knownValues);
 
-                    if (enumVal is PaymentsFilterType)
-                    {
-                        return (PaymentsFilterType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PaymentsFilterType");
+        private PaymentsFilterType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PaymentsFilterType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PaymentsFilterType(value));
+        }
+
+        public static implicit operator PaymentsFilterType(string value) => Of(value);
+        public static implicit operator string(PaymentsFilterType paymentsfiltertype) => paymentsfiltertype.Value;
+
+        public static PaymentsFilterType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PaymentsFilterType);
+
+        public bool Equals(PaymentsFilterType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

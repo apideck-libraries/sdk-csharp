@@ -10,9 +10,9 @@
 namespace ApideckUnifySdk.Models.Errors
 {
     using ApideckUnifySdk.Utils;
-    
+
     /// <summary>
-    /// HTTP request details
+    /// HTTP request details.
     /// </summary>
     public class Request
     {

@@ -13,18 +13,17 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class DriveGroupInput
     {
-
         /// <summary>
-        /// The name of the drive group
+        /// The name of the drive group.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// The display name of the drive group
+        /// The display name of the drive group.
         /// </summary>
         [JsonProperty("display_name")]
         public string? DisplayName { get; set; } = null;

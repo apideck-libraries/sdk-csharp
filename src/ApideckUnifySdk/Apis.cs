@@ -26,41 +26,90 @@ namespace ApideckUnifySdk
 
     public interface IApis
     {
+        /// <summary>
+        /// List APIs.
+        /// </summary>
+        /// <remarks>
+        /// List APIs.
+        /// </remarks>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="cursor">Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.</param>
+        /// <param name="limit">Number of results to return. Minimum 1, Maximum 200, Default 20.</param>
+        /// <param name="filter">Apply filters.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ConnectorApisAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ConnectorApisAllResponse> ListAsync(
+            string? appId = null,
+            string? cursor = null,
+            long? limit = 20,
+            ApisFilter? filter = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// List APIs
-        /// 
-        /// <remarks>
-        /// List APIs
-        /// </remarks>
+        /// Get API.
         /// </summary>
-        Task<ConnectorApisAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = 20, ApisFilter? filter = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Get API
-        /// 
         /// <remarks>
-        /// Get API
+        /// Get API.
         /// </remarks>
-        /// </summary>
-        Task<ConnectorApisOneResponse> GetAsync(string id, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="id">ID of the record you are acting upon.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ConnectorApisOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="id"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ConnectorApisOneResponse> GetAsync(string id, string? appId = null, RetryConfig? retryConfig = null);
     }
 
     public class Apis: IApis
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Apis(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<ConnectorApisAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = 20, ApisFilter? filter = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List APIs.
+        /// </summary>
+        /// <remarks>
+        /// List APIs.
+        /// </remarks>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="cursor">Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.</param>
+        /// <param name="limit">Number of results to return. Minimum 1, Maximum 200, Default 20.</param>
+        /// <param name="filter">Apply filters.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ConnectorApisAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ConnectorApisAllResponse> ListAsync(
+            string? appId = null,
+            string? cursor = null,
+            long? limit = 20,
+            ApisFilter? filter = null,
+            RetryConfig? retryConfig = null
+        )
         {
             var request = new ConnectorApisAllRequest()
             {
@@ -70,7 +119,7 @@ namespace ApideckUnifySdk
                 Filter = filter,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/connector/apis", request, null);
 
@@ -130,7 +179,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -310,7 +359,29 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<ConnectorApisOneResponse> GetAsync(string id, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get API.
+        /// </summary>
+        /// <remarks>
+        /// Get API.
+        /// </remarks>
+        /// <param name="id">ID of the record you are acting upon.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ConnectorApisOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="id"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ConnectorApisOneResponse> GetAsync(
+            string id,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (id == null) throw new ArgumentNullException(nameof(id));
 
@@ -320,7 +391,7 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/connector/apis/{id}", request, null);
 
@@ -380,7 +451,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -533,5 +604,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

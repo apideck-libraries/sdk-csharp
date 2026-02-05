@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Lead
     {
-
         /// <summary>
         /// Unique identifier for the contact.
         /// </summary>
@@ -102,7 +104,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Title { get; set; } = null;
 
         /// <summary>
-        /// language code according to ISO 639-1. For the United States - EN
+        /// language code according to ISO 639-1. For the United States - EN.
         /// </summary>
         [JsonProperty("language")]
         public string? Language { get; set; } = null;
@@ -156,13 +158,13 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         /// <summary>
-        /// Date updated in ISO 8601 format
+        /// Date updated in ISO 8601 format.
         /// </summary>
         [JsonProperty("updated_at")]
         public string? UpdatedAt { get; set; } = null;
 
         /// <summary>
-        /// Date created in ISO 8601 format
+        /// Date created in ISO 8601 format.
         /// </summary>
         [JsonProperty("created_at")]
         public string? CreatedAt { get; set; } = null;

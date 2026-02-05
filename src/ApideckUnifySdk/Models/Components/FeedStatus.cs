@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Current status of the bank feed.
     /// </summary>
-    public enum FeedStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class FeedStatus : IEquatable<FeedStatus>
     {
-        [JsonProperty("pending")]
-        Pending,
-        [JsonProperty("rejected")]
-        Rejected,
-    }
+        public static readonly FeedStatus Pending = new FeedStatus("pending");
+        public static readonly FeedStatus Rejected = new FeedStatus("rejected");
 
-    public static class FeedStatusExtension
-    {
-        public static string Value(this FeedStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static FeedStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(FeedStatus).GetFields())
+        private static readonly Dictionary <string, FeedStatus> _knownValues =
+            new Dictionary <string, FeedStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["pending"] = Pending,
+                ["rejected"] = Rejected
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, FeedStatus> _values =
+            new ConcurrentDictionary<string, FeedStatus>(_knownValues);
 
-                    if (enumVal is FeedStatus)
-                    {
-                        return (FeedStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum FeedStatus");
+        private FeedStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static FeedStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new FeedStatus(value));
+        }
+
+        public static implicit operator FeedStatus(string value) => Of(value);
+        public static implicit operator string(FeedStatus feedstatus) => feedstatus.Value;
+
+        public static FeedStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as FeedStatus);
+
+        public bool Equals(FeedStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

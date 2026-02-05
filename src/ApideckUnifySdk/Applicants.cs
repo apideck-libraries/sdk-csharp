@@ -26,68 +26,152 @@ namespace ApideckUnifySdk
 
     public interface IApplicants
     {
+        /// <summary>
+        /// List Applicants.
+        /// </summary>
+        /// <remarks>
+        /// List Applicants.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AtsApplicantsAllResponse> ListAsync(
+            AtsApplicantsAllRequest? request = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// List Applicants
-        /// 
-        /// <remarks>
-        /// List Applicants
-        /// </remarks>
+        /// Create Applicant.
         /// </summary>
-        Task<AtsApplicantsAllResponse> ListAsync(AtsApplicantsAllRequest? request = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Create Applicant.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsAddRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AtsApplicantsAddResponse> CreateAsync(
+            AtsApplicantsAddRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create Applicant
-        /// 
-        /// <remarks>
-        /// Create Applicant
-        /// </remarks>
+        /// Get Applicant.
         /// </summary>
-        Task<AtsApplicantsAddResponse> CreateAsync(AtsApplicantsAddRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Get Applicant.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AtsApplicantsOneResponse> GetAsync(AtsApplicantsOneRequest request, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Get Applicant
-        /// 
-        /// <remarks>
-        /// Get Applicant
-        /// </remarks>
+        /// Update Applicant.
         /// </summary>
-        Task<AtsApplicantsOneResponse> GetAsync(AtsApplicantsOneRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Update Applicant.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AtsApplicantsUpdateResponse> UpdateAsync(
+            AtsApplicantsUpdateRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update Applicant
-        /// 
-        /// <remarks>
-        /// Update Applicant
-        /// </remarks>
+        /// Delete Applicant.
         /// </summary>
-        Task<AtsApplicantsUpdateResponse> UpdateAsync(AtsApplicantsUpdateRequest request, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Delete Applicant
-        /// 
         /// <remarks>
-        /// Delete Applicant
+        /// Delete Applicant.
         /// </remarks>
-        /// </summary>
-        Task<AtsApplicantsDeleteResponse> DeleteAsync(AtsApplicantsDeleteRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="AtsApplicantsDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<AtsApplicantsDeleteResponse> DeleteAsync(
+            AtsApplicantsDeleteRequest request,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Applicants: IApplicants
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Applicants(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<AtsApplicantsAllResponse> ListAsync(AtsApplicantsAllRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List Applicants.
+        /// </summary>
+        /// <remarks>
+        /// List Applicants.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AtsApplicantsAllResponse> ListAsync(
+            AtsApplicantsAllRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null)
             {
@@ -95,7 +179,7 @@ namespace ApideckUnifySdk
             }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/ats/applicants", request, null);
 
@@ -155,7 +239,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -385,13 +469,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AtsApplicantsAddResponse> CreateAsync(AtsApplicantsAddRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Create Applicant.
+        /// </summary>
+        /// <remarks>
+        /// Create Applicant.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsAddRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AtsApplicantsAddResponse> CreateAsync(
+            AtsApplicantsAddRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/ats/applicants", request, null);
 
@@ -457,7 +562,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -651,13 +756,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AtsApplicantsOneResponse> GetAsync(AtsApplicantsOneRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get Applicant.
+        /// </summary>
+        /// <remarks>
+        /// Get Applicant.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AtsApplicantsOneResponse> GetAsync(
+            AtsApplicantsOneRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/ats/applicants/{id}", request, null);
 
@@ -717,7 +843,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -911,13 +1037,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AtsApplicantsUpdateResponse> UpdateAsync(AtsApplicantsUpdateRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update Applicant.
+        /// </summary>
+        /// <remarks>
+        /// Update Applicant.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AtsApplicantsUpdateResponse> UpdateAsync(
+            AtsApplicantsUpdateRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/ats/applicants/{id}", request, null);
 
@@ -983,7 +1130,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1177,13 +1324,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<AtsApplicantsDeleteResponse> DeleteAsync(AtsApplicantsDeleteRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete Applicant.
+        /// </summary>
+        /// <remarks>
+        /// Delete Applicant.
+        /// </remarks>
+        /// <param name="request">A <see cref="AtsApplicantsDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="AtsApplicantsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<AtsApplicantsDeleteResponse> DeleteAsync(
+            AtsApplicantsDeleteRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/ats/applicants/{id}", request, null);
 
@@ -1243,7 +1411,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1436,5 +1604,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

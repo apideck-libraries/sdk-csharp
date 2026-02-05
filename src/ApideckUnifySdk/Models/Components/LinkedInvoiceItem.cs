@@ -11,24 +11,23 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedInvoiceItem
     {
-
         /// <summary>
-        /// ID of the linked item. A reference to the <a href="https://developers.apideck.com/apis/accounting/reference#tag/Invoice-Items">invoice item</a> that was used to create this line item
+        /// ID of the linked item. A reference to the <a href="https://developers.apideck.com/apis/accounting/reference#tag/Invoice-Items">invoice item</a> that was used to create this line item.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// User defined item code
+        /// User defined item code.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; } = null;
 
         /// <summary>
-        /// User defined item name
+        /// User defined item name.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;

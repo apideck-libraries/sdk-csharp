@@ -26,74 +26,162 @@ namespace ApideckUnifySdk
 
     public interface ICustomObjects
     {
+        /// <summary>
+        /// List custom objects.
+        /// </summary>
+        /// <remarks>
+        /// List custom objects.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<CrmCustomObjectsAllResponse> ListAsync(
+            CrmCustomObjectsAllRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// List custom objects
-        /// 
-        /// <remarks>
-        /// List custom objects
-        /// </remarks>
+        /// Create custom object.
         /// </summary>
-        Task<CrmCustomObjectsAllResponse> ListAsync(CrmCustomObjectsAllRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Create custom object.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsAddRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<CrmCustomObjectsAddResponse> CreateAsync(
+            CrmCustomObjectsAddRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create custom object
-        /// 
-        /// <remarks>
-        /// Create custom object
-        /// </remarks>
+        /// Get custom object.
         /// </summary>
-        Task<CrmCustomObjectsAddResponse> CreateAsync(CrmCustomObjectsAddRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Get custom object.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<CrmCustomObjectsOneResponse> GetAsync(
+            CrmCustomObjectsOneRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get custom object
-        /// 
-        /// <remarks>
-        /// Get custom object
-        /// </remarks>
+        /// Update custom object.
         /// </summary>
-        Task<CrmCustomObjectsOneResponse> GetAsync(CrmCustomObjectsOneRequest request, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Update custom object.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<CrmCustomObjectsUpdateResponse> UpdateAsync(
+            CrmCustomObjectsUpdateRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update custom object
-        /// 
-        /// <remarks>
-        /// Update custom object
-        /// </remarks>
+        /// Delete custom object.
         /// </summary>
-        Task<CrmCustomObjectsUpdateResponse> UpdateAsync(CrmCustomObjectsUpdateRequest request, RetryConfig? retryConfig = null);
-
-        /// <summary>
-        /// Delete custom object
-        /// 
         /// <remarks>
-        /// Delete custom object
+        /// Delete custom object.
         /// </remarks>
-        /// </summary>
-        Task<CrmCustomObjectsDeleteResponse> DeleteAsync(CrmCustomObjectsDeleteRequest request, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="CrmCustomObjectsDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<CrmCustomObjectsDeleteResponse> DeleteAsync(
+            CrmCustomObjectsDeleteRequest request,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class CustomObjects: ICustomObjects
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public CustomObjects(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<CrmCustomObjectsAllResponse> ListAsync(CrmCustomObjectsAllRequest request, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List custom objects.
+        /// </summary>
+        /// <remarks>
+        /// List custom objects.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsAllRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<CrmCustomObjectsAllResponse> ListAsync(
+            CrmCustomObjectsAllRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/crm/custom-objects/{object_id}", request, null);
 
@@ -153,7 +241,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -383,13 +471,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<CrmCustomObjectsAddResponse> CreateAsync(CrmCustomObjectsAddRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Create custom object.
+        /// </summary>
+        /// <remarks>
+        /// Create custom object.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsAddRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<CrmCustomObjectsAddResponse> CreateAsync(
+            CrmCustomObjectsAddRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/crm/custom-objects/{object_id}", request, null);
 
@@ -455,7 +564,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -649,13 +758,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<CrmCustomObjectsOneResponse> GetAsync(CrmCustomObjectsOneRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get custom object.
+        /// </summary>
+        /// <remarks>
+        /// Get custom object.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsOneRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<CrmCustomObjectsOneResponse> GetAsync(
+            CrmCustomObjectsOneRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/crm/custom-objects/{object_id}/{id}", request, null);
 
@@ -715,7 +845,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -909,13 +1039,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<CrmCustomObjectsUpdateResponse> UpdateAsync(CrmCustomObjectsUpdateRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update custom object.
+        /// </summary>
+        /// <remarks>
+        /// Update custom object.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsUpdateRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<CrmCustomObjectsUpdateResponse> UpdateAsync(
+            CrmCustomObjectsUpdateRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/crm/custom-objects/{object_id}/{id}", request, null);
 
@@ -981,7 +1132,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1175,13 +1326,34 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<CrmCustomObjectsDeleteResponse> DeleteAsync(CrmCustomObjectsDeleteRequest request, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete custom object.
+        /// </summary>
+        /// <remarks>
+        /// Delete custom object.
+        /// </remarks>
+        /// <param name="request">A <see cref="CrmCustomObjectsDeleteRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="CrmCustomObjectsDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<CrmCustomObjectsDeleteResponse> DeleteAsync(
+            CrmCustomObjectsDeleteRequest request,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
-
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/crm/custom-objects/{object_id}/{id}", request, null);
 
@@ -1241,7 +1413,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1434,5 +1606,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

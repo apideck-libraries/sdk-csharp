@@ -10,12 +10,11 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class ApplicantsFilter
     {
-
         /// <summary>
-        /// Id of the job to filter on
+        /// Id of the job to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=job_id")]
         public string? JobId { get; set; }

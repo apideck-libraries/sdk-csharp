@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of expense.
     /// </summary>
-    public enum ExpenseType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ExpenseType : IEquatable<ExpenseType>
     {
-        [JsonProperty("expense")]
-        Expense,
-        [JsonProperty("refund")]
-        Refund,
-    }
+        public static readonly ExpenseType Expense = new ExpenseType("expense");
+        public static readonly ExpenseType Refund = new ExpenseType("refund");
 
-    public static class ExpenseTypeExtension
-    {
-        public static string Value(this ExpenseType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ExpenseType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ExpenseType).GetFields())
+        private static readonly Dictionary <string, ExpenseType> _knownValues =
+            new Dictionary <string, ExpenseType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["expense"] = Expense,
+                ["refund"] = Refund
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ExpenseType> _values =
+            new ConcurrentDictionary<string, ExpenseType>(_knownValues);
 
-                    if (enumVal is ExpenseType)
-                    {
-                        return (ExpenseType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ExpenseType");
+        private ExpenseType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ExpenseType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ExpenseType(value));
+        }
+
+        public static implicit operator ExpenseType(string value) => Of(value);
+        public static implicit operator string(ExpenseType expensetype) => expensetype.Value;
+
+        public static ExpenseType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ExpenseType);
+
+        public bool Equals(ExpenseType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

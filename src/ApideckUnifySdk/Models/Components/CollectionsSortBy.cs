@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field on which to sort the Collections
+    /// The field on which to sort the Collections.
     /// </summary>
-    public enum CollectionsSortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CollectionsSortBy : IEquatable<CollectionsSortBy>
     {
-        [JsonProperty("name")]
-        Name,
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-    }
+        public static readonly CollectionsSortBy Name = new CollectionsSortBy("name");
+        public static readonly CollectionsSortBy CreatedAt = new CollectionsSortBy("created_at");
+        public static readonly CollectionsSortBy UpdatedAt = new CollectionsSortBy("updated_at");
 
-    public static class CollectionsSortByExtension
-    {
-        public static string Value(this CollectionsSortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static CollectionsSortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(CollectionsSortBy).GetFields())
+        private static readonly Dictionary <string, CollectionsSortBy> _knownValues =
+            new Dictionary <string, CollectionsSortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["name"] = Name,
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CollectionsSortBy> _values =
+            new ConcurrentDictionary<string, CollectionsSortBy>(_knownValues);
 
-                    if (enumVal is CollectionsSortBy)
-                    {
-                        return (CollectionsSortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CollectionsSortBy");
+        private CollectionsSortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static CollectionsSortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CollectionsSortBy(value));
+        }
+
+        public static implicit operator CollectionsSortBy(string value) => Of(value);
+        public static implicit operator string(CollectionsSortBy collectionssortby) => collectionssortby.Value;
+
+        public static CollectionsSortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CollectionsSortBy);
+
+        public bool Equals(CollectionsSortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

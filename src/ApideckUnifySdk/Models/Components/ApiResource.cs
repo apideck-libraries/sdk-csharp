@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class ApiResource
     {
-
         /// <summary>
         /// ID of the resource, typically a lowercased version of name.
         /// </summary>
@@ -24,7 +26,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// Name of the resource (plural)
+        /// Name of the resource (plural).
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }
@@ -42,7 +44,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<LinkedResources>? LinkedResources { get; set; }
 
         /// <summary>
-        /// JSON Schema of the resource in our Unified API
+        /// JSON Schema of the resource in our Unified API.
         /// </summary>
         [JsonProperty("schema")]
         public Schema? Schema { get; set; }

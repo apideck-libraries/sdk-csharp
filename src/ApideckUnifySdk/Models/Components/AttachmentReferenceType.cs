@@ -12,50 +12,67 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum AttachmentReferenceType
-    {
-        [JsonProperty("invoice")]
-        Invoice,
-        [JsonProperty("bill")]
-        Bill,
-        [JsonProperty("expense")]
-        Expense,
-        [JsonProperty("quote")]
-        Quote,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class AttachmentReferenceTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class AttachmentReferenceType : IEquatable<AttachmentReferenceType>
     {
-        public static string Value(this AttachmentReferenceType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly AttachmentReferenceType Invoice = new AttachmentReferenceType("invoice");
+        public static readonly AttachmentReferenceType Bill = new AttachmentReferenceType("bill");
+        public static readonly AttachmentReferenceType Expense = new AttachmentReferenceType("expense");
+        public static readonly AttachmentReferenceType Quote = new AttachmentReferenceType("quote");
 
-        public static AttachmentReferenceType ToEnum(this string value)
-        {
-            foreach(var field in typeof(AttachmentReferenceType).GetFields())
+        private static readonly Dictionary <string, AttachmentReferenceType> _knownValues =
+            new Dictionary <string, AttachmentReferenceType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["invoice"] = Invoice,
+                ["bill"] = Bill,
+                ["expense"] = Expense,
+                ["quote"] = Quote
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, AttachmentReferenceType> _values =
+            new ConcurrentDictionary<string, AttachmentReferenceType>(_knownValues);
 
-                    if (enumVal is AttachmentReferenceType)
-                    {
-                        return (AttachmentReferenceType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum AttachmentReferenceType");
+        private AttachmentReferenceType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static AttachmentReferenceType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new AttachmentReferenceType(value));
+        }
+
+        public static implicit operator AttachmentReferenceType(string value) => Of(value);
+        public static implicit operator string(AttachmentReferenceType attachmentreferencetype) => attachmentreferencetype.Value;
+
+        public static AttachmentReferenceType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as AttachmentReferenceType);
+
+        public bool Equals(AttachmentReferenceType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Apideck service provider associated with request.
     /// </summary>
     public class Service
     {
-
         /// <summary>
         /// Apideck service provider id.
         /// </summary>

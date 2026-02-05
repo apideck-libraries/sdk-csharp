@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Invoice type
+    /// Invoice type.
     /// </summary>
-    public enum InvoiceType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class InvoiceType : IEquatable<InvoiceType>
     {
-        [JsonProperty("standard")]
-        Standard,
-        [JsonProperty("credit")]
-        Credit,
-        [JsonProperty("service")]
-        Service,
-        [JsonProperty("product")]
-        Product,
-        [JsonProperty("supplier")]
-        Supplier,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly InvoiceType Standard = new InvoiceType("standard");
+        public static readonly InvoiceType Credit = new InvoiceType("credit");
+        public static readonly InvoiceType Service = new InvoiceType("service");
+        public static readonly InvoiceType Product = new InvoiceType("product");
+        public static readonly InvoiceType Supplier = new InvoiceType("supplier");
+        public static readonly InvoiceType Other = new InvoiceType("other");
 
-    public static class InvoiceTypeExtension
-    {
-        public static string Value(this InvoiceType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static InvoiceType ToEnum(this string value)
-        {
-            foreach(var field in typeof(InvoiceType).GetFields())
+        private static readonly Dictionary <string, InvoiceType> _knownValues =
+            new Dictionary <string, InvoiceType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["standard"] = Standard,
+                ["credit"] = Credit,
+                ["service"] = Service,
+                ["product"] = Product,
+                ["supplier"] = Supplier,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, InvoiceType> _values =
+            new ConcurrentDictionary<string, InvoiceType>(_knownValues);
 
-                    if (enumVal is InvoiceType)
-                    {
-                        return (InvoiceType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum InvoiceType");
+        private InvoiceType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static InvoiceType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new InvoiceType(value));
+        }
+
+        public static implicit operator InvoiceType(string value) => Of(value);
+        public static implicit operator string(InvoiceType invoicetype) => invoicetype.Value;
+
+        public static InvoiceType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as InvoiceType);
+
+        public bool Equals(InvoiceType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

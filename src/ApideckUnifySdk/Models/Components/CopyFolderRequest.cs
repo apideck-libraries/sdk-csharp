@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CopyFolderRequest
     {
-
         /// <summary>
         /// The name of the folder.
         /// </summary>

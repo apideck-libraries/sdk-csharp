@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedDepartmentInput
     {
-
         /// <summary>
         /// Id to be displayed.
         /// </summary>

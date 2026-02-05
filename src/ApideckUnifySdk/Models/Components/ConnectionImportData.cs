@@ -13,21 +13,20 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class ConnectionImportData
     {
-
         [JsonProperty("credentials")]
         public Credentials? Credentials { get; set; }
 
         /// <summary>
-        /// Connection settings. Values will persist to `form_fields` with corresponding id
+        /// Connection settings. Values will persist to `form_fields` with corresponding id.
         /// </summary>
         [JsonProperty("settings")]
         public Dictionary<string, object>? Settings { get; set; } = null;
 
         /// <summary>
-        /// Attach your own consumer specific metadata
+        /// Attach your own consumer specific metadata.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, object>? Metadata { get; set; } = null;

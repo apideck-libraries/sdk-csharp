@@ -12,47 +12,64 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Format of the doc.
     /// </summary>
-    public enum Format
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Format : IEquatable<Format>
     {
-        [JsonProperty("markdown")]
-        Markdown,
-    }
+        public static readonly Format Markdown = new Format("markdown");
 
-    public static class FormatExtension
-    {
-        public static string Value(this Format value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Format ToEnum(this string value)
-        {
-            foreach(var field in typeof(Format).GetFields())
+        private static readonly Dictionary <string, Format> _knownValues =
+            new Dictionary <string, Format> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["markdown"] = Markdown
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Format> _values =
+            new ConcurrentDictionary<string, Format>(_knownValues);
 
-                    if (enumVal is Format)
-                    {
-                        return (Format)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Format");
+        private Format(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Format Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Format(value));
+        }
+
+        public static implicit operator Format(string value) => Of(value);
+        public static implicit operator string(Format format) => format.Value;
+
+        public static Format[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Format);
+
+        public bool Equals(Format? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

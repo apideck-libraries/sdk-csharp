@@ -11,42 +11,41 @@ namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+
     public class VaultConnectionSettingsUpdateRequest
     {
-
         /// <summary>
-        /// ID of the consumer which you want to get or push data from
+        /// ID of the consumer which you want to get or push data from.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-consumer-id")]
         public string? ConsumerId { get; set; }
 
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
 
         /// <summary>
-        /// Service ID of the resource to return
+        /// Service ID of the resource to return.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=service_id")]
         public string ServiceId { get; set; } = default!;
 
         /// <summary>
-        /// Unified API
+        /// Unified API.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=unified_api")]
         public string UnifiedApi { get; set; } = default!;
 
         /// <summary>
-        /// Name of the resource (plural)
+        /// Name of the resource (plural).
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=resource")]
         public string Resource { get; set; } = default!;
 
         /// <summary>
-        /// Fields that need to be updated on the resource
+        /// Fields that need to be updated on the resource.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public ConnectionInput Connection { get; set; } = default!;

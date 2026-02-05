@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The FLSA status for this compensation.
     /// </summary>
-    public enum FlsaStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class FlsaStatus : IEquatable<FlsaStatus>
     {
-        [JsonProperty("exempt")]
-        Exempt,
-        [JsonProperty("salaried-nonexempt")]
-        SalariedNonexempt,
-        [JsonProperty("nonexempt")]
-        Nonexempt,
-        [JsonProperty("owner")]
-        Owner,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly FlsaStatus Exempt = new FlsaStatus("exempt");
+        public static readonly FlsaStatus SalariedNonexempt = new FlsaStatus("salaried-nonexempt");
+        public static readonly FlsaStatus Nonexempt = new FlsaStatus("nonexempt");
+        public static readonly FlsaStatus Owner = new FlsaStatus("owner");
+        public static readonly FlsaStatus Other = new FlsaStatus("other");
 
-    public static class FlsaStatusExtension
-    {
-        public static string Value(this FlsaStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static FlsaStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(FlsaStatus).GetFields())
+        private static readonly Dictionary <string, FlsaStatus> _knownValues =
+            new Dictionary <string, FlsaStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["exempt"] = Exempt,
+                ["salaried-nonexempt"] = SalariedNonexempt,
+                ["nonexempt"] = Nonexempt,
+                ["owner"] = Owner,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, FlsaStatus> _values =
+            new ConcurrentDictionary<string, FlsaStatus>(_knownValues);
 
-                    if (enumVal is FlsaStatus)
-                    {
-                        return (FlsaStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum FlsaStatus");
+        private FlsaStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static FlsaStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new FlsaStatus(value));
+        }
+
+        public static implicit operator FlsaStatus(string value) => Of(value);
+        public static implicit operator string(FlsaStatus flsastatus) => flsastatus.Value;
+
+        public static FlsaStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as FlsaStatus);
+
+        public bool Equals(FlsaStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

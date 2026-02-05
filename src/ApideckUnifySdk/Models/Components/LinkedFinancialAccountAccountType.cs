@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of account being referenced. Use `ledger_account` for GL accounts from the chart of accounts, or `bank_account` for bank account entities. When not specified, the connector will use its default behavior.
     /// </summary>
-    public enum LinkedFinancialAccountAccountType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class LinkedFinancialAccountAccountType : IEquatable<LinkedFinancialAccountAccountType>
     {
-        [JsonProperty("ledger_account")]
-        LedgerAccount,
-        [JsonProperty("bank_account")]
-        BankAccount,
-    }
+        public static readonly LinkedFinancialAccountAccountType LedgerAccount = new LinkedFinancialAccountAccountType("ledger_account");
+        public static readonly LinkedFinancialAccountAccountType BankAccount = new LinkedFinancialAccountAccountType("bank_account");
 
-    public static class LinkedFinancialAccountAccountTypeExtension
-    {
-        public static string Value(this LinkedFinancialAccountAccountType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static LinkedFinancialAccountAccountType ToEnum(this string value)
-        {
-            foreach(var field in typeof(LinkedFinancialAccountAccountType).GetFields())
+        private static readonly Dictionary <string, LinkedFinancialAccountAccountType> _knownValues =
+            new Dictionary <string, LinkedFinancialAccountAccountType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["ledger_account"] = LedgerAccount,
+                ["bank_account"] = BankAccount
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, LinkedFinancialAccountAccountType> _values =
+            new ConcurrentDictionary<string, LinkedFinancialAccountAccountType>(_knownValues);
 
-                    if (enumVal is LinkedFinancialAccountAccountType)
-                    {
-                        return (LinkedFinancialAccountAccountType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum LinkedFinancialAccountAccountType");
+        private LinkedFinancialAccountAccountType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static LinkedFinancialAccountAccountType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new LinkedFinancialAccountAccountType(value));
+        }
+
+        public static implicit operator LinkedFinancialAccountAccountType(string value) => Of(value);
+        public static implicit operator string(LinkedFinancialAccountAccountType linkedfinancialaccountaccounttype) => linkedfinancialaccountaccounttype.Value;
+
+        public static LinkedFinancialAccountAccountType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as LinkedFinancialAccountAccountType);
+
+        public bool Equals(LinkedFinancialAccountAccountType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

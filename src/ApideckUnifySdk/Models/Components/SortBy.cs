@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The field to sort by
+    /// The field to sort by.
     /// </summary>
-    public enum SortBy
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class SortBy : IEquatable<SortBy>
     {
-        [JsonProperty("created_at")]
-        CreatedAt,
-        [JsonProperty("updated_at")]
-        UpdatedAt,
-    }
+        public static readonly SortBy CreatedAt = new SortBy("created_at");
+        public static readonly SortBy UpdatedAt = new SortBy("updated_at");
 
-    public static class SortByExtension
-    {
-        public static string Value(this SortBy value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static SortBy ToEnum(this string value)
-        {
-            foreach(var field in typeof(SortBy).GetFields())
+        private static readonly Dictionary <string, SortBy> _knownValues =
+            new Dictionary <string, SortBy> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["created_at"] = CreatedAt,
+                ["updated_at"] = UpdatedAt
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, SortBy> _values =
+            new ConcurrentDictionary<string, SortBy>(_knownValues);
 
-                    if (enumVal is SortBy)
-                    {
-                        return (SortBy)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum SortBy");
+        private SortBy(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static SortBy Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new SortBy(value));
+        }
+
+        public static implicit operator SortBy(string value) => Of(value);
+        public static implicit operator string(SortBy sortby) => sortby.Value;
+
+        public static SortBy[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as SortBy);
+
+        public bool Equals(SortBy? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

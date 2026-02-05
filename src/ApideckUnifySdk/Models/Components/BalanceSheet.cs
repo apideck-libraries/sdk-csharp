@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class BalanceSheet
     {
-
         [JsonProperty("reports")]
         public List<Reports> Reports { get; set; } = default!;
     }

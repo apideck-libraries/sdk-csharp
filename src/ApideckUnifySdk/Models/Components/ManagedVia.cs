@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// How the subscription is managed in the downstream.
     /// </summary>
-    public enum ManagedVia
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ManagedVia : IEquatable<ManagedVia>
     {
-        [JsonProperty("manual")]
-        Manual,
-        [JsonProperty("api")]
-        Api,
-    }
+        public static readonly ManagedVia Manual = new ManagedVia("manual");
+        public static readonly ManagedVia Api = new ManagedVia("api");
 
-    public static class ManagedViaExtension
-    {
-        public static string Value(this ManagedVia value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ManagedVia ToEnum(this string value)
-        {
-            foreach(var field in typeof(ManagedVia).GetFields())
+        private static readonly Dictionary <string, ManagedVia> _knownValues =
+            new Dictionary <string, ManagedVia> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["manual"] = Manual,
+                ["api"] = Api
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ManagedVia> _values =
+            new ConcurrentDictionary<string, ManagedVia>(_knownValues);
 
-                    if (enumVal is ManagedVia)
-                    {
-                        return (ManagedVia)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ManagedVia");
+        private ManagedVia(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ManagedVia Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ManagedVia(value));
+        }
+
+        public static implicit operator ManagedVia(string value) => Of(value);
+        public static implicit operator string(ManagedVia managedvia) => managedvia.Value;
+
+        public static ManagedVia[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ManagedVia);
+
+        public bool Equals(ManagedVia? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

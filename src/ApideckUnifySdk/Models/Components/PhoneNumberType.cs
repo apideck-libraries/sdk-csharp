@@ -12,69 +12,86 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The type of phone number
+    /// The type of phone number.
     /// </summary>
-    public enum PhoneNumberType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PhoneNumberType : IEquatable<PhoneNumberType>
     {
-        [JsonProperty("primary")]
-        Primary,
-        [JsonProperty("secondary")]
-        Secondary,
-        [JsonProperty("home")]
-        Home,
-        [JsonProperty("work")]
-        Work,
-        [JsonProperty("office")]
-        Office,
-        [JsonProperty("mobile")]
-        Mobile,
-        [JsonProperty("assistant")]
-        Assistant,
-        [JsonProperty("fax")]
-        Fax,
-        [JsonProperty("direct-dial-in")]
-        DirectDialIn,
-        [JsonProperty("personal")]
-        Personal,
-        [JsonProperty("billing")]
-        Billing,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly PhoneNumberType Primary = new PhoneNumberType("primary");
+        public static readonly PhoneNumberType Secondary = new PhoneNumberType("secondary");
+        public static readonly PhoneNumberType Home = new PhoneNumberType("home");
+        public static readonly PhoneNumberType Work = new PhoneNumberType("work");
+        public static readonly PhoneNumberType Office = new PhoneNumberType("office");
+        public static readonly PhoneNumberType Mobile = new PhoneNumberType("mobile");
+        public static readonly PhoneNumberType Assistant = new PhoneNumberType("assistant");
+        public static readonly PhoneNumberType Fax = new PhoneNumberType("fax");
+        public static readonly PhoneNumberType DirectDialIn = new PhoneNumberType("direct-dial-in");
+        public static readonly PhoneNumberType Personal = new PhoneNumberType("personal");
+        public static readonly PhoneNumberType Billing = new PhoneNumberType("billing");
+        public static readonly PhoneNumberType Other = new PhoneNumberType("other");
 
-    public static class PhoneNumberTypeExtension
-    {
-        public static string Value(this PhoneNumberType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PhoneNumberType ToEnum(this string value)
-        {
-            foreach(var field in typeof(PhoneNumberType).GetFields())
+        private static readonly Dictionary <string, PhoneNumberType> _knownValues =
+            new Dictionary <string, PhoneNumberType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["primary"] = Primary,
+                ["secondary"] = Secondary,
+                ["home"] = Home,
+                ["work"] = Work,
+                ["office"] = Office,
+                ["mobile"] = Mobile,
+                ["assistant"] = Assistant,
+                ["fax"] = Fax,
+                ["direct-dial-in"] = DirectDialIn,
+                ["personal"] = Personal,
+                ["billing"] = Billing,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PhoneNumberType> _values =
+            new ConcurrentDictionary<string, PhoneNumberType>(_knownValues);
 
-                    if (enumVal is PhoneNumberType)
-                    {
-                        return (PhoneNumberType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PhoneNumberType");
+        private PhoneNumberType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PhoneNumberType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PhoneNumberType(value));
+        }
+
+        public static implicit operator PhoneNumberType(string value) => Of(value);
+        public static implicit operator string(PhoneNumberType phonenumbertype) => phonenumbertype.Value;
+
+        public static PhoneNumberType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PhoneNumberType);
+
+        public bool Equals(PhoneNumberType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

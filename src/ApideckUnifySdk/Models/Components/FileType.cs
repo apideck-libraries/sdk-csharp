@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The type of resource. Could be file, folder or url
+    /// The type of resource. Could be file, folder or url.
     /// </summary>
-    public enum FileType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class FileType : IEquatable<FileType>
     {
-        [JsonProperty("file")]
-        File,
-        [JsonProperty("folder")]
-        Folder,
-        [JsonProperty("url")]
-        Url,
-    }
+        public static readonly FileType File = new FileType("file");
+        public static readonly FileType Folder = new FileType("folder");
+        public static readonly FileType Url = new FileType("url");
 
-    public static class FileTypeExtension
-    {
-        public static string Value(this FileType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static FileType ToEnum(this string value)
-        {
-            foreach(var field in typeof(FileType).GetFields())
+        private static readonly Dictionary <string, FileType> _knownValues =
+            new Dictionary <string, FileType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["file"] = File,
+                ["folder"] = Folder,
+                ["url"] = Url
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, FileType> _values =
+            new ConcurrentDictionary<string, FileType>(_knownValues);
 
-                    if (enumVal is FileType)
-                    {
-                        return (FileType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum FileType");
+        private FileType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static FileType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new FileType(value));
+        }
+
+        public static implicit operator FileType(string value) => Of(value);
+        public static implicit operator string(FileType filetype) => filetype.Value;
+
+        public static FileType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as FileType);
+
+        public bool Equals(FileType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

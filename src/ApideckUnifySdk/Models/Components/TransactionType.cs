@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The kind of transaction, indicating whether it is a sales transaction or a purchase transaction.
     /// </summary>
-    public enum TransactionType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class TransactionType : IEquatable<TransactionType>
     {
-        [JsonProperty("sale")]
-        Sale,
-        [JsonProperty("purchase")]
-        Purchase,
-    }
+        public static readonly TransactionType Sale = new TransactionType("sale");
+        public static readonly TransactionType Purchase = new TransactionType("purchase");
 
-    public static class TransactionTypeExtension
-    {
-        public static string Value(this TransactionType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static TransactionType ToEnum(this string value)
-        {
-            foreach(var field in typeof(TransactionType).GetFields())
+        private static readonly Dictionary <string, TransactionType> _knownValues =
+            new Dictionary <string, TransactionType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["sale"] = Sale,
+                ["purchase"] = Purchase
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, TransactionType> _values =
+            new ConcurrentDictionary<string, TransactionType>(_knownValues);
 
-                    if (enumVal is TransactionType)
-                    {
-                        return (TransactionType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum TransactionType");
+        private TransactionType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static TransactionType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new TransactionType(value));
+        }
+
+        public static implicit operator TransactionType(string value) => Of(value);
+        public static implicit operator string(TransactionType transactiontype) => transactiontype.Value;
+
+        public static TransactionType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as TransactionType);
+
+        public bool Equals(TransactionType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

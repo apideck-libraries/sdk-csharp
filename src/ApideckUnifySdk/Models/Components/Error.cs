@@ -11,15 +11,14 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The error returned if your message status is failed or undelivered.
     /// </summary>
     public class Error
     {
-
         /// <summary>
-        /// The error_code provides more information about the failure. If the message was successful, this value is null
+        /// The error_code provides more information about the failure. If the message was successful, this value is null.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; }

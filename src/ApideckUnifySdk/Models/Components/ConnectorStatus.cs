@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Status of the connector. Connectors with status live or beta are callable.
     /// </summary>
-    public enum ConnectorStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ConnectorStatus : IEquatable<ConnectorStatus>
     {
-        [JsonProperty("live")]
-        Live,
-        [JsonProperty("beta")]
-        Beta,
-        [JsonProperty("early-access")]
-        EarlyAccess,
-        [JsonProperty("development")]
-        Development,
-        [JsonProperty("considering")]
-        Considering,
-    }
+        public static readonly ConnectorStatus Live = new ConnectorStatus("live");
+        public static readonly ConnectorStatus Beta = new ConnectorStatus("beta");
+        public static readonly ConnectorStatus EarlyAccess = new ConnectorStatus("early-access");
+        public static readonly ConnectorStatus Development = new ConnectorStatus("development");
+        public static readonly ConnectorStatus Considering = new ConnectorStatus("considering");
 
-    public static class ConnectorStatusExtension
-    {
-        public static string Value(this ConnectorStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ConnectorStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ConnectorStatus).GetFields())
+        private static readonly Dictionary <string, ConnectorStatus> _knownValues =
+            new Dictionary <string, ConnectorStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["live"] = Live,
+                ["beta"] = Beta,
+                ["early-access"] = EarlyAccess,
+                ["development"] = Development,
+                ["considering"] = Considering
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ConnectorStatus> _values =
+            new ConcurrentDictionary<string, ConnectorStatus>(_knownValues);
 
-                    if (enumVal is ConnectorStatus)
-                    {
-                        return (ConnectorStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ConnectorStatus");
+        private ConnectorStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ConnectorStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ConnectorStatus(value));
+        }
+
+        public static implicit operator ConnectorStatus(string value) => Of(value);
+        public static implicit operator string(ConnectorStatus connectorstatus) => connectorstatus.Value;
+
+        public static ConnectorStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ConnectorStatus);
+
+        public bool Equals(ConnectorStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

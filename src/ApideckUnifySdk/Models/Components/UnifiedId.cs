@@ -11,15 +11,14 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// A object containing a unique identifier for the resource that was created, updated, or deleted.
     /// </summary>
     public class UnifiedId
     {
-
         /// <summary>
-        /// The unique identifier of the resource
+        /// The unique identifier of the resource.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;

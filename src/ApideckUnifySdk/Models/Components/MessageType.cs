@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Set to sms for SMS messages and mms for MMS messages.
     /// </summary>
-    public enum MessageType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class MessageType : IEquatable<MessageType>
     {
-        [JsonProperty("sms")]
-        Sms,
-        [JsonProperty("mms")]
-        Mms,
-    }
+        public static readonly MessageType Sms = new MessageType("sms");
+        public static readonly MessageType Mms = new MessageType("mms");
 
-    public static class MessageTypeExtension
-    {
-        public static string Value(this MessageType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static MessageType ToEnum(this string value)
-        {
-            foreach(var field in typeof(MessageType).GetFields())
+        private static readonly Dictionary <string, MessageType> _knownValues =
+            new Dictionary <string, MessageType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["sms"] = Sms,
+                ["mms"] = Mms
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, MessageType> _values =
+            new ConcurrentDictionary<string, MessageType>(_knownValues);
 
-                    if (enumVal is MessageType)
-                    {
-                        return (MessageType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum MessageType");
+        private MessageType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static MessageType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new MessageType(value));
+        }
+
+        public static implicit operator MessageType(string value) => Of(value);
+        public static implicit operator string(MessageType messagetype) => messagetype.Value;
+
+        public static MessageType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as MessageType);
+
+        public bool Equals(MessageType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,65 +12,82 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Invoice status
+    /// Invoice status.
     /// </summary>
-    public enum InvoiceStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class InvoiceStatus : IEquatable<InvoiceStatus>
     {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("submitted")]
-        Submitted,
-        [JsonProperty("authorised")]
-        Authorised,
-        [JsonProperty("partially_paid")]
-        PartiallyPaid,
-        [JsonProperty("paid")]
-        Paid,
-        [JsonProperty("unpaid")]
-        Unpaid,
-        [JsonProperty("void")]
-        Void,
-        [JsonProperty("credit")]
-        Credit,
-        [JsonProperty("deleted")]
-        Deleted,
-        [JsonProperty("posted")]
-        Posted,
-    }
+        public static readonly InvoiceStatus Draft = new InvoiceStatus("draft");
+        public static readonly InvoiceStatus Submitted = new InvoiceStatus("submitted");
+        public static readonly InvoiceStatus Authorised = new InvoiceStatus("authorised");
+        public static readonly InvoiceStatus PartiallyPaid = new InvoiceStatus("partially_paid");
+        public static readonly InvoiceStatus Paid = new InvoiceStatus("paid");
+        public static readonly InvoiceStatus Unpaid = new InvoiceStatus("unpaid");
+        public static readonly InvoiceStatus Void = new InvoiceStatus("void");
+        public static readonly InvoiceStatus Credit = new InvoiceStatus("credit");
+        public static readonly InvoiceStatus Deleted = new InvoiceStatus("deleted");
+        public static readonly InvoiceStatus Posted = new InvoiceStatus("posted");
 
-    public static class InvoiceStatusExtension
-    {
-        public static string Value(this InvoiceStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static InvoiceStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(InvoiceStatus).GetFields())
+        private static readonly Dictionary <string, InvoiceStatus> _knownValues =
+            new Dictionary <string, InvoiceStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["submitted"] = Submitted,
+                ["authorised"] = Authorised,
+                ["partially_paid"] = PartiallyPaid,
+                ["paid"] = Paid,
+                ["unpaid"] = Unpaid,
+                ["void"] = Void,
+                ["credit"] = Credit,
+                ["deleted"] = Deleted,
+                ["posted"] = Posted
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, InvoiceStatus> _values =
+            new ConcurrentDictionary<string, InvoiceStatus>(_knownValues);
 
-                    if (enumVal is InvoiceStatus)
-                    {
-                        return (InvoiceStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum InvoiceStatus");
+        private InvoiceStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static InvoiceStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new InvoiceStatus(value));
+        }
+
+        public static implicit operator InvoiceStatus(string value) => Of(value);
+        public static implicit operator string(InvoiceStatus invoicestatus) => invoicestatus.Value;
+
+        public static InvoiceStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as InvoiceStatus);
+
+        public bool Equals(InvoiceStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

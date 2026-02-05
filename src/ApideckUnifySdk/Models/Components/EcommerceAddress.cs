@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// An object representing a shipping or billing address.
     /// </summary>
     public class EcommerceAddress
     {
-
         /// <summary>
         /// Address line 1 of the billing address.
         /// </summary>
@@ -31,7 +30,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Line2 { get; set; } = null;
 
         /// <summary>
-        /// Company name of the customer
+        /// Company name of the customer.
         /// </summary>
         [JsonProperty("company_name")]
         public string? CompanyName { get; set; } = null;

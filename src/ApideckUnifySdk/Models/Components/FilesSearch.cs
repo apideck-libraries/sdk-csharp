@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class FilesSearch
     {
-
         /// <summary>
         /// The query to search for. May match across multiple fields.
         /// </summary>
@@ -24,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         public string Query { get; set; } = default!;
 
         /// <summary>
-        /// ID of the drive to filter on
+        /// ID of the drive to filter on.
         /// </summary>
         [JsonProperty("drive_id")]
         public string? DriveId { get; set; }

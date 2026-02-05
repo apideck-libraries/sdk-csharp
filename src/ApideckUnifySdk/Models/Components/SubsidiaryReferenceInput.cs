@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class SubsidiaryReferenceInput
     {
-
         /// <summary>
         /// The name of the company.
         /// </summary>

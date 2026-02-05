@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Fields
     {
-
         [JsonProperty("id")]
         public string? Id { get; set; }
 
@@ -33,13 +35,13 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Required { get; set; }
 
         /// <summary>
-        /// Options for select and multiselect types
+        /// Options for select and multiselect types.
         /// </summary>
         [JsonProperty("options")]
         public List<CustomObjectSchemaOptions>? Options { get; set; } = null;
 
         /// <summary>
-        /// Default value for the field
+        /// Default value for the field.
         /// </summary>
         [JsonProperty("default_value")]
         public string? DefaultValue { get; set; } = null;

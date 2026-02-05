@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class CustomObjectSchemaOptions
     {
-
         [JsonProperty("value")]
         public string? Value { get; set; }
 

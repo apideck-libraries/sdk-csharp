@@ -11,10 +11,14 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class TimeOffRequestsFilter
     {
-
         /// <summary>
         /// Start date of the date range to filter time off requests. When used with end_date, filters for requests within the specified date range.
         /// </summary>
@@ -28,25 +32,25 @@ namespace ApideckUnifySdk.Models.Components
         public string? EndDate { get; set; }
 
         /// <summary>
-        /// Minimum date the time off request was last created or modified
+        /// Minimum date the time off request was last created or modified.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public string? UpdatedSince { get; set; }
 
         /// <summary>
-        /// Employee ID
+        /// Employee ID.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=employee_id")]
         public string? EmployeeId { get; set; }
 
         /// <summary>
-        /// Time off request status to filter on
+        /// Time off request status to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=time_off_request_status")]
         public TimeOffRequestStatus? TimeOffRequestStatus { get; set; }
 
         /// <summary>
-        /// Company ID
+        /// Company ID.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=company_id")]
         public string? CompanyId { get; set; }

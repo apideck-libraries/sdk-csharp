@@ -11,12 +11,11 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class DeleteConsumerResponseData
     {
-
         /// <summary>
-        /// Unique consumer identifier. You can freely choose a consumer ID yourself. Most of the time, this is an ID of your internal data model that represents a user or account in your system (for example account:12345). If the consumer doesn&apos;t exist yet, Vault will upsert a consumer based on your ID.
+        /// Unique consumer identifier. You can freely choose a consumer ID yourself. Most of the time, this is an ID of your internal data model that represents a user or account in your system (for example account:12345). If the consumer doesn't exist yet, Vault will upsert a consumer based on your ID.
         /// </summary>
         [JsonProperty("consumer_id")]
         public string? ConsumerId { get; set; }

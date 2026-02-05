@@ -17,22 +17,44 @@ namespace ApideckUnifySdk
     public interface IEcommerce
     {
         public IOrders Orders { get; }
+
         public IProducts Products { get; }
+
         public IApideckCustomers Customers { get; }
+
         public IStores Stores { get; }
     }
 
     public class Ecommerce: IEcommerce
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Orders SubSDK.
+        /// <see cref="IOrders"/>
+        /// </summary>
         public IOrders Orders { get; private set; }
+
+        /// <summary>
+        /// Products SubSDK.
+        /// <see cref="IProducts"/>
+        /// </summary>
         public IProducts Products { get; private set; }
+
+        /// <summary>
+        /// Customers SubSDK.
+        /// <see cref="IApideckCustomers"/>
+        /// </summary>
         public IApideckCustomers Customers { get; private set; }
+
+        /// <summary>
+        /// Stores SubSDK.
+        /// <see cref="IStores"/>
+        /// </summary>
         public IStores Stores { get; private set; }
 
         public Ecommerce(SDKConfig config)

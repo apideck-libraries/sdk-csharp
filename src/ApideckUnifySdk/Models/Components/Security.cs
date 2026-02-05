@@ -10,10 +10,9 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class Security
     {
-
         [SpeakeasyMetadata("security:scheme=true,type=http,subType=bearer,name=Authorization")]
         public string ApiKey { get; set; } = default!;
     }

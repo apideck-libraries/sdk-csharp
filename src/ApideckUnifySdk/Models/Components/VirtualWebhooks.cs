@@ -13,13 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// Virtual webhook config for the connector.
     /// </summary>
     public class VirtualWebhooks
     {
-
         /// <summary>
         /// The rate at which requests for resources will be made to downstream.
         /// </summary>

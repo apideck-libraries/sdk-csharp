@@ -10,18 +10,17 @@
 namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class VaultConsumersDeleteRequest
     {
-
         /// <summary>
-        /// The ID of your Unify application
+        /// The ID of your Unify application.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
 
         /// <summary>
-        /// ID of the consumer to return
+        /// ID of the consumer to return.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=consumer_id")]
         public string ConsumerId { get; set; } = default!;

@@ -10,12 +10,11 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class DriveGroupsFilter
     {
-
         /// <summary>
-        /// ID of the drive group to filter on
+        /// ID of the drive group to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=parent_group_id")]
         public string? ParentGroupId { get; set; }

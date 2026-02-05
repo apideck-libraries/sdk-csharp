@@ -13,10 +13,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class EmployeeJob
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -72,13 +75,13 @@ namespace ApideckUnifySdk.Models.Components
         public PaymentUnit? PaymentUnit { get; set; } = null;
 
         /// <summary>
-        /// The date on which the employee was hired by the organization
+        /// The date on which the employee was hired by the organization.
         /// </summary>
         [JsonProperty("hired_at")]
         public LocalDate? HiredAt { get; set; } = null;
 
         /// <summary>
-        /// Indicates whether this the employee&apos;s primary job.
+        /// Indicates whether this the employee's primary job.
         /// </summary>
         [JsonProperty("is_primary")]
         public bool? IsPrimary { get; set; } = null;

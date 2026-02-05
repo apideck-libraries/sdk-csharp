@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Operational health status of the connection
+    /// Operational health status of the connection.
     /// </summary>
-    public enum Health
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Health : IEquatable<Health>
     {
-        [JsonProperty("revoked")]
-        Revoked,
-        [JsonProperty("missing_settings")]
-        MissingSettings,
-        [JsonProperty("needs_consent")]
-        NeedsConsent,
-        [JsonProperty("needs_auth")]
-        NeedsAuth,
-        [JsonProperty("pending_refresh")]
-        PendingRefresh,
-        [JsonProperty("ok")]
-        Ok,
-    }
+        public static readonly Health Revoked = new Health("revoked");
+        public static readonly Health MissingSettings = new Health("missing_settings");
+        public static readonly Health NeedsConsent = new Health("needs_consent");
+        public static readonly Health NeedsAuth = new Health("needs_auth");
+        public static readonly Health PendingRefresh = new Health("pending_refresh");
+        public static readonly Health Ok = new Health("ok");
 
-    public static class HealthExtension
-    {
-        public static string Value(this Health value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Health ToEnum(this string value)
-        {
-            foreach(var field in typeof(Health).GetFields())
+        private static readonly Dictionary <string, Health> _knownValues =
+            new Dictionary <string, Health> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["revoked"] = Revoked,
+                ["missing_settings"] = MissingSettings,
+                ["needs_consent"] = NeedsConsent,
+                ["needs_auth"] = NeedsAuth,
+                ["pending_refresh"] = PendingRefresh,
+                ["ok"] = Ok
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Health> _values =
+            new ConcurrentDictionary<string, Health>(_knownValues);
 
-                    if (enumVal is Health)
-                    {
-                        return (Health)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Health");
+        private Health(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Health Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Health(value));
+        }
+
+        public static implicit operator Health(string value) => Of(value);
+        public static implicit operator string(Health health) => health.Value;
+
+        public static Health[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Health);
+
+        public bool Equals(Health? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

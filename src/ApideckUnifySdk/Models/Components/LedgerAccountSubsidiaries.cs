@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LedgerAccountSubsidiaries
     {
-
         /// <summary>
         /// The ID of the subsidiary.
         /// </summary>

@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Unify event source
+    /// Unify event source.
     /// </summary>
-    public enum EventSource
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EventSource : IEquatable<EventSource>
     {
-        [JsonProperty("native")]
-        Native,
-        [JsonProperty("virtual")]
-        Virtual,
-    }
+        public static readonly EventSource Native = new EventSource("native");
+        public static readonly EventSource Virtual = new EventSource("virtual");
 
-    public static class EventSourceExtension
-    {
-        public static string Value(this EventSource value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EventSource ToEnum(this string value)
-        {
-            foreach(var field in typeof(EventSource).GetFields())
+        private static readonly Dictionary <string, EventSource> _knownValues =
+            new Dictionary <string, EventSource> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["native"] = Native,
+                ["virtual"] = Virtual
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EventSource> _values =
+            new ConcurrentDictionary<string, EventSource>(_knownValues);
 
-                    if (enumVal is EventSource)
-                    {
-                        return (EventSource)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EventSource");
+        private EventSource(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EventSource Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EventSource(value));
+        }
+
+        public static implicit operator EventSource(string value) => Of(value);
+        public static implicit operator string(EventSource eventsource) => eventsource.Value;
+
+        public static EventSource[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EventSource);
+
+        public bool Equals(EventSource? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

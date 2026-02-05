@@ -12,47 +12,64 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Wildcard indicating all resources and fields when Data Scopes is selected
+    /// Wildcard indicating all resources and fields when Data Scopes is selected.
     /// </summary>
-    public enum DataScopesResources2
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class DataScopesResources2 : IEquatable<DataScopesResources2>
     {
-        [JsonProperty("*")]
-        Wildcard,
-    }
+        public static readonly DataScopesResources2 Wildcard = new DataScopesResources2("*");
 
-    public static class DataScopesResources2Extension
-    {
-        public static string Value(this DataScopesResources2 value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static DataScopesResources2 ToEnum(this string value)
-        {
-            foreach(var field in typeof(DataScopesResources2).GetFields())
+        private static readonly Dictionary <string, DataScopesResources2> _knownValues =
+            new Dictionary <string, DataScopesResources2> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["*"] = Wildcard
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, DataScopesResources2> _values =
+            new ConcurrentDictionary<string, DataScopesResources2>(_knownValues);
 
-                    if (enumVal is DataScopesResources2)
-                    {
-                        return (DataScopesResources2)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum DataScopesResources2");
+        private DataScopesResources2(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static DataScopesResources2 Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new DataScopesResources2(value));
+        }
+
+        public static implicit operator DataScopesResources2(string value) => Of(value);
+        public static implicit operator string(DataScopesResources2 datascopesresources2) => datascopesresources2.Value;
+
+        public static DataScopesResources2[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as DataScopesResources2);
+
+        public bool Equals(DataScopesResources2? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

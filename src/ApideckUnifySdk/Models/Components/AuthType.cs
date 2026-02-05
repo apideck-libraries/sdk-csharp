@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Type of authorization used by the connector
+    /// Type of authorization used by the connector.
     /// </summary>
-    public enum AuthType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class AuthType : IEquatable<AuthType>
     {
-        [JsonProperty("oauth2")]
-        Oauth2,
-        [JsonProperty("apiKey")]
-        ApiKey,
-        [JsonProperty("basic")]
-        Basic,
-        [JsonProperty("custom")]
-        Custom,
-        [JsonProperty("none")]
-        None,
-    }
+        public static readonly AuthType Oauth2 = new AuthType("oauth2");
+        public static readonly AuthType ApiKey = new AuthType("apiKey");
+        public static readonly AuthType Basic = new AuthType("basic");
+        public static readonly AuthType Custom = new AuthType("custom");
+        public static readonly AuthType None = new AuthType("none");
 
-    public static class AuthTypeExtension
-    {
-        public static string Value(this AuthType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static AuthType ToEnum(this string value)
-        {
-            foreach(var field in typeof(AuthType).GetFields())
+        private static readonly Dictionary <string, AuthType> _knownValues =
+            new Dictionary <string, AuthType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["oauth2"] = Oauth2,
+                ["apiKey"] = ApiKey,
+                ["basic"] = Basic,
+                ["custom"] = Custom,
+                ["none"] = None
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, AuthType> _values =
+            new ConcurrentDictionary<string, AuthType>(_knownValues);
 
-                    if (enumVal is AuthType)
-                    {
-                        return (AuthType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum AuthType");
+        private AuthType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static AuthType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new AuthType(value));
+        }
+
+        public static implicit operator AuthType(string value) => Of(value);
+        public static implicit operator string(AuthType authtype) => authtype.Value;
+
+        public static AuthType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as AuthType);
+
+        public bool Equals(AuthType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

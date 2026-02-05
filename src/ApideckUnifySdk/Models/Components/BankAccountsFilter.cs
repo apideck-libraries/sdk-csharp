@@ -11,24 +11,28 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class BankAccountsFilter
     {
-
         /// <summary>
-        /// Filter by bank account name
+        /// Filter by bank account name.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=name")]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Filter by account type
+        /// Filter by account type.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=account_type")]
         public BankAccountsFilterAccountType? AccountType { get; set; }
 
         /// <summary>
-        /// Filter by account status
+        /// Filter by account status.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=status")]
         public BankAccountsFilterStatus? Status { get; set; }

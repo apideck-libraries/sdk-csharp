@@ -10,48 +10,47 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     public class OpportunitiesFilter
     {
-
         /// <summary>
-        /// Title of the opportunity to filter on
+        /// Title of the opportunity to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=title")]
         public string? Title { get; set; }
 
         /// <summary>
-        /// Status to filter on
+        /// Status to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// Monetary amount to filter on
+        /// Monetary amount to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=monetary_amount")]
         public double? MonetaryAmount { get; set; }
 
         /// <summary>
-        /// Win probability to filter on
+        /// Win probability to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=win_probability")]
         public double? WinProbability { get; set; }
 
         /// <summary>
-        /// Company ID to filter on
+        /// Company ID to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=company_id")]
         public string? CompanyId { get; set; }
 
         /// <summary>
-        /// Owner ID to filter on
+        /// Owner ID to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=owner_id")]
         public string? OwnerId { get; set; }
 
         /// <summary>
-        /// Primary contact ID to filter on
+        /// Primary contact ID to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=primary_contact_id")]
         public string? PrimaryContactId { get; set; }

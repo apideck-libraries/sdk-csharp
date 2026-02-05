@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The current state of the Integration.
     /// </summary>
-    public enum IntegrationState
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class IntegrationState : IEquatable<IntegrationState>
     {
-        [JsonProperty("disabled")]
-        Disabled,
-        [JsonProperty("needs_configuration")]
-        NeedsConfiguration,
-        [JsonProperty("configured")]
-        Configured,
-    }
+        public static readonly IntegrationState Disabled = new IntegrationState("disabled");
+        public static readonly IntegrationState NeedsConfiguration = new IntegrationState("needs_configuration");
+        public static readonly IntegrationState Configured = new IntegrationState("configured");
 
-    public static class IntegrationStateExtension
-    {
-        public static string Value(this IntegrationState value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static IntegrationState ToEnum(this string value)
-        {
-            foreach(var field in typeof(IntegrationState).GetFields())
+        private static readonly Dictionary <string, IntegrationState> _knownValues =
+            new Dictionary <string, IntegrationState> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["disabled"] = Disabled,
+                ["needs_configuration"] = NeedsConfiguration,
+                ["configured"] = Configured
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, IntegrationState> _values =
+            new ConcurrentDictionary<string, IntegrationState>(_knownValues);
 
-                    if (enumVal is IntegrationState)
-                    {
-                        return (IntegrationState)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum IntegrationState");
+        private IntegrationState(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static IntegrationState Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new IntegrationState(value));
+        }
+
+        public static implicit operator IntegrationState(string value) => Of(value);
+        public static implicit operator string(IntegrationState integrationstate) => integrationstate.Value;
+
+        public static IntegrationState[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as IntegrationState);
+
+        public bool Equals(IntegrationState? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

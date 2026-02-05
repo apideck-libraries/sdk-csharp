@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Status of customer to filter on
+    /// Status of customer to filter on.
     /// </summary>
-    public enum CustomersFilterStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CustomersFilterStatus : IEquatable<CustomersFilterStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("archived")]
-        Archived,
-        [JsonProperty("all")]
-        All,
-    }
+        public static readonly CustomersFilterStatus Active = new CustomersFilterStatus("active");
+        public static readonly CustomersFilterStatus Inactive = new CustomersFilterStatus("inactive");
+        public static readonly CustomersFilterStatus Archived = new CustomersFilterStatus("archived");
+        public static readonly CustomersFilterStatus All = new CustomersFilterStatus("all");
 
-    public static class CustomersFilterStatusExtension
-    {
-        public static string Value(this CustomersFilterStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static CustomersFilterStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(CustomersFilterStatus).GetFields())
+        private static readonly Dictionary <string, CustomersFilterStatus> _knownValues =
+            new Dictionary <string, CustomersFilterStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["archived"] = Archived,
+                ["all"] = All
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CustomersFilterStatus> _values =
+            new ConcurrentDictionary<string, CustomersFilterStatus>(_knownValues);
 
-                    if (enumVal is CustomersFilterStatus)
-                    {
-                        return (CustomersFilterStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CustomersFilterStatus");
+        private CustomersFilterStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static CustomersFilterStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CustomersFilterStatus(value));
+        }
+
+        public static implicit operator CustomersFilterStatus(string value) => Of(value);
+        public static implicit operator string(CustomersFilterStatus customersfilterstatus) => customersfilterstatus.Value;
+
+        public static CustomersFilterStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CustomersFilterStatus);
+
+        public bool Equals(CustomersFilterStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }
