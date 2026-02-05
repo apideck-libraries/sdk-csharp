@@ -14,18 +14,17 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class UserInput
     {
-
         /// <summary>
-        /// The parent user id
+        /// The parent user id.
         /// </summary>
         [JsonProperty("parent_id")]
         public string? ParentId { get; set; } = null;
 
         /// <summary>
-        /// The username of the user
+        /// The username of the user.
         /// </summary>
         [JsonProperty("username")]
         public string? Username { get; set; } = null;
@@ -80,25 +79,25 @@ namespace ApideckUnifySdk.Models.Components
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The URL of the user&apos;s avatar
+        /// The URL of the user's avatar.
         /// </summary>
         [JsonProperty("image")]
         public string? Image { get; set; } = null;
 
         /// <summary>
-        /// language code according to ISO 639-1. For the United States - EN
+        /// language code according to ISO 639-1. For the United States - EN.
         /// </summary>
         [JsonProperty("language")]
         public string? Language { get; set; } = null;
 
         /// <summary>
-        /// The status of the user
+        /// The status of the user.
         /// </summary>
         [JsonProperty("status")]
         public string? Status { get; set; } = null;
 
         /// <summary>
-        /// The password of the user
+        /// The password of the user.
         /// </summary>
         [JsonProperty("password")]
         public string? Password { get; set; } = null;

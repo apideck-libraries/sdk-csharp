@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Expense
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -37,7 +38,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Number { get; set; } = null;
 
         /// <summary>
-        /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD
+        /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD.
         /// </summary>
         [JsonProperty("transaction_date", NullValueHandling = NullValueHandling.Include)]
         public DateTime? TransactionDate { get; set; }
@@ -50,7 +51,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? AccountId { get; set; }
 
         /// <summary>
-        /// A flexible account reference that can represent either a ledger account (GL account) or a bank account, depending on the connector&apos;s requirements.
+        /// A flexible account reference that can represent either a ledger account (GL account) or a bank account, depending on the connector's requirements.
         /// </summary>
         [JsonProperty("account")]
         public LinkedFinancialAccount? Account { get; set; } = null;
@@ -69,7 +70,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplier? Supplier { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
@@ -78,7 +79,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedLocation? Location { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
@@ -120,7 +121,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedTaxRate? TaxRate { get; set; }
 
         /// <summary>
-        /// Amounts are including tax
+        /// Amounts are including tax.
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;
@@ -162,7 +163,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Reference { get; set; } = null;
 
         /// <summary>
-        /// URL link to a source document - shown as &apos;Go to [appName]&apos; in the downstream app. Currently only supported for Xero.
+        /// URL link to a source document - shown as 'Go to [appName]' in the downstream app. Currently only supported for Xero.
         /// </summary>
         [JsonProperty("source_document_url")]
         public string? SourceDocumentUrl { get; set; } = null;
@@ -177,7 +178,7 @@ namespace ApideckUnifySdk.Models.Components
         public Dictionary<string, object>? CustomMappings { get; set; } = null;
 
         /// <summary>
-        /// Expense status
+        /// Expense status.
         /// </summary>
         [JsonProperty("status")]
         public ExpenseStatus? Status { get; set; } = null;

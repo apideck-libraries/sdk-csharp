@@ -12,58 +12,75 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum JournalEntriesFilterStatus
-    {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("pending_approval")]
-        PendingApproval,
-        [JsonProperty("approved")]
-        Approved,
-        [JsonProperty("posted")]
-        Posted,
-        [JsonProperty("voided")]
-        Voided,
-        [JsonProperty("rejected")]
-        Rejected,
-        [JsonProperty("deleted")]
-        Deleted,
-        [JsonProperty("other")]
-        Other,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class JournalEntriesFilterStatusExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class JournalEntriesFilterStatus : IEquatable<JournalEntriesFilterStatus>
     {
-        public static string Value(this JournalEntriesFilterStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly JournalEntriesFilterStatus Draft = new JournalEntriesFilterStatus("draft");
+        public static readonly JournalEntriesFilterStatus PendingApproval = new JournalEntriesFilterStatus("pending_approval");
+        public static readonly JournalEntriesFilterStatus Approved = new JournalEntriesFilterStatus("approved");
+        public static readonly JournalEntriesFilterStatus Posted = new JournalEntriesFilterStatus("posted");
+        public static readonly JournalEntriesFilterStatus Voided = new JournalEntriesFilterStatus("voided");
+        public static readonly JournalEntriesFilterStatus Rejected = new JournalEntriesFilterStatus("rejected");
+        public static readonly JournalEntriesFilterStatus Deleted = new JournalEntriesFilterStatus("deleted");
+        public static readonly JournalEntriesFilterStatus Other = new JournalEntriesFilterStatus("other");
 
-        public static JournalEntriesFilterStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(JournalEntriesFilterStatus).GetFields())
+        private static readonly Dictionary <string, JournalEntriesFilterStatus> _knownValues =
+            new Dictionary <string, JournalEntriesFilterStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["pending_approval"] = PendingApproval,
+                ["approved"] = Approved,
+                ["posted"] = Posted,
+                ["voided"] = Voided,
+                ["rejected"] = Rejected,
+                ["deleted"] = Deleted,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, JournalEntriesFilterStatus> _values =
+            new ConcurrentDictionary<string, JournalEntriesFilterStatus>(_knownValues);
 
-                    if (enumVal is JournalEntriesFilterStatus)
-                    {
-                        return (JournalEntriesFilterStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum JournalEntriesFilterStatus");
+        private JournalEntriesFilterStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static JournalEntriesFilterStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new JournalEntriesFilterStatus(value));
+        }
+
+        public static implicit operator JournalEntriesFilterStatus(string value) => Of(value);
+        public static implicit operator string(JournalEntriesFilterStatus journalentriesfilterstatus) => journalentriesfilterstatus.Value;
+
+        public static JournalEntriesFilterStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as JournalEntriesFilterStatus);
+
+        public bool Equals(JournalEntriesFilterStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

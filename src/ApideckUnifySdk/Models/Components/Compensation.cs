@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class Compensation
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -24,13 +23,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? EmployeeId { get; set; }
 
         /// <summary>
-        /// The employee&apos;s net pay. Only available when payroll has been processed
+        /// The employee's net pay. Only available when payroll has been processed.
         /// </summary>
         [JsonProperty("net_pay")]
         public double? NetPay { get; set; } = null;
 
         /// <summary>
-        /// The employee&apos;s gross pay. Only available when payroll has been processed
+        /// The employee's gross pay. Only available when payroll has been processed.
         /// </summary>
         [JsonProperty("gross_pay")]
         public double? GrossPay { get; set; } = null;

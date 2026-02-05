@@ -13,11 +13,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class BillInput
     {
-
         /// <summary>
         /// Id to be displayed.
         /// </summary>
@@ -25,7 +27,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// Reference to supplier bill number
+        /// Reference to supplier bill number.
         /// </summary>
         [JsonProperty("bill_number")]
         public string? BillNumber { get; set; } = null;
@@ -37,19 +39,19 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedSupplierInput? Supplier { get; set; } = null;
 
         /// <summary>
-        /// The company ID the transaction belongs to
+        /// The company ID the transaction belongs to.
         /// </summary>
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the location
+        /// The ID of the location.
         /// </summary>
         [JsonProperty("location_id")]
         public string? LocationId { get; set; } = null;
 
         /// <summary>
-        /// The ID of the department
+        /// The ID of the department.
         /// </summary>
         [JsonProperty("department_id")]
         public string? DepartmentId { get; set; } = null;
@@ -67,7 +69,7 @@ namespace ApideckUnifySdk.Models.Components
         public double? CurrencyRate { get; set; } = null;
 
         /// <summary>
-        /// Amounts are including tax
+        /// Amounts are including tax.
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;
@@ -151,7 +153,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Notes { get; set; } = null;
 
         /// <summary>
-        /// Invoice status
+        /// Invoice status.
         /// </summary>
         [JsonProperty("status")]
         public BillStatus? Status { get; set; } = null;
@@ -160,7 +162,7 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         /// <summary>
-        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check
+        /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check.
         /// </summary>
         [JsonProperty("payment_method")]
         public string? PaymentMethod { get; set; } = null;
@@ -172,7 +174,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Channel { get; set; } = null;
 
         /// <summary>
-        /// language code according to ISO 639-1. For the United States - EN
+        /// language code according to ISO 639-1. For the United States - EN.
         /// </summary>
         [JsonProperty("language")]
         public string? Language { get; set; } = null;
@@ -193,37 +195,37 @@ namespace ApideckUnifySdk.Models.Components
         public double? DiscountPercentage { get; set; } = null;
 
         /// <summary>
-        /// Optional bill template
+        /// Optional bill template.
         /// </summary>
         [JsonProperty("template_id")]
         public string? TemplateId { get; set; } = null;
 
         /// <summary>
-        /// The user who approved the bill
+        /// The user who approved the bill.
         /// </summary>
         [JsonProperty("approved_by")]
         public string? ApprovedBy { get; set; } = null;
 
         /// <summary>
-        /// Type of amortization
+        /// Type of amortization.
         /// </summary>
         [JsonProperty("amortization_type")]
         public AmortizationType? AmortizationType { get; set; } = null;
 
         /// <summary>
-        /// Method of tax calculation
+        /// Method of tax calculation.
         /// </summary>
         [JsonProperty("tax_method")]
         public string? TaxMethod { get; set; } = null;
 
         /// <summary>
-        /// Whether the document has been received
+        /// Whether the document has been received.
         /// </summary>
         [JsonProperty("document_received")]
         public bool? DocumentReceived { get; set; } = null;
 
         /// <summary>
-        /// URL link to a source document - shown as &apos;Go to [appName]&apos; in the downstream app. Currently only supported for Xero.
+        /// URL link to a source document - shown as 'Go to [appName]' in the downstream app. Currently only supported for Xero.
         /// </summary>
         [JsonProperty("source_document_url")]
         public string? SourceDocumentUrl { get; set; } = null;
@@ -250,7 +252,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<PassThroughBody>? PassThrough { get; set; }
 
         /// <summary>
-        /// Accounting period
+        /// Accounting period.
         /// </summary>
         [JsonProperty("accounting_period")]
         public string? AccountingPeriod { get; set; } = null;

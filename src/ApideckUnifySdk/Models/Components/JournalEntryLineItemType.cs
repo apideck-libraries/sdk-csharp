@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Debit entries are considered positive, and credit entries are considered negative.
     /// </summary>
-    public enum JournalEntryLineItemType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class JournalEntryLineItemType : IEquatable<JournalEntryLineItemType>
     {
-        [JsonProperty("debit")]
-        Debit,
-        [JsonProperty("credit")]
-        Credit,
-    }
+        public static readonly JournalEntryLineItemType Debit = new JournalEntryLineItemType("debit");
+        public static readonly JournalEntryLineItemType Credit = new JournalEntryLineItemType("credit");
 
-    public static class JournalEntryLineItemTypeExtension
-    {
-        public static string Value(this JournalEntryLineItemType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static JournalEntryLineItemType ToEnum(this string value)
-        {
-            foreach(var field in typeof(JournalEntryLineItemType).GetFields())
+        private static readonly Dictionary <string, JournalEntryLineItemType> _knownValues =
+            new Dictionary <string, JournalEntryLineItemType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["debit"] = Debit,
+                ["credit"] = Credit
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, JournalEntryLineItemType> _values =
+            new ConcurrentDictionary<string, JournalEntryLineItemType>(_knownValues);
 
-                    if (enumVal is JournalEntryLineItemType)
-                    {
-                        return (JournalEntryLineItemType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum JournalEntryLineItemType");
+        private JournalEntryLineItemType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static JournalEntryLineItemType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new JournalEntryLineItemType(value));
+        }
+
+        public static implicit operator JournalEntryLineItemType(string value) => Of(value);
+        public static implicit operator string(JournalEntryLineItemType journalentrylineitemtype) => journalentrylineitemtype.Value;
+
+        public static JournalEntryLineItemType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as JournalEntryLineItemType);
+
+        public bool Equals(JournalEntryLineItemType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

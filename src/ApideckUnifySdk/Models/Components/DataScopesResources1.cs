@@ -11,18 +11,17 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class DataScopesResources1
     {
-
         /// <summary>
-        /// Whether the field can be read
+        /// Whether the field can be read.
         /// </summary>
         [JsonProperty("read")]
         public bool? Read { get; set; }
 
         /// <summary>
-        /// Whether the field can be written to
+        /// Whether the field can be written to.
         /// </summary>
         [JsonProperty("write")]
         public bool? Write { get; set; }

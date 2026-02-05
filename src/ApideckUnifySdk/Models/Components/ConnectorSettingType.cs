@@ -12,7 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public enum ConnectorSettingType
     {
         [JsonProperty("text")]
@@ -77,5 +77,4 @@ namespace ApideckUnifySdk.Models.Components
             throw new Exception($"Unknown value {value} for enum ConnectorSettingType");
         }
     }
-
 }

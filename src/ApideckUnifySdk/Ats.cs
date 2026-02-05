@@ -17,20 +17,36 @@ namespace ApideckUnifySdk
     public interface IAts
     {
         public IJobs Jobs { get; }
+
         public IApplicants Applicants { get; }
+
         public IApplications Applications { get; }
     }
 
     public class Ats: IAts
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Jobs SubSDK.
+        /// <see cref="IJobs"/>
+        /// </summary>
         public IJobs Jobs { get; private set; }
+
+        /// <summary>
+        /// Applicants SubSDK.
+        /// <see cref="IApplicants"/>
+        /// </summary>
         public IApplicants Applicants { get; private set; }
+
+        /// <summary>
+        /// Applications SubSDK.
+        /// <see cref="IApplications"/>
+        /// </summary>
         public IApplications Applications { get; private set; }
 
         public Ats(SDKConfig config)

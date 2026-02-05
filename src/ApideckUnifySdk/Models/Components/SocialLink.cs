@@ -11,24 +11,23 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class SocialLink
     {
-
         /// <summary>
-        /// Unique identifier of the social link
+        /// Unique identifier of the social link.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// URL of the social link, e.g. https://www.twitter.com/apideck
+        /// URL of the social link, e.g. https://www.twitter.com/apideck.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; } = default!;
 
         /// <summary>
-        /// Type of the social link, e.g. twitter
+        /// Type of the social link, e.g. twitter.
         /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; } = null;

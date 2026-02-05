@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of invoice item, indicating whether it is an inventory item, a service, or another type.
     /// </summary>
-    public enum InvoiceItemFilterInvoiceItemType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class InvoiceItemFilterInvoiceItemType : IEquatable<InvoiceItemFilterInvoiceItemType>
     {
-        [JsonProperty("inventory")]
-        Inventory,
-        [JsonProperty("service")]
-        Service,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly InvoiceItemFilterInvoiceItemType Inventory = new InvoiceItemFilterInvoiceItemType("inventory");
+        public static readonly InvoiceItemFilterInvoiceItemType Service = new InvoiceItemFilterInvoiceItemType("service");
+        public static readonly InvoiceItemFilterInvoiceItemType Other = new InvoiceItemFilterInvoiceItemType("other");
 
-    public static class InvoiceItemFilterInvoiceItemTypeExtension
-    {
-        public static string Value(this InvoiceItemFilterInvoiceItemType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static InvoiceItemFilterInvoiceItemType ToEnum(this string value)
-        {
-            foreach(var field in typeof(InvoiceItemFilterInvoiceItemType).GetFields())
+        private static readonly Dictionary <string, InvoiceItemFilterInvoiceItemType> _knownValues =
+            new Dictionary <string, InvoiceItemFilterInvoiceItemType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["inventory"] = Inventory,
+                ["service"] = Service,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, InvoiceItemFilterInvoiceItemType> _values =
+            new ConcurrentDictionary<string, InvoiceItemFilterInvoiceItemType>(_knownValues);
 
-                    if (enumVal is InvoiceItemFilterInvoiceItemType)
-                    {
-                        return (InvoiceItemFilterInvoiceItemType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum InvoiceItemFilterInvoiceItemType");
+        private InvoiceItemFilterInvoiceItemType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static InvoiceItemFilterInvoiceItemType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new InvoiceItemFilterInvoiceItemType(value));
+        }
+
+        public static implicit operator InvoiceItemFilterInvoiceItemType(string value) => Of(value);
+        public static implicit operator string(InvoiceItemFilterInvoiceItemType invoiceitemfilterinvoiceitemtype) => invoiceitemfilterinvoiceitemtype.Value;
+
+        public static InvoiceItemFilterInvoiceItemType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as InvoiceItemFilterInvoiceItemType);
+
+        public bool Equals(InvoiceItemFilterInvoiceItemType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The type of website
+    /// The type of website.
     /// </summary>
-    public enum WebsiteType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class WebsiteType : IEquatable<WebsiteType>
     {
-        [JsonProperty("primary")]
-        Primary,
-        [JsonProperty("secondary")]
-        Secondary,
-        [JsonProperty("work")]
-        Work,
-        [JsonProperty("personal")]
-        Personal,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly WebsiteType Primary = new WebsiteType("primary");
+        public static readonly WebsiteType Secondary = new WebsiteType("secondary");
+        public static readonly WebsiteType Work = new WebsiteType("work");
+        public static readonly WebsiteType Personal = new WebsiteType("personal");
+        public static readonly WebsiteType Other = new WebsiteType("other");
 
-    public static class WebsiteTypeExtension
-    {
-        public static string Value(this WebsiteType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static WebsiteType ToEnum(this string value)
-        {
-            foreach(var field in typeof(WebsiteType).GetFields())
+        private static readonly Dictionary <string, WebsiteType> _knownValues =
+            new Dictionary <string, WebsiteType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["primary"] = Primary,
+                ["secondary"] = Secondary,
+                ["work"] = Work,
+                ["personal"] = Personal,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, WebsiteType> _values =
+            new ConcurrentDictionary<string, WebsiteType>(_knownValues);
 
-                    if (enumVal is WebsiteType)
-                    {
-                        return (WebsiteType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum WebsiteType");
+        private WebsiteType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static WebsiteType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new WebsiteType(value));
+        }
+
+        public static implicit operator WebsiteType(string value) => Of(value);
+        public static implicit operator string(WebsiteType websitetype) => websitetype.Value;
+
+        public static WebsiteType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as WebsiteType);
+
+        public bool Equals(WebsiteType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -13,37 +13,39 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using NodaTime;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Company1Input
     {
-
         /// <summary>
-        /// Name of the company
+        /// Name of the company.
         /// </summary>
         [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
         public string? Name { get; set; }
 
         /// <summary>
-        /// Owner ID
+        /// Owner ID.
         /// </summary>
         [JsonProperty("owner_id")]
         public string? OwnerId { get; set; } = null;
 
         /// <summary>
-        /// The Image URL of the company
+        /// The Image URL of the company.
         /// </summary>
         [JsonProperty("image")]
         public string? Image { get; set; } = null;
 
         /// <summary>
-        /// A description of the company
+        /// A description of the company.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The VAT number of the company
+        /// The VAT number of the company.
         /// </summary>
         [JsonProperty("vat_number")]
         public string? VatNumber { get; set; } = null;
@@ -55,25 +57,25 @@ namespace ApideckUnifySdk.Models.Components
         public Currency? Currency { get; set; } = null;
 
         /// <summary>
-        /// The status of the company
+        /// The status of the company.
         /// </summary>
         [JsonProperty("status")]
         public string? Status { get; set; } = null;
 
         /// <summary>
-        /// The fax number of the company
+        /// The fax number of the company.
         /// </summary>
         [JsonProperty("fax")]
         public string? Fax { get; set; } = null;
 
         /// <summary>
-        /// The annual revenue of the company
+        /// The annual revenue of the company.
         /// </summary>
         [JsonProperty("annual_revenue")]
         public string? AnnualRevenue { get; set; } = null;
 
         /// <summary>
-        /// Number of employees
+        /// Number of employees.
         /// </summary>
         [JsonProperty("number_of_employees")]
         public string? NumberOfEmployees { get; set; } = null;
@@ -160,13 +162,13 @@ namespace ApideckUnifySdk.Models.Components
         public List<string>? Tags { get; set; } = null;
 
         /// <summary>
-        /// Whether the company is read-only or not
+        /// Whether the company is read-only or not.
         /// </summary>
         [JsonProperty("read_only")]
         public bool? ReadOnly { get; set; } = null;
 
         /// <summary>
-        /// A formal salutation for the person. For example, &apos;Mr&apos;, &apos;Mrs&apos;
+        /// A formal salutation for the person. For example, 'Mr', 'Mrs'
         /// </summary>
         [JsonProperty("salutation")]
         public string? Salutation { get; set; } = null;

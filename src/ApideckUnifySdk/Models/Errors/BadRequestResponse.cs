@@ -14,24 +14,25 @@ namespace ApideckUnifySdk.Models.Errors
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
 
     public class BadRequestResponsePayload
     {
         /// <summary>
-        /// HTTP status code
+        /// HTTP status code.
         /// </summary>
         [JsonProperty("status_code")]
         public double? StatusCode { get; set; }
 
         /// <summary>
-        /// Contains an explanation of the status_code as defined in HTTP/1.1 standard (RFC 7231)
+        /// Contains an explanation of the status_code as defined in HTTP/1.1 standard (RFC 7231).
         /// </summary>
         [JsonProperty("error")]
         public string? Error { get; set; }
 
         /// <summary>
-        /// The type of error returned
+        /// The type of error returned.
         /// </summary>
         [JsonProperty("type_name")]
         public string? TypeName { get; set; }
@@ -49,14 +50,20 @@ namespace ApideckUnifySdk.Models.Errors
         public Models.Errors.Detail? Detail { get; set; }
 
         /// <summary>
-        /// Link to documentation of error type
+        /// Link to documentation of error type.
         /// </summary>
         [JsonProperty("ref")]
         public string? Ref { get; set; }
+
+        /// <summary>
+        /// Contains downstream errors returned from the connector. Only present when type_name is ConnectorExecutionError.
+        /// </summary>
+        [JsonProperty("downstream_errors")]
+        public List<DownstreamErrors>? DownstreamErrors { get; set; }
     }
 
     /// <summary>
-    /// Bad Request
+    /// Bad Request.
     /// </summary>
     public class BadRequestResponse : BaseException
     {
@@ -82,6 +89,9 @@ namespace ApideckUnifySdk.Models.Errors
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use BadRequestResponse.Payload.Ref instead.")]
         public string? Ref { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use BadRequestResponse.Payload.DownstreamErrors instead.")]
+        public List<DownstreamErrors>? DownstreamErrors { get; set; }
 
         private static string ErrorMessage(BadRequestResponsePayload payload, string body)
         {
@@ -110,8 +120,8 @@ namespace ApideckUnifySdk.Models.Errors
            _message = payload.Message;
            Detail = payload.Detail;
            Ref = payload.Ref;
+           DownstreamErrors = payload.DownstreamErrors;
            #pragma warning restore CS0618
         }
     }
-
 }

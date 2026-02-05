@@ -12,36 +12,35 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class WebhookSubscription
     {
-
         /// <summary>
-        /// The ID of the downstream service
+        /// The ID of the downstream service.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; }
 
         /// <summary>
-        /// The list of Unify Events this connection is subscribed to
+        /// The list of Unify Events this connection is subscribed to.
         /// </summary>
         [JsonProperty("unify_event_types")]
         public List<string>? UnifyEventTypes { get; set; }
 
         /// <summary>
-        /// The list of downstream Events this connection is subscribed to
+        /// The list of downstream Events this connection is subscribed to.
         /// </summary>
         [JsonProperty("downstream_event_types")]
         public List<string>? DownstreamEventTypes { get; set; }
 
         /// <summary>
-        /// The URL the downstream is sending to when the event is triggered
+        /// The URL the downstream is sending to when the event is triggered.
         /// </summary>
         [JsonProperty("execute_url")]
         public string? ExecuteUrl { get; set; }
 
         /// <summary>
-        /// The date and time the webhook subscription was created downstream
+        /// The date and time the webhook subscription was created downstream.
         /// </summary>
         [JsonProperty("created_at")]
         public string? CreatedAt { get; set; }

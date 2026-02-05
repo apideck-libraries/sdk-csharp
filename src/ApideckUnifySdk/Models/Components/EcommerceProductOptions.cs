@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class EcommerceProductOptions
     {
-
         /// <summary>
         /// A unique identifier for the option of the product.
         /// </summary>

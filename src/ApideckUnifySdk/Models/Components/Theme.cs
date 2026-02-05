@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Theming options to change the look and feel of Vault.
     /// </summary>
     public class Theme
     {
-
         /// <summary>
         /// The URL to the favicon to use for Vault.
         /// </summary>

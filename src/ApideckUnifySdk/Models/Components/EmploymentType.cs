@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of employment relationship the employee has with the organization.
     /// </summary>
-    public enum EmploymentType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class EmploymentType : IEquatable<EmploymentType>
     {
-        [JsonProperty("contractor")]
-        Contractor,
-        [JsonProperty("employee")]
-        Employee,
-        [JsonProperty("freelance")]
-        Freelance,
-        [JsonProperty("temp")]
-        Temp,
-        [JsonProperty("internship")]
-        Internship,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly EmploymentType Contractor = new EmploymentType("contractor");
+        public static readonly EmploymentType Employee = new EmploymentType("employee");
+        public static readonly EmploymentType Freelance = new EmploymentType("freelance");
+        public static readonly EmploymentType Temp = new EmploymentType("temp");
+        public static readonly EmploymentType Internship = new EmploymentType("internship");
+        public static readonly EmploymentType Other = new EmploymentType("other");
 
-    public static class EmploymentTypeExtension
-    {
-        public static string Value(this EmploymentType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static EmploymentType ToEnum(this string value)
-        {
-            foreach(var field in typeof(EmploymentType).GetFields())
+        private static readonly Dictionary <string, EmploymentType> _knownValues =
+            new Dictionary <string, EmploymentType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["contractor"] = Contractor,
+                ["employee"] = Employee,
+                ["freelance"] = Freelance,
+                ["temp"] = Temp,
+                ["internship"] = Internship,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, EmploymentType> _values =
+            new ConcurrentDictionary<string, EmploymentType>(_knownValues);
 
-                    if (enumVal is EmploymentType)
-                    {
-                        return (EmploymentType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum EmploymentType");
+        private EmploymentType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static EmploymentType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new EmploymentType(value));
+        }
+
+        public static implicit operator EmploymentType(string value) => Of(value);
+        public static implicit operator string(EmploymentType employmenttype) => employmenttype.Value;
+
+        public static EmploymentType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as EmploymentType);
+
+        public bool Equals(EmploymentType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

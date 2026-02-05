@@ -13,18 +13,17 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class Coverage
     {
-
         /// <summary>
-        /// ID of the resource in the Connector&apos;s API (downstream)
+        /// ID of the resource in the Connector's API (downstream).
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; }
 
         /// <summary>
-        /// Name of the resource in the Connector&apos;s API (downstream)
+        /// Name of the resource in the Connector's API (downstream).
         /// </summary>
         [JsonProperty("downstream_name")]
         public string? DownstreamName { get; set; }

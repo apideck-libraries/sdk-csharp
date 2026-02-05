@@ -26,78 +26,181 @@ namespace ApideckUnifySdk
 
     public interface IWebhooks
     {
-
         /// <summary>
-        /// List webhook subscriptions
-        /// 
-        /// <remarks>
-        /// List all webhook subscriptions
-        /// </remarks>
+        /// List webhook subscriptions.
         /// </summary>
-        Task<WebhookWebhooksAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = 20, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// List all webhook subscriptions.
+        /// </remarks>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="cursor">Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.</param>
+        /// <param name="limit">Number of results to return. Minimum 1, Maximum 200, Default 20.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WebhookWebhooksAllResponse> ListAsync(
+            string? appId = null,
+            string? cursor = null,
+            long? limit = 20,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Create webhook subscription
-        /// 
+        /// Create webhook subscription.
+        /// </summary>
         /// <remarks>
         /// Create a webhook subscription to receive events.<br/>
         /// <br/>
-        /// **Delivery URL Validation**: The provided `delivery_url` will be validated synchronously by sending an HTTP POST request with an HMAC signature. If validation fails (network error, timeout, non-2xx response), the webhook will still be created but with `status: &quot;disabled&quot;` and `disabled_reason: &quot;delivery_url_validation_failed&quot;`.<br/>
+        /// **Delivery URL Validation**: The provided `delivery_url` will be validated synchronously by sending an HTTP POST request with an HMAC signature. If validation fails (network error, timeout, non-2xx response), the webhook will still be created but with `status: "disabled"` and `disabled_reason: "delivery_url_validation_failed"`.<br/>
         /// <br/>
-        /// **Important**: Always check the `status` and `disabled_reason` fields in the response to ensure the webhook is active.<br/>
-        /// 
+        /// **Important**: Always check the `status` and `disabled_reason` fields in the response to ensure the webhook is active.
         /// </remarks>
-        /// </summary>
-        Task<WebhookWebhooksAddResponse> CreateAsync(CreateWebhookRequest createWebhookRequest, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="createWebhookRequest">A <see cref="CreateWebhookRequest"/> parameter.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createWebhookRequest"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WebhookWebhooksAddResponse> CreateAsync(
+            CreateWebhookRequest createWebhookRequest,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get webhook subscription
-        /// 
+        /// Get webhook subscription.
+        /// </summary>
         /// <remarks>
-        /// Get the webhook subscription details
+        /// Get the webhook subscription details.
         /// </remarks>
-        /// </summary>
-        Task<WebhookWebhooksOneResponse> GetAsync(string id, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="id">JWT Webhook token that represents the unifiedApi and applicationId associated to the event source.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="id"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WebhookWebhooksOneResponse> GetAsync(
+            string id,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update webhook subscription
-        /// 
+        /// Update webhook subscription.
+        /// </summary>
         /// <remarks>
         /// Update a webhook subscription.<br/>
         /// <br/>
-        /// **Delivery URL Validation**: When updating the `delivery_url`, it will be validated synchronously by sending an HTTP POST request with an HMAC signature. If validation fails (network error, timeout, non-2xx response), the webhook will still be updated but with `status: &quot;disabled&quot;` and `disabled_reason: &quot;delivery_url_validation_failed&quot;`. Validation only occurs when the URL is changed.<br/>
+        /// **Delivery URL Validation**: When updating the `delivery_url`, it will be validated synchronously by sending an HTTP POST request with an HMAC signature. If validation fails (network error, timeout, non-2xx response), the webhook will still be updated but with `status: "disabled"` and `disabled_reason: "delivery_url_validation_failed"`. Validation only occurs when the URL is changed.<br/>
         /// <br/>
-        /// **Important**: Always check the `status` and `disabled_reason` fields in the response to ensure the webhook is active.<br/>
-        /// 
+        /// **Important**: Always check the `status` and `disabled_reason` fields in the response to ensure the webhook is active.
         /// </remarks>
-        /// </summary>
-        Task<WebhookWebhooksUpdateResponse> UpdateAsync(string id, UpdateWebhookRequest updateWebhookRequest, string? appId = null, RetryConfig? retryConfig = null);
+        /// <param name="id">JWT Webhook token that represents the unifiedApi and applicationId associated to the event source.</param>
+        /// <param name="updateWebhookRequest">A <see cref="UpdateWebhookRequest"/> parameter.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/> or <paramref name="updateWebhookRequest"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WebhookWebhooksUpdateResponse> UpdateAsync(
+            string id,
+            UpdateWebhookRequest updateWebhookRequest,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Delete webhook subscription
-        /// 
-        /// <remarks>
-        /// Delete a webhook subscription
-        /// </remarks>
+        /// Delete webhook subscription.
         /// </summary>
-        Task<WebhookWebhooksDeleteResponse> DeleteAsync(string id, string? appId = null, RetryConfig? retryConfig = null);
+        /// <remarks>
+        /// Delete a webhook subscription.
+        /// </remarks>
+        /// <param name="id">JWT Webhook token that represents the unifiedApi and applicationId associated to the event source.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="id"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<WebhookWebhooksDeleteResponse> DeleteAsync(
+            string id,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        );
     }
 
     public class Webhooks: IWebhooks
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public Webhooks(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<WebhookWebhooksAllResponse> ListAsync(string? appId = null, string? cursor = null, long? limit = 20, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List webhook subscriptions.
+        /// </summary>
+        /// <remarks>
+        /// List all webhook subscriptions.
+        /// </remarks>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="cursor">Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.</param>
+        /// <param name="limit">Number of results to return. Minimum 1, Maximum 200, Default 20.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksAllResponse"/> response envelope when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WebhookWebhooksAllResponse> ListAsync(
+            string? appId = null,
+            string? cursor = null,
+            long? limit = 20,
+            RetryConfig? retryConfig = null
+        )
         {
             var request = new WebhookWebhooksAllRequest()
             {
@@ -106,7 +209,7 @@ namespace ApideckUnifySdk
                 Limit = limit,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/webhook/webhooks", request, null);
 
@@ -166,7 +269,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -385,7 +488,35 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<WebhookWebhooksAddResponse> CreateAsync(CreateWebhookRequest createWebhookRequest, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Create webhook subscription.
+        /// </summary>
+        /// <remarks>
+        /// Create a webhook subscription to receive events.<br/>
+        /// <br/>
+        /// **Delivery URL Validation**: The provided `delivery_url` will be validated synchronously by sending an HTTP POST request with an HMAC signature. If validation fails (network error, timeout, non-2xx response), the webhook will still be created but with `status: "disabled"` and `disabled_reason: "delivery_url_validation_failed"`.<br/>
+        /// <br/>
+        /// **Important**: Always check the `status` and `disabled_reason` fields in the response to ensure the webhook is active.
+        /// </remarks>
+        /// <param name="createWebhookRequest">A <see cref="CreateWebhookRequest"/> parameter.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksAddResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="createWebhookRequest"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WebhookWebhooksAddResponse> CreateAsync(
+            CreateWebhookRequest createWebhookRequest,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (createWebhookRequest == null) throw new ArgumentNullException(nameof(createWebhookRequest));
 
@@ -395,9 +526,8 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/webhook/webhooks";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -462,7 +592,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -656,7 +786,31 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<WebhookWebhooksOneResponse> GetAsync(string id, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get webhook subscription.
+        /// </summary>
+        /// <remarks>
+        /// Get the webhook subscription details.
+        /// </remarks>
+        /// <param name="id">JWT Webhook token that represents the unifiedApi and applicationId associated to the event source.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksOneResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="id"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WebhookWebhooksOneResponse> GetAsync(
+            string id,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (id == null) throw new ArgumentNullException(nameof(id));
 
@@ -666,7 +820,7 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/webhook/webhooks/{id}", request, null);
 
@@ -726,7 +880,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -920,7 +1074,37 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<WebhookWebhooksUpdateResponse> UpdateAsync(string id, UpdateWebhookRequest updateWebhookRequest, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Update webhook subscription.
+        /// </summary>
+        /// <remarks>
+        /// Update a webhook subscription.<br/>
+        /// <br/>
+        /// **Delivery URL Validation**: When updating the `delivery_url`, it will be validated synchronously by sending an HTTP POST request with an HMAC signature. If validation fails (network error, timeout, non-2xx response), the webhook will still be updated but with `status: "disabled"` and `disabled_reason: "delivery_url_validation_failed"`. Validation only occurs when the URL is changed.<br/>
+        /// <br/>
+        /// **Important**: Always check the `status` and `disabled_reason` fields in the response to ensure the webhook is active.
+        /// </remarks>
+        /// <param name="id">JWT Webhook token that represents the unifiedApi and applicationId associated to the event source.</param>
+        /// <param name="updateWebhookRequest">A <see cref="UpdateWebhookRequest"/> parameter.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksUpdateResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="id"/> or <paramref name="updateWebhookRequest"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WebhookWebhooksUpdateResponse> UpdateAsync(
+            string id,
+            UpdateWebhookRequest updateWebhookRequest,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (id == null) throw new ArgumentNullException(nameof(id));
             if (updateWebhookRequest == null) throw new ArgumentNullException(nameof(updateWebhookRequest));
@@ -932,7 +1116,7 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/webhook/webhooks/{id}", request, null);
 
@@ -998,7 +1182,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1192,7 +1376,31 @@ namespace ApideckUnifySdk
             }
         }
 
-        public async Task<WebhookWebhooksDeleteResponse> DeleteAsync(string id, string? appId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Delete webhook subscription.
+        /// </summary>
+        /// <remarks>
+        /// Delete a webhook subscription.
+        /// </remarks>
+        /// <param name="id">JWT Webhook token that represents the unifiedApi and applicationId associated to the event source.</param>
+        /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="WebhookWebhooksDeleteResponse"/> response envelope when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="id"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
+        /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<WebhookWebhooksDeleteResponse> DeleteAsync(
+            string id,
+            string? appId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (id == null) throw new ArgumentNullException(nameof(id));
 
@@ -1202,7 +1410,7 @@ namespace ApideckUnifySdk
                 AppId = appId,
             };
             request.AppId ??= SDKConfiguration.AppId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/webhook/webhooks/{id}", request, null);
 
@@ -1262,7 +1470,7 @@ namespace ApideckUnifySdk
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 402 || _statusCode == 404 || _statusCode == 422 || _statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1455,5 +1663,6 @@ namespace ApideckUnifySdk
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
             }
         }
+
     }
 }

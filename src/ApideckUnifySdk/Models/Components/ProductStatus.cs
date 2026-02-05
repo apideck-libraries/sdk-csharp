@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The current status of the product (active or archived).
     /// </summary>
-    public enum ProductStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ProductStatus : IEquatable<ProductStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("archived")]
-        Archived,
-    }
+        public static readonly ProductStatus Active = new ProductStatus("active");
+        public static readonly ProductStatus Archived = new ProductStatus("archived");
 
-    public static class ProductStatusExtension
-    {
-        public static string Value(this ProductStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ProductStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ProductStatus).GetFields())
+        private static readonly Dictionary <string, ProductStatus> _knownValues =
+            new Dictionary <string, ProductStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["archived"] = Archived
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ProductStatus> _values =
+            new ConcurrentDictionary<string, ProductStatus>(_knownValues);
 
-                    if (enumVal is ProductStatus)
-                    {
-                        return (ProductStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ProductStatus");
+        private ProductStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ProductStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ProductStatus(value));
+        }
+
+        public static implicit operator ProductStatus(string value) => Of(value);
+        public static implicit operator string(ProductStatus productstatus) => productstatus.Value;
+
+        public static ProductStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ProductStatus);
+
+        public bool Equals(ProductStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

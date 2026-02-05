@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class SalesDetails
     {
-
         [JsonProperty("unit_price")]
         public double? UnitPrice { get; set; } = null;
 
@@ -26,7 +25,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? UnitOfMeasure { get; set; } = null;
 
         /// <summary>
-        /// Amounts are including tax
+        /// Amounts are including tax.
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;

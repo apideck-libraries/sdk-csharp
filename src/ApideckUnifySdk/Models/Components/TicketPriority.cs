@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Priority of the ticket
+    /// Priority of the ticket.
     /// </summary>
-    public enum TicketPriority
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class TicketPriority : IEquatable<TicketPriority>
     {
-        [JsonProperty("low")]
-        Low,
-        [JsonProperty("normal")]
-        Normal,
-        [JsonProperty("high")]
-        High,
-        [JsonProperty("urgent")]
-        Urgent,
-    }
+        public static readonly TicketPriority Low = new TicketPriority("low");
+        public static readonly TicketPriority Normal = new TicketPriority("normal");
+        public static readonly TicketPriority High = new TicketPriority("high");
+        public static readonly TicketPriority Urgent = new TicketPriority("urgent");
 
-    public static class TicketPriorityExtension
-    {
-        public static string Value(this TicketPriority value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static TicketPriority ToEnum(this string value)
-        {
-            foreach(var field in typeof(TicketPriority).GetFields())
+        private static readonly Dictionary <string, TicketPriority> _knownValues =
+            new Dictionary <string, TicketPriority> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["low"] = Low,
+                ["normal"] = Normal,
+                ["high"] = High,
+                ["urgent"] = Urgent
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, TicketPriority> _values =
+            new ConcurrentDictionary<string, TicketPriority>(_knownValues);
 
-                    if (enumVal is TicketPriority)
-                    {
-                        return (TicketPriority)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum TicketPriority");
+        private TicketPriority(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static TicketPriority Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new TicketPriority(value));
+        }
+
+        public static implicit operator TicketPriority(string value) => Of(value);
+        public static implicit operator string(TicketPriority ticketpriority) => ticketpriority.Value;
+
+        public static TicketPriority[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as TicketPriority);
+
+        public bool Equals(TicketPriority? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

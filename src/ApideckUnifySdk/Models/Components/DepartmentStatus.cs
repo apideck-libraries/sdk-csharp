@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Based on the status some functionality is enabled or disabled.
     /// </summary>
-    public enum DepartmentStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class DepartmentStatus : IEquatable<DepartmentStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-    }
+        public static readonly DepartmentStatus Active = new DepartmentStatus("active");
+        public static readonly DepartmentStatus Inactive = new DepartmentStatus("inactive");
 
-    public static class DepartmentStatusExtension
-    {
-        public static string Value(this DepartmentStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static DepartmentStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(DepartmentStatus).GetFields())
+        private static readonly Dictionary <string, DepartmentStatus> _knownValues =
+            new Dictionary <string, DepartmentStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, DepartmentStatus> _values =
+            new ConcurrentDictionary<string, DepartmentStatus>(_knownValues);
 
-                    if (enumVal is DepartmentStatus)
-                    {
-                        return (DepartmentStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum DepartmentStatus");
+        private DepartmentStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static DepartmentStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new DepartmentStatus(value));
+        }
+
+        public static implicit operator DepartmentStatus(string value) => Of(value);
+        public static implicit operator string(DepartmentStatus departmentstatus) => departmentstatus.Value;
+
+        public static DepartmentStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as DepartmentStatus);
+
+        public bool Equals(DepartmentStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

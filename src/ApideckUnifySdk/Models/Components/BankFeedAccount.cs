@@ -13,11 +13,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class BankFeedAccount
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -31,13 +32,13 @@ namespace ApideckUnifySdk.Models.Components
         public BankAccountType? BankAccountType { get; set; }
 
         /// <summary>
-        /// The source account&apos;s unique identifier.
+        /// The source account's unique identifier.
         /// </summary>
         [JsonProperty("source_account_id")]
         public string? SourceAccountId { get; set; }
 
         /// <summary>
-        /// The target account&apos;s unique identifier in the accounting connector.
+        /// The target account's unique identifier in the accounting connector.
         /// </summary>
         [JsonProperty("target_account_id")]
         public string? TargetAccountId { get; set; }

@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedFolder
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -22,7 +21,7 @@ namespace ApideckUnifySdk.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The name of the folder
+        /// The name of the folder.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;

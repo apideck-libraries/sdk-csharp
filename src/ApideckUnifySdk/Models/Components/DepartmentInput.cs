@@ -13,12 +13,11 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class DepartmentInput
     {
-
         /// <summary>
-        /// Department name
+        /// Department name.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;

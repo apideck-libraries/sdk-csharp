@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Frequency of employee compensation.
     /// </summary>
-    public enum PaymentFrequency
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PaymentFrequency : IEquatable<PaymentFrequency>
     {
-        [JsonProperty("weekly")]
-        Weekly,
-        [JsonProperty("biweekly")]
-        Biweekly,
-        [JsonProperty("monthly")]
-        Monthly,
-        [JsonProperty("pro-rata")]
-        ProRata,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly PaymentFrequency Weekly = new PaymentFrequency("weekly");
+        public static readonly PaymentFrequency Biweekly = new PaymentFrequency("biweekly");
+        public static readonly PaymentFrequency Monthly = new PaymentFrequency("monthly");
+        public static readonly PaymentFrequency ProRata = new PaymentFrequency("pro-rata");
+        public static readonly PaymentFrequency Other = new PaymentFrequency("other");
 
-    public static class PaymentFrequencyExtension
-    {
-        public static string Value(this PaymentFrequency value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PaymentFrequency ToEnum(this string value)
-        {
-            foreach(var field in typeof(PaymentFrequency).GetFields())
+        private static readonly Dictionary <string, PaymentFrequency> _knownValues =
+            new Dictionary <string, PaymentFrequency> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["weekly"] = Weekly,
+                ["biweekly"] = Biweekly,
+                ["monthly"] = Monthly,
+                ["pro-rata"] = ProRata,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PaymentFrequency> _values =
+            new ConcurrentDictionary<string, PaymentFrequency>(_knownValues);
 
-                    if (enumVal is PaymentFrequency)
-                    {
-                        return (PaymentFrequency)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PaymentFrequency");
+        private PaymentFrequency(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PaymentFrequency Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PaymentFrequency(value));
+        }
+
+        public static implicit operator PaymentFrequency(string value) => Of(value);
+        public static implicit operator string(PaymentFrequency paymentfrequency) => paymentfrequency.Value;
+
+        public static PaymentFrequency[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PaymentFrequency);
+
+        public bool Equals(PaymentFrequency? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

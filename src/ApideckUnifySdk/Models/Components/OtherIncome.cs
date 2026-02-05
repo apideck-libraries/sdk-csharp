@@ -12,13 +12,16 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// The other income accounts
+    /// The other income accounts.
     /// </summary>
     public class OtherIncome
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -26,7 +29,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// The account code of the account
+        /// The account code of the account.
         /// </summary>
         [JsonProperty("code")]
         public string? Code { get; set; }
@@ -38,7 +41,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Title { get; set; }
 
         /// <summary>
-        /// The type of profit and loss
+        /// The type of profit and loss.
         /// </summary>
         [JsonProperty("type")]
         public ProfitAndLossType? Type { get; set; } = null;

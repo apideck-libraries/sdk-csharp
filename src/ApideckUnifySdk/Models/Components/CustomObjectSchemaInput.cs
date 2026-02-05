@@ -13,36 +13,35 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CustomObjectSchemaInput
     {
-
         /// <summary>
-        /// The name of the custom object schema
+        /// The name of the custom object schema.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// The description of the custom object schema
+        /// The description of the custom object schema.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The fields defined in the schema
+        /// The fields defined in the schema.
         /// </summary>
         [JsonProperty("fields")]
         public List<Fields>? Fields { get; set; }
 
         /// <summary>
-        /// Whether the custom object schema is visible in the UI
+        /// Whether the custom object schema is visible in the UI.
         /// </summary>
         [JsonProperty("visible")]
         public bool? Visible { get; set; } = null;
 
         /// <summary>
-        /// Whether the custom object schema is active
+        /// Whether the custom object schema is active.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; } = null;

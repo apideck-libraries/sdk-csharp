@@ -13,24 +13,23 @@ namespace ApideckUnifySdk.Models.Errors
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class Two
     {
-
         /// <summary>
-        /// Error type identifier
+        /// Error type identifier.
         /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// Detailed error message
+        /// Detailed error message.
         /// </summary>
         [JsonProperty("message")]
         public string? Message { get; set; }
 
         /// <summary>
-        /// Debug information including request/response details and OAuth timing metadata
+        /// Debug information including request/response details and OAuth timing metadata.
         /// </summary>
         [JsonProperty("debug")]
         public Debug? Debug { get; set; }

@@ -2,7 +2,7 @@
 
 The supplier this entity is linked to.
 
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This field is deprecated and may be removed in a future version..
 
 
 ## Fields

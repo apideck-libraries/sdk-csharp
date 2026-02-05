@@ -11,24 +11,23 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class Owner
     {
-
         /// <summary>
-        /// ID of the owner
+        /// ID of the owner.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Email of the owner
+        /// Email of the owner.
         /// </summary>
         [JsonProperty("email")]
         public string? Email { get; set; } = null;
 
         /// <summary>
-        /// Name of the owner
+        /// Name of the owner.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;

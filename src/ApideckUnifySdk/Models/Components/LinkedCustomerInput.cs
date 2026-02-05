@@ -12,13 +12,12 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     /// <summary>
     /// The customer this entity is linked to.
     /// </summary>
     public class LinkedCustomerInput
     {
-
         /// <summary>
         /// The ID of the customer this entity is linked to.
         /// </summary>

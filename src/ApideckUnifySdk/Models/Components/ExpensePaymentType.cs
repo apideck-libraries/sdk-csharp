@@ -12,53 +12,70 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The type of payment for the expense.
     /// </summary>
-    public enum ExpensePaymentType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ExpensePaymentType : IEquatable<ExpensePaymentType>
     {
-        [JsonProperty("cash")]
-        Cash,
-        [JsonProperty("check")]
-        Check,
-        [JsonProperty("credit_card")]
-        CreditCard,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly ExpensePaymentType Cash = new ExpensePaymentType("cash");
+        public static readonly ExpensePaymentType Check = new ExpensePaymentType("check");
+        public static readonly ExpensePaymentType CreditCard = new ExpensePaymentType("credit_card");
+        public static readonly ExpensePaymentType Other = new ExpensePaymentType("other");
 
-    public static class ExpensePaymentTypeExtension
-    {
-        public static string Value(this ExpensePaymentType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ExpensePaymentType ToEnum(this string value)
-        {
-            foreach(var field in typeof(ExpensePaymentType).GetFields())
+        private static readonly Dictionary <string, ExpensePaymentType> _knownValues =
+            new Dictionary <string, ExpensePaymentType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["cash"] = Cash,
+                ["check"] = Check,
+                ["credit_card"] = CreditCard,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ExpensePaymentType> _values =
+            new ConcurrentDictionary<string, ExpensePaymentType>(_knownValues);
 
-                    if (enumVal is ExpensePaymentType)
-                    {
-                        return (ExpensePaymentType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ExpensePaymentType");
+        private ExpensePaymentType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ExpensePaymentType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ExpensePaymentType(value));
+        }
+
+        public static implicit operator ExpensePaymentType(string value) => Of(value);
+        public static implicit operator string(ExpensePaymentType expensepaymenttype) => expensepaymenttype.Value;
+
+        public static ExpensePaymentType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ExpensePaymentType);
+
+        public bool Equals(ExpensePaymentType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

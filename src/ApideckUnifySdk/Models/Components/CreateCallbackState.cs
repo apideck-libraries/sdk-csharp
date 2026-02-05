@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class CreateCallbackState
     {
-
         /// <summary>
         /// The redirect URI to be used after the connection is created.
         /// </summary>

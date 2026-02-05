@@ -14,10 +14,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class Department
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,13 +24,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// Parent ID
+        /// Parent ID.
         /// </summary>
         [JsonProperty("parent_id")]
         public string? ParentId { get; set; } = null;
 
         /// <summary>
-        /// Department name
+        /// Department name.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;

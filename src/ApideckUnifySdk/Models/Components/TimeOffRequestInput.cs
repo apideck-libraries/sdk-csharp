@@ -12,19 +12,21 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class TimeOffRequestInput
     {
-
         /// <summary>
-        /// ID of the employee
+        /// ID of the employee.
         /// </summary>
         [JsonProperty("employee_id")]
         public string? EmployeeId { get; set; } = null;
 
         /// <summary>
-        /// ID of the policy
+        /// ID of the policy.
         /// </summary>
         [JsonProperty("policy_id")]
         public string? PolicyId { get; set; } = null;
@@ -60,13 +62,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? RequestDate { get; set; } = null;
 
         /// <summary>
-        /// The type of request
+        /// The type of request.
         /// </summary>
         [JsonProperty("request_type")]
         public RequestType? RequestType { get; set; } = null;
 
         /// <summary>
-        /// The date the request was approved
+        /// The date the request was approved.
         /// </summary>
         [JsonProperty("approval_date")]
         public string? ApprovalDate { get; set; } = null;
@@ -99,7 +101,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<PassThroughBody>? PassThrough { get; set; }
 
         /// <summary>
-        /// The policy type of the time off request
+        /// The policy type of the time off request.
         /// </summary>
         [JsonProperty("policy_type")]
         public string? PolicyType { get; set; }

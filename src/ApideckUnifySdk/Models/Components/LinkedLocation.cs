@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class LinkedLocation
     {
-
         /// <summary>
         /// The unique identifier for the location.
         /// </summary>
@@ -34,7 +33,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; } = null;
 
         /// <summary>
-        /// The third-party API ID of original entity
+        /// The third-party API ID of original entity.
         /// </summary>
         [JsonProperty("downstream_id")]
         public string? DownstreamId { get; set; } = null;

@@ -12,46 +12,63 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum JobType
-    {
-        [JsonProperty("job_portal")]
-        JobPortal,
-        [JsonProperty("job_description")]
-        JobDescription,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class JobTypeExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class JobType : IEquatable<JobType>
     {
-        public static string Value(this JobType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly JobType JobPortal = new JobType("job_portal");
+        public static readonly JobType JobDescription = new JobType("job_description");
 
-        public static JobType ToEnum(this string value)
-        {
-            foreach(var field in typeof(JobType).GetFields())
+        private static readonly Dictionary <string, JobType> _knownValues =
+            new Dictionary <string, JobType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["job_portal"] = JobPortal,
+                ["job_description"] = JobDescription
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, JobType> _values =
+            new ConcurrentDictionary<string, JobType>(_knownValues);
 
-                    if (enumVal is JobType)
-                    {
-                        return (JobType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum JobType");
+        private JobType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static JobType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new JobType(value));
+        }
+
+        public static implicit operator JobType(string value) => Of(value);
+        public static implicit operator string(JobType jobtype) => jobtype.Value;
+
+        public static JobType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as JobType);
+
+        public bool Equals(JobType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

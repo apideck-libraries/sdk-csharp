@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class Connector
     {
-
         /// <summary>
         /// ID of the connector.
         /// </summary>
@@ -54,37 +56,37 @@ namespace ApideckUnifySdk.Models.Components
         public string? LogoUrl { get; set; }
 
         /// <summary>
-        /// Link to the connector&apos;s website.
+        /// Link to the connector's website.
         /// </summary>
         [JsonProperty("website_url")]
         public string? WebsiteUrl { get; set; }
 
         /// <summary>
-        /// Link to the connector&apos;s signup page.
+        /// Link to the connector's signup page.
         /// </summary>
         [JsonProperty("signup_url")]
         public string? SignupUrl { get; set; }
 
         /// <summary>
-        /// Link to the connector&apos;s partner program signup page.
+        /// Link to the connector's partner program signup page.
         /// </summary>
         [JsonProperty("partner_signup_url")]
         public string? PartnerSignupUrl { get; set; }
 
         /// <summary>
-        /// Set to `true` when the connector offers a free trial. Use `signup_url` to sign up for a free trial
+        /// Set to `true` when the connector offers a free trial. Use `signup_url` to sign up for a free trial.
         /// </summary>
         [JsonProperty("free_trial_available")]
         public bool? FreeTrialAvailable { get; set; }
 
         /// <summary>
-        /// Type of authorization used by the connector
+        /// Type of authorization used by the connector.
         /// </summary>
         [JsonProperty("auth_type")]
         public ConnectorAuthType? AuthType { get; set; }
 
         /// <summary>
-        /// Indicates whether a connector only supports authentication. In this case the connector is not mapped to a Unified API, but can be used with the Proxy API
+        /// Indicates whether a connector only supports authentication. In this case the connector is not mapped to a Unified API, but can be used with the Proxy API.
         /// </summary>
         [JsonProperty("auth_only")]
         public bool? AuthOnly { get; set; }
@@ -96,7 +98,7 @@ namespace ApideckUnifySdk.Models.Components
         public bool? BlindMapped { get; set; }
 
         /// <summary>
-        /// OAuth grant type used by the connector. More info: https://oauth.net/2/grant-types
+        /// OAuth grant type used by the connector. More info: https://oauth.net/2/grant-types.
         /// </summary>
         [JsonProperty("oauth_grant_type")]
         public ConnectorOauthGrantType? OauthGrantType { get; set; }
@@ -129,7 +131,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<ConnectorSetting>? Settings { get; set; }
 
         /// <summary>
-        /// Service provider identifier
+        /// Service provider identifier.
         /// </summary>
         [JsonProperty("service_id")]
         public string? ServiceId { get; set; }

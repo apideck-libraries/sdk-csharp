@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class OauthScopes
     {
-
         /// <summary>
         /// ID of the OAuth scope.
         /// </summary>

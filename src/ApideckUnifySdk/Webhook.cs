@@ -21,12 +21,16 @@ namespace ApideckUnifySdk
 
     public class Webhook: IWebhook
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Webhooks SubSDK.
+        /// <see cref="IWebhooks"/>
+        /// </summary>
         public IWebhooks Webhooks { get; private set; }
 
         public Webhook(SDKConfig config)

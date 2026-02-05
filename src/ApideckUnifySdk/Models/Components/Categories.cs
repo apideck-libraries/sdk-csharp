@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class Categories
     {
-
         [JsonProperty("id")]
         public string? Id { get; set; }
 

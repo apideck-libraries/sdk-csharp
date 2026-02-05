@@ -12,55 +12,72 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Supplier status
+    /// Supplier status.
     /// </summary>
-    public enum SupplierStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class SupplierStatus : IEquatable<SupplierStatus>
     {
-        [JsonProperty("active")]
-        Active,
-        [JsonProperty("inactive")]
-        Inactive,
-        [JsonProperty("archived")]
-        Archived,
-        [JsonProperty("gdpr-erasure-request")]
-        GdprErasureRequest,
-        [JsonProperty("unknown")]
-        Unknown,
-    }
+        public static readonly SupplierStatus Active = new SupplierStatus("active");
+        public static readonly SupplierStatus Inactive = new SupplierStatus("inactive");
+        public static readonly SupplierStatus Archived = new SupplierStatus("archived");
+        public static readonly SupplierStatus GdprErasureRequest = new SupplierStatus("gdpr-erasure-request");
+        public static readonly SupplierStatus Unknown = new SupplierStatus("unknown");
 
-    public static class SupplierStatusExtension
-    {
-        public static string Value(this SupplierStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static SupplierStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(SupplierStatus).GetFields())
+        private static readonly Dictionary <string, SupplierStatus> _knownValues =
+            new Dictionary <string, SupplierStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["active"] = Active,
+                ["inactive"] = Inactive,
+                ["archived"] = Archived,
+                ["gdpr-erasure-request"] = GdprErasureRequest,
+                ["unknown"] = Unknown
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, SupplierStatus> _values =
+            new ConcurrentDictionary<string, SupplierStatus>(_knownValues);
 
-                    if (enumVal is SupplierStatus)
-                    {
-                        return (SupplierStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum SupplierStatus");
+        private SupplierStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static SupplierStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new SupplierStatus(value));
+        }
+
+        public static implicit operator SupplierStatus(string value) => Of(value);
+        public static implicit operator string(SupplierStatus supplierstatus) => supplierstatus.Value;
+
+        public static SupplierStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as SupplierStatus);
+
+        public bool Equals(SupplierStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,14 +12,16 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     /// <summary>
     /// Settings to change the way the Vault is displayed.
     /// </summary>
     public class Settings
     {
-
         /// <summary>
         /// Provide the IDs of the Unified APIs you want to be visible. Leaving it empty or omitting this field will show all Unified APIs.
         /// </summary>
@@ -82,11 +84,8 @@ namespace ApideckUnifySdk.Models.Components
 
         /// <summary>
         /// Hide actions from your users in <a href="/apis/vault/reference#section/Get-Started">Vault</a>. Actions in `allow_actions` will be shown on a connection in Vault.<br/>
-        /// 
-        /// <remarks>
         /// Available actions are: `delete`, `disconnect`, `reauthorize` and `disable`.<br/>
         /// Empty array will hide all actions. By default all actions are visible.
-        /// </remarks>
         /// </summary>
         [JsonProperty("allow_actions")]
         public List<AllowActions>? AllowActions { get; set; }

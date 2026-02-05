@@ -12,59 +12,76 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Type of entity this payment should be attributed to.
     /// </summary>
-    public enum BillPaymentAllocationType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class BillPaymentAllocationType : IEquatable<BillPaymentAllocationType>
     {
-        [JsonProperty("bill")]
-        Bill,
-        [JsonProperty("expense")]
-        Expense,
-        [JsonProperty("credit_memo")]
-        CreditMemo,
-        [JsonProperty("over_payment")]
-        OverPayment,
-        [JsonProperty("pre_payment")]
-        PrePayment,
-        [JsonProperty("journal_entry")]
-        JournalEntry,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly BillPaymentAllocationType Bill = new BillPaymentAllocationType("bill");
+        public static readonly BillPaymentAllocationType Expense = new BillPaymentAllocationType("expense");
+        public static readonly BillPaymentAllocationType CreditMemo = new BillPaymentAllocationType("credit_memo");
+        public static readonly BillPaymentAllocationType OverPayment = new BillPaymentAllocationType("over_payment");
+        public static readonly BillPaymentAllocationType PrePayment = new BillPaymentAllocationType("pre_payment");
+        public static readonly BillPaymentAllocationType JournalEntry = new BillPaymentAllocationType("journal_entry");
+        public static readonly BillPaymentAllocationType Other = new BillPaymentAllocationType("other");
 
-    public static class BillPaymentAllocationTypeExtension
-    {
-        public static string Value(this BillPaymentAllocationType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static BillPaymentAllocationType ToEnum(this string value)
-        {
-            foreach(var field in typeof(BillPaymentAllocationType).GetFields())
+        private static readonly Dictionary <string, BillPaymentAllocationType> _knownValues =
+            new Dictionary <string, BillPaymentAllocationType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["bill"] = Bill,
+                ["expense"] = Expense,
+                ["credit_memo"] = CreditMemo,
+                ["over_payment"] = OverPayment,
+                ["pre_payment"] = PrePayment,
+                ["journal_entry"] = JournalEntry,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, BillPaymentAllocationType> _values =
+            new ConcurrentDictionary<string, BillPaymentAllocationType>(_knownValues);
 
-                    if (enumVal is BillPaymentAllocationType)
-                    {
-                        return (BillPaymentAllocationType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum BillPaymentAllocationType");
+        private BillPaymentAllocationType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static BillPaymentAllocationType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new BillPaymentAllocationType(value));
+        }
+
+        public static implicit operator BillPaymentAllocationType(string value) => Of(value);
+        public static implicit operator string(BillPaymentAllocationType billpaymentallocationtype) => billpaymentallocationtype.Value;
+
+        public static BillPaymentAllocationType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as BillPaymentAllocationType);
+
+        public bool Equals(BillPaymentAllocationType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

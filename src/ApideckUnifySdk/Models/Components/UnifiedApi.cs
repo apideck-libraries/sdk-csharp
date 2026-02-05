@@ -12,69 +12,86 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Which Unified Api request was made to.
     /// </summary>
-    public enum UnifiedApi
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class UnifiedApi : IEquatable<UnifiedApi>
     {
-        [JsonProperty("crm")]
-        Crm,
-        [JsonProperty("lead")]
-        Lead,
-        [JsonProperty("proxy")]
-        Proxy,
-        [JsonProperty("vault")]
-        Vault,
-        [JsonProperty("accounting")]
-        Accounting,
-        [JsonProperty("hris")]
-        Hris,
-        [JsonProperty("ats")]
-        Ats,
-        [JsonProperty("ecommerce")]
-        Ecommerce,
-        [JsonProperty("issue-tracking")]
-        IssueTracking,
-        [JsonProperty("pos")]
-        Pos,
-        [JsonProperty("file-storage")]
-        FileStorage,
-        [JsonProperty("sms")]
-        Sms,
-    }
+        public static readonly UnifiedApi Crm = new UnifiedApi("crm");
+        public static readonly UnifiedApi Lead = new UnifiedApi("lead");
+        public static readonly UnifiedApi Proxy = new UnifiedApi("proxy");
+        public static readonly UnifiedApi Vault = new UnifiedApi("vault");
+        public static readonly UnifiedApi Accounting = new UnifiedApi("accounting");
+        public static readonly UnifiedApi Hris = new UnifiedApi("hris");
+        public static readonly UnifiedApi Ats = new UnifiedApi("ats");
+        public static readonly UnifiedApi Ecommerce = new UnifiedApi("ecommerce");
+        public static readonly UnifiedApi IssueTracking = new UnifiedApi("issue-tracking");
+        public static readonly UnifiedApi Pos = new UnifiedApi("pos");
+        public static readonly UnifiedApi FileStorage = new UnifiedApi("file-storage");
+        public static readonly UnifiedApi Sms = new UnifiedApi("sms");
 
-    public static class UnifiedApiExtension
-    {
-        public static string Value(this UnifiedApi value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static UnifiedApi ToEnum(this string value)
-        {
-            foreach(var field in typeof(UnifiedApi).GetFields())
+        private static readonly Dictionary <string, UnifiedApi> _knownValues =
+            new Dictionary <string, UnifiedApi> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["crm"] = Crm,
+                ["lead"] = Lead,
+                ["proxy"] = Proxy,
+                ["vault"] = Vault,
+                ["accounting"] = Accounting,
+                ["hris"] = Hris,
+                ["ats"] = Ats,
+                ["ecommerce"] = Ecommerce,
+                ["issue-tracking"] = IssueTracking,
+                ["pos"] = Pos,
+                ["file-storage"] = FileStorage,
+                ["sms"] = Sms
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, UnifiedApi> _values =
+            new ConcurrentDictionary<string, UnifiedApi>(_knownValues);
 
-                    if (enumVal is UnifiedApi)
-                    {
-                        return (UnifiedApi)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum UnifiedApi");
+        private UnifiedApi(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static UnifiedApi Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new UnifiedApi(value));
+        }
+
+        public static implicit operator UnifiedApi(string value) => Of(value);
+        public static implicit operator string(UnifiedApi unifiedapi) => unifiedapi.Value;
+
+        public static UnifiedApi[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as UnifiedApi);
+
+        public bool Equals(UnifiedApi? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

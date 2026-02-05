@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Current phase of the project lifecycle
+    /// Current phase of the project lifecycle.
     /// </summary>
-    public enum ProjectPhase
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ProjectPhase : IEquatable<ProjectPhase>
     {
-        [JsonProperty("initiation")]
-        Initiation,
-        [JsonProperty("planning")]
-        Planning,
-        [JsonProperty("execution")]
-        Execution,
-        [JsonProperty("monitoring")]
-        Monitoring,
-        [JsonProperty("closure")]
-        Closure,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly ProjectPhase Initiation = new ProjectPhase("initiation");
+        public static readonly ProjectPhase Planning = new ProjectPhase("planning");
+        public static readonly ProjectPhase Execution = new ProjectPhase("execution");
+        public static readonly ProjectPhase Monitoring = new ProjectPhase("monitoring");
+        public static readonly ProjectPhase Closure = new ProjectPhase("closure");
+        public static readonly ProjectPhase Other = new ProjectPhase("other");
 
-    public static class ProjectPhaseExtension
-    {
-        public static string Value(this ProjectPhase value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ProjectPhase ToEnum(this string value)
-        {
-            foreach(var field in typeof(ProjectPhase).GetFields())
+        private static readonly Dictionary <string, ProjectPhase> _knownValues =
+            new Dictionary <string, ProjectPhase> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["initiation"] = Initiation,
+                ["planning"] = Planning,
+                ["execution"] = Execution,
+                ["monitoring"] = Monitoring,
+                ["closure"] = Closure,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ProjectPhase> _values =
+            new ConcurrentDictionary<string, ProjectPhase>(_knownValues);
 
-                    if (enumVal is ProjectPhase)
-                    {
-                        return (ProjectPhase)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ProjectPhase");
+        private ProjectPhase(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ProjectPhase Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ProjectPhase(value));
+        }
+
+        public static implicit operator ProjectPhase(string value) => Of(value);
+        public static implicit operator string(ProjectPhase projectphase) => projectphase.Value;
+
+        public static ProjectPhase[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ProjectPhase);
+
+        public bool Equals(ProjectPhase? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,61 +12,78 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
-    /// Type of payment
+    /// Type of payment.
     /// </summary>
-    public enum PaymentType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PaymentType : IEquatable<PaymentType>
     {
-        [JsonProperty("accounts_receivable")]
-        AccountsReceivable,
-        [JsonProperty("accounts_payable")]
-        AccountsPayable,
-        [JsonProperty("accounts_receivable_credit")]
-        AccountsReceivableCredit,
-        [JsonProperty("accounts_payable_credit")]
-        AccountsPayableCredit,
-        [JsonProperty("accounts_receivable_overpayment")]
-        AccountsReceivableOverpayment,
-        [JsonProperty("accounts_payable_overpayment")]
-        AccountsPayableOverpayment,
-        [JsonProperty("accounts_receivable_prepayment")]
-        AccountsReceivablePrepayment,
-        [JsonProperty("accounts_payable_prepayment")]
-        AccountsPayablePrepayment,
-    }
+        public static readonly PaymentType AccountsReceivable = new PaymentType("accounts_receivable");
+        public static readonly PaymentType AccountsPayable = new PaymentType("accounts_payable");
+        public static readonly PaymentType AccountsReceivableCredit = new PaymentType("accounts_receivable_credit");
+        public static readonly PaymentType AccountsPayableCredit = new PaymentType("accounts_payable_credit");
+        public static readonly PaymentType AccountsReceivableOverpayment = new PaymentType("accounts_receivable_overpayment");
+        public static readonly PaymentType AccountsPayableOverpayment = new PaymentType("accounts_payable_overpayment");
+        public static readonly PaymentType AccountsReceivablePrepayment = new PaymentType("accounts_receivable_prepayment");
+        public static readonly PaymentType AccountsPayablePrepayment = new PaymentType("accounts_payable_prepayment");
 
-    public static class PaymentTypeExtension
-    {
-        public static string Value(this PaymentType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static PaymentType ToEnum(this string value)
-        {
-            foreach(var field in typeof(PaymentType).GetFields())
+        private static readonly Dictionary <string, PaymentType> _knownValues =
+            new Dictionary <string, PaymentType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["accounts_receivable"] = AccountsReceivable,
+                ["accounts_payable"] = AccountsPayable,
+                ["accounts_receivable_credit"] = AccountsReceivableCredit,
+                ["accounts_payable_credit"] = AccountsPayableCredit,
+                ["accounts_receivable_overpayment"] = AccountsReceivableOverpayment,
+                ["accounts_payable_overpayment"] = AccountsPayableOverpayment,
+                ["accounts_receivable_prepayment"] = AccountsReceivablePrepayment,
+                ["accounts_payable_prepayment"] = AccountsPayablePrepayment
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PaymentType> _values =
+            new ConcurrentDictionary<string, PaymentType>(_knownValues);
 
-                    if (enumVal is PaymentType)
-                    {
-                        return (PaymentType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PaymentType");
+        private PaymentType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PaymentType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PaymentType(value));
+        }
+
+        public static implicit operator PaymentType(string value) => Of(value);
+        public static implicit operator string(PaymentType paymenttype) => paymenttype.Value;
+
+        public static PaymentType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PaymentType);
+
+        public bool Equals(PaymentType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

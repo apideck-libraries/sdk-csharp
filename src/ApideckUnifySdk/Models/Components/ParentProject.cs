@@ -11,21 +11,20 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Parent project if this is a subproject
+    /// Parent project if this is a subproject.
     /// </summary>
     public class ParentProject
     {
-
         /// <summary>
-        /// Unique identifier for the parent project
+        /// Unique identifier for the parent project.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
 
         /// <summary>
-        /// Name of the parent project
+        /// Name of the parent project.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; }

@@ -12,52 +12,69 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum ApplicationStatus
-    {
-        [JsonProperty("open")]
-        Open,
-        [JsonProperty("rejected")]
-        Rejected,
-        [JsonProperty("hired")]
-        Hired,
-        [JsonProperty("converted")]
-        Converted,
-        [JsonProperty("other")]
-        Other,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class ApplicationStatusExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ApplicationStatus : IEquatable<ApplicationStatus>
     {
-        public static string Value(this ApplicationStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly ApplicationStatus Open = new ApplicationStatus("open");
+        public static readonly ApplicationStatus Rejected = new ApplicationStatus("rejected");
+        public static readonly ApplicationStatus Hired = new ApplicationStatus("hired");
+        public static readonly ApplicationStatus Converted = new ApplicationStatus("converted");
+        public static readonly ApplicationStatus Other = new ApplicationStatus("other");
 
-        public static ApplicationStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ApplicationStatus).GetFields())
+        private static readonly Dictionary <string, ApplicationStatus> _knownValues =
+            new Dictionary <string, ApplicationStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["open"] = Open,
+                ["rejected"] = Rejected,
+                ["hired"] = Hired,
+                ["converted"] = Converted,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ApplicationStatus> _values =
+            new ConcurrentDictionary<string, ApplicationStatus>(_knownValues);
 
-                    if (enumVal is ApplicationStatus)
-                    {
-                        return (ApplicationStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ApplicationStatus");
+        private ApplicationStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ApplicationStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ApplicationStatus(value));
+        }
+
+        public static implicit operator ApplicationStatus(string value) => Of(value);
+        public static implicit operator string(ApplicationStatus applicationstatus) => applicationstatus.Value;
+
+        public static ApplicationStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ApplicationStatus);
+
+        public bool Equals(ApplicationStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,411 +12,428 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
     /// </summary>
-    public enum Currency
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Currency : IEquatable<Currency>
     {
-        [JsonProperty("UNKNOWN_CURRENCY")]
-        UnknownCurrency,
-        [JsonProperty("AED")]
-        Aed,
-        [JsonProperty("AFN")]
-        Afn,
-        [JsonProperty("ALL")]
-        All,
-        [JsonProperty("AMD")]
-        Amd,
-        [JsonProperty("ANG")]
-        Ang,
-        [JsonProperty("AOA")]
-        Aoa,
-        [JsonProperty("ARS")]
-        Ars,
-        [JsonProperty("AUD")]
-        Aud,
-        [JsonProperty("AWG")]
-        Awg,
-        [JsonProperty("AZN")]
-        Azn,
-        [JsonProperty("BAM")]
-        Bam,
-        [JsonProperty("BBD")]
-        Bbd,
-        [JsonProperty("BDT")]
-        Bdt,
-        [JsonProperty("BGN")]
-        Bgn,
-        [JsonProperty("BHD")]
-        Bhd,
-        [JsonProperty("BIF")]
-        Bif,
-        [JsonProperty("BMD")]
-        Bmd,
-        [JsonProperty("BND")]
-        Bnd,
-        [JsonProperty("BOB")]
-        Bob,
-        [JsonProperty("BOV")]
-        Bov,
-        [JsonProperty("BRL")]
-        Brl,
-        [JsonProperty("BSD")]
-        Bsd,
-        [JsonProperty("BTN")]
-        Btn,
-        [JsonProperty("BWP")]
-        Bwp,
-        [JsonProperty("BYR")]
-        Byr,
-        [JsonProperty("BZD")]
-        Bzd,
-        [JsonProperty("CAD")]
-        Cad,
-        [JsonProperty("CDF")]
-        Cdf,
-        [JsonProperty("CHE")]
-        Che,
-        [JsonProperty("CHF")]
-        Chf,
-        [JsonProperty("CHW")]
-        Chw,
-        [JsonProperty("CLF")]
-        Clf,
-        [JsonProperty("CLP")]
-        Clp,
-        [JsonProperty("CNY")]
-        Cny,
-        [JsonProperty("COP")]
-        Cop,
-        [JsonProperty("COU")]
-        Cou,
-        [JsonProperty("CRC")]
-        Crc,
-        [JsonProperty("CUC")]
-        Cuc,
-        [JsonProperty("CUP")]
-        Cup,
-        [JsonProperty("CVE")]
-        Cve,
-        [JsonProperty("CZK")]
-        Czk,
-        [JsonProperty("DJF")]
-        Djf,
-        [JsonProperty("DKK")]
-        Dkk,
-        [JsonProperty("DOP")]
-        Dop,
-        [JsonProperty("DZD")]
-        Dzd,
-        [JsonProperty("EGP")]
-        Egp,
-        [JsonProperty("ERN")]
-        Ern,
-        [JsonProperty("ETB")]
-        Etb,
-        [JsonProperty("EUR")]
-        Eur,
-        [JsonProperty("FJD")]
-        Fjd,
-        [JsonProperty("FKP")]
-        Fkp,
-        [JsonProperty("GBP")]
-        Gbp,
-        [JsonProperty("GEL")]
-        Gel,
-        [JsonProperty("GHS")]
-        Ghs,
-        [JsonProperty("GIP")]
-        Gip,
-        [JsonProperty("GMD")]
-        Gmd,
-        [JsonProperty("GNF")]
-        Gnf,
-        [JsonProperty("GTQ")]
-        Gtq,
-        [JsonProperty("GYD")]
-        Gyd,
-        [JsonProperty("HKD")]
-        Hkd,
-        [JsonProperty("HNL")]
-        Hnl,
-        [JsonProperty("HRK")]
-        Hrk,
-        [JsonProperty("HTG")]
-        Htg,
-        [JsonProperty("HUF")]
-        Huf,
-        [JsonProperty("IDR")]
-        Idr,
-        [JsonProperty("ILS")]
-        Ils,
-        [JsonProperty("INR")]
-        Inr,
-        [JsonProperty("IQD")]
-        Iqd,
-        [JsonProperty("IRR")]
-        Irr,
-        [JsonProperty("ISK")]
-        Isk,
-        [JsonProperty("JMD")]
-        Jmd,
-        [JsonProperty("JOD")]
-        Jod,
-        [JsonProperty("JPY")]
-        Jpy,
-        [JsonProperty("KES")]
-        Kes,
-        [JsonProperty("KGS")]
-        Kgs,
-        [JsonProperty("KHR")]
-        Khr,
-        [JsonProperty("KMF")]
-        Kmf,
-        [JsonProperty("KPW")]
-        Kpw,
-        [JsonProperty("KRW")]
-        Krw,
-        [JsonProperty("KWD")]
-        Kwd,
-        [JsonProperty("KYD")]
-        Kyd,
-        [JsonProperty("KZT")]
-        Kzt,
-        [JsonProperty("LAK")]
-        Lak,
-        [JsonProperty("LBP")]
-        Lbp,
-        [JsonProperty("LKR")]
-        Lkr,
-        [JsonProperty("LRD")]
-        Lrd,
-        [JsonProperty("LSL")]
-        Lsl,
-        [JsonProperty("LTL")]
-        Ltl,
-        [JsonProperty("LVL")]
-        Lvl,
-        [JsonProperty("LYD")]
-        Lyd,
-        [JsonProperty("MAD")]
-        Mad,
-        [JsonProperty("MDL")]
-        Mdl,
-        [JsonProperty("MGA")]
-        Mga,
-        [JsonProperty("MKD")]
-        Mkd,
-        [JsonProperty("MMK")]
-        Mmk,
-        [JsonProperty("MNT")]
-        Mnt,
-        [JsonProperty("MOP")]
-        Mop,
-        [JsonProperty("MRO")]
-        Mro,
-        [JsonProperty("MUR")]
-        Mur,
-        [JsonProperty("MVR")]
-        Mvr,
-        [JsonProperty("MWK")]
-        Mwk,
-        [JsonProperty("MXN")]
-        Mxn,
-        [JsonProperty("MXV")]
-        Mxv,
-        [JsonProperty("MYR")]
-        Myr,
-        [JsonProperty("MZN")]
-        Mzn,
-        [JsonProperty("NAD")]
-        Nad,
-        [JsonProperty("NGN")]
-        Ngn,
-        [JsonProperty("NIO")]
-        Nio,
-        [JsonProperty("NOK")]
-        Nok,
-        [JsonProperty("NPR")]
-        Npr,
-        [JsonProperty("NZD")]
-        Nzd,
-        [JsonProperty("OMR")]
-        Omr,
-        [JsonProperty("PAB")]
-        Pab,
-        [JsonProperty("PEN")]
-        Pen,
-        [JsonProperty("PGK")]
-        Pgk,
-        [JsonProperty("PHP")]
-        Php,
-        [JsonProperty("PKR")]
-        Pkr,
-        [JsonProperty("PLN")]
-        Pln,
-        [JsonProperty("PYG")]
-        Pyg,
-        [JsonProperty("QAR")]
-        Qar,
-        [JsonProperty("RON")]
-        Ron,
-        [JsonProperty("RSD")]
-        Rsd,
-        [JsonProperty("RUB")]
-        Rub,
-        [JsonProperty("RWF")]
-        Rwf,
-        [JsonProperty("SAR")]
-        Sar,
-        [JsonProperty("SBD")]
-        Sbd,
-        [JsonProperty("SCR")]
-        Scr,
-        [JsonProperty("SDG")]
-        Sdg,
-        [JsonProperty("SEK")]
-        Sek,
-        [JsonProperty("SGD")]
-        Sgd,
-        [JsonProperty("SHP")]
-        Shp,
-        [JsonProperty("SLL")]
-        Sll,
-        [JsonProperty("SOS")]
-        Sos,
-        [JsonProperty("SRD")]
-        Srd,
-        [JsonProperty("SSP")]
-        Ssp,
-        [JsonProperty("STD")]
-        Std,
-        [JsonProperty("SVC")]
-        Svc,
-        [JsonProperty("SYP")]
-        Syp,
-        [JsonProperty("SZL")]
-        Szl,
-        [JsonProperty("THB")]
-        Thb,
-        [JsonProperty("TJS")]
-        Tjs,
-        [JsonProperty("TMT")]
-        Tmt,
-        [JsonProperty("TND")]
-        Tnd,
-        [JsonProperty("TOP")]
-        Top,
-        [JsonProperty("TRC")]
-        Trc,
-        [JsonProperty("TRY")]
-        Try,
-        [JsonProperty("TTD")]
-        Ttd,
-        [JsonProperty("TWD")]
-        Twd,
-        [JsonProperty("TZS")]
-        Tzs,
-        [JsonProperty("UAH")]
-        Uah,
-        [JsonProperty("UGX")]
-        Ugx,
-        [JsonProperty("USD")]
-        Usd,
-        [JsonProperty("USN")]
-        Usn,
-        [JsonProperty("USS")]
-        Uss,
-        [JsonProperty("UYI")]
-        Uyi,
-        [JsonProperty("UYU")]
-        Uyu,
-        [JsonProperty("UZS")]
-        Uzs,
-        [JsonProperty("VEF")]
-        Vef,
-        [JsonProperty("VND")]
-        Vnd,
-        [JsonProperty("VUV")]
-        Vuv,
-        [JsonProperty("WST")]
-        Wst,
-        [JsonProperty("XAF")]
-        Xaf,
-        [JsonProperty("XAG")]
-        Xag,
-        [JsonProperty("XAU")]
-        Xau,
-        [JsonProperty("XBA")]
-        Xba,
-        [JsonProperty("XBB")]
-        Xbb,
-        [JsonProperty("XBC")]
-        Xbc,
-        [JsonProperty("XBD")]
-        Xbd,
-        [JsonProperty("XCD")]
-        Xcd,
-        [JsonProperty("XDR")]
-        Xdr,
-        [JsonProperty("XOF")]
-        Xof,
-        [JsonProperty("XPD")]
-        Xpd,
-        [JsonProperty("XPF")]
-        Xpf,
-        [JsonProperty("XPT")]
-        Xpt,
-        [JsonProperty("XTS")]
-        Xts,
-        [JsonProperty("XXX")]
-        Xxx,
-        [JsonProperty("YER")]
-        Yer,
-        [JsonProperty("ZAR")]
-        Zar,
-        [JsonProperty("ZMK")]
-        Zmk,
-        [JsonProperty("ZMW")]
-        Zmw,
-        [JsonProperty("BTC")]
-        Btc,
-        [JsonProperty("ETH")]
-        Eth,
-    }
+        public static readonly Currency UnknownCurrency = new Currency("UNKNOWN_CURRENCY");
+        public static readonly Currency Aed = new Currency("AED");
+        public static readonly Currency Afn = new Currency("AFN");
+        public static readonly Currency All = new Currency("ALL");
+        public static readonly Currency Amd = new Currency("AMD");
+        public static readonly Currency Ang = new Currency("ANG");
+        public static readonly Currency Aoa = new Currency("AOA");
+        public static readonly Currency Ars = new Currency("ARS");
+        public static readonly Currency Aud = new Currency("AUD");
+        public static readonly Currency Awg = new Currency("AWG");
+        public static readonly Currency Azn = new Currency("AZN");
+        public static readonly Currency Bam = new Currency("BAM");
+        public static readonly Currency Bbd = new Currency("BBD");
+        public static readonly Currency Bdt = new Currency("BDT");
+        public static readonly Currency Bgn = new Currency("BGN");
+        public static readonly Currency Bhd = new Currency("BHD");
+        public static readonly Currency Bif = new Currency("BIF");
+        public static readonly Currency Bmd = new Currency("BMD");
+        public static readonly Currency Bnd = new Currency("BND");
+        public static readonly Currency Bob = new Currency("BOB");
+        public static readonly Currency Bov = new Currency("BOV");
+        public static readonly Currency Brl = new Currency("BRL");
+        public static readonly Currency Bsd = new Currency("BSD");
+        public static readonly Currency Btn = new Currency("BTN");
+        public static readonly Currency Bwp = new Currency("BWP");
+        public static readonly Currency Byr = new Currency("BYR");
+        public static readonly Currency Bzd = new Currency("BZD");
+        public static readonly Currency Cad = new Currency("CAD");
+        public static readonly Currency Cdf = new Currency("CDF");
+        public static readonly Currency Che = new Currency("CHE");
+        public static readonly Currency Chf = new Currency("CHF");
+        public static readonly Currency Chw = new Currency("CHW");
+        public static readonly Currency Clf = new Currency("CLF");
+        public static readonly Currency Clp = new Currency("CLP");
+        public static readonly Currency Cny = new Currency("CNY");
+        public static readonly Currency Cop = new Currency("COP");
+        public static readonly Currency Cou = new Currency("COU");
+        public static readonly Currency Crc = new Currency("CRC");
+        public static readonly Currency Cuc = new Currency("CUC");
+        public static readonly Currency Cup = new Currency("CUP");
+        public static readonly Currency Cve = new Currency("CVE");
+        public static readonly Currency Czk = new Currency("CZK");
+        public static readonly Currency Djf = new Currency("DJF");
+        public static readonly Currency Dkk = new Currency("DKK");
+        public static readonly Currency Dop = new Currency("DOP");
+        public static readonly Currency Dzd = new Currency("DZD");
+        public static readonly Currency Egp = new Currency("EGP");
+        public static readonly Currency Ern = new Currency("ERN");
+        public static readonly Currency Etb = new Currency("ETB");
+        public static readonly Currency Eur = new Currency("EUR");
+        public static readonly Currency Fjd = new Currency("FJD");
+        public static readonly Currency Fkp = new Currency("FKP");
+        public static readonly Currency Gbp = new Currency("GBP");
+        public static readonly Currency Gel = new Currency("GEL");
+        public static readonly Currency Ghs = new Currency("GHS");
+        public static readonly Currency Gip = new Currency("GIP");
+        public static readonly Currency Gmd = new Currency("GMD");
+        public static readonly Currency Gnf = new Currency("GNF");
+        public static readonly Currency Gtq = new Currency("GTQ");
+        public static readonly Currency Gyd = new Currency("GYD");
+        public static readonly Currency Hkd = new Currency("HKD");
+        public static readonly Currency Hnl = new Currency("HNL");
+        public static readonly Currency Hrk = new Currency("HRK");
+        public static readonly Currency Htg = new Currency("HTG");
+        public static readonly Currency Huf = new Currency("HUF");
+        public static readonly Currency Idr = new Currency("IDR");
+        public static readonly Currency Ils = new Currency("ILS");
+        public static readonly Currency Inr = new Currency("INR");
+        public static readonly Currency Iqd = new Currency("IQD");
+        public static readonly Currency Irr = new Currency("IRR");
+        public static readonly Currency Isk = new Currency("ISK");
+        public static readonly Currency Jmd = new Currency("JMD");
+        public static readonly Currency Jod = new Currency("JOD");
+        public static readonly Currency Jpy = new Currency("JPY");
+        public static readonly Currency Kes = new Currency("KES");
+        public static readonly Currency Kgs = new Currency("KGS");
+        public static readonly Currency Khr = new Currency("KHR");
+        public static readonly Currency Kmf = new Currency("KMF");
+        public static readonly Currency Kpw = new Currency("KPW");
+        public static readonly Currency Krw = new Currency("KRW");
+        public static readonly Currency Kwd = new Currency("KWD");
+        public static readonly Currency Kyd = new Currency("KYD");
+        public static readonly Currency Kzt = new Currency("KZT");
+        public static readonly Currency Lak = new Currency("LAK");
+        public static readonly Currency Lbp = new Currency("LBP");
+        public static readonly Currency Lkr = new Currency("LKR");
+        public static readonly Currency Lrd = new Currency("LRD");
+        public static readonly Currency Lsl = new Currency("LSL");
+        public static readonly Currency Ltl = new Currency("LTL");
+        public static readonly Currency Lvl = new Currency("LVL");
+        public static readonly Currency Lyd = new Currency("LYD");
+        public static readonly Currency Mad = new Currency("MAD");
+        public static readonly Currency Mdl = new Currency("MDL");
+        public static readonly Currency Mga = new Currency("MGA");
+        public static readonly Currency Mkd = new Currency("MKD");
+        public static readonly Currency Mmk = new Currency("MMK");
+        public static readonly Currency Mnt = new Currency("MNT");
+        public static readonly Currency Mop = new Currency("MOP");
+        public static readonly Currency Mro = new Currency("MRO");
+        public static readonly Currency Mur = new Currency("MUR");
+        public static readonly Currency Mvr = new Currency("MVR");
+        public static readonly Currency Mwk = new Currency("MWK");
+        public static readonly Currency Mxn = new Currency("MXN");
+        public static readonly Currency Mxv = new Currency("MXV");
+        public static readonly Currency Myr = new Currency("MYR");
+        public static readonly Currency Mzn = new Currency("MZN");
+        public static readonly Currency Nad = new Currency("NAD");
+        public static readonly Currency Ngn = new Currency("NGN");
+        public static readonly Currency Nio = new Currency("NIO");
+        public static readonly Currency Nok = new Currency("NOK");
+        public static readonly Currency Npr = new Currency("NPR");
+        public static readonly Currency Nzd = new Currency("NZD");
+        public static readonly Currency Omr = new Currency("OMR");
+        public static readonly Currency Pab = new Currency("PAB");
+        public static readonly Currency Pen = new Currency("PEN");
+        public static readonly Currency Pgk = new Currency("PGK");
+        public static readonly Currency Php = new Currency("PHP");
+        public static readonly Currency Pkr = new Currency("PKR");
+        public static readonly Currency Pln = new Currency("PLN");
+        public static readonly Currency Pyg = new Currency("PYG");
+        public static readonly Currency Qar = new Currency("QAR");
+        public static readonly Currency Ron = new Currency("RON");
+        public static readonly Currency Rsd = new Currency("RSD");
+        public static readonly Currency Rub = new Currency("RUB");
+        public static readonly Currency Rwf = new Currency("RWF");
+        public static readonly Currency Sar = new Currency("SAR");
+        public static readonly Currency Sbd = new Currency("SBD");
+        public static readonly Currency Scr = new Currency("SCR");
+        public static readonly Currency Sdg = new Currency("SDG");
+        public static readonly Currency Sek = new Currency("SEK");
+        public static readonly Currency Sgd = new Currency("SGD");
+        public static readonly Currency Shp = new Currency("SHP");
+        public static readonly Currency Sll = new Currency("SLL");
+        public static readonly Currency Sos = new Currency("SOS");
+        public static readonly Currency Srd = new Currency("SRD");
+        public static readonly Currency Ssp = new Currency("SSP");
+        public static readonly Currency Std = new Currency("STD");
+        public static readonly Currency Svc = new Currency("SVC");
+        public static readonly Currency Syp = new Currency("SYP");
+        public static readonly Currency Szl = new Currency("SZL");
+        public static readonly Currency Thb = new Currency("THB");
+        public static readonly Currency Tjs = new Currency("TJS");
+        public static readonly Currency Tmt = new Currency("TMT");
+        public static readonly Currency Tnd = new Currency("TND");
+        public static readonly Currency Top = new Currency("TOP");
+        public static readonly Currency Trc = new Currency("TRC");
+        public static readonly Currency Try = new Currency("TRY");
+        public static readonly Currency Ttd = new Currency("TTD");
+        public static readonly Currency Twd = new Currency("TWD");
+        public static readonly Currency Tzs = new Currency("TZS");
+        public static readonly Currency Uah = new Currency("UAH");
+        public static readonly Currency Ugx = new Currency("UGX");
+        public static readonly Currency Usd = new Currency("USD");
+        public static readonly Currency Usn = new Currency("USN");
+        public static readonly Currency Uss = new Currency("USS");
+        public static readonly Currency Uyi = new Currency("UYI");
+        public static readonly Currency Uyu = new Currency("UYU");
+        public static readonly Currency Uzs = new Currency("UZS");
+        public static readonly Currency Vef = new Currency("VEF");
+        public static readonly Currency Vnd = new Currency("VND");
+        public static readonly Currency Vuv = new Currency("VUV");
+        public static readonly Currency Wst = new Currency("WST");
+        public static readonly Currency Xaf = new Currency("XAF");
+        public static readonly Currency Xag = new Currency("XAG");
+        public static readonly Currency Xau = new Currency("XAU");
+        public static readonly Currency Xba = new Currency("XBA");
+        public static readonly Currency Xbb = new Currency("XBB");
+        public static readonly Currency Xbc = new Currency("XBC");
+        public static readonly Currency Xbd = new Currency("XBD");
+        public static readonly Currency Xcd = new Currency("XCD");
+        public static readonly Currency Xdr = new Currency("XDR");
+        public static readonly Currency Xof = new Currency("XOF");
+        public static readonly Currency Xpd = new Currency("XPD");
+        public static readonly Currency Xpf = new Currency("XPF");
+        public static readonly Currency Xpt = new Currency("XPT");
+        public static readonly Currency Xts = new Currency("XTS");
+        public static readonly Currency Xxx = new Currency("XXX");
+        public static readonly Currency Yer = new Currency("YER");
+        public static readonly Currency Zar = new Currency("ZAR");
+        public static readonly Currency Zmk = new Currency("ZMK");
+        public static readonly Currency Zmw = new Currency("ZMW");
+        public static readonly Currency Btc = new Currency("BTC");
+        public static readonly Currency Eth = new Currency("ETH");
 
-    public static class CurrencyExtension
-    {
-        public static string Value(this Currency value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Currency ToEnum(this string value)
-        {
-            foreach(var field in typeof(Currency).GetFields())
+        private static readonly Dictionary <string, Currency> _knownValues =
+            new Dictionary <string, Currency> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["UNKNOWN_CURRENCY"] = UnknownCurrency,
+                ["AED"] = Aed,
+                ["AFN"] = Afn,
+                ["ALL"] = All,
+                ["AMD"] = Amd,
+                ["ANG"] = Ang,
+                ["AOA"] = Aoa,
+                ["ARS"] = Ars,
+                ["AUD"] = Aud,
+                ["AWG"] = Awg,
+                ["AZN"] = Azn,
+                ["BAM"] = Bam,
+                ["BBD"] = Bbd,
+                ["BDT"] = Bdt,
+                ["BGN"] = Bgn,
+                ["BHD"] = Bhd,
+                ["BIF"] = Bif,
+                ["BMD"] = Bmd,
+                ["BND"] = Bnd,
+                ["BOB"] = Bob,
+                ["BOV"] = Bov,
+                ["BRL"] = Brl,
+                ["BSD"] = Bsd,
+                ["BTN"] = Btn,
+                ["BWP"] = Bwp,
+                ["BYR"] = Byr,
+                ["BZD"] = Bzd,
+                ["CAD"] = Cad,
+                ["CDF"] = Cdf,
+                ["CHE"] = Che,
+                ["CHF"] = Chf,
+                ["CHW"] = Chw,
+                ["CLF"] = Clf,
+                ["CLP"] = Clp,
+                ["CNY"] = Cny,
+                ["COP"] = Cop,
+                ["COU"] = Cou,
+                ["CRC"] = Crc,
+                ["CUC"] = Cuc,
+                ["CUP"] = Cup,
+                ["CVE"] = Cve,
+                ["CZK"] = Czk,
+                ["DJF"] = Djf,
+                ["DKK"] = Dkk,
+                ["DOP"] = Dop,
+                ["DZD"] = Dzd,
+                ["EGP"] = Egp,
+                ["ERN"] = Ern,
+                ["ETB"] = Etb,
+                ["EUR"] = Eur,
+                ["FJD"] = Fjd,
+                ["FKP"] = Fkp,
+                ["GBP"] = Gbp,
+                ["GEL"] = Gel,
+                ["GHS"] = Ghs,
+                ["GIP"] = Gip,
+                ["GMD"] = Gmd,
+                ["GNF"] = Gnf,
+                ["GTQ"] = Gtq,
+                ["GYD"] = Gyd,
+                ["HKD"] = Hkd,
+                ["HNL"] = Hnl,
+                ["HRK"] = Hrk,
+                ["HTG"] = Htg,
+                ["HUF"] = Huf,
+                ["IDR"] = Idr,
+                ["ILS"] = Ils,
+                ["INR"] = Inr,
+                ["IQD"] = Iqd,
+                ["IRR"] = Irr,
+                ["ISK"] = Isk,
+                ["JMD"] = Jmd,
+                ["JOD"] = Jod,
+                ["JPY"] = Jpy,
+                ["KES"] = Kes,
+                ["KGS"] = Kgs,
+                ["KHR"] = Khr,
+                ["KMF"] = Kmf,
+                ["KPW"] = Kpw,
+                ["KRW"] = Krw,
+                ["KWD"] = Kwd,
+                ["KYD"] = Kyd,
+                ["KZT"] = Kzt,
+                ["LAK"] = Lak,
+                ["LBP"] = Lbp,
+                ["LKR"] = Lkr,
+                ["LRD"] = Lrd,
+                ["LSL"] = Lsl,
+                ["LTL"] = Ltl,
+                ["LVL"] = Lvl,
+                ["LYD"] = Lyd,
+                ["MAD"] = Mad,
+                ["MDL"] = Mdl,
+                ["MGA"] = Mga,
+                ["MKD"] = Mkd,
+                ["MMK"] = Mmk,
+                ["MNT"] = Mnt,
+                ["MOP"] = Mop,
+                ["MRO"] = Mro,
+                ["MUR"] = Mur,
+                ["MVR"] = Mvr,
+                ["MWK"] = Mwk,
+                ["MXN"] = Mxn,
+                ["MXV"] = Mxv,
+                ["MYR"] = Myr,
+                ["MZN"] = Mzn,
+                ["NAD"] = Nad,
+                ["NGN"] = Ngn,
+                ["NIO"] = Nio,
+                ["NOK"] = Nok,
+                ["NPR"] = Npr,
+                ["NZD"] = Nzd,
+                ["OMR"] = Omr,
+                ["PAB"] = Pab,
+                ["PEN"] = Pen,
+                ["PGK"] = Pgk,
+                ["PHP"] = Php,
+                ["PKR"] = Pkr,
+                ["PLN"] = Pln,
+                ["PYG"] = Pyg,
+                ["QAR"] = Qar,
+                ["RON"] = Ron,
+                ["RSD"] = Rsd,
+                ["RUB"] = Rub,
+                ["RWF"] = Rwf,
+                ["SAR"] = Sar,
+                ["SBD"] = Sbd,
+                ["SCR"] = Scr,
+                ["SDG"] = Sdg,
+                ["SEK"] = Sek,
+                ["SGD"] = Sgd,
+                ["SHP"] = Shp,
+                ["SLL"] = Sll,
+                ["SOS"] = Sos,
+                ["SRD"] = Srd,
+                ["SSP"] = Ssp,
+                ["STD"] = Std,
+                ["SVC"] = Svc,
+                ["SYP"] = Syp,
+                ["SZL"] = Szl,
+                ["THB"] = Thb,
+                ["TJS"] = Tjs,
+                ["TMT"] = Tmt,
+                ["TND"] = Tnd,
+                ["TOP"] = Top,
+                ["TRC"] = Trc,
+                ["TRY"] = Try,
+                ["TTD"] = Ttd,
+                ["TWD"] = Twd,
+                ["TZS"] = Tzs,
+                ["UAH"] = Uah,
+                ["UGX"] = Ugx,
+                ["USD"] = Usd,
+                ["USN"] = Usn,
+                ["USS"] = Uss,
+                ["UYI"] = Uyi,
+                ["UYU"] = Uyu,
+                ["UZS"] = Uzs,
+                ["VEF"] = Vef,
+                ["VND"] = Vnd,
+                ["VUV"] = Vuv,
+                ["WST"] = Wst,
+                ["XAF"] = Xaf,
+                ["XAG"] = Xag,
+                ["XAU"] = Xau,
+                ["XBA"] = Xba,
+                ["XBB"] = Xbb,
+                ["XBC"] = Xbc,
+                ["XBD"] = Xbd,
+                ["XCD"] = Xcd,
+                ["XDR"] = Xdr,
+                ["XOF"] = Xof,
+                ["XPD"] = Xpd,
+                ["XPF"] = Xpf,
+                ["XPT"] = Xpt,
+                ["XTS"] = Xts,
+                ["XXX"] = Xxx,
+                ["YER"] = Yer,
+                ["ZAR"] = Zar,
+                ["ZMK"] = Zmk,
+                ["ZMW"] = Zmw,
+                ["BTC"] = Btc,
+                ["ETH"] = Eth
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Currency> _values =
+            new ConcurrentDictionary<string, Currency>(_knownValues);
 
-                    if (enumVal is Currency)
-                    {
-                        return (Currency)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Currency");
+        private Currency(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Currency Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Currency(value));
+        }
+
+        public static implicit operator Currency(string value) => Of(value);
+        public static implicit operator string(Currency currency) => currency.Value;
+
+        public static Currency[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Currency);
+
+        public bool Equals(Currency? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

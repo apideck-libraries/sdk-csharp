@@ -60,7 +60,6 @@ namespace ApideckUnifySdk.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(CustomFieldValue25.CustomFieldValue25Converter))]
     public class CustomFieldValue25
     {

@@ -14,10 +14,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class Attachment
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
@@ -25,13 +24,13 @@ namespace ApideckUnifySdk.Models.Components
         public string? Id { get; set; }
 
         /// <summary>
-        /// The display id of the file
+        /// The display id of the file.
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
 
         /// <summary>
-        /// The name of the file
+        /// The name of the file.
         /// </summary>
         [JsonProperty("name")]
         public string? Name { get; set; } = null;
@@ -43,7 +42,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? MimeType { get; set; } = null;
 
         /// <summary>
-        /// The size of the file in bytes
+        /// The size of the file in bytes.
         /// </summary>
         [JsonProperty("size")]
         public long? Size { get; set; } = null;
@@ -52,13 +51,13 @@ namespace ApideckUnifySdk.Models.Components
         public AttachmentReference? Reference { get; set; }
 
         /// <summary>
-        /// Optional description of the file
+        /// Optional description of the file.
         /// </summary>
         [JsonProperty("description")]
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The folder id where this attachment belong to
+        /// The folder id where this attachment belong to.
         /// </summary>
         [JsonProperty("parent_folder_id")]
         public string? ParentFolderId { get; set; } = null;

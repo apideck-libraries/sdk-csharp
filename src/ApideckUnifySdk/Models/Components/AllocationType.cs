@@ -12,63 +12,80 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Type of entity this payment should be attributed to.
     /// </summary>
-    public enum AllocationType
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class AllocationType : IEquatable<AllocationType>
     {
-        [JsonProperty("invoice")]
-        Invoice,
-        [JsonProperty("order")]
-        Order,
-        [JsonProperty("expense")]
-        Expense,
-        [JsonProperty("credit_memo")]
-        CreditMemo,
-        [JsonProperty("over_payment")]
-        OverPayment,
-        [JsonProperty("pre_payment")]
-        PrePayment,
-        [JsonProperty("journal_entry")]
-        JournalEntry,
-        [JsonProperty("other")]
-        Other,
-        [JsonProperty("bill")]
-        Bill,
-    }
+        public static readonly AllocationType Invoice = new AllocationType("invoice");
+        public static readonly AllocationType Order = new AllocationType("order");
+        public static readonly AllocationType Expense = new AllocationType("expense");
+        public static readonly AllocationType CreditMemo = new AllocationType("credit_memo");
+        public static readonly AllocationType OverPayment = new AllocationType("over_payment");
+        public static readonly AllocationType PrePayment = new AllocationType("pre_payment");
+        public static readonly AllocationType JournalEntry = new AllocationType("journal_entry");
+        public static readonly AllocationType Other = new AllocationType("other");
+        public static readonly AllocationType Bill = new AllocationType("bill");
 
-    public static class AllocationTypeExtension
-    {
-        public static string Value(this AllocationType value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static AllocationType ToEnum(this string value)
-        {
-            foreach(var field in typeof(AllocationType).GetFields())
+        private static readonly Dictionary <string, AllocationType> _knownValues =
+            new Dictionary <string, AllocationType> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["invoice"] = Invoice,
+                ["order"] = Order,
+                ["expense"] = Expense,
+                ["credit_memo"] = CreditMemo,
+                ["over_payment"] = OverPayment,
+                ["pre_payment"] = PrePayment,
+                ["journal_entry"] = JournalEntry,
+                ["other"] = Other,
+                ["bill"] = Bill
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, AllocationType> _values =
+            new ConcurrentDictionary<string, AllocationType>(_knownValues);
 
-                    if (enumVal is AllocationType)
-                    {
-                        return (AllocationType)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum AllocationType");
+        private AllocationType(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static AllocationType Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new AllocationType(value));
+        }
+
+        public static implicit operator AllocationType(string value) => Of(value);
+        public static implicit operator string(AllocationType allocationtype) => allocationtype.Value;
+
+        public static AllocationType[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as AllocationType);
+
+        public bool Equals(AllocationType? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

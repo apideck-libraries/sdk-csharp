@@ -11,13 +11,12 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The overview of the payroll totals.
     /// </summary>
     public class PayrollTotals
     {
-
         /// <summary>
         /// The total company debit for the payroll.
         /// </summary>

@@ -12,51 +12,68 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Status of the connection.
     /// </summary>
-    public enum ConnectionStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class ConnectionStatus : IEquatable<ConnectionStatus>
     {
-        [JsonProperty("live")]
-        Live,
-        [JsonProperty("upcoming")]
-        Upcoming,
-        [JsonProperty("requested")]
-        Requested,
-    }
+        public static readonly ConnectionStatus Live = new ConnectionStatus("live");
+        public static readonly ConnectionStatus Upcoming = new ConnectionStatus("upcoming");
+        public static readonly ConnectionStatus Requested = new ConnectionStatus("requested");
 
-    public static class ConnectionStatusExtension
-    {
-        public static string Value(this ConnectionStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static ConnectionStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(ConnectionStatus).GetFields())
+        private static readonly Dictionary <string, ConnectionStatus> _knownValues =
+            new Dictionary <string, ConnectionStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["live"] = Live,
+                ["upcoming"] = Upcoming,
+                ["requested"] = Requested
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, ConnectionStatus> _values =
+            new ConcurrentDictionary<string, ConnectionStatus>(_knownValues);
 
-                    if (enumVal is ConnectionStatus)
-                    {
-                        return (ConnectionStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum ConnectionStatus");
+        private ConnectionStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static ConnectionStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new ConnectionStatus(value));
+        }
+
+        public static implicit operator ConnectionStatus(string value) => Of(value);
+        public static implicit operator string(ConnectionStatus connectionstatus) => connectionstatus.Value;
+
+        public static ConnectionStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as ConnectionStatus);
+
+        public bool Equals(ConnectionStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

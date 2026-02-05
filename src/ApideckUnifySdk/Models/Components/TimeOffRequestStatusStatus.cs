@@ -12,57 +12,74 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// The status of the time off request.
     /// </summary>
-    public enum TimeOffRequestStatusStatus
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class TimeOffRequestStatusStatus : IEquatable<TimeOffRequestStatusStatus>
     {
-        [JsonProperty("requested")]
-        Requested,
-        [JsonProperty("approved")]
-        Approved,
-        [JsonProperty("declined")]
-        Declined,
-        [JsonProperty("cancelled")]
-        Cancelled,
-        [JsonProperty("deleted")]
-        Deleted,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly TimeOffRequestStatusStatus Requested = new TimeOffRequestStatusStatus("requested");
+        public static readonly TimeOffRequestStatusStatus Approved = new TimeOffRequestStatusStatus("approved");
+        public static readonly TimeOffRequestStatusStatus Declined = new TimeOffRequestStatusStatus("declined");
+        public static readonly TimeOffRequestStatusStatus Cancelled = new TimeOffRequestStatusStatus("cancelled");
+        public static readonly TimeOffRequestStatusStatus Deleted = new TimeOffRequestStatusStatus("deleted");
+        public static readonly TimeOffRequestStatusStatus Other = new TimeOffRequestStatusStatus("other");
 
-    public static class TimeOffRequestStatusStatusExtension
-    {
-        public static string Value(this TimeOffRequestStatusStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static TimeOffRequestStatusStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(TimeOffRequestStatusStatus).GetFields())
+        private static readonly Dictionary <string, TimeOffRequestStatusStatus> _knownValues =
+            new Dictionary <string, TimeOffRequestStatusStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["requested"] = Requested,
+                ["approved"] = Approved,
+                ["declined"] = Declined,
+                ["cancelled"] = Cancelled,
+                ["deleted"] = Deleted,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, TimeOffRequestStatusStatus> _values =
+            new ConcurrentDictionary<string, TimeOffRequestStatusStatus>(_knownValues);
 
-                    if (enumVal is TimeOffRequestStatusStatus)
-                    {
-                        return (TimeOffRequestStatusStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum TimeOffRequestStatusStatus");
+        private TimeOffRequestStatusStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static TimeOffRequestStatusStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new TimeOffRequestStatusStatus(value));
+        }
+
+        public static implicit operator TimeOffRequestStatusStatus(string value) => Of(value);
+        public static implicit operator string(TimeOffRequestStatusStatus timeoffrequeststatusstatus) => timeoffrequeststatusstatus.Value;
+
+        public static TimeOffRequestStatusStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as TimeOffRequestStatusStatus);
+
+        public bool Equals(TimeOffRequestStatusStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

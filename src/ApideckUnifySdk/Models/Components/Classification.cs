@@ -12,65 +12,82 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Filter by account classification.
     /// </summary>
-    public enum Classification
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class Classification : IEquatable<Classification>
     {
-        [JsonProperty("asset")]
-        Asset,
-        [JsonProperty("equity")]
-        Equity,
-        [JsonProperty("expense")]
-        Expense,
-        [JsonProperty("liability")]
-        Liability,
-        [JsonProperty("revenue")]
-        Revenue,
-        [JsonProperty("income")]
-        Income,
-        [JsonProperty("other_income")]
-        OtherIncome,
-        [JsonProperty("other_expense")]
-        OtherExpense,
-        [JsonProperty("costs_of_sales")]
-        CostsOfSales,
-        [JsonProperty("other")]
-        Other,
-    }
+        public static readonly Classification Asset = new Classification("asset");
+        public static readonly Classification Equity = new Classification("equity");
+        public static readonly Classification Expense = new Classification("expense");
+        public static readonly Classification Liability = new Classification("liability");
+        public static readonly Classification Revenue = new Classification("revenue");
+        public static readonly Classification Income = new Classification("income");
+        public static readonly Classification OtherIncome = new Classification("other_income");
+        public static readonly Classification OtherExpense = new Classification("other_expense");
+        public static readonly Classification CostsOfSales = new Classification("costs_of_sales");
+        public static readonly Classification Other = new Classification("other");
 
-    public static class ClassificationExtension
-    {
-        public static string Value(this Classification value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static Classification ToEnum(this string value)
-        {
-            foreach(var field in typeof(Classification).GetFields())
+        private static readonly Dictionary <string, Classification> _knownValues =
+            new Dictionary <string, Classification> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["asset"] = Asset,
+                ["equity"] = Equity,
+                ["expense"] = Expense,
+                ["liability"] = Liability,
+                ["revenue"] = Revenue,
+                ["income"] = Income,
+                ["other_income"] = OtherIncome,
+                ["other_expense"] = OtherExpense,
+                ["costs_of_sales"] = CostsOfSales,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, Classification> _values =
+            new ConcurrentDictionary<string, Classification>(_knownValues);
 
-                    if (enumVal is Classification)
-                    {
-                        return (Classification)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum Classification");
+        private Classification(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static Classification Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new Classification(value));
+        }
+
+        public static implicit operator Classification(string value) => Of(value);
+        public static implicit operator string(Classification classification) => classification.Value;
+
+        public static Classification[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as Classification);
+
+        public bool Equals(Classification? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

@@ -12,11 +12,13 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    
+    using System.Linq;
+
     public class ConnectionInput
     {
-
         /// <summary>
         /// Whether the connection is enabled or not. You can enable or disable a connection using the Update Connection API.
         /// </summary>
@@ -24,13 +26,13 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Connection settings. Values will persist to `form_fields` with corresponding id
+        /// Connection settings. Values will persist to `form_fields` with corresponding id.
         /// </summary>
         [JsonProperty("settings")]
         public Dictionary<string, object>? Settings { get; set; } = null;
 
         /// <summary>
-        /// Attach your own consumer specific metadata
+        /// Attach your own consumer specific metadata.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, object>? Metadata { get; set; } = null;
@@ -39,13 +41,13 @@ namespace ApideckUnifySdk.Models.Components
         public List<ConnectionConfiguration>? Configuration { get; set; }
 
         /// <summary>
-        /// List of custom mappings configured for this connection
+        /// List of custom mappings configured for this connection.
         /// </summary>
         [JsonProperty("custom_mappings")]
         public List<CustomMappingInput>? CustomMappings { get; set; }
 
         /// <summary>
-        /// The current consent state of the connection
+        /// The current consent state of the connection.
         /// </summary>
         [JsonProperty("consent_state")]
         public ConsentState? ConsentState { get; set; }

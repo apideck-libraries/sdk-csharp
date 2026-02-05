@@ -13,13 +13,15 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// A refund for an ecommerce order.
     /// </summary>
     public class EcommerceOrderRefund
     {
-
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>

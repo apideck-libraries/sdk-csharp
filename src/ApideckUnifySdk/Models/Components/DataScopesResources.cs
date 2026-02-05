@@ -14,7 +14,9 @@ namespace ApideckUnifySdk.Models.Components
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Numerics;
     using System.Reflection;
 
@@ -52,9 +54,8 @@ namespace ApideckUnifySdk.Models.Components
         }
     }
 
-
     /// <summary>
-    /// Data scopes resource configuration that can be either detailed field permissions or a wildcard
+    /// Data scopes resource configuration that can be either detailed field permissions or a wildcard.
     /// </summary>
     [JsonConverter(typeof(DataScopesResources.DataScopesResourcesConverter))]
     public class DataScopesResources

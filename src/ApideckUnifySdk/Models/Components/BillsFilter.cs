@@ -11,16 +11,19 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
+    using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class BillsFilter
     {
-
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
 
         /// <summary>
-        /// Filter by bill status
+        /// Filter by bill status.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=status")]
         public BillsFilterStatus? Status { get; set; }

@@ -11,10 +11,9 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
-    
+
     public class Blocks
     {
-
         [JsonProperty("title")]
         public string? Title { get; set; }
 

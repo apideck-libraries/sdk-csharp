@@ -10,9 +10,9 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
-    
+
     /// <summary>
-    /// JSON Schema of the resource in our Unified API
+    /// JSON Schema of the resource in our Unified API.
     /// </summary>
     public class Schema
     {

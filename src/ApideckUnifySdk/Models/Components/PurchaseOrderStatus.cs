@@ -12,54 +12,71 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
-    public enum PurchaseOrderStatus
-    {
-        [JsonProperty("draft")]
-        Draft,
-        [JsonProperty("open")]
-        Open,
-        [JsonProperty("closed")]
-        Closed,
-        [JsonProperty("deleted")]
-        Deleted,
-        [JsonProperty("billed")]
-        Billed,
-        [JsonProperty("other")]
-        Other,
-    }
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
-    public static class PurchaseOrderStatusExtension
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class PurchaseOrderStatus : IEquatable<PurchaseOrderStatus>
     {
-        public static string Value(this PurchaseOrderStatus value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
+        public static readonly PurchaseOrderStatus Draft = new PurchaseOrderStatus("draft");
+        public static readonly PurchaseOrderStatus Open = new PurchaseOrderStatus("open");
+        public static readonly PurchaseOrderStatus Closed = new PurchaseOrderStatus("closed");
+        public static readonly PurchaseOrderStatus Deleted = new PurchaseOrderStatus("deleted");
+        public static readonly PurchaseOrderStatus Billed = new PurchaseOrderStatus("billed");
+        public static readonly PurchaseOrderStatus Other = new PurchaseOrderStatus("other");
 
-        public static PurchaseOrderStatus ToEnum(this string value)
-        {
-            foreach(var field in typeof(PurchaseOrderStatus).GetFields())
+        private static readonly Dictionary <string, PurchaseOrderStatus> _knownValues =
+            new Dictionary <string, PurchaseOrderStatus> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["draft"] = Draft,
+                ["open"] = Open,
+                ["closed"] = Closed,
+                ["deleted"] = Deleted,
+                ["billed"] = Billed,
+                ["other"] = Other
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, PurchaseOrderStatus> _values =
+            new ConcurrentDictionary<string, PurchaseOrderStatus>(_knownValues);
 
-                    if (enumVal is PurchaseOrderStatus)
-                    {
-                        return (PurchaseOrderStatus)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum PurchaseOrderStatus");
+        private PurchaseOrderStatus(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static PurchaseOrderStatus Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new PurchaseOrderStatus(value));
+        }
+
+        public static implicit operator PurchaseOrderStatus(string value) => Of(value);
+        public static implicit operator string(PurchaseOrderStatus purchaseorderstatus) => purchaseorderstatus.Value;
+
+        public static PurchaseOrderStatus[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as PurchaseOrderStatus);
+
+        public bool Equals(PurchaseOrderStatus? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

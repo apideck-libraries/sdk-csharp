@@ -12,49 +12,66 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
-    
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     /// <summary>
     /// Whether the amount is a credit or debit.
     /// </summary>
-    public enum CreditOrDebit
+    [JsonConverter(typeof(OpenEnumConverter))]
+    public class CreditOrDebit : IEquatable<CreditOrDebit>
     {
-        [JsonProperty("credit")]
-        Credit,
-        [JsonProperty("debit")]
-        Debit,
-    }
+        public static readonly CreditOrDebit Credit = new CreditOrDebit("credit");
+        public static readonly CreditOrDebit Debit = new CreditOrDebit("debit");
 
-    public static class CreditOrDebitExtension
-    {
-        public static string Value(this CreditOrDebit value)
-        {
-            return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
-        }
-
-        public static CreditOrDebit ToEnum(this string value)
-        {
-            foreach(var field in typeof(CreditOrDebit).GetFields())
+        private static readonly Dictionary <string, CreditOrDebit> _knownValues =
+            new Dictionary <string, CreditOrDebit> ()
             {
-                var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
-                if (attributes.Length == 0)
-                {
-                    continue;
-                }
+                ["credit"] = Credit,
+                ["debit"] = Debit
+            };
 
-                var attribute = attributes[0] as JsonPropertyAttribute;
-                if (attribute != null && attribute.PropertyName == value)
-                {
-                    var enumVal = field.GetValue(null);
+        private static readonly ConcurrentDictionary<string, CreditOrDebit> _values =
+            new ConcurrentDictionary<string, CreditOrDebit>(_knownValues);
 
-                    if (enumVal is CreditOrDebit)
-                    {
-                        return (CreditOrDebit)enumVal;
-                    }
-                }
-            }
-
-            throw new Exception($"Unknown value {value} for enum CreditOrDebit");
+        private CreditOrDebit(string value)
+        {
+            if (value == null) throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
-    }
 
+        public string Value { get; }
+
+        public static CreditOrDebit Of(string value)
+        {
+            return _values.GetOrAdd(value, _ => new CreditOrDebit(value));
+        }
+
+        public static implicit operator CreditOrDebit(string value) => Of(value);
+        public static implicit operator string(CreditOrDebit creditordebit) => creditordebit.Value;
+
+        public static CreditOrDebit[] Values()
+        {
+            return _values.Values.ToArray();
+        }
+
+        public override string ToString() => Value.ToString();
+
+        public bool IsKnown()
+        {
+            return _knownValues.ContainsKey(Value);
+        }
+
+        public override bool Equals(object? obj) => Equals(obj as CreditOrDebit);
+
+        public bool Equals(CreditOrDebit? other)
+        {
+            if (ReferenceEquals(this, other)) return true;
+            if (other is null) return false;
+            return string.Equals(Value, other.Value);
+        }
+
+        public override int GetHashCode() => Value.GetHashCode();
+    }
 }

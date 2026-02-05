@@ -12,10 +12,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class WebhookSupportResources
     {
-
         [JsonProperty("events")]
         public List<string>? Events { get; set; }
     }

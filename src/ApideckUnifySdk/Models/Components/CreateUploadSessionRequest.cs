@@ -13,10 +13,9 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CreateUploadSessionRequest
     {
-
         /// <summary>
         /// The name of the file.
         /// </summary>
@@ -36,7 +35,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? DriveId { get; set; }
 
         /// <summary>
-        /// The size of the file in bytes
+        /// The size of the file in bytes.
         /// </summary>
         [JsonProperty("size", NullValueHandling = NullValueHandling.Include)]
         public long? Size { get; set; }

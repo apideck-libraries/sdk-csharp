@@ -11,12 +11,16 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
-    
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class ProfitAndLossFilter
     {
-
         /// <summary>
-        /// Filter by customer id
+        /// Filter by customer id.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=customer_id")]
         public string? CustomerId { get; set; }
@@ -34,7 +38,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? EndDate { get; set; }
 
         /// <summary>
-        /// Filter by location id
+        /// Filter by location id.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=location_id")]
         public string? LocationId { get; set; }
