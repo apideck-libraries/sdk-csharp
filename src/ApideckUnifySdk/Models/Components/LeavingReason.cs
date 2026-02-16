@@ -25,6 +25,7 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly LeavingReason Dismissed = new LeavingReason("dismissed");
         public static readonly LeavingReason Resigned = new LeavingReason("resigned");
         public static readonly LeavingReason Redundancy = new LeavingReason("redundancy");
+        public static readonly LeavingReason Retired = new LeavingReason("retired");
         public static readonly LeavingReason Other = new LeavingReason("other");
 
         private static readonly Dictionary <string, LeavingReason> _knownValues =
@@ -33,6 +34,7 @@ namespace ApideckUnifySdk.Models.Components
                 ["dismissed"] = Dismissed,
                 ["resigned"] = Resigned,
                 ["redundancy"] = Redundancy,
+                ["retired"] = Retired,
                 ["other"] = Other
             };
 

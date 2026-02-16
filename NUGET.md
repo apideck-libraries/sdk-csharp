@@ -334,17 +334,18 @@ catch (System.Net.Http.HttpRequestException ex)
 
 **Primary exceptions:**
 * [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs): The base class for HTTP error responses.
-  * [`UnauthorizedResponse`](./src/ApideckUnifySdk/Models/Errors/UnauthorizedResponse.cs): Unauthorized. Status code `401`.
-  * [`PaymentRequiredResponse`](./src/ApideckUnifySdk/Models/Errors/PaymentRequiredResponse.cs): Payment Required. Status code `402`.
+  * [`UnauthorizedResponse`](./src/ApideckUnifySdk/Models/Errors/UnauthorizedResponse.cs): Unauthorized. Status code `401`. *
+  * [`PaymentRequiredResponse`](./src/ApideckUnifySdk/Models/Errors/PaymentRequiredResponse.cs): Payment Required. Status code `402`. *
   * [`NotFoundResponse`](./src/ApideckUnifySdk/Models/Errors/NotFoundResponse.cs): The specified resource was not found. Status code `404`. *
   * [`BadRequestResponse`](./src/ApideckUnifySdk/Models/Errors/BadRequestResponse.cs): Bad Request. Status code `400`. *
   * [`UnprocessableResponse`](./src/ApideckUnifySdk/Models/Errors/UnprocessableResponse.cs): Unprocessable. Status code `422`. *
 
-**Less common exceptions (2)**
+**Less common exceptions (3)**
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 310 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 
 \* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.

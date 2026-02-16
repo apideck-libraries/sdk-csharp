@@ -10,6 +10,7 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
+    using System;
 
     public class CompaniesFilter
     {
@@ -18,5 +19,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=name")]
         public string? Name { get; set; }
+
+        [SpeakeasyMetadata("queryParam:name=updated_since")]
+        public DateTime? UpdatedSince { get; set; }
+
+        [SpeakeasyMetadata("queryParam:name=created_since")]
+        public DateTime? CreatedSince { get; set; }
     }
 }

@@ -30,5 +30,17 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=customer_ids")]
         public string? CustomerIds { get; set; }
+
+        /// <summary>
+        /// Minimum date the customer was last modified.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=updated_since")]
+        public string? UpdatedSince { get; set; }
+
+        /// <summary>
+        /// Minimum date the customer was created.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=created_since")]
+        public string? CreatedSince { get; set; }
     }
 }

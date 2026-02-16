@@ -72,7 +72,7 @@ Upload attachment
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="accounting.attachmentsUpload" method="post" path="/accounting/attachments/{reference_type}/{reference_id}" -->
+<!-- UsageSnippet language="csharp" operationID="accounting.attachmentsUpload" method="post" path="/accounting/attachments/{reference_type}/{reference_id}" example="basic" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -87,10 +87,10 @@ var sdk = new Apideck(
 
 AccountingAttachmentsUploadRequest req = new AccountingAttachmentsUploadRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
-    ReferenceId = "123456",
+    ReferenceId = "12345",
     XApideckMetadata = "{\"name\":\"document.pdf\",\"description\":\"Invoice attachment\"}",
     ServiceId = "salesforce",
-    RequestBody = System.Text.Encoding.UTF8.GetBytes("0x506D4BD16D"),
+    RequestBody = System.Text.Encoding.UTF8.GetBytes("0xF6a0e3a2dC"),
 };
 
 var res = await sdk.Accounting.Attachments.UploadAsync(req);

@@ -10,6 +10,7 @@
 namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
+    using System;
 
     public class ContactsFilter
     {
@@ -54,5 +55,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=owner_id")]
         public string? OwnerId { get; set; }
+
+        [SpeakeasyMetadata("queryParam:name=updated_since")]
+        public DateTime? UpdatedSince { get; set; }
+
+        [SpeakeasyMetadata("queryParam:name=created_since")]
+        public DateTime? CreatedSince { get; set; }
     }
 }
