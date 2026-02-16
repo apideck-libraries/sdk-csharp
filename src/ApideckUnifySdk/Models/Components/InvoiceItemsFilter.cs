@@ -19,6 +19,9 @@ namespace ApideckUnifySdk.Models.Components
 
     public class InvoiceItemsFilter
     {
+        [SpeakeasyMetadata("queryParam:name=updated_since")]
+        public DateTime? UpdatedSince { get; set; }
+
         /// <summary>
         /// Name of Invoice Items to search for.
         /// </summary>

@@ -63,13 +63,13 @@ namespace ApideckUnifySdk.Models.Components
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public Dictionary<string, Dictionary<string, One>>? MapOfMapOf1 { get; set; }
+        public Dictionary<string, Dictionary<string, Models.Components.One>>? MapOfMapOf1 { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public Models.Components.Two? Two { get; set; }
 
         public UpdateConsentRequestResourcesType Type { get; set; }
-        public static UpdateConsentRequestResources CreateMapOfMapOf1(Dictionary<string, Dictionary<string, One>> mapOfMapOf1)
+        public static UpdateConsentRequestResources CreateMapOfMapOf1(Dictionary<string, Dictionary<string, Models.Components.One>> mapOfMapOf1)
         {
             UpdateConsentRequestResourcesType typ = UpdateConsentRequestResourcesType.MapOfMapOf1;
 
@@ -106,12 +106,12 @@ namespace ApideckUnifySdk.Models.Components
                 {
                     return new UpdateConsentRequestResources(UpdateConsentRequestResourcesType.MapOfMapOf1)
                     {
-                        MapOfMapOf1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, Dictionary<string, One>>>(json)
+                        MapOfMapOf1 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, Dictionary<string, Models.Components.One>>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Dictionary<string, Dictionary<string, One>>), new UpdateConsentRequestResources(UpdateConsentRequestResourcesType.MapOfMapOf1), "MapOfMapOf1"));
+                    fallbackCandidates.Add((typeof(Dictionary<string, Dictionary<string, Models.Components.One>>), new UpdateConsentRequestResources(UpdateConsentRequestResourcesType.MapOfMapOf1), "MapOfMapOf1"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {

@@ -43,6 +43,8 @@ namespace ApideckUnifySdk
 
         public IConnector Connector { get; }
 
+        public IProxy Proxy { get; }
+
         public IVault Vault { get; }
 
         public IWebhook Webhook { get; }
@@ -95,6 +97,10 @@ namespace ApideckUnifySdk
         /// </summary>
         public IConnector Connector { get; private set; }
         /// <summary>
+        /// The Proxy sub-SDK.
+        /// </summary>
+        public IProxy Proxy { get; private set; }
+        /// <summary>
         /// The Vault sub-SDK.
         /// </summary>
         public IVault Vault { get; private set; }
@@ -129,6 +135,8 @@ namespace ApideckUnifySdk
             IssueTracking = new IssueTracking(SDKConfiguration);
 
             Connector = new Connector(SDKConfiguration);
+
+            Proxy = new Proxy(SDKConfiguration);
 
             Vault = new Vault(SDKConfiguration);
 
@@ -220,6 +228,8 @@ namespace ApideckUnifySdk
             IssueTracking = new IssueTracking(SDKConfiguration);
 
             Connector = new Connector(SDKConfiguration);
+
+            Proxy = new Proxy(SDKConfiguration);
 
             Vault = new Vault(SDKConfiguration);
 

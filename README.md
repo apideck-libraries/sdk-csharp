@@ -635,6 +635,15 @@ while(res != null)
 * [List](docs/sdks/collectionusers/README.md#list) - List Users
 * [Get](docs/sdks/collectionusers/README.md#get) - Get user
 
+### [Proxy](docs/sdks/proxy/README.md)
+
+* [Get](docs/sdks/proxy/README.md#get) - GET
+* [Options](docs/sdks/proxy/README.md#options) - OPTIONS
+* [Post](docs/sdks/proxy/README.md#post) - POST
+* [Put](docs/sdks/proxy/README.md#put) - PUT
+* [Patch](docs/sdks/proxy/README.md#patch) - PATCH
+* [Delete](docs/sdks/proxy/README.md#delete) - DELETE
+
 ### [Sms.Messages](docs/sdks/messages/README.md)
 
 * [List](docs/sdks/messages/README.md#list) - List Messages
@@ -956,17 +965,18 @@ catch (System.Net.Http.HttpRequestException ex)
 
 **Primary exceptions:**
 * [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs): The base class for HTTP error responses.
-  * [`UnauthorizedResponse`](./src/ApideckUnifySdk/Models/Errors/UnauthorizedResponse.cs): Unauthorized. Status code `401`.
-  * [`PaymentRequiredResponse`](./src/ApideckUnifySdk/Models/Errors/PaymentRequiredResponse.cs): Payment Required. Status code `402`.
+  * [`UnauthorizedResponse`](./src/ApideckUnifySdk/Models/Errors/UnauthorizedResponse.cs): Unauthorized. Status code `401`. *
+  * [`PaymentRequiredResponse`](./src/ApideckUnifySdk/Models/Errors/PaymentRequiredResponse.cs): Payment Required. Status code `402`. *
   * [`NotFoundResponse`](./src/ApideckUnifySdk/Models/Errors/NotFoundResponse.cs): The specified resource was not found. Status code `404`. *
   * [`BadRequestResponse`](./src/ApideckUnifySdk/Models/Errors/BadRequestResponse.cs): Bad Request. Status code `400`. *
   * [`UnprocessableResponse`](./src/ApideckUnifySdk/Models/Errors/UnprocessableResponse.cs): Unprocessable. Status code `422`. *
 
-<details><summary>Less common exceptions (2)</summary>
+<details><summary>Less common exceptions (3)</summary>
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 310 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
