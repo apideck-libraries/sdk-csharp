@@ -30,11 +30,11 @@ namespace ApideckUnifySdk
         /// List Employees.
         /// </summary>
         /// <remarks>
-        /// Apideck operates as a stateless Unified API, which means that the list endpoint only provides a portion of the employee model. This is due to the fact that most HRIS systems do not readily provide all data in every call. However, you can access the complete employee model through an employee detail call.
+        /// List Employees.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesAllRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesAllRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesAllResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesAllResponse"/> response envelope when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
@@ -43,8 +43,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisEmployeesAllResponse> ListAsync(
-            HrisEmployeesAllRequest? request = null,
+        public  Task<AccountingEmployeesAllResponse> ListAsync(
+            AccountingEmployeesAllRequest? request = null,
             RetryConfig? retryConfig = null
         );
 
@@ -54,9 +54,9 @@ namespace ApideckUnifySdk
         /// <remarks>
         /// Create Employee.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesAddRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesAddRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesAddResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesAddResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -66,8 +66,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisEmployeesAddResponse> CreateAsync(
-            HrisEmployeesAddRequest request,
+        public  Task<AccountingEmployeesAddResponse> CreateAsync(
+            AccountingEmployeesAddRequest request,
             RetryConfig? retryConfig = null
         );
 
@@ -77,9 +77,9 @@ namespace ApideckUnifySdk
         /// <remarks>
         /// Get Employee.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesOneRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesOneRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesOneResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesOneResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -89,7 +89,10 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisEmployeesOneResponse> GetAsync(HrisEmployeesOneRequest request, RetryConfig? retryConfig = null);
+        public  Task<AccountingEmployeesOneResponse> GetAsync(
+            AccountingEmployeesOneRequest request,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
         /// Update Employee.
@@ -97,9 +100,9 @@ namespace ApideckUnifySdk
         /// <remarks>
         /// Update Employee.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesUpdateRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesUpdateRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesUpdateResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesUpdateResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -109,8 +112,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisEmployeesUpdateResponse> UpdateAsync(
-            HrisEmployeesUpdateRequest request,
+        public  Task<AccountingEmployeesUpdateResponse> UpdateAsync(
+            AccountingEmployeesUpdateRequest request,
             RetryConfig? retryConfig = null
         );
 
@@ -120,9 +123,9 @@ namespace ApideckUnifySdk
         /// <remarks>
         /// Delete Employee.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesDeleteRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesDeleteRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesDeleteResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesDeleteResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -132,8 +135,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisEmployeesDeleteResponse> DeleteAsync(
-            HrisEmployeesDeleteRequest request,
+        public  Task<AccountingEmployeesDeleteResponse> DeleteAsync(
+            AccountingEmployeesDeleteRequest request,
             RetryConfig? retryConfig = null
         );
     }
@@ -155,11 +158,11 @@ namespace ApideckUnifySdk
         /// List Employees.
         /// </summary>
         /// <remarks>
-        /// Apideck operates as a stateless Unified API, which means that the list endpoint only provides a portion of the employee model. This is due to the fact that most HRIS systems do not readily provide all data in every call. However, you can access the complete employee model through an employee detail call.
+        /// List Employees.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesAllRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesAllRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesAllResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesAllResponse"/> response envelope when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
@@ -168,31 +171,36 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisEmployeesAllResponse> ListAsync(
-            HrisEmployeesAllRequest? request = null,
+        public async  Task<AccountingEmployeesAllResponse> ListAsync(
+            AccountingEmployeesAllRequest? request = null,
             RetryConfig? retryConfig = null
         )
         {
             if (request == null)
             {
-                request = new HrisEmployeesAllRequest();
+                request = new AccountingEmployeesAllRequest();
             }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/employees", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/employees", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.employeesAll", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "accounting.employeesAll", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -263,7 +271,7 @@ namespace ApideckUnifySdk
 
             httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
 
-            Func<Task<HrisEmployeesAllResponse?>> nextFunc = async delegate()
+            Func<Task<AccountingEmployeesAllResponse?>> nextFunc = async delegate()
             {
                 var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
                 var nextCursorToken = body.SelectToken("$.meta.cursors.next");
@@ -272,13 +280,14 @@ namespace ApideckUnifySdk
                 {
                     return null;
                 }
+
                 var nextCursor = nextCursorToken.Value<string>();
                 if (string.IsNullOrWhiteSpace(nextCursor))
                 {
                     return null;
                 }
 
-                var newRequest = new HrisEmployeesAllRequest
+                var newRequest = new AccountingEmployeesAllRequest
                 {
                     Raw = request?.Raw,
                     ConsumerId = request?.ConsumerId,
@@ -286,10 +295,8 @@ namespace ApideckUnifySdk
                     ServiceId = request?.ServiceId,
                     Cursor = nextCursor,
                     Limit = request?.Limit,
-                    Filter = request?.Filter,
-                    Sort = request?.Sort,
-                    PassThrough = request?.PassThrough,
-                    Fields = request?.Fields
+                    Fields = request?.Fields,
+                    Filter = request?.Filter
                 };
 
                 return await ListAsync (
@@ -305,17 +312,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetEmployeesResponse obj;
+                    GetAccountingEmployeesResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetEmployeesResponse>(httpResponseBody, NullValueHandling.Include);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetAccountingEmployeesResponse>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetEmployeesResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into GetAccountingEmployeesResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesAllResponse()
+                    var response = new AccountingEmployeesAllResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -324,7 +331,7 @@ namespace ApideckUnifySdk
                         },
                         Next = nextFunc
                     };
-                    response.GetEmployeesResponse = obj;
+                    response.GetAccountingEmployeesResponse = obj;
                     return response;
                 }
 
@@ -453,7 +460,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesAllResponse()
+                    var response = new AccountingEmployeesAllResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -477,9 +484,9 @@ namespace ApideckUnifySdk
         /// <remarks>
         /// Create Employee.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesAddRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesAddRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesAddResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesAddResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -489,8 +496,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisEmployeesAddResponse> CreateAsync(
-            HrisEmployeesAddRequest request,
+        public async  Task<AccountingEmployeesAddResponse> CreateAsync(
+            AccountingEmployeesAddRequest request,
             RetryConfig? retryConfig = null
         )
         {
@@ -499,13 +506,18 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/employees", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/employees", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "Employee", "json", false, false);
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "AccountingEmployee", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -516,7 +528,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.employeesAdd", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "accounting.employeesAdd", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -594,17 +606,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    CreateEmployeeResponse obj;
+                    CreateAccountingEmployeeResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<CreateEmployeeResponse>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<CreateAccountingEmployeeResponse>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into CreateEmployeeResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into CreateAccountingEmployeeResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesAddResponse()
+                    var response = new AccountingEmployeesAddResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -612,7 +624,7 @@ namespace ApideckUnifySdk
                             Request = httpRequest
                         }
                     };
-                    response.CreateEmployeeResponse = obj;
+                    response.CreateAccountingEmployeeResponse = obj;
                     return response;
                 }
 
@@ -741,7 +753,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesAddResponse()
+                    var response = new AccountingEmployeesAddResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -764,9 +776,9 @@ namespace ApideckUnifySdk
         /// <remarks>
         /// Get Employee.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesOneRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesOneRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesOneResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesOneResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -776,8 +788,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisEmployeesOneResponse> GetAsync(
-            HrisEmployeesOneRequest request,
+        public async  Task<AccountingEmployeesOneResponse> GetAsync(
+            AccountingEmployeesOneRequest request,
             RetryConfig? retryConfig = null
         )
         {
@@ -786,18 +798,23 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/employees/{id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/employees/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.employeesOne", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "accounting.employeesOne", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -875,17 +892,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetEmployeeResponse obj;
+                    GetAccountingEmployeeResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetEmployeeResponse>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetAccountingEmployeeResponse>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetEmployeeResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into GetAccountingEmployeeResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesOneResponse()
+                    var response = new AccountingEmployeesOneResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -893,7 +910,7 @@ namespace ApideckUnifySdk
                             Request = httpRequest
                         }
                     };
-                    response.GetEmployeeResponse = obj;
+                    response.GetAccountingEmployeeResponse = obj;
                     return response;
                 }
 
@@ -1022,7 +1039,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesOneResponse()
+                    var response = new AccountingEmployeesOneResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1045,9 +1062,9 @@ namespace ApideckUnifySdk
         /// <remarks>
         /// Update Employee.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesUpdateRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesUpdateRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesUpdateResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesUpdateResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -1057,8 +1074,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisEmployeesUpdateResponse> UpdateAsync(
-            HrisEmployeesUpdateRequest request,
+        public async  Task<AccountingEmployeesUpdateResponse> UpdateAsync(
+            AccountingEmployeesUpdateRequest request,
             RetryConfig? retryConfig = null
         )
         {
@@ -1067,13 +1084,18 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/employees/{id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/employees/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "Employee", "json", false, false);
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "AccountingEmployee", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -1084,7 +1106,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.employeesUpdate", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "accounting.employeesUpdate", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1162,17 +1184,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    UpdateEmployeeResponse obj;
+                    UpdateAccountingEmployeeResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<UpdateEmployeeResponse>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<UpdateAccountingEmployeeResponse>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UpdateEmployeeResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into UpdateAccountingEmployeeResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesUpdateResponse()
+                    var response = new AccountingEmployeesUpdateResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1180,7 +1202,7 @@ namespace ApideckUnifySdk
                             Request = httpRequest
                         }
                     };
-                    response.UpdateEmployeeResponse = obj;
+                    response.UpdateAccountingEmployeeResponse = obj;
                     return response;
                 }
 
@@ -1309,7 +1331,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesUpdateResponse()
+                    var response = new AccountingEmployeesUpdateResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1332,9 +1354,9 @@ namespace ApideckUnifySdk
         /// <remarks>
         /// Delete Employee.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisEmployeesDeleteRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="AccountingEmployeesDeleteRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisEmployeesDeleteResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="AccountingEmployeesDeleteResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -1344,8 +1366,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisEmployeesDeleteResponse> DeleteAsync(
-            HrisEmployeesDeleteRequest request,
+        public async  Task<AccountingEmployeesDeleteResponse> DeleteAsync(
+            AccountingEmployeesDeleteRequest request,
             RetryConfig? retryConfig = null
         )
         {
@@ -1354,18 +1376,23 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/employees/{id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/accounting/employees/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.employeesDelete", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "accounting.employeesDelete", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1443,17 +1470,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    DeleteEmployeeResponse obj;
+                    DeleteAccountingEmployeeResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<DeleteEmployeeResponse>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<DeleteAccountingEmployeeResponse>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into DeleteEmployeeResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into DeleteAccountingEmployeeResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesDeleteResponse()
+                    var response = new AccountingEmployeesDeleteResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1461,7 +1488,7 @@ namespace ApideckUnifySdk
                             Request = httpRequest
                         }
                     };
-                    response.DeleteEmployeeResponse = obj;
+                    response.DeleteAccountingEmployeeResponse = obj;
                     return response;
                 }
 
@@ -1590,7 +1617,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisEmployeesDeleteResponse()
+                    var response = new AccountingEmployeesDeleteResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {

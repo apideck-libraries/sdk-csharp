@@ -33,7 +33,7 @@ var sdk = new Apideck(
 AccountingJournalEntriesAllRequest req = new AccountingJournalEntriesAllRequest() {
     ServiceId = "salesforce",
     Filter = new JournalEntriesFilter() {
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
     Sort = new JournalEntriesSort() {
         By = JournalEntriesSortBy.UpdatedAt,
@@ -175,7 +175,7 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
         },
         Status = JournalEntryStatus.Draft,
         Memo = "Thank you for your business and have a great day!",
-        PostedAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        PostedAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         JournalSymbol = "IND",
         TaxType = "sales",
         TaxCode = "1234",
@@ -463,7 +463,7 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
         },
         Status = JournalEntryStatus.Draft,
         Memo = "Thank you for your business and have a great day!",
-        PostedAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        PostedAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         JournalSymbol = "IND",
         TaxType = "sales",
         TaxCode = "1234",

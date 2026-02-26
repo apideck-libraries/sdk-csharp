@@ -1,4 +1,4 @@
-# Hris.Employees
+# Accounting.Employees
 
 ## Overview
 
@@ -12,16 +12,16 @@
 
 ## List
 
-Apideck operates as a stateless Unified API, which means that the list endpoint only provides a portion of the employee model. This is due to the fact that most HRIS systems do not readily provide all data in every call. However, you can access the complete employee model through an employee detail call.
+List Employees
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.employeesAll" method="get" path="/hris/employees" -->
+<!-- UsageSnippet language="csharp" operationID="accounting.employeesAll" method="get" path="/accounting/employees" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
-using System.Collections.Generic;
+using System;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -29,32 +29,16 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisEmployeesAllRequest req = new HrisEmployeesAllRequest() {
+AccountingEmployeesAllRequest req = new AccountingEmployeesAllRequest() {
     ServiceId = "salesforce",
-    Filter = new EmployeesFilter() {
-        CompanyId = "1234",
-        Email = "elon@tesla.com",
-        FirstName = "Elon",
-        Title = "Manager",
-        LastName = "Musk",
-        ManagerId = "1234",
-        EmploymentStatus = EmployeesFilterEmploymentStatus.Active,
-        EmployeeNumber = "123456-AB",
-        DepartmentId = "1234",
-        City = "San Francisco",
-        Country = "US",
-    },
-    Sort = new EmployeesSort() {
-        By = EmployeesSortBy.CreatedAt,
-        Direction = SortDirection.Desc,
-    },
-    PassThrough = new Dictionary<string, object>() {
-        { "search", "San Francisco" },
-    },
     Fields = "id,updated_at",
+    Filter = new AccountingEmployeesFilter() {
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
+        Status = AccountingEmployeesFilterStatus.Active,
+    },
 };
 
-HrisEmployeesAllResponse? res = await sdk.Hris.Employees.ListAsync(req);
+AccountingEmployeesAllResponse? res = await sdk.Accounting.Employees.ListAsync(req);
 
 while(res != null)
 {
@@ -66,13 +50,13 @@ while(res != null)
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [HrisEmployeesAllRequest](../../Models/Requests/HrisEmployeesAllRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [AccountingEmployeesAllRequest](../../Models/Requests/AccountingEmployeesAllRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
 
 ### Response
 
-**[HrisEmployeesAllResponse](../../Models/Requests/HrisEmployeesAllResponse.md)**
+**[AccountingEmployeesAllResponse](../../Models/Requests/AccountingEmployeesAllResponse.md)**
 
 ### Errors
 
@@ -91,7 +75,7 @@ Create Employee
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.employeesAdd" method="post" path="/hris/employees" -->
+<!-- UsageSnippet language="csharp" operationID="accounting.employeesAdd" method="post" path="/accounting/employees" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -105,203 +89,56 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
+AccountingEmployeesAddRequest req = new AccountingEmployeesAddRequest() {
     ServiceId = "salesforce",
-    Employee = new EmployeeInput() {
-        Id = "12345",
-        FirstName = "Elon",
-        LastName = "Musk",
-        MiddleName = "D.",
-        DisplayName = "Technoking",
-        PreferredName = "Elon Musk",
-        Initials = "EM",
-        Salutation = "Mr",
-        Title = "CEO",
-        MaritalStatus = "married",
-        Partner = new PersonInput() {
-            FirstName = "Elon",
-            LastName = "Musk",
-            MiddleName = "D.",
-            Gender = Gender.Male,
-            Initials = "EM",
-            Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
-            DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
+    AccountingEmployee = new AccountingEmployeeInput() {
+        DisplayId = "123456",
+        FirstName = "John",
+        LastName = "Doe",
+        DisplayName = "John Doe",
+        Emails = new List<Email>() {
+            new Email() {
+                Id = "123",
+                EmailValue = "elon@musk.com",
+                Type = EmailType.Primary,
+            },
         },
-        Division = "Europe",
-        DivisionId = "12345",
-        DepartmentId = "12345",
-        DepartmentName = "12345",
-        Team = new Team() {
-            Id = "1234",
-            Name = "Full Stack Engineers",
+        EmployeeNumber = "EMP-001",
+        JobTitle = "Senior Accountant",
+        Status = EmployeeStatus.Active,
+        IsContractor = false,
+        Department = new LinkedDepartmentInput() {
+            DisplayId = "123456",
+            Name = "Acme Inc.",
         },
-        CompanyId = "23456",
-        CompanyName = "SpaceX",
-        EmploymentStartDate = "2021-10-26",
-        EmploymentEndDate = "2028-10-26",
-        LeavingReason = LeavingReason.Resigned,
-        EmployeeNumber = "123456-AB",
-        EmploymentStatus = EmploymentStatus.Active,
-        Ethnicity = "African American",
-        Manager = new Manager() {
+        Location = new LinkedLocationInput() {
+            Id = "123456",
+            DisplayId = "123456",
+            Name = "New York Office",
+        },
+        Manager = new AccountingEmployeeManager() {
             Id = "12345",
-            Name = "Elon Musk",
-            FirstName = "Elon",
-            LastName = "Musk",
-            Email = "elon@musk.com",
-            EmploymentStatus = EmploymentStatus.Active,
+            Name = "Jane Smith",
         },
-        DirectReports = new List<string>() {
-            "a0d636c6-43b3-4bde-8c70-85b707d992f4",
-            "a98lfd96-43b3-4bde-8c70-85b707d992e6",
-        },
-        SocialSecurityNumber = "123456789",
-        Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
-        DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
-        CountryOfBirth = "US",
-        Description = "A description",
+        HireDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-15")),
+        TerminationDate = LocalDate.FromDateTime(System.DateTime.Parse("2025-12-31")),
         Gender = Gender.Male,
-        Pronouns = "she,her",
-        PreferredLanguage = "EN",
-        Languages = new List<string?>() {
-            "EN",
+        BirthDate = LocalDate.FromDateTime(System.DateTime.Parse("1990-05-20")),
+        Subsidiary = new LinkedSubsidiaryInput() {
+            DisplayId = "123456",
+            Name = "Acme Inc.",
         },
-        Nationalities = new List<string?>() {
-            "US",
-        },
-        PhotoUrl = "https://unavatar.io/elon-musk",
-        Timezone = "Europe/London",
-        Source = "lever",
-        SourceId = "12345",
-        RecordUrl = "https://app.intercom.io/contacts/12345",
-        Jobs = new List<EmployeeJobInput>() {
-            new EmployeeJobInput() {
-                Title = "CEO",
-                Role = "Sales",
-                StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                CompensationRate = 72000D,
-                Currency = Currency.Usd,
-                PaymentUnit = PaymentUnit.Year,
-                HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                IsPrimary = true,
-                IsManager = true,
-                Status = EmployeeJobStatus.Active,
-                Location = new Address() {
-                    Id = "123",
-                    Type = ApideckUnifySdk.Models.Components.Type.Primary,
-                    String = "25 Spring Street, Blackburn, VIC 3130",
-                    Name = "HQ US",
-                    Line1 = "Main street",
-                    Line2 = "apt #",
-                    Line3 = "Suite #",
-                    Line4 = "delivery instructions",
-                    StreetNumber = "25",
-                    City = "San Francisco",
-                    State = "CA",
-                    PostalCode = "94104",
-                    Country = "US",
-                    Latitude = "40.759211",
-                    Longitude = "-73.984638",
-                    County = "Santa Clara",
-                    ContactName = "Elon Musk",
-                    Salutation = "Mr",
-                    PhoneNumber = "111-111-1111",
-                    Fax = "122-111-1111",
-                    Email = "elon@musk.com",
-                    Website = "https://elonmusk.com",
-                    Notes = "Address notes or delivery instructions.",
-                    RowVersion = "1-12345",
-                },
-            },
-            new EmployeeJobInput() {
-                Title = "CEO",
-                Role = "Sales",
-                StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                CompensationRate = 72000D,
-                Currency = Currency.Usd,
-                PaymentUnit = PaymentUnit.Year,
-                HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                IsPrimary = true,
-                IsManager = true,
-                Status = EmployeeJobStatus.Active,
-                Location = new Address() {
-                    Id = "123",
-                    Type = ApideckUnifySdk.Models.Components.Type.Primary,
-                    String = "25 Spring Street, Blackburn, VIC 3130",
-                    Name = "HQ US",
-                    Line1 = "Main street",
-                    Line2 = "apt #",
-                    Line3 = "Suite #",
-                    Line4 = "delivery instructions",
-                    StreetNumber = "25",
-                    City = "San Francisco",
-                    State = "CA",
-                    PostalCode = "94104",
-                    Country = "US",
-                    Latitude = "40.759211",
-                    Longitude = "-73.984638",
-                    County = "Santa Clara",
-                    ContactName = "Elon Musk",
-                    Salutation = "Mr",
-                    PhoneNumber = "111-111-1111",
-                    Fax = "122-111-1111",
-                    Email = "elon@musk.com",
-                    Website = "https://elonmusk.com",
-                    Notes = "Address notes or delivery instructions.",
-                    RowVersion = "1-12345",
-                },
-            },
-            new EmployeeJobInput() {
-                Title = "CEO",
-                Role = "Sales",
-                StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                CompensationRate = 72000D,
-                Currency = Currency.Usd,
-                PaymentUnit = PaymentUnit.Year,
-                HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                IsPrimary = true,
-                IsManager = true,
-                Status = EmployeeJobStatus.Active,
-                Location = new Address() {
-                    Id = "123",
-                    Type = ApideckUnifySdk.Models.Components.Type.Primary,
-                    String = "25 Spring Street, Blackburn, VIC 3130",
-                    Name = "HQ US",
-                    Line1 = "Main street",
-                    Line2 = "apt #",
-                    Line3 = "Suite #",
-                    Line4 = "delivery instructions",
-                    StreetNumber = "25",
-                    City = "San Francisco",
-                    State = "CA",
-                    PostalCode = "94104",
-                    Country = "US",
-                    Latitude = "40.759211",
-                    Longitude = "-73.984638",
-                    County = "Santa Clara",
-                    ContactName = "Elon Musk",
-                    Salutation = "Mr",
-                    PhoneNumber = "111-111-1111",
-                    Fax = "122-111-1111",
-                    Email = "elon@musk.com",
-                    Website = "https://elonmusk.com",
-                    Notes = "Address notes or delivery instructions.",
-                    RowVersion = "1-12345",
-                },
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
+            new LinkedTrackingCategory() {
+                Id = "123456",
+                Code = "100",
+                Name = "New York",
+                ParentId = "123456",
+                ParentName = "New York",
             },
         },
-        Compensations = new List<EmployeeCompensationInput>() {
-            new EmployeeCompensationInput() {
-                Rate = 50D,
-                PaymentUnit = PaymentUnit.Hour,
-                FlsaStatus = FlsaStatus.Nonexempt,
-                EffectiveDate = "2021-06-11",
-            },
-        },
-        WorksRemote = true,
+        Currency = Currency.Usd,
+        Notes = "Some notes about this employee",
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
@@ -312,32 +149,7 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 Line2 = "apt #",
                 Line3 = "Suite #",
                 Line4 = "delivery instructions",
-                StreetNumber = "25",
-                City = "San Francisco",
-                State = "CA",
-                PostalCode = "94104",
-                Country = "US",
-                Latitude = "40.759211",
-                Longitude = "-73.984638",
-                County = "Santa Clara",
-                ContactName = "Elon Musk",
-                Salutation = "Mr",
-                PhoneNumber = "111-111-1111",
-                Fax = "122-111-1111",
-                Email = "elon@musk.com",
-                Website = "https://elonmusk.com",
-                Notes = "Address notes or delivery instructions.",
-                RowVersion = "1-12345",
-            },
-            new Address() {
-                Id = "123",
-                Type = ApideckUnifySdk.Models.Components.Type.Primary,
-                String = "25 Spring Street, Blackburn, VIC 3130",
-                Name = "HQ US",
-                Line1 = "Main street",
-                Line2 = "apt #",
-                Line3 = "Suite #",
-                Line4 = "delivery instructions",
+                Line5 = "Attention: Finance Dept",
                 StreetNumber = "25",
                 City = "San Francisco",
                 State = "CA",
@@ -366,13 +178,6 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                 Type = PhoneNumberType.Primary,
             },
         },
-        Emails = new List<Email>() {
-            new Email() {
-                Id = "123",
-                EmailValue = "elon@musk.com",
-                Type = EmailType.Primary,
-            },
-        },
         CustomFields = new List<CustomField>() {
             CustomField.CreateCustomField1(
                 new CustomField1() {
@@ -384,139 +189,12 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
                     ),
                 }
             ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-        },
-        SocialLinks = new List<SocialLink>() {
-            new SocialLink() {
-                Id = "12345",
-                Url = "https://www.twitter.com/apideck",
-                Type = "twitter",
-            },
-            new SocialLink() {
-                Id = "12345",
-                Url = "https://www.twitter.com/apideck",
-                Type = "twitter",
-            },
-        },
-        BankAccounts = new List<BankAccount2>() {
-            new BankAccount2() {
-                BankName = "Monzo",
-                AccountNumber = "123465",
-                AccountName = "SPACEX LLC",
-                AccountType = BankAccount2AccountType.CreditCard,
-                Iban = "CH2989144532982975332",
-                Bic = "AUDSCHGGXXX",
-                RoutingNumber = "012345678",
-                BsbNumber = "062-001",
-                BranchIdentifier = "001",
-                BankCode = "BNH",
-                Currency = Currency.Usd,
-            },
-            new BankAccount2() {
-                BankName = "Monzo",
-                AccountNumber = "123465",
-                AccountName = "SPACEX LLC",
-                AccountType = BankAccount2AccountType.CreditCard,
-                Iban = "CH2989144532982975332",
-                Bic = "AUDSCHGGXXX",
-                RoutingNumber = "012345678",
-                BsbNumber = "062-001",
-                BranchIdentifier = "001",
-                BankCode = "BNH",
-                Currency = Currency.Usd,
-            },
-            new BankAccount2() {
-                BankName = "Monzo",
-                AccountNumber = "123465",
-                AccountName = "SPACEX LLC",
-                AccountType = BankAccount2AccountType.CreditCard,
-                Iban = "CH2989144532982975332",
-                Bic = "AUDSCHGGXXX",
-                RoutingNumber = "012345678",
-                BsbNumber = "062-001",
-                BranchIdentifier = "001",
-                BankCode = "BNH",
-                Currency = Currency.Usd,
-            },
-        },
-        TaxCode = "1111",
-        TaxId = "234-32-0000",
-        DietaryPreference = "Veggie",
-        FoodAllergies = new List<string>() {
-            "No allergies",
-        },
-        ProbationPeriod = new ProbationPeriod() {
-            StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2021-10-01")),
-            EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2021-11-28")),
-        },
-        Tags = new List<string>() {
-            "New",
         },
         RowVersion = "1-12345",
-        Deleted = true,
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
-                    new ExtendPaths() {
-                        Path = "$.nested.property",
-                        Value = new Dictionary<string, object>() {
-                            { "TaxClassificationRef", new Dictionary<string, object>() {
-                                { "value", "EUC-99990201-V1-00020000" },
-                            } },
-                        },
-                    },
-                    new ExtendPaths() {
-                        Path = "$.nested.property",
-                        Value = new Dictionary<string, object>() {
-                            { "TaxClassificationRef", new Dictionary<string, object>() {
-                                { "value", "EUC-99990201-V1-00020000" },
-                            } },
-                        },
-                    },
-                },
-            },
-            new PassThroughBody() {
-                ServiceId = "<id>",
-                ExtendPaths = new List<ExtendPaths>() {
-                    new ExtendPaths() {
-                        Path = "$.nested.property",
-                        Value = new Dictionary<string, object>() {
-                            { "TaxClassificationRef", new Dictionary<string, object>() {
-                                { "value", "EUC-99990201-V1-00020000" },
-                            } },
-                        },
-                    },
-                    new ExtendPaths() {
-                        Path = "$.nested.property",
-                        Value = new Dictionary<string, object>() {
-                            { "TaxClassificationRef", new Dictionary<string, object>() {
-                                { "value", "EUC-99990201-V1-00020000" },
-                            } },
-                        },
-                    },
-                },
-            },
-            new PassThroughBody() {
-                ServiceId = "<id>",
-                ExtendPaths = new List<ExtendPaths>() {
-                    new ExtendPaths() {
-                        Path = "$.nested.property",
-                        Value = new Dictionary<string, object>() {
-                            { "TaxClassificationRef", new Dictionary<string, object>() {
-                                { "value", "EUC-99990201-V1-00020000" },
-                            } },
-                        },
-                    },
                     new ExtendPaths() {
                         Path = "$.nested.property",
                         Value = new Dictionary<string, object>() {
@@ -531,20 +209,20 @@ HrisEmployeesAddRequest req = new HrisEmployeesAddRequest() {
     },
 };
 
-var res = await sdk.Hris.Employees.CreateAsync(req);
+var res = await sdk.Accounting.Employees.CreateAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [HrisEmployeesAddRequest](../../Models/Requests/HrisEmployeesAddRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [AccountingEmployeesAddRequest](../../Models/Requests/AccountingEmployeesAddRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
 
 ### Response
 
-**[HrisEmployeesAddResponse](../../Models/Requests/HrisEmployeesAddResponse.md)**
+**[AccountingEmployeesAddResponse](../../Models/Requests/AccountingEmployeesAddResponse.md)**
 
 ### Errors
 
@@ -563,12 +241,11 @@ Get Employee
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.employeesOne" method="get" path="/hris/employees/{id}" -->
+<!-- UsageSnippet language="csharp" operationID="accounting.employeesOne" method="get" path="/accounting/employees/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
-using System.Collections.Generic;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -576,32 +253,26 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisEmployeesOneRequest req = new HrisEmployeesOneRequest() {
+AccountingEmployeesOneRequest req = new AccountingEmployeesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
-    Filter = new EmployeesOneFilter() {
-        CompanyId = "1234",
-    },
-    PassThrough = new Dictionary<string, object>() {
-        { "search", "San Francisco" },
-    },
 };
 
-var res = await sdk.Hris.Employees.GetAsync(req);
+var res = await sdk.Accounting.Employees.GetAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [HrisEmployeesOneRequest](../../Models/Requests/HrisEmployeesOneRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                               | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `request`                                                                               | [AccountingEmployeesOneRequest](../../Models/Requests/AccountingEmployeesOneRequest.md) | :heavy_check_mark:                                                                      | The request object to use for the request.                                              |
 
 ### Response
 
-**[HrisEmployeesOneResponse](../../Models/Requests/HrisEmployeesOneResponse.md)**
+**[AccountingEmployeesOneResponse](../../Models/Requests/AccountingEmployeesOneResponse.md)**
 
 ### Errors
 
@@ -620,7 +291,7 @@ Update Employee
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.employeesUpdate" method="patch" path="/hris/employees/{id}" -->
+<!-- UsageSnippet language="csharp" operationID="accounting.employeesUpdate" method="patch" path="/accounting/employees/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -634,126 +305,57 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
+AccountingEmployeesUpdateRequest req = new AccountingEmployeesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
-    Employee = new EmployeeInput() {
-        Id = "12345",
-        FirstName = "Elon",
-        LastName = "Musk",
-        MiddleName = "D.",
-        DisplayName = "Technoking",
-        PreferredName = "Elon Musk",
-        Initials = "EM",
-        Salutation = "Mr",
-        Title = "CEO",
-        MaritalStatus = "married",
-        Partner = new PersonInput() {
-            FirstName = "Elon",
-            LastName = "Musk",
-            MiddleName = "D.",
-            Gender = Gender.Male,
-            Initials = "EM",
-            Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
-            DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
+    AccountingEmployee = new AccountingEmployeeInput() {
+        DisplayId = "123456",
+        FirstName = "John",
+        LastName = "Doe",
+        DisplayName = "John Doe",
+        Emails = new List<Email>() {
+            new Email() {
+                Id = "123",
+                EmailValue = "elon@musk.com",
+                Type = EmailType.Primary,
+            },
         },
-        Division = "Europe",
-        DivisionId = "12345",
-        DepartmentId = "12345",
-        DepartmentName = "12345",
-        Team = new Team() {
-            Id = "1234",
-            Name = "Full Stack Engineers",
+        EmployeeNumber = "EMP-001",
+        JobTitle = "Senior Accountant",
+        Status = EmployeeStatus.Active,
+        IsContractor = false,
+        Department = new LinkedDepartmentInput() {
+            DisplayId = "123456",
+            Name = "Acme Inc.",
         },
-        CompanyId = "23456",
-        CompanyName = "SpaceX",
-        EmploymentStartDate = "2021-10-26",
-        EmploymentEndDate = "2028-10-26",
-        LeavingReason = LeavingReason.Resigned,
-        EmployeeNumber = "123456-AB",
-        EmploymentStatus = EmploymentStatus.Active,
-        Ethnicity = "African American",
-        Manager = new Manager() {
+        Location = new LinkedLocationInput() {
+            Id = "123456",
+            DisplayId = "123456",
+            Name = "New York Office",
+        },
+        Manager = new AccountingEmployeeManager() {
             Id = "12345",
-            Name = "Elon Musk",
-            FirstName = "Elon",
-            LastName = "Musk",
-            Email = "elon@musk.com",
-            EmploymentStatus = EmploymentStatus.Active,
+            Name = "Jane Smith",
         },
-        DirectReports = new List<string>() {
-            "a0d636c6-43b3-4bde-8c70-85b707d992f4",
-            "a98lfd96-43b3-4bde-8c70-85b707d992e6",
-        },
-        SocialSecurityNumber = "123456789",
-        Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
-        DeceasedOn = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
-        CountryOfBirth = "US",
-        Description = "A description",
+        HireDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-01-15")),
+        TerminationDate = LocalDate.FromDateTime(System.DateTime.Parse("2025-12-31")),
         Gender = Gender.Male,
-        Pronouns = "she,her",
-        PreferredLanguage = "EN",
-        Languages = new List<string?>() {
-            "EN",
+        BirthDate = LocalDate.FromDateTime(System.DateTime.Parse("1990-05-20")),
+        Subsidiary = new LinkedSubsidiaryInput() {
+            DisplayId = "123456",
+            Name = "Acme Inc.",
         },
-        Nationalities = new List<string?>() {
-            "US",
-        },
-        PhotoUrl = "https://unavatar.io/elon-musk",
-        Timezone = "Europe/London",
-        Source = "lever",
-        SourceId = "12345",
-        RecordUrl = "https://app.intercom.io/contacts/12345",
-        Jobs = new List<EmployeeJobInput>() {
-            new EmployeeJobInput() {
-                Title = "CEO",
-                Role = "Sales",
-                StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                CompensationRate = 72000D,
-                Currency = Currency.Usd,
-                PaymentUnit = PaymentUnit.Year,
-                HiredAt = LocalDate.FromDateTime(System.DateTime.Parse("2020-08-12")),
-                IsPrimary = true,
-                IsManager = true,
-                Status = EmployeeJobStatus.Active,
-                Location = new Address() {
-                    Id = "123",
-                    Type = ApideckUnifySdk.Models.Components.Type.Primary,
-                    String = "25 Spring Street, Blackburn, VIC 3130",
-                    Name = "HQ US",
-                    Line1 = "Main street",
-                    Line2 = "apt #",
-                    Line3 = "Suite #",
-                    Line4 = "delivery instructions",
-                    StreetNumber = "25",
-                    City = "San Francisco",
-                    State = "CA",
-                    PostalCode = "94104",
-                    Country = "US",
-                    Latitude = "40.759211",
-                    Longitude = "-73.984638",
-                    County = "Santa Clara",
-                    ContactName = "Elon Musk",
-                    Salutation = "Mr",
-                    PhoneNumber = "111-111-1111",
-                    Fax = "122-111-1111",
-                    Email = "elon@musk.com",
-                    Website = "https://elonmusk.com",
-                    Notes = "Address notes or delivery instructions.",
-                    RowVersion = "1-12345",
-                },
+        TrackingCategories = new List<LinkedTrackingCategory?>() {
+            new LinkedTrackingCategory() {
+                Id = "123456",
+                Code = "100",
+                Name = "New York",
+                ParentId = "123456",
+                ParentName = "New York",
             },
         },
-        Compensations = new List<EmployeeCompensationInput>() {
-            new EmployeeCompensationInput() {
-                Rate = 50D,
-                PaymentUnit = PaymentUnit.Hour,
-                FlsaStatus = FlsaStatus.Nonexempt,
-                EffectiveDate = "2021-06-11",
-            },
-        },
-        WorksRemote = true,
+        Currency = Currency.Usd,
+        Notes = "Some notes about this employee",
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
@@ -764,6 +366,7 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 Line2 = "apt #",
                 Line3 = "Suite #",
                 Line4 = "delivery instructions",
+                Line5 = "Attention: Finance Dept",
                 StreetNumber = "25",
                 City = "San Francisco",
                 State = "CA",
@@ -791,21 +394,6 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                 Extension = "105",
                 Type = PhoneNumberType.Primary,
             },
-            new PhoneNumber() {
-                Id = "12345",
-                CountryCode = "1",
-                AreaCode = "323",
-                Number = "111-111-1111",
-                Extension = "105",
-                Type = PhoneNumberType.Primary,
-            },
-        },
-        Emails = new List<Email>() {
-            new Email() {
-                Id = "123",
-                EmailValue = "elon@musk.com",
-                Type = EmailType.Primary,
-            },
         },
         CustomFields = new List<CustomField>() {
             CustomField.CreateCustomField1(
@@ -818,83 +406,9 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
                     ),
                 }
             ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-        },
-        SocialLinks = new List<SocialLink>() {
-            new SocialLink() {
-                Id = "12345",
-                Url = "https://www.twitter.com/apideck",
-                Type = "twitter",
-            },
-            new SocialLink() {
-                Id = "12345",
-                Url = "https://www.twitter.com/apideck",
-                Type = "twitter",
-            },
-        },
-        BankAccounts = new List<BankAccount2>() {
-            new BankAccount2() {
-                BankName = "Monzo",
-                AccountNumber = "123465",
-                AccountName = "SPACEX LLC",
-                AccountType = BankAccount2AccountType.CreditCard,
-                Iban = "CH2989144532982975332",
-                Bic = "AUDSCHGGXXX",
-                RoutingNumber = "012345678",
-                BsbNumber = "062-001",
-                BranchIdentifier = "001",
-                BankCode = "BNH",
-                Currency = Currency.Usd,
-            },
-        },
-        TaxCode = "1111",
-        TaxId = "234-32-0000",
-        DietaryPreference = "Veggie",
-        FoodAllergies = new List<string>() {
-            "No allergies",
-        },
-        ProbationPeriod = new ProbationPeriod() {
-            StartDate = LocalDate.FromDateTime(System.DateTime.Parse("2021-10-01")),
-            EndDate = LocalDate.FromDateTime(System.DateTime.Parse("2021-11-28")),
-        },
-        Tags = new List<string>() {
-            "New",
         },
         RowVersion = "1-12345",
-        Deleted = true,
         PassThrough = new List<PassThroughBody>() {
-            new PassThroughBody() {
-                ServiceId = "<id>",
-                ExtendPaths = new List<ExtendPaths>() {
-                    new ExtendPaths() {
-                        Path = "$.nested.property",
-                        Value = new Dictionary<string, object>() {
-                            { "TaxClassificationRef", new Dictionary<string, object>() {
-                                { "value", "EUC-99990201-V1-00020000" },
-                            } },
-                        },
-                    },
-                },
-            },
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
@@ -912,20 +426,20 @@ HrisEmployeesUpdateRequest req = new HrisEmployeesUpdateRequest() {
     },
 };
 
-var res = await sdk.Hris.Employees.UpdateAsync(req);
+var res = await sdk.Accounting.Employees.UpdateAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [HrisEmployeesUpdateRequest](../../Models/Requests/HrisEmployeesUpdateRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [AccountingEmployeesUpdateRequest](../../Models/Requests/AccountingEmployeesUpdateRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
 
 ### Response
 
-**[HrisEmployeesUpdateResponse](../../Models/Requests/HrisEmployeesUpdateResponse.md)**
+**[AccountingEmployeesUpdateResponse](../../Models/Requests/AccountingEmployeesUpdateResponse.md)**
 
 ### Errors
 
@@ -944,7 +458,7 @@ Delete Employee
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.employeesDelete" method="delete" path="/hris/employees/{id}" -->
+<!-- UsageSnippet language="csharp" operationID="accounting.employeesDelete" method="delete" path="/accounting/employees/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -956,25 +470,25 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisEmployeesDeleteRequest req = new HrisEmployeesDeleteRequest() {
+AccountingEmployeesDeleteRequest req = new AccountingEmployeesDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
 };
 
-var res = await sdk.Hris.Employees.DeleteAsync(req);
+var res = await sdk.Accounting.Employees.DeleteAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [HrisEmployeesDeleteRequest](../../Models/Requests/HrisEmployeesDeleteRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `request`                                                                                     | [AccountingEmployeesDeleteRequest](../../Models/Requests/AccountingEmployeesDeleteRequest.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
 
 ### Response
 
-**[HrisEmployeesDeleteResponse](../../Models/Requests/HrisEmployeesDeleteResponse.md)**
+**[AccountingEmployeesDeleteResponse](../../Models/Requests/AccountingEmployeesDeleteResponse.md)**
 
 ### Errors
 

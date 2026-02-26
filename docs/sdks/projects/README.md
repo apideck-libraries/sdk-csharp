@@ -36,7 +36,7 @@ AccountingProjectsAllRequest req = new AccountingProjectsAllRequest() {
         Name = "Website Redesign",
         Status = ProjectStatus.Active,
         CustomerId = "12345",
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
     Sort = new ProjectsSort() {
         By = ProjectsSortSortBy.Name,

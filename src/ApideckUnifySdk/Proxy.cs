@@ -174,6 +174,11 @@ namespace ApideckUnifySdk
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json;q=1, text/csv;q=0.9, text/plain;q=0.7, application/octet-stream;q=0.6, application/pdf;q=0.4, application/xml;q=0.3, text/html;q=0");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
@@ -480,6 +485,11 @@ namespace ApideckUnifySdk
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json;q=1, text/csv;q=0.9, text/plain;q=0.7, application/octet-stream;q=0.6, application/pdf;q=0.4, application/xml;q=0.3, text/html;q=0");
+            }
+
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
@@ -785,6 +795,11 @@ namespace ApideckUnifySdk
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json;q=1, text/csv;q=0.9, text/plain;q=0.7, application/octet-stream;q=0.6, application/pdf;q=0.4, application/xml;q=0.3, text/html;q=0");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "raw", false, true);
             if (serializedBody != null)
@@ -1094,6 +1109,11 @@ namespace ApideckUnifySdk
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json;q=1, text/csv;q=0.9, text/plain;q=0.7, application/octet-stream;q=0.6, application/pdf;q=0.4, application/xml;q=0.3, text/html;q=0");
+            }
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "raw", false, true);
             if (serializedBody != null)
@@ -1407,6 +1427,11 @@ namespace ApideckUnifySdk
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json;q=1, text/csv;q=0.9, text/plain;q=0.7, application/octet-stream;q=0.6, application/pdf;q=0.4, application/xml;q=0.3, text/html;q=0");
+            }
+
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "raw", false, true);
             if (serializedBody != null)
             {
@@ -1718,6 +1743,11 @@ namespace ApideckUnifySdk
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json;q=1, text/csv;q=0.9, text/plain;q=0.7, application/octet-stream;q=0.6, application/pdf;q=0.4, application/xml;q=0.3, text/html;q=0");
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {

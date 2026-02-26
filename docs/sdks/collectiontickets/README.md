@@ -119,7 +119,7 @@ IssueTrackingCollectionTicketsAddRequest req = new IssueTrackingCollectionTicket
                 Id = "12345",
             },
         },
-        DueDate = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        DueDate = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Tags = new List<CollectionTagInput>() {
             new CollectionTagInput() {
                 Id = "12345",
@@ -315,7 +315,7 @@ IssueTrackingCollectionTicketsUpdateRequest req = new IssueTrackingCollectionTic
                 Id = "12345",
             },
         },
-        DueDate = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        DueDate = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Tags = new List<CollectionTagInput>() {
             new CollectionTagInput() {
                 Id = "12345",

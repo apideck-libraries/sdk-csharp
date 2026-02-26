@@ -38,7 +38,7 @@ AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
         FirstName = "Elon",
         LastName = "Musk",
         Email = "elon@musk.com",
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
     Sort = new SuppliersSort() {
         By = SuppliersSortBy.UpdatedAt,

@@ -33,8 +33,8 @@ var sdk = new Apideck(
 AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
     ServiceId = "salesforce",
     Filter = new InvoicesFilter() {
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
-        CreatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
+        CreatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Number = "OIT00546",
     },
     Sort = new InvoicesSort() {
@@ -251,7 +251,7 @@ AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
             new PaymentAllocations() {
                 Id = "123456",
                 AllocatedAmount = 1000D,
-                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
             },
         },
         PaymentMethod = "cash",
@@ -601,12 +601,12 @@ AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
             new PaymentAllocations() {
                 Id = "123456",
                 AllocatedAmount = 1000D,
-                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
             },
             new PaymentAllocations() {
                 Id = "123456",
                 AllocatedAmount = 1000D,
-                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+                Date = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
             },
         },
         PaymentMethod = "cash",

@@ -36,7 +36,7 @@ AccountingPurchaseOrdersAllRequest req = new AccountingPurchaseOrdersAllRequest(
         { "search", "San Francisco" },
     },
     Filter = new PurchaseOrdersFilter() {
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         SupplierId = "1234",
     },
     Sort = new PurchaseOrdersSort() {

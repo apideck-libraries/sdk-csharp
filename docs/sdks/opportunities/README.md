@@ -162,7 +162,7 @@ CrmOpportunitiesAddRequest req = new CrmOpportunitiesAddRequest() {
                 }
             ),
         },
-        StageLastChangedAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        StageLastChangedAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
@@ -352,7 +352,7 @@ CrmOpportunitiesUpdateRequest req = new CrmOpportunitiesUpdateRequest() {
                 }
             ),
         },
-        StageLastChangedAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        StageLastChangedAt = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
