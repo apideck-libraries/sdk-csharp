@@ -33,7 +33,7 @@ var sdk = new Apideck(
 AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
     ServiceId = "salesforce",
     Filter = new PaymentsFilter() {
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         InvoiceId = "123",
     },
     Sort = new PaymentsSort() {
@@ -112,7 +112,7 @@ AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
             NominalCode = "N091",
             Code = "453",
         },
-        TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
+        TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
         Supplier = new LinkedSupplierInput() {
             Id = "12345",
             DisplayName = "Windsurf Shop",
@@ -355,7 +355,7 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
             NominalCode = "N091",
             Code = "453",
         },
-        TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
+        TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
         Supplier = new LinkedSupplierInput() {
             Id = "12345",
             DisplayName = "Windsurf Shop",

@@ -16,7 +16,7 @@ namespace ApideckUnifySdk
 
     public interface IHris
     {
-        public IEmployees Employees { get; }
+        public IApideckEmployees Employees { get; }
 
         public IApideckCompanies Companies { get; }
 
@@ -41,9 +41,9 @@ namespace ApideckUnifySdk
 
         /// <summary>
         /// Employees SubSDK.
-        /// <see cref="IEmployees"/>
+        /// <see cref="IApideckEmployees"/>
         /// </summary>
-        public IEmployees Employees { get; private set; }
+        public IApideckEmployees Employees { get; private set; }
 
         /// <summary>
         /// Companies SubSDK.
@@ -84,7 +84,7 @@ namespace ApideckUnifySdk
         public Hris(SDKConfig config)
         {
             SDKConfiguration = config;
-            Employees = new Employees(SDKConfiguration);
+            Employees = new ApideckEmployees(SDKConfiguration);
             Companies = new ApideckCompanies(SDKConfiguration);
             Departments = new ApideckDepartments(SDKConfiguration);
             Payrolls = new Payrolls(SDKConfiguration);

@@ -33,7 +33,7 @@ var sdk = new Apideck(
 AccountingLedgerAccountsAllRequest req = new AccountingLedgerAccountsAllRequest() {
     ServiceId = "salesforce",
     Filter = new LedgerAccountsFilter() {
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
     Sort = new LedgerAccountsSort() {
         By = LedgerAccountsSortBy.UpdatedAt,

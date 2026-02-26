@@ -39,7 +39,7 @@ AccountingCustomersAllRequest req = new AccountingCustomersAllRequest() {
         LastName = "Musk",
         Email = "elon@musk.com",
         Status = CustomersFilterStatus.Active,
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         SupplierId = "123",
     },
     Sort = new CustomersSort() {

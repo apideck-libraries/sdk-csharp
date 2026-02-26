@@ -93,15 +93,15 @@ AccountingBankFeedStatementsAddRequest req = new AccountingBankFeedStatementsAdd
     BankFeedStatement = new BankFeedStatementInput() {
         BankFeedAccountId = "acc_456",
         Status = StatementStatus.Pending,
-        StartDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
-        EndDate = System.DateTime.Parse("2025-01-31T12:00:00.000Z"),
+        StartDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
+        EndDate = System.DateTime.Parse("2025-01-31T12:00:00.000Z").ToUniversalTime(),
         StartBalance = 10500.25D,
         StartBalanceCreditOrDebit = CreditOrDebit.Debit,
         EndBalance = 9800.5D,
         EndBalanceCreditOrDebit = CreditOrDebit.Debit,
         Transactions = new List<Transactions>() {
             new Transactions() {
-                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
+                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z").ToUniversalTime(),
                 Description = "Payment received from ACME Corp",
                 Amount = 250D,
                 CreditOrDebit = CreditOrDebit.Debit,
@@ -111,7 +111,7 @@ AccountingBankFeedStatementsAddRequest req = new AccountingBankFeedStatementsAdd
                 TransactionType = BankFeedStatementTransactionType.Payment,
             },
             new Transactions() {
-                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
+                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z").ToUniversalTime(),
                 Description = "Payment received from ACME Corp",
                 Amount = 250D,
                 CreditOrDebit = CreditOrDebit.Debit,
@@ -121,7 +121,7 @@ AccountingBankFeedStatementsAddRequest req = new AccountingBankFeedStatementsAdd
                 TransactionType = BankFeedStatementTransactionType.Payment,
             },
             new Transactions() {
-                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
+                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z").ToUniversalTime(),
                 Description = "Payment received from ACME Corp",
                 Amount = 250D,
                 CreditOrDebit = CreditOrDebit.Debit,
@@ -236,15 +236,15 @@ AccountingBankFeedStatementsUpdateRequest req = new AccountingBankFeedStatements
     BankFeedStatement = new BankFeedStatementInput() {
         BankFeedAccountId = "acc_456",
         Status = StatementStatus.Pending,
-        StartDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z"),
-        EndDate = System.DateTime.Parse("2025-01-31T12:00:00.000Z"),
+        StartDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
+        EndDate = System.DateTime.Parse("2025-01-31T12:00:00.000Z").ToUniversalTime(),
         StartBalance = 10500.25D,
         StartBalanceCreditOrDebit = CreditOrDebit.Debit,
         EndBalance = 9800.5D,
         EndBalanceCreditOrDebit = CreditOrDebit.Debit,
         Transactions = new List<Transactions>() {
             new Transactions() {
-                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
+                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z").ToUniversalTime(),
                 Description = "Payment received from ACME Corp",
                 Amount = 250D,
                 CreditOrDebit = CreditOrDebit.Debit,
@@ -254,7 +254,7 @@ AccountingBankFeedStatementsUpdateRequest req = new AccountingBankFeedStatements
                 TransactionType = BankFeedStatementTransactionType.Payment,
             },
             new Transactions() {
-                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z"),
+                PostedDate = System.DateTime.Parse("2025-01-15T12:00:00.000Z").ToUniversalTime(),
                 Description = "Payment received from ACME Corp",
                 Amount = 250D,
                 CreditOrDebit = CreditOrDebit.Debit,

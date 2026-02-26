@@ -73,6 +73,12 @@ namespace ApideckUnifySdk
         public IQuotes Quotes { get; }
 
         public IProjects Projects { get; }
+
+        public IEmployees Employees { get; }
+
+        public IExpenseCategories ExpenseCategories { get; }
+
+        public IExpenseReports ExpenseReports { get; }
     }
 
     public class Accounting: IAccounting
@@ -257,6 +263,24 @@ namespace ApideckUnifySdk
         /// </summary>
         public IProjects Projects { get; private set; }
 
+        /// <summary>
+        /// Employees SubSDK.
+        /// <see cref="IEmployees"/>
+        /// </summary>
+        public IEmployees Employees { get; private set; }
+
+        /// <summary>
+        /// ExpenseCategories SubSDK.
+        /// <see cref="IExpenseCategories"/>
+        /// </summary>
+        public IExpenseCategories ExpenseCategories { get; private set; }
+
+        /// <summary>
+        /// ExpenseReports SubSDK.
+        /// <see cref="IExpenseReports"/>
+        /// </summary>
+        public IExpenseReports ExpenseReports { get; private set; }
+
         public Accounting(SDKConfig config)
         {
             SDKConfiguration = config;
@@ -289,6 +313,9 @@ namespace ApideckUnifySdk
             Categories = new Categories(SDKConfiguration);
             Quotes = new Quotes(SDKConfiguration);
             Projects = new Projects(SDKConfiguration);
+            Employees = new Employees(SDKConfiguration);
+            ExpenseCategories = new ExpenseCategories(SDKConfiguration);
+            ExpenseReports = new ExpenseReports(SDKConfiguration);
         }
     }
 }

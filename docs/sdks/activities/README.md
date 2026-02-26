@@ -33,7 +33,7 @@ var sdk = new Apideck(
 CrmActivitiesAllRequest req = new CrmActivitiesAllRequest() {
     ServiceId = "salesforce",
     Filter = new ActivitiesFilter() {
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
     Sort = new ActivitiesSort() {
         By = ActivitiesSortBy.CreatedAt,

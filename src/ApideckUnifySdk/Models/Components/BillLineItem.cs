@@ -38,7 +38,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? Code { get; set; } = null;
 
         /// <summary>
-        /// Line number in the invoice.
+        /// Line number of the resource.
         /// </summary>
         [JsonProperty("line_number")]
         public long? LineNumber { get; set; } = null;

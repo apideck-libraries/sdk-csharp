@@ -33,7 +33,7 @@ var sdk = new Apideck(
 AccountingBillsAllRequest req = new AccountingBillsAllRequest() {
     ServiceId = "salesforce",
     Filter = new BillsFilter() {
-        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z"),
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
     Sort = new BillsSort() {
         By = By.UpdatedAt,
