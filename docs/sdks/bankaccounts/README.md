@@ -31,6 +31,7 @@ var sdk = new Apideck(
 
 AccountingBankAccountsAllRequest req = new AccountingBankAccountsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new BankAccountsFilter() {
         Name = "Main Operating",
         AccountType = BankAccountsFilterAccountType.Checking,
@@ -187,6 +188,7 @@ AccountingBankAccountsOneRequest req = new AccountingBankAccountsOneRequest() {
         AccountType = BankAccountFilterAccountType.Checking,
     },
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

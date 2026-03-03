@@ -1,4 +1,4 @@
-# HrisCompaniesAllResponse
+# HrisCompaniesAll2Response
 
 
 ## Fields

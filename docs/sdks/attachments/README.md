@@ -32,6 +32,7 @@ AccountingAttachmentsAllRequest req = new AccountingAttachmentsAllRequest() {
     ReferenceType = AttachmentReferenceType.Invoice,
     ReferenceId = "123456",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -143,6 +144,7 @@ AccountingAttachmentsOneRequest req = new AccountingAttachmentsOneRequest() {
     ReferenceId = "123456",
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -246,6 +248,7 @@ AccountingAttachmentsDownloadRequest req = new AccountingAttachmentsDownloadRequ
     ReferenceId = "123456",
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

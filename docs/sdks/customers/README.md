@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingCustomersAllRequest req = new AccountingCustomersAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new CustomersFilter() {
         CompanyName = "SpaceX",
         DisplayName = "Elon Musk",
@@ -104,6 +105,7 @@ var sdk = new Apideck(
 
 AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Customer = new CustomerInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -325,6 +327,7 @@ var sdk = new Apideck(
 AccountingCustomersOneRequest req = new AccountingCustomersOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

@@ -15,9 +15,9 @@ namespace ApideckUnifySdk.Models.Requests
     using System;
     using System.Threading.Tasks;
 
-    public class HrisCompaniesAllResponse
+    public class HrisCompaniesAll2Response
     {
-        public Func<Task<HrisCompaniesAllResponse?>>? Next {get;set;}
+        public Func<Task<HrisCompaniesAll2Response?>>? Next {get;set;}
         [JsonProperty("-")]
         public HTTPMetadata HttpMeta { get; set; } = default!;
 

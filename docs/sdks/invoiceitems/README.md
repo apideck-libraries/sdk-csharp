@@ -31,6 +31,7 @@ var sdk = new Apideck(
 
 AccountingInvoiceItemsAllRequest req = new AccountingInvoiceItemsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new InvoiceItemsFilter() {
         Name = "Widgets Large",
         Type = InvoiceItemType.Service,
@@ -98,6 +99,7 @@ var sdk = new Apideck(
 
 AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     InvoiceItem = new InvoiceItemInput() {
         Name = "Model Y",
         Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",
@@ -223,6 +225,7 @@ var sdk = new Apideck(
 AccountingInvoiceItemsOneRequest req = new AccountingInvoiceItemsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
     Filter = new InvoiceItemFilter() {
         Type = InvoiceItemFilterInvoiceItemType.Service,

@@ -293,6 +293,7 @@ namespace ApideckUnifySdk
                     ConsumerId = request?.ConsumerId,
                     AppId = request?.AppId,
                     ServiceId = request?.ServiceId,
+                    CompanyId = request?.CompanyId,
                     Cursor = nextCursor,
                     PassThrough = request?.PassThrough,
                     Limit = request?.Limit,

@@ -30,6 +30,7 @@ var sdk = new Apideck(
 
 AccountingLocationsAllRequest req = new AccountingLocationsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
     Filter = new AccountingLocationsFilter() {
         Subsidiary = "1",
@@ -88,6 +89,7 @@ var sdk = new Apideck(
 
 AccountingLocationsAddRequest req = new AccountingLocationsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     AccountingLocation = new AccountingLocationInput() {
         ParentId = "12345",
         CompanyName = "SpaceX",
@@ -195,6 +197,7 @@ var sdk = new Apideck(
 AccountingLocationsOneRequest req = new AccountingLocationsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -246,6 +249,7 @@ var sdk = new Apideck(
 AccountingLocationsUpdateRequest req = new AccountingLocationsUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     AccountingLocation = new AccountingLocationInput() {
         ParentId = "12345",
         CompanyName = "SpaceX",
@@ -424,6 +428,7 @@ var sdk = new Apideck(
 AccountingLocationsDeleteRequest req = new AccountingLocationsDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Locations.DeleteAsync(req);

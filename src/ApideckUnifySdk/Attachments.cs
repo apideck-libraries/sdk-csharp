@@ -303,6 +303,7 @@ namespace ApideckUnifySdk
                     ConsumerId = request.ConsumerId,
                     AppId = request.AppId,
                     ServiceId = request.ServiceId,
+                    CompanyId = request.CompanyId,
                     Cursor = nextCursor,
                     Limit = request.Limit,
                     Fields = request.Fields

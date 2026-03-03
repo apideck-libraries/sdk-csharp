@@ -9,3 +9,4 @@ Expense status
 | -------- | -------- |
 | `Draft`  | draft    |
 | `Posted` | posted   |
+| `Voided` | voided   |

@@ -10,9 +10,8 @@
 namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Utils;
-    using System.Collections.Generic;
 
-    public class HrisCompaniesAllRequest
+    public class AccountingCompaniesAllRequest
     {
         /// <summary>
         /// Include raw response. Mostly used for debugging purposes.
@@ -39,6 +38,12 @@ namespace ApideckUnifySdk.Models.Requests
         public string? ServiceId { get; set; }
 
         /// <summary>
+        /// The ID of the company to scope requests to. For connectors that support multi-company, this overrides the default company configured in connection settings.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-company-id")]
+        public string? CompanyId { get; set; }
+
+        /// <summary>
         /// Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=cursor")]
@@ -49,12 +54,6 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
-
-        /// <summary>
-        /// Optional unmapped key/values that will be passed through to downstream as query parameters. Ie: ?pass_through[search]=leads becomes ?search=leads.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=pass_through")]
-        public Dictionary<string, object>? PassThrough { get; set; }
 
         /// <summary>
         /// The 'fields' parameter allows API users to specify the fields they want to include in the API response. If this parameter is not present, the API will return all available fields. If this parameter is present, only the fields specified in the comma-separated string will be included in the response. Nested properties can also be requested by using a dot notation. &lt;br /&gt;&lt;br /&gt;Example: `fields=name,email,addresses.city`&lt;br /&gt;&lt;br /&gt;In the example above, the response will only include the fields "name", "email" and "addresses.city". If any other fields are available, they will be excluded.

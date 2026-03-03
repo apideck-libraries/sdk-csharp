@@ -27,6 +27,7 @@ var sdk = new Apideck(
 
 AccountingCategoriesAllRequest req = new AccountingCategoriesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
     Filter = new CategoriesFilter() {
         Type = CategoriesFilterType.Expense,
@@ -85,6 +86,7 @@ var sdk = new Apideck(
 AccountingCategoriesOneRequest req = new AccountingCategoriesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
     Filter = new CategoriesFilter() {
         Type = CategoriesFilterType.Expense,
