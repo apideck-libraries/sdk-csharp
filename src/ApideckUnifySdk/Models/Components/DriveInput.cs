@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The name of the drive.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; } = default!;
+        public string? Name { get; set; }
 
         /// <summary>
         /// A description of the object.
@@ -33,5 +33,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

@@ -63,5 +63,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("links")]
         public Links? Links { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

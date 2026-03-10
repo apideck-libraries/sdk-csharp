@@ -32,13 +32,13 @@ namespace ApideckUnifySdk.Models.Components
         /// Name of Apideck Unified API.
         /// </summary>
         [JsonProperty("unified_api")]
-        public UnifiedApiId UnifiedApi { get; set; } = default!;
+        public UnifiedApiId? UnifiedApi { get; set; }
 
         /// <summary>
         /// The status of the webhook.
         /// </summary>
         [JsonProperty("status")]
-        public Status Status { get; set; } = default!;
+        public Status? Status { get; set; }
 
         /// <summary>
         /// Indicates why the webhook has been disabled. `retry_limit`: webhook reached its retry limit. `usage_limit`: account is over its usage limit. `delivery_url_validation_failed`: delivery URL failed validation during webhook creation or update.
@@ -50,19 +50,19 @@ namespace ApideckUnifySdk.Models.Components
         /// The delivery url of the webhook endpoint.
         /// </summary>
         [JsonProperty("delivery_url")]
-        public string DeliveryUrl { get; set; } = default!;
+        public string? DeliveryUrl { get; set; }
 
         /// <summary>
         /// The Unify Base URL events from connectors will be sent to after service id is appended.
         /// </summary>
         [JsonProperty("execute_base_url")]
-        public string ExecuteBaseUrl { get; set; } = default!;
+        public string? ExecuteBaseUrl { get; set; }
 
         /// <summary>
         /// The list of subscribed events for this webhook. [`*`] indicates that all events are enabled.
         /// </summary>
         [JsonProperty("events")]
-        public List<WebhookEventType> Events { get; set; } = default!;
+        public List<WebhookEventType>? Events { get; set; }
 
         /// <summary>
         /// The date and time when the object was last updated.
@@ -75,5 +75,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

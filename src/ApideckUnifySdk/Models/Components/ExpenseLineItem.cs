@@ -90,8 +90,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The total amount of the expense line item.
         /// </summary>
-        [JsonProperty("total_amount", NullValueHandling = NullValueHandling.Include)]
-        public double? TotalAmount { get; set; }
+        [JsonProperty("total_amount")]
+        public double? TotalAmount { get; set; } = null;
 
         /// <summary>
         /// Tax amount.
@@ -119,5 +119,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("rebilling")]
         public Rebilling? Rebilling { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

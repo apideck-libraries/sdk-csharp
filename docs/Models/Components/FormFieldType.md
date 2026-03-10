@@ -1,5 +1,13 @@
 # FormFieldType
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = FormFieldType.Text;
+```
+
 
 ## Values
 

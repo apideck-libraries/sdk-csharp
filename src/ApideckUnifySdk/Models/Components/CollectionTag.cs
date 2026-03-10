@@ -18,8 +18,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Include)]
-        public string? Id { get; set; }
+        [JsonProperty("id")]
+        public string? Id { get; set; } = null;
 
         /// <summary>
         /// The name of the tag.
@@ -32,5 +32,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("custom_mappings")]
         public Dictionary<string, object>? CustomMappings { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

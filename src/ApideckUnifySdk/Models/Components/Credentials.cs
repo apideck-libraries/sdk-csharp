@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
 
     public class Credentials
     {
@@ -38,5 +39,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("expires_in")]
         public long? ExpiresIn { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

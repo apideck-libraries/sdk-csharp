@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The query to search for. May match across multiple fields.
         /// </summary>
         [JsonProperty("query")]
-        public string Query { get; set; } = default!;
+        public string? Query { get; set; }
 
         /// <summary>
         /// ID of the drive to filter on.
@@ -33,5 +33,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

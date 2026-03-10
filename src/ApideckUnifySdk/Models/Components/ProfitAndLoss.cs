@@ -29,7 +29,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The name of the report.
         /// </summary>
         [JsonProperty("report_name")]
-        public string ReportName { get; set; } = default!;
+        public string? ReportName { get; set; }
 
         /// <summary>
         /// The start date of the report.
@@ -53,7 +53,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The operating income accounts.
         /// </summary>
         [JsonProperty("income")]
-        public Income Income { get; set; } = default!;
+        public Income? Income { get; set; }
 
         /// <summary>
         /// The cost of goods sold accounts.
@@ -65,7 +65,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The operating expenses accounts.
         /// </summary>
         [JsonProperty("expenses")]
-        public Models.Components.Expenses Expenses { get; set; } = default!;
+        public Models.Components.Expenses? Expenses { get; set; }
 
         /// <summary>
         /// The other income accounts.
@@ -105,5 +105,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("customer")]
         public string? Customer { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

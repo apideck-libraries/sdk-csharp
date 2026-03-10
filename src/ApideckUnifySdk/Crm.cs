@@ -16,7 +16,7 @@ namespace ApideckUnifySdk
 
     public interface ICrm
     {
-        public ICompanies Companies { get; }
+        public IApideckCompanies Companies { get; }
 
         public IContacts Contacts { get; }
 
@@ -47,9 +47,9 @@ namespace ApideckUnifySdk
 
         /// <summary>
         /// Companies SubSDK.
-        /// <see cref="ICompanies"/>
+        /// <see cref="IApideckCompanies"/>
         /// </summary>
-        public ICompanies Companies { get; private set; }
+        public IApideckCompanies Companies { get; private set; }
 
         /// <summary>
         /// Contacts SubSDK.
@@ -108,7 +108,7 @@ namespace ApideckUnifySdk
         public Crm(SDKConfig config)
         {
             SDKConfiguration = config;
-            Companies = new Companies(SDKConfiguration);
+            Companies = new ApideckCompanies(SDKConfiguration);
             Contacts = new Contacts(SDKConfiguration);
             Opportunities = new Opportunities(SDKConfiguration);
             Leads = new Leads(SDKConfiguration);

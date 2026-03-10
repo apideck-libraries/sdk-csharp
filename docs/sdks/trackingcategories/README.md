@@ -31,6 +31,7 @@ var sdk = new Apideck(
 
 AccountingTrackingCategoriesAllRequest req = new AccountingTrackingCategoriesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },
@@ -89,6 +90,7 @@ var sdk = new Apideck(
 
 AccountingTrackingCategoriesAddRequest req = new AccountingTrackingCategoriesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     TrackingCategory = new TrackingCategoryInput() {
         ParentId = "12345",
         Name = "Department",
@@ -205,6 +207,7 @@ var sdk = new Apideck(
 AccountingTrackingCategoriesOneRequest req = new AccountingTrackingCategoriesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -256,6 +259,7 @@ var sdk = new Apideck(
 AccountingTrackingCategoriesUpdateRequest req = new AccountingTrackingCategoriesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     TrackingCategory = new TrackingCategoryInput() {
         ParentId = "12345",
         Name = "Department",
@@ -335,6 +339,7 @@ var sdk = new Apideck(
 AccountingTrackingCategoriesDeleteRequest req = new AccountingTrackingCategoriesDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.TrackingCategories.DeleteAsync(req);

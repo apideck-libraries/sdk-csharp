@@ -23,31 +23,31 @@ namespace ApideckUnifySdk.Models.Components
         /// Indicates if the request was made via REST or Graphql endpoint.
         /// </summary>
         [JsonProperty("api_style")]
-        public string ApiStyle { get; set; } = default!;
+        public string? ApiStyle { get; set; }
 
         /// <summary>
         /// The Apideck base URL the request was made to.
         /// </summary>
         [JsonProperty("base_url")]
-        public string BaseUrl { get; set; } = default!;
+        public string? BaseUrl { get; set; }
 
         /// <summary>
         /// Indicates whether or not this is a child or parent request.
         /// </summary>
         [JsonProperty("child_request")]
-        public bool ChildRequest { get; set; } = default!;
+        public bool? ChildRequest { get; set; }
 
         /// <summary>
         /// The consumer Id associated with the request.
         /// </summary>
         [JsonProperty("consumer_id")]
-        public string ConsumerId { get; set; } = default!;
+        public string? ConsumerId { get; set; }
 
         /// <summary>
         /// The entire execution time in milliseconds it took to call the Apideck service provider.
         /// </summary>
         [JsonProperty("duration")]
-        public double Duration { get; set; } = default!;
+        public double? Duration { get; set; }
 
         /// <summary>
         /// If error occurred, this is brief explanation.
@@ -59,61 +59,61 @@ namespace ApideckUnifySdk.Models.Components
         /// The entire execution time in milliseconds it took to make the request.
         /// </summary>
         [JsonProperty("execution")]
-        public long Execution { get; set; } = default!;
+        public long? Execution { get; set; }
 
         /// <summary>
         /// When request is a parent request, this indicates if there are child requests associated.
         /// </summary>
         [JsonProperty("has_children")]
-        public bool HasChildren { get; set; } = default!;
+        public bool? HasChildren { get; set; }
 
         /// <summary>
         /// HTTP Method of request.
         /// </summary>
         [JsonProperty("http_method")]
-        public string HttpMethod { get; set; } = default!;
+        public string? HttpMethod { get; set; }
 
         /// <summary>
         /// UUID acting as Request Identifier.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
         /// Latency added by making this request via Unified Api.
         /// </summary>
         [JsonProperty("latency")]
-        public double Latency { get; set; } = default!;
+        public double? Latency { get; set; }
 
         /// <summary>
         /// The request as defined in OpenApi Spec.
         /// </summary>
         [JsonProperty("operation")]
-        public Operation Operation { get; set; } = default!;
+        public Operation? Operation { get; set; }
 
         /// <summary>
         /// When request is a child request, this UUID indicates it's parent request.
         /// </summary>
-        [JsonProperty("parent_id", NullValueHandling = NullValueHandling.Include)]
-        public string? ParentId { get; set; }
+        [JsonProperty("parent_id")]
+        public string? ParentId { get; set; } = null;
 
         /// <summary>
         /// The path component of the URI the request was made to.
         /// </summary>
         [JsonProperty("path")]
-        public string Path { get; set; } = default!;
+        public string? Path { get; set; }
 
         /// <summary>
         /// Indicates whether the request was made using Apidecks sandbox credentials or not.
         /// </summary>
         [JsonProperty("sandbox")]
-        public bool Sandbox { get; set; } = default!;
+        public bool? Sandbox { get; set; }
 
         /// <summary>
         /// Apideck service provider associated with request.
         /// </summary>
         [JsonProperty("service")]
-        public Service Service { get; set; } = default!;
+        public Service? Service { get; set; }
 
         /// <summary>
         /// The IP address of the source of the request.
@@ -125,24 +125,27 @@ namespace ApideckUnifySdk.Models.Components
         /// HTTP Status code that was returned.
         /// </summary>
         [JsonProperty("status_code")]
-        public long StatusCode { get; set; } = default!;
+        public long? StatusCode { get; set; }
 
         /// <summary>
         /// Whether or not the request was successful.
         /// </summary>
         [JsonProperty("success")]
-        public bool Success { get; set; } = default!;
+        public bool? Success { get; set; }
 
         /// <summary>
         /// ISO Date and time when the request was made.
         /// </summary>
         [JsonProperty("timestamp")]
-        public string Timestamp { get; set; } = default!;
+        public string? Timestamp { get; set; }
 
         /// <summary>
         /// Which Unified Api request was made to.
         /// </summary>
         [JsonProperty("unified_api")]
-        public UnifiedApi UnifiedApi { get; set; } = default!;
+        public UnifiedApi? UnifiedApi { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

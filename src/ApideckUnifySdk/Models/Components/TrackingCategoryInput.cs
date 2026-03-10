@@ -66,5 +66,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("subsidiaries")]
         public List<TrackingCategorySubsidiaries>? Subsidiaries { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

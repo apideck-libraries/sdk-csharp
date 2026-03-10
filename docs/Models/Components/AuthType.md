@@ -2,6 +2,17 @@
 
 Type of authorization used by the connector
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = AuthType.Oauth2;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = AuthType.Of("custom_value");
+```
+
 
 ## Values
 

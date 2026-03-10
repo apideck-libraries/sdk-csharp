@@ -105,5 +105,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("policy_type")]
         public string? PolicyType { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

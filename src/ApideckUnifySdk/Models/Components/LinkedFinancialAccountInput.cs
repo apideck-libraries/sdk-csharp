@@ -51,5 +51,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

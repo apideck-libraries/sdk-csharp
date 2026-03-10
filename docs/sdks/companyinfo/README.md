@@ -26,6 +26,7 @@ var sdk = new Apideck(
 
 AccountingCompanyInfoOneRequest req = new AccountingCompanyInfoOneRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

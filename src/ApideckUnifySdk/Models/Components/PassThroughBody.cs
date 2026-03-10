@@ -39,5 +39,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("extend_paths")]
         public List<ExtendPaths>? ExtendPaths { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

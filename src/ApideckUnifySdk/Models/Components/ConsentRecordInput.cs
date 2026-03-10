@@ -19,12 +19,12 @@ namespace ApideckUnifySdk.Models.Components
         /// Whether consent was granted (true) or denied/revoked (false).
         /// </summary>
         [JsonProperty("granted")]
-        public bool Granted { get; set; } = default!;
+        public bool? Granted { get; set; }
 
         /// <summary>
         /// Data scopes resource configuration that can be either detailed field permissions or a wildcard.
         /// </summary>
         [JsonProperty("resources", NullValueHandling = NullValueHandling.Include)]
-        public DataScopesResources Resources { get; set; } = default!;
+        public DataScopesResources? Resources { get; set; }
     }
 }

@@ -2,6 +2,17 @@
 
 The type of bank account
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = AccountingBankAccountAccountType.Checking;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = AccountingBankAccountAccountType.Of("custom_value");
+```
+
 
 ## Values
 

@@ -24,7 +24,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The title or name of the opportunity.
         /// </summary>
         [JsonProperty("title")]
-        public string Title { get; set; } = default!;
+        public string? Title { get; set; }
 
         /// <summary>
         /// The unique identifier of the primary contact associated with the opportunity.
@@ -187,5 +187,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

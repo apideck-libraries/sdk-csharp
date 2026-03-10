@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingCustomersAllRequest req = new AccountingCustomersAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new CustomersFilter() {
         CompanyName = "SpaceX",
         DisplayName = "Elon Musk",
@@ -104,6 +105,7 @@ var sdk = new Apideck(
 
 AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Customer = new CustomerInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -226,30 +228,24 @@ AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
         PaymentMethod = "cash",
         Channel = "email",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = null,
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = null,
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = null,
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = null,
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = null,
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = null,
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -325,6 +321,7 @@ var sdk = new Apideck(
 AccountingCustomersOneRequest req = new AccountingCustomersOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -519,16 +516,14 @@ AccountingCustomersUpdateRequest req = new AccountingCustomersUpdateRequest() {
         PaymentMethod = "cash",
         Channel = "email",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {

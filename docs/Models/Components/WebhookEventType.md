@@ -1,5 +1,16 @@
 # WebhookEventType
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = WebhookEventType.Wildcard;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = WebhookEventType.Of("custom_value");
+```
+
 
 ## Values
 

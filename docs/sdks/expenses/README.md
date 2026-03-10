@@ -31,6 +31,7 @@ var sdk = new Apideck(
 
 AccountingExpensesAllRequest req = new AccountingExpensesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new ExpensesFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Status = ExpensesFilterStatus.Draft,
@@ -91,6 +92,7 @@ var sdk = new Apideck(
 
 AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Expense = new ExpenseInput() {
         Number = "OIT00546",
         TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
@@ -135,39 +137,37 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
                 Description = "Travel US.",
                 TotalAmount = 275D,
                 LineNumber = 1,
+                AdditionalProperties = new Dictionary<string, object>() {
+                    { "subsidiary_id", "12345" },
+                    { "billable", true },
+                },
             },
         },
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -230,6 +230,9 @@ AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
                 },
             },
         },
+        AdditionalProperties = new Dictionary<string, object>() {
+            { "customer_id", "12345" },
+        },
     },
 };
 
@@ -280,6 +283,7 @@ var sdk = new Apideck(
 AccountingExpensesOneRequest req = new AccountingExpensesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Expenses.GetAsync(req);
@@ -375,19 +379,21 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
                 Description = "Travel US.",
                 TotalAmount = 275D,
                 LineNumber = 1,
+                AdditionalProperties = new Dictionary<string, object>() {
+                    { "subsidiary_id", "12345" },
+                    { "billable", true },
+                },
             },
         },
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -430,6 +436,9 @@ AccountingExpensesUpdateRequest req = new AccountingExpensesUpdateRequest() {
                     },
                 },
             },
+        },
+        AdditionalProperties = new Dictionary<string, object>() {
+            { "customer_id", "12345" },
         },
     },
 };

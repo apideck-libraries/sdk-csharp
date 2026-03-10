@@ -21,14 +21,14 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The name or code of the carrier or shipping company that is handling the shipment.
         /// </summary>
-        [JsonProperty("provider", NullValueHandling = NullValueHandling.Include)]
-        public string? Provider { get; set; }
+        [JsonProperty("provider")]
+        public string? Provider { get; set; } = null;
 
         /// <summary>
         /// The tracking number associated with the shipment, which can be used to track the progress of the delivery.
         /// </summary>
-        [JsonProperty("number", NullValueHandling = NullValueHandling.Include)]
-        public string? Number { get; set; }
+        [JsonProperty("number")]
+        public string? Number { get; set; } = null;
 
         /// <summary>
         /// The URL of the carrier's tracking page, which can be used to view detailed information about the shipment's progress.

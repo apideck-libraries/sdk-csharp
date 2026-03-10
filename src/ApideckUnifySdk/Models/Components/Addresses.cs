@@ -63,5 +63,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("country")]
         public string? Country { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

@@ -9,12 +9,6 @@
 Value.CreateStr(/* values here */);
 ```
 
-### Integer
-
-```csharp
-Value.CreateInteger(/* values here */);
-```
-
 ### Number
 
 ```csharp
@@ -25,6 +19,12 @@ Value.CreateNumber(/* values here */);
 
 ```csharp
 Value.CreateBoolean(/* values here */);
+```
+
+### MapOfAny
+
+```csharp
+Value.CreateMapOfAny(/* values here */);
 ```
 
 ### ArrayOf5

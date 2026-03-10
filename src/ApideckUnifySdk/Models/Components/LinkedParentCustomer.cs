@@ -21,7 +21,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The parent ID of the customer this entity is linked to.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
         /// The name of the parent customer.

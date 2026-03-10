@@ -26,23 +26,26 @@ namespace ApideckUnifySdk.Models.Components
 
         public static ValueType Str { get { return new ValueType("str"); } }
 
-        public static ValueType Integer { get { return new ValueType("integer"); } }
-
         public static ValueType Number { get { return new ValueType("number"); } }
 
         public static ValueType Boolean { get { return new ValueType("boolean"); } }
 
+        public static ValueType MapOfAny { get { return new ValueType("mapOfAny"); } }
+
         public static ValueType ArrayOf5 { get { return new ValueType("arrayOf5"); } }
+
+        public static ValueType Null { get { return new ValueType("null"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(ValueType v) { return v.Value; }
         public static ValueType FromString(string v) {
             switch(v) {
                 case "str": return Str;
-                case "integer": return Integer;
                 case "number": return Number;
                 case "boolean": return Boolean;
+                case "mapOfAny": return MapOfAny;
                 case "arrayOf5": return ArrayOf5;
+                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ValueType");
             }
         }
@@ -73,16 +76,16 @@ namespace ApideckUnifySdk.Models.Components
         public string? Str { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public long? Integer { get; set; }
-
-        [SpeakeasyMetadata("form:explode=true")]
         public double? Number { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public bool? Boolean { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public List<Five>? ArrayOf5 { get; set; }
+        public Dictionary<string, object>? MapOfAny { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public List<Five?>? ArrayOf5 { get; set; }
 
         public ValueType Type { get; set; }
         public static Value CreateStr(string str)
@@ -91,14 +94,6 @@ namespace ApideckUnifySdk.Models.Components
 
             Value res = new Value(typ);
             res.Str = str;
-            return res;
-        }
-        public static Value CreateInteger(long integer)
-        {
-            ValueType typ = ValueType.Integer;
-
-            Value res = new Value(typ);
-            res.Integer = integer;
             return res;
         }
         public static Value CreateNumber(double number)
@@ -117,13 +112,27 @@ namespace ApideckUnifySdk.Models.Components
             res.Boolean = boolean;
             return res;
         }
-        public static Value CreateArrayOf5(List<Five> arrayOf5)
+        public static Value CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
+            ValueType typ = ValueType.MapOfAny;
+
+            Value res = new Value(typ);
+            res.MapOfAny = mapOfAny;
+            return res;
+        }
+        public static Value CreateArrayOf5(List<Five?> arrayOf5)
         {
             ValueType typ = ValueType.ArrayOf5;
 
             Value res = new Value(typ);
             res.ArrayOf5 = arrayOf5;
             return res;
+        }
+
+        public static Value CreateNull()
+        {
+            ValueType typ = ValueType.Null;
+            return new Value(typ);
         }
 
         public class ValueConverter : JsonConverter
@@ -136,7 +145,7 @@ namespace ApideckUnifySdk.Models.Components
             {
                 if (reader.TokenType == JsonToken.Null)
                 {
-                    throw new InvalidOperationException("Received unexpected null JSON value");
+                    return null;
                 }
 
                 var json = JRaw.Create(reader).ToString();
@@ -147,19 +156,6 @@ namespace ApideckUnifySdk.Models.Components
                     {
                         Str = json[1..^1]
                     };
-                }
-
-                try
-                {
-                    var converted = Convert.ToInt64(json);
-                    return new Value(ValueType.Integer)
-                    {
-                        Integer = converted
-                    };
-                }
-                catch (System.FormatException)
-                {
-                    // try next option
                 }
 
                 try
@@ -190,14 +186,34 @@ namespace ApideckUnifySdk.Models.Components
 
                 try
                 {
-                    return new Value(ValueType.ArrayOf5)
+                    return new Value(ValueType.MapOfAny)
                     {
-                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Five>>(json)
+                        MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(List<Five>), new Value(ValueType.ArrayOf5), "ArrayOf5"));
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new Value(ValueType.MapOfAny), "MapOfAny"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Value(ValueType.ArrayOf5)
+                    {
+                        ArrayOf5 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<List<Five?>>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(List<Five?>), new Value(ValueType.ArrayOf5), "ArrayOf5"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -235,20 +251,20 @@ namespace ApideckUnifySdk.Models.Components
             {
                 if (value == null)
                 {
-                    throw new InvalidOperationException("Unexpected null JSON value.");
+                    writer.WriteRawValue("null");
+                    return;
                 }
 
                 Value res = (Value)value;
+                if (ValueType.FromString(res.Type).Equals(ValueType.Null))
+                {
+                    writer.WriteRawValue("null");
+                    return;
+                }
 
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
-                    return;
-                }
-
-                if (res.Integer != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.Integer));
                     return;
                 }
 
@@ -261,6 +277,12 @@ namespace ApideckUnifySdk.Models.Components
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
+                    return;
+                }
+
+                if (res.MapOfAny != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
 

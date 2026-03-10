@@ -2,6 +2,17 @@
 
 The type of account.
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = LedgerAccountType.AccountsPayable;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = LedgerAccountType.Of("custom_value");
+```
+
 
 ## Values
 

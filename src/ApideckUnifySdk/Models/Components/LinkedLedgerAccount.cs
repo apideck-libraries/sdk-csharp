@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class LinkedLedgerAccount
     {
@@ -49,5 +50,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("display_id")]
         public string? DisplayId { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

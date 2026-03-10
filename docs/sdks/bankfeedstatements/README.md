@@ -31,6 +31,7 @@ var sdk = new Apideck(
 
 AccountingBankFeedStatementsAllRequest req = new AccountingBankFeedStatementsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },
@@ -90,6 +91,7 @@ var sdk = new Apideck(
 
 AccountingBankFeedStatementsAddRequest req = new AccountingBankFeedStatementsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     BankFeedStatement = new BankFeedStatementInput() {
         BankFeedAccountId = "acc_456",
         Status = StatementStatus.Pending,
@@ -181,6 +183,7 @@ var sdk = new Apideck(
 AccountingBankFeedStatementsOneRequest req = new AccountingBankFeedStatementsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

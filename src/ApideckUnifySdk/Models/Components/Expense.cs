@@ -40,8 +40,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD.
         /// </summary>
-        [JsonProperty("transaction_date", NullValueHandling = NullValueHandling.Include)]
-        public DateTime? TransactionDate { get; set; }
+        [JsonProperty("transaction_date")]
+        public DateTime? TransactionDate { get; set; } = null;
 
         /// <summary>
         /// The unique identifier for the ledger account that this expense should be credited to. Deprecated, use account instead.
@@ -154,7 +154,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Expense line items linked to this expense.
         /// </summary>
         [JsonProperty("line_items")]
-        public List<ExpenseLineItem> LineItems { get; set; } = default!;
+        public List<ExpenseLineItem>? LineItems { get; set; }
 
         /// <summary>
         /// Optional reference identifier for the transaction.
@@ -218,5 +218,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

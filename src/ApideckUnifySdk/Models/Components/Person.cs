@@ -73,5 +73,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("custom_mappings")]
         public Dictionary<string, object>? CustomMappings { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

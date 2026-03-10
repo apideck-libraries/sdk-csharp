@@ -27,6 +27,7 @@ var sdk = new Apideck(
 
 AccountingAgedDebtorsOneRequest req = new AccountingAgedDebtorsOneRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new AgedReportFilter() {
         CustomerId = "123abc",
         SupplierId = "123abc",

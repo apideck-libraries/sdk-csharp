@@ -89,5 +89,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("allow_actions")]
         public List<AllowActions>? AllowActions { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The name of the folder.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; } = default!;
+        public string? Name { get; set; }
 
         /// <summary>
         /// Optional description of the folder.
@@ -66,7 +66,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The parent folders of the file, starting from the root.
         /// </summary>
         [JsonProperty("parent_folders")]
-        public List<LinkedFolder> ParentFolders { get; set; } = default!;
+        public List<LinkedFolder>? ParentFolders { get; set; }
 
         /// <summary>
         /// Whether the list of parent folder is complete. Some connectors only return the direct parent of a folder.
@@ -103,5 +103,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

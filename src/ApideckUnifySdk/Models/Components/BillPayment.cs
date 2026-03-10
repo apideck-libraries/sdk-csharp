@@ -23,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         /// A unique identifier for an object.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
         /// The third-party API ID of original entity.
@@ -46,8 +46,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The total amount of the transaction or record.
         /// </summary>
-        [JsonProperty("total_amount", NullValueHandling = NullValueHandling.Include)]
-        public double? TotalAmount { get; set; }
+        [JsonProperty("total_amount")]
+        public double? TotalAmount { get; set; } = null;
 
         /// <summary>
         /// Optional transaction reference message ie: Debit remittance detail.
@@ -79,8 +79,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD.
         /// </summary>
-        [JsonProperty("transaction_date", NullValueHandling = NullValueHandling.Include)]
-        public DateTime? TransactionDate { get; set; }
+        [JsonProperty("transaction_date")]
+        public DateTime? TransactionDate { get; set; } = null;
 
         /// <summary>
         /// The supplier this entity is linked to.
@@ -183,5 +183,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

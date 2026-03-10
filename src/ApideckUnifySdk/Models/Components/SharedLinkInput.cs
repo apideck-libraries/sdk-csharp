@@ -28,8 +28,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The ID of the file or folder to link.
         /// </summary>
-        [JsonProperty("target_id", NullValueHandling = NullValueHandling.Include)]
-        public string? TargetId { get; set; }
+        [JsonProperty("target_id")]
+        public string? TargetId { get; set; } = null;
 
         /// <summary>
         /// The scope of the shared link.
@@ -48,5 +48,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

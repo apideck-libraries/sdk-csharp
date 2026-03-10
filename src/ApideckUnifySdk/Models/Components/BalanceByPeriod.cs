@@ -37,5 +37,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("balances_by_transaction")]
         public List<BalanceByTransaction>? BalancesByTransaction { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

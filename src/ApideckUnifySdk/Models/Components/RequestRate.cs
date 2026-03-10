@@ -39,5 +39,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("unit")]
         public Unit Unit { get; set; } = default!;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

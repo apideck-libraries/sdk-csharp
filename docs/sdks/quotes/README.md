@@ -30,6 +30,7 @@ var sdk = new Apideck(
 
 AccountingQuotesAllRequest req = new AccountingQuotesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 AccountingQuotesAllResponse? res = await sdk.Accounting.Quotes.ListAsync(req);
@@ -85,6 +86,7 @@ var sdk = new Apideck(
 
 AccountingQuotesAddRequest req = new AccountingQuotesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Quote = new QuoteInput() {
         Number = "QT00546",
         Customer = new LinkedCustomerInput() {
@@ -99,6 +101,7 @@ AccountingQuotesAddRequest req = new AccountingQuotesAddRequest() {
         QuoteDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         ExpiryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
         Terms = "Valid for 30 days",
+        TermsId = "12345",
         Reference = "INV-2024-001",
         Status = QuoteStatus.Draft,
         Currency = Currency.Usd,
@@ -152,16 +155,14 @@ AccountingQuotesAddRequest req = new AccountingQuotesAddRequest() {
                     Code = "453",
                 },
                 CustomFields = new List<CustomField>() {
-                    CustomField.CreateCustomField1(
-                        new CustomField1() {
-                            Id = "2389328923893298",
-                            Name = "employee_level",
-                            Description = "Employee Level",
-                            Value = CustomField1Value.CreateStr(
-                                "Uses Salesforce and Marketo"
-                            ),
-                        }
-                    ),
+                    new CustomField() {
+                        Id = "2389328923893298",
+                        Name = "employee_level",
+                        Description = "Employee Level",
+                        Value = Value.CreateStr(
+                            "Uses Salesforce and Marketo"
+                        ),
+                    },
                 },
                 RowVersion = "1-12345",
             },
@@ -231,16 +232,14 @@ AccountingQuotesAddRequest req = new AccountingQuotesAddRequest() {
         TemplateId = "123456",
         SourceDocumentUrl = "https://www.quotesolution.com/quote/123456",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -308,6 +307,7 @@ var sdk = new Apideck(
 AccountingQuotesOneRequest req = new AccountingQuotesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Quotes.GetAsync(req);
@@ -359,6 +359,7 @@ var sdk = new Apideck(
 AccountingQuotesUpdateRequest req = new AccountingQuotesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Quote = new QuoteInput() {
         Number = "QT00546",
         Customer = new LinkedCustomerInput() {
@@ -373,6 +374,7 @@ AccountingQuotesUpdateRequest req = new AccountingQuotesUpdateRequest() {
         QuoteDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         ExpiryDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-10-30")),
         Terms = "Valid for 30 days",
+        TermsId = "12345",
         Reference = "INV-2024-001",
         Status = QuoteStatus.Draft,
         Currency = Currency.Usd,
@@ -419,16 +421,14 @@ AccountingQuotesUpdateRequest req = new AccountingQuotesUpdateRequest() {
                     Code = "453",
                 },
                 CustomFields = new List<CustomField>() {
-                    CustomField.CreateCustomField1(
-                        new CustomField1() {
-                            Id = "2389328923893298",
-                            Name = "employee_level",
-                            Description = "Employee Level",
-                            Value = CustomField1Value.CreateStr(
-                                "Uses Salesforce and Marketo"
-                            ),
-                        }
-                    ),
+                    new CustomField() {
+                        Id = "2389328923893298",
+                        Name = "employee_level",
+                        Description = "Employee Level",
+                        Value = Value.CreateStr(
+                            "Uses Salesforce and Marketo"
+                        ),
+                    },
                 },
                 RowVersion = "1-12345",
             },
@@ -498,16 +498,14 @@ AccountingQuotesUpdateRequest req = new AccountingQuotesUpdateRequest() {
         TemplateId = "123456",
         SourceDocumentUrl = "https://www.quotesolution.com/quote/123456",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -575,6 +573,7 @@ var sdk = new Apideck(
 AccountingQuotesDeleteRequest req = new AccountingQuotesDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Quotes.DeleteAsync(req);

@@ -19,8 +19,8 @@ namespace ApideckUnifySdk.Models.Components
 
     public class HrisCompanyInput
     {
-        [JsonProperty("legal_name", NullValueHandling = NullValueHandling.Include)]
-        public string? LegalName { get; set; }
+        [JsonProperty("legal_name")]
+        public string? LegalName { get; set; } = null;
 
         [JsonProperty("display_name")]
         public string? DisplayName { get; set; } = null;
@@ -63,5 +63,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

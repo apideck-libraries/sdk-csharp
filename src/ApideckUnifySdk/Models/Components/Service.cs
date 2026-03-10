@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Apideck service provider associated with request.
@@ -28,5 +29,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

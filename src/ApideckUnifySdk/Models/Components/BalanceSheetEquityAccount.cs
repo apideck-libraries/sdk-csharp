@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     /// <summary>
     /// A balance sheet equity account represents the financial position of a company at a specific point in time.
@@ -46,5 +47,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("items")]
         public object? Items { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

@@ -33,5 +33,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("balances_by_period")]
         public List<BalanceByPeriod>? BalancesByPeriod { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

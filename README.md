@@ -74,6 +74,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new TaxRatesFilter() {
         Assets = true,
         Equity = true,
@@ -124,6 +125,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new TaxRatesFilter() {
         Assets = true,
         Equity = true,
@@ -218,6 +220,10 @@ while(res != null)
 
 * [List](docs/sdks/categories/README.md#list) - List Categories
 * [Get](docs/sdks/categories/README.md#get) - Get Category
+
+### [Accounting.Companies](docs/sdks/companies/README.md)
+
+* [List](docs/sdks/companies/README.md#list) - List companies
 
 ### [Accounting.CompanyInfo](docs/sdks/companyinfo/README.md)
 
@@ -355,6 +361,14 @@ while(res != null)
 * [Update](docs/sdks/quotes/README.md#update) - Update Quote
 * [Delete](docs/sdks/quotes/README.md#delete) - Delete Quote
 
+### [Accounting.Refunds](docs/sdks/refunds/README.md)
+
+* [List](docs/sdks/refunds/README.md#list) - List Refunds
+* [Create](docs/sdks/refunds/README.md#create) - Create Refund
+* [Get](docs/sdks/refunds/README.md#get) - Get Refund
+* [Update](docs/sdks/refunds/README.md#update) - Update Refund
+* [Delete](docs/sdks/refunds/README.md#delete) - Delete Refund
+
 ### [Accounting.Subsidiaries](docs/sdks/subsidiaries/README.md)
 
 * [List](docs/sdks/subsidiaries/README.md#list) - List Subsidiaries
@@ -442,13 +456,13 @@ while(res != null)
 * [Update](docs/sdks/activities/README.md#update) - Update activity
 * [Delete](docs/sdks/activities/README.md#delete) - Delete activity
 
-### [Crm.Companies](docs/sdks/companies/README.md)
+### [Crm.Companies](docs/sdks/apideckcompanies/README.md)
 
-* [List](docs/sdks/companies/README.md#list) - List companies
-* [Create](docs/sdks/companies/README.md#create) - Create company
-* [Get](docs/sdks/companies/README.md#get) - Get company
-* [Update](docs/sdks/companies/README.md#update) - Update company
-* [Delete](docs/sdks/companies/README.md#delete) - Delete company
+* [List](docs/sdks/apideckcompanies/README.md#list) - List companies
+* [Create](docs/sdks/apideckcompanies/README.md#create) - Create company
+* [Get](docs/sdks/apideckcompanies/README.md#get) - Get company
+* [Update](docs/sdks/apideckcompanies/README.md#update) - Update company
+* [Delete](docs/sdks/apideckcompanies/README.md#delete) - Delete company
 
 ### [Crm.Contacts](docs/sdks/contacts/README.md)
 
@@ -583,13 +597,13 @@ while(res != null)
 * [Delete](docs/sdks/uploadsessions/README.md#delete) - Abort Upload Session
 * [Finish](docs/sdks/uploadsessions/README.md#finish) - Finish Upload Session
 
-### [Hris.Companies](docs/sdks/apideckcompanies/README.md)
+### [Hris.Companies](docs/sdks/apideckhriscompanies/README.md)
 
-* [List](docs/sdks/apideckcompanies/README.md#list) - List Companies
-* [Create](docs/sdks/apideckcompanies/README.md#create) - Create Company
-* [Get](docs/sdks/apideckcompanies/README.md#get) - Get Company
-* [Update](docs/sdks/apideckcompanies/README.md#update) - Update Company
-* [Delete](docs/sdks/apideckcompanies/README.md#delete) - Delete Company
+* [All](docs/sdks/apideckhriscompanies/README.md#all) - List Companies
+* [Create](docs/sdks/apideckhriscompanies/README.md#create) - Create Company
+* [Get](docs/sdks/apideckhriscompanies/README.md#get) - Get Company
+* [Update](docs/sdks/apideckhriscompanies/README.md#update) - Update Company
+* [Delete](docs/sdks/apideckhriscompanies/README.md#delete) - Delete Company
 
 ### [Hris.Departments](docs/sdks/apideckdepartments/README.md)
 
@@ -771,6 +785,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new TaxRatesFilter() {
         Assets = true,
         Equity = true,
@@ -815,6 +830,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new TaxRatesFilter() {
         Assets = true,
         Equity = true,
@@ -875,6 +891,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new TaxRatesFilter() {
         Assets = true,
         Equity = true,
@@ -931,6 +948,7 @@ try
 {
     AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
         ServiceId = "salesforce",
+        CompanyId = "12345",
         Filter = new TaxRatesFilter() {
             Assets = true,
             Equity = true,
@@ -1000,7 +1018,7 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 325 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 331 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
@@ -1028,6 +1046,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new TaxRatesFilter() {
         Assets = true,
         Equity = true,

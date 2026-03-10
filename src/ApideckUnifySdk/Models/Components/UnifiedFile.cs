@@ -23,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         /// A unique identifier for an object.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
         /// The third-party API ID of original entity.
@@ -34,8 +34,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The name of the file.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string? Name { get; set; }
+        [JsonProperty("name")]
+        public string? Name { get; set; } = null;
 
         /// <summary>
         /// Optional description of the file.
@@ -46,8 +46,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The type of resource. Could be file, folder or url.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public FileType? Type { get; set; }
+        [JsonProperty("type")]
+        public FileType? Type { get; set; } = null;
 
         /// <summary>
         /// The full path of the file or folder (includes the file name).
@@ -135,5 +135,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

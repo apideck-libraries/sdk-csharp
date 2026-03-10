@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class PipelineStages
     {
@@ -43,5 +44,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("archived")]
         public bool? Archived { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

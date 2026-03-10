@@ -19,8 +19,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Include)]
-        public string? Id { get; set; }
+        [JsonProperty("id")]
+        public string? Id { get; set; } = null;
 
         /// <summary>
         /// ID of the employee.
@@ -37,8 +37,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// Whether or not the payroll has been successfully processed. Note that processed payrolls cannot be updated.
         /// </summary>
-        [JsonProperty("processed", NullValueHandling = NullValueHandling.Include)]
-        public bool? Processed { get; set; }
+        [JsonProperty("processed")]
+        public bool? Processed { get; set; } = null;
 
         /// <summary>
         /// The date the payroll was processed.
@@ -49,20 +49,20 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The date on which employees will be paid for the payroll.
         /// </summary>
-        [JsonProperty("check_date", NullValueHandling = NullValueHandling.Include)]
-        public string? CheckDate { get; set; }
+        [JsonProperty("check_date")]
+        public string? CheckDate { get; set; } = null;
 
         /// <summary>
         /// The start date, inclusive, of the pay period.
         /// </summary>
-        [JsonProperty("start_date", NullValueHandling = NullValueHandling.Include)]
-        public string? StartDate { get; set; }
+        [JsonProperty("start_date")]
+        public string? StartDate { get; set; } = null;
 
         /// <summary>
         /// The end date, inclusive, of the pay period.
         /// </summary>
-        [JsonProperty("end_date", NullValueHandling = NullValueHandling.Include)]
-        public string? EndDate { get; set; }
+        [JsonProperty("end_date")]
+        public string? EndDate { get; set; } = null;
 
         /// <summary>
         /// The overview of the payroll totals.
@@ -75,5 +75,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("compensations")]
         public List<Compensation>? Compensations { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

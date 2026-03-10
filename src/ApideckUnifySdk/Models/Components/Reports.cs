@@ -108,5 +108,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("uncategorized_items")]
         public BalanceSheetUncategorizedItemsAccount? UncategorizedItems { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

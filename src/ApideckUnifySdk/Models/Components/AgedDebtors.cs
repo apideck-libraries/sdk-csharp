@@ -44,5 +44,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("outstanding_balances")]
         public List<OutstandingBalanceByCustomer>? OutstandingBalances { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

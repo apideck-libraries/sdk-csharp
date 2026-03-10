@@ -61,5 +61,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("deceased_on")]
         public LocalDate? DeceasedOn { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

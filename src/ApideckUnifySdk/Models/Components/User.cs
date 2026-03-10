@@ -109,7 +109,7 @@ namespace ApideckUnifySdk.Models.Components
         public List<PhoneNumber>? PhoneNumbers { get; set; }
 
         [JsonProperty("emails")]
-        public List<Email> Emails { get; set; } = default!;
+        public List<Email>? Emails { get; set; }
 
         /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.

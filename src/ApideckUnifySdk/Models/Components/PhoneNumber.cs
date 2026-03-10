@@ -41,7 +41,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The phone number.
         /// </summary>
         [JsonProperty("number")]
-        public string Number { get; set; } = default!;
+        public string? Number { get; set; }
 
         /// <summary>
         /// The extension of the phone number.
@@ -54,5 +54,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("type")]
         public PhoneNumberType? Type { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

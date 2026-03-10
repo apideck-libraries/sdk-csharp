@@ -28,13 +28,16 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// Email address.
         /// </summary>
-        [JsonProperty("email", NullValueHandling = NullValueHandling.Include)]
-        public string? EmailValue { get; set; }
+        [JsonProperty("email")]
+        public string? EmailValue { get; set; } = null;
 
         /// <summary>
         /// Email type.
         /// </summary>
         [JsonProperty("type")]
         public EmailType? Type { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

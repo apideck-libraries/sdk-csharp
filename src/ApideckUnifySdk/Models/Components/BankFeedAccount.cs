@@ -23,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         /// A unique identifier for an object.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
         /// Type of the bank account.
@@ -105,5 +105,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("created_by")]
         public string? CreatedBy { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

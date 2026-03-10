@@ -126,5 +126,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("custom_fields")]
         public List<CustomField>? CustomFields { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

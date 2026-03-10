@@ -57,7 +57,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The amount of the expense line item.
         /// </summary>
         [JsonProperty("amount")]
-        public double Amount { get; set; } = default!;
+        public double? Amount { get; set; }
 
         [JsonProperty("tax_rate")]
         public LinkedTaxRate? TaxRate { get; set; }
@@ -145,5 +145,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

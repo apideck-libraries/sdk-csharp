@@ -168,5 +168,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("row_version")]
         public string? RowVersion { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

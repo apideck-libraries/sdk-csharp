@@ -1,22 +1,22 @@
-# Hris.Companies
+# Crm.Companies
 
 ## Overview
 
 ### Available Operations
 
-* [List](#list) - List Companies
-* [Create](#create) - Create Company
-* [Get](#get) - Get Company
-* [Update](#update) - Update Company
-* [Delete](#delete) - Delete Company
+* [List](#list) - List companies
+* [Create](#create) - Create company
+* [Get](#get) - Get company
+* [Update](#update) - Update company
+* [Delete](#delete) - Delete company
 
 ## List
 
-List Companies
+List companies
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.companiesAll" method="get" path="/hris/companies" -->
+<!-- UsageSnippet language="csharp" operationID="crm.companiesAll" method="get" path="/crm/companies" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -29,15 +29,22 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisCompaniesAllRequest req = new HrisCompaniesAllRequest() {
+CrmCompaniesAllRequest req = new CrmCompaniesAllRequest() {
     ServiceId = "salesforce",
+    Filter = new CompaniesFilter() {
+        Name = "SpaceX",
+    },
+    Sort = new CompaniesSort() {
+        By = CompaniesSortBy.CreatedAt,
+        Direction = SortDirection.Desc,
+    },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },
     Fields = "id,updated_at",
 };
 
-HrisCompaniesAllResponse? res = await sdk.Hris.Companies.ListAsync(req);
+CrmCompaniesAllResponse? res = await sdk.Crm.Companies.ListAsync(req);
 
 while(res != null)
 {
@@ -49,13 +56,13 @@ while(res != null)
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [HrisCompaniesAllRequest](../../Models/Requests/HrisCompaniesAllRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [CrmCompaniesAllRequest](../../Models/Requests/CrmCompaniesAllRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[HrisCompaniesAllResponse](../../Models/Requests/HrisCompaniesAllResponse.md)**
+**[CrmCompaniesAllResponse](../../Models/Requests/CrmCompaniesAllResponse.md)**
 
 ### Errors
 
@@ -70,15 +77,16 @@ while(res != null)
 
 ## Create
 
-Create Company
+Create company
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.companiesAdd" method="post" path="/hris/companies" -->
+<!-- UsageSnippet language="csharp" operationID="crm.companiesAdd" method="post" path="/crm/companies" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
+using NodaTime;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -87,15 +95,76 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
+CrmCompaniesAddRequest req = new CrmCompaniesAddRequest() {
     ServiceId = "salesforce",
-    HrisCompany = new HrisCompanyInput() {
-        LegalName = "SpaceX",
-        DisplayName = "SpaceX",
-        Subdomain = "company",
-        Status = HrisCompanyStatus.Active,
-        CompanyNumber = "123456-AB",
+    Company1 = new Company1Input() {
+        Name = "SpaceX",
+        OwnerId = "12345",
+        Image = "https://www.spacex.com/static/images/share.jpg",
+        Description = "Space Exploration Technologies Corp. is an American aerospace manufacturer, space transportation services and communications company headquartered in Hawthorne, California.",
+        VatNumber = "BE0689615164",
         Currency = Currency.Usd,
+        Status = "Open",
+        Fax = "+12129876543",
+        AnnualRevenue = "+$35m",
+        NumberOfEmployees = "500-1000",
+        Industry = "Apparel",
+        Ownership = "Public",
+        SalesTaxNumber = "12456EN",
+        PayeeNumber = "78932EN",
+        AbnOrTfn = "46 115 614 695",
+        AbnBranch = "123",
+        Acn = "XXX XXX XXX",
+        FirstName = "Elon",
+        LastName = "Musk",
+        BankAccounts = new List<BankAccount1>() {
+            new BankAccount1() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = BankAccount1AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
+            new BankAccount1() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = BankAccount1AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
+            new BankAccount1() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = BankAccount1AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
+        },
+        Websites = new List<Website>() {
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
+        },
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
@@ -123,60 +192,23 @@ HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
                 Notes = "Address notes or delivery instructions.",
                 RowVersion = "1-12345",
             },
-            new Address() {
-                Id = "123",
-                Type = ApideckUnifySdk.Models.Components.Type.Primary,
-                String = "25 Spring Street, Blackburn, VIC 3130",
-                Name = "HQ US",
-                Line1 = "Main street",
-                Line2 = "apt #",
-                Line3 = "Suite #",
-                Line4 = "delivery instructions",
-                StreetNumber = "25",
-                City = "San Francisco",
-                State = "CA",
-                PostalCode = "94104",
-                Country = "US",
-                Latitude = "40.759211",
-                Longitude = "-73.984638",
-                County = "Santa Clara",
-                ContactName = "Elon Musk",
-                Salutation = "Mr",
-                PhoneNumber = "111-111-1111",
-                Fax = "122-111-1111",
-                Email = "elon@musk.com",
-                Website = "https://elonmusk.com",
-                Notes = "Address notes or delivery instructions.",
-                RowVersion = "1-12345",
-            },
-            new Address() {
-                Id = "123",
-                Type = ApideckUnifySdk.Models.Components.Type.Primary,
-                String = "25 Spring Street, Blackburn, VIC 3130",
-                Name = "HQ US",
-                Line1 = "Main street",
-                Line2 = "apt #",
-                Line3 = "Suite #",
-                Line4 = "delivery instructions",
-                StreetNumber = "25",
-                City = "San Francisco",
-                State = "CA",
-                PostalCode = "94104",
-                Country = "US",
-                Latitude = "40.759211",
-                Longitude = "-73.984638",
-                County = "Santa Clara",
-                ContactName = "Elon Musk",
-                Salutation = "Mr",
-                PhoneNumber = "111-111-1111",
-                Fax = "122-111-1111",
-                Email = "elon@musk.com",
-                Website = "https://elonmusk.com",
-                Notes = "Address notes or delivery instructions.",
-                RowVersion = "1-12345",
+        },
+        SocialLinks = new List<SocialLink>() {
+            new SocialLink() {
+                Id = "12345",
+                Url = "https://www.twitter.com/apideck",
+                Type = "twitter",
             },
         },
         PhoneNumbers = new List<PhoneNumber>() {
+            new PhoneNumber() {
+                Id = "12345",
+                CountryCode = "1",
+                AreaCode = "323",
+                Number = "111-111-1111",
+                Extension = "105",
+                Type = PhoneNumberType.Primary,
+            },
             new PhoneNumber() {
                 Id = "12345",
                 CountryCode = "1",
@@ -200,25 +232,35 @@ HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
                 EmailValue = "elon@musk.com",
                 Type = EmailType.Primary,
             },
-            new Email() {
-                Id = "123",
-                EmailValue = "elon@musk.com",
-                Type = EmailType.Primary,
+        },
+        RowType = new CompanyRowType() {
+            Id = "12345",
+            Name = "Customer Account",
+        },
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
             },
-            new Email() {
-                Id = "123",
-                EmailValue = "elon@musk.com",
-                Type = EmailType.Primary,
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
             },
         },
-        Websites = new List<Website>() {
-            new Website() {
-                Id = "12345",
-                Url = "http://example.com",
-                Type = WebsiteType.Primary,
-            },
+        Tags = new List<string>() {
+            "New",
         },
-        DebtorId = "12345",
+        ReadOnly = false,
+        Salutation = "Mr",
+        Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
                 ServiceId = "<id>",
@@ -253,20 +295,20 @@ HrisCompaniesAddRequest req = new HrisCompaniesAddRequest() {
     },
 };
 
-var res = await sdk.Hris.Companies.CreateAsync(req);
+var res = await sdk.Crm.Companies.CreateAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [HrisCompaniesAddRequest](../../Models/Requests/HrisCompaniesAddRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [CrmCompaniesAddRequest](../../Models/Requests/CrmCompaniesAddRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[HrisCompaniesAddResponse](../../Models/Requests/HrisCompaniesAddResponse.md)**
+**[CrmCompaniesAddResponse](../../Models/Requests/CrmCompaniesAddResponse.md)**
 
 ### Errors
 
@@ -281,11 +323,11 @@ var res = await sdk.Hris.Companies.CreateAsync(req);
 
 ## Get
 
-Get Company
+Get company
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.companiesOne" method="get" path="/hris/companies/{id}" -->
+<!-- UsageSnippet language="csharp" operationID="crm.companiesOne" method="get" path="/crm/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -297,26 +339,26 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisCompaniesOneRequest req = new HrisCompaniesOneRequest() {
+CrmCompaniesOneRequest req = new CrmCompaniesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
 };
 
-var res = await sdk.Hris.Companies.GetAsync(req);
+var res = await sdk.Crm.Companies.GetAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `request`                                                                   | [HrisCompaniesOneRequest](../../Models/Requests/HrisCompaniesOneRequest.md) | :heavy_check_mark:                                                          | The request object to use for the request.                                  |
+| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `request`                                                                 | [CrmCompaniesOneRequest](../../Models/Requests/CrmCompaniesOneRequest.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
-**[HrisCompaniesOneResponse](../../Models/Requests/HrisCompaniesOneResponse.md)**
+**[CrmCompaniesOneResponse](../../Models/Requests/CrmCompaniesOneResponse.md)**
 
 ### Errors
 
@@ -331,15 +373,16 @@ var res = await sdk.Hris.Companies.GetAsync(req);
 
 ## Update
 
-Update Company
+Update company
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.companiesUpdate" method="patch" path="/hris/companies/{id}" -->
+<!-- UsageSnippet language="csharp" operationID="crm.companiesUpdate" method="patch" path="/crm/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
+using NodaTime;
 using System.Collections.Generic;
 
 var sdk = new Apideck(
@@ -348,16 +391,61 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
+CrmCompaniesUpdateRequest req = new CrmCompaniesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
-    HrisCompany = new HrisCompanyInput() {
-        LegalName = "SpaceX",
-        DisplayName = "SpaceX",
-        Subdomain = "company",
-        Status = HrisCompanyStatus.Active,
-        CompanyNumber = "123456-AB",
+    Company1 = new Company1Input() {
+        Name = "SpaceX",
+        OwnerId = "12345",
+        Image = "https://www.spacex.com/static/images/share.jpg",
+        Description = "Space Exploration Technologies Corp. is an American aerospace manufacturer, space transportation services and communications company headquartered in Hawthorne, California.",
+        VatNumber = "BE0689615164",
         Currency = Currency.Usd,
+        Status = "Open",
+        Fax = "+12129876543",
+        AnnualRevenue = "+$35m",
+        NumberOfEmployees = "500-1000",
+        Industry = "Apparel",
+        Ownership = "Public",
+        SalesTaxNumber = "12456EN",
+        PayeeNumber = "78932EN",
+        AbnOrTfn = "46 115 614 695",
+        AbnBranch = "123",
+        Acn = "XXX XXX XXX",
+        FirstName = "Elon",
+        LastName = "Musk",
+        BankAccounts = new List<BankAccount1>() {
+            new BankAccount1() {
+                BankName = "Monzo",
+                AccountNumber = "123465",
+                AccountName = "SPACEX LLC",
+                AccountType = BankAccount1AccountType.CreditCard,
+                Iban = "CH2989144532982975332",
+                Bic = "AUDSCHGGXXX",
+                RoutingNumber = "012345678",
+                BsbNumber = "062-001",
+                BranchIdentifier = "001",
+                BankCode = "BNH",
+                Currency = Currency.Usd,
+            },
+        },
+        Websites = new List<Website>() {
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
+            new Website() {
+                Id = "12345",
+                Url = "http://example.com",
+                Type = WebsiteType.Primary,
+            },
+        },
         Addresses = new List<Address>() {
             new Address() {
                 Id = "123",
@@ -438,15 +526,14 @@ HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
                 RowVersion = "1-12345",
             },
         },
-        PhoneNumbers = new List<PhoneNumber>() {
-            new PhoneNumber() {
+        SocialLinks = new List<SocialLink>() {
+            new SocialLink() {
                 Id = "12345",
-                CountryCode = "1",
-                AreaCode = "323",
-                Number = "111-111-1111",
-                Extension = "105",
-                Type = PhoneNumberType.Primary,
+                Url = "https://www.twitter.com/apideck",
+                Type = "twitter",
             },
+        },
+        PhoneNumbers = new List<PhoneNumber>() {
             new PhoneNumber() {
                 Id = "12345",
                 CountryCode = "1",
@@ -471,20 +558,48 @@ HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
                 Type = EmailType.Primary,
             },
         },
-        Websites = new List<Website>() {
-            new Website() {
-                Id = "12345",
-                Url = "http://example.com",
-                Type = WebsiteType.Primary,
+        RowType = new CompanyRowType() {
+            Id = "12345",
+            Name = "Customer Account",
+        },
+        CustomFields = new List<CustomField>() {
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
             },
-            new Website() {
-                Id = "12345",
-                Url = "http://example.com",
-                Type = WebsiteType.Primary,
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
             },
         },
-        DebtorId = "12345",
+        Tags = new List<string>() {
+            "New",
+        },
+        ReadOnly = false,
+        Salutation = "Mr",
+        Birthday = LocalDate.FromDateTime(System.DateTime.Parse("2000-08-12")),
         PassThrough = new List<PassThroughBody>() {
+            new PassThroughBody() {
+                ServiceId = "<id>",
+                ExtendPaths = new List<ExtendPaths>() {
+                    new ExtendPaths() {
+                        Path = "$.nested.property",
+                        Value = new Dictionary<string, object>() {
+                            { "TaxClassificationRef", new Dictionary<string, object>() {
+                                { "value", "EUC-99990201-V1-00020000" },
+                            } },
+                        },
+                    },
+                },
+            },
             new PassThroughBody() {
                 ServiceId = "<id>",
                 ExtendPaths = new List<ExtendPaths>() {
@@ -515,20 +630,20 @@ HrisCompaniesUpdateRequest req = new HrisCompaniesUpdateRequest() {
     },
 };
 
-var res = await sdk.Hris.Companies.UpdateAsync(req);
+var res = await sdk.Crm.Companies.UpdateAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [HrisCompaniesUpdateRequest](../../Models/Requests/HrisCompaniesUpdateRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [CrmCompaniesUpdateRequest](../../Models/Requests/CrmCompaniesUpdateRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
 ### Response
 
-**[HrisCompaniesUpdateResponse](../../Models/Requests/HrisCompaniesUpdateResponse.md)**
+**[CrmCompaniesUpdateResponse](../../Models/Requests/CrmCompaniesUpdateResponse.md)**
 
 ### Errors
 
@@ -543,11 +658,11 @@ var res = await sdk.Hris.Companies.UpdateAsync(req);
 
 ## Delete
 
-Delete Company
+Delete company
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="hris.companiesDelete" method="delete" path="/hris/companies/{id}" -->
+<!-- UsageSnippet language="csharp" operationID="crm.companiesDelete" method="delete" path="/crm/companies/{id}" -->
 ```csharp
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
@@ -559,25 +674,25 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-HrisCompaniesDeleteRequest req = new HrisCompaniesDeleteRequest() {
+CrmCompaniesDeleteRequest req = new CrmCompaniesDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
 };
 
-var res = await sdk.Hris.Companies.DeleteAsync(req);
+var res = await sdk.Crm.Companies.DeleteAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [HrisCompaniesDeleteRequest](../../Models/Requests/HrisCompaniesDeleteRequest.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [CrmCompaniesDeleteRequest](../../Models/Requests/CrmCompaniesDeleteRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
 ### Response
 
-**[HrisCompaniesDeleteResponse](../../Models/Requests/HrisCompaniesDeleteResponse.md)**
+**[CrmCompaniesDeleteResponse](../../Models/Requests/CrmCompaniesDeleteResponse.md)**
 
 ### Errors
 

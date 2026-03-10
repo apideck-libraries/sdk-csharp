@@ -48,5 +48,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("events")]
         public List<WebhookEventType> Events { get; set; } = default!;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

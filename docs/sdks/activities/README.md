@@ -165,14 +165,12 @@ CrmActivitiesAddRequest req = new CrmActivitiesAddRequest() {
         VideoConferenceUrl = "https://us02web.zoom.us/j/88120759396",
         VideoConferenceId = "zoom:88120759396",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = null,
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = null,
+            },
         },
         Attendees = new List<ActivityAttendeeInput>() {
             new ActivityAttendeeInput() {
@@ -371,26 +369,22 @@ CrmActivitiesUpdateRequest req = new CrmActivitiesUpdateRequest() {
         VideoConferenceUrl = "https://us02web.zoom.us/j/88120759396",
         VideoConferenceId = "zoom:88120759396",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         Attendees = new List<ActivityAttendeeInput>() {
             new ActivityAttendeeInput() {

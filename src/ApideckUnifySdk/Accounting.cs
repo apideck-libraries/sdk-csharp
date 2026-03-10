@@ -34,7 +34,11 @@ namespace ApideckUnifySdk
 
         public IPayments Payments { get; }
 
+        public IRefunds Refunds { get; }
+
         public ICompanyInfo CompanyInfo { get; }
+
+        public ICompanies Companies { get; }
 
         public IBalanceSheet BalanceSheet { get; }
 
@@ -144,10 +148,22 @@ namespace ApideckUnifySdk
         public IPayments Payments { get; private set; }
 
         /// <summary>
+        /// Refunds SubSDK.
+        /// <see cref="IRefunds"/>
+        /// </summary>
+        public IRefunds Refunds { get; private set; }
+
+        /// <summary>
         /// CompanyInfo SubSDK.
         /// <see cref="ICompanyInfo"/>
         /// </summary>
         public ICompanyInfo CompanyInfo { get; private set; }
+
+        /// <summary>
+        /// Companies SubSDK.
+        /// <see cref="ICompanies"/>
+        /// </summary>
+        public ICompanies Companies { get; private set; }
 
         /// <summary>
         /// BalanceSheet SubSDK.
@@ -293,7 +309,9 @@ namespace ApideckUnifySdk
             Customers = new Customers(SDKConfiguration);
             Suppliers = new Suppliers(SDKConfiguration);
             Payments = new Payments(SDKConfiguration);
+            Refunds = new Refunds(SDKConfiguration);
             CompanyInfo = new CompanyInfo(SDKConfiguration);
+            Companies = new Companies(SDKConfiguration);
             BalanceSheet = new BalanceSheet(SDKConfiguration);
             ProfitAndLoss = new ProfitAndLoss(SDKConfiguration);
             JournalEntries = new JournalEntries(SDKConfiguration);

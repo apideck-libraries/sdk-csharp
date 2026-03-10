@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new SuppliersFilter() {
         CompanyName = "SpaceX",
         DisplayName = "Elon Musk",
@@ -102,6 +103,7 @@ var sdk = new Apideck(
 
 AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Supplier = new SupplierInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -214,26 +216,22 @@ AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
         PaymentMethod = "cash",
         Channel = "email",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -315,6 +313,7 @@ var sdk = new Apideck(
 AccountingSuppliersOneRequest req = new AccountingSuppliersOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -366,6 +365,7 @@ var sdk = new Apideck(
 AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Supplier = new SupplierInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -481,26 +481,22 @@ AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
         PaymentMethod = "cash",
         Channel = "email",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -569,6 +565,7 @@ var sdk = new Apideck(
 AccountingSuppliersDeleteRequest req = new AccountingSuppliersDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Suppliers.DeleteAsync(req);

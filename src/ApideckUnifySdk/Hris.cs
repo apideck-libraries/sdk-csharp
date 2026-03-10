@@ -18,7 +18,7 @@ namespace ApideckUnifySdk
     {
         public IApideckEmployees Employees { get; }
 
-        public IApideckCompanies Companies { get; }
+        public IApideckHrisCompanies Companies { get; }
 
         public IApideckDepartments Departments { get; }
 
@@ -47,9 +47,9 @@ namespace ApideckUnifySdk
 
         /// <summary>
         /// Companies SubSDK.
-        /// <see cref="IApideckCompanies"/>
+        /// <see cref="IApideckHrisCompanies"/>
         /// </summary>
-        public IApideckCompanies Companies { get; private set; }
+        public IApideckHrisCompanies Companies { get; private set; }
 
         /// <summary>
         /// Departments SubSDK.
@@ -85,7 +85,7 @@ namespace ApideckUnifySdk
         {
             SDKConfiguration = config;
             Employees = new ApideckEmployees(SDKConfiguration);
-            Companies = new ApideckCompanies(SDKConfiguration);
+            Companies = new ApideckHrisCompanies(SDKConfiguration);
             Departments = new ApideckDepartments(SDKConfiguration);
             Payrolls = new Payrolls(SDKConfiguration);
             EmployeePayrolls = new EmployeePayrolls(SDKConfiguration);

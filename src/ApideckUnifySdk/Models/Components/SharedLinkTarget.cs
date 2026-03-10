@@ -23,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         /// A unique identifier for an object.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
         /// The name of the file.
@@ -36,5 +36,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("type")]
         public FileType? Type { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

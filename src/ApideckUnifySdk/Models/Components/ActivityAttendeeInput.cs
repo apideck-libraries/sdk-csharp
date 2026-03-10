@@ -72,5 +72,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("status")]
         public ActivityAttendeeStatus? Status { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

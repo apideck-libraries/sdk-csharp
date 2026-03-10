@@ -29,12 +29,15 @@ namespace ApideckUnifySdk.Models.Components
         /// The website URL.
         /// </summary>
         [JsonProperty("url")]
-        public string Url { get; set; } = default!;
+        public string? Url { get; set; }
 
         /// <summary>
         /// The type of website.
         /// </summary>
         [JsonProperty("type")]
         public WebsiteType? Type { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

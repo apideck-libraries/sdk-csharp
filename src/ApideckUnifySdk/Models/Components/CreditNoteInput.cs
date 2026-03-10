@@ -77,7 +77,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Amount of transaction.
         /// </summary>
         [JsonProperty("total_amount")]
-        public double TotalAmount { get; set; } = default!;
+        public double? TotalAmount { get; set; }
 
         /// <summary>
         /// Total tax amount applied to this invoice.
@@ -154,6 +154,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("terms")]
         public string? Terms { get; set; } = null;
 
+        /// <summary>
+        /// The ID of the payment terms.
+        /// </summary>
+        [JsonProperty("terms_id")]
+        public string? TermsId { get; set; } = null;
+
         [JsonProperty("billing_address")]
         public Address? BillingAddress { get; set; }
 
@@ -180,5 +186,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

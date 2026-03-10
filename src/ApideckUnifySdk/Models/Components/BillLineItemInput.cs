@@ -198,5 +198,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("worktags")]
         public List<LinkedWorktag?>? Worktags { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

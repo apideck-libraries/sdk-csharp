@@ -19,8 +19,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// A unique identifier for an object.
         /// </summary>
-        [JsonProperty("employee_id", NullValueHandling = NullValueHandling.Include)]
-        public string? EmployeeId { get; set; }
+        [JsonProperty("employee_id")]
+        public string? EmployeeId { get; set; } = null;
 
         /// <summary>
         /// The employee's net pay. Only available when payroll has been processed.
@@ -51,5 +51,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("benefits")]
         public List<Benefit>? Benefits { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

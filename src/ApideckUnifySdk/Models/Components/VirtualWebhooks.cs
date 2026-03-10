@@ -30,5 +30,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("resources")]
         public Dictionary<string, WebhookSupportResources>? Resources { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

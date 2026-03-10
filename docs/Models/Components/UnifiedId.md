@@ -7,4 +7,4 @@ A object containing a unique identifier for the resource that was created, updat
 
 | Field                                 | Type                                  | Required                              | Description                           | Example                               |
 | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `Id`                                  | *string*                              | :heavy_check_mark:                    | The unique identifier of the resource | 12345                                 |
+| `Id`                                  | *string*                              | :heavy_minus_sign:                    | The unique identifier of the resource | 12345                                 |

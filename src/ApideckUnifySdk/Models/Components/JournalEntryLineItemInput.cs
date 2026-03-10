@@ -47,7 +47,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Debit entries are considered positive, and credit entries are considered negative.
         /// </summary>
         [JsonProperty("type")]
-        public JournalEntryLineItemType Type { get; set; } = default!;
+        public JournalEntryLineItemType? Type { get; set; }
 
         [JsonProperty("tax_rate")]
         public LinkedTaxRateInput? TaxRate { get; set; }
@@ -62,8 +62,8 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("tracking_categories")]
         public List<LinkedTrackingCategory?>? TrackingCategories { get; set; } = null;
 
-        [JsonProperty("ledger_account", NullValueHandling = NullValueHandling.Include)]
-        public LinkedLedgerAccount? LedgerAccount { get; set; }
+        [JsonProperty("ledger_account")]
+        public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
         /// <summary>
         /// The customer this entity is linked to.
@@ -100,5 +100,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("worktags")]
         public List<LinkedWorktag?>? Worktags { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

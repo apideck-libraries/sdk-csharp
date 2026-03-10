@@ -1,5 +1,13 @@
 # ConnectorSettingType
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = ConnectorSettingType.Text;
+```
+
 
 ## Values
 

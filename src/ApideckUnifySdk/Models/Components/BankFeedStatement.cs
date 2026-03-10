@@ -23,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         /// A unique identifier for an object.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
         /// The ID of the bank feed account this statement belongs to.
@@ -102,5 +102,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("updated_by")]
         public string? UpdatedBy { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

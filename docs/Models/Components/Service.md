@@ -9,3 +9,4 @@ Apideck service provider associated with request.
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `Id`                           | *string*                       | :heavy_check_mark:             | Apideck service provider id.   | apideck-vault                  |
 | `Name`                         | *string*                       | :heavy_check_mark:             | Apideck service provider name. | Apideck Vault                  |
+| `AdditionalProperties`         | Dictionary<String, *object*>   | :heavy_minus_sign:             | N/A                            |                                |

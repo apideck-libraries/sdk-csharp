@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class UpdateConsentRequest
     {
@@ -23,5 +24,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("granted")]
         public bool Granted { get; set; } = default!;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

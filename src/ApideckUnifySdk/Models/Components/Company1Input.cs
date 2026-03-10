@@ -23,8 +23,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// Name of the company.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string? Name { get; set; }
+        [JsonProperty("name")]
+        public string? Name { get; set; } = null;
 
         /// <summary>
         /// Owner ID.
@@ -184,5 +184,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

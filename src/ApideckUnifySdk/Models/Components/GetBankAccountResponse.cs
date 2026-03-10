@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Bank Account.
@@ -50,5 +51,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("data")]
         public AccountingBankAccount Data { get; set; } = default!;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

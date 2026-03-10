@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class Schedule
     {
@@ -19,21 +20,24 @@ namespace ApideckUnifySdk.Models.Components
         /// A unique identifier for an object.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
 
         /// <summary>
         /// The start date, inclusive, of the schedule period.
         /// </summary>
         [JsonProperty("start_date")]
-        public string StartDate { get; set; } = default!;
+        public string? StartDate { get; set; }
 
         /// <summary>
         /// The end date, inclusive, of the schedule period.
         /// </summary>
         [JsonProperty("end_date")]
-        public string EndDate { get; set; } = default!;
+        public string? EndDate { get; set; }
 
         [JsonProperty("work_pattern")]
-        public WorkPattern WorkPattern { get; set; } = default!;
+        public WorkPattern? WorkPattern { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

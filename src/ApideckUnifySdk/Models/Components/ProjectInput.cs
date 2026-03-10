@@ -24,7 +24,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Name of the project.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; } = default!;
+        public string? Name { get; set; }
 
         /// <summary>
         /// User-friendly project identifier.
@@ -229,5 +229,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("row_version")]
         public string? RowVersion { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

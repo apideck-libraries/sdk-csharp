@@ -45,5 +45,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("custom_consumer_settings")]
         public Dictionary<string, object>? CustomConsumerSettings { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

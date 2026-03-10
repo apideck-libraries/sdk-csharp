@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
 
     public class UploadSession
     {
@@ -47,5 +48,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("expires_at")]
         public DateTime? ExpiresAt { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

@@ -75,6 +75,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Terms { get; set; } = null;
 
         /// <summary>
+        /// The ID of the payment terms.
+        /// </summary>
+        [JsonProperty("terms_id")]
+        public string? TermsId { get; set; } = null;
+
+        /// <summary>
         /// Optional reference identifier for the transaction.
         /// </summary>
         [JsonProperty("reference")]
@@ -187,5 +193,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

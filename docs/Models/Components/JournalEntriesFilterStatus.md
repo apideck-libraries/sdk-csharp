@@ -1,5 +1,16 @@
 # JournalEntriesFilterStatus
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = JournalEntriesFilterStatus.Draft;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = JournalEntriesFilterStatus.Of("custom_value");
+```
+
 
 ## Values
 

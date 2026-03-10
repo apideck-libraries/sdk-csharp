@@ -23,13 +23,13 @@ namespace ApideckUnifySdk.Models.Components
         /// The phone number that initiated the message.
         /// </summary>
         [JsonProperty("from")]
-        public string From { get; set; } = default!;
+        public string? From { get; set; }
 
         /// <summary>
         /// The phone number that received the message.
         /// </summary>
         [JsonProperty("to")]
-        public string To { get; set; } = default!;
+        public string? To { get; set; }
 
         [JsonProperty("subject")]
         public string? Subject { get; set; }
@@ -38,7 +38,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The message text.
         /// </summary>
         [JsonProperty("body")]
-        public string Body { get; set; } = default!;
+        public string? Body { get; set; }
 
         /// <summary>
         /// Set to sms for SMS messages and mms for MMS messages.
@@ -75,5 +75,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

@@ -2,6 +2,17 @@
 
 The gender represents the gender identity of a person.
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = Gender.Male;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = Gender.Of("custom_value");
+```
+
 
 ## Values
 

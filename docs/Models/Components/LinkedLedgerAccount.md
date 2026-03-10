@@ -11,3 +11,4 @@
 | `Code`                                 | *string*                               | :heavy_minus_sign:                     | The code assigned to the account.      | 453                                    |
 | `ParentId`                             | *string*                               | :heavy_minus_sign:                     | The parent ID of the account.          | 123456                                 |
 | `DisplayId`                            | *string*                               | :heavy_minus_sign:                     | The display ID of the account.         | 123456                                 |
+| `AdditionalProperties`                 | Dictionary<String, *object*>           | :heavy_minus_sign:                     | N/A                                    |                                        |

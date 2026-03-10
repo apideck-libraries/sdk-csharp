@@ -17,6 +17,9 @@ namespace ApideckUnifySdk.Models.Components
     public class BalanceSheet
     {
         [JsonProperty("reports")]
-        public List<Reports> Reports { get; set; } = default!;
+        public List<Reports>? Reports { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

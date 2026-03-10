@@ -39,5 +39,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("status")]
         public EcommerceOrderStatus? Status { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

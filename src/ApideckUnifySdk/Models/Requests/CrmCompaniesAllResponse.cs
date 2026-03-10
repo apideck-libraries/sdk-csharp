@@ -24,7 +24,7 @@ namespace ApideckUnifySdk.Models.Requests
         /// <summary>
         /// Companies.
         /// </summary>
-        public GetCompaniesResponse? GetCompaniesResponse { get; set; }
+        public GetCompaniesResponse1? GetCompaniesResponse1 { get; set; }
 
         /// <summary>
         /// Unexpected error.

@@ -130,8 +130,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The type of the activity.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public ActivityType? Type { get; set; }
+        [JsonProperty("type")]
+        public ActivityType? Type { get; set; } = null;
 
         /// <summary>
         /// The title of the activity.
@@ -321,5 +321,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

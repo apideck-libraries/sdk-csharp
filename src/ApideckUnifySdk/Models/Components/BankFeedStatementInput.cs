@@ -72,5 +72,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("transactions")]
         public List<Transactions>? Transactions { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

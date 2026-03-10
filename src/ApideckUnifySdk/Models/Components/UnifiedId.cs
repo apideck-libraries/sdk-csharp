@@ -21,6 +21,6 @@ namespace ApideckUnifySdk.Models.Components
         /// The unique identifier of the resource.
         /// </summary>
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public string? Id { get; set; }
     }
 }

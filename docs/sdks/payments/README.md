@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingPaymentsAllRequest req = new AccountingPaymentsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new PaymentsFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         InvoiceId = "123",
@@ -99,6 +100,7 @@ var sdk = new Apideck(
 
 AccountingPaymentsAddRequest req = new AccountingPaymentsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Payment = new PaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
@@ -152,16 +154,14 @@ AccountingPaymentsAddRequest req = new AccountingPaymentsAddRequest() {
             },
         },
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         DisplayId = "123456",
@@ -238,6 +238,7 @@ var sdk = new Apideck(
 AccountingPaymentsOneRequest req = new AccountingPaymentsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -290,6 +291,7 @@ var sdk = new Apideck(
 AccountingPaymentsUpdateRequest req = new AccountingPaymentsUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Payment = new PaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
@@ -342,26 +344,22 @@ AccountingPaymentsUpdateRequest req = new AccountingPaymentsUpdateRequest() {
             },
         },
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         DisplayId = "123456",
@@ -430,6 +428,7 @@ var sdk = new Apideck(
 AccountingPaymentsDeleteRequest req = new AccountingPaymentsDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Payments.DeleteAsync(req);

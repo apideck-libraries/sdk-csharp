@@ -2,6 +2,17 @@
 
 Current status of the project
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = ProjectProjectStatus.Active;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = ProjectProjectStatus.Of("custom_value");
+```
+
 
 ## Values
 

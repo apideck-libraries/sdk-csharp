@@ -143,6 +143,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Terms { get; set; } = null;
 
         /// <summary>
+        /// The ID of the payment terms.
+        /// </summary>
+        [JsonProperty("terms_id")]
+        public string? TermsId { get; set; } = null;
+
+        /// <summary>
         /// The channel through which the transaction is processed.
         /// </summary>
         [JsonProperty("channel")]
@@ -192,5 +198,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("integration_system_id")]
         public string? IntegrationSystemId { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

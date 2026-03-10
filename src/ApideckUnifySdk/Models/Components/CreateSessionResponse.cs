@@ -39,5 +39,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("_raw")]
         public Dictionary<string, object>? Raw { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

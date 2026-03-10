@@ -61,8 +61,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The quantity of the product or variant associated with the line item.
         /// </summary>
-        [JsonProperty("quantity", NullValueHandling = NullValueHandling.Include)]
-        public string? Quantity { get; set; }
+        [JsonProperty("quantity")]
+        public string? Quantity { get; set; } = null;
 
         /// <summary>
         /// The unit price of the product or variant associated with the line item.

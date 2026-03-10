@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingLedgerAccountsAllRequest req = new AccountingLedgerAccountsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new LedgerAccountsFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
@@ -98,6 +99,7 @@ var sdk = new Apideck(
 
 AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
@@ -140,16 +142,14 @@ AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest(
         SubAccount = false,
         LastReconciliationDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -243,6 +243,7 @@ var sdk = new Apideck(
 AccountingLedgerAccountsOneRequest req = new AccountingLedgerAccountsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -295,6 +296,7 @@ var sdk = new Apideck(
 AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
@@ -337,26 +339,22 @@ AccountingLedgerAccountsUpdateRequest req = new AccountingLedgerAccountsUpdateRe
         SubAccount = false,
         LastReconciliationDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         RowVersion = "1-12345",
         PassThrough = new List<PassThroughBody>() {
@@ -432,6 +430,7 @@ var sdk = new Apideck(
 AccountingLedgerAccountsDeleteRequest req = new AccountingLedgerAccountsDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.LedgerAccounts.DeleteAsync(req);

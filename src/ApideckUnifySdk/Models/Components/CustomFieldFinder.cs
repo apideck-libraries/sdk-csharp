@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class CustomFieldFinder
     {
@@ -43,5 +44,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("finder")]
         public string? Finder { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

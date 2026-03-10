@@ -1,21 +1,20 @@
-speakeasyVersion: 1.730.1
+speakeasyVersion: 1.750.0
 sources:
     Apideck:
         sourceNamespace: apideck
-        sourceRevisionDigest: sha256:0921989ae6eefad00cd2f8f57dd570e7379873127dec5baf290b2cd36e6677b0
-        sourceBlobDigest: sha256:5e8963221997e9911ebc2b4eb25b29439c3ea9f165a15465534e2fc29980b483
+        sourceRevisionDigest: sha256:6e6bd01e3ea787183ad42bd9baa086f1b3daf3153614e4465bebac8998f76fa7
+        sourceBlobDigest: sha256:ab42f47d11232c48d14f884fe2caecc4ffc9c0df6b7ce2840c91a48d0a09c7bc
         tags:
             - latest
-            - speakeasy-sdk-regen-1771345449
-            - 10.23.21
+            - 10.24.1
 targets:
     apideck:
         source: Apideck
         sourceNamespace: apideck
-        sourceRevisionDigest: sha256:0921989ae6eefad00cd2f8f57dd570e7379873127dec5baf290b2cd36e6677b0
-        sourceBlobDigest: sha256:5e8963221997e9911ebc2b4eb25b29439c3ea9f165a15465534e2fc29980b483
+        sourceRevisionDigest: sha256:6e6bd01e3ea787183ad42bd9baa086f1b3daf3153614e4465bebac8998f76fa7
+        sourceBlobDigest: sha256:ab42f47d11232c48d14f884fe2caecc4ffc9c0df6b7ce2840c91a48d0a09c7bc
         codeSamplesNamespace: apideck-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:3ef02eb6fcf951fd6c8ad9576aa09e231483164067f819a5595a1c29747fac4f
+        codeSamplesRevisionDigest: sha256:a762987440cd03d796557fdb9b7a3cf3b5259aa5289e4a3cc7d9c8a1e31b4c92
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

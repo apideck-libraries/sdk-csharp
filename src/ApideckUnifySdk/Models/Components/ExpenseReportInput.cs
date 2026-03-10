@@ -42,7 +42,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The employee who submitted the expense report.
         /// </summary>
         [JsonProperty("employee")]
-        public ExpenseReportEmployee Employee { get; set; } = default!;
+        public ExpenseReportEmployee? Employee { get; set; }
 
         /// <summary>
         /// The status of the expense report.
@@ -53,8 +53,8 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// The date of the transaction - YYYY:MM::DDThh:mm:ss.sTZD.
         /// </summary>
-        [JsonProperty("transaction_date", NullValueHandling = NullValueHandling.Include)]
-        public DateTime? TransactionDate { get; set; }
+        [JsonProperty("transaction_date")]
+        public DateTime? TransactionDate { get; set; } = null;
 
         /// <summary>
         /// The date the expense report was posted to the general ledger.
@@ -129,7 +129,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Expense line items linked to this expense report.
         /// </summary>
         [JsonProperty("line_items")]
-        public List<ExpenseReportLineItemInput> LineItems { get; set; } = default!;
+        public List<ExpenseReportLineItemInput>? LineItems { get; set; }
 
         [JsonProperty("subsidiary")]
         public LinkedSubsidiaryInput? Subsidiary { get; set; } = null;
@@ -166,5 +166,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

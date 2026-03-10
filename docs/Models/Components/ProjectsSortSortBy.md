@@ -2,6 +2,17 @@
 
 The field to sort by
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = ProjectsSortSortBy.Name;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = ProjectsSortSortBy.Of("custom_value");
+```
+
 
 ## Values
 

@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingJournalEntriesAllRequest req = new AccountingJournalEntriesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new JournalEntriesFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
@@ -98,6 +99,7 @@ var sdk = new Apideck(
 
 AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     JournalEntry = new JournalEntryInput() {
         Title = "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry",
         CurrencyRate = 0.69D,
@@ -184,16 +186,14 @@ AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest(
         AccountingPeriod = "01-24",
         RowVersion = "1-12345",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -334,6 +334,7 @@ var sdk = new Apideck(
 AccountingJournalEntriesOneRequest req = new AccountingJournalEntriesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -386,6 +387,7 @@ var sdk = new Apideck(
 AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     JournalEntry = new JournalEntryInput() {
         Title = "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry",
         CurrencyRate = 0.69D,
@@ -481,16 +483,14 @@ AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRe
         AccountingPeriod = "01-24",
         RowVersion = "1-12345",
         CustomFields = new List<CustomField>() {
-            CustomField.CreateCustomField1(
-                new CustomField1() {
-                    Id = "2389328923893298",
-                    Name = "employee_level",
-                    Description = "Employee Level",
-                    Value = CustomField1Value.CreateStr(
-                        "Uses Salesforce and Marketo"
-                    ),
-                }
-            ),
+            new CustomField() {
+                Id = "2389328923893298",
+                Name = "employee_level",
+                Description = "Employee Level",
+                Value = Value.CreateStr(
+                    "Uses Salesforce and Marketo"
+                ),
+            },
         },
         PassThrough = new List<PassThroughBody>() {
             new PassThroughBody() {
@@ -586,6 +586,7 @@ var sdk = new Apideck(
 AccountingJournalEntriesDeleteRequest req = new AccountingJournalEntriesDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.JournalEntries.DeleteAsync(req);

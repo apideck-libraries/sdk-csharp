@@ -54,5 +54,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("emails")]
         public List<Email>? Emails { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

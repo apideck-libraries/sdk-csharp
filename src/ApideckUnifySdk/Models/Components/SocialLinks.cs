@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class SocialLinks
     {
@@ -31,5 +32,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("type")]
         public string? Type { get; set; } = null;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

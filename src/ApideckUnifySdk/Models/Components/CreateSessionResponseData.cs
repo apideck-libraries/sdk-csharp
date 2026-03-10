@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Components
 {
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class CreateSessionResponseData
     {
@@ -19,5 +20,8 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("session_token")]
         public string SessionToken { get; set; } = default!;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

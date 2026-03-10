@@ -19,11 +19,11 @@ namespace ApideckUnifySdk.Models.Components
 
     public class ApplicationInput
     {
-        [JsonProperty("applicant_id", NullValueHandling = NullValueHandling.Include)]
-        public string? ApplicantId { get; set; }
+        [JsonProperty("applicant_id")]
+        public string? ApplicantId { get; set; } = null;
 
-        [JsonProperty("job_id", NullValueHandling = NullValueHandling.Include)]
-        public string? JobId { get; set; }
+        [JsonProperty("job_id")]
+        public string? JobId { get; set; } = null;
 
         [JsonProperty("status")]
         public ApplicationStatus? Status { get; set; } = null;
@@ -36,5 +36,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("pass_through")]
         public List<PassThroughBody>? PassThrough { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

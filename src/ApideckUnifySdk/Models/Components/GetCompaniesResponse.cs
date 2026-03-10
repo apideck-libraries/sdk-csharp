@@ -50,7 +50,7 @@ namespace ApideckUnifySdk.Models.Components
         public string Operation { get; set; } = default!;
 
         [JsonProperty("data")]
-        public List<Company1> Data { get; set; } = default!;
+        public List<AccountingConnectionCompany> Data { get; set; } = default!;
 
         /// <summary>
         /// Response metadata.
@@ -63,11 +63,5 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("links")]
         public Links? Links { get; set; }
-
-        /// <summary>
-        /// Raw response from the integration when raw=true query param is provided.
-        /// </summary>
-        [JsonProperty("_raw")]
-        public Dictionary<string, object>? Raw { get; set; } = null;
     }
 }

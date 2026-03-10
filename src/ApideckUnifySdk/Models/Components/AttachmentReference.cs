@@ -27,5 +27,8 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }
