@@ -177,6 +177,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Terms { get; set; } = null;
 
         /// <summary>
+        /// The ID of the payment terms.
+        /// </summary>
+        [JsonProperty("terms_id")]
+        public string? TermsId { get; set; } = null;
+
+        /// <summary>
         /// Type of amortization.
         /// </summary>
         [JsonProperty("amortization_type")]

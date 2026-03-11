@@ -27,6 +27,7 @@ var sdk = new Apideck(
 
 AccountingProfitAndLossOneRequest req = new AccountingProfitAndLossOneRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new ProfitAndLossFilter() {
         CustomerId = "123abc",
         StartDate = "2021-01-01",

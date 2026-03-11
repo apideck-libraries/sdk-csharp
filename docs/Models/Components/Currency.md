@@ -2,6 +2,17 @@
 
 Indicates the associated currency for an amount of money. Values correspond to [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217).
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = Currency.UnknownCurrency;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = Currency.Of("custom_value");
+```
+
 
 ## Values
 

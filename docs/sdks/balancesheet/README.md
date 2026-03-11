@@ -27,6 +27,7 @@ var sdk = new Apideck(
 
 AccountingBalanceSheetOneRequest req = new AccountingBalanceSheetOneRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },

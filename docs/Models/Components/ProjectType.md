@@ -2,6 +2,17 @@
 
 Type or category of the project
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = ProjectType.ClientProject;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = ProjectType.Of("custom_value");
+```
+
 
 ## Values
 

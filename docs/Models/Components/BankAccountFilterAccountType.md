@@ -2,6 +2,17 @@
 
 Filter by account type
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = BankAccountFilterAccountType.Checking;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = BankAccountFilterAccountType.Of("custom_value");
+```
+
 
 ## Values
 

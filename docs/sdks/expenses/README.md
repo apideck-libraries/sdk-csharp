@@ -31,6 +31,7 @@ var sdk = new Apideck(
 
 AccountingExpensesAllRequest req = new AccountingExpensesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new ExpensesFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Status = ExpensesFilterStatus.Draft,
@@ -91,6 +92,7 @@ var sdk = new Apideck(
 
 AccountingExpensesAddRequest req = new AccountingExpensesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Expense = new ExpenseInput() {
         Number = "OIT00546",
         TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
@@ -280,6 +282,7 @@ var sdk = new Apideck(
 AccountingExpensesOneRequest req = new AccountingExpensesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Expenses.GetAsync(req);

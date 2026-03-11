@@ -93,6 +93,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Terms { get; set; } = null;
 
         /// <summary>
+        /// The ID of the payment terms.
+        /// </summary>
+        [JsonProperty("terms_id")]
+        public string? TermsId { get; set; } = null;
+
+        /// <summary>
         /// A PO Number uniquely identifies a purchase order and is generally defined by the buyer. The buyer will match the PO number in the invoice to the Purchase Order.
         /// </summary>
         [JsonProperty("po_number")]

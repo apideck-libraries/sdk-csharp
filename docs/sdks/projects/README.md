@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingProjectsAllRequest req = new AccountingProjectsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new ProjectsFilter() {
         Name = "Website Redesign",
         Status = ProjectStatus.Active,
@@ -100,6 +101,7 @@ var sdk = new Apideck(
 
 AccountingProjectsAddRequest req = new AccountingProjectsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Project = new ProjectInput() {
         Name = "Website Redesign Project",
         DisplayId = "PROJ-001",
@@ -250,6 +252,7 @@ var sdk = new Apideck(
 AccountingProjectsOneRequest req = new AccountingProjectsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Projects.GetAsync(req);
@@ -301,6 +304,7 @@ var sdk = new Apideck(
 AccountingProjectsUpdateRequest req = new AccountingProjectsUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Project = new ProjectInput() {
         Name = "Website Redesign Project",
         DisplayId = "PROJ-001",
@@ -447,6 +451,7 @@ var sdk = new Apideck(
 AccountingProjectsDeleteRequest req = new AccountingProjectsDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Projects.DeleteAsync(req);

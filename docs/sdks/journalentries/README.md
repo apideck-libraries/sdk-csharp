@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingJournalEntriesAllRequest req = new AccountingJournalEntriesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new JournalEntriesFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
@@ -98,6 +99,7 @@ var sdk = new Apideck(
 
 AccountingJournalEntriesAddRequest req = new AccountingJournalEntriesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     JournalEntry = new JournalEntryInput() {
         Title = "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry",
         CurrencyRate = 0.69D,
@@ -334,6 +336,7 @@ var sdk = new Apideck(
 AccountingJournalEntriesOneRequest req = new AccountingJournalEntriesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -386,6 +389,7 @@ var sdk = new Apideck(
 AccountingJournalEntriesUpdateRequest req = new AccountingJournalEntriesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     JournalEntry = new JournalEntryInput() {
         Title = "Purchase Invoice-Inventory (USD): 2019/02/01 Batch Summary Entry",
         CurrencyRate = 0.69D,
@@ -586,6 +590,7 @@ var sdk = new Apideck(
 AccountingJournalEntriesDeleteRequest req = new AccountingJournalEntriesDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.JournalEntries.DeleteAsync(req);

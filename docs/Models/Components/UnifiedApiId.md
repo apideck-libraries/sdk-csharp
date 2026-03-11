@@ -2,6 +2,17 @@
 
 Name of Apideck Unified API
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = UnifiedApiId.Accounting;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = UnifiedApiId.Of("custom_value");
+```
+
 
 ## Values
 

@@ -2,6 +2,17 @@
 
 Current payment status of the order.
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = EcommerceOrderPaymentStatus.Pending;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = EcommerceOrderPaymentStatus.Of("custom_value");
+```
+
 
 ## Values
 

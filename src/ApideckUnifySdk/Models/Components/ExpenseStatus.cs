@@ -24,12 +24,14 @@ namespace ApideckUnifySdk.Models.Components
     {
         public static readonly ExpenseStatus Draft = new ExpenseStatus("draft");
         public static readonly ExpenseStatus Posted = new ExpenseStatus("posted");
+        public static readonly ExpenseStatus Voided = new ExpenseStatus("voided");
 
         private static readonly Dictionary <string, ExpenseStatus> _knownValues =
             new Dictionary <string, ExpenseStatus> ()
             {
                 ["draft"] = Draft,
-                ["posted"] = Posted
+                ["posted"] = Posted,
+                ["voided"] = Voided
             };
 
         private static readonly ConcurrentDictionary<string, ExpenseStatus> _values =

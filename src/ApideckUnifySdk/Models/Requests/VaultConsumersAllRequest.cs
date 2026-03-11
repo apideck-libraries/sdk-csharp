@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Requests
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
 
     public class VaultConsumersAllRequest
@@ -18,6 +19,12 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-app-id")]
         public string? AppId { get; set; }
+
+        /// <summary>
+        /// Filter results.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
+        public ConsumersFilter? Filter { get; set; }
 
         /// <summary>
         /// Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.

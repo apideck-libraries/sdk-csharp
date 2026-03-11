@@ -27,14 +27,14 @@ namespace ApideckUnifySdk
     public interface IApideckCompanies
     {
         /// <summary>
-        /// List Companies.
+        /// List companies.
         /// </summary>
         /// <remarks>
-        /// List Companies.
+        /// List companies.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesAllRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesAllRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesAllResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesAllResponse"/> response envelope when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
@@ -43,20 +43,20 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisCompaniesAllResponse> ListAsync(
-            HrisCompaniesAllRequest? request = null,
+        public  Task<CrmCompaniesAllResponse> ListAsync(
+            CrmCompaniesAllRequest? request = null,
             RetryConfig? retryConfig = null
         );
 
         /// <summary>
-        /// Create Company.
+        /// Create company.
         /// </summary>
         /// <remarks>
-        /// Create Company.
+        /// Create company.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesAddRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesAddRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesAddResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesAddResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -66,20 +66,20 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisCompaniesAddResponse> CreateAsync(
-            HrisCompaniesAddRequest request,
+        public  Task<CrmCompaniesAddResponse> CreateAsync(
+            CrmCompaniesAddRequest request,
             RetryConfig? retryConfig = null
         );
 
         /// <summary>
-        /// Get Company.
+        /// Get company.
         /// </summary>
         /// <remarks>
-        /// Get Company.
+        /// Get company.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesOneRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesOneRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesOneResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesOneResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -89,17 +89,17 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisCompaniesOneResponse> GetAsync(HrisCompaniesOneRequest request, RetryConfig? retryConfig = null);
+        public  Task<CrmCompaniesOneResponse> GetAsync(CrmCompaniesOneRequest request, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update Company.
+        /// Update company.
         /// </summary>
         /// <remarks>
-        /// Update Company.
+        /// Update company.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesUpdateRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesUpdateRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesUpdateResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesUpdateResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -109,20 +109,20 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisCompaniesUpdateResponse> UpdateAsync(
-            HrisCompaniesUpdateRequest request,
+        public  Task<CrmCompaniesUpdateResponse> UpdateAsync(
+            CrmCompaniesUpdateRequest request,
             RetryConfig? retryConfig = null
         );
 
         /// <summary>
-        /// Delete Company.
+        /// Delete company.
         /// </summary>
         /// <remarks>
-        /// Delete Company.
+        /// Delete company.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesDeleteRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesDeleteRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesDeleteResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesDeleteResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -132,8 +132,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<HrisCompaniesDeleteResponse> DeleteAsync(
-            HrisCompaniesDeleteRequest request,
+        public  Task<CrmCompaniesDeleteResponse> DeleteAsync(
+            CrmCompaniesDeleteRequest request,
             RetryConfig? retryConfig = null
         );
     }
@@ -152,14 +152,14 @@ namespace ApideckUnifySdk
         }
 
         /// <summary>
-        /// List Companies.
+        /// List companies.
         /// </summary>
         /// <remarks>
-        /// List Companies.
+        /// List companies.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesAllRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesAllRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesAllResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesAllResponse"/> response envelope when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
@@ -168,20 +168,20 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisCompaniesAllResponse> ListAsync(
-            HrisCompaniesAllRequest? request = null,
+        public async  Task<CrmCompaniesAllResponse> ListAsync(
+            CrmCompaniesAllRequest? request = null,
             RetryConfig? retryConfig = null
         )
         {
             if (request == null)
             {
-                request = new HrisCompaniesAllRequest();
+                request = new CrmCompaniesAllRequest();
             }
             request.ConsumerId ??= SDKConfiguration.ConsumerId;
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/companies", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/crm/companies", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -197,7 +197,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.companiesAll", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "crm.companiesAll", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -268,7 +268,7 @@ namespace ApideckUnifySdk
 
             httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
 
-            Func<Task<HrisCompaniesAllResponse?>> nextFunc = async delegate()
+            Func<Task<CrmCompaniesAllResponse?>> nextFunc = async delegate()
             {
                 var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
                 var nextCursorToken = body.SelectToken("$.meta.cursors.next");
@@ -284,7 +284,7 @@ namespace ApideckUnifySdk
                     return null;
                 }
 
-                var newRequest = new HrisCompaniesAllRequest
+                var newRequest = new CrmCompaniesAllRequest
                 {
                     Raw = request?.Raw,
                     ConsumerId = request?.ConsumerId,
@@ -292,6 +292,8 @@ namespace ApideckUnifySdk
                     ServiceId = request?.ServiceId,
                     Cursor = nextCursor,
                     Limit = request?.Limit,
+                    Filter = request?.Filter,
+                    Sort = request?.Sort,
                     PassThrough = request?.PassThrough,
                     Fields = request?.Fields
                 };
@@ -309,17 +311,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetHrisCompaniesResponse obj;
+                    GetCompaniesResponse1 obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetHrisCompaniesResponse>(httpResponseBody, NullValueHandling.Include);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetCompaniesResponse1>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetHrisCompaniesResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into GetCompaniesResponse1.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesAllResponse()
+                    var response = new CrmCompaniesAllResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -328,7 +330,7 @@ namespace ApideckUnifySdk
                         },
                         Next = nextFunc
                     };
-                    response.GetHrisCompaniesResponse = obj;
+                    response.GetCompaniesResponse1 = obj;
                     return response;
                 }
 
@@ -457,7 +459,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesAllResponse()
+                    var response = new CrmCompaniesAllResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -476,14 +478,14 @@ namespace ApideckUnifySdk
 
 
         /// <summary>
-        /// Create Company.
+        /// Create company.
         /// </summary>
         /// <remarks>
-        /// Create Company.
+        /// Create company.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesAddRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesAddRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesAddResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesAddResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -493,8 +495,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisCompaniesAddResponse> CreateAsync(
-            HrisCompaniesAddRequest request,
+        public async  Task<CrmCompaniesAddResponse> CreateAsync(
+            CrmCompaniesAddRequest request,
             RetryConfig? retryConfig = null
         )
         {
@@ -503,7 +505,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/companies", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/crm/companies", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -514,7 +516,7 @@ namespace ApideckUnifySdk
                 httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "HrisCompany", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "Company1", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -525,7 +527,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.companiesAdd", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "crm.companiesAdd", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -603,17 +605,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    CreateHrisCompanyResponse obj;
+                    CreateCompanyResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<CreateHrisCompanyResponse>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<CreateCompanyResponse>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into CreateHrisCompanyResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into CreateCompanyResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesAddResponse()
+                    var response = new CrmCompaniesAddResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -621,7 +623,7 @@ namespace ApideckUnifySdk
                             Request = httpRequest
                         }
                     };
-                    response.CreateHrisCompanyResponse = obj;
+                    response.CreateCompanyResponse = obj;
                     return response;
                 }
 
@@ -750,7 +752,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesAddResponse()
+                    var response = new CrmCompaniesAddResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -768,14 +770,14 @@ namespace ApideckUnifySdk
 
 
         /// <summary>
-        /// Get Company.
+        /// Get company.
         /// </summary>
         /// <remarks>
-        /// Get Company.
+        /// Get company.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesOneRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesOneRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesOneResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesOneResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -785,8 +787,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisCompaniesOneResponse> GetAsync(
-            HrisCompaniesOneRequest request,
+        public async  Task<CrmCompaniesOneResponse> GetAsync(
+            CrmCompaniesOneRequest request,
             RetryConfig? retryConfig = null
         )
         {
@@ -795,7 +797,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/companies/{id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/crm/companies/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -811,7 +813,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.companiesOne", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "crm.companiesOne", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -889,17 +891,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    GetHrisCompanyResponse obj;
+                    GetCompanyResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetHrisCompanyResponse>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<GetCompanyResponse>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetHrisCompanyResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into GetCompanyResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesOneResponse()
+                    var response = new CrmCompaniesOneResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -907,7 +909,7 @@ namespace ApideckUnifySdk
                             Request = httpRequest
                         }
                     };
-                    response.GetHrisCompanyResponse = obj;
+                    response.GetCompanyResponse = obj;
                     return response;
                 }
 
@@ -1036,7 +1038,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesOneResponse()
+                    var response = new CrmCompaniesOneResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1054,14 +1056,14 @@ namespace ApideckUnifySdk
 
 
         /// <summary>
-        /// Update Company.
+        /// Update company.
         /// </summary>
         /// <remarks>
-        /// Update Company.
+        /// Update company.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesUpdateRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesUpdateRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesUpdateResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesUpdateResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -1071,8 +1073,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisCompaniesUpdateResponse> UpdateAsync(
-            HrisCompaniesUpdateRequest request,
+        public async  Task<CrmCompaniesUpdateResponse> UpdateAsync(
+            CrmCompaniesUpdateRequest request,
             RetryConfig? retryConfig = null
         )
         {
@@ -1081,7 +1083,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/companies/{id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/crm/companies/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Patch, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1092,7 +1094,7 @@ namespace ApideckUnifySdk
                 httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "HrisCompany", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "Company1", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -1103,7 +1105,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.companiesUpdate", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "crm.companiesUpdate", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1181,17 +1183,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    UpdateHrisCompanyResponse obj;
+                    UpdateCompanyResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<UpdateHrisCompanyResponse>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<UpdateCompanyResponse>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UpdateHrisCompanyResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into UpdateCompanyResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesUpdateResponse()
+                    var response = new CrmCompaniesUpdateResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1199,7 +1201,7 @@ namespace ApideckUnifySdk
                             Request = httpRequest
                         }
                     };
-                    response.UpdateHrisCompanyResponse = obj;
+                    response.UpdateCompanyResponse = obj;
                     return response;
                 }
 
@@ -1328,7 +1330,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesUpdateResponse()
+                    var response = new CrmCompaniesUpdateResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1346,14 +1348,14 @@ namespace ApideckUnifySdk
 
 
         /// <summary>
-        /// Delete Company.
+        /// Delete company.
         /// </summary>
         /// <remarks>
-        /// Delete Company.
+        /// Delete company.
         /// </remarks>
-        /// <param name="request">A <see cref="HrisCompaniesDeleteRequest"/> parameter.</param>
+        /// <param name="request">A <see cref="CrmCompaniesDeleteRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="HrisCompaniesDeleteResponse"/> response envelope when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="CrmCompaniesDeleteResponse"/> response envelope when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -1363,8 +1365,8 @@ namespace ApideckUnifySdk
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
         /// <exception cref="UnprocessableResponse">Unprocessable. Thrown when the API returns a 422 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<HrisCompaniesDeleteResponse> DeleteAsync(
-            HrisCompaniesDeleteRequest request,
+        public async  Task<CrmCompaniesDeleteResponse> DeleteAsync(
+            CrmCompaniesDeleteRequest request,
             RetryConfig? retryConfig = null
         )
         {
@@ -1373,7 +1375,7 @@ namespace ApideckUnifySdk
             request.AppId ??= SDKConfiguration.AppId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/hris/companies/{id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/crm/companies/{id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1389,7 +1391,7 @@ namespace ApideckUnifySdk
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "hris.companiesDelete", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "crm.companiesDelete", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1467,17 +1469,17 @@ namespace ApideckUnifySdk
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    DeleteHrisCompanyResponse obj;
+                    DeleteCompanyResponse obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<DeleteHrisCompanyResponse>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<DeleteCompanyResponse>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into DeleteHrisCompanyResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into DeleteCompanyResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesDeleteResponse()
+                    var response = new CrmCompaniesDeleteResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1485,7 +1487,7 @@ namespace ApideckUnifySdk
                             Request = httpRequest
                         }
                     };
-                    response.DeleteHrisCompanyResponse = obj;
+                    response.DeleteCompanyResponse = obj;
                     return response;
                 }
 
@@ -1614,7 +1616,7 @@ namespace ApideckUnifySdk
                         throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
                     }
 
-                    var response = new HrisCompaniesDeleteResponse()
+                    var response = new CrmCompaniesDeleteResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {

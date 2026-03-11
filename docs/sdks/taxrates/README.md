@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new TaxRatesFilter() {
         Assets = true,
         Equity = true,
@@ -97,6 +98,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAddRequest req = new AccountingTaxRatesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     TaxRate = new TaxRateInput() {
         Id = "1234",
         Name = "GST on Purchases",
@@ -223,6 +225,7 @@ var sdk = new Apideck(
 AccountingTaxRatesOneRequest req = new AccountingTaxRatesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -274,6 +277,7 @@ var sdk = new Apideck(
 AccountingTaxRatesUpdateRequest req = new AccountingTaxRatesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     TaxRate = new TaxRateInput() {
         Id = "1234",
         Name = "GST on Purchases",
@@ -440,6 +444,7 @@ var sdk = new Apideck(
 AccountingTaxRatesDeleteRequest req = new AccountingTaxRatesDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.TaxRates.DeleteAsync(req);

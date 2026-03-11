@@ -2,6 +2,17 @@
 
 Frequency of employee compensation.
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = PaymentFrequency.Weekly;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = PaymentFrequency.Of("custom_value");
+```
+
 
 ## Values
 
