@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingPurchaseOrdersAllRequest req = new AccountingPurchaseOrdersAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },
@@ -98,6 +99,7 @@ var sdk = new Apideck(
 
 AccountingPurchaseOrdersAddRequest req = new AccountingPurchaseOrdersAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     PurchaseOrder = new PurchaseOrderInput() {
         PoNumber = "90000117",
         Reference = "123456",
@@ -481,6 +483,7 @@ var sdk = new Apideck(
 AccountingPurchaseOrdersOneRequest req = new AccountingPurchaseOrdersOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.PurchaseOrders.GetAsync(req);
@@ -532,6 +535,7 @@ var sdk = new Apideck(
 AccountingPurchaseOrdersUpdateRequest req = new AccountingPurchaseOrdersUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     PurchaseOrder = new PurchaseOrderInput() {
         PoNumber = "90000117",
         Reference = "123456",
@@ -871,6 +875,7 @@ var sdk = new Apideck(
 AccountingPurchaseOrdersDeleteRequest req = new AccountingPurchaseOrdersDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.PurchaseOrders.DeleteAsync(req);

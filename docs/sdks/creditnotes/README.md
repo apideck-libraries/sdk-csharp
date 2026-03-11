@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingCreditNotesAllRequest req = new AccountingCreditNotesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new CreditNotesFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
     },
@@ -98,6 +99,7 @@ var sdk = new Apideck(
 
 AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     CreditNote = new CreditNoteInput() {
         Number = "OIT00546",
         Customer = new LinkedCustomerInput() {
@@ -346,6 +348,7 @@ var sdk = new Apideck(
 AccountingCreditNotesOneRequest req = new AccountingCreditNotesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

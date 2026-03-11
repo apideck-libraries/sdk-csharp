@@ -20,25 +20,15 @@ namespace ApideckUnifySdk.Models.Components
     public class ExpensesFilterStatus : IEquatable<ExpensesFilterStatus>
     {
         public static readonly ExpensesFilterStatus Draft = new ExpensesFilterStatus("draft");
-        public static readonly ExpensesFilterStatus PendingApproval = new ExpensesFilterStatus("pending_approval");
-        public static readonly ExpensesFilterStatus Approved = new ExpensesFilterStatus("approved");
         public static readonly ExpensesFilterStatus Posted = new ExpensesFilterStatus("posted");
         public static readonly ExpensesFilterStatus Voided = new ExpensesFilterStatus("voided");
-        public static readonly ExpensesFilterStatus Rejected = new ExpensesFilterStatus("rejected");
-        public static readonly ExpensesFilterStatus Deleted = new ExpensesFilterStatus("deleted");
-        public static readonly ExpensesFilterStatus Other = new ExpensesFilterStatus("other");
 
         private static readonly Dictionary <string, ExpensesFilterStatus> _knownValues =
             new Dictionary <string, ExpensesFilterStatus> ()
             {
                 ["draft"] = Draft,
-                ["pending_approval"] = PendingApproval,
-                ["approved"] = Approved,
                 ["posted"] = Posted,
-                ["voided"] = Voided,
-                ["rejected"] = Rejected,
-                ["deleted"] = Deleted,
-                ["other"] = Other
+                ["voided"] = Voided
             };
 
         private static readonly ConcurrentDictionary<string, ExpensesFilterStatus> _values =

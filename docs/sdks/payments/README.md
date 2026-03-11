@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingPaymentsAllRequest req = new AccountingPaymentsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new PaymentsFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         InvoiceId = "123",
@@ -99,6 +100,7 @@ var sdk = new Apideck(
 
 AccountingPaymentsAddRequest req = new AccountingPaymentsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Payment = new PaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
@@ -238,6 +240,7 @@ var sdk = new Apideck(
 AccountingPaymentsOneRequest req = new AccountingPaymentsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -290,6 +293,7 @@ var sdk = new Apideck(
 AccountingPaymentsUpdateRequest req = new AccountingPaymentsUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Payment = new PaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
@@ -430,6 +434,7 @@ var sdk = new Apideck(
 AccountingPaymentsDeleteRequest req = new AccountingPaymentsDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Payments.DeleteAsync(req);

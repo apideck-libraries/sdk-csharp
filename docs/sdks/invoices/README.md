@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingInvoicesAllRequest req = new AccountingInvoicesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new InvoicesFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         CreatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
@@ -101,6 +102,7 @@ var sdk = new Apideck(
 
 AccountingInvoicesAddRequest req = new AccountingInvoicesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Invoice = new InvoiceInput() {
         Type = InvoiceType.Service,
         Number = "OIT00546",
@@ -382,6 +384,7 @@ var sdk = new Apideck(
 AccountingInvoicesOneRequest req = new AccountingInvoicesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

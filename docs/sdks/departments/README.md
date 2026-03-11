@@ -30,6 +30,7 @@ var sdk = new Apideck(
 
 AccountingDepartmentsAllRequest req = new AccountingDepartmentsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
     Filter = new AccountingDepartmentsFilter() {
         Subsidiary = "1",
@@ -88,6 +89,7 @@ var sdk = new Apideck(
 
 AccountingDepartmentsAddRequest req = new AccountingDepartmentsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     AccountingDepartment = new AccountingDepartmentInput() {
         ParentId = "12345",
         Name = "Sales",
@@ -170,6 +172,7 @@ var sdk = new Apideck(
 AccountingDepartmentsOneRequest req = new AccountingDepartmentsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

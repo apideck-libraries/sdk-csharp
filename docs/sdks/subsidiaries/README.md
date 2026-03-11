@@ -30,6 +30,7 @@ var sdk = new Apideck(
 
 AccountingSubsidiariesAllRequest req = new AccountingSubsidiariesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -85,6 +86,7 @@ var sdk = new Apideck(
 
 AccountingSubsidiariesAddRequest req = new AccountingSubsidiariesAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Subsidiary = new SubsidiaryInput() {
         ParentId = "12345",
         Name = "SpaceX",
@@ -181,6 +183,7 @@ var sdk = new Apideck(
 AccountingSubsidiariesOneRequest req = new AccountingSubsidiariesOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -232,6 +235,7 @@ var sdk = new Apideck(
 AccountingSubsidiariesUpdateRequest req = new AccountingSubsidiariesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Subsidiary = new SubsidiaryInput() {
         ParentId = "12345",
         Name = "SpaceX",
@@ -310,6 +314,7 @@ var sdk = new Apideck(
 AccountingSubsidiariesDeleteRequest req = new AccountingSubsidiariesDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Subsidiaries.DeleteAsync(req);

@@ -2,6 +2,17 @@
 
 The type of the activity
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = ActivityType.Call;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = ActivityType.Of("custom_value");
+```
+
 
 ## Values
 

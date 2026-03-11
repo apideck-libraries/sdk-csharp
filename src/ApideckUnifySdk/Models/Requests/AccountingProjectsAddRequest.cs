@@ -38,6 +38,12 @@ namespace ApideckUnifySdk.Models.Requests
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-service-id")]
         public string? ServiceId { get; set; }
 
+        /// <summary>
+        /// The ID of the company to scope requests to. For connectors that support multi-company, this overrides the default company configured in connection settings.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-company-id")]
+        public string? CompanyId { get; set; }
+
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public ProjectInput Project { get; set; } = default!;
     }

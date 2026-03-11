@@ -58,6 +58,7 @@ namespace ApideckUnifySdk
         /// This endpoint includes all application consumers, along with an aggregated count of requests made.
         /// </remarks>
         /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="filter">Filter results.</param>
         /// <param name="cursor">Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.</param>
         /// <param name="limit">Number of results to return. Minimum 1, Maximum 200, Default 20.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -72,6 +73,7 @@ namespace ApideckUnifySdk
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public  Task<VaultConsumersAllResponse> ListAsync(
             string? appId = null,
+            ConsumersFilter? filter = null,
             string? cursor = null,
             long? limit = 20,
             RetryConfig? retryConfig = null
@@ -474,6 +476,7 @@ namespace ApideckUnifySdk
         /// This endpoint includes all application consumers, along with an aggregated count of requests made.
         /// </remarks>
         /// <param name="appId">The ID of your Unify application.</param>
+        /// <param name="filter">Filter results.</param>
         /// <param name="cursor">Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response.</param>
         /// <param name="limit">Number of results to return. Minimum 1, Maximum 200, Default 20.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -488,6 +491,7 @@ namespace ApideckUnifySdk
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public async  Task<VaultConsumersAllResponse> ListAsync(
             string? appId = null,
+            ConsumersFilter? filter = null,
             string? cursor = null,
             long? limit = 20,
             RetryConfig? retryConfig = null
@@ -496,6 +500,7 @@ namespace ApideckUnifySdk
             var request = new VaultConsumersAllRequest()
             {
                 AppId = appId,
+                Filter = filter,
                 Cursor = cursor,
                 Limit = limit,
             };
@@ -607,6 +612,7 @@ namespace ApideckUnifySdk
 
                 return await ListAsync (
                     appId: request?.AppId,
+                    filter: request?.Filter,
                     cursor: nextCursor,
                     limit: request?.Limit,
                     retryConfig: retryConfig

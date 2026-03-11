@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingSuppliersAllRequest req = new AccountingSuppliersAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new SuppliersFilter() {
         CompanyName = "SpaceX",
         DisplayName = "Elon Musk",
@@ -102,6 +103,7 @@ var sdk = new Apideck(
 
 AccountingSuppliersAddRequest req = new AccountingSuppliersAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Supplier = new SupplierInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -315,6 +317,7 @@ var sdk = new Apideck(
 AccountingSuppliersOneRequest req = new AccountingSuppliersOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 
@@ -366,6 +369,7 @@ var sdk = new Apideck(
 AccountingSuppliersUpdateRequest req = new AccountingSuppliersUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Supplier = new SupplierInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",
@@ -569,6 +573,7 @@ var sdk = new Apideck(
 AccountingSuppliersDeleteRequest req = new AccountingSuppliersDeleteRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
 };
 
 var res = await sdk.Accounting.Suppliers.DeleteAsync(req);

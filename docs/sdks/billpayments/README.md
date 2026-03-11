@@ -32,6 +32,7 @@ var sdk = new Apideck(
 
 AccountingBillPaymentsAllRequest req = new AccountingBillPaymentsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new PaymentsFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         InvoiceId = "123",
@@ -99,6 +100,7 @@ var sdk = new Apideck(
 
 AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     BillPayment = new BillPaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
@@ -290,6 +292,7 @@ var sdk = new Apideck(
 AccountingBillPaymentsOneRequest req = new AccountingBillPaymentsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

@@ -79,7 +79,13 @@ var sdk = new Apideck(
     apiKey: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-VaultConsumersAllResponse? res = await sdk.Vault.Consumers.ListAsync(limit: 20);
+VaultConsumersAllResponse? res = await sdk.Vault.Consumers.ListAsync(
+    filter: new ConsumersFilter() {
+        ConsumerId = "test-consumer",
+        Search = "john",
+    },
+    limit: 20
+);
 
 while(res != null)
 {
@@ -94,6 +100,7 @@ while(res != null)
 | Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      | Example                                                                                                          |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `AppId`                                                                                                          | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | The ID of your Unify application                                                                                 | dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX                                                                          |
+| `Filter`                                                                                                         | [ConsumersFilter](../../Models/Components/ConsumersFilter.md)                                                    | :heavy_minus_sign:                                                                                               | Filter results                                                                                                   |                                                                                                                  |
 | `Cursor`                                                                                                         | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | Cursor to start from. You can find cursors for next/previous pages in the meta.cursors property of the response. |                                                                                                                  |
 | `Limit`                                                                                                          | *long*                                                                                                           | :heavy_minus_sign:                                                                                               | Number of results to return. Minimum 1, Maximum 200, Default 20                                                  |                                                                                                                  |
 

@@ -34,6 +34,12 @@ namespace ApideckUnifySdk.Models.Requests
         public string? ServiceId { get; set; }
 
         /// <summary>
+        /// The ID of the company to scope requests to. For connectors that support multi-company, this overrides the default company configured in connection settings.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-company-id")]
+        public string? CompanyId { get; set; }
+
+        /// <summary>
         /// Optional unmapped key/values that will be passed through to downstream as query parameters. Ie: ?pass_through[search]=leads becomes ?search=leads.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=pass_through")]

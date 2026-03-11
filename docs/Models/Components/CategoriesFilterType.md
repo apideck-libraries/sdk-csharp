@@ -2,6 +2,17 @@
 
 The type of the category.
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = CategoriesFilterType.Supplier;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = CategoriesFilterType.Of("custom_value");
+```
+
 
 ## Values
 

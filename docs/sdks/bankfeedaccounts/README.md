@@ -31,6 +31,7 @@ var sdk = new Apideck(
 
 AccountingBankFeedAccountsAllRequest req = new AccountingBankFeedAccountsAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },
@@ -180,6 +181,7 @@ var sdk = new Apideck(
 AccountingBankFeedAccountsOneRequest req = new AccountingBankFeedAccountsOneRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Fields = "id,updated_at",
 };
 

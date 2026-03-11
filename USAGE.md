@@ -13,6 +13,7 @@ var sdk = new Apideck(
 
 AccountingTaxRatesAllRequest req = new AccountingTaxRatesAllRequest() {
     ServiceId = "salesforce",
+    CompanyId = "12345",
     Filter = new TaxRatesFilter() {
         Assets = true,
         Equity = true,

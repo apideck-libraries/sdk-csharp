@@ -2,6 +2,17 @@
 
 Type of entity this payment should be attributed to.
 
+## Example Usage
+
+```csharp
+using ApideckUnifySdk.Models.Components;
+
+var value = BillPaymentAllocationType.Bill;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = BillPaymentAllocationType.Of("custom_value");
+```
+
 
 ## Values
 
