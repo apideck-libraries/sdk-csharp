@@ -24,12 +24,14 @@ namespace ApideckUnifySdk.Models.Components
     {
         public static readonly LinkedFinancialAccountAccountType LedgerAccount = new LinkedFinancialAccountAccountType("ledger_account");
         public static readonly LinkedFinancialAccountAccountType BankAccount = new LinkedFinancialAccountAccountType("bank_account");
+        public static readonly LinkedFinancialAccountAccountType Employee = new LinkedFinancialAccountAccountType("employee");
 
         private static readonly Dictionary <string, LinkedFinancialAccountAccountType> _knownValues =
             new Dictionary <string, LinkedFinancialAccountAccountType> ()
             {
                 ["ledger_account"] = LedgerAccount,
-                ["bank_account"] = BankAccount
+                ["bank_account"] = BankAccount,
+                ["employee"] = Employee
             };
 
         private static readonly ConcurrentDictionary<string, LinkedFinancialAccountAccountType> _values =

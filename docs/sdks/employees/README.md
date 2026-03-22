@@ -178,6 +178,20 @@ AccountingEmployeesAddRequest req = new AccountingEmployeesAddRequest() {
                 Type = PhoneNumberType.Primary,
             },
         },
+        BankAccount = new BankAccount() {
+            BankName = "Chase Bank",
+            AccountNumber = "123465",
+            AccountName = "Main Operating Account",
+            AccountType = AccountType.CreditCard,
+            Iban = "GB33BUKB20201555555555",
+            Bic = "CHASUS33",
+            RoutingNumber = "021000021",
+            BsbNumber = "062-001",
+            BranchIdentifier = "001",
+            BankCode = "BNH",
+            Currency = Currency.Usd,
+            Country = "US",
+        },
         CustomFields = new List<CustomField>() {
             CustomField.CreateCustomField1(
                 new CustomField1() {
@@ -394,6 +408,20 @@ AccountingEmployeesUpdateRequest req = new AccountingEmployeesUpdateRequest() {
                 Extension = "105",
                 Type = PhoneNumberType.Primary,
             },
+        },
+        BankAccount = new BankAccount() {
+            BankName = "Chase Bank",
+            AccountNumber = "123465",
+            AccountName = "Main Operating Account",
+            AccountType = AccountType.CreditCard,
+            Iban = "GB33BUKB20201555555555",
+            Bic = "CHASUS33",
+            RoutingNumber = "021000021",
+            BsbNumber = "062-001",
+            BranchIdentifier = "001",
+            BankCode = "BNH",
+            Currency = Currency.Usd,
+            Country = "US",
         },
         CustomFields = new List<CustomField>() {
             CustomField.CreateCustomField1(
