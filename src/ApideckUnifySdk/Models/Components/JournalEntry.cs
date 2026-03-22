@@ -92,8 +92,9 @@ namespace ApideckUnifySdk.Models.Components
         public string? JournalSymbol { get; set; } = null;
 
         /// <summary>
-        /// The specific category of tax associated with a transaction like sales or purchase.
+        /// Deprecated — use line_items[].tax_type for per-line tax applicability. Kept as fallback: applies to all lines that do not set their own tax_type.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("tax_type")]
         public string? TaxType { get; set; } = null;
 
