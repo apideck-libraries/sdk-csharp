@@ -143,6 +143,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("phone_numbers")]
         public List<PhoneNumber>? PhoneNumbers { get; set; }
 
+        [JsonProperty("bank_account")]
+        public BankAccount? BankAccount { get; set; }
+
         [JsonProperty("custom_fields")]
         public List<CustomField>? CustomFields { get; set; }
 
