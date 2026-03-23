@@ -52,11 +52,17 @@ namespace ApideckUnifySdk.Models.Components
         /// <summary>
         /// Debit entries are considered positive, and credit entries are considered negative.
         /// </summary>
-        [JsonProperty("type")]
-        public JournalEntryLineItemType Type { get; set; } = default!;
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
+        public JournalEntryLineItemType? Type { get; set; }
 
         [JsonProperty("tax_rate")]
         public LinkedTaxRate? TaxRate { get; set; }
+
+        /// <summary>
+        /// The tax applicability of this line item. Overrides the root-level tax_type for this line.
+        /// </summary>
+        [JsonProperty("tax_type")]
+        public TaxType? TaxType { get; set; } = null;
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [JsonProperty("tracking_category")]
@@ -82,6 +88,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("supplier")]
         public LinkedSupplier? Supplier { get; set; } = null;
+
+        /// <summary>
+        /// The employee this entity is linked to.
+        /// </summary>
+        [JsonProperty("employee")]
+        public LinkedEmployee? Employee { get; set; } = null;
 
         /// <summary>
         /// The ID of the department.

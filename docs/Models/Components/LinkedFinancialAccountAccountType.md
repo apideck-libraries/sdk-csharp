@@ -20,3 +20,4 @@ var custom = LinkedFinancialAccountAccountType.Of("custom_value");
 | --------------- | --------------- |
 | `LedgerAccount` | ledger_account  |
 | `BankAccount`   | bank_account    |
+| `Employee`      | employee        |
