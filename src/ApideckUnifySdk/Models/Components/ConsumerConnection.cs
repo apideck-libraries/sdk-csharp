@@ -78,5 +78,23 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("state")]
         public ConnectionState? State { get; set; }
+
+        /// <summary>
+        /// The operational health status of the connection.
+        /// </summary>
+        [JsonProperty("health")]
+        public ConnectionHealth? Health { get; set; }
+
+        /// <summary>
+        /// ISO 8601 timestamp indicating when credentials will be cleared if token refresh continues to fail. Only present when connection health is pending_refresh and a retention window is active.
+        /// </summary>
+        [JsonProperty("credentials_expire_at")]
+        public string? CredentialsExpireAt { get; set; } = null;
+
+        /// <summary>
+        /// ISO 8601 timestamp of the most recent token refresh failure. Only present when connection has experienced refresh failures.
+        /// </summary>
+        [JsonProperty("last_refresh_failed_at")]
+        public string? LastRefreshFailedAt { get; set; } = null;
     }
 }

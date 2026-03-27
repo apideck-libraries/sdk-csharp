@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 135473acf19662d9c8e7b8f99c7c1760
-  docVersion: 10.24.9
+  docChecksum: aaccfaf769a5ef00ecc6f004f8f0a38e
+  docVersion: 10.24.10
   speakeasyVersion: 1.759.3
   generationVersion: 2.869.25
-  releaseVersion: 0.23.2
-  configChecksum: a06f1d3793e522b49db5cc872134b3c4
+  releaseVersion: 0.23.3
+  configChecksum: 4601406d3974b4c0b26a47ce3c061e06
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: 07d52770-3c07-4ba8-a5df-b6ebe53f6d15
-  pristine_commit_hash: 19b276c80861e73f9302396553c011d465ff3d9b
-  pristine_tree_hash: 1e483d2db6991ba9edde5cc773ea6d92d1b88d52
+  generation_id: d9e93949-ac07-4df4-bd21-ae63a2591fe7
+  pristine_commit_hash: db9037c2a11ddbd386cfbff78ab16dc43e52881e
+  pristine_tree_hash: f47942eeee89d55a13b00eb821f9ee0cbf83dc8d
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -607,6 +607,10 @@ trackedFiles:
     id: 2edaad29dd96
     last_write_checksum: sha1:2e3e1fd807161a7909ad5baf34613584eca3dbab
     pristine_git_object: 285331cdb131ef0072b9abd45c79ff0c93a6eb6d
+  docs/Models/Components/ConnectionHealth.md:
+    id: 7d81e15b2f89
+    last_write_checksum: sha1:d4304862a7956bcd12ab851d7acff1f3d024ea17
+    pristine_git_object: 1566072d8dca6ea0f04c9c5620aa22f3e0d6785f
   docs/Models/Components/ConnectionImportData.md:
     id: 5cb1dbefa003
     last_write_checksum: sha1:7981554cd8a569356e8bd64453ae2c9a972f6814
@@ -689,8 +693,8 @@ trackedFiles:
     pristine_git_object: bf63e8b29283c3b3e9de2ac16dac4c5eaada6999
   docs/Models/Components/ConsumerConnection.md:
     id: 7923dbd5b1c6
-    last_write_checksum: sha1:9352b0f409eb3f9b41957d2ac94c0a88f82001cb
-    pristine_git_object: 248e93d5ebcfd263dbc1aa6b9208c9ed9675dbfb
+    last_write_checksum: sha1:f6dec5b343a8ea8340d46bed257d8b56fdf069fe
+    pristine_git_object: 6cd8ceae3bc36cd08411b751f85b400d8b415afa
   docs/Models/Components/ConsumerMetadata.md:
     id: f01c56b7b09e
     last_write_checksum: sha1:6a0f7fad469aa42309cb22efd09550c2e13d1746
@@ -3821,8 +3825,8 @@ trackedFiles:
     pristine_git_object: 20e7c553fb3e129afebe7e72de7f52cb826d707b
   docs/Models/Components/WebhookEventType.md:
     id: 234a36136da0
-    last_write_checksum: sha1:7ca34b1d90b7ce981e9d188649b04ebe4f952f68
-    pristine_git_object: 0e06ffbde9f0601310bdb8ccc2149776ac00fb9a
+    last_write_checksum: sha1:c65128481b42f40005aa6a90e146cc415b64f2dd
+    pristine_git_object: 402efa07f56511cb43c82fb02f1f4f6feadc0681
   docs/Models/Components/WebhookSubscription.md:
     id: f2c87de13dad
     last_write_checksum: sha1:b06e12fe1b2de792322638adc12526de94056de5
@@ -7057,8 +7061,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:4a77b7b7db841b9defb3a9f344e085987414594f
-    pristine_git_object: fef1223c4d88d0b99063d5b1fb7ee660d4f455f8
+    last_write_checksum: sha1:e239ce52061726914ac3e78c43693f294531a566
+    pristine_git_object: 5875de4f7b53527b1abb5ae037b1779c028845fd
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -7867,6 +7871,10 @@ trackedFiles:
     id: 5e341b7ddd9f
     last_write_checksum: sha1:9f9f1be1c100bde1796b72a8303d8a4ee12d1546
     pristine_git_object: 59879db77c3b87e04b8244bd2613fcff23a6569a
+  src/ApideckUnifySdk/Models/Components/ConnectionHealth.cs:
+    id: 0db4eab95004
+    last_write_checksum: sha1:df770ba45933e6fe0560c83f036f109d5e7d0aa6
+    pristine_git_object: a9ebb44f92a98224fcd4cb59346bdbe7e35b02e2
   src/ApideckUnifySdk/Models/Components/ConnectionImportData.cs:
     id: 2da5edd25d05
     last_write_checksum: sha1:48ab8ec74409f55a2559bb5cc2338a026f99fa25
@@ -7949,8 +7957,8 @@ trackedFiles:
     pristine_git_object: a682f2719b5282505a76f6b5cf01785d6ee1fb2b
   src/ApideckUnifySdk/Models/Components/ConsumerConnection.cs:
     id: 2d80934e761f
-    last_write_checksum: sha1:32c9a9b4230b1c373cd17d47e561d38d9713692e
-    pristine_git_object: 540cbd39ac6a982c377faff1654c56fe28122bc5
+    last_write_checksum: sha1:e57234affb3b9cfe444ca98c80fb04e0fd04166c
+    pristine_git_object: 310e29ab1ba9da2c2b2e784c6d2e5c56fb4fd364
   src/ApideckUnifySdk/Models/Components/ConsumerMetadata.cs:
     id: 0dc668b4a758
     last_write_checksum: sha1:9b654bcda56c2dc53cef4ce37e6dade7980deaf8
@@ -11081,8 +11089,8 @@ trackedFiles:
     pristine_git_object: 4faa2594ac832667651b3e044b981a194e1b2437
   src/ApideckUnifySdk/Models/Components/WebhookEventType.cs:
     id: a828dc57a2a8
-    last_write_checksum: sha1:f1cdba805893160443836c15fd797ee1c5f4d488
-    pristine_git_object: f033b534a176848d7ee3b17ddd429b3af0f68f93
+    last_write_checksum: sha1:4651a9c6eb9cf6e6b963aec033f5050cf6dd99b8
+    pristine_git_object: ce353f2bfe266e9892747a69b2b9511f5b3bcf1b
   src/ApideckUnifySdk/Models/Components/WebhookSubscription.cs:
     id: b82126db84a7
     last_write_checksum: sha1:4e9f6e8f2d33785ffdea1522966231577607cb15
@@ -13965,8 +13973,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:93c3b4a8682fe65ab28c938298811f4d91b716bc
-    pristine_git_object: fec383dc5f6f80fd47396e7dbd54d1990f339134
+    last_write_checksum: sha1:93eeca20f3c06d2a53958a7485e4d0302167aa0d
+    pristine_git_object: d451d3d0ffa61b1ec8c329f9132c1361e71df4df
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14021,8 +14029,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:36841faf4e5b271e7c84f5111962a11ce64cc900
-    pristine_git_object: e9d025ff1cff0665b7161fbca19f5e2f3612fbe5
+    last_write_checksum: sha1:199e73c8023208ccc2cd9c0240efa3a185686953
+    pristine_git_object: a6430e886c95d323fb2e4dcf34e4fe33e3405baf
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -30443,6 +30451,7 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Vault.Consumers.Create()`:  `response.data.Connections[]` **Changed**\n* `Apideck.Vault.Consumers.Get()`:  `response.data.Connections[]` **Changed**\n* `Apideck.Vault.Consumers.Update()`:  `response.data.Connections[]` **Changed**\n* `Apideck.Webhook.Webhooks.List()`:  `response.data[].Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Create()`: \n  *  `request.createWebhookRequest.Events[]` **Changed**\n  *  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Get()`:  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Update()`: \n  *  `request.updateWebhookRequest.Events[]` **Changed**\n  *  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Delete()`:  `response.data.Events[]` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
