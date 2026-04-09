@@ -22,7 +22,7 @@ namespace ApideckUnifySdk.Utils
         /// <summary>
         /// The version of the SDK.
         /// </summary>
-        public const string SdkVersion = "0.23.5";
+        public const string SdkVersion = "0.23.6";
 
         /// <summary>
         /// The version of the SDK generator used to create this SDK.
@@ -32,7 +32,7 @@ namespace ApideckUnifySdk.Utils
         /// <summary>
         /// The version of the OpenAPI document used to generate this SDK.
         /// </summary>
-        public const string OpenApiDocVersion = "10.24.14";
+        public const string OpenApiDocVersion = "10.24.19";
     }
 }
 

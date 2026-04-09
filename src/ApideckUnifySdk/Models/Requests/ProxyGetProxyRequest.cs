@@ -48,5 +48,11 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-downstream-authorization")]
         public string? DownstreamAuthorization { get; set; }
+
+        /// <summary>
+        /// Override the default downstream request timeout in milliseconds. The default is 28000 (28 seconds).
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-timeout")]
+        public long? Timeout { get; set; } = 28000;
     }
 }

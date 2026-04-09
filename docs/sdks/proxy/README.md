@@ -36,6 +36,7 @@ ProxyGetProxyRequest req = new ProxyGetProxyRequest() {
     UnifiedApi = "hris",
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
+    Timeout = 30000,
 };
 
 var res = await sdk.Proxy.GetAsync(req);
@@ -85,6 +86,7 @@ ProxyOptionsProxyRequest req = new ProxyOptionsProxyRequest() {
     UnifiedApi = "hris",
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
+    Timeout = 30000,
 };
 
 var res = await sdk.Proxy.OptionsAsync(req);
@@ -134,6 +136,7 @@ ProxyPostProxyRequest req = new ProxyPostProxyRequest() {
     UnifiedApi = "hris",
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
+    Timeout = 30000,
 };
 
 var res = await sdk.Proxy.PostAsync(req);
@@ -183,6 +186,7 @@ ProxyPutProxyRequest req = new ProxyPutProxyRequest() {
     UnifiedApi = "hris",
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
+    Timeout = 30000,
 };
 
 var res = await sdk.Proxy.PutAsync(req);
@@ -232,6 +236,7 @@ ProxyPatchProxyRequest req = new ProxyPatchProxyRequest() {
     UnifiedApi = "hris",
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
+    Timeout = 30000,
 };
 
 var res = await sdk.Proxy.PatchAsync(req);
@@ -281,6 +286,7 @@ ProxyDeleteProxyRequest req = new ProxyDeleteProxyRequest() {
     UnifiedApi = "hris",
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
+    Timeout = 30000,
 };
 
 var res = await sdk.Proxy.DeleteAsync(req);

@@ -9,7 +9,13 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TaxRatesFilter
     {
@@ -42,5 +48,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=revenue")]
         public bool? Revenue { get; set; }
+
+        /// <summary>
+        /// Filter by tax rate status.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=status")]
+        public TaxRatesFilterStatus? Status { get; set; }
     }
 }
