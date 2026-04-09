@@ -50,6 +50,12 @@ namespace ApideckUnifySdk.Models.Requests
         public string? DownstreamAuthorization { get; set; }
 
         /// <summary>
+        /// Override the default downstream request timeout in milliseconds. The default is 28000 (28 seconds).
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-apideck-timeout")]
+        public long? Timeout { get; set; } = 28000;
+
+        /// <summary>
         /// Depending on the verb/method of the request this will contain the request body you want to POST/PATCH/PUT.
         /// </summary>
         [SpeakeasyMetadata("request:mediaType=*/*")]
