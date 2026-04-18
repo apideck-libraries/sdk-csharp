@@ -237,6 +237,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? SourceDocumentUrl { get; set; } = null;
 
         /// <summary>
+        /// A list of linked payment allocations.
+        /// </summary>
+        [JsonProperty("payment_allocations")]
+        public List<LinkedPaymentAllocations?>? PaymentAllocations { get; set; } = null;
+
+        /// <summary>
         /// A list of linked tracking categories.
         /// </summary>
         [JsonProperty("tracking_categories")]

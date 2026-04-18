@@ -25,6 +25,9 @@ namespace ApideckUnifySdk.Models.Components
         [SpeakeasyMetadata("queryParam:name=invoice_id")]
         public string? InvoiceId { get; set; }
 
+        [SpeakeasyMetadata("queryParam:name=bill_id")]
+        public string? BillId { get; set; }
+
         [SpeakeasyMetadata("queryParam:name=supplier_id")]
         public string? SupplierId { get; set; }
 
