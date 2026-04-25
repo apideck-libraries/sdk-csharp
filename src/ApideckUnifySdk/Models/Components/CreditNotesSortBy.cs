@@ -24,12 +24,14 @@ namespace ApideckUnifySdk.Models.Components
     {
         public static readonly CreditNotesSortBy CreatedAt = new CreditNotesSortBy("created_at");
         public static readonly CreditNotesSortBy UpdatedAt = new CreditNotesSortBy("updated_at");
+        public static readonly CreditNotesSortBy Id = new CreditNotesSortBy("id");
 
         private static readonly Dictionary <string, CreditNotesSortBy> _knownValues =
             new Dictionary <string, CreditNotesSortBy> ()
             {
                 ["created_at"] = CreatedAt,
-                ["updated_at"] = UpdatedAt
+                ["updated_at"] = UpdatedAt,
+                ["id"] = Id
             };
 
         private static readonly ConcurrentDictionary<string, CreditNotesSortBy> _values =

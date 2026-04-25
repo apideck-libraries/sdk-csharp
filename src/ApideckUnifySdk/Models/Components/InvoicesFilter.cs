@@ -14,6 +14,12 @@ namespace ApideckUnifySdk.Models.Components
 
     public class InvoicesFilter
     {
+        /// <summary>
+        /// Return records with a row ID greater than or equal to the given value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=id_since")]
+        public string? IdSince { get; set; }
+
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
 

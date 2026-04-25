@@ -24,12 +24,14 @@ namespace ApideckUnifySdk.Models.Components
     {
         public static readonly By UpdatedAt = new By("updated_at");
         public static readonly By CreatedAt = new By("created_at");
+        public static readonly By Id = new By("id");
 
         private static readonly Dictionary <string, By> _knownValues =
             new Dictionary <string, By> ()
             {
                 ["updated_at"] = UpdatedAt,
-                ["created_at"] = CreatedAt
+                ["created_at"] = CreatedAt,
+                ["id"] = Id
             };
 
         private static readonly ConcurrentDictionary<string, By> _values =

@@ -39,5 +39,11 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=type")]
         public PaymentsFilterType? Type { get; set; }
+
+        /// <summary>
+        /// Filter by payment status.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=status")]
+        public PaymentsFilterPaymentStatus? Status { get; set; }
     }
 }

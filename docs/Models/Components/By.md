@@ -20,3 +20,4 @@ var custom = By.Of("custom_value");
 | ----------- | ----------- |
 | `UpdatedAt` | updated_at  |
 | `CreatedAt` | created_at  |
+| `Id`        | id          |

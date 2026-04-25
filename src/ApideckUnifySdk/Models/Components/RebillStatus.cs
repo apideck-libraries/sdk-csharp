@@ -25,13 +25,15 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly RebillStatus Pending = new RebillStatus("pending");
         public static readonly RebillStatus Billed = new RebillStatus("billed");
         public static readonly RebillStatus Voided = new RebillStatus("voided");
+        public static readonly RebillStatus Other = new RebillStatus("other");
 
         private static readonly Dictionary <string, RebillStatus> _knownValues =
             new Dictionary <string, RebillStatus> ()
             {
                 ["pending"] = Pending,
                 ["billed"] = Billed,
-                ["voided"] = Voided
+                ["voided"] = Voided,
+                ["other"] = Other
             };
 
         private static readonly ConcurrentDictionary<string, RebillStatus> _values =
