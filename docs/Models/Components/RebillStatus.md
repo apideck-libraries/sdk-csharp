@@ -21,3 +21,4 @@ var custom = RebillStatus.Of("custom_value");
 | `Pending` | pending   |
 | `Billed`  | billed    |
 | `Voided`  | voided    |
+| `Other`   | other     |

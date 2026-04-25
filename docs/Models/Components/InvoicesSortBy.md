@@ -20,3 +20,4 @@ var custom = InvoicesSortBy.Of("custom_value");
 | ----------- | ----------- |
 | `CreatedAt` | created_at  |
 | `UpdatedAt` | updated_at  |
+| `Id`        | id          |
