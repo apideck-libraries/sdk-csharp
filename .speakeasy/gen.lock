@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: cecc7ac4b82e6459103483e1bf0b9d20
-  docVersion: 10.24.29
+  docChecksum: d7c468319465a9b640a3f49a5926fd18
+  docVersion: 10.24.30
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 0.23.10
-  configChecksum: ec08c7b27d669b5b7309156fe3a15d1e
+  releaseVersion: 0.23.11
+  configChecksum: c70d31ea27f06b73648b6ad0b599ff4c
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: 17fe79bb-053f-46ff-9960-8f7f612cb98f
-  pristine_commit_hash: 378bc41c0d5194c04cbeec77e61633a5950592af
-  pristine_tree_hash: 1d269f698b9c1848add31e07877a6135d0f16a61
+  generation_id: 4d5e0275-0729-4e9b-8f65-4dfe47cb8f4b
+  pristine_commit_hash: f7d13b00c23582c2b3da77c1c589472d6722d4c7
+  pristine_tree_hash: f7934f090fb54c36120c3af6064b648a88923c9a
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -133,8 +133,8 @@ trackedFiles:
     pristine_git_object: 34d701ba75a64f7a80aa88f1255916ef36545fe8
   docs/Models/Components/AccountingMethod.md:
     id: 70fbdc103d2c
-    last_write_checksum: sha1:51e818e2614f4a0a40ea57866fcc1379e4cac023
-    pristine_git_object: 5d1b3643a9070758db740b6f878dc4c3c59b8546
+    last_write_checksum: sha1:4718a8edf0d2cde307ff83c3b109d15e4827b10d
+    pristine_git_object: fcb7382955fff1114b5c7c9467e5cd53bf29746f
   docs/Models/Components/AccountingPeriod.md:
     id: c92f456e524e
     last_write_checksum: sha1:5d857d587536946290072895ace8f2800606bb5b
@@ -333,8 +333,12 @@ trackedFiles:
     pristine_git_object: c707ff5748f959a1b4e4cf52eee32476d1de8dee
   docs/Models/Components/BalanceSheetFilter.md:
     id: f946e07560f6
-    last_write_checksum: sha1:4517b75561a0aa928f0b4d09b863f186e8212c62
-    pristine_git_object: deb04345b75a31e7240cc9eb0e81045628e3458f
+    last_write_checksum: sha1:c7bc1223c2737e212ec51c8b3b2236c378a09823
+    pristine_git_object: fb8c185034b95f52911203a83de00c04fc127651
+  docs/Models/Components/BalanceSheetFilterAccountingMethod.md:
+    id: de4663c0bc13
+    last_write_checksum: sha1:f91c3bd754037548ebcf1073d65c66a50169d0f9
+    pristine_git_object: f064033a5e8a20c6930d84b188e79f016584a07c
   docs/Models/Components/BalanceSheetLiabilitiesAccount.md:
     id: f154c3c82019
     last_write_checksum: sha1:f846684398a62a1e2fdb0381bb60d987d428a528
@@ -573,8 +577,8 @@ trackedFiles:
     pristine_git_object: b7a48aa15334874c719bce234d3cc1fe5cedd531
   docs/Models/Components/CompanyInfo.md:
     id: b4737744f048
-    last_write_checksum: sha1:4f5985bd9f1939dd93598abf482a3ed5c8bae565
-    pristine_git_object: 9e31fd8235e8e47b0453541af61535fdc67d05b3
+    last_write_checksum: sha1:65217550eaefadeaddfdc98a6853e81839104d3b
+    pristine_git_object: 8a5851f1e9f359c4d9af5e252d610d421ba29476
   docs/Models/Components/CompanyRowType.md:
     id: 1eaf1ededa42
     last_write_checksum: sha1:fa028d0aa26620e9283c787ec3395084256e0173
@@ -7073,8 +7077,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:7552c39cf97159eb3a5ba1b4d91110c8ef054705
-    pristine_git_object: 084c966a4844ae6a02b5c3c9f440131e76df0ab7
+    last_write_checksum: sha1:2290397a95a5a6851842b713363a7475ccc7317a
+    pristine_git_object: 806ac013a1a71e9b8d915ca154b4e26c31c4a678
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -7409,8 +7413,8 @@ trackedFiles:
     pristine_git_object: 4b9f4816602350d38e9ca46c4e306c8a1011789e
   src/ApideckUnifySdk/Models/Components/AccountingMethod.cs:
     id: b0a1cddd8d87
-    last_write_checksum: sha1:3ad24db12e9382bef8f4afee4480f85c591052d0
-    pristine_git_object: 8df8bf6c964a631ca6ecf95e7ed38652beffb616
+    last_write_checksum: sha1:2e538bbd5e4134974a9ad5f760f03f983805f0de
+    pristine_git_object: c3b345bac3adbeec45543ff17c07f847fde2452e
   src/ApideckUnifySdk/Models/Components/AccountingPeriod.cs:
     id: 9d022ca51419
     last_write_checksum: sha1:85e3f73ff71466a8999889244e243eae9a1730d3
@@ -7609,8 +7613,12 @@ trackedFiles:
     pristine_git_object: 7f510259e46f388ec3f8e9ba829e16d4c0c01d99
   src/ApideckUnifySdk/Models/Components/BalanceSheetFilter.cs:
     id: 748056d6e540
-    last_write_checksum: sha1:087576cef4cb4ac6b057cd21d33231981a228b10
-    pristine_git_object: d3f32c2a90a06d4d833e5220faf3c4b02c8fdc82
+    last_write_checksum: sha1:1b64b64580699b5935783b0d422d31573f90fa82
+    pristine_git_object: 3241e496dd8032f9bb70e023ef12e641104b2682
+  src/ApideckUnifySdk/Models/Components/BalanceSheetFilterAccountingMethod.cs:
+    id: fa787b927018
+    last_write_checksum: sha1:f0e289827fed1de2a8f2811a5ed49a98da9ecef2
+    pristine_git_object: 663d009ac249f478cf618995b701592cda816947
   src/ApideckUnifySdk/Models/Components/BalanceSheetLiabilitiesAccount.cs:
     id: ac300044883b
     last_write_checksum: sha1:f139c77469dda77be6197417f154aa74e94e5366
@@ -7849,8 +7857,8 @@ trackedFiles:
     pristine_git_object: 559110277e6067697231e698841a584d1184ab43
   src/ApideckUnifySdk/Models/Components/CompanyInfo.cs:
     id: d2e26fcd4f28
-    last_write_checksum: sha1:45aa147341df27d1ea12c5b6a62d7728c91a60ec
-    pristine_git_object: c41c7a3f11fa3fa47086bd1de9d24cfec8b9e536
+    last_write_checksum: sha1:77d61ae24c2e0f9367fbec70d07a2ce06fe29aa8
+    pristine_git_object: c819567bab69e3b0e2d220f2ce9b3e1fa9e28ddc
   src/ApideckUnifySdk/Models/Components/CompanyRowType.cs:
     id: 1128abdddd4e
     last_write_checksum: sha1:8ad0bfbde8a7f480b383e7fb697f737efb226aac
@@ -13997,8 +14005,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:91ee4f04cee474623b8eff8ff21fafdca69afa1d
-    pristine_git_object: 3b87ed056026eb74fc78ef4fb7e22b9dae941e1d
+    last_write_checksum: sha1:de3638d77c73e653868be2764e9b2fd691aed094
+    pristine_git_object: 66239d7e627e5df348ef9c0ae6dbe97691cd71d2
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14053,8 +14061,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:9ffac9f651e5a43897ca33aef4be2d212bb25517
-    pristine_git_object: 271520b1f1ae9ea17c76a25ed93b6dcad2b2d5fa
+    last_write_checksum: sha1:df6660c375dc32cbad2475de242e691ec7918db0
+    pristine_git_object: 355fe3247279e193862d37ee834104547243c593
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -16610,7 +16618,7 @@ examples:
           x-apideck-company-id: "12345"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "company-info", "operation": "one", "data": {"id": "12345", "company_name": "SpaceX", "status": "active", "legal_name": "SpaceX Inc.", "country": "US", "sales_tax_number": "111.222.333", "default_sales_tax": {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "country": "US", "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}, "currency": "USD", "language": "EN", "fiscal_year_start_month": "January", "company_start_date": "2015-06-05", "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "tracking_categories_mode": "disabled", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}}
+          application/json: {"status_code": 200, "status": "OK", "service": "xero", "resource": "company-info", "operation": "one", "data": {"id": "12345", "company_name": "SpaceX", "status": "active", "legal_name": "SpaceX Inc.", "country": "US", "sales_tax_number": "111.222.333", "default_sales_tax": {"id": "1234", "display_id": "12345", "name": "GST on Purchases", "code": "ABN", "description": "Reduced rate GST Purchases", "effective_tax_rate": 10, "country": "US", "total_tax_rate": 10, "tax_payable_account_id": "123456", "tax_remitted_account_id": "123456", "components": [{"id": "10", "name": "GST", "rate": 10, "compound": true}], "type": "NONE", "report_tax_type": "NONE", "original_tax_rate_id": "12345", "status": "active", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}], "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}]}, "currency": "USD", "language": "EN", "fiscal_year_start_month": "January", "company_start_date": "2015-06-05", "addresses": [{"id": "123", "type": "primary", "string": "25 Spring Street, Blackburn, VIC 3130", "name": "HQ US", "line1": "Main street", "line2": "apt #", "line3": "Suite #", "line4": "delivery instructions", "street_number": "25", "city": "San Francisco", "state": "CA", "postal_code": "94104", "country": "US", "latitude": "40.759211", "longitude": "-73.984638", "county": "Santa Clara", "contact_name": "Elon Musk", "salutation": "Mr", "phone_number": "111-111-1111", "fax": "122-111-1111", "email": "elon@musk.com", "website": "https://elonmusk.com", "notes": "Address notes or delivery instructions.", "row_version": "1-12345"}], "phone_numbers": [{"id": "12345", "country_code": "1", "area_code": "323", "number": "111-111-1111", "extension": "105", "type": "primary"}], "emails": [{"id": "123", "email": "elon@musk.com", "type": "primary"}], "tracking_categories_mode": "disabled", "accounting_method": "accrual", "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror", "downstream_errors": [{"message": "Account code '100' has been archived or deleted", "detail": "Each line item must reference a valid account", "code": "VALIDATION_ERROR"}]}
         "401":
@@ -30481,7 +30489,9 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Accounting.Bills.List()`: \n  *  `request` **Changed**\n  *  `response.data[].LineItems[].Rebilling.RebillStatus.Enum(other)` **Added**\n* `Apideck.Accounting.Bills.Create()`: \n  *  `request.Bill.LineItems[].Rebilling.RebillStatus.Enum(other)` **Added**\n* `Apideck.Accounting.Bills.Get()`:  `response.data.LineItems[].Rebilling.RebillStatus.Enum(other)` **Added**\n* `Apideck.Accounting.Bills.Update()`: \n  *  `request.Bill.LineItems[].Rebilling.RebillStatus.Enum(other)` **Added**\n* `Apideck.Accounting.Invoices.List()`:  `request` **Changed**\n* `Apideck.Accounting.CreditNotes.List()`:  `request` **Changed**\n* `Apideck.Accounting.Payments.List()`: \n  *  `request.Filter` **Changed**\n* `Apideck.Accounting.BillPayments.List()`: \n  *  `request.Filter` **Changed**\n* `Apideck.Accounting.Expenses.List()`:  `response.data[].LineItems[].Rebilling.RebillStatus.Enum(other)` **Added**\n* `Apideck.Accounting.Expenses.Create()`: \n  *  `request.Expense.LineItems[].Rebilling.RebillStatus.Enum(other)` **Added**\n* `Apideck.Accounting.Expenses.Get()`:  `response.data.LineItems[].Rebilling.RebillStatus.Enum(other)` **Added**\n* `Apideck.Accounting.Expenses.Update()`: \n  *  `request.Expense.LineItems[].Rebilling.RebillStatus.Enum(other)` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Apideck.Accounting.CompanyInfo.Get()`:  `response.data.AccountingMethod` **Added**
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
