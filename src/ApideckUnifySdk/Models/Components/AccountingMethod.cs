@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     /// <summary>
-    /// The accounting method used for the report: cash or accrual.
+    /// The accounting basis used by the company for financial reports.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
     public class AccountingMethod : IEquatable<AccountingMethod>

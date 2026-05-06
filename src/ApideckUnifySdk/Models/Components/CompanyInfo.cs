@@ -120,6 +120,12 @@ namespace ApideckUnifySdk.Models.Components
         public TrackingCategoriesMode? TrackingCategoriesMode { get; set; }
 
         /// <summary>
+        /// The accounting basis used by the company for financial reports.
+        /// </summary>
+        [JsonProperty("accounting_method")]
+        public AccountingMethod? AccountingMethod { get; set; } = null;
+
+        /// <summary>
         /// A binary value used to detect updates to a object and prevent data conflicts. It is incremented each time an update is made to the object.
         /// </summary>
         [JsonProperty("row_version")]

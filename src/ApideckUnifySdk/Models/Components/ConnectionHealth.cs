@@ -25,6 +25,7 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly ConnectionHealth Ok = new ConnectionHealth("ok");
         public static readonly ConnectionHealth PendingRefresh = new ConnectionHealth("pending_refresh");
         public static readonly ConnectionHealth NeedsAuth = new ConnectionHealth("needs_auth");
+        public static readonly ConnectionHealth PendingConfirmation = new ConnectionHealth("pending_confirmation");
         public static readonly ConnectionHealth NeedsConsent = new ConnectionHealth("needs_consent");
         public static readonly ConnectionHealth Revoked = new ConnectionHealth("revoked");
         public static readonly ConnectionHealth MissingSettings = new ConnectionHealth("missing_settings");
@@ -35,6 +36,7 @@ namespace ApideckUnifySdk.Models.Components
                 ["ok"] = Ok,
                 ["pending_refresh"] = PendingRefresh,
                 ["needs_auth"] = NeedsAuth,
+                ["pending_confirmation"] = PendingConfirmation,
                 ["needs_consent"] = NeedsConsent,
                 ["revoked"] = Revoked,
                 ["missing_settings"] = MissingSettings
