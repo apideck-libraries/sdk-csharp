@@ -54,6 +54,6 @@ namespace ApideckUnifySdk.Models.Components
         /// The accounting method used for the report: cash or accrual.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=accounting_method")]
-        public AccountingMethod? AccountingMethod { get; set; }
+        public BalanceSheetFilterAccountingMethod? AccountingMethod { get; set; }
     }
 }

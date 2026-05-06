@@ -25,6 +25,7 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly Health Revoked = new Health("revoked");
         public static readonly Health MissingSettings = new Health("missing_settings");
         public static readonly Health NeedsConsent = new Health("needs_consent");
+        public static readonly Health PendingConfirmation = new Health("pending_confirmation");
         public static readonly Health NeedsAuth = new Health("needs_auth");
         public static readonly Health PendingRefresh = new Health("pending_refresh");
         public static readonly Health Ok = new Health("ok");
@@ -35,6 +36,7 @@ namespace ApideckUnifySdk.Models.Components
                 ["revoked"] = Revoked,
                 ["missing_settings"] = MissingSettings,
                 ["needs_consent"] = NeedsConsent,
+                ["pending_confirmation"] = PendingConfirmation,
                 ["needs_auth"] = NeedsAuth,
                 ["pending_refresh"] = PendingRefresh,
                 ["ok"] = Ok
