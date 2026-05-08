@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 31966950ecf2bb4ba431ade995cfad6f
+  docChecksum: cabb1d210527b972b14b5a876987d3ac
   docVersion: 10.24.32
   speakeasyVersion: 1.762.0
   generationVersion: 2.882.0
-  releaseVersion: 0.23.11
-  configChecksum: c70d31ea27f06b73648b6ad0b599ff4c
+  releaseVersion: 0.23.12
+  configChecksum: 5e507a1420bf77eb568a7b9d11506f98
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: d0a3406e-39fc-4417-b1c0-55ca6c4ff8ab
-  pristine_commit_hash: 398cf6c252fb8d939ec75e8e2f1e2ea3b7fca07a
-  pristine_tree_hash: 98522e94dab1d1061792d90538edf8f8488b53b4
+  generation_id: da2fd0fa-6fd3-4355-88bf-a73499fbaf41
+  pristine_commit_hash: bc581d44bb484c80d83f166c162cde19e973558f
+  pristine_tree_hash: 0381f0d3ec5c62c6862c68131c07d9c6a945014f
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -7077,8 +7077,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:2290397a95a5a6851842b713363a7475ccc7317a
-    pristine_git_object: 806ac013a1a71e9b8d915ca154b4e26c31c4a678
+    last_write_checksum: sha1:207b0b67c6a653729556f0436adc0a2303743300
+    pristine_git_object: d9e867770d46c0cd283623dd09e9fdf6fb5ba6e3
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -14005,8 +14005,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:249e19c642301286ccc3f1299b283280f31874d6
-    pristine_git_object: 2d595689dd6873954032b8742f6fdf8f4bb1499b
+    last_write_checksum: sha1:0b6ed1f9963a5afa48d8de54d69aafa7beb052c3
+    pristine_git_object: 8e126f937c3e8e21924b4d3e999accd815db92cc
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14061,8 +14061,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:341f28a076edbaf502aa7f994d3c3c1b36c82a01
-    pristine_git_object: d00ce84116da13c8584dcd72e652c5939963374a
+    last_write_checksum: sha1:ed709654e02a82e68900527698796b45f2e5b50b
+    pristine_git_object: 2c1e0330a7733b8f371bd2c7df7d906fa273dba6
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -30489,19 +30489,6 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes:
-  * `Apideck.Accounting.CompanyInfo.Get()`:  `response.data.AccountingMethod` **Added**
-  * `Apideck.Vault.Consumers.Create()`:  `response.data.Connections[].Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.Consumers.Get()`:  `response.data.Connections[].Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.Consumers.Update()`:  `response.data.Connections[].Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.Connections.List()`:  `response.data[].Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.Connections.Get()`:  `response.data.Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.Connections.Update()`:  `response.data.Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.Connections.Imports()`:  `response.data.Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.Connections.Token()`:  `response.data.Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.ConnectionSettings.List()`:  `response.data.Health.Enum(pendingConfirmation)` **Added**
-  * `Apideck.Vault.ConnectionSettings.Update()`:  `response.data.Health.Enum(pendingConfirmation)` **Added**
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
