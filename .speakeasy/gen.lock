@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: cabb1d210527b972b14b5a876987d3ac
-  docVersion: 10.24.32
-  speakeasyVersion: 1.762.0
-  generationVersion: 2.882.0
-  releaseVersion: 0.23.12
-  configChecksum: 5e507a1420bf77eb568a7b9d11506f98
+  docChecksum: ead5eac5ca9d20b7f3625b3747613cd4
+  docVersion: 10.24.33
+  speakeasyVersion: 1.763.0
+  generationVersion: 2.884.0
+  releaseVersion: 0.23.13
+  configChecksum: 12a9534a8e0b5622bbdd3140a9a63114
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: da2fd0fa-6fd3-4355-88bf-a73499fbaf41
-  pristine_commit_hash: bc581d44bb484c80d83f166c162cde19e973558f
-  pristine_tree_hash: 0381f0d3ec5c62c6862c68131c07d9c6a945014f
+  generation_id: ab7427a7-173f-4038-92e5-f90a1c2b3c0e
+  pristine_commit_hash: 46d31a9f54fdb2ecc45a646819f6950f57bd1927
+  pristine_tree_hash: 7855ae9ad405b666be8b15f3f3886eac05a61bf2
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1033,8 +1033,8 @@ trackedFiles:
     pristine_git_object: a76cfc2770e02ec81520b8d63ea01ddba1785e23
   docs/Models/Components/CreditNotesFilter.md:
     id: f0853eb3fd71
-    last_write_checksum: sha1:9b3ae31e230c50150e23319378cacdf979f4dccf
-    pristine_git_object: 91a41222a21fa87bdf50a3e627c270cc91f51efb
+    last_write_checksum: sha1:d9e7f8dca6e6e59cc96acc28ce5b7e60bd3c140c
+    pristine_git_object: 8874497a71bea32afd74966203eb9f44bb420ba0
   docs/Models/Components/CreditNotesSort.md:
     id: 4bf8820e883e
     last_write_checksum: sha1:f73becaaf23a3d75b322dd51fe2adfdec6c16920
@@ -4257,8 +4257,8 @@ trackedFiles:
     pristine_git_object: 8e13aa9c9d0c8edf8fdbe12ecfdc9a9af510412f
   docs/Models/Requests/AccountingCreditNotesAllRequest.md:
     id: e9fcd589753a
-    last_write_checksum: sha1:7d2beacb2be22a8d458065898258b570cc13bcce
-    pristine_git_object: f0450a1d4c378170eccd477888c56652ee14391a
+    last_write_checksum: sha1:275504a8393bcc9e7e1329ed6676481afb65a4d4
+    pristine_git_object: 92418666dd282dc2e51eb6cd4ab4be57c35c926b
   docs/Models/Requests/AccountingCreditNotesAllResponse.md:
     id: 08487a87c50a
     last_write_checksum: sha1:dcec890d1046c262962b8a920b7f621fd64f1e0b
@@ -7077,8 +7077,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:207b0b67c6a653729556f0436adc0a2303743300
-    pristine_git_object: d9e867770d46c0cd283623dd09e9fdf6fb5ba6e3
+    last_write_checksum: sha1:8ab8c8bf246f6716ba395de1d40b07578dca0322
+    pristine_git_object: 0b802b076b05f2b1818bbf11cfb470efbb52e41a
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -8313,8 +8313,8 @@ trackedFiles:
     pristine_git_object: 53bc794a56d899e44bd4bfb496a338da37e96fca
   src/ApideckUnifySdk/Models/Components/CreditNotesFilter.cs:
     id: 912395e02a8c
-    last_write_checksum: sha1:262a5c8a2bff2f719de75c3a5100012e1fb470b4
-    pristine_git_object: 8feae98fa5356a8b93a70e4f1c21dd1624f31754
+    last_write_checksum: sha1:84b929a19d8ecc65b5351fc3326d9980daee1eb0
+    pristine_git_object: 5a5bc52bbd8cdf7e7358a1b80b49e23d7bbfd61d
   src/ApideckUnifySdk/Models/Components/CreditNotesSort.cs:
     id: 23bdfeb1412b
     last_write_checksum: sha1:56eb63b6aa8a9030f759ee532667fe1269b399b1
@@ -14005,8 +14005,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:0b6ed1f9963a5afa48d8de54d69aafa7beb052c3
-    pristine_git_object: 8e126f937c3e8e21924b4d3e999accd815db92cc
+    last_write_checksum: sha1:2df9541fc00cf361e54f3c5c51bdbb2bcd6d86de
+    pristine_git_object: 89d5983d2c57e55ba7aacb7ce2b06283605c679d
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14061,8 +14061,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:ed709654e02a82e68900527698796b45f2e5b50b
-    pristine_git_object: 2c1e0330a7733b8f371bd2c7df7d906fa273dba6
+    last_write_checksum: sha1:bfbff0fe72ed711e66fe3c4192495e4746951d01
+    pristine_git_object: df025a0b49eb28dd73ac71c7bf451aa93abcb72c
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -15531,7 +15531,7 @@ examples:
         query:
           raw: false
           limit: 20
-          filter: {"id_since": "1", "updated_since": "2020-09-30T07:43:32.000Z"}
+          filter: {"id_since": "1", "updated_since": "2020-09-30T07:43:32.000Z", "created_since": "2020-09-30T07:43:32.000Z", "number": "OIT00546"}
           sort: {"by": "updated_at", "direction": "desc"}
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
@@ -30489,6 +30489,7 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Accounting.CreditNotes.List()`: \n  *  `request.Filter` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
