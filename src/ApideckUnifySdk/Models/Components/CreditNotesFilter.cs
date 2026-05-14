@@ -22,5 +22,14 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
+
+        [SpeakeasyMetadata("queryParam:name=created_since")]
+        public DateTime? CreatedSince { get; set; }
+
+        /// <summary>
+        /// Credit note number to search for.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=number")]
+        public string? Number { get; set; }
     }
 }
