@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: bdedcf3d4acc6b9571ddac5a0a4bcae7
-  docVersion: 10.24.33
-  speakeasyVersion: 1.763.1
-  generationVersion: 2.884.4
-  releaseVersion: 0.23.14
-  configChecksum: e64a2d0678b8b9560c624ca94a0dc4dc
+  docChecksum: 5838828480cd32e14a27090d04088cc4
+  docVersion: 10.24.34
+  speakeasyVersion: 1.763.4
+  generationVersion: 2.884.11
+  releaseVersion: 0.23.15
+  configChecksum: 409c369e43772b779d88f874e0046f6e
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: 08bc5b72-e462-4e13-842e-359da99a5cf5
-  pristine_commit_hash: 4dd09d606886c04c69022a1c5fde0b3db2471e80
-  pristine_tree_hash: 2d1e6d586338b8d8d3b689e08e6a2b8939aba5eb
+  generation_id: 09b61d78-26f1-453f-af7e-3caad8782d72
+  pristine_commit_hash: e628827e56bac89ebb9d717b70442e63b6b32368
+  pristine_tree_hash: 3f4ebd37981464686c5d64b3431c6a65ca5c9da6
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -2633,8 +2633,12 @@ trackedFiles:
     pristine_git_object: b77a28cab509ed35d6cd119263b17bdec2cbf684
   docs/Models/Components/LedgerAccountsFilter.md:
     id: 63d99e555bfb
-    last_write_checksum: sha1:3a86b1238db3e8fd1bc6c89e057bbbd6c8ca82ee
-    pristine_git_object: 0c28ab6b537828dc5e0d619d389309ef9cece92f
+    last_write_checksum: sha1:19508c4688e15af8bb790fa6ba27098168c2f78d
+    pristine_git_object: 9615d35e95e0bad817f221af675b4ff8c1873881
+  docs/Models/Components/LedgerAccountsFilterStatus.md:
+    id: e57e9f6e4963
+    last_write_checksum: sha1:604e2ba4271650e8570e39707d4b75e59341ec7e
+    pristine_git_object: 3ce04f3b51bb2bfbb8777c86859da2964c6e5825
   docs/Models/Components/LedgerAccountsSort.md:
     id: 0ede501bc33e
     last_write_checksum: sha1:afaa567786f16376fbb82c2e92b63798bf42d24e
@@ -3525,8 +3529,8 @@ trackedFiles:
     pristine_git_object: 3095f52226a6ae84c82d3ab82920ffb0167e0fd9
   docs/Models/Components/UnifiedApiId.md:
     id: b6a0d51d3115
-    last_write_checksum: sha1:38b7cd4b8977893dee6fd7a3bb575435a69c798a
-    pristine_git_object: 9b8065d35418d4639b34027f8abbd3a5deed3082
+    last_write_checksum: sha1:c06e89cde791b77cc3d1efdc51d14b2373df86bd
+    pristine_git_object: cb3747e691ad7c9fb8708b494eec8c283a7ddd3e
   docs/Models/Components/UnifiedApis.md:
     id: bdcccc139ecf
     last_write_checksum: sha1:b85238762ae6af938629c1df7bb49f078d6de44d
@@ -7077,8 +7081,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:25e407664becab1b1d67ebb6f0d1456ca2b0d1d1
-    pristine_git_object: 847aeb7acb94930564922d04f3b96237f0291696
+    last_write_checksum: sha1:7e006b3faf8ccea98ce063331fadf89c70de8be5
+    pristine_git_object: df24e3eb27be9745d4d0a9cbfaf4ecf6946e309e
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -9913,8 +9917,12 @@ trackedFiles:
     pristine_git_object: cc87b1080d6e7d109e6b45db53fa3d3ee92852c4
   src/ApideckUnifySdk/Models/Components/LedgerAccountsFilter.cs:
     id: e1267cb3d0c6
-    last_write_checksum: sha1:2e3c29e01a498fdf5438a6bd6b15a9f3ffb326b6
-    pristine_git_object: 56757091f6a8a3d1605ae21e4a3df9c979c9db44
+    last_write_checksum: sha1:c50e7a9af4495b873468809307712cf8a2051ce4
+    pristine_git_object: dcab15f41c9c28d7a877a683c6064f85ecef596c
+  src/ApideckUnifySdk/Models/Components/LedgerAccountsFilterStatus.cs:
+    id: 631c8b8827d2
+    last_write_checksum: sha1:42ce56d2c30638ff1e513d72fa27d36c24d44cb8
+    pristine_git_object: 54c164a9b88e5a56c05fc20d241f1f158d6ea362
   src/ApideckUnifySdk/Models/Components/LedgerAccountsSort.cs:
     id: 7d1292cec29f
     last_write_checksum: sha1:d34db9b264e8925db699a5f31b42a02f35c519fd
@@ -10805,8 +10813,8 @@ trackedFiles:
     pristine_git_object: 48863f53cee2b45c36c4d24ea83b1ef2ba4f2e14
   src/ApideckUnifySdk/Models/Components/UnifiedApiId.cs:
     id: 773da3ef9580
-    last_write_checksum: sha1:9ca7df9d63f2c8853735fb96578e5d81e0418a76
-    pristine_git_object: 84b20a33d30fc08787ad1e421cb7f59b43d823dc
+    last_write_checksum: sha1:47571c3b55bab65dacabf2348413179719fbddc9
+    pristine_git_object: 2ecae4950686351f2aa7004069cf14443e6a6f46
   src/ApideckUnifySdk/Models/Components/UnifiedApis.cs:
     id: d7ae89827406
     last_write_checksum: sha1:d98ea52d7fd3f720ada6faf9ee553e92cf1e9573
@@ -14005,8 +14013,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:788d7305421257d9c4f65923b48c97a008541bff
-    pristine_git_object: 76cb0747d2f1f344aa596b4185f093e92353c9ad
+    last_write_checksum: sha1:a3e5c6f22f4cabda3cf592e2d36656438b24e941
+    pristine_git_object: 2a9c0eb0dbdf1c256f3c80937c0b27c433e6ae87
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14061,8 +14069,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:6dad3eff9d95b08c0d6bf5c308c9ddc9f4dd7e7f
-    pristine_git_object: e43aa9ba4d4f4529014ab548d2929509c272b4b4
+    last_write_checksum: sha1:6f362623f71b259a90bbd0a01149764d0759cbde
+    pristine_git_object: 6ae05d43979e359e7b4ce4f3fd025c4033718da9
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -30489,6 +30497,7 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Accounting.LedgerAccounts.List()`: \n  *  `request.Filter` **Changed**\n* `Apideck.Connector.Connectors.List()`: \n  *  `request.filter` **Changed**\n  *  `response.data[].UnifiedApis[].Id.Enum(subscriptionAnalytics)` **Added**\n* `Apideck.Connector.Connectors.Get()`:  `response.data.UnifiedApis[].Id.Enum(subscriptionAnalytics)` **Added**\n* `Apideck.Connector.ConnectorResources.Get()`:  `request.unifiedApi` **Changed**\n* `Apideck.Vault.Sessions.Create()`: \n  *  `request.session.Settings.UnifiedApis[].Enum(subscriptionAnalytics)` **Added**\n* `Apideck.Webhook.Webhooks.List()`:  `response.data[].UnifiedApi.Enum(subscriptionAnalytics)` **Added**\n* `Apideck.Webhook.Webhooks.Create()`: \n  *  `request.createWebhookRequest.UnifiedApi.Enum(subscriptionAnalytics)` **Added**\n  *  `response.data.UnifiedApi.Enum(subscriptionAnalytics)` **Added**\n* `Apideck.Webhook.Webhooks.Get()`:  `response.data.UnifiedApi.Enum(subscriptionAnalytics)` **Added**\n* `Apideck.Webhook.Webhooks.Update()`:  `response.data.UnifiedApi.Enum(subscriptionAnalytics)` **Added**\n* `Apideck.Webhook.Webhooks.Delete()`:  `response.data.UnifiedApi.Enum(subscriptionAnalytics)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
