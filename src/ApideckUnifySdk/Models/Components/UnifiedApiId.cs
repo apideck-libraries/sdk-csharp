@@ -43,6 +43,7 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly UnifiedApiId Script = new UnifiedApiId("script");
         public static readonly UnifiedApiId Sms = new UnifiedApiId("sms");
         public static readonly UnifiedApiId Spreadsheet = new UnifiedApiId("spreadsheet");
+        public static readonly UnifiedApiId SubscriptionAnalytics = new UnifiedApiId("subscription-analytics");
         public static readonly UnifiedApiId TeamMessaging = new UnifiedApiId("team-messaging");
         public static readonly UnifiedApiId IssueTracking = new UnifiedApiId("issue-tracking");
         public static readonly UnifiedApiId TimeRegistration = new UnifiedApiId("time-registration");
@@ -74,6 +75,7 @@ namespace ApideckUnifySdk.Models.Components
                 ["script"] = Script,
                 ["sms"] = Sms,
                 ["spreadsheet"] = Spreadsheet,
+                ["subscription-analytics"] = SubscriptionAnalytics,
                 ["team-messaging"] = TeamMessaging,
                 ["issue-tracking"] = IssueTracking,
                 ["time-registration"] = TimeRegistration,

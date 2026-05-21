@@ -33,5 +33,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=classification")]
         public Classification? Classification { get; set; }
+
+        /// <summary>
+        /// Filter by account status.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=status")]
+        public LedgerAccountsFilterStatus? Status { get; set; }
     }
 }
