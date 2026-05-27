@@ -23,6 +23,12 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? UpdatedSince { get; set; }
 
         /// <summary>
+        /// Comma-separated list of invoice item IDs to filter by (e.g. `12345,67890`).
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=ids")]
+        public string? Ids { get; set; }
+
+        /// <summary>
         /// Name of Invoice Items to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=name")]
