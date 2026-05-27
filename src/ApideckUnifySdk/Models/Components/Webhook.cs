@@ -47,7 +47,7 @@ namespace ApideckUnifySdk.Models.Components
         public DisabledReason? DisabledReason { get; set; }
 
         /// <summary>
-        /// The delivery url of the webhook endpoint.
+        /// The delivery url of the webhook endpoint. The endpoint must respond within 60 seconds or the delivery is recorded as failed.
         /// </summary>
         [JsonProperty("delivery_url")]
         public string DeliveryUrl { get; set; } = default!;
