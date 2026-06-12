@@ -30,6 +30,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Username { get; set; } = null;
 
         /// <summary>
+        /// The name of the resource.
+        /// </summary>
+        [JsonProperty("name")]
+        public string? Name { get; set; } = null;
+
+        /// <summary>
         /// The first name of the person.
         /// </summary>
         [JsonProperty("first_name")]

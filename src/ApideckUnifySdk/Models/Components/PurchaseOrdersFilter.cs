@@ -19,5 +19,11 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=supplier_id")]
         public string? SupplierId { get; set; }
+
+        /// <summary>
+        /// Filter by the subsidiary (legal entity) the record belongs to. Only honored on connectors that support multi-entity scoping (e.g. NetSuite OneWorld); ignored elsewhere.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=subsidiary_id")]
+        public string? SubsidiaryId { get; set; }
     }
 }

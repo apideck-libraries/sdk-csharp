@@ -31,6 +31,9 @@ var sdk = new Apideck(
 
 CrmUsersAllRequest req = new CrmUsersAllRequest() {
     ServiceId = "salesforce",
+    Filter = new UsersFilter() {
+        Email = "elon@apideck.com",
+    },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },

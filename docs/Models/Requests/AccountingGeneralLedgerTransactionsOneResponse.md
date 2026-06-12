@@ -1,0 +1,10 @@
+# AccountingGeneralLedgerTransactionsOneResponse
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                            | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                               | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `GetGeneralLedgerTransactionResponse`                                                                 | [GetGeneralLedgerTransactionResponse](../../Models/Components/GetGeneralLedgerTransactionResponse.md) | :heavy_minus_sign:                                                                                    | GeneralLedgerTransaction                                                                              |
+| `UnexpectedErrorResponse`                                                                             | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)                         | :heavy_minus_sign:                                                                                    | Unexpected error                                                                                      |

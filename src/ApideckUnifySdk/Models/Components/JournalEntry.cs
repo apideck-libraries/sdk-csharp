@@ -61,6 +61,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
+        [JsonProperty("subsidiary")]
+        public LinkedSubsidiary? Subsidiary { get; set; } = null;
+
         /// <summary>
         /// Requires a minimum of 2 line items that sum to 0.
         /// </summary>

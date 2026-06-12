@@ -205,6 +205,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("last_refresh_failed_at")]
         public double? LastRefreshFailedAt { get; set; }
 
+        /// <summary>
+        /// Unix timestamp in milliseconds of the last downstream unreachable error (502/504 network class). A value of 0 indicates no active error. Connection remains callable while this is set; health surfaces as 'degraded'.
+        /// </summary>
+        [JsonProperty("last_downstream_error_at")]
+        public double? LastDownstreamErrorAt { get; set; }
+
         [JsonProperty("created_at")]
         public double? CreatedAt { get; set; }
 

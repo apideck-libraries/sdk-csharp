@@ -29,6 +29,7 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly ConnectionHealth NeedsConsent = new ConnectionHealth("needs_consent");
         public static readonly ConnectionHealth Revoked = new ConnectionHealth("revoked");
         public static readonly ConnectionHealth MissingSettings = new ConnectionHealth("missing_settings");
+        public static readonly ConnectionHealth Degraded = new ConnectionHealth("degraded");
 
         private static readonly Dictionary <string, ConnectionHealth> _knownValues =
             new Dictionary <string, ConnectionHealth> ()
@@ -39,7 +40,8 @@ namespace ApideckUnifySdk.Models.Components
                 ["pending_confirmation"] = PendingConfirmation,
                 ["needs_consent"] = NeedsConsent,
                 ["revoked"] = Revoked,
-                ["missing_settings"] = MissingSettings
+                ["missing_settings"] = MissingSettings,
+                ["degraded"] = Degraded
             };
 
         private static readonly ConcurrentDictionary<string, ConnectionHealth> _values =

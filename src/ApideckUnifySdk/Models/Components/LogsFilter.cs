@@ -9,13 +9,57 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class LogsFilter
     {
+        /// <summary>
+        /// Filter by connector ID. Known limitation: this field is not currently applied at the log query resolver — connector filtering is performed via the service identifier internally (see GH-10099).
+        /// </summary>
         [SpeakeasyMetadata("queryParam:name=connector_id")]
         public string? ConnectorId { get; set; } = null;
+
+        /// <summary>
+        /// Filter by request path. Match behavior is controlled by path_match_mode (defaults to CONTAINS).
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=path")]
+        public string? Path { get; set; } = null;
+
+        /// <summary>
+        /// How the path filter is matched. CONTAINS matches the path anywhere; STARTS_WITH / ENDS_WITH anchor the match; EXACT requires the whole path to match. Only applied when path is set.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=path_match_mode")]
+        public PathMatchMode? PathMatchMode { get; set; } = ApideckUnifySdk.Models.Components.PathMatchMode.Contains;
+
+        /// <summary>
+        /// Filter by a single HTTP method.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=http_method")]
+        public string? HttpMethod { get; set; } = null;
+
+        /// <summary>
+        /// Filter by multiple HTTP methods.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=http_methods")]
+        public List<string>? HttpMethods { get; set; } = null;
+
+        /// <summary>
+        /// Filter logs at or after this ISO 8601 date-time (inclusive).
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=start_date")]
+        public DateTime? StartDate { get; set; } = null;
+
+        /// <summary>
+        /// Filter logs at or before this ISO 8601 date-time (inclusive). Must be on or after start_date.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=end_date")]
+        public DateTime? EndDate { get; set; } = null;
 
         /// <summary>
         /// Filter by a single HTTP status code. For backward compatibility - use status_codes for multiple values.

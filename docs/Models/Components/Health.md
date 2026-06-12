@@ -25,3 +25,4 @@ var custom = Health.Of("custom_value");
 | `NeedsAuth`           | needs_auth            |
 | `PendingRefresh`      | pending_refresh       |
 | `Ok`                  | ok                    |
+| `Degraded`            | degraded              |

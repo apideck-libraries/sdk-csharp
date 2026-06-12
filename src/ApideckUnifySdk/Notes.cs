@@ -280,6 +280,7 @@ namespace ApideckUnifySdk
                     ServiceId = request?.ServiceId,
                     Cursor = nextCursor,
                     Limit = request?.Limit,
+                    Filter = request?.Filter,
                     PassThrough = request?.PassThrough,
                     Fields = request?.Fields
                 };
