@@ -285,6 +285,11 @@ while(res != null)
 * [Update](docs/sdks/expenses/README.md#update) - Update Expense
 * [Delete](docs/sdks/expenses/README.md#delete) - Delete Expense
 
+### [Accounting.GeneralLedgerTransactions](docs/sdks/generalledgertransactions/README.md)
+
+* [List](docs/sdks/generalledgertransactions/README.md#list) - List General Ledger Transactions
+* [Get](docs/sdks/generalledgertransactions/README.md#get) - Get General Ledger Transaction
+
 ### [Accounting.InvoiceItems](docs/sdks/invoiceitems/README.md)
 
 * [List](docs/sdks/invoiceitems/README.md#list) - List Invoice Items
@@ -1021,7 +1026,7 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 334 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 336 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

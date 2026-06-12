@@ -29,6 +29,7 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly Health NeedsAuth = new Health("needs_auth");
         public static readonly Health PendingRefresh = new Health("pending_refresh");
         public static readonly Health Ok = new Health("ok");
+        public static readonly Health Degraded = new Health("degraded");
 
         private static readonly Dictionary <string, Health> _knownValues =
             new Dictionary <string, Health> ()
@@ -39,7 +40,8 @@ namespace ApideckUnifySdk.Models.Components
                 ["pending_confirmation"] = PendingConfirmation,
                 ["needs_auth"] = NeedsAuth,
                 ["pending_refresh"] = PendingRefresh,
-                ["ok"] = Ok
+                ["ok"] = Ok,
+                ["degraded"] = Degraded
             };
 
         private static readonly ConcurrentDictionary<string, Health> _values =

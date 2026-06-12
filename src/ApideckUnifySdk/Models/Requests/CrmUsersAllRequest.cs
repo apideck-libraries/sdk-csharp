@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Requests
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using System.Collections.Generic;
 
@@ -49,6 +50,12 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
+
+        /// <summary>
+        /// Apply filters.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
+        public UsersFilter? Filter { get; set; }
 
         /// <summary>
         /// Optional unmapped key/values that will be passed through to downstream as query parameters. Ie: ?pass_through[search]=leads becomes ?search=leads.

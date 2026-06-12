@@ -94,6 +94,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
+        [JsonProperty("subsidiary")]
+        public LinkedSubsidiary? Subsidiary { get; set; } = null;
+
         /// <summary>
         /// Indicates if the transaction has been reconciled.
         /// </summary>

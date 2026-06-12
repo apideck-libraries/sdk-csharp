@@ -25,3 +25,4 @@ var custom = ConnectionHealth.Of("custom_value");
 | `NeedsConsent`        | needs_consent         |
 | `Revoked`             | revoked               |
 | `MissingSettings`     | missing_settings      |
+| `Degraded`            | degraded              |

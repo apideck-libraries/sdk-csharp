@@ -21,6 +21,7 @@ List Quotes
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
+using System;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -31,6 +32,11 @@ var sdk = new Apideck(
 AccountingQuotesAllRequest req = new AccountingQuotesAllRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    Filter = new QuotesFilter() {
+        UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
+        CreatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
+        Number = "OIT00546",
+    },
 };
 
 AccountingQuotesAllResponse? res = await sdk.Accounting.Quotes.ListAsync(req);

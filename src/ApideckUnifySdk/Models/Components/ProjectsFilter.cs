@@ -42,5 +42,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
+
+        /// <summary>
+        /// Filter by the subsidiary (legal entity) the record belongs to. Only honored on connectors that support multi-entity scoping (e.g. NetSuite OneWorld); ignored elsewhere.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=subsidiary_id")]
+        public string? SubsidiaryId { get; set; }
     }
 }

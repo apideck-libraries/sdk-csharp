@@ -46,6 +46,8 @@ namespace ApideckUnifySdk
 
         public IJournalEntries JournalEntries { get; }
 
+        public IGeneralLedgerTransactions GeneralLedgerTransactions { get; }
+
         public IPurchaseOrders PurchaseOrders { get; }
 
         public ISubsidiaries Subsidiaries { get; }
@@ -184,6 +186,12 @@ namespace ApideckUnifySdk
         public IJournalEntries JournalEntries { get; private set; }
 
         /// <summary>
+        /// GeneralLedgerTransactions SubSDK.
+        /// <see cref="IGeneralLedgerTransactions"/>
+        /// </summary>
+        public IGeneralLedgerTransactions GeneralLedgerTransactions { get; private set; }
+
+        /// <summary>
         /// PurchaseOrders SubSDK.
         /// <see cref="IPurchaseOrders"/>
         /// </summary>
@@ -315,6 +323,7 @@ namespace ApideckUnifySdk
             BalanceSheet = new BalanceSheet(SDKConfiguration);
             ProfitAndLoss = new ProfitAndLoss(SDKConfiguration);
             JournalEntries = new JournalEntries(SDKConfiguration);
+            GeneralLedgerTransactions = new GeneralLedgerTransactions(SDKConfiguration);
             PurchaseOrders = new PurchaseOrders(SDKConfiguration);
             Subsidiaries = new Subsidiaries(SDKConfiguration);
             Locations = new Locations(SDKConfiguration);

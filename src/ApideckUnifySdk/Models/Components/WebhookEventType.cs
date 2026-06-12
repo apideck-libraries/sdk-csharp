@@ -50,6 +50,8 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly WebhookEventType VaultConnectionTokenRefreshFailed = new WebhookEventType("vault.connection.token_refresh.failed");
         public static readonly WebhookEventType VaultConnectionTokenRefreshPending = new WebhookEventType("vault.connection.token_refresh.pending");
         public static readonly WebhookEventType VaultConnectionTokenRefreshRecovered = new WebhookEventType("vault.connection.token_refresh.recovered");
+        public static readonly WebhookEventType VaultConnectionDownstreamDegraded = new WebhookEventType("vault.connection.downstream.degraded");
+        public static readonly WebhookEventType VaultConnectionDownstreamRecovered = new WebhookEventType("vault.connection.downstream.recovered");
         public static readonly WebhookEventType AtsJobCreated = new WebhookEventType("ats.job.created");
         public static readonly WebhookEventType AtsJobUpdated = new WebhookEventType("ats.job.updated");
         public static readonly WebhookEventType AtsJobDeleted = new WebhookEventType("ats.job.deleted");
@@ -183,6 +185,8 @@ namespace ApideckUnifySdk.Models.Components
                 ["vault.connection.token_refresh.failed"] = VaultConnectionTokenRefreshFailed,
                 ["vault.connection.token_refresh.pending"] = VaultConnectionTokenRefreshPending,
                 ["vault.connection.token_refresh.recovered"] = VaultConnectionTokenRefreshRecovered,
+                ["vault.connection.downstream.degraded"] = VaultConnectionDownstreamDegraded,
+                ["vault.connection.downstream.recovered"] = VaultConnectionDownstreamRecovered,
                 ["ats.job.created"] = AtsJobCreated,
                 ["ats.job.updated"] = AtsJobUpdated,
                 ["ats.job.deleted"] = AtsJobDeleted,

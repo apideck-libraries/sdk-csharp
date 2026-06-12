@@ -31,6 +31,9 @@ var sdk = new Apideck(
 
 CrmNotesAllRequest req = new CrmNotesAllRequest() {
     ServiceId = "salesforce",
+    Filter = new NotesFilter() {
+        Title = "Follow up call",
+    },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },

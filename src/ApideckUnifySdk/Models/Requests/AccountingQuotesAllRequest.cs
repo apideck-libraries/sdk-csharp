@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Requests
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
 
     public class AccountingQuotesAllRequest
@@ -54,5 +55,11 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
+
+        /// <summary>
+        /// Apply filters.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
+        public QuotesFilter? Filter { get; set; }
     }
 }

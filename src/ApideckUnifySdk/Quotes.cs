@@ -295,7 +295,8 @@ namespace ApideckUnifySdk
                     ServiceId = request?.ServiceId,
                     CompanyId = request?.CompanyId,
                     Cursor = nextCursor,
-                    Limit = request?.Limit
+                    Limit = request?.Limit,
+                    Filter = request?.Filter
                 };
 
                 return await ListAsync (
