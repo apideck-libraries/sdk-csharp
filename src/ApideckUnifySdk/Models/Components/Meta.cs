@@ -29,5 +29,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("cursors")]
         public Cursors? Cursors { get; set; }
+
+        /// <summary>
+        /// Number of records available in total for this resource.
+        /// </summary>
+        [JsonProperty("total_count")]
+        public long? TotalCount { get; set; }
     }
 }

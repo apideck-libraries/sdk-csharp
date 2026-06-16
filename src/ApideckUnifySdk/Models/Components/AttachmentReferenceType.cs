@@ -22,6 +22,7 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly AttachmentReferenceType Invoice = new AttachmentReferenceType("invoice");
         public static readonly AttachmentReferenceType Bill = new AttachmentReferenceType("bill");
         public static readonly AttachmentReferenceType Expense = new AttachmentReferenceType("expense");
+        public static readonly AttachmentReferenceType ExpenseReport = new AttachmentReferenceType("expense-report");
         public static readonly AttachmentReferenceType Quote = new AttachmentReferenceType("quote");
 
         private static readonly Dictionary <string, AttachmentReferenceType> _knownValues =
@@ -30,6 +31,7 @@ namespace ApideckUnifySdk.Models.Components
                 ["invoice"] = Invoice,
                 ["bill"] = Bill,
                 ["expense"] = Expense,
+                ["expense-report"] = ExpenseReport,
                 ["quote"] = Quote
             };
 
