@@ -188,6 +188,10 @@ namespace ApideckUnifySdk.Models.Components
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DataScopesResources2));
                     return;
                 }
+
+                throw new InvalidOperationException(
+                    "Could not serialize union to JSON: no variant value was set. " +
+                    "Construct this union using one of the Create* factory methods.");
             }
 
         }
