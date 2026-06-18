@@ -83,6 +83,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? RefundedAmount { get; set; } = null;
 
         /// <summary>
+        /// Indicates whether the order's monetary amounts are inclusive of tax.
+        /// </summary>
+        [JsonProperty("tax_inclusive")]
+        public bool? TaxInclusive { get; set; } = null;
+
+        /// <summary>
         /// Current status of the order.
         /// </summary>
         [JsonProperty("status")]
