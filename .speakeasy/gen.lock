@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 1366ae5a5fd96fa353ba6f2628435561
+  docChecksum: 554718be0d800287c855ef2a0a35edb4
   docVersion: 10.24.44
-  speakeasyVersion: 1.783.1
-  generationVersion: 2.910.1
-  releaseVersion: 0.23.19
-  configChecksum: 727d5d2e9ef9ce7d51ee8ab9b27a4a6a
+  speakeasyVersion: 1.784.0
+  generationVersion: 2.911.0
+  releaseVersion: 0.23.20
+  configChecksum: 00b5d86bb12177511ce0a4cc565c9922
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: 20ad881e-c4cd-46bf-88d6-511ff905e374
-  pristine_commit_hash: 421bee5f4d17d2ece09a0b0cad7eb23a757f0e85
-  pristine_tree_hash: 416f71f578440fa82a429b2113c493eec2ad0a34
+  generation_id: 894f5c93-56ac-4e25-bb4e-09d763a65ba5
+  pristine_commit_hash: 1e188f80755d2cdd0a000d75e8e8097ca4ccedce
+  pristine_tree_hash: a6fe83edb08a74f89fa7b7854163c803a79066d4
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -7161,8 +7161,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:70a521704290a9cbb7e53987a62fd493ab1d1a10
-    pristine_git_object: 11f5f486f960f9dde256af8ba4e72823aaa87d4d
+    last_write_checksum: sha1:675c06a7ef9ec3fd06257b0eb57de188f818c191
+    pristine_git_object: bfb3d33725e0d7bcc0d9adb9bfd4b5bf44e3c632
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -14173,8 +14173,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:8511c9c4bc8191abd734da8517f25dd521897a86
-    pristine_git_object: fe3675320321e4887e99f809336317a81e543b7b
+    last_write_checksum: sha1:594f3ae78437aec3f87be1f0200d45fa1ce4cbbb
+    pristine_git_object: 495db163a80229a4d408509e663cd13f8fe46e59
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14229,8 +14229,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:a060ecda2d2f23800b649876f6cbcafed3c6fe92
-    pristine_git_object: 080ddab5d9d5f0580f27adb456c487efee6154ee
+    last_write_checksum: sha1:d11fa420ce221deb455cf400e58eff4ce68a6a6d
+    pristine_git_object: bfbc2bdce214581afd5d101ea22bcebfddc5cfea
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -30718,10 +30718,6 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes:
-  * `Apideck.Ecommerce.Orders.List()`:  `response.data[].TaxInclusive` **Added**
-  * `Apideck.Ecommerce.Orders.Get()`:  `response.data.TaxInclusive` **Added**
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
