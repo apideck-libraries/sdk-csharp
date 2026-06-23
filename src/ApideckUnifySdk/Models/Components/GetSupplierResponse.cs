@@ -53,6 +53,12 @@ namespace ApideckUnifySdk.Models.Components
         public Supplier Data { get; set; } = default!;
 
         /// <summary>
+        /// Response metadata.
+        /// </summary>
+        [JsonProperty("meta")]
+        public Meta? Meta { get; set; }
+
+        /// <summary>
         /// Raw response from the integration when raw=true query param is provided.
         /// </summary>
         [JsonProperty("_raw")]

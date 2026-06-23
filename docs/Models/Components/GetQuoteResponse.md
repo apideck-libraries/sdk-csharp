@@ -13,3 +13,4 @@ Quotes
 | `Resource`                                | *string*                                  | :heavy_check_mark:                        | Unified API resource name                 | Quotes                                    |
 | `Operation`                               | *string*                                  | :heavy_check_mark:                        | Operation performed                       | one                                       |
 | `Data`                                    | [Quote](../../Models/Components/Quote.md) | :heavy_check_mark:                        | N/A                                       |                                           |
+| `Meta`                                    | [Meta](../../Models/Components/Meta.md)   | :heavy_minus_sign:                        | Response metadata                         |                                           |

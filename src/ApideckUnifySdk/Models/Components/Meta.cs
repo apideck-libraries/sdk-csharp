@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Response metadata.
@@ -35,5 +36,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("total_count")]
         public long? TotalCount { get; set; }
+
+        /// <summary>
+        /// Non-fatal warnings emitted when optional workflow steps failed. Present only when at least one step degraded; the response status remains 200.
+        /// </summary>
+        [JsonProperty("warnings")]
+        public List<Warnings>? Warnings { get; set; } = null;
     }
 }

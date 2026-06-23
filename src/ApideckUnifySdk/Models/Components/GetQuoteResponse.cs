@@ -50,5 +50,11 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("data")]
         public Quote Data { get; set; } = default!;
+
+        /// <summary>
+        /// Response metadata.
+        /// </summary>
+        [JsonProperty("meta")]
+        public Meta? Meta { get; set; }
     }
 }
