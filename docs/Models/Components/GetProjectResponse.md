@@ -13,3 +13,4 @@ Projects
 | `Resource`                                    | *string*                                      | :heavy_check_mark:                            | Unified API resource name                     | Projects                                      |
 | `Operation`                                   | *string*                                      | :heavy_check_mark:                            | Operation performed                           | one                                           |
 | `Data`                                        | [Project](../../Models/Components/Project.md) | :heavy_check_mark:                            | N/A                                           |                                               |
+| `Meta`                                        | [Meta](../../Models/Components/Meta.md)       | :heavy_minus_sign:                            | Response metadata                             |                                               |
