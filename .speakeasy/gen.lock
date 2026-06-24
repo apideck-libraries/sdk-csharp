@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 6ad19facc815e8f35d0053f29d8237df
+  docChecksum: 68923650e7b6b6c6878542d9fbc5f950
   docVersion: 10.24.45
-  speakeasyVersion: 1.784.1
-  generationVersion: 2.911.3
-  releaseVersion: 0.23.21
-  configChecksum: e9588a7ddb907a1f25c793b57fc9e99f
+  speakeasyVersion: 1.785.0
+  generationVersion: 2.912.1
+  releaseVersion: 0.23.22
+  configChecksum: 003574368f8d2843db007b3103c4bac6
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: b9682d13-f883-4181-af41-d84aed88bcea
-  pristine_commit_hash: 9ae35f29d41bc32add28424cf2673a9178dfbc41
-  pristine_tree_hash: 9f811d872fd7fe222988b5ad332db09be49b6c44
+  generation_id: 5ec8de4a-9eae-4211-9873-45dd870e9c00
+  pristine_commit_hash: 971c4ef274a81ceb0162e1bb01e3d278339c353b
+  pristine_tree_hash: d52d266994391a5c6c89d031d451cc3f7b75ae69
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -7165,8 +7165,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:0aa7cde1f027c6606b713651ba24bdf33bfbf422
-    pristine_git_object: 3bf6b24571562fe5100ba95ace66996c5bd81e84
+    last_write_checksum: sha1:a5e5c749f5b5d6687dadb206b25aa9d4bfd7a377
+    pristine_git_object: 379a6d9cdb98c2af260b991aac262c5611940112
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -14181,8 +14181,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:65cd1c88ee8fce793c760db9eb2ac4687569e0af
-    pristine_git_object: c6a76fa2737315a61dbbced65648fb0e1602d979
+    last_write_checksum: sha1:6e0fabd9eb4c2be7a1e1194567c993d5ebb44379
+    pristine_git_object: a1464168e6fcec3b332ed899b6e7f9757e29f725
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14237,8 +14237,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:b35175c296ae5a89eb65f1bc515fe8d0b49e5056
-    pristine_git_object: 5ee060c25389adf3471d8028d1227b61dd44ca41
+    last_write_checksum: sha1:29de31f6c5eb55efee3cd9dc29b41d2ff1b8169a
+    pristine_git_object: 4b2ac34ab406372cad0fa7bb7d7421c50d32b8b1
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -30726,154 +30726,6 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes:
-  * `Apideck.Accounting.TaxRates.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.TaxRates.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Bills.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Bills.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Invoices.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Invoices.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.LedgerAccounts.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.LedgerAccounts.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.InvoiceItems.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.InvoiceItems.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.CreditNotes.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.CreditNotes.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Customers.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Customers.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Suppliers.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Suppliers.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Payments.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Payments.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Refunds.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Refunds.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.CompanyInfo.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Companies.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.BalanceSheet.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.ProfitAndLoss.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.JournalEntries.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.JournalEntries.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.GeneralLedgerTransactions.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.GeneralLedgerTransactions.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.PurchaseOrders.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.PurchaseOrders.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Subsidiaries.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Subsidiaries.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Locations.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Locations.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Departments.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Departments.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Attachments.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Attachments.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.BankAccounts.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.BankAccounts.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.TrackingCategories.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.TrackingCategories.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.BillPayments.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.BillPayments.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Expenses.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Expenses.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.AgedCreditors.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.AgedDebtors.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.BankFeedAccounts.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.BankFeedAccounts.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.BankFeedStatements.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.BankFeedStatements.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Categories.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Categories.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Quotes.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Quotes.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Projects.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Projects.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.Employees.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.Employees.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.ExpenseCategories.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.ExpenseCategories.Get()`:  `response.meta` **Added**
-  * `Apideck.Accounting.ExpenseReports.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Accounting.ExpenseReports.Get()`:  `response.meta` **Added**
-  * `Apideck.Ats.Jobs.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Ats.Jobs.Get()`:  `response.meta` **Added**
-  * `Apideck.Ats.Applicants.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Ats.Applicants.Get()`:  `response.meta` **Added**
-  * `Apideck.Ats.Applications.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Ats.Applications.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.Companies.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.Companies.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.Contacts.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.Contacts.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.Opportunities.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.Opportunities.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.Leads.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.Leads.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.Pipelines.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.Pipelines.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.Notes.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.Notes.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.Users.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.Users.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.Activities.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.Activities.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.CustomObjectSchemas.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.CustomObjectSchemas.Get()`:  `response.meta` **Added**
-  * `Apideck.Crm.CustomObjects.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Crm.CustomObjects.Get()`:  `response.meta` **Added**
-  * `Apideck.Ecommerce.Orders.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Ecommerce.Orders.Get()`:  `response.meta` **Added**
-  * `Apideck.Ecommerce.Products.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Ecommerce.Products.Get()`:  `response.meta` **Added**
-  * `Apideck.Ecommerce.Customers.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Ecommerce.Customers.Get()`:  `response.meta` **Added**
-  * `Apideck.Ecommerce.Stores.Get()`:  `response.meta` **Added**
-  * `Apideck.FileStorage.Files.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.FileStorage.Files.Search()`:  `response.meta.Warnings` **Added**
-  * `Apideck.FileStorage.Files.Get()`:  `response.meta` **Added**
-  * `Apideck.FileStorage.Folders.Get()`:  `response.meta` **Added**
-  * `Apideck.FileStorage.SharedLinks.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.FileStorage.SharedLinks.Get()`:  `response.meta` **Added**
-  * `Apideck.FileStorage.UploadSessions.Get()`:  `response.meta` **Added**
-  * `Apideck.FileStorage.UploadSessions.Finish()`:  `response.meta` **Added**
-  * `Apideck.FileStorage.Drives.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.FileStorage.Drives.Get()`:  `response.meta` **Added**
-  * `Apideck.FileStorage.DriveGroups.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.FileStorage.DriveGroups.Get()`:  `response.meta` **Added**
-  * `Apideck.Hris.Employees.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Hris.Employees.Get()`:  `response.meta` **Added**
-  * `Apideck.Hris.Companies.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Hris.Companies.Get()`:  `response.meta` **Added**
-  * `Apideck.Hris.Departments.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Hris.Departments.Get()`:  `response.meta` **Added**
-  * `Apideck.Hris.Payrolls.Get()`:  `response.meta` **Added**
-  * `Apideck.Hris.EmployeePayrolls.Get()`:  `response.meta` **Added**
-  * `Apideck.Hris.EmployeeSchedules.List()`:  `response.meta` **Added**
-  * `Apideck.Hris.TimeOffRequests.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Hris.TimeOffRequests.Get()`:  `response.meta` **Added**
-  * `Apideck.Sms.Messages.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Sms.Messages.Get()`:  `response.meta` **Added**
-  * `Apideck.IssueTracking.Collections.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.IssueTracking.Collections.Get()`:  `response.meta` **Added**
-  * `Apideck.IssueTracking.CollectionTickets.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.IssueTracking.CollectionTickets.Get()`:  `response.meta` **Added**
-  * `Apideck.IssueTracking.CollectionTicketComments.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.IssueTracking.CollectionTicketComments.Get()`:  `response.meta` **Added**
-  * `Apideck.IssueTracking.CollectionUsers.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.IssueTracking.CollectionUsers.Get()`:  `response.meta` **Added**
-  * `Apideck.IssueTracking.CollectionTags.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Connector.Connectors.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Connector.Connectors.Get()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Connector.ConnectorResources.Get()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Connector.Apis.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Connector.Apis.Get()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Connector.ApiResources.Get()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Connector.ApiResourceCoverage.Get()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Vault.Consumers.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Vault.Consumers.Get()`:  `response.meta` **Added**
-  * `Apideck.Vault.Connections.Get()`:  `response.meta` **Added**
-  * `Apideck.Vault.Connections.Token()`:  `response.meta` **Added**
-  * `Apideck.Vault.ConnectionSettings.List()`:  `response.meta` **Added**
-  * `Apideck.Vault.Logs.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Webhook.Webhooks.List()`:  `response.meta.Warnings` **Added**
-  * `Apideck.Webhook.Webhooks.Get()`:  `response.meta` **Added**
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
