@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 68923650e7b6b6c6878542d9fbc5f950
+  docChecksum: 42d1d71d5cec342cd559c7531720398d
   docVersion: 10.24.45
   speakeasyVersion: 1.785.0
   generationVersion: 2.912.1
-  releaseVersion: 0.23.22
-  configChecksum: 003574368f8d2843db007b3103c4bac6
+  releaseVersion: 0.23.23
+  configChecksum: 7ef76e265ad19e62c5c20489488bc93a
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: 5ec8de4a-9eae-4211-9873-45dd870e9c00
-  pristine_commit_hash: 971c4ef274a81ceb0162e1bb01e3d278339c353b
-  pristine_tree_hash: d52d266994391a5c6c89d031d451cc3f7b75ae69
+  generation_id: bd23e4bc-a040-4fe1-80c2-ec3ea3c770d6
+  pristine_commit_hash: 96eb87497ee93c5d043b3f164ec8dee6a7d6b9bc
+  pristine_tree_hash: 7cac7d4f97649829608b4f21883b2244375b237f
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -7165,8 +7165,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:a5e5c749f5b5d6687dadb206b25aa9d4bfd7a377
-    pristine_git_object: 379a6d9cdb98c2af260b991aac262c5611940112
+    last_write_checksum: sha1:9b95da622cd2ea8e142c919f856dfc97764416f5
+    pristine_git_object: f226ee52ae0087a04d4d0aa122d0651dcccacbe8
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -14181,8 +14181,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:6e0fabd9eb4c2be7a1e1194567c993d5ebb44379
-    pristine_git_object: a1464168e6fcec3b332ed899b6e7f9757e29f725
+    last_write_checksum: sha1:b25616eed9d18d089887c243ffefeea1838d91ec
+    pristine_git_object: 01b71d53abbb9181e2a2d7adbe8022e5d4ad4524
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14237,8 +14237,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:29de31f6c5eb55efee3cd9dc29b41d2ff1b8169a
-    pristine_git_object: 4b2ac34ab406372cad0fa7bb7d7421c50d32b8b1
+    last_write_checksum: sha1:a97a9046f51c0d56fb62212f636cdd5588d14048
+    pristine_git_object: a52ff22d788bac24b5847b8f97f923a7cf209094
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
