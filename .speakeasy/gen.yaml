@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.23.25
+  version: 0.23.26
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -63,4 +63,5 @@ csharp:
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
   sourceDirectory: src
+  targetFramework: dotnetVersion
   useNodatime: true
