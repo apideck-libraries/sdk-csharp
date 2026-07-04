@@ -150,6 +150,9 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly WebhookEventType AccountingProjectCreated = new WebhookEventType("accounting.project.created");
         public static readonly WebhookEventType AccountingProjectUpdated = new WebhookEventType("accounting.project.updated");
         public static readonly WebhookEventType AccountingProjectDeleted = new WebhookEventType("accounting.project.deleted");
+        public static readonly WebhookEventType AccountingTrackingCategoryCreated = new WebhookEventType("accounting.tracking_category.created");
+        public static readonly WebhookEventType AccountingTrackingCategoryUpdated = new WebhookEventType("accounting.tracking_category.updated");
+        public static readonly WebhookEventType AccountingTrackingCategoryDeleted = new WebhookEventType("accounting.tracking_category.deleted");
 
         private static readonly Dictionary <string, WebhookEventType> _knownValues =
             new Dictionary <string, WebhookEventType> ()
@@ -284,7 +287,10 @@ namespace ApideckUnifySdk.Models.Components
                 ["accounting.quote.deleted"] = AccountingQuoteDeleted,
                 ["accounting.project.created"] = AccountingProjectCreated,
                 ["accounting.project.updated"] = AccountingProjectUpdated,
-                ["accounting.project.deleted"] = AccountingProjectDeleted
+                ["accounting.project.deleted"] = AccountingProjectDeleted,
+                ["accounting.tracking_category.created"] = AccountingTrackingCategoryCreated,
+                ["accounting.tracking_category.updated"] = AccountingTrackingCategoryUpdated,
+                ["accounting.tracking_category.deleted"] = AccountingTrackingCategoryDeleted
             };
 
         private static readonly ConcurrentDictionary<string, WebhookEventType> _values =
