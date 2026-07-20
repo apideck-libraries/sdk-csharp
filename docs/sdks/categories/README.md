@@ -18,6 +18,7 @@ List Categories
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -31,6 +32,9 @@ AccountingCategoriesAllRequest req = new AccountingCategoriesAllRequest() {
     Fields = "id,updated_at",
     Filter = new CategoriesFilter() {
         Type = CategoriesFilterType.Expense,
+    },
+    PassThrough = new Dictionary<string, object>() {
+        { "search", "San Francisco" },
     },
 };
 

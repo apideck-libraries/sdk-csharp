@@ -122,6 +122,9 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly WebhookEventType HrisCompanyCreated = new WebhookEventType("hris.company.created");
         public static readonly WebhookEventType HrisCompanyUpdated = new WebhookEventType("hris.company.updated");
         public static readonly WebhookEventType HrisCompanyDeleted = new WebhookEventType("hris.company.deleted");
+        public static readonly WebhookEventType HrisTimeOffRequestCreated = new WebhookEventType("hris.time-off-request.created");
+        public static readonly WebhookEventType HrisTimeOffRequestUpdated = new WebhookEventType("hris.time-off-request.updated");
+        public static readonly WebhookEventType HrisTimeOffRequestDeleted = new WebhookEventType("hris.time-off-request.deleted");
         public static readonly WebhookEventType FileStorageFileCreated = new WebhookEventType("file-storage.file.created");
         public static readonly WebhookEventType FileStorageFileUpdated = new WebhookEventType("file-storage.file.updated");
         public static readonly WebhookEventType FileStorageFileDeleted = new WebhookEventType("file-storage.file.deleted");
@@ -260,6 +263,9 @@ namespace ApideckUnifySdk.Models.Components
                 ["hris.company.created"] = HrisCompanyCreated,
                 ["hris.company.updated"] = HrisCompanyUpdated,
                 ["hris.company.deleted"] = HrisCompanyDeleted,
+                ["hris.time-off-request.created"] = HrisTimeOffRequestCreated,
+                ["hris.time-off-request.updated"] = HrisTimeOffRequestUpdated,
+                ["hris.time-off-request.deleted"] = HrisTimeOffRequestDeleted,
                 ["file-storage.file.created"] = FileStorageFileCreated,
                 ["file-storage.file.updated"] = FileStorageFileUpdated,
                 ["file-storage.file.deleted"] = FileStorageFileDeleted,

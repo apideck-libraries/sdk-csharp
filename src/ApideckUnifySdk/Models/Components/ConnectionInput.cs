@@ -35,7 +35,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Attach your own consumer specific metadata.
         /// </summary>
         [JsonProperty("metadata")]
-        public Dictionary<string, object>? Metadata { get; set; } = null;
+        public ConnectionMetadataInput? Metadata { get; set; } = null;
 
         [JsonProperty("configuration")]
         public List<ConnectionConfiguration>? Configuration { get; set; }

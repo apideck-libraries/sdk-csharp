@@ -51,7 +51,7 @@ namespace ApideckUnifySdk.Models.Components
         }
 
         public static implicit operator By(string value) => Of(value);
-        public static implicit operator string(By by) => by.Value;
+        public static implicit operator string(By byvar) => byvar.Value;
 
         public static By[] Values()
         {

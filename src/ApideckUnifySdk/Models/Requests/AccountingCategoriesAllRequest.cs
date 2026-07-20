@@ -11,6 +11,7 @@ namespace ApideckUnifySdk.Models.Requests
 {
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
+    using System.Collections.Generic;
 
     public class AccountingCategoriesAllRequest
     {
@@ -67,5 +68,11 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=filter")]
         public CategoriesFilter? Filter { get; set; }
+
+        /// <summary>
+        /// Optional unmapped key/values that will be passed through to downstream as query parameters. Ie: ?pass_through[search]=leads becomes ?search=leads.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=pass_through")]
+        public Dictionary<string, object>? PassThrough { get; set; }
     }
 }

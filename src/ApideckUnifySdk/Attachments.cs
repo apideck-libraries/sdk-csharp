@@ -306,7 +306,8 @@ namespace ApideckUnifySdk
                     CompanyId = request.CompanyId,
                     Cursor = nextCursor,
                     Limit = request.Limit,
-                    Fields = request.Fields
+                    Fields = request.Fields,
+                    PassThrough = request.PassThrough
                 };
 
                 return await ListAsync (
