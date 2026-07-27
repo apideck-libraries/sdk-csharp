@@ -504,6 +504,11 @@ while(res != null)
 * [Update](docs/sdks/leads/README.md#update) - Update lead
 * [Delete](docs/sdks/leads/README.md#delete) - Delete lead
 
+### [Crm.Lists](docs/sdks/lists/README.md)
+
+* [List](docs/sdks/lists/README.md#list) - List lists
+* [Get](docs/sdks/lists/README.md#get) - Get list
+
 ### [Crm.Notes](docs/sdks/notes/README.md)
 
 * [List](docs/sdks/notes/README.md#list) - List notes
@@ -1026,7 +1031,7 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 336 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 338 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

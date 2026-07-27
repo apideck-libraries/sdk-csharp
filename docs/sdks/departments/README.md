@@ -21,6 +21,7 @@ List Departments
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -34,6 +35,9 @@ AccountingDepartmentsAllRequest req = new AccountingDepartmentsAllRequest() {
     Fields = "id,updated_at",
     Filter = new AccountingDepartmentsFilter() {
         Subsidiary = "1",
+    },
+    PassThrough = new Dictionary<string, object>() {
+        { "search", "San Francisco" },
     },
 };
 

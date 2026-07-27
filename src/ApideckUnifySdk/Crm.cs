@@ -26,6 +26,8 @@ namespace ApideckUnifySdk
 
         public IPipelines Pipelines { get; }
 
+        public ILists Lists { get; }
+
         public INotes Notes { get; }
 
         public IUsers Users { get; }
@@ -76,6 +78,12 @@ namespace ApideckUnifySdk
         public IPipelines Pipelines { get; private set; }
 
         /// <summary>
+        /// Lists SubSDK.
+        /// <see cref="ILists"/>
+        /// </summary>
+        public ILists Lists { get; private set; }
+
+        /// <summary>
         /// Notes SubSDK.
         /// <see cref="INotes"/>
         /// </summary>
@@ -113,6 +121,7 @@ namespace ApideckUnifySdk
             Opportunities = new Opportunities(SDKConfiguration);
             Leads = new Leads(SDKConfiguration);
             Pipelines = new Pipelines(SDKConfiguration);
+            Lists = new Lists(SDKConfiguration);
             Notes = new Notes(SDKConfiguration);
             Users = new Users(SDKConfiguration);
             Activities = new Activities(SDKConfiguration);

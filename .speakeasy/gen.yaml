@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.23.28
+  version: 0.24.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -60,8 +60,10 @@ csharp:
   outputModelSuffix: output
   packageName: ApideckUnifySdk
   packageTags: ""
+  presenceAwareJsonSerialization: false
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
   sourceDirectory: src
   targetFramework: dotnetVersion
+  unionStrategy: left-to-right
   useNodatime: true

@@ -78,5 +78,11 @@ namespace ApideckUnifySdk.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=fields")]
         public string? Fields { get; set; } = null;
+
+        /// <summary>
+        /// Optional unmapped key/values that will be passed through to downstream as query parameters. Ie: ?pass_through[search]=leads becomes ?search=leads.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=pass_through")]
+        public Dictionary<string, object>? PassThrough { get; set; }
     }
 }

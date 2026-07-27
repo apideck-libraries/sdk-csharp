@@ -1,25 +1,25 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 050df171336a3f72c7d9fa293aee56ef
-  docVersion: 10.24.47
-  speakeasyVersion: 1.788.1
-  generationVersion: 2.915.1
-  releaseVersion: 0.23.28
-  configChecksum: 2b4695aa5815d9391c17229ea798ee80
+  docChecksum: 0bb72903b2014147d0580d5dc1adfbf5
+  docVersion: 10.28.1
+  speakeasyVersion: 1.791.0
+  generationVersion: 2.924.0
+  releaseVersion: 0.24.0
+  configChecksum: bf2f72307121b6a4931521674e0460cc
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: 1d06aa6a-8ca5-4148-9315-e22a0d52a27f
-  pristine_commit_hash: 7cf7768a171899c623d44755ce75ec8044abddb9
-  pristine_tree_hash: 0aebac00ed99163c5d2b7babcd68fe335218b5a1
+  generation_id: 929c234e-9032-4207-b025-a5be39b51c7c
+  pristine_commit_hash: f8580d292e552b382f76482c7902b9ca9a8392e5
+  pristine_tree_hash: 74fa23f7099bcb7373c8be9bef708319b84196bb
 features:
   csharp:
     additionalDependencies: 0.1.0
-    additionalProperties: 0.0.1
+    additionalProperties: 0.0.2
     constsAndDefaults: 0.0.3
-    core: 3.15.24
+    core: 3.15.25
     deprecations: 2.81.2
     errors: 1.0.3
     flattening: 2.81.3
@@ -35,13 +35,13 @@ features:
     methodServerURLs: 2.82.2
     nameOverrides: 2.81.4
     nullables: 0.1.1
-    openEnums: 0.1.1
-    pagination: 0.2.11
+    openEnums: 0.1.3
+    pagination: 0.2.12
     responseFormat: 0.0.4
     retries: 0.0.3
     sdkHooks: 0.3.0
     typeOverrides: 2.81.1
-    unions: 1.1.3
+    unions: 1.1.4
 trackedFiles:
   .gitattributes:
     id: 24139dae6567
@@ -53,8 +53,8 @@ trackedFiles:
     pristine_git_object: 783cffcf06592652f7f3dc16f70997a931c373cc
   NUGET.md:
     id: f4c8a442a6e5
-    last_write_checksum: sha1:8f70b3435f1c18af3e00307262be432d5c1f3999
-    pristine_git_object: 78b0b64ab8c14345f9d707dde4ca7eecd35d852c
+    last_write_checksum: sha1:994241692d829812e4552106fdbe2bfb6dc56114
+    pristine_git_object: 529716203721d3914a4fe5c9f0dcd0280ec1484d
   USAGE.md:
     id: 3aed33ce6e6f
     last_write_checksum: sha1:08ae02137f97233a3c396af7e1d75453ec7d6d00
@@ -465,8 +465,8 @@ trackedFiles:
     pristine_git_object: f75a53f49f852a3e31b7c4c495a0456c2654ea20
   docs/Models/Components/BillsFilter.md:
     id: f4b37e6b3691
-    last_write_checksum: sha1:ec77ab643b72bacafd4e1dbda403e0d4079d2a53
-    pristine_git_object: d0611e34fd136a270c82bd47ab72f4b963527ffa
+    last_write_checksum: sha1:66e004c561be7eca9374a0fda83709aa1f3f09a6
+    pristine_git_object: d3874f87b19b148fd7d20bbbc49ab19213269cdf
   docs/Models/Components/BillsFilterStatus.md:
     id: 16a5101052dc
     last_write_checksum: sha1:90be18907bb6e4dacfb1b7fb6459fbf85aeafde3
@@ -601,8 +601,8 @@ trackedFiles:
     pristine_git_object: 718d12151353c444a78659556a098f930e4d050e
   docs/Models/Components/Connection.md:
     id: 5688c7e8f7e9
-    last_write_checksum: sha1:8dca8fe00a9c417020f1a93f908f471a551824a3
-    pristine_git_object: a9b53cb748734574665fe76075177881e65bc8a7
+    last_write_checksum: sha1:c0b0d282e1be899cc2679df7a8ef1e8f7f4d92b5
+    pristine_git_object: 5e179d571f50e068ac4769aac8d1cd495ad5633e
   docs/Models/Components/ConnectionConfiguration.md:
     id: b57049cc3d08
     last_write_checksum: sha1:225b68fea12ce7928f66c710af03a1a87d6f6811
@@ -621,8 +621,16 @@ trackedFiles:
     pristine_git_object: a7b1ed46d00245a3438519d373b147a9a2ffa4be
   docs/Models/Components/ConnectionInput.md:
     id: b594dbb64ec4
-    last_write_checksum: sha1:32d51650c9fc20d681e078df9a305c8ae370ad02
-    pristine_git_object: f4bcc26e6bdb08db02f575c0f84e4e778dbb2675
+    last_write_checksum: sha1:e73a8f5d4c5cb851079e8e20a9924dbfd91f9758
+    pristine_git_object: 07a929950d984c944f25165ffc285e8dabd2efc3
+  docs/Models/Components/ConnectionMetadata.md:
+    id: 4a74e6c2342c
+    last_write_checksum: sha1:6b304218f5db09e6a246f28c9344c73d1b4eb41f
+    pristine_git_object: 7aac29a65707986313e3a9e230f86b3e84f5f06d
+  docs/Models/Components/ConnectionMetadataInput.md:
+    id: 496e468f6b5c
+    last_write_checksum: sha1:744b861ea18d14c683d5c1b7aad81df24f346a0e
+    pristine_git_object: 0aa7d9c9a05d716ffbec41ccfc0691ddfbf27c6e
   docs/Models/Components/ConnectionState.md:
     id: e3713da3e6e7
     last_write_checksum: sha1:ef9e3157906728dbfbfc2ae9214a414bb79d7ed4
@@ -637,8 +645,8 @@ trackedFiles:
     pristine_git_object: 3fecb7c1baf599c43440195de52bb080c3c55fb2
   docs/Models/Components/Connector.md:
     id: 5249840e19f2
-    last_write_checksum: sha1:7a45b080942daf606168014e34f15e5ad37c276e
-    pristine_git_object: 22d178c40a7cc3487749e5f09655cef5d9060b67
+    last_write_checksum: sha1:c6a6f3e8706719dc5764861cad461c3d1ef72f97
+    pristine_git_object: f780485d01fd68de8c465ccb1d64bc54e8680a76
   docs/Models/Components/ConnectorAuthType.md:
     id: b91cf9fa0664
     last_write_checksum: sha1:b03f3bfa5e367e8cdc2176aba8e0f3576ca30df5
@@ -659,6 +667,10 @@ trackedFiles:
     id: f22efecba18f
     last_write_checksum: sha1:b15c664b19cd6a1bd99971e89564226611308ef9
     pristine_git_object: 053569c95be9568d3e9dc305e4af76fce2942115
+  docs/Models/Components/ConnectorOverview.md:
+    id: 4e764c267610
+    last_write_checksum: sha1:d31a2a54917c4f59ed3875f4103710a761029de4
+    pristine_git_object: 062984b97f4cfe626b47bc3971dcdc0ef1fc2718
   docs/Models/Components/ConnectorResource.md:
     id: 207f6975fdae
     last_write_checksum: sha1:1bf046aa5a22f94647e1c58b810ce188394977a5
@@ -697,8 +709,8 @@ trackedFiles:
     pristine_git_object: bf63e8b29283c3b3e9de2ac16dac4c5eaada6999
   docs/Models/Components/ConsumerConnection.md:
     id: 7923dbd5b1c6
-    last_write_checksum: sha1:f6dec5b343a8ea8340d46bed257d8b56fdf069fe
-    pristine_git_object: 6cd8ceae3bc36cd08411b751f85b400d8b415afa
+    last_write_checksum: sha1:7f02db86bf78e755e7cd001dc359b08c62eb5230
+    pristine_git_object: e49531e5901e1546dd61008bed4c52b996f4803a
   docs/Models/Components/ConsumerMetadata.md:
     id: f01c56b7b09e
     last_write_checksum: sha1:6a0f7fad469aa42309cb22efd09550c2e13d1746
@@ -1435,6 +1447,10 @@ trackedFiles:
     id: 2016be83ec24
     last_write_checksum: sha1:bbb6a1c07dd815018ab5e0d2b5443c4511643f45
     pristine_git_object: 24228d02bf4cffb30f45ea05c5d9c8125d0e56e6
+  docs/Models/Components/Difficulty.md:
+    id: bfec58f83e0f
+    last_write_checksum: sha1:c8c76f28021d5749be4eb7db2958a39a9fdd961f
+    pristine_git_object: 6f142aa82acdecac3b035caaf80e13646d3fada2
   docs/Models/Components/Direction.md:
     id: 864fdc94e239
     last_write_checksum: sha1:1e48b6ef19d277f21488a788378c89b5e534078e
@@ -1627,6 +1643,10 @@ trackedFiles:
     id: b8bf00a8ab26
     last_write_checksum: sha1:47a84afd1ff107fa5a4dc19ea4528d1de7826623
     pristine_git_object: ad94c018f9d8d036b63c2380aa8a2634fac7b3f6
+  docs/Models/Components/EnvironmentNotes.md:
+    id: f290005b122e
+    last_write_checksum: sha1:d883ff4aa6b2f635e9317a41546d7e8be35821b1
+    pristine_git_object: 10fcf3be4365859a6ed213ad53a5ccdb01653636
   docs/Models/Components/Error.md:
     id: 5030f0d6f8a0
     last_write_checksum: sha1:7e92765ba3892478194fa26fb32dbe0de3ce6359
@@ -1681,16 +1701,16 @@ trackedFiles:
     pristine_git_object: 1b6b8561f1ef57b77266ec1c8202f69e14afeb0c
   docs/Models/Components/ExpenseReport.md:
     id: f220fce17376
-    last_write_checksum: sha1:59654c0eee9d4a95554c4f0edcbd154ffb2cd1d9
-    pristine_git_object: d02ab19d7cdc2c85012152bad625aa5106384590
+    last_write_checksum: sha1:8eec88c87025c012a26d7b7d3c6799605990c933
+    pristine_git_object: b9a729228fec4c9448f03f93bf7f167dbe07656f
   docs/Models/Components/ExpenseReportEmployee.md:
     id: 128430f737f2
     last_write_checksum: sha1:db579ae9bb271ea4980df1bec8f19086429fa408
     pristine_git_object: cd6e36988fb8f1e739549f9b260b1a8353ef7d10
   docs/Models/Components/ExpenseReportInput.md:
     id: ff5d43578b6c
-    last_write_checksum: sha1:6a4acfd752c7eef7e1a6919bcbfc0e06a115bd2b
-    pristine_git_object: 01ddae5644240f335993ffd9be365c60658a2076
+    last_write_checksum: sha1:d4b29b8885f0e869d9a575fc7997aa8c2fd75450
+    pristine_git_object: eed5821f173f51442cfb922c4567e0cc7ccb5cef
   docs/Models/Components/ExpenseReportLineItem.md:
     id: 3d8182f5cf5d
     last_write_checksum: sha1:91f35002a322857bfa23d1cc5cd57e174e430af0
@@ -1739,6 +1759,10 @@ trackedFiles:
     id: 6e35c8d3d810
     last_write_checksum: sha1:88afd0fbad70b7ba4987143db6d9e2324a274c8a
     pristine_git_object: 6805e7fa3813aff771845df08bb1c0642f35a12d
+  docs/Models/Components/ExternalGuides.md:
+    id: 3bae4d98ccaf
+    last_write_checksum: sha1:de674aab2a117be64c4367faad7434633570c539
+    pristine_git_object: a7c5230678c8f5259658c7c28492e4c85adfaab5
   docs/Models/Components/FeedStatus.md:
     id: 38bf35d28f5d
     last_write_checksum: sha1:c3fdad3156e92471c9462ccb2f7b8c5db4a078e3
@@ -2255,6 +2279,14 @@ trackedFiles:
     id: 6010e709f49a
     last_write_checksum: sha1:6761c6a9f5631a47ea2052bf9afce2bf42e0f243
     pristine_git_object: 43c3935b3975f77ff1867ef845743b00a2e46830
+  docs/Models/Components/GetListResponse.md:
+    id: cf4149c80eb7
+    last_write_checksum: sha1:1561b98be4947ae31f0b13c3927b9a4ba5812504
+    pristine_git_object: ec7c8cd7a4340aa56fa9336debb60c955430d4ea
+  docs/Models/Components/GetListsResponse.md:
+    id: c2e01561857a
+    last_write_checksum: sha1:1477a340318c307ce49c03f85449b613a6e9db09
+    pristine_git_object: 19d54d0f770843953fb45562531c4e8750737a2d
   docs/Models/Components/GetLogsResponse.md:
     id: f28dcf6c99cd
     last_write_checksum: sha1:7fba98d390ddc420f0b8b6a6dea77a11ee798728
@@ -2823,6 +2855,18 @@ trackedFiles:
     id: 96c82369ab69
     last_write_checksum: sha1:7939f34d3d67cd44cded7ad055ab3f3468b5d7be
     pristine_git_object: 18d7b07043f89ab9c5fc8644f29330e2ffecc899
+  docs/Models/Components/List.md:
+    id: 6a3a65587639
+    last_write_checksum: sha1:4ae80814eeda0cfcdac5445bcfb19042d4462002
+    pristine_git_object: 5fd834fc5507a0241298de8e20fa84ac7318af71
+  docs/Models/Components/ListType.md:
+    id: 58f119d98f4d
+    last_write_checksum: sha1:a589516af33f19e676270d4297567ce82a0f54d2
+    pristine_git_object: de1609856dc3ddc9e7791975d1f6d1a5862d912a
+  docs/Models/Components/ListVisibility.md:
+    id: 091a1043aca1
+    last_write_checksum: sha1:a1c1364f303d5dd3dd06db2e54aa0c2c9f9a2119
+    pristine_git_object: 28affff506100b01886fa089bd5ec309b60f3d27
   docs/Models/Components/LocationStatus.md:
     id: 7168dedd84fc
     last_write_checksum: sha1:abb601dd36286083299badcf3967d48e79db3ed9
@@ -2863,6 +2907,10 @@ trackedFiles:
     id: f31d15227c9a
     last_write_checksum: sha1:8cb9e2683c076c9c6fa688c64dc6b64eecda429b
     pristine_git_object: 965885826f3f5bc66eea8bc0900ebb8d1e914ca7
+  docs/Models/Components/Metadata.md:
+    id: 5b37a8eb1a69
+    last_write_checksum: sha1:fcce0c9ad29cb8d8f343316e8dbc5d80ddca486c
+    pristine_git_object: cd30e75b51e3bcdea36ac00b576992de5273e3b2
   docs/Models/Components/Mode.md:
     id: 5799fab3f7eb
     last_write_checksum: sha1:4f254b7d4b069814ebc5b1527631085c4ac12b12
@@ -3283,6 +3331,10 @@ trackedFiles:
     id: e21de9158867
     last_write_checksum: sha1:19959b0466b5e7fafb428c920704b03e0f45511f
     pristine_git_object: 0a3db7ff5dfb2f26f9153b25f3bbcfbb2367e33e
+  docs/Models/Components/ResponsibilityMatrix.md:
+    id: 86b64e7bbf17
+    last_write_checksum: sha1:5861b7fb2bbb284871abd07b070d22013d7718c0
+    pristine_git_object: d68ff073685c9afb634e709d42f69536f5055a69
   docs/Models/Components/Salary.md:
     id: e39a9f7017ad
     last_write_checksum: sha1:a17445fa9325869efb9c1b01e68fa3f16c494d7f
@@ -3443,6 +3495,10 @@ trackedFiles:
     id: 0a952be63dac
     last_write_checksum: sha1:1df70d53a4c0e2c1dc019a49e798e36e736eb5c5
     pristine_git_object: 5bed90e137d685ab86ccdb4d49427412f7dc4da0
+  docs/Models/Components/SupportedResourceCategories.md:
+    id: 9bc3e59f9738
+    last_write_checksum: sha1:bb5b18ba694b7be3ac3b9faf4e90c097f994fafa
+    pristine_git_object: d0a704812aea9d4ebee9a2a59965cc27edee2258
   docs/Models/Components/Target.md:
     id: 3bb2eba0af6b
     last_write_checksum: sha1:ebc103add3cab16bc285dfc8b4740437af9ca89b
@@ -3909,8 +3965,8 @@ trackedFiles:
     pristine_git_object: 67297cdd5fa83636e687968feb4db0201853e21a
   docs/Models/Components/WebhookEventType.md:
     id: 234a36136da0
-    last_write_checksum: sha1:6e0567fb0ed7b00c46d1baf1c606588fd1ba0f96
-    pristine_git_object: 895810ddea92ffd347bda3bf2addd87e2982e556
+    last_write_checksum: sha1:2adbfcbf8b76e05a5df092789c27fac2152054cd
+    pristine_git_object: f3d3b32fb2dd75531c2f3d32b15c9127086d364f
   docs/Models/Components/WebhookSubscription.md:
     id: f2c87de13dad
     last_write_checksum: sha1:b06e12fe1b2de792322638adc12526de94056de5
@@ -4037,8 +4093,8 @@ trackedFiles:
     pristine_git_object: f59c5f5996e47720257176a57d1a9fc35070eb85
   docs/Models/Requests/AccountingAttachmentsAllRequest.md:
     id: ce52f9041861
-    last_write_checksum: sha1:2b772f7c88027ddff93fed7c4aed739df95a0092
-    pristine_git_object: 174a14994baeba32f9899459905494f079797e88
+    last_write_checksum: sha1:aa805c32bee67b674deec2eba39f2f1fdcf8545a
+    pristine_git_object: d37c2c5c5e629412c8ab0cb29ebdcb41d26cdc43
   docs/Models/Requests/AccountingAttachmentsAllResponse.md:
     id: 2476c6affee4
     last_write_checksum: sha1:847dab5c9b3fb00d82e974d45d01ac5813c93ad6
@@ -4253,8 +4309,8 @@ trackedFiles:
     pristine_git_object: 4fad1bd7aff6d012d0ff6ebafa37ef2e40fb5cb6
   docs/Models/Requests/AccountingBillsAllRequest.md:
     id: 8ee00c224591
-    last_write_checksum: sha1:e8730792425c1bec9f431792e40f5763e049542e
-    pristine_git_object: 93ae545eb68a21b036542d754b11373452f44cbe
+    last_write_checksum: sha1:118cab770cc456e63762e84fe057c5f19a49c8bd
+    pristine_git_object: 63f3a993d03fbd7a6b568083ea19f30067908cca
   docs/Models/Requests/AccountingBillsAllResponse.md:
     id: dce2709c8717
     last_write_checksum: sha1:f7566e7470a3bf6008efb74cab6ee90b1181c561
@@ -4285,8 +4341,8 @@ trackedFiles:
     pristine_git_object: 911f070ada235e5b4aab8e42cff780a1c9400bf1
   docs/Models/Requests/AccountingCategoriesAllRequest.md:
     id: 928a5d1f47ec
-    last_write_checksum: sha1:55e8f4f539b0c57511f26342ec84c5dfc7d8edaa
-    pristine_git_object: 35eb15ccd01bfe257dca535ca17adf978f252e87
+    last_write_checksum: sha1:b056f05d7572f44d387bcb25ad80579a8882da70
+    pristine_git_object: 605313ab338c59a94950ad8cc9fe135201562dc0
   docs/Models/Requests/AccountingCategoriesAllResponse.md:
     id: aba8a98f593c
     last_write_checksum: sha1:4c6da19ca011badefbaf2449a2935327bd165b18
@@ -4301,8 +4357,8 @@ trackedFiles:
     pristine_git_object: 7815e72ab1f24c8a3ae29ab74b299d905e68fae4
   docs/Models/Requests/AccountingCompaniesAllRequest.md:
     id: 8fed5fca0f68
-    last_write_checksum: sha1:a508c159fb751d017cd129f07d3b2bd7d31452fa
-    pristine_git_object: 11a3fc791ad4429f65a7b5776ce742fa5efb0f11
+    last_write_checksum: sha1:e9667ea0bfcac00729296398345f9200d6fe49cb
+    pristine_git_object: 10a1043f1e28b45a6c764c08f24d7ba4b3e6f5b9
   docs/Models/Requests/AccountingCompaniesAllResponse.md:
     id: e2af9831e5e4
     last_write_checksum: sha1:970e313182d8a2b6a879b8e6ace48dd883ae01e3
@@ -4405,8 +4461,8 @@ trackedFiles:
     pristine_git_object: d597ffc736b466f41ec15593854d8c2ddcbada2e
   docs/Models/Requests/AccountingDepartmentsAllRequest.md:
     id: 805229f110b4
-    last_write_checksum: sha1:9154b28897d41141a0c5b035ffdf7b6bd566a5c3
-    pristine_git_object: 4e351a1eb65e412c9010dd18122ac9478d423e0c
+    last_write_checksum: sha1:c5acee1c3570bca7094d950ba397caa2923987dd
+    pristine_git_object: 612ee8e136783ee03578d705a51d6de9fe74ff61
   docs/Models/Requests/AccountingDepartmentsAllResponse.md:
     id: 763c0ae4f192
     last_write_checksum: sha1:5f2e6454acf4a354593c152e2f578e76b0a9db00
@@ -4445,8 +4501,8 @@ trackedFiles:
     pristine_git_object: 9aada924b86f8c40b8f67117ced74f6c96cf63b7
   docs/Models/Requests/AccountingEmployeesAllRequest.md:
     id: 86d6dedf65cc
-    last_write_checksum: sha1:b7444cc8cf6e51f621ebe496367efbefa4d579f5
-    pristine_git_object: dddd0f1510c6c53559797cc433c9bf6a1b6cfbf2
+    last_write_checksum: sha1:685e7eceb2c003c207de1bdc3a9522aacd3ac638
+    pristine_git_object: e8f35616b49899b987eb79e877c1b054c30dc70f
   docs/Models/Requests/AccountingEmployeesAllResponse.md:
     id: 89b947dda096
     last_write_checksum: sha1:d45410dcc5d44e494e31a26d48b828c3e95631b4
@@ -4485,8 +4541,8 @@ trackedFiles:
     pristine_git_object: d46d22f8e37d6b3ef2474d00329c756163046a13
   docs/Models/Requests/AccountingExpenseCategoriesAllRequest.md:
     id: 4e2f137828c0
-    last_write_checksum: sha1:8358fe8cc92c7ce38059f2274d923d608f0375b7
-    pristine_git_object: 28a0f35ef7bfe2d6eb92ca7675ce9d5d5f35b094
+    last_write_checksum: sha1:ee368d3303bc491418e9862453e489a5fc1332e8
+    pristine_git_object: 5d3826adc930bc61522169f973e42f205e1ec2f2
   docs/Models/Requests/AccountingExpenseCategoriesAllResponse.md:
     id: efa142c0dd4d
     last_write_checksum: sha1:c3a9af5983afbe26560833d6285a4c2c72fe7c5c
@@ -4525,8 +4581,8 @@ trackedFiles:
     pristine_git_object: 9c1998f7d33b15ca84618e3b37dbc2abeca571be
   docs/Models/Requests/AccountingExpenseReportsAllRequest.md:
     id: 57ccd8a1cc9c
-    last_write_checksum: sha1:84ac18a8de3f06324e226cc418391740abaa7224
-    pristine_git_object: 983902e96955dcd18630dacf49022346eccc1400
+    last_write_checksum: sha1:7ed449f0c5483d477a788d4fe91cdc9474b17787
+    pristine_git_object: 857aa81425942ddea23ae59872f188a5779bc704
   docs/Models/Requests/AccountingExpenseReportsAllResponse.md:
     id: fbc01a6c4c6b
     last_write_checksum: sha1:85acbb547ea4ebc03b68f8ddf71fc9215ede433b
@@ -4565,8 +4621,8 @@ trackedFiles:
     pristine_git_object: 5b9d73fa21f515ece99842960132d2418922d2f6
   docs/Models/Requests/AccountingExpensesAllRequest.md:
     id: 537826747ad8
-    last_write_checksum: sha1:46c89245da3efaa99738a1ca389d032f0fa07f3c
-    pristine_git_object: 9dc56fa2b6bd60ab762432ba1bf97db5d42ad8c0
+    last_write_checksum: sha1:0e4b62236563c5fa7a567cf2a65a951f3a4bac32
+    pristine_git_object: 024166bfdcc0c5048d7bec6e14577e4e9b558855
   docs/Models/Requests/AccountingExpensesAllResponse.md:
     id: d74228a8bf75
     last_write_checksum: sha1:93c122b5bff0c0e953adde8b6fc04cfc085fa3e6
@@ -4781,8 +4837,8 @@ trackedFiles:
     pristine_git_object: fc501261a247e31b10c11d466941cd6af082d18a
   docs/Models/Requests/AccountingLocationsAllRequest.md:
     id: ec6d465a911c
-    last_write_checksum: sha1:938517915b958eac84922855d85c48a74256e90e
-    pristine_git_object: 814f14ee99118c7ee429f1dc89a57c0fe32401fa
+    last_write_checksum: sha1:08342803249570a161fa631ca1c5b79a30cf88b7
+    pristine_git_object: dbcf59b7befb75d98f51b98ac6540e3b5ec5de27
   docs/Models/Requests/AccountingLocationsAllResponse.md:
     id: b3e7f9a8acd1
     last_write_checksum: sha1:1eaf92ff275985c7b7d6cd74a96b0ddbfd901a50
@@ -4949,8 +5005,8 @@ trackedFiles:
     pristine_git_object: d3ccc8340b895e6e6fec176702659fb784667cbf
   docs/Models/Requests/AccountingQuotesAllRequest.md:
     id: d33c8c14196d
-    last_write_checksum: sha1:68450bb7baf206fb3b6674e4981ff4c2c97b3bd6
-    pristine_git_object: 6673abb664983b8a90036debf38fdf0947eb7d5a
+    last_write_checksum: sha1:d8f46f01112edf3c2fce7dc0842a12ae4901ddfc
+    pristine_git_object: 43d161186b99abcfc10d8b70343baf69cc7b4584
   docs/Models/Requests/AccountingQuotesAllResponse.md:
     id: 64f74e3aa3b4
     last_write_checksum: sha1:35a20377531a7562fd58258b45d3966de81eda0c
@@ -5029,8 +5085,8 @@ trackedFiles:
     pristine_git_object: 3a63829cfd0a00bf7e0f6183d48c83d7fe251b44
   docs/Models/Requests/AccountingSubsidiariesAllRequest.md:
     id: 149513c8f908
-    last_write_checksum: sha1:48da2fb9066819240d04963e8207da4e06115d3d
-    pristine_git_object: 5a21854fd0e8a42d64ea5e9f38718c7358500f98
+    last_write_checksum: sha1:40a5e2e45e0a7d3f387c9a94abdbd1ab2b6e9480
+    pristine_git_object: e3e558e77e646bf3368fb6da998441be3884b8ea
   docs/Models/Requests/AccountingSubsidiariesAllResponse.md:
     id: a922620d15ac
     last_write_checksum: sha1:e07bafa3655f994abfc6ea95a4c6e1b24f2200b5
@@ -5603,6 +5659,22 @@ trackedFiles:
     id: 6397fb02ac38
     last_write_checksum: sha1:ff3067c9156d6fbced3751a791eaa4548eca51f7
     pristine_git_object: 4be1b7d7b0b16b0a01fb32f2be02d50c4c2de332
+  docs/Models/Requests/CrmListsAllRequest.md:
+    id: b153eb98a005
+    last_write_checksum: sha1:1cdfff8d13fba51252d1a664fe5f0e995e93dca6
+    pristine_git_object: 37987db937a6dcbc88a806439d837a5b123603ff
+  docs/Models/Requests/CrmListsAllResponse.md:
+    id: 9b5d355936c1
+    last_write_checksum: sha1:67166a9ef3fd396d56aa070bf2ce78f06ac1d59e
+    pristine_git_object: fd0c7912f344d839d1116994bec71c5c5ccd8386
+  docs/Models/Requests/CrmListsOneRequest.md:
+    id: 1d4d7f633107
+    last_write_checksum: sha1:cac156a01009682afaa41629414a651f70d966bd
+    pristine_git_object: 68ef549faf73a4c6b3520260ee15ce8e4968b093
+  docs/Models/Requests/CrmListsOneResponse.md:
+    id: 322109a58d41
+    last_write_checksum: sha1:5cb5f88c5416910c1fecd1eb8957b82b7faebeae
+    pristine_git_object: a77027e1f777c1ee179df494fd0543bddd8bd1ad
   docs/Models/Requests/CrmNotesAddRequest.md:
     id: 65b4f46e21b6
     last_write_checksum: sha1:1c2e3c1e25028a2e474df7aa11e5af9001137d05
@@ -6797,8 +6869,8 @@ trackedFiles:
     pristine_git_object: daabe3722b25d22e34c4bd6db8fbacca72fc1653
   docs/sdks/attachments/README.md:
     id: b60e6ecf628b
-    last_write_checksum: sha1:812714bfc37cef479e9ba55de9b3d4c0abd1994f
-    pristine_git_object: 52f24310726fb9f4166af714325e2969484d0073
+    last_write_checksum: sha1:8d81f60782aae78127eee804752f1d7145fac6b7
+    pristine_git_object: aee1d4f44198bd3a4e315891d0b920d032d1e3cd
   docs/sdks/balancesheet/README.md:
     id: b360644f6413
     last_write_checksum: sha1:8acfa9a72ccac94701a3f08647bda35a06425d38
@@ -6825,8 +6897,8 @@ trackedFiles:
     pristine_git_object: 7a422063d36f2b501a19c4799b4fff4540e66e6f
   docs/sdks/categories/README.md:
     id: 2e253d7225b0
-    last_write_checksum: sha1:6fed5ac2cea465c9db7b96778d3dea102629f5b5
-    pristine_git_object: efb01c4896a92677795a3a42cb28c1a4f8f750bc
+    last_write_checksum: sha1:a51ce9b833bd201852e3bc2ff9ca55218d079c54
+    pristine_git_object: c7b1bd45127f61d0b951af60248c7c8f7781d785
   docs/sdks/collections/README.md:
     id: 7985e64efccf
     last_write_checksum: sha1:291df89bbec404ab15c2f6a7e7831033ba529a77
@@ -6849,8 +6921,8 @@ trackedFiles:
     pristine_git_object: 497cd8c712bb5f1c1219164fc60bedc85a325621
   docs/sdks/companies/README.md:
     id: 67e8a49afa67
-    last_write_checksum: sha1:1a52af769f41293617e04c7a6757c69898b3c53f
-    pristine_git_object: 541d482ee9267fe00ae2866d4aa4fd3310bf65f0
+    last_write_checksum: sha1:62aac8e052cb9d52d10686be5a5521731ee69314
+    pristine_git_object: 317c2c2548b9a7ead72bf563a031af1cb6ca4af3
   docs/sdks/companyinfo/README.md:
     id: 198b84d5c0c5
     last_write_checksum: sha1:71a775aa89d26ecf4c27c822ed7f5e4619615a01
@@ -6869,12 +6941,12 @@ trackedFiles:
     pristine_git_object: 654b71d7e8225dbdc85b38623c58235b598be88c
   docs/sdks/connections/README.md:
     id: 3ef8931411ea
-    last_write_checksum: sha1:bead8212635fcd91397065c033f617b6f41c7212
-    pristine_git_object: 49aeb22e56de143a5a25e562ce1b86afdaef6561
+    last_write_checksum: sha1:f1c92cef42e4237446532718eb50c919d7275f23
+    pristine_git_object: 17b4526f144435e1dd3a1f7c6e75ef6fab5e849b
   docs/sdks/connectionsettings/README.md:
     id: 644e68edbec9
-    last_write_checksum: sha1:febb87f0372e4dcee5fe2c374daecbb46b8a398c
-    pristine_git_object: 18016b639601f52883b1aa9b2793364e5271074a
+    last_write_checksum: sha1:1c5b5cc55b3596ba685e95f67cc04c18c422e65e
+    pristine_git_object: 9af077dd0d15d6e7b83ed66de5f5fa8f49a6cec0
   docs/sdks/connectordocs/README.md:
     id: 2dc104c8fb50
     last_write_checksum: sha1:99f1b88e267e278f79d43a32db5d5e4927390b76
@@ -6929,8 +7001,8 @@ trackedFiles:
     pristine_git_object: d0af3685d682355ec814af83c83c6cdda3ba44fb
   docs/sdks/departments/README.md:
     id: 12342c54f2cb
-    last_write_checksum: sha1:e12911c97e45b2187576efae0a69fe4a70715d9d
-    pristine_git_object: a30c8066bcef0b7eeb356667b83b4d4f1c314d68
+    last_write_checksum: sha1:a29355f144c394b224c7243847ae06fe922a754e
+    pristine_git_object: 85e2552b063813033ee169312a72e36de748dd5f
   docs/sdks/drivegroups/README.md:
     id: ec4861fea55c
     last_write_checksum: sha1:6af6b5baa0d334d729695b9176da2755f3a3ecab
@@ -6945,24 +7017,24 @@ trackedFiles:
     pristine_git_object: 292543ca0cc64befa2ffb048b7b6512f86b7e453
   docs/sdks/employees/README.md:
     id: 3adbd327ce9d
-    last_write_checksum: sha1:af6472554fdb0ae541ef704c851773609cceb96b
-    pristine_git_object: ae3ab1d05e8178a1079b3d1ed5823c071daf3afc
+    last_write_checksum: sha1:b13231a666558118927163fa7027c7e2c68303ae
+    pristine_git_object: 95bea21a2e474851817ed98b69b72ff698f4e626
   docs/sdks/employeeschedules/README.md:
     id: 9855d4282404
     last_write_checksum: sha1:c66892127f989532b51711a1733540bf45c7cb00
     pristine_git_object: f81a2e7790ae04921401ea122a0d8ee89d4a041a
   docs/sdks/expensecategories/README.md:
     id: b3b488c373df
-    last_write_checksum: sha1:8a0d4e27392a6db38bc97e0b36be427d5b755b3d
-    pristine_git_object: b92154d6a220b295b3be6e5fd48741b1a7a3f5d2
+    last_write_checksum: sha1:5d201d6673d65d5f5a95d983f895887eceaf2142
+    pristine_git_object: 0fdb3be32cc1d7515ab4d1163881fc6cba6d4550
   docs/sdks/expensereports/README.md:
     id: bd1c9bec7278
-    last_write_checksum: sha1:921ab614cea571e9ac640387f3a52dda0173bd80
-    pristine_git_object: 1c21d0398f1e6104d73cb9f496c7f1c599ee3cc0
+    last_write_checksum: sha1:f4de73ae193386570a5431ba0bf0ed4e34d2af30
+    pristine_git_object: f9fb971ef24f82a74d7f59d45997e9c22e5ec295
   docs/sdks/expenses/README.md:
     id: 5692d1aab79d
-    last_write_checksum: sha1:a6fca317f73b956af07f08c357f7e633ef8480a4
-    pristine_git_object: 04880628a52d13185aaabdc8fa74719fb6287dad
+    last_write_checksum: sha1:257ff2e849fa3d06a83ee34ca413a1f8795d52bf
+    pristine_git_object: 299c89aa0853993af7afe65cec4a39bd8f26f3e5
   docs/sdks/files/README.md:
     id: e576d7a117f0
     last_write_checksum: sha1:3e244ebbac9c101b1e7d8b773a015ece7d840062
@@ -6999,10 +7071,14 @@ trackedFiles:
     id: 5169c83ca089
     last_write_checksum: sha1:17d47a042a90998c8a12fcebbc88ca8f08db855e
     pristine_git_object: 5a72a4f468fa7317139cb09d60f5960a1df6ab63
+  docs/sdks/lists/README.md:
+    id: 2bf91000d730
+    last_write_checksum: sha1:6db2cd42e84134905e534db763cc5a1e3b5a4562
+    pristine_git_object: 1b1b3db751516c203db33c4dbec0faeaed6389b3
   docs/sdks/locations/README.md:
     id: 18f4bc68d8e9
-    last_write_checksum: sha1:4eac03ef0b2a58ca9b6777760288703597ee9cac
-    pristine_git_object: 41708798a4ef66df536c19f7645f39fdbaa16d9d
+    last_write_checksum: sha1:b4f94f1be26715212325c4abd3e275b4e587643b
+    pristine_git_object: fafd41c469fefcf00f2fddb2fa93a01975ae97ea
   docs/sdks/logs/README.md:
     id: 5adacd63da21
     last_write_checksum: sha1:5b1237d3901981c2e8574a36c6a0ddd989390218
@@ -7057,8 +7133,8 @@ trackedFiles:
     pristine_git_object: f8f26038630ff9782bf6af57f38462fb3e8023f1
   docs/sdks/quotes/README.md:
     id: 05d5cafc463e
-    last_write_checksum: sha1:402bdaa72feca40b476c5d93b8379f08f6bf3288
-    pristine_git_object: 0c4c113cdd447b5010d18019de146d04bf86a063
+    last_write_checksum: sha1:54b565941be3d5b2cffc239d677101b0975d22c0
+    pristine_git_object: 686d0fe94f7bb3a1eabdc66cd79befd1627ddbcc
   docs/sdks/refunds/README.md:
     id: 451a9838a921
     last_write_checksum: sha1:bec9f951b6081d2512c6266fe68df89e82d9e255
@@ -7077,8 +7153,8 @@ trackedFiles:
     pristine_git_object: f74cc8eec8635083fe9f423d9449bea371331848
   docs/sdks/subsidiaries/README.md:
     id: 96a946f5be0e
-    last_write_checksum: sha1:0ece69c96d50044cba41ac0ff845eb969de12242
-    pristine_git_object: 3322abbf802c321ed9a9e80455b4fd4e8cade4a2
+    last_write_checksum: sha1:1815eb0bae88996a1bcb71b27af6e54757bc42c0
+    pristine_git_object: c1f1624506dd7048d45312861a05ecf3407bd996
   docs/sdks/suppliers/README.md:
     id: 85867190cd79
     last_write_checksum: sha1:e2f663ebd46bf9e22353285d1518d77082b74042
@@ -7165,8 +7241,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:ed70ae531df41903348e61c57354e8d3c7fe81ae
-    pristine_git_object: 11de4d47e52408c6309d93b1a27f672aad57e7bc
+    last_write_checksum: sha1:7e6600b32e7740b73c55d57e4b7c36b1330aed4a
+    pristine_git_object: ccc472a53aa824577b080d264b2296a5d8675f31
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -7185,8 +7261,8 @@ trackedFiles:
     pristine_git_object: 8e248f5e45f504688341c0eca60874be48f66e85
   src/ApideckUnifySdk/Attachments.cs:
     id: 010f112a77c1
-    last_write_checksum: sha1:2a16270a662f51bf1afcb8fa6c9ab5f1a2223113
-    pristine_git_object: 46b925abc43ea49a9590b16c7204dc4c9221b5d2
+    last_write_checksum: sha1:0db1c4d25378298eaf5ba27efac8497fab571019
+    pristine_git_object: 6725572bfd89d93efbf0db0590e419f0b76a4856
   src/ApideckUnifySdk/BalanceSheet.cs:
     id: d2293ec665d9
     last_write_checksum: sha1:958a39d6c1525b2dfe4b27f5f4228deeb21e0985
@@ -7213,8 +7289,8 @@ trackedFiles:
     pristine_git_object: b8fba4a4a394993c5e2499518a199d88ec5ba9b2
   src/ApideckUnifySdk/Categories.cs:
     id: dd505a952132
-    last_write_checksum: sha1:eb09c07abd0f9f007e441c6ae9ce1d0e516ec8c9
-    pristine_git_object: 7bb4b88b9d95bc5216bcdbc8b8593f99a1dc43f8
+    last_write_checksum: sha1:8a56ae2cd7708ae601acc1d8b2a6062b28e4af94
+    pristine_git_object: 2341a52d408a84d4cedf65286ee0ca7b1e63c495
   src/ApideckUnifySdk/CollectionTags.cs:
     id: 5f22b323ca6f
     last_write_checksum: sha1:cfadc6ca6e8e6580c75b94c228856e1248650838
@@ -7237,8 +7313,8 @@ trackedFiles:
     pristine_git_object: b17b3d04efd56b947c7785d47cfc8a5935abe252
   src/ApideckUnifySdk/Companies.cs:
     id: 212d77e07937
-    last_write_checksum: sha1:2750bd2be5b719f178b02bac79d0c42e9122ac2d
-    pristine_git_object: a2db6f50194c6e18b36f039d992c461a21236ac0
+    last_write_checksum: sha1:ecbc0c1dc911199f20273476bee0a7b10a308ef8
+    pristine_git_object: cfd65aff4f619417ebc3df829e2b74d3f452fa42
   src/ApideckUnifySdk/CompanyInfo.cs:
     id: 2a34ebcac5dd
     last_write_checksum: sha1:a57e3b351067e2435297a3b933561640ee5cc551
@@ -7301,8 +7377,8 @@ trackedFiles:
     pristine_git_object: cfba0d86be3eff8a53c03ec21aede062f54c9b43
   src/ApideckUnifySdk/Crm.cs:
     id: fba6a12985ae
-    last_write_checksum: sha1:07ab46666fd7a832c16a39e0d2b98e01a1fc4817
-    pristine_git_object: 40e80fae2160fb63c6a4759437f3b1fa12403efa
+    last_write_checksum: sha1:6700964bf60049543cca3156f2822569de86c4a9
+    pristine_git_object: 7010afc29795a62b9e4d6dee69eddf2cc82426f2
   src/ApideckUnifySdk/CustomFields.cs:
     id: d301fcc604b5
     last_write_checksum: sha1:a47d122ecb6475c4062f59e5acd1e502486a189b
@@ -7325,8 +7401,8 @@ trackedFiles:
     pristine_git_object: 906481c5e61c9943a7268bdb0ba07db4377bf0d2
   src/ApideckUnifySdk/Departments.cs:
     id: 5f4bc68196d7
-    last_write_checksum: sha1:0bd597161bbbd45c0ad198b560063fcb6b24a011
-    pristine_git_object: f1a29b695c125fe0121ff911253b893a46624bc4
+    last_write_checksum: sha1:a4ba629977e9723d4fde15b844c81e1dfe924fae
+    pristine_git_object: e95679093508f2667de5fe8722a67a0e7ce570b8
   src/ApideckUnifySdk/DriveGroups.cs:
     id: e35274f394c4
     last_write_checksum: sha1:2c072e689c748ec372895eaefd3f3340dfae9a3f
@@ -7349,20 +7425,20 @@ trackedFiles:
     pristine_git_object: cb9a011aa5b94e812aa264ee05fe90405b9a5241
   src/ApideckUnifySdk/Employees.cs:
     id: a5e79b7f7e88
-    last_write_checksum: sha1:035de1f401622f2c24c504159a05f4fd1068b0f4
-    pristine_git_object: cbb28de7995f2a6999e2d425a4def41e15055d5c
+    last_write_checksum: sha1:850fc546880da5c4044a1f196469b8d6c53c1e5e
+    pristine_git_object: 3c2c59057bf5bfc89ecaada8c21d66e99bb2a5b3
   src/ApideckUnifySdk/ExpenseCategories.cs:
     id: dd62a99fb709
-    last_write_checksum: sha1:824df40735201e564f082a3dc6fae9dc7d928918
-    pristine_git_object: 1926f89b3a2fb5b3c1d7f0b8c9d6ca0b5eaf9c3e
+    last_write_checksum: sha1:160d28bab074e13bb1a71c93617eb2bd70df6bf2
+    pristine_git_object: 5b03caa44ee005f0cc1ad6694035e4ad934f16ca
   src/ApideckUnifySdk/ExpenseReports.cs:
     id: b630df77bccf
-    last_write_checksum: sha1:3e1bbbaf3748f288952bb3140704e1e3babcac48
-    pristine_git_object: b82484906dc19f324f8e643e5eaefb4560052275
+    last_write_checksum: sha1:605bec0f11058cc1bb5453151259ee4b77022228
+    pristine_git_object: d1dbc56751e6bf0df3016f26251a6aaa92544795
   src/ApideckUnifySdk/Expenses.cs:
     id: d9d4f49e7e59
-    last_write_checksum: sha1:973fc3eb764e86078a657647177de176e40863a3
-    pristine_git_object: 19de2855300be37b030f7df0dae922c3f7b8f4cf
+    last_write_checksum: sha1:cd5e4978e1696df1d97e38aa0b95a8fa8af1f4bd
+    pristine_git_object: 00ee20a1fd3b5d5fd0040a8a97f0f4a28d0b998b
   src/ApideckUnifySdk/FileStorage.cs:
     id: 1dddb8cb8426
     last_write_checksum: sha1:6bc36250c08c07dd2c5669f36ad1d6cc01802f84
@@ -7419,10 +7495,14 @@ trackedFiles:
     id: f3703b0a5f36
     last_write_checksum: sha1:a326a376b4ddb0f95eb1d1e1694ec66194ab9049
     pristine_git_object: ffef361f0cb3850ad9a825a89747a90abb7f4268
+  src/ApideckUnifySdk/Lists.cs:
+    id: 611523769f9b
+    last_write_checksum: sha1:f5b1128a41948e860b96541d5b6e254b233123e7
+    pristine_git_object: 05f7fd2429307e0c9827ad028d1294dc16a99142
   src/ApideckUnifySdk/Locations.cs:
     id: 8ab8d6468d38
-    last_write_checksum: sha1:0b9c0af0fef16dd7613b2d0bd47be99ea0780de9
-    pristine_git_object: 6989efdcf20ef5d6419655961e193002c0822ed9
+    last_write_checksum: sha1:cf588f4b31a7c18d34ad577f276190c108eebe8c
+    pristine_git_object: 588addfbb72ede1178c9b9df873d9c8b71790bde
   src/ApideckUnifySdk/Logs.cs:
     id: 85a5f2876636
     last_write_checksum: sha1:3fa4258a48f97ae0df4b47e43b08e90a1181fb2d
@@ -7837,8 +7917,8 @@ trackedFiles:
     pristine_git_object: ef6d7c2495f998ee164594e2944bd1b9a22f4c9e
   src/ApideckUnifySdk/Models/Components/BillsFilter.cs:
     id: 344f121b455c
-    last_write_checksum: sha1:29ecc6a4564d5d6d80d54235f68539163342abdc
-    pristine_git_object: b11743602fd314ebcb6cbb06a5bca6cef513c8c7
+    last_write_checksum: sha1:ecbee213414f4ddf742aa808a1825ac283134e33
+    pristine_git_object: 1390f350d4858ce39a3e80f8955cdf7563214754
   src/ApideckUnifySdk/Models/Components/BillsFilterStatus.cs:
     id: ab97b865ee9c
     last_write_checksum: sha1:50d66c5702a2bd795adc65419ac27a561d07e5d7
@@ -7857,8 +7937,8 @@ trackedFiles:
     pristine_git_object: 4e1e9f87fc5a69bad951355a4c2f20c6f8f9a5fd
   src/ApideckUnifySdk/Models/Components/By.cs:
     id: c4f2d138e1a7
-    last_write_checksum: sha1:2c08f31a8575118513bb2e8c496074d1045a74c6
-    pristine_git_object: 7236b51e5d95e71da880cdd016437244a18d6272
+    last_write_checksum: sha1:c2587d4aadb23f9556af222d0a934ffd95395581
+    pristine_git_object: db91b1da75831dcf04c2b26fe10a94a93db1d419
   src/ApideckUnifySdk/Models/Components/Categories.cs:
     id: c2040500645c
     last_write_checksum: sha1:46befa43c85d0724ecde2b536d40aa8ff2b7317a
@@ -7973,8 +8053,8 @@ trackedFiles:
     pristine_git_object: 6680c5c05edce752b6de9258d1c23c86e485ffd5
   src/ApideckUnifySdk/Models/Components/Connection.cs:
     id: c4a642ea0f9e
-    last_write_checksum: sha1:06074d47e8ce8c02a118e25758d3983650027a9d
-    pristine_git_object: e323c6639e2e85abdd15871bc95bf6f1e7097c27
+    last_write_checksum: sha1:0b5dce524513b1922f1aeb0b9603cb8b081cabb3
+    pristine_git_object: 3acfe44e7aa0e540b2a7b2bbcdd1228b443785f2
   src/ApideckUnifySdk/Models/Components/ConnectionConfiguration.cs:
     id: 50aa5708b462
     last_write_checksum: sha1:52e8229d62e1ce1db810f43d035e37474a83ddfe
@@ -7993,8 +8073,16 @@ trackedFiles:
     pristine_git_object: dcb5bcdc4b8ff03e2df9159574092fc5971d1d29
   src/ApideckUnifySdk/Models/Components/ConnectionInput.cs:
     id: 54094d2d09a9
-    last_write_checksum: sha1:52aeb8de5db6718b9410a4ac4a44a73cf5701a90
-    pristine_git_object: 1311910aef88cbcdd096c51a1600561724366a07
+    last_write_checksum: sha1:314b5b429c34d86b2631e5f0cb53f81b1ea42e67
+    pristine_git_object: 6fd06b10ee4db62017ef6167185d086c7664396a
+  src/ApideckUnifySdk/Models/Components/ConnectionMetadata.cs:
+    id: 79650dfc55b8
+    last_write_checksum: sha1:cad3506070c83a12e6c0b67f48f3cbc93f750100
+    pristine_git_object: 8afc8b1ac374af7dd3637a6c600b71df69f269e7
+  src/ApideckUnifySdk/Models/Components/ConnectionMetadataInput.cs:
+    id: b654146e2885
+    last_write_checksum: sha1:eafcddfef94bfb32a74b4f211bebac07d6756484
+    pristine_git_object: 41c7fbda50c867fcc6efe932e5c6298761b680ce
   src/ApideckUnifySdk/Models/Components/ConnectionState.cs:
     id: 346eaa4b93de
     last_write_checksum: sha1:cae6404b168aded236a92cfa1bdf98d34813326b
@@ -8009,8 +8097,8 @@ trackedFiles:
     pristine_git_object: fc87a5f268152e246936eca0ebd3735e38d7b17d
   src/ApideckUnifySdk/Models/Components/Connector.cs:
     id: cdc81434a7e0
-    last_write_checksum: sha1:ebd3ee0d1846c104e2bd54f2f7ea55268af0fd69
-    pristine_git_object: eda24c0b9f64ec9daa3316e3c4978f7092260337
+    last_write_checksum: sha1:d33e5a0f36cbeba1e4fb06f1611659513b8c86ec
+    pristine_git_object: d529329622ea905efa3f8e77e90986c2dfb81c0c
   src/ApideckUnifySdk/Models/Components/ConnectorAuthType.cs:
     id: 2a439d276718
     last_write_checksum: sha1:a48e310b7096e299a43bfba72587c68f0171b2be
@@ -8031,6 +8119,10 @@ trackedFiles:
     id: 3520aa3a5079
     last_write_checksum: sha1:246e7b8f7ee20a1daf690d0be373468924254353
     pristine_git_object: 0fba1cebcda17edd312c66356512565066ac94a8
+  src/ApideckUnifySdk/Models/Components/ConnectorOverview.cs:
+    id: 9c670f1857ec
+    last_write_checksum: sha1:78b40876c013259f38de1d88cbb5c7efd9c334d9
+    pristine_git_object: e9438bd3d45f5e08fa55de1345ed7ba253f6194b
   src/ApideckUnifySdk/Models/Components/ConnectorResource.cs:
     id: 4d2f9184973d
     last_write_checksum: sha1:65f93a1d400b0af19d9cb36b371cea2582d5e1c0
@@ -8069,8 +8161,8 @@ trackedFiles:
     pristine_git_object: a682f2719b5282505a76f6b5cf01785d6ee1fb2b
   src/ApideckUnifySdk/Models/Components/ConsumerConnection.cs:
     id: 2d80934e761f
-    last_write_checksum: sha1:e57234affb3b9cfe444ca98c80fb04e0fd04166c
-    pristine_git_object: 310e29ab1ba9da2c2b2e784c6d2e5c56fb4fd364
+    last_write_checksum: sha1:15280b65ff451c94aa181fd555807dfd244aa7bc
+    pristine_git_object: afb154261c3f96330bf524bedd55e09729d450cf
   src/ApideckUnifySdk/Models/Components/ConsumerMetadata.cs:
     id: 0dc668b4a758
     last_write_checksum: sha1:9b654bcda56c2dc53cef4ce37e6dade7980deaf8
@@ -8807,6 +8899,10 @@ trackedFiles:
     id: d9e94fde4902
     last_write_checksum: sha1:2f2637ab436e07ab879b1116be6b09059f35f3ba
     pristine_git_object: 2e2092e127f1a177492c2c562cadf836ff71cf82
+  src/ApideckUnifySdk/Models/Components/Difficulty.cs:
+    id: 0fb9ea5e4755
+    last_write_checksum: sha1:19350bdadf0297fcac2dd10e4d88691c57213a17
+    pristine_git_object: 13900413d451c641eeac7ae56e6f136421defa13
   src/ApideckUnifySdk/Models/Components/Direction.cs:
     id: 186af4c54041
     last_write_checksum: sha1:6fe90cbdc6ecff55f1713aca0161d8c76c7c1260
@@ -8999,6 +9095,10 @@ trackedFiles:
     id: 29dceb29c2df
     last_write_checksum: sha1:a9d0b2967531c0c11d605add72fe85e9215dcc6f
     pristine_git_object: 167c9c7b95f36b6fd7065804c57a7835fd9cf395
+  src/ApideckUnifySdk/Models/Components/EnvironmentNotes.cs:
+    id: d474ee0319ec
+    last_write_checksum: sha1:ea25b91365d2e0a507577ac58bec4722af5fbb39
+    pristine_git_object: 97479dc0cb49459b145ead7913f8ec1a1cdf99f6
   src/ApideckUnifySdk/Models/Components/Error.cs:
     id: 2b8ca160d234
     last_write_checksum: sha1:5b6edafcfdca9c1383f2107a4e0c37e344071ee4
@@ -9053,16 +9153,16 @@ trackedFiles:
     pristine_git_object: 5c67e96fce44e2cdbe22864ab63feffe505d934e
   src/ApideckUnifySdk/Models/Components/ExpenseReport.cs:
     id: 0511ca35d941
-    last_write_checksum: sha1:2b0f0b8b07566ee9d91dc8aefbef5710bf10328b
-    pristine_git_object: 0a094fc1ad9c5eee894fc1653bf65c5c42605bca
+    last_write_checksum: sha1:2c452883f22ce6dadb045e4c2b536e72096188da
+    pristine_git_object: 5a1a9d57f379a1c66c6f87094ec3a5b3d11470a7
   src/ApideckUnifySdk/Models/Components/ExpenseReportEmployee.cs:
     id: 5dbcaba5451e
     last_write_checksum: sha1:9a948c2baa66dc44abbacb091232c604efbaf8f1
     pristine_git_object: 1d5650d22526d4ca429ca357e047b7dd7769e725
   src/ApideckUnifySdk/Models/Components/ExpenseReportInput.cs:
     id: c92aca1ebf82
-    last_write_checksum: sha1:6f11cfdf0ca79ff754a2a4f442dc08eca1ea23a3
-    pristine_git_object: e04604a9011f0faf867a7162c9800de1554a2f03
+    last_write_checksum: sha1:69a6ad27ffd60d01a162e94c965bb5c682888c77
+    pristine_git_object: 66ba6a94af2f75debdc0de573c026c86c9ea754d
   src/ApideckUnifySdk/Models/Components/ExpenseReportLineItem.cs:
     id: a6b151b8cf1f
     last_write_checksum: sha1:b5172ca3470050554a38351b2ff18391f5937a25
@@ -9111,6 +9211,10 @@ trackedFiles:
     id: f33fb85f0376
     last_write_checksum: sha1:1e7de4d2be1b0a82823292721139248121cb199e
     pristine_git_object: 1baeef8f98c1701183a87c307b0c3912e9dc457b
+  src/ApideckUnifySdk/Models/Components/ExternalGuides.cs:
+    id: d92104cca564
+    last_write_checksum: sha1:bda184704ad151174c984d56314f5aa0867c2433
+    pristine_git_object: 86db49a8850c17380b92bbcf4ddf107913e7a26c
   src/ApideckUnifySdk/Models/Components/FeedStatus.cs:
     id: 23a4c81faa72
     last_write_checksum: sha1:0127d5d3f18ae2228b7a175813e0eb4d67c9d089
@@ -9627,6 +9731,14 @@ trackedFiles:
     id: f810a198b78c
     last_write_checksum: sha1:6df7e1417170be0a531034f61a025b6ebe0c9235
     pristine_git_object: f81a9f929f0272f0c6dc93ba2a45a43abc76683f
+  src/ApideckUnifySdk/Models/Components/GetListResponse.cs:
+    id: 2d1612ac37dd
+    last_write_checksum: sha1:fdf1e72f1bb78f9cbb8577978620f7cce4d7bc40
+    pristine_git_object: b3b16d017b26c453328465e796a34bb98622765b
+  src/ApideckUnifySdk/Models/Components/GetListsResponse.cs:
+    id: cb00f2cd99b7
+    last_write_checksum: sha1:8d3a019eab7394c4dc0f5ceb7de66dda6f3ba3fa
+    pristine_git_object: 62c6e0e1699ab2c5fceeba7f14374d899efec4f2
   src/ApideckUnifySdk/Models/Components/GetLogsResponse.cs:
     id: 1520254b0d54
     last_write_checksum: sha1:86848a88ba2c327c4d9b5db0e0f111a836ed10e5
@@ -10195,6 +10307,18 @@ trackedFiles:
     id: 971b200a4f97
     last_write_checksum: sha1:61f222b55bb5b924926a9d658ddb090776deca0f
     pristine_git_object: eb722dfe2c43525930ea8475d93e2d7f7f51bc32
+  src/ApideckUnifySdk/Models/Components/List.cs:
+    id: 46a0947c854e
+    last_write_checksum: sha1:24466ca9e36e74b66e2a39cea397b25a4ad22946
+    pristine_git_object: 620c76238e1e85e8ac60cb50d12baf8eea47e4e1
+  src/ApideckUnifySdk/Models/Components/ListType.cs:
+    id: 41fea7e83ed6
+    last_write_checksum: sha1:fb74d00e0c13649203880b0cb7bb66cc66f81824
+    pristine_git_object: 1f6a2ae3ad2767d5f6caa1e5a67fb8d1d0534c09
+  src/ApideckUnifySdk/Models/Components/ListVisibility.cs:
+    id: bc090fc4686d
+    last_write_checksum: sha1:29e00552ab2f19bc7ed7464836eb233f172f645b
+    pristine_git_object: 6045494e6b2c0a8a387c16b4e53a2cfbddfe76f6
   src/ApideckUnifySdk/Models/Components/LocationStatus.cs:
     id: 385f5237e8df
     last_write_checksum: sha1:3bbec806da146fedf035ba51c602ffa9cd335e26
@@ -10235,6 +10359,10 @@ trackedFiles:
     id: c6a99bca1dcc
     last_write_checksum: sha1:0d92cd6ff6cdcba159416f26dc49396569e7a375
     pristine_git_object: d847bac6b80c62be671330e3dcabce53ca2e1af7
+  src/ApideckUnifySdk/Models/Components/Metadata.cs:
+    id: d2e2271318bc
+    last_write_checksum: sha1:2fb1d9e70b2b1a8674a09a9d410fc060dc938cc5
+    pristine_git_object: 49e7d95a7dd92b3adf8158fe801fdae7343c7f7e
   src/ApideckUnifySdk/Models/Components/Mode.cs:
     id: 63e0cb5874ac
     last_write_checksum: sha1:63a0a2838c1edadc5c6f9d69af1cd86cbe367f73
@@ -10655,6 +10783,10 @@ trackedFiles:
     id: 59245db84beb
     last_write_checksum: sha1:c8ae1258be43133dff6516b68dff06aaf0283dff
     pristine_git_object: 45ab731c1b7d4a840b0555b8f438fe08b3497643
+  src/ApideckUnifySdk/Models/Components/ResponsibilityMatrix.cs:
+    id: 4ac67ec77151
+    last_write_checksum: sha1:9f534b827e7aa5ae687a9550614604d299c7be75
+    pristine_git_object: b00bee0f8029c3e1c9559479c6b51869b4c41e57
   src/ApideckUnifySdk/Models/Components/Salary.cs:
     id: f06e93ecda08
     last_write_checksum: sha1:c1d1844bb8dce03dd8c1c2bd583299c186f750ab
@@ -10815,6 +10947,10 @@ trackedFiles:
     id: b56e39e90b95
     last_write_checksum: sha1:a896aefc5c7cc48103a6ccf9e73dca44b4129cf8
     pristine_git_object: 00f4a0d9b8097fcfe2a46028649b015fed1b46f9
+  src/ApideckUnifySdk/Models/Components/SupportedResourceCategories.cs:
+    id: dbdda817119f
+    last_write_checksum: sha1:57a3e7e685b6f6c8f5301da06c7b1fe67c568f9c
+    pristine_git_object: e4fb7b7813b01c28d586328bea545ce9d34267ca
   src/ApideckUnifySdk/Models/Components/Target.cs:
     id: d60855cd2efe
     last_write_checksum: sha1:7b75d4ae7a1512a50ecee1e9280e7eae1ee87abe
@@ -11281,8 +11417,8 @@ trackedFiles:
     pristine_git_object: 9bf3f67d75fc22a7c08eea0c6bd46d785bbb1360
   src/ApideckUnifySdk/Models/Components/WebhookEventType.cs:
     id: a828dc57a2a8
-    last_write_checksum: sha1:3dbfa293de8be8a9a430bb75770790071cc2369c
-    pristine_git_object: f76ce0e429d7194e969623638758b72332485e21
+    last_write_checksum: sha1:ce0dad6dcf19b0ace0daf6bbdb23a08f8c6531bc
+    pristine_git_object: abc6efa0ca4f6a88a8fdf6ecd0264aad0556672a
   src/ApideckUnifySdk/Models/Components/WebhookSubscription.cs:
     id: b82126db84a7
     last_write_checksum: sha1:4e9f6e8f2d33785ffdea1522966231577607cb15
@@ -11421,8 +11557,8 @@ trackedFiles:
     pristine_git_object: 1c71445cf97042e8e0348362ca09ce18d763e3b2
   src/ApideckUnifySdk/Models/Requests/AccountingAttachmentsAllRequest.cs:
     id: a5b01565ee85
-    last_write_checksum: sha1:3261d114f140816da15cbc2631b59aab0681701b
-    pristine_git_object: a29e47d97d4e971276bc9b931b39174722a2da63
+    last_write_checksum: sha1:94e6a94e716c294fff5882da888a3c592501971e
+    pristine_git_object: 9dcd10cde5f48989c6306652755d7a498725ed40
   src/ApideckUnifySdk/Models/Requests/AccountingAttachmentsAllResponse.cs:
     id: 845497bded67
     last_write_checksum: sha1:6072a13d784df175086998f1a53210ab99c0742a
@@ -11669,8 +11805,8 @@ trackedFiles:
     pristine_git_object: 95ea49badb322b59e6e765cd45c67321dceb685d
   src/ApideckUnifySdk/Models/Requests/AccountingCategoriesAllRequest.cs:
     id: 20310b3afd28
-    last_write_checksum: sha1:72f0b3e12956a551b370155babd0353a15ff8618
-    pristine_git_object: 0c0809259f33182ecd9bd81ef9f07ee0bb720170
+    last_write_checksum: sha1:912e8f93543202f9c06f58bdfbe0a22163ba8d91
+    pristine_git_object: 7df1a1f77ef04f42311c755def8d7a5b4496b1f5
   src/ApideckUnifySdk/Models/Requests/AccountingCategoriesAllResponse.cs:
     id: 920bbef32eae
     last_write_checksum: sha1:fa6627897516c89ad7364d8e1a6627ae95c9c7b0
@@ -11685,8 +11821,8 @@ trackedFiles:
     pristine_git_object: d522fd826b3e9cddef9dd513a7cfad4a8a875482
   src/ApideckUnifySdk/Models/Requests/AccountingCompaniesAllRequest.cs:
     id: 1ad72f0a38da
-    last_write_checksum: sha1:4744a3944d0334132432d297c6f9c8bdee9d8930
-    pristine_git_object: 03b1e418bdc09c75d36db0c0eb2829f159df1425
+    last_write_checksum: sha1:1819969e384074482a3b7e33a9cba9aa002b023a
+    pristine_git_object: 4cebca6a1753d10564321711e916a20fffd473ce
   src/ApideckUnifySdk/Models/Requests/AccountingCompaniesAllResponse.cs:
     id: 35c5c551bb80
     last_write_checksum: sha1:7d5bc1fb109c7fd374ddde58c8b0602e897f1cbf
@@ -11789,8 +11925,8 @@ trackedFiles:
     pristine_git_object: 4e4bfab3db80462b6c7bae67074e4081580369b2
   src/ApideckUnifySdk/Models/Requests/AccountingDepartmentsAllRequest.cs:
     id: c396e0b0fa06
-    last_write_checksum: sha1:c52f025a9693da10c0ec6575e489176a144e07e2
-    pristine_git_object: 0c039655ce7d6a49c8e86248e5d2aea09f307d3f
+    last_write_checksum: sha1:853b69ddcaa79944834ba6df7ddd1ad4020fcb13
+    pristine_git_object: 345446949fcf2bc189708535d9c5b266b51357df
   src/ApideckUnifySdk/Models/Requests/AccountingDepartmentsAllResponse.cs:
     id: d4f527785862
     last_write_checksum: sha1:de6ed66c7b6795a26aa9ecdbd7e456e97e337be4
@@ -11829,8 +11965,8 @@ trackedFiles:
     pristine_git_object: b1084f075d6cbf0f6373a54c0fc66a14b3d51959
   src/ApideckUnifySdk/Models/Requests/AccountingEmployeesAllRequest.cs:
     id: dc2e2c2279b8
-    last_write_checksum: sha1:600b23c14be6318e200aa752f07311917ea40c74
-    pristine_git_object: a2110f84ea1fe25c6563b2aea9843057f0f09c51
+    last_write_checksum: sha1:ab34c5d0100dffac4a5ca4258ecb9aed6dc38743
+    pristine_git_object: 9796ac1e8f31451b27e67e6cb137b5348b715eca
   src/ApideckUnifySdk/Models/Requests/AccountingEmployeesAllResponse.cs:
     id: 03d0c6e3db65
     last_write_checksum: sha1:97dd4970bafecfc4e4dbfe0e0d7272cd73780f9b
@@ -11869,8 +12005,8 @@ trackedFiles:
     pristine_git_object: 50e982e24a66ddda1427d3c9776836dc86c0b9c6
   src/ApideckUnifySdk/Models/Requests/AccountingExpenseCategoriesAllRequest.cs:
     id: 668c594c66e7
-    last_write_checksum: sha1:b31ec227182eb88b468803a2a86e5692238eb6a7
-    pristine_git_object: d92fb3a3c57548b4e6a9c55544c115987c64252f
+    last_write_checksum: sha1:53b826679a3a308f96cdbed5beb7680d1a46f8d6
+    pristine_git_object: d9ba8cb4d4e6b300d44caae9cda3943e7455fe2a
   src/ApideckUnifySdk/Models/Requests/AccountingExpenseCategoriesAllResponse.cs:
     id: 7f2d1368239a
     last_write_checksum: sha1:8598b81b0ad23436924c9b8df5f2a410b69f98b0
@@ -11909,8 +12045,8 @@ trackedFiles:
     pristine_git_object: 889675b1aba6cb771be7288b8632efec86b8546c
   src/ApideckUnifySdk/Models/Requests/AccountingExpenseReportsAllRequest.cs:
     id: c1037baafd2d
-    last_write_checksum: sha1:08dcffce6842abb638b0bfce02763bbcae999852
-    pristine_git_object: fe2ca46040e65b49715bdab050f451748dec5615
+    last_write_checksum: sha1:6901722ca1905e7fa429ea01ecc3f54b5fbc2346
+    pristine_git_object: aadf94f1711336f6ff5840ac6ddb913e3e6372b5
   src/ApideckUnifySdk/Models/Requests/AccountingExpenseReportsAllResponse.cs:
     id: 654b5542f9c5
     last_write_checksum: sha1:c0afaa1473546183629ebee54fee4b94723c989a
@@ -11949,8 +12085,8 @@ trackedFiles:
     pristine_git_object: ae38cd6256a12a2c94c1b869fd323249a2139510
   src/ApideckUnifySdk/Models/Requests/AccountingExpensesAllRequest.cs:
     id: 0fdebd5cbd15
-    last_write_checksum: sha1:c21de85d83250e5db9cc9234e35a5bf3fa4cedcb
-    pristine_git_object: a659c7131fc461f45da3d6a9f4715cf66dca96c0
+    last_write_checksum: sha1:505b7648a33d7aeb5c7ae100d95c4fd252d0ad8b
+    pristine_git_object: 66ed16cf85b0ff795ca2937817adbdf711473c3f
   src/ApideckUnifySdk/Models/Requests/AccountingExpensesAllResponse.cs:
     id: 703570dedfe7
     last_write_checksum: sha1:230fe192380d9da97d35313b64385f5c110feb3e
@@ -12165,8 +12301,8 @@ trackedFiles:
     pristine_git_object: efe4d217532ede72072220e11ab19baf96b46f88
   src/ApideckUnifySdk/Models/Requests/AccountingLocationsAllRequest.cs:
     id: e21052c243f1
-    last_write_checksum: sha1:ea0d479c6e10c2e68caea0cc55322a2a8d799b92
-    pristine_git_object: daec69af33fb0e6f36596b48d48bd0e1dd57750a
+    last_write_checksum: sha1:c6a5737a90d0eede68671e30f2f0cac4ebc83366
+    pristine_git_object: 30b1b1c10aeb4b51507b51848baf165bca0ea732
   src/ApideckUnifySdk/Models/Requests/AccountingLocationsAllResponse.cs:
     id: 7354e7cd9d52
     last_write_checksum: sha1:137c48c5dec02fdb4ce7ed5deba4ef56ef3cb4ce
@@ -12333,8 +12469,8 @@ trackedFiles:
     pristine_git_object: 5bb01a023bff6bdf4a7f7a74a9d7a0f88617b6b8
   src/ApideckUnifySdk/Models/Requests/AccountingQuotesAllRequest.cs:
     id: ed580f6cfef4
-    last_write_checksum: sha1:24608f23d486059a30bdccadacaf0f44174328f2
-    pristine_git_object: fc771170edc67e316b3eed507fde717bf8df13e5
+    last_write_checksum: sha1:1dfe83b92c49502975f102a7d2e3039d6d577e52
+    pristine_git_object: a774dec5b03e079478e55e26c977baf70280fbf5
   src/ApideckUnifySdk/Models/Requests/AccountingQuotesAllResponse.cs:
     id: 0b78a4cd6649
     last_write_checksum: sha1:c7e87dc0cea5c847e9d143315ffbf9d0139ba2bf
@@ -12413,8 +12549,8 @@ trackedFiles:
     pristine_git_object: 196b9533cb2c00515de48850573799ef5851e640
   src/ApideckUnifySdk/Models/Requests/AccountingSubsidiariesAllRequest.cs:
     id: ae1d3454fc23
-    last_write_checksum: sha1:c81110b41dceb895ec1f5571f2fa6020ece07b28
-    pristine_git_object: eddd8f2e99b475eaf5d84fd501ee16cded2dcc7b
+    last_write_checksum: sha1:aca75496020100292b5439009240ce6e161e0125
+    pristine_git_object: ed02fb4a8e331c9465ff8c32016ad0f087bfb347
   src/ApideckUnifySdk/Models/Requests/AccountingSubsidiariesAllResponse.cs:
     id: c1ab9b155da7
     last_write_checksum: sha1:750e7a6c0e5ec0709081133616b3fb4876769cb5
@@ -12987,6 +13123,22 @@ trackedFiles:
     id: 0fe6e4e48582
     last_write_checksum: sha1:e73b2ea661ee2a848f54ceefdefbdd35df1a634a
     pristine_git_object: 907d00b7055fbdfa69f7eb6f994441d74a0b198c
+  src/ApideckUnifySdk/Models/Requests/CrmListsAllRequest.cs:
+    id: e7426993d637
+    last_write_checksum: sha1:a10c161e81c696b0d135e018e88cbfe60716b07a
+    pristine_git_object: e3758dcf37dacdfffe2c7341c7eba3a3317fc881
+  src/ApideckUnifySdk/Models/Requests/CrmListsAllResponse.cs:
+    id: 58d6ff258a99
+    last_write_checksum: sha1:f8c1fb79c95e2ca7fe73e93fb3fc06ed0ca09d0f
+    pristine_git_object: baac45e7f870f8a663f420a2fa7a3f3b95e4e2aa
+  src/ApideckUnifySdk/Models/Requests/CrmListsOneRequest.cs:
+    id: 955f974f809a
+    last_write_checksum: sha1:bd0e78f5fa938080ab7097e73c4de8a6c6d8d0af
+    pristine_git_object: d3c2e941d70baf288d4cdb48e40da35e0cfe4839
+  src/ApideckUnifySdk/Models/Requests/CrmListsOneResponse.cs:
+    id: d6cbab503a60
+    last_write_checksum: sha1:4e621a2cf400fbcce98b3035b044e315f0f2eb5b
+    pristine_git_object: 9a3eafe7849980b34ff6c0302bfa8a299d8e42a2
   src/ApideckUnifySdk/Models/Requests/CrmNotesAddRequest.cs:
     id: 1028fcc7802e
     last_write_checksum: sha1:86d17a2a3a8717dd54e9742679c662b49826772e
@@ -14173,16 +14325,16 @@ trackedFiles:
     pristine_git_object: 4f93e459a755102ae3a6aacc26a0a10060d4c2d0
   src/ApideckUnifySdk/Quotes.cs:
     id: e83134b7b57f
-    last_write_checksum: sha1:8ca74ddbfe3c7b3db8155991528db10f693116c4
-    pristine_git_object: c7cf9b94b3dbdd4535c55128221d6cf3d7dbfa8a
+    last_write_checksum: sha1:2cace81504962f6d27e63e9d87ccea09b693488a
+    pristine_git_object: 99644ec29c39527f060946899a5685e2b4c654dc
   src/ApideckUnifySdk/Refunds.cs:
     id: ee0fb8a32b55
     last_write_checksum: sha1:5e44b6284ec1322756b59f6c5babbd2f387bd3bd
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:7c9d1ff8131fdfe4f40a0c26fd14e53710bedc42
-    pristine_git_object: 09ce374fa62deb47c133a02f9c1e89db8392a86a
+    last_write_checksum: sha1:e112dee3c7154a71759812e41c8d55ca1f38d6d5
+    pristine_git_object: 062c4cdfa61472516edf04f817fef03d1cc26a74
   src/ApideckUnifySdk/Sessions.cs:
     id: fb973fcf3bd7
     last_write_checksum: sha1:f7a3fe9a8d0b8a3a6925f5b789a14d260db5e68e
@@ -14201,8 +14353,8 @@ trackedFiles:
     pristine_git_object: 5779d44e10e83276e5531690328f98f54c33e2ab
   src/ApideckUnifySdk/Subsidiaries.cs:
     id: b8691b14c6a8
-    last_write_checksum: sha1:43901808faae127ee6149d70eecc414fbdfbdabc
-    pristine_git_object: 5fd95da74b686331e6a03343bc99a50cee00610d
+    last_write_checksum: sha1:0675e4742ccc9db2d8b4fe7016ffbd4e1376634b
+    pristine_git_object: 032649ea74c9404801a64061d76dac3aa5de018d
   src/ApideckUnifySdk/Suppliers.cs:
     id: d5623d564bba
     last_write_checksum: sha1:e4960b8f19d480a218d284eabcb5bf02db12e68e
@@ -14237,8 +14389,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:3b35f4c7c6c55484638eee5b3d2127ae391b4ecc
-    pristine_git_object: b2a4283d49e81f64095d0e81f79063e689daea7f
+    last_write_checksum: sha1:739ea87f01ceb1a7c0512561b962e72fb601f6fa
+    pristine_git_object: 1394eac0346b7d9f712e733ae105a6986f2d7586
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -14624,7 +14776,7 @@ examples:
         query:
           raw: false
           limit: 20
-          filter: {"id_since": "1", "updated_since": "2020-09-30T07:43:32.000Z", "status": "paid"}
+          filter: {"id_since": "1", "updated_since": "2020-09-30T07:43:32.000Z", "billed_since": "2020-09-30", "due_since": "2020-09-30", "status": "paid"}
           sort: {"by": "updated_at", "direction": "desc"}
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
@@ -17485,6 +17637,7 @@ examples:
           raw: false
           limit: 20
           fields: "id,updated_at"
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -17753,6 +17906,7 @@ examples:
           limit: 20
           fields: "id,updated_at"
           filter: {"subsidiary": "1"}
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -18021,6 +18175,7 @@ examples:
           limit: 20
           fields: "id,updated_at"
           filter: {"subsidiary": "1"}
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -18291,6 +18446,7 @@ examples:
           raw: false
           limit: 20
           fields: "id,updated_at"
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -19135,6 +19291,7 @@ examples:
           raw: false
           limit: 20
           filter: {"updated_since": "2020-09-30T07:43:32.000Z", "status": "draft", "type": "expense"}
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -27356,7 +27513,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "data": {"id": "crm+salesforce", "name": "Salesforce", "description": "A description", "icon_url": "https://res.cloudinary.com/apideck/image/upload/v1529456047/catalog/salesforce/icon128x128.png", "logo_url": "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/home/logo-salesforce-m.svg", "website_url": "https://www.salesforce.com", "signup_url": "https://www.salesforce.com/signup", "partner_signup_url": "https://www.salesforce.com/partners", "auth_type": "oauth2", "auth_only": true, "blind_mapped": true, "oauth_grant_type": "authorization_code", "oauth_credentials_source": "integration", "oauth_scopes": [{"id": "contacts:all", "label": "Read/write on the Contacts resource", "default_apis": ["crm"]}], "custom_scopes": true, "has_sandbox_credentials": true, "settings": [{"id": "pipeline_id", "label": "Pipeline", "type": "select"}], "service_id": "close", "unified_apis": [{"id": "crm", "name": "File Storage API", "auth_only": true, "oauth_scopes": [{"id": "contacts:all", "label": "Read/write on the Contacts resource"}], "supported_resources": [{"id": "companies", "name": "Companies", "downstream_id": "accounts", "downstream_name": "Accounts"}], "downstream_unsupported_resources": ["companies"], "supported_events": [{"event_type": "employee.created", "event_source": "native", "downstream_event_type": "person_created", "resources": ["companies"], "entity_type": "employee"}]}], "supported_resources": [{"id": "companies", "name": "Companies", "downstream_id": "accounts", "downstream_name": "Accounts"}], "configurable_resources": ["leads", "companies"], "supported_events": [{"event_type": "employee.created", "event_source": "native", "downstream_event_type": "person_created", "resources": ["companies"], "entity_type": "employee"}], "webhook_support": {"mode": "native", "subscription_level": "integration", "managed_via": "api"}, "schema_support": {"supported": true}, "docs": [{"id": "12345", "name": "connection", "url": "https://unify.apideck.com/connector/connectors/workday/docs/consumer+connection"}]}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}, "links": {"previous": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjE%3D", "current": "https://unify.apideck.com/crm/companies", "next": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjM"}}
+          application/json: {"status_code": 200, "status": "OK", "data": {"id": "crm+salesforce", "name": "Salesforce", "description": "A description", "icon_url": "https://res.cloudinary.com/apideck/image/upload/v1529456047/catalog/salesforce/icon128x128.png", "logo_url": "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/home/logo-salesforce-m.svg", "website_url": "https://www.salesforce.com", "signup_url": "https://www.salesforce.com/signup", "partner_signup_url": "https://www.salesforce.com/partners", "auth_type": "oauth2", "auth_only": true, "blind_mapped": true, "oauth_grant_type": "authorization_code", "oauth_credentials_source": "integration", "oauth_scopes": [{"id": "contacts:all", "label": "Read/write on the Contacts resource", "default_apis": ["crm"]}], "custom_scopes": true, "has_sandbox_credentials": true, "settings": [{"id": "pipeline_id", "label": "Pipeline", "type": "select"}], "service_id": "close", "unified_apis": [{"id": "crm", "name": "File Storage API", "auth_only": true, "oauth_scopes": [{"id": "contacts:all", "label": "Read/write on the Contacts resource"}], "supported_resources": [{"id": "companies", "name": "Companies", "downstream_id": "accounts", "downstream_name": "Accounts"}], "downstream_unsupported_resources": ["companies"], "supported_events": [{"event_type": "employee.created", "event_source": "native", "downstream_event_type": "person_created", "resources": ["companies"], "entity_type": "employee"}]}], "supported_resources": [{"id": "companies", "name": "Companies", "downstream_id": "accounts", "downstream_name": "Accounts"}], "configurable_resources": ["leads", "companies"], "supported_events": [{"event_type": "employee.created", "event_source": "native", "downstream_event_type": "person_created", "resources": ["companies"], "entity_type": "employee"}], "webhook_support": {"mode": "native", "subscription_level": "integration", "managed_via": "api"}, "schema_support": {"supported": true}, "docs": [{"id": "12345", "name": "connection", "url": "https://unify.apideck.com/connector/connectors/workday/docs/consumer+connection"}], "overview": {"beta": false, "demo": false, "difficulty": "moderate", "difficulty_reason": "Self-Service Signup + App Review Required", "partnership_required": true, "apideck_credentials_available": true, "account_type_required": "<value>", "sandbox_available": true, "consumer_access_level": "<value>"}}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}, "links": {"previous": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjE%3D", "current": "https://unify.apideck.com/crm/companies", "next": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjM"}}
         "401":
           application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
         "402":
@@ -29350,6 +29507,7 @@ examples:
           limit: 20
           fields: "id,updated_at"
           filter: {"type": "expense"}
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -29406,6 +29564,7 @@ examples:
           raw: false
           limit: 20
           filter: {"updated_since": "2020-09-30T07:43:32.000Z", "created_since": "2020-09-30T07:43:32.000Z", "number": "OIT00546"}
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -30029,6 +30188,7 @@ examples:
           limit: 20
           fields: "id,updated_at"
           filter: {"updated_since": "2020-09-30T07:43:32.000Z", "status": "active"}
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -30163,6 +30323,7 @@ examples:
           limit: 20
           fields: "id,updated_at"
           filter: {"updated_since": "2020-09-30T07:43:32.000Z", "status": "active"}
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -30297,6 +30458,7 @@ examples:
           limit: 20
           fields: "id,updated_at"
           filter: {"updated_since": "2020-09-30T07:43:32.000Z", "status": "submitted"}
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -30326,7 +30488,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"display_id": "123456", "number": "ER-001", "title": "Q1 Business Travel", "employee": {"id": "12345", "display_name": "John Doe"}, "status": "submitted", "transaction_date": "2021-05-01T12:00:00.000Z", "posting_date": "2024-06-01", "due_date": "2024-06-15", "currency": "USD", "currency_rate": 0.69, "sub_total": 250, "total_tax": 25, "total_amount": 1250.75, "reimbursable_amount": 1100, "memo": "Business travel expenses for Q1 client meetings", "department": {"display_id": "123456", "name": "Acme Inc."}, "location": {"id": "123456", "display_id": "123456", "name": "New York Office"}, "account": null, "accounting_period": {"id": "12345", "name": "Q1 2024"}, "line_items": [], "subsidiary": {"display_id": "123456", "name": "Acme Inc."}, "tracking_categories": [{"id": "123456", "code": "100", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "tax_inclusive": true, "approved_by": {"id": "12345", "display_name": "Jane Smith"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+        application/json: {"display_id": "123456", "number": "ER-001", "title": "Q1 Business Travel", "employee": {"id": "12345", "display_name": "John Doe"}, "status": "submitted", "transaction_date": "2021-05-01T12:00:00.000Z", "posting_date": "2024-06-01", "due_date": "2024-06-15", "currency": "USD", "currency_rate": 0.69, "sub_total": 250, "total_tax": 25, "total_amount": 1250.75, "reimbursable_amount": 1100, "memo": "Business travel expenses for Q1 client meetings", "department": {"display_id": "123456", "name": "Acme Inc."}, "location": {"id": "123456", "display_id": "123456", "name": "New York Office"}, "account": null, "accounting_period": {"id": "12345", "name": "Q1 2024"}, "line_items": [], "reference": "INV-2024-001", "subsidiary": {"display_id": "123456", "name": "Acme Inc."}, "tracking_categories": [{"id": "123456", "code": "100", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "tax_inclusive": true, "approved_by": {"id": "12345", "display_name": "Jane Smith"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
       responses:
         "201":
           application/json: {"status_code": 200, "status": "OK", "service": "netsuite", "resource": "ExpenseReports", "operation": "add", "data": {"id": "12345"}}
@@ -30356,7 +30518,7 @@ examples:
           x-apideck-service-id: "salesforce"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "netsuite", "resource": "ExpenseReports", "operation": "one", "data": {"id": "12345", "display_id": "123456", "number": "ER-001", "title": "Q1 Business Travel", "employee": {"id": "12345", "display_name": "John Doe"}, "status": "submitted", "transaction_date": "2021-05-01T12:00:00.000Z", "posting_date": "2024-06-01", "due_date": "2024-06-15", "currency": "USD", "currency_rate": 0.69, "sub_total": 250, "total_tax": 25, "total_amount": 1250.75, "reimbursable_amount": 1100, "memo": "Business travel expenses for Q1 client meetings", "department": {"id": "12345", "display_id": "123456", "name": "Acme Inc.", "downstream_id": "12345"}, "location": {"id": "123456", "display_id": "123456", "name": "New York Office", "downstream_id": "12345"}, "account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453", "parent_id": "123456", "display_id": "123456"}, "accounting_period": {"id": "12345", "name": "Q1 2024"}, "line_items": [{"id": "12345", "line_number": 1, "expense_category": {"id": "12345", "downstream_id": "12345", "display_id": "Airfare", "name": "Airfare"}, "account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453", "parent_id": "123456", "display_id": "123456"}, "description": "Flight to New York", "quantity": 1, "unit_price": 27500.5, "amount": 275, "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tax_amount": 27.5, "total_amount": 302.5, "transaction_date": "2024-05-15", "billable": true, "reimbursable": true, "customer": {"id": "12345", "display_id": "CUST00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "email": "boring@boring.com"}, "department": {"id": "12345", "display_id": "123456", "name": "Acme Inc.", "downstream_id": "12345"}, "location": null, "tracking_categories": [{"id": "123456", "code": "100", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "receipt_url": "https://example.com/receipts/123.pdf", "currency": "USD", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}], "subsidiary": {"id": "12345", "display_id": "123456", "name": "Acme Inc."}, "tracking_categories": [{"id": "123456", "code": "100", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "tax_inclusive": true, "approved_by": {"id": "12345", "display_name": "Jane Smith"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}}
+          application/json: {"status_code": 200, "status": "OK", "service": "netsuite", "resource": "ExpenseReports", "operation": "one", "data": {"id": "12345", "display_id": "123456", "number": "ER-001", "title": "Q1 Business Travel", "employee": {"id": "12345", "display_name": "John Doe"}, "status": "submitted", "transaction_date": "2021-05-01T12:00:00.000Z", "posting_date": "2024-06-01", "due_date": "2024-06-15", "currency": "USD", "currency_rate": 0.69, "sub_total": 250, "total_tax": 25, "total_amount": 1250.75, "reimbursable_amount": 1100, "memo": "Business travel expenses for Q1 client meetings", "department": {"id": "12345", "display_id": "123456", "name": "Acme Inc.", "downstream_id": "12345"}, "location": {"id": "123456", "display_id": "123456", "name": "New York Office", "downstream_id": "12345"}, "account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453", "parent_id": "123456", "display_id": "123456"}, "accounting_period": {"id": "12345", "name": "Q1 2024"}, "line_items": [{"id": "12345", "line_number": 1, "expense_category": {"id": "12345", "downstream_id": "12345", "display_id": "Airfare", "name": "Airfare"}, "account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453", "parent_id": "123456", "display_id": "123456"}, "description": "Flight to New York", "quantity": 1, "unit_price": 27500.5, "amount": 275, "tax_rate": {"id": "123456", "code": "N-T", "name": "GST on Purchases", "rate": 10}, "tax_amount": 27.5, "total_amount": 302.5, "transaction_date": "2024-05-15", "billable": true, "reimbursable": true, "customer": {"id": "12345", "display_id": "CUST00101", "display_name": "Windsurf Shop", "company_name": "The boring company", "email": "boring@boring.com"}, "department": {"id": "12345", "display_id": "123456", "name": "Acme Inc.", "downstream_id": "12345"}, "location": null, "tracking_categories": [{"id": "123456", "code": "100", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "receipt_url": "https://example.com/receipts/123.pdf", "currency": "USD", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}], "reference": "INV-2024-001", "subsidiary": {"id": "12345", "display_id": "123456", "name": "Acme Inc."}, "tracking_categories": [{"id": "123456", "code": "100", "name": "New York", "parent_id": "123456", "parent_name": "New York"}], "tax_inclusive": true, "approved_by": {"id": "12345", "display_name": "Jane Smith"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror", "downstream_errors": [{"message": "Account code '100' has been archived or deleted", "detail": "Each line item must reference a valid account", "code": "VALIDATION_ERROR"}]}
         "401":
@@ -30381,7 +30543,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
           x-apideck-service-id: "salesforce"
       requestBody:
-        application/json: {"display_id": "123456", "number": "ER-001", "title": "Q1 Business Travel", "employee": {"id": "12345", "display_name": "John Doe"}, "status": "submitted", "transaction_date": "2021-05-01T12:00:00.000Z", "posting_date": "2024-06-01", "due_date": "2024-06-15", "currency": "USD", "currency_rate": 0.69, "sub_total": 250, "total_tax": 25, "total_amount": 1250.75, "reimbursable_amount": 1100, "memo": "Business travel expenses for Q1 client meetings", "department": {"display_id": "123456", "name": "Acme Inc."}, "location": {"id": "123456", "display_id": "123456", "name": "New York Office"}, "account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453", "parent_id": "123456", "display_id": "123456"}, "accounting_period": {"id": "12345", "name": "Q1 2024"}, "line_items": [], "subsidiary": {"display_id": "123456", "name": "Acme Inc."}, "tracking_categories": null, "tax_inclusive": true, "approved_by": {"id": "12345", "display_name": "Jane Smith"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
+        application/json: {"display_id": "123456", "number": "ER-001", "title": "Q1 Business Travel", "employee": {"id": "12345", "display_name": "John Doe"}, "status": "submitted", "transaction_date": "2021-05-01T12:00:00.000Z", "posting_date": "2024-06-01", "due_date": "2024-06-15", "currency": "USD", "currency_rate": 0.69, "sub_total": 250, "total_tax": 25, "total_amount": 1250.75, "reimbursable_amount": 1100, "memo": "Business travel expenses for Q1 client meetings", "department": {"display_id": "123456", "name": "Acme Inc."}, "location": {"id": "123456", "display_id": "123456", "name": "New York Office"}, "account": {"id": "123456", "name": "Bank account", "nominal_code": "N091", "code": "453", "parent_id": "123456", "display_id": "123456"}, "accounting_period": {"id": "12345", "name": "Q1 2024"}, "line_items": [], "reference": "INV-2024-001", "subsidiary": {"display_id": "123456", "name": "Acme Inc."}, "tracking_categories": null, "tax_inclusive": true, "approved_by": {"id": "12345", "display_name": "Jane Smith"}, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "row_version": "1-12345", "pass_through": [{"service_id": "<id>", "extend_paths": [{"path": "$.nested.property", "value": {"TaxClassificationRef": {"value": "EUC-99990201-V1-00020000"}}}]}]}
       responses:
         "200":
           application/json: {"status_code": 200, "status": "OK", "service": "netsuite", "resource": "ExpenseReports", "operation": "update", "data": {"id": "12345"}}
@@ -30566,6 +30728,7 @@ examples:
           raw: false
           limit: 20
           fields: "id,updated_at"
+          pass_through: {"search": "San Francisco"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -30724,9 +30887,63 @@ examples:
           application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
         default:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.listsAll:
+    speakeasy-default-crm-lists-all:
+      parameters:
+        query:
+          raw: false
+          limit: 20
+          pass_through: {"search": "San Francisco"}
+          fields: "id,updated_at"
+        header:
+          x-apideck-consumer-id: "test-consumer"
+          x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "hubspot", "resource": "lists", "operation": "all", "data": [{"id": "12345", "name": "Newsletter Subscribers", "description": "Contacts who opted in to the monthly newsletter.", "type": "dynamic", "visibility": "shared", "owner_id": "12345", "filter_criteria": {"type": "and", "queries": [{"type": "object_type", "object_type": "contact"}]}, "record_count": 42, "folder_id": "12345", "object_type": "contacts", "is_dynamic": true, "is_favorite": false, "is_default": false, "is_system": false, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "tags": ["New"], "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}], "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}, "links": {"previous": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjE%3D", "current": "https://unify.apideck.com/crm/companies", "next": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjM"}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror", "downstream_errors": [{"message": "Account code '100' has been archived or deleted", "detail": "Each line item must reference a valid account", "code": "VALIDATION_ERROR"}]}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+  crm.listsOne:
+    speakeasy-default-crm-lists-one:
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          raw: false
+          fields: "id,updated_at"
+        header:
+          x-apideck-consumer-id: "test-consumer"
+          x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
+          x-apideck-service-id: "salesforce"
+      responses:
+        "200":
+          application/json: {"status_code": 200, "status": "OK", "service": "hubspot", "resource": "lists", "operation": "one", "data": {"id": "12345", "name": "Newsletter Subscribers", "description": "Contacts who opted in to the monthly newsletter.", "type": "dynamic", "visibility": "shared", "owner_id": "12345", "filter_criteria": {"type": "and", "queries": [{"type": "object_type", "object_type": "contact"}]}, "record_count": 42, "folder_id": "12345", "object_type": "contacts", "is_dynamic": true, "is_favorite": false, "is_default": false, "is_system": false, "custom_fields": [{"id": "2389328923893298", "name": "employee_level", "description": "Employee Level", "value": "Uses Salesforce and Marketo"}], "tags": ["New"], "updated_by": "12345", "created_by": "12345", "updated_at": "2020-09-30T07:43:32.000Z", "created_at": "2020-09-30T07:43:32.000Z"}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}}
+        "400":
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror", "downstream_errors": [{"message": "Account code '100' has been archived or deleted", "detail": "Each line item must reference a valid account", "code": "VALIDATION_ERROR"}]}
+        "401":
+          application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
+        "402":
+          application/json: {"status_code": 402, "error": "Payment Required", "type_name": "RequestLimitError", "message": "Request Limit Reached", "detail": "You have reached your limit of 2000", "ref": "https://developers.apideck.com/errors#requestlimiterror"}
+        "404":
+          application/json: {"status_code": 404, "error": "Not Found", "type_name": "EntityNotFoundError", "message": "Unknown Widget", "detail": "Could not find widget with id: '123'", "ref": "https://developers.apideck.com/errors#entitynotfounderror"}
+        "422":
+          application/json: {"status_code": 422, "error": "Unprocessable Entity", "type_name": "InvalidStateError", "message": "Invalid State", "detail": "Unprocessable request, please verify your request headers and body.", "ref": "https://developers.apideck.com/errors#invalidstateerror"}
+        default:
+          application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Webhook.Webhooks.List()`:  `response.data[].Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Create()`: \n  *  `request.createWebhookRequest.Events[]` **Changed**\n  *  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Get()`:  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Update()`: \n  *  `request.updateWebhookRequest.Events[]` **Changed**\n  *  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Delete()`:  `response.data.Events[]` **Changed**\n"
+releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Vault.Consumers.Create()`:  `response.data.Connections[].Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.ConnectionSettings.Update()`: \n  *  `request.Connection.Metadata` **Changed** (Breaking ⚠️)\n  *  `response.data.Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.ConnectionSettings.List()`:  `response.data.Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.Connections.Token()`:  `response.data.Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.Connections.Imports()`:  `response.data.Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.Connections.Update()`: \n  *  `request.Connection.Metadata` **Changed** (Breaking ⚠️)\n  *  `response.data.Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.Connections.Get()`:  `response.data.Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.Connections.List()`:  `response.data[].Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.Consumers.Update()`:  `response.data.Connections[].Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Vault.Consumers.Get()`:  `response.data.Connections[].Metadata` **Changed** (Breaking ⚠️)\n* `Apideck.Accounting.Expenses.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Crm.Lists.List()`: **Added**\n* `Apideck.Accounting.ExpenseCategories.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.ExpenseReports.List()`: \n  *  `request.PassThrough` **Added**\n  *  `response.data[].Reference` **Added**\n* `Apideck.Accounting.ExpenseReports.Create()`: \n  *  `request.ExpenseReport.Reference` **Added**\n* `Apideck.Accounting.ExpenseReports.Get()`:  `response.data.Reference` **Added**\n* `Apideck.Accounting.ExpenseReports.Update()`: \n  *  `request.ExpenseReport.Reference` **Added**\n* `Apideck.Connector.Connectors.List()`:  `response.data[].Overview` **Added**\n* `Apideck.Connector.Connectors.Get()`:  `response.data.Overview` **Added**\n* `Apideck.Accounting.Quotes.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.Categories.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.Employees.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.Attachments.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.Departments.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.Locations.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.Subsidiaries.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.Companies.List()`: \n  *  `request.PassThrough` **Added**\n* `Apideck.Accounting.Bills.List()`: \n  *  `request.Filter` **Changed**\n* `Apideck.Crm.Lists.Get()`: **Added**\n* `Apideck.Webhook.Webhooks.List()`:  `response.data[].Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Create()`: \n  *  `request.createWebhookRequest.Events[]` **Changed**\n  *  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Get()`:  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Update()`: \n  *  `request.updateWebhookRequest.Events[]` **Changed**\n  *  `response.data.Events[]` **Changed**\n* `Apideck.Webhook.Webhooks.Delete()`:  `response.data.Events[]` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln

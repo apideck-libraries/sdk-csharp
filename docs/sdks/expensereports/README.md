@@ -22,6 +22,7 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -35,6 +36,9 @@ AccountingExpenseReportsAllRequest req = new AccountingExpenseReportsAllRequest(
     Filter = new ExpenseReportsFilter() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Status = ExpenseReportsFilterStatus.Submitted,
+    },
+    PassThrough = new Dictionary<string, object>() {
+        { "search", "San Francisco" },
     },
 };
 
@@ -126,6 +130,7 @@ AccountingExpenseReportsAddRequest req = new AccountingExpenseReportsAddRequest(
             Name = "Q1 2024",
         },
         LineItems = new List<ExpenseReportLineItemInput>() {},
+        Reference = "INV-2024-001",
         Subsidiary = new LinkedSubsidiaryInput() {
             DisplayId = "123456",
             Name = "Acme Inc.",
@@ -316,6 +321,7 @@ AccountingExpenseReportsUpdateRequest req = new AccountingExpenseReportsUpdateRe
             Name = "Q1 2024",
         },
         LineItems = new List<ExpenseReportLineItemInput>() {},
+        Reference = "INV-2024-001",
         Subsidiary = new LinkedSubsidiaryInput() {
             DisplayId = "123456",
             Name = "Acme Inc.",
