@@ -22,6 +22,7 @@ using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
 using System;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -36,6 +37,9 @@ AccountingQuotesAllRequest req = new AccountingQuotesAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         CreatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Number = "OIT00546",
+    },
+    PassThrough = new Dictionary<string, object>() {
+        { "search", "San Francisco" },
     },
 };
 

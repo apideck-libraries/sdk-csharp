@@ -65,7 +65,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Attach your own consumer specific metadata.
         /// </summary>
         [JsonProperty("metadata")]
-        public Dictionary<string, object>? Metadata { get; set; } = null;
+        public Metadata? Metadata { get; set; } = null;
 
         [JsonProperty("created_at")]
         public string? CreatedAt { get; set; }

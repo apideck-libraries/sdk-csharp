@@ -21,6 +21,7 @@ List Locations
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -34,6 +35,9 @@ AccountingLocationsAllRequest req = new AccountingLocationsAllRequest() {
     Fields = "id,updated_at",
     Filter = new AccountingLocationsFilter() {
         Subsidiary = "1",
+    },
+    PassThrough = new Dictionary<string, object>() {
+        { "search", "San Francisco" },
     },
 };
 

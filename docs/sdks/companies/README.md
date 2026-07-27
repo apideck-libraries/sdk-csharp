@@ -17,6 +17,7 @@ List all companies accessible through the current connection. Only connectors th
 using ApideckUnifySdk;
 using ApideckUnifySdk.Models.Components;
 using ApideckUnifySdk.Models.Requests;
+using System.Collections.Generic;
 
 var sdk = new Apideck(
     consumerId: "test-consumer",
@@ -28,6 +29,9 @@ AccountingCompaniesAllRequest req = new AccountingCompaniesAllRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
     Fields = "id,updated_at",
+    PassThrough = new Dictionary<string, object>() {
+        { "search", "San Francisco" },
+    },
 };
 
 AccountingCompaniesAllResponse? res = await sdk.Accounting.Companies.ListAsync(req);

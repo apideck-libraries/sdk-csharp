@@ -175,6 +175,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("docs")]
         public List<ConnectorDoc>? Docs { get; set; }
 
+        /// <summary>
+        /// Editorial overview metadata for the connector, used to render the connector's Overview documentation (implementation difficulty, partnership requirements, sandbox availability, and other at-a-glance facts).
+        /// </summary>
+        [JsonProperty("overview")]
+        public ConnectorOverview? Overview { get; set; }
+
         [JsonProperty("tls_support")]
         public TlsSupport? TlsSupport { get; set; }
     }

@@ -119,6 +119,9 @@ var custom = WebhookEventType.Of("custom_value");
 | `HrisCompanyCreated`                     | hris.company.created                     |
 | `HrisCompanyUpdated`                     | hris.company.updated                     |
 | `HrisCompanyDeleted`                     | hris.company.deleted                     |
+| `HrisTimeOffRequestCreated`              | hris.time-off-request.created            |
+| `HrisTimeOffRequestUpdated`              | hris.time-off-request.updated            |
+| `HrisTimeOffRequestDeleted`              | hris.time-off-request.deleted            |
 | `FileStorageFileCreated`                 | file-storage.file.created                |
 | `FileStorageFileUpdated`                 | file-storage.file.updated                |
 | `FileStorageFileDeleted`                 | file-storage.file.deleted                |

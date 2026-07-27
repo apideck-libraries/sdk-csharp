@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using NodaTime;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
@@ -27,6 +28,18 @@ namespace ApideckUnifySdk.Models.Components
 
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
+
+        /// <summary>
+        /// Return bills with a document date (`bill_date`) on or after the given date (YYYY-MM-DD).
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=billed_since")]
+        public LocalDate? BilledSince { get; set; }
+
+        /// <summary>
+        /// Return bills with a due date (`due_date`) on or after the given date (YYYY-MM-DD).
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=due_since")]
+        public LocalDate? DueSince { get; set; }
 
         /// <summary>
         /// Filter by bill status.
