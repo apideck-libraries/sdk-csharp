@@ -37,6 +37,7 @@ AccountingQuotesAllRequest req = new AccountingQuotesAllRequest() {
         UpdatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         CreatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Number = "OIT00546",
+        CustomerId = "123abc",
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
