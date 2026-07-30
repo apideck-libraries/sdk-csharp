@@ -43,5 +43,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=subsidiary_id")]
         public string? SubsidiaryId { get; set; }
+
+        /// <summary>
+        /// Filter by customer id.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=customer_id")]
+        public string? CustomerId { get; set; }
     }
 }
