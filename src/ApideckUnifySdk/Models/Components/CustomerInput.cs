@@ -43,6 +43,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("company_id")]
         public string? CompanyId { get; set; } = null;
 
+        [JsonProperty("subsidiary")]
+        public LinkedSubsidiaryInput? Subsidiary { get; set; } = null;
+
         /// <summary>
         /// The category/type of the customer.
         /// </summary>
