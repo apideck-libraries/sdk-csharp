@@ -722,6 +722,7 @@ while(res != null)
 * [Update](docs/sdks/connections/README.md#update) - Update connection
 * [Delete](docs/sdks/connections/README.md#delete) - Deletes a connection
 * [Imports](docs/sdks/connections/README.md#imports) - Import connection
+* [Migrate](docs/sdks/connections/README.md#migrate) - Migrate connection
 * [Token](docs/sdks/connections/README.md#token) - Authorize Access Token
 
 ### [Vault.ConnectionSettings](docs/sdks/connectionsettings/README.md)
@@ -1026,12 +1027,13 @@ catch (System.Net.Http.HttpRequestException ex)
   * [`BadRequestResponse`](./src/ApideckUnifySdk/Models/Errors/BadRequestResponse.cs): Bad Request. Status code `400`. *
   * [`UnprocessableResponse`](./src/ApideckUnifySdk/Models/Errors/UnprocessableResponse.cs): Unprocessable. Status code `422`. *
 
-<details><summary>Less common exceptions (3)</summary>
+<details><summary>Less common exceptions (4)</summary>
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 338 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 339 methods.*
+  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 339 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

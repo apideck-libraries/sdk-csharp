@@ -44,6 +44,7 @@ var custom = WebhookEventType.Of("custom_value");
 | `VaultConnectionDeleted`                 | vault.connection.deleted                 |
 | `VaultConnectionCallable`                | vault.connection.callable                |
 | `VaultConnectionRevoked`                 | vault.connection.revoked                 |
+| `VaultConnectionMigrated`                | vault.connection.migrated                |
 | `VaultConnectionTokenRefreshFailed`      | vault.connection.token_refresh.failed    |
 | `VaultConnectionTokenRefreshPending`     | vault.connection.token_refresh.pending   |
 | `VaultConnectionTokenRefreshRecovered`   | vault.connection.token_refresh.recovered |
