@@ -504,6 +504,10 @@ while(res != null)
 * [Update](docs/sdks/leads/README.md#update) - Update lead
 * [Delete](docs/sdks/leads/README.md#delete) - Delete lead
 
+### [Crm.ListMembers](docs/sdks/listmembers/README.md)
+
+* [List](docs/sdks/listmembers/README.md#list) - List list members
+
 ### [Crm.Lists](docs/sdks/lists/README.md)
 
 * [List](docs/sdks/lists/README.md#list) - List lists
@@ -1032,8 +1036,8 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 339 methods.*
-  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 339 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 340 methods.*
+  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 340 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
