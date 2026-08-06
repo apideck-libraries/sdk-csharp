@@ -9,6 +9,7 @@
 * [Update](#update) - Update connection
 * [Delete](#delete) - Deletes a connection
 * [Imports](#imports) - Import connection
+* [Migrate](#migrate) - Migrate connection
 * [Token](#token) - Authorize Access Token
 
 ## List
@@ -398,6 +399,70 @@ var res = await sdk.Vault.Connections.ImportsAsync(req);
 | ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
 | ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
 | ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+
+## Migrate
+
+Migrate the connection to the target connector, keeping its credentials and connection state
+(settings, metadata, configuration, subscriptions, consents). The source connection record is
+removed WITHOUT revoking or disconnecting the downstream token.
+
+Available migration targets are declared per connector — refer to the connector's
+documentation page or the Connector API's `migration_targets` field.
+
+Migrated tokens carry the source connector's OAuth scopes, so operations exclusive to the
+target connector may require re-authorization.
+
+Retries are idempotent: a partially-completed migration resumes where it left off.
+
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="vault.connectionsMigrate" method="post" path="/vault/connections/{unified_api}/{service_id}/migrate" -->
+```csharp
+using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+
+var sdk = new Apideck(
+    consumerId: "test-consumer",
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+VaultConnectionsMigrateRequest req = new VaultConnectionsMigrateRequest() {
+    ServiceId = "pipedrive",
+    UnifiedApi = "crm",
+    ConnectionMigrateData = new ConnectionMigrateData() {
+        TargetServiceId = "intuit-enterprise-suite",
+    },
+};
+
+var res = await sdk.Vault.Connections.MigrateAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [VaultConnectionsMigrateRequest](../../Models/Requests/VaultConnectionsMigrateRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+
+### Response
+
+**[VaultConnectionsMigrateResponse](../../Models/Requests/VaultConnectionsMigrateResponse.md)**
+
+### Errors
+
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.ConflictResponse        | 409                                                   | application/json                                      |
 | ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
 | ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
 

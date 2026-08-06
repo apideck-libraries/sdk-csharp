@@ -80,6 +80,12 @@ namespace ApideckUnifySdk.Models.Components
         public bool? FreeTrialAvailable { get; set; }
 
         /// <summary>
+        /// Service ids of connectors this connector's connections can be migrated to via the Vault connectionsMigrate operation.
+        /// </summary>
+        [JsonProperty("migration_targets")]
+        public List<string>? MigrationTargets { get; set; }
+
+        /// <summary>
         /// Type of authorization used by the connector.
         /// </summary>
         [JsonProperty("auth_type")]

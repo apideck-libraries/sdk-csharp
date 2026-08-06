@@ -47,6 +47,7 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly WebhookEventType VaultConnectionDeleted = new WebhookEventType("vault.connection.deleted");
         public static readonly WebhookEventType VaultConnectionCallable = new WebhookEventType("vault.connection.callable");
         public static readonly WebhookEventType VaultConnectionRevoked = new WebhookEventType("vault.connection.revoked");
+        public static readonly WebhookEventType VaultConnectionMigrated = new WebhookEventType("vault.connection.migrated");
         public static readonly WebhookEventType VaultConnectionTokenRefreshFailed = new WebhookEventType("vault.connection.token_refresh.failed");
         public static readonly WebhookEventType VaultConnectionTokenRefreshPending = new WebhookEventType("vault.connection.token_refresh.pending");
         public static readonly WebhookEventType VaultConnectionTokenRefreshRecovered = new WebhookEventType("vault.connection.token_refresh.recovered");
@@ -188,6 +189,7 @@ namespace ApideckUnifySdk.Models.Components
                 ["vault.connection.deleted"] = VaultConnectionDeleted,
                 ["vault.connection.callable"] = VaultConnectionCallable,
                 ["vault.connection.revoked"] = VaultConnectionRevoked,
+                ["vault.connection.migrated"] = VaultConnectionMigrated,
                 ["vault.connection.token_refresh.failed"] = VaultConnectionTokenRefreshFailed,
                 ["vault.connection.token_refresh.pending"] = VaultConnectionTokenRefreshPending,
                 ["vault.connection.token_refresh.recovered"] = VaultConnectionTokenRefreshRecovered,
