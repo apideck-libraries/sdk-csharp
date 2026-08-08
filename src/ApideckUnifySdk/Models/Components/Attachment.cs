@@ -57,6 +57,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Description { get; set; } = null;
 
         /// <summary>
+        /// The URL to download or preview the file.
+        /// </summary>
+        [JsonProperty("file_url")]
+        public string? FileUrl { get; set; } = null;
+
+        /// <summary>
         /// The folder id where this attachment belong to.
         /// </summary>
         [JsonProperty("parent_folder_id")]

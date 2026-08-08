@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.28.0
+  version: 0.29.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -42,6 +42,8 @@ csharp:
   enableSourceLink: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  forwardCompatibleEnumsByDefault: false
+  forwardCompatibleUnionsByDefault: false
   httpClientPrefix: Speakeasy
   imports:
     option: openapi
