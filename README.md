@@ -374,6 +374,14 @@ while(res != null)
 * [Update](docs/sdks/refunds/README.md#update) - Update Refund
 * [Delete](docs/sdks/refunds/README.md#delete) - Delete Refund
 
+### [Accounting.SalesReceipts](docs/sdks/salesreceipts/README.md)
+
+* [List](docs/sdks/salesreceipts/README.md#list) - List Sales Receipts
+* [Create](docs/sdks/salesreceipts/README.md#create) - Create Sales Receipt
+* [Get](docs/sdks/salesreceipts/README.md#get) - Get Sales Receipt
+* [Update](docs/sdks/salesreceipts/README.md#update) - Update Sales Receipt
+* [Delete](docs/sdks/salesreceipts/README.md#delete) - Delete Sales Receipt
+
 ### [Accounting.Subsidiaries](docs/sdks/subsidiaries/README.md)
 
 * [List](docs/sdks/subsidiaries/README.md#list) - List Subsidiaries
@@ -1036,8 +1044,8 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 340 methods.*
-  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 340 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 345 methods.*
+  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 345 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
