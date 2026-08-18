@@ -330,6 +330,14 @@ while(res != null)
 * [Update](docs/sdks/locations/README.md#update) - Update Location
 * [Delete](docs/sdks/locations/README.md#delete) - Delete Location
 
+### [Accounting.PaymentMethods](docs/sdks/paymentmethods/README.md)
+
+* [List](docs/sdks/paymentmethods/README.md#list) - List Payment Methods
+* [Create](docs/sdks/paymentmethods/README.md#create) - Create Payment Method
+* [Get](docs/sdks/paymentmethods/README.md#get) - Get Payment Method
+* [Update](docs/sdks/paymentmethods/README.md#update) - Update Payment Method
+* [Delete](docs/sdks/paymentmethods/README.md#delete) - Delete Payment Method
+
 ### [Accounting.Payments](docs/sdks/payments/README.md)
 
 * [List](docs/sdks/payments/README.md#list) - List Payments
@@ -1044,8 +1052,8 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 345 methods.*
-  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 345 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 350 methods.*
+  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 350 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

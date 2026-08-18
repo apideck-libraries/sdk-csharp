@@ -19,7 +19,7 @@ namespace ApideckUnifySdk.Models.Requests
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Attachment Download.
+        /// Attachment Download. When the request includes `x-apideck-follow-redirects: false` and the download would otherwise redirect to a presigned URL, the response body is instead an `application/json` object `{ url, expires_at }` — fetch `url` explicitly (without the Authorization header) to retrieve the attachment.
         /// </summary>
         public byte[]? GetAttachmentDownloadResponse { get; set; }
 

@@ -28,6 +28,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Name { get; set; } = null;
 
         /// <summary>
+        /// Display name of the record a reference-type custom field points at. `value` carries that record's id; this carries its human-readable name, so a consumer does not need a second lookup to render it.
+        /// </summary>
+        [JsonProperty("ref_name")]
+        public string? RefName { get; set; } = null;
+
+        /// <summary>
         /// More information about the custom field.
         /// </summary>
         [JsonProperty("description")]

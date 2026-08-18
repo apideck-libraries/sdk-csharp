@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     /// <summary>
-    /// Type of refund. `refund_receipt` for itemized refunds with product/service lines and payment (QBO RefundReceipt, NetSuite CashRefund). `cash_refund` for cash-out refunds with GL distribution or allocations (Sage Intacct). `credit_note_refund` for refunds applied against a credit note (Zoho Books).
+    /// Type of refund. `refund_receipt` for itemized refunds with product/service lines and payment (QBO RefundReceipt; also NetSuite's apply-list-based CustomerRefund). `cash_refund` for cash-out refunds with GL distribution or allocations (Sage Intacct). `credit_note_refund` for refunds applied against a credit note (Zoho Books). `sale_refund` for itemized refunds tied to a cash sale or return authorization, without an apply-list (NetSuite CashRefund) — NetSuite's apply-list-based CustomerRefund reports as `refund_receipt` instead.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
     public class RefundType : IEquatable<RefundType>
@@ -25,13 +25,15 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly RefundType RefundReceipt = new RefundType("refund_receipt");
         public static readonly RefundType CashRefund = new RefundType("cash_refund");
         public static readonly RefundType CreditNoteRefund = new RefundType("credit_note_refund");
+        public static readonly RefundType SaleRefund = new RefundType("sale_refund");
 
         private static readonly Dictionary <string, RefundType> _knownValues =
             new Dictionary <string, RefundType> ()
             {
                 ["refund_receipt"] = RefundReceipt,
                 ["cash_refund"] = CashRefund,
-                ["credit_note_refund"] = CreditNoteRefund
+                ["credit_note_refund"] = CreditNoteRefund,
+                ["sale_refund"] = SaleRefund
             };
 
         private static readonly ConcurrentDictionary<string, RefundType> _values =

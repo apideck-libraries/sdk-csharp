@@ -66,5 +66,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("transaction_type")]
         public BankFeedStatementTransactionType? TransactionType { get; set; }
+
+        /// <summary>
+        /// The ISO 18245 merchant category code (MCC) classifying the merchant for this transaction, expected as a four-digit code such as `5812`. The format is not enforced by the API, matching the other bank identifier fields.
+        /// </summary>
+        [JsonProperty("merchant_category_code")]
+        public string? MerchantCategoryCode { get; set; } = null;
     }
 }
