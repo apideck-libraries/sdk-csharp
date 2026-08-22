@@ -32,6 +32,18 @@ namespace ApideckUnifySdk.Models.Components
         public string? SourceAccountId { get; set; }
 
         /// <summary>
+        /// Bank routing number (US).
+        /// </summary>
+        [JsonProperty("source_routing_number")]
+        public string? SourceRoutingNumber { get; set; } = null;
+
+        /// <summary>
+        /// The bank account number.
+        /// </summary>
+        [JsonProperty("source_account_number")]
+        public string? SourceAccountNumber { get; set; } = null;
+
+        /// <summary>
         /// The target account's unique identifier in the accounting connector.
         /// </summary>
         [JsonProperty("target_account_id")]
@@ -48,6 +60,18 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("target_account_number")]
         public string? TargetAccountNumber { get; set; }
+
+        /// <summary>
+        /// The current balance of the source bank account.
+        /// </summary>
+        [JsonProperty("balance")]
+        public double? Balance { get; set; } = null;
+
+        /// <summary>
+        /// The available balance of the source bank account (considering pending transactions and overdraft).
+        /// </summary>
+        [JsonProperty("available_balance")]
+        public double? AvailableBalance { get; set; } = null;
 
         /// <summary>
         /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
