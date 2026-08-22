@@ -20,32 +20,32 @@ namespace ApideckUnifySdk.Models.Requests
         public HTTPMetadata HttpMeta { get; set; } = default!;
 
         /// <summary>
-        /// Ok.
+        /// Ok. When the request includes `x-apideck-follow-redirects: false` and the downstream response would otherwise redirect to a presigned URL (oversized responses), the body is instead an `application/json` object `{ url, expires_at }` — fetch `url` explicitly (without the Authorization header) to retrieve the payload.
         /// </summary>
         public Dictionary<string, object>? ResponseJson { get; set; }
 
         /// <summary>
-        /// Ok.
+        /// Ok. When the request includes `x-apideck-follow-redirects: false` and the downstream response would otherwise redirect to a presigned URL (oversized responses), the body is instead an `application/json` object `{ url, expires_at }` — fetch `url` explicitly (without the Authorization header) to retrieve the payload.
         /// </summary>
         public byte[]? ResponseBinary { get; set; }
 
         /// <summary>
-        /// Ok.
+        /// Ok. When the request includes `x-apideck-follow-redirects: false` and the downstream response would otherwise redirect to a presigned URL (oversized responses), the body is instead an `application/json` object `{ url, expires_at }` — fetch `url` explicitly (without the Authorization header) to retrieve the payload.
         /// </summary>
         public byte[]? ResponsePdf { get; set; }
 
         /// <summary>
-        /// Ok.
+        /// Ok. When the request includes `x-apideck-follow-redirects: false` and the downstream response would otherwise redirect to a presigned URL (oversized responses), the body is instead an `application/json` object `{ url, expires_at }` — fetch `url` explicitly (without the Authorization header) to retrieve the payload.
         /// </summary>
         public string? ResponseXml { get; set; }
 
         /// <summary>
-        /// Ok.
+        /// Ok. When the request includes `x-apideck-follow-redirects: false` and the downstream response would otherwise redirect to a presigned URL (oversized responses), the body is instead an `application/json` object `{ url, expires_at }` — fetch `url` explicitly (without the Authorization header) to retrieve the payload.
         /// </summary>
         public string? ResponseCsv { get; set; }
 
         /// <summary>
-        /// Ok.
+        /// Ok. When the request includes `x-apideck-follow-redirects: false` and the downstream response would otherwise redirect to a presigned URL (oversized responses), the body is instead an `application/json` object `{ url, expires_at }` — fetch `url` explicitly (without the Authorization header) to retrieve the payload.
         /// </summary>
         public string? ResponseText { get; set; }
 

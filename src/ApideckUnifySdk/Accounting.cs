@@ -86,6 +86,8 @@ namespace ApideckUnifySdk
 
         public IExpenseCategories ExpenseCategories { get; }
 
+        public IPaymentMethods PaymentMethods { get; }
+
         public IExpenseReports ExpenseReports { get; }
     }
 
@@ -308,6 +310,12 @@ namespace ApideckUnifySdk
         public IExpenseCategories ExpenseCategories { get; private set; }
 
         /// <summary>
+        /// PaymentMethods SubSDK.
+        /// <see cref="IPaymentMethods"/>
+        /// </summary>
+        public IPaymentMethods PaymentMethods { get; private set; }
+
+        /// <summary>
         /// ExpenseReports SubSDK.
         /// <see cref="IExpenseReports"/>
         /// </summary>
@@ -351,6 +359,7 @@ namespace ApideckUnifySdk
             Projects = new Projects(SDKConfiguration);
             Employees = new Employees(SDKConfiguration);
             ExpenseCategories = new ExpenseCategories(SDKConfiguration);
+            PaymentMethods = new PaymentMethods(SDKConfiguration);
             ExpenseReports = new ExpenseReports(SDKConfiguration);
         }
     }

@@ -254,6 +254,7 @@ AccountingAttachmentsDownloadRequest req = new AccountingAttachmentsDownloadRequ
     ServiceId = "salesforce",
     CompanyId = "12345",
     Fields = "id,updated_at",
+    FollowRedirects = false,
 };
 
 var res = await sdk.Accounting.Attachments.DownloadAsync(req);

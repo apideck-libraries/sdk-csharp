@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using NodaTime;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
@@ -21,6 +22,18 @@ namespace ApideckUnifySdk.Models.Components
     {
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
+
+        /// <summary>
+        /// Return journal entries posted on or after this date (posting date, inclusive). Connectors without date-range support reject this filter with UnsupportedFiltersError.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=start_date")]
+        public LocalDate? StartDate { get; set; }
+
+        /// <summary>
+        /// Return journal entries posted on or before this date (posting date, inclusive). Connectors without date-range support reject this filter with UnsupportedFiltersError.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=end_date")]
+        public LocalDate? EndDate { get; set; }
 
         [SpeakeasyMetadata("queryParam:name=status")]
         public JournalEntriesFilterStatus? Status { get; set; }

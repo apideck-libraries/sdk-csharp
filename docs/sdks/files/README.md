@@ -331,6 +331,7 @@ FileStorageFilesDownloadRequest req = new FileStorageFilesDownloadRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
     Fields = "id,updated_at",
+    FollowRedirects = false,
 };
 
 var res = await sdk.FileStorage.Files.DownloadAsync(req);

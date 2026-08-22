@@ -37,6 +37,7 @@ ProxyGetProxyRequest req = new ProxyGetProxyRequest() {
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
     Timeout = 30000,
+    FollowRedirects = false,
 };
 
 var res = await sdk.Proxy.GetAsync(req);
@@ -87,6 +88,7 @@ ProxyOptionsProxyRequest req = new ProxyOptionsProxyRequest() {
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
     Timeout = 30000,
+    FollowRedirects = false,
 };
 
 var res = await sdk.Proxy.OptionsAsync(req);
@@ -137,6 +139,7 @@ ProxyPostProxyRequest req = new ProxyPostProxyRequest() {
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
     Timeout = 30000,
+    FollowRedirects = false,
 };
 
 var res = await sdk.Proxy.PostAsync(req);
@@ -187,6 +190,7 @@ ProxyPutProxyRequest req = new ProxyPutProxyRequest() {
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
     Timeout = 30000,
+    FollowRedirects = false,
 };
 
 var res = await sdk.Proxy.PutAsync(req);
@@ -237,6 +241,7 @@ ProxyPatchProxyRequest req = new ProxyPatchProxyRequest() {
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
     Timeout = 30000,
+    FollowRedirects = false,
 };
 
 var res = await sdk.Proxy.PatchAsync(req);
@@ -287,6 +292,7 @@ ProxyDeleteProxyRequest req = new ProxyDeleteProxyRequest() {
     DownstreamUrl = "https://api.close.com/api/v1/lead",
     DownstreamAuthorization = "Bearer <token>",
     Timeout = 30000,
+    FollowRedirects = false,
 };
 
 var res = await sdk.Proxy.DeleteAsync(req);
