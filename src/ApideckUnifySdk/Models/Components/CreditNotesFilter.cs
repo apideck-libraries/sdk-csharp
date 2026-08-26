@@ -15,6 +15,12 @@ namespace ApideckUnifySdk.Models.Components
     public class CreditNotesFilter
     {
         /// <summary>
+        /// Comma-separated list of credit note IDs to filter by (e.g. `12345,67890`). On some connectors (e.g. DualEntry) the credit note ID is the credit note number.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=ids")]
+        public string? Ids { get; set; }
+
+        /// <summary>
         /// Return records with a row ID greater than or equal to the given value.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=id_since")]

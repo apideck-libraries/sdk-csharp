@@ -20,6 +20,12 @@ namespace ApideckUnifySdk.Models.Components
     public class CustomersFilter
     {
         /// <summary>
+        /// Comma-separated list of customer IDs to filter by (e.g. `12345,67890`).
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=ids")]
+        public string? Ids { get; set; }
+
+        /// <summary>
         /// Company Name of customer to search for.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=company_name")]
