@@ -22,7 +22,7 @@ namespace ApideckUnifySdk.Utils
         /// <summary>
         /// The version of the SDK.
         /// </summary>
-        public const string SdkVersion = "0.31.2";
+        public const string SdkVersion = "0.31.3";
 
         /// <summary>
         /// The version of the SDK generator used to create this SDK.
