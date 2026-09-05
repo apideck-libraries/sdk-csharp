@@ -1,0 +1,10 @@
+# AccountingBillCreditNotesAddResponse
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                              | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                 | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `CreateBillCreditNoteResponse`                                                          | [CreateBillCreditNoteResponse](../../Models/Components/CreateBillCreditNoteResponse.md) | :heavy_minus_sign:                                                                      | Bill Credit Note created                                                                |
+| `UnexpectedErrorResponse`                                                               | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)           | :heavy_minus_sign:                                                                      | Unexpected error                                                                        |
