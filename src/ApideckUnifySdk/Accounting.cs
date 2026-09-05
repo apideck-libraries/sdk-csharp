@@ -28,6 +28,8 @@ namespace ApideckUnifySdk
 
         public ICreditNotes CreditNotes { get; }
 
+        public IBillCreditNotes BillCreditNotes { get; }
+
         public ICustomers Customers { get; }
 
         public ISuppliers Suppliers { get; }
@@ -134,6 +136,12 @@ namespace ApideckUnifySdk
         /// <see cref="ICreditNotes"/>
         /// </summary>
         public ICreditNotes CreditNotes { get; private set; }
+
+        /// <summary>
+        /// BillCreditNotes SubSDK.
+        /// <see cref="IBillCreditNotes"/>
+        /// </summary>
+        public IBillCreditNotes BillCreditNotes { get; private set; }
 
         /// <summary>
         /// Customers SubSDK.
@@ -330,6 +338,7 @@ namespace ApideckUnifySdk
             LedgerAccounts = new LedgerAccounts(SDKConfiguration);
             InvoiceItems = new InvoiceItems(SDKConfiguration);
             CreditNotes = new CreditNotes(SDKConfiguration);
+            BillCreditNotes = new BillCreditNotes(SDKConfiguration);
             Customers = new Customers(SDKConfiguration);
             Suppliers = new Suppliers(SDKConfiguration);
             Payments = new Payments(SDKConfiguration);

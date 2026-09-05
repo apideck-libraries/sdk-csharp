@@ -65,6 +65,12 @@ namespace ApideckUnifySdk.Models.Components
         public bool? Disabled { get; set; } = null;
 
         /// <summary>
+        /// Indicates if the options for a form field failed to be fetched from the downstream service. Only applicable to fields with dynamic options. When true, a retry mechanism should be provided to the user.
+        /// </summary>
+        [JsonProperty("options_fetch_error")]
+        public bool? OptionsFetchError { get; set; } = null;
+
+        /// <summary>
         /// Indicates if the form field is not displayed but the value that is being stored on the connection.
         /// </summary>
         [JsonProperty("hidden")]
