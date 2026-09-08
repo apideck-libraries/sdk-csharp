@@ -26,6 +26,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Status { get; set; }
 
         /// <summary>
+        /// Status ID to filter on.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=status_id")]
+        public string? StatusId { get; set; }
+
+        /// <summary>
         /// Monetary amount to filter on.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=monetary_amount")]

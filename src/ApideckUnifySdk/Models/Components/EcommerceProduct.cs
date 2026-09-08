@@ -44,6 +44,12 @@ namespace ApideckUnifySdk.Models.Components
         public ProductStatus? Status { get; set; } = null;
 
         /// <summary>
+        /// The tax applicability of the product: `taxable` (the product is taxed), `shipping` (only the shipping is taxed, the product itself is exempt) or `none` (neither is taxed).
+        /// </summary>
+        [JsonProperty("tax_status")]
+        public TaxStatus? TaxStatus { get; set; } = null;
+
+        /// <summary>
         /// The price of the product.
         /// </summary>
         [JsonProperty("price")]
