@@ -64,6 +64,8 @@ namespace ApideckUnifySdk
 
         public IBankAccounts BankAccounts { get; }
 
+        public IJournals Journals { get; }
+
         public ITrackingCategories TrackingCategories { get; }
 
         public IBillPayments BillPayments { get; }
@@ -246,6 +248,12 @@ namespace ApideckUnifySdk
         public IBankAccounts BankAccounts { get; private set; }
 
         /// <summary>
+        /// Journals SubSDK.
+        /// <see cref="IJournals"/>
+        /// </summary>
+        public IJournals Journals { get; private set; }
+
+        /// <summary>
         /// TrackingCategories SubSDK.
         /// <see cref="ITrackingCategories"/>
         /// </summary>
@@ -356,6 +364,7 @@ namespace ApideckUnifySdk
             Departments = new Departments(SDKConfiguration);
             Attachments = new Attachments(SDKConfiguration);
             BankAccounts = new BankAccounts(SDKConfiguration);
+            Journals = new Journals(SDKConfiguration);
             TrackingCategories = new TrackingCategories(SDKConfiguration);
             BillPayments = new BillPayments(SDKConfiguration);
             Expenses = new Expenses(SDKConfiguration);

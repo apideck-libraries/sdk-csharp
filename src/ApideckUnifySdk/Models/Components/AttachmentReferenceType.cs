@@ -22,9 +22,11 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly AttachmentReferenceType Invoice = new AttachmentReferenceType("invoice");
         public static readonly AttachmentReferenceType Bill = new AttachmentReferenceType("bill");
         public static readonly AttachmentReferenceType BillCreditNote = new AttachmentReferenceType("bill-credit-note");
+        public static readonly AttachmentReferenceType CreditNote = new AttachmentReferenceType("credit-note");
         public static readonly AttachmentReferenceType Expense = new AttachmentReferenceType("expense");
         public static readonly AttachmentReferenceType ExpenseReport = new AttachmentReferenceType("expense-report");
         public static readonly AttachmentReferenceType Quote = new AttachmentReferenceType("quote");
+        public static readonly AttachmentReferenceType JournalEntry = new AttachmentReferenceType("journal-entry");
 
         private static readonly Dictionary <string, AttachmentReferenceType> _knownValues =
             new Dictionary <string, AttachmentReferenceType> ()
@@ -32,9 +34,11 @@ namespace ApideckUnifySdk.Models.Components
                 ["invoice"] = Invoice,
                 ["bill"] = Bill,
                 ["bill-credit-note"] = BillCreditNote,
+                ["credit-note"] = CreditNote,
                 ["expense"] = Expense,
                 ["expense-report"] = ExpenseReport,
-                ["quote"] = Quote
+                ["quote"] = Quote,
+                ["journal-entry"] = JournalEntry
             };
 
         private static readonly ConcurrentDictionary<string, AttachmentReferenceType> _values =

@@ -322,6 +322,14 @@ while(res != null)
 * [Update](docs/sdks/journalentries/README.md#update) - Update Journal Entry
 * [Delete](docs/sdks/journalentries/README.md#delete) - Delete Journal Entry
 
+### [Accounting.Journals](docs/sdks/journals/README.md)
+
+* [List](docs/sdks/journals/README.md#list) - List Journals
+* [Create](docs/sdks/journals/README.md#create) - Create Journal
+* [Get](docs/sdks/journals/README.md#get) - Get Journal
+* [Update](docs/sdks/journals/README.md#update) - Update Journal
+* [Delete](docs/sdks/journals/README.md#delete) - Delete Journal
+
 ### [Accounting.LedgerAccounts](docs/sdks/ledgeraccounts/README.md)
 
 * [List](docs/sdks/ledgeraccounts/README.md#list) - List Ledger Accounts
@@ -1060,8 +1068,8 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 355 methods.*
-  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 355 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 360 methods.*
+  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 360 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

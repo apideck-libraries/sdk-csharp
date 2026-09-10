@@ -44,6 +44,12 @@ namespace ApideckUnifySdk.Models.Components
         public double? TotalAmount { get; set; } = null;
 
         /// <summary>
+        /// Amount for this line in the company's base currency. Used when the journal entry currency differs from the company's base currency.
+        /// </summary>
+        [JsonProperty("base_currency_amount")]
+        public double? BaseCurrencyAmount { get; set; } = null;
+
+        /// <summary>
         /// Debit entries are considered positive, and credit entries are considered negative.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
