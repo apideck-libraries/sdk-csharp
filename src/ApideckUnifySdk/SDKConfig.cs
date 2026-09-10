@@ -49,7 +49,7 @@ namespace ApideckUnifySdk
             ServerIndex = 0;
             ConsumerId = null;
             AppId = null;
-            UserAgent = "speakeasy-sdk/csharp 0.33.0 2.926.8 10.53.0 ApideckUnifySdk";
+            UserAgent = "speakeasy-sdk/csharp 0.33.1 2.926.8 10.53.0 ApideckUnifySdk";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

@@ -27,7 +27,7 @@ namespace ApideckUnifySdk.Models.Components
         public string? MimeType { get; set; } = null;
 
         /// <summary>
-        /// Whether the file is c ompressed.
+        /// Whether the file is compressed.
         /// </summary>
         [JsonProperty("is_compressed")]
         public bool? IsCompressed { get; set; } = null;

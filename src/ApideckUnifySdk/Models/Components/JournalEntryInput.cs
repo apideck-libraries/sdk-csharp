@@ -77,7 +77,7 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? PostedAt { get; set; }
 
         /// <summary>
-        /// Journal symbol of the entry. For example IND for indirect costs.
+        /// Journal symbol of the entry. For example IND for indirect costs. Where supported, list /accounting/journals to discover available journals and their posting rules. For Exact Online, supply the journal code, not its id.
         /// </summary>
         [JsonProperty("journal_symbol")]
         public string? JournalSymbol { get; set; } = null;
@@ -118,6 +118,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("tax_inclusive")]
         public bool? TaxInclusive { get; set; } = null;
+
+        /// <summary>
+        /// Files attached to this journal entry. Use the attachments endpoints with reference_type=journal-entry and this entry's id where the connector supports it.
+        /// </summary>
+        [JsonProperty("attachments")]
+        public List<LinkedAttachment?>? Attachments { get; set; }
 
         /// <summary>
         /// The source type of the journal entry.
