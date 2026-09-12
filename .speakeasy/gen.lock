@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 7dd54a203a75639e3a71096822e5298b
+  docChecksum: 835abcad25f292e32e15679177560da7
   docVersion: 10.53.0
   speakeasyVersion: 1.791.4
   generationVersion: 2.926.8
-  releaseVersion: 0.33.1
-  configChecksum: ca1e6c60ea281d546978864aded80196
+  releaseVersion: 0.33.2
+  configChecksum: a373b7d98756b0d712b55ab3e98fcd92
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: 196fcde1-c347-44c2-8e67-bc34d2ae707e
-  pristine_commit_hash: 752d1c6d662799c168b38e579970ee66721eeae5
-  pristine_tree_hash: 8d5b382237c6dc7f22c2d8508ac8e5edd8af9aab
+  generation_id: f67831b5-b43f-43a4-a0d3-62d7b5a2204e
+  pristine_commit_hash: c03fe24c45bbe81bb51f7e0699db848cf6d979c8
+  pristine_tree_hash: ef3a914a5de0937f2f6282bfa65487d5597c336d
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -7625,8 +7625,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:fa37d94d1e877515d36218f7d0aad4090fdeea4c
-    pristine_git_object: 3c75751f3080dcf7a1471697593cd1bfa16ff138
+    last_write_checksum: sha1:ef64e399f8a45a3f17a2606517b5f2959101d493
+    pristine_git_object: 9b07735f8764a712f11d2edf7fbc257dcae16c3e
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -15097,8 +15097,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:57d212b0e3e956cb7961dd919f72c50e997f06ae
-    pristine_git_object: 6a8538dff9ca6116227c61af34de7376422f8cb4
+    last_write_checksum: sha1:8211682881c0708748bc6e1f0f64069e5c191bbc
+    pristine_git_object: 11e9616610d1a793b1b9afe38526b966d4a5e538
   src/ApideckUnifySdk/SalesReceipts.cs:
     id: 54f900432c50
     last_write_checksum: sha1:67408bf86e151c3e38aea8192c93686201d87f02
@@ -15157,8 +15157,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:a0db46927e2c7e607d9fd50de2e9fbce00d12b1e
-    pristine_git_object: 9a30b338339c51c50c7278b4f455d04f329dee75
+    last_write_checksum: sha1:a76dc18928aadd7dd60ce8fe50163c3c39db036d
+    pristine_git_object: 440a69540133dc010a54b45bf949b87c378d9bed
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -32329,7 +32329,6 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Accounting.Journals.List()`: **Added**\n* `Apideck.Accounting.Journals.Create()`: **Added**\n* `Apideck.Accounting.Journals.Get()`: **Added**\n* `Apideck.Accounting.Journals.Update()`: **Added**\n* `Apideck.Accounting.Journals.Delete()`: **Added**\n* `Apideck.Accounting.JournalEntries.List()`:  `response.data[]` **Changed**\n* `Apideck.Accounting.JournalEntries.Create()`: \n  *  `request.JournalEntry` **Changed**\n* `Apideck.Accounting.JournalEntries.Get()`:  `response.data` **Changed**\n* `Apideck.Accounting.JournalEntries.Update()`: \n  *  `request.JournalEntry` **Changed**\n* `Apideck.Accounting.Attachments.List()`: \n  *  `request.ReferenceType` **Changed**\n  *  `response.data[].Reference.Type` **Changed**\n* `Apideck.Accounting.Attachments.Upload()`: \n  *  `request.ReferenceType` **Changed**\n* `Apideck.Accounting.Attachments.Get()`: \n  *  `request.ReferenceType` **Changed**\n  *  `response.data.Reference.Type` **Changed**\n* `Apideck.Accounting.Attachments.Delete()`: \n  *  `request.ReferenceType` **Changed**\n* `Apideck.Accounting.Attachments.Download()`: \n  *  `request.ReferenceType` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
