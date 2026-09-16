@@ -30,6 +30,18 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? UpdatedSince { get; set; }
 
         /// <summary>
+        /// Return bills whose `bill_number` equals the given value (exact match). Use this to verify whether a create that timed out (`outcome: uncertain`) was persisted before retrying. Bill numbers are not guaranteed unique on every connector, so more than one bill can be returned.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=bill_number")]
+        public string? BillNumber { get; set; }
+
+        /// <summary>
+        /// Return bills whose `reference` equals the given value (exact match). Use this to look up a bill by the reference you supplied on create, for example after a create that timed out (`outcome: uncertain`).
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=reference")]
+        public string? Reference { get; set; }
+
+        /// <summary>
         /// Return bills with a document date (`bill_date`) on or after the given date (YYYY-MM-DD).
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=billed_since")]

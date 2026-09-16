@@ -139,6 +139,10 @@ var custom = WebhookEventType.Of("custom_value");
 | `EcommerceOrderCreated`                  | ecommerce.order.created                  |
 | `EcommerceOrderUpdated`                  | ecommerce.order.updated                  |
 | `EcommerceOrderDeleted`                  | ecommerce.order.deleted                  |
+| `EcommerceOrderPaid`                     | ecommerce.order.paid                     |
+| `EcommerceOrderShipped`                  | ecommerce.order.shipped                  |
+| `EcommerceOrderRefunded`                 | ecommerce.order.refunded                 |
+| `EcommerceOrderDelivered`                | ecommerce.order.delivered                |
 | `EcommerceProductCreated`                | ecommerce.product.created                |
 | `EcommerceProductUpdated`                | ecommerce.product.updated                |
 | `EcommerceProductDeleted`                | ecommerce.product.deleted                |

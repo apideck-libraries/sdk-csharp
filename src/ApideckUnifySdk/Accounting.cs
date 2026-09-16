@@ -54,6 +54,8 @@ namespace ApideckUnifySdk
 
         public IPurchaseOrders PurchaseOrders { get; }
 
+        public IGoodsReceipts GoodsReceipts { get; }
+
         public ISubsidiaries Subsidiaries { get; }
 
         public ILocations Locations { get; }
@@ -218,6 +220,12 @@ namespace ApideckUnifySdk
         public IPurchaseOrders PurchaseOrders { get; private set; }
 
         /// <summary>
+        /// GoodsReceipts SubSDK.
+        /// <see cref="IGoodsReceipts"/>
+        /// </summary>
+        public IGoodsReceipts GoodsReceipts { get; private set; }
+
+        /// <summary>
         /// Subsidiaries SubSDK.
         /// <see cref="ISubsidiaries"/>
         /// </summary>
@@ -359,6 +367,7 @@ namespace ApideckUnifySdk
             GeneralLedgerTransactions = new GeneralLedgerTransactions(SDKConfiguration);
             SalesReceipts = new SalesReceipts(SDKConfiguration);
             PurchaseOrders = new PurchaseOrders(SDKConfiguration);
+            GoodsReceipts = new GoodsReceipts(SDKConfiguration);
             Subsidiaries = new Subsidiaries(SDKConfiguration);
             Locations = new Locations(SDKConfiguration);
             Departments = new Departments(SDKConfiguration);

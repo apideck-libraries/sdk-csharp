@@ -142,6 +142,10 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly WebhookEventType EcommerceOrderCreated = new WebhookEventType("ecommerce.order.created");
         public static readonly WebhookEventType EcommerceOrderUpdated = new WebhookEventType("ecommerce.order.updated");
         public static readonly WebhookEventType EcommerceOrderDeleted = new WebhookEventType("ecommerce.order.deleted");
+        public static readonly WebhookEventType EcommerceOrderPaid = new WebhookEventType("ecommerce.order.paid");
+        public static readonly WebhookEventType EcommerceOrderShipped = new WebhookEventType("ecommerce.order.shipped");
+        public static readonly WebhookEventType EcommerceOrderRefunded = new WebhookEventType("ecommerce.order.refunded");
+        public static readonly WebhookEventType EcommerceOrderDelivered = new WebhookEventType("ecommerce.order.delivered");
         public static readonly WebhookEventType EcommerceProductCreated = new WebhookEventType("ecommerce.product.created");
         public static readonly WebhookEventType EcommerceProductUpdated = new WebhookEventType("ecommerce.product.updated");
         public static readonly WebhookEventType EcommerceProductDeleted = new WebhookEventType("ecommerce.product.deleted");
@@ -284,6 +288,10 @@ namespace ApideckUnifySdk.Models.Components
                 ["ecommerce.order.created"] = EcommerceOrderCreated,
                 ["ecommerce.order.updated"] = EcommerceOrderUpdated,
                 ["ecommerce.order.deleted"] = EcommerceOrderDeleted,
+                ["ecommerce.order.paid"] = EcommerceOrderPaid,
+                ["ecommerce.order.shipped"] = EcommerceOrderShipped,
+                ["ecommerce.order.refunded"] = EcommerceOrderRefunded,
+                ["ecommerce.order.delivered"] = EcommerceOrderDelivered,
                 ["ecommerce.product.created"] = EcommerceProductCreated,
                 ["ecommerce.product.updated"] = EcommerceProductUpdated,
                 ["ecommerce.product.deleted"] = EcommerceProductDeleted,
