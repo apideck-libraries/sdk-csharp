@@ -144,6 +144,12 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedInvoiceItem? Item { get; set; }
 
         /// <summary>
+        /// If true, this line item is subject to tax. Read-only, and only populated by connectors that record taxability on the line itself.
+        /// </summary>
+        [JsonProperty("taxable")]
+        public bool? Taxable { get; set; } = null;
+
+        /// <summary>
         /// Tax applicable on.
         /// </summary>
         [JsonProperty("tax_applicable_on")]
