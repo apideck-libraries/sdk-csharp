@@ -142,6 +142,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("currency")]
         public Currency? Currency { get; set; } = null;
 
+        /// <summary>
+        /// The customer's outstanding balance: the amount the customer currently owes, in the customer's currency. A positive value means the customer owes the business.
+        /// </summary>
+        [JsonProperty("balance")]
+        public double? Balance { get; set; } = null;
+
         [JsonProperty("account")]
         public LinkedLedgerAccount? Account { get; set; } = null;
 
