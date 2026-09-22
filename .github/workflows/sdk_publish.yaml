@@ -21,3 +21,37 @@ jobs:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       nuget_api_key: ${{ secrets.NUGET_API_KEY }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+
+  verify-published:
+    name: Verify tag reached NuGet
+    needs: publish
+    if: always() && needs.publish.result != 'success'
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Check the released tag has a package on NuGet
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -uo pipefail
+          VERSION=$(git describe --tags --abbrev=0 | sed 's/^v//')
+          for _ in 1 2 3; do
+            CODE=$(curl -sSL -o /dev/null -w "%{http_code}" "https://api.nuget.org/v3-flatcontainer/apideckunifysdk/$VERSION/apideckunifysdk.$VERSION.nupkg")
+            [ "$CODE" = 200 ] && break
+            sleep 60
+          done
+          if [ "$CODE" = 200 ]; then
+            echo "v$VERSION is on NuGet. The run failed for another reason."
+            exit 0
+          fi
+          echo "::error::v$VERSION is tagged and GitHub-released but absent from NuGet (HTTP $CODE)"
+          TITLE="Release v$VERSION is tagged but not published to NuGet"
+          if ! gh issue list --state open --json title -q '.[].title' | grep -qxF "$TITLE"; then
+            gh issue create --title "$TITLE" --body "Tag \`v$VERSION\` and its GitHub Release exist, but the package never reached NuGet - consumers see a version they cannot install. Most likely an expired publishing credential (context: apideck-io/unify#12544). Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          fi
+          exit 1
