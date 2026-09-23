@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Amount of transaction.
         /// </summary>
         [JsonProperty("total_amount")]
-        public double TotalAmount { get; set; } = default!;
+        public double? TotalAmount { get; set; }
 
         /// <summary>
         /// Total tax amount applied to this bill credit note.

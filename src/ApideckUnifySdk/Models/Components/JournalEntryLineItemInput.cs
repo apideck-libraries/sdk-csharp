@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using NodaTime;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
@@ -118,5 +119,17 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("worktags")]
         public List<LinkedWorktag?>? Worktags { get; set; }
+
+        /// <summary>
+        /// The financial date of this specific line, when it differs from the journal entry's own posted_at date - for example when booking a historical or backdated transaction. Not populated by every connector: some post the entry date at the header level only, in which case this line-level date is legitimately absent rather than wrong.
+        /// </summary>
+        [JsonProperty("date")]
+        public LocalDate? Date { get; set; } = null;
+
+        /// <summary>
+        /// A unique identifier for the source of this specific line, distinct from the journal entry's own source_id. Useful for reconciling an individual line back to an external system's own record when a single journal entry aggregates lines originating from more than one source.
+        /// </summary>
+        [JsonProperty("source_id")]
+        public string? SourceId { get; set; } = null;
     }
 }

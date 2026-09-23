@@ -143,6 +143,6 @@ namespace ApideckUnifySdk.Models.Components
         /// Which Unified Api request was made to.
         /// </summary>
         [JsonProperty("unified_api")]
-        public UnifiedApi UnifiedApi { get; set; } = default!;
+        public LogUnifiedApi UnifiedApi { get; set; } = default!;
     }
 }
