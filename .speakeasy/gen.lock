@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: df10b3cfaf1438e1427eb8135a523dc9
-  docVersion: 10.58.9
+  docChecksum: 50f158b44a63ee6cb27d5d3f1ee5b71b
+  docVersion: 10.58.10
   speakeasyVersion: 1.791.4
   generationVersion: 2.926.8
-  releaseVersion: 0.36.2
-  configChecksum: 2be752c1ef5faa3738649e8b197659cf
+  releaseVersion: 0.36.3
+  configChecksum: 61e7f710b8814de37c3c356deecfa428
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: e9e2aab4-1346-4915-b9b6-75ca727f733d
-  pristine_commit_hash: 96b4ae9e0a6bab77673826ab6880842639628507
-  pristine_tree_hash: 2345fb6c0e035ecb62835e4999a907850ad0d178
+  generation_id: 823d3d2d-96b3-4cae-9ccc-982d84302e0f
+  pristine_commit_hash: 32d5c622f98364096d29cdc76d226fbf06b5541c
+  pristine_tree_hash: 68a52f4f280048402f90efde65ab4d612b9e38c4
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -7681,8 +7681,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:0d5e55d8ce87bd8c390e25b0fdc5a495849da982
-    pristine_git_object: 334628462c2effd13ff1ca14d1bfc334ca125f1e
+    last_write_checksum: sha1:4db4872ec36f503a0d1ed25d313977005ca24eac
+    pristine_git_object: 85de8da7787e6809556dc869295cd7421d5b3bb1
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -15209,8 +15209,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:79f5217cd9af0a36763bb86a7bf92cf840f3b0c0
-    pristine_git_object: 0e562b6d8a27d6378e41bed17cc0cf148c3fbe1e
+    last_write_checksum: sha1:4e3c573f33186ab1a5aa9784c22f90a7c0563441
+    pristine_git_object: 8c1352d6476db49b6d25c1e1568923e77d31a12f
   src/ApideckUnifySdk/SalesReceipts.cs:
     id: 54f900432c50
     last_write_checksum: sha1:67408bf86e151c3e38aea8192c93686201d87f02
@@ -15269,8 +15269,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:1e647eef871852ad8341b4071816512c7e6ef2c7
-    pristine_git_object: 9a42b0a807f809d8176c4ce10ccb04e7cd7e56cd
+    last_write_checksum: sha1:f1bd6a098f4086bab6ea7aa1e27e17b731f67f09
+    pristine_git_object: 1596a94b86d73c7119f3626994eaaed457fd16d1
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -32499,7 +32499,6 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Accounting.BillCreditNotes.List()`:  `response.data[]` **Changed**\n* `Apideck.Accounting.BillCreditNotes.Create()`: \n  *  `request.BillCreditNote.TotalAmount` **Changed**\n* `Apideck.Accounting.BillCreditNotes.Get()`:  `response.data` **Changed**\n* `Apideck.Accounting.BillCreditNotes.Update()`: \n  *  `request.BillCreditNote.TotalAmount` **Changed**\n* `Apideck.Accounting.JournalEntries.List()`:  `response.data[].LineItems[]` **Changed**\n* `Apideck.Accounting.JournalEntries.Create()`: \n  *  `request.JournalEntry.LineItems[]` **Changed**\n* `Apideck.Accounting.JournalEntries.Get()`:  `response.data.LineItems[]` **Changed**\n* `Apideck.Accounting.JournalEntries.Update()`: \n  *  `request.JournalEntry.LineItems[]` **Changed**\n* `Apideck.Crm.Companies.Create()`: \n  *  `request.Company1.ParentId` **Added**\n* `Apideck.Crm.Companies.Update()`: \n  *  `request.Company1.ParentId` **Added**\n* `Apideck.Ecommerce.Stores.Get()`:  `response.data.Addresses` **Added**\n"
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
