@@ -25,7 +25,7 @@ var sdk = new Apideck(
 var res = await sdk.Connector.ConnectorResources.GetAsync(
     id: "<id>",
     resourceId: "<id>",
-    unifiedApi: UnifiedApiId.Crm
+    unifiedApi: UnifiedApi.Crm
 );
 
 // handle response
@@ -38,7 +38,7 @@ var res = await sdk.Connector.ConnectorResources.GetAsync(
 | `Id`                                                                                                    | *string*                                                                                                | :heavy_check_mark:                                                                                      | ID of the record you are acting upon.                                                                   |                                                                                                         |
 | `ResourceId`                                                                                            | *string*                                                                                                | :heavy_check_mark:                                                                                      | ID of the resource you are acting upon.                                                                 |                                                                                                         |
 | `AppId`                                                                                                 | *string*                                                                                                | :heavy_minus_sign:                                                                                      | The ID of your Unify application                                                                        | dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX                                                                 |
-| `UnifiedApi`                                                                                            | [UnifiedApiId](../../Models/Components/UnifiedApiId.md)                                                 | :heavy_minus_sign:                                                                                      | Specify unified API for the connector resource. This is useful when a resource appears in multiple APIs | crm                                                                                                     |
+| `UnifiedApi`                                                                                            | [UnifiedApi](../../Models/Components/UnifiedApi.md)                                                     | :heavy_minus_sign:                                                                                      | Specify unified API for the connector resource. This is useful when a resource appears in multiple APIs | crm                                                                                                     |
 
 ### Response
 

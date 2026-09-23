@@ -9,6 +9,7 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
@@ -39,6 +40,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("admin_url")]
         public string? AdminUrl { get; set; } = null;
+
+        /// <summary>
+        /// Seller-side addresses exposed by the platform for this store. Currently holds the store's default shipping origin when the platform designates one. Empty when none is available.
+        /// </summary>
+        [JsonProperty("addresses")]
+        public List<EcommerceAddress>? Addresses { get; set; }
 
         /// <summary>
         /// When custom mappings are configured on the resource, the result is included here.

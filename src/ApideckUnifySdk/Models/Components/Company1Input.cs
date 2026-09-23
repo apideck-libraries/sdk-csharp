@@ -134,6 +134,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("last_name")]
         public string? LastName { get; set; } = null;
 
+        /// <summary>
+        /// Parent ID.
+        /// </summary>
+        [JsonProperty("parent_id")]
+        public string? ParentId { get; set; } = null;
+
         [JsonProperty("bank_accounts")]
         public List<BankAccount1>? BankAccounts { get; set; }
 

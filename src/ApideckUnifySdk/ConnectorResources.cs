@@ -17,9 +17,7 @@ namespace ApideckUnifySdk
     using ApideckUnifySdk.Utils.Retries;
     using Newtonsoft.Json;
     using System;
-    using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
@@ -49,7 +47,7 @@ namespace ApideckUnifySdk
             string id,
             string resourceId,
             string? appId = null,
-            UnifiedApiId? unifiedApi = null,
+            UnifiedApi? unifiedApi = null,
             RetryConfig? retryConfig = null
         );
     }
@@ -90,7 +88,7 @@ namespace ApideckUnifySdk
             string id,
             string resourceId,
             string? appId = null,
-            UnifiedApiId? unifiedApi = null,
+            UnifiedApi? unifiedApi = null,
             RetryConfig? retryConfig = null
         )
         {
