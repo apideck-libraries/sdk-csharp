@@ -24,6 +24,12 @@ namespace ApideckUnifySdk.Models.Components
         public DateTime? UpdatedSince { get; set; }
 
         /// <summary>
+        /// Journal entry number to search for.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=number")]
+        public string? Number { get; set; }
+
+        /// <summary>
         /// Return journal entries posted on or after this date (posting date, inclusive). Connectors without date-range support reject this filter with UnsupportedFiltersError.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=start_date")]
