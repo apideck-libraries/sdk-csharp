@@ -9,6 +9,7 @@
 * [Get](#get) - Get Bill
 * [Update](#update) - Update Bill
 * [Delete](#delete) - Delete Bill
+* [CreateBatch](#createbatch) - Create Bills in batch
 
 ## List
 
@@ -721,6 +722,59 @@ var res = await sdk.Accounting.Bills.DeleteAsync(req);
 ### Response
 
 **[AccountingBillsDeleteResponse](../../Models/Requests/AccountingBillsDeleteResponse.md)**
+
+### Errors
+
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+
+## CreateBatch
+
+Create multiple bills in a single request. Each item is processed independently, so some may be created while others fail; the response returns `200` with one result per item, in the order the items were sent. The maximum number of items accepted per request depends on the connector.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="accounting.billsBatchAdd" method="post" path="/accounting/bills/batch" -->
+```csharp
+using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System.Collections.Generic;
+
+var sdk = new Apideck(
+    consumerId: "test-consumer",
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+AccountingBillsBatchAddRequest req = new AccountingBillsBatchAddRequest() {
+    ServiceId = "salesforce",
+    CompanyId = "12345",
+    BatchBillsRequest = new BatchBillsRequest() {
+        Items = new List<Items>() {},
+    },
+};
+
+var res = await sdk.Accounting.Bills.CreateBatchAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [AccountingBillsBatchAddRequest](../../Models/Requests/AccountingBillsBatchAddRequest.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+
+### Response
+
+**[AccountingBillsBatchAddResponse](../../Models/Requests/AccountingBillsBatchAddResponse.md)**
 
 ### Errors
 

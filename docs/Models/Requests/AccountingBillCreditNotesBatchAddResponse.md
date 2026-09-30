@@ -1,0 +1,10 @@
+# AccountingBillCreditNotesBatchAddResponse
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                              | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                 | :heavy_check_mark:                                                                      | N/A                                                                                     |
+| `BatchBillCreditNotesResponse`                                                          | [BatchBillCreditNotesResponse](../../Models/Components/BatchBillCreditNotesResponse.md) | :heavy_minus_sign:                                                                      | Bill Credit Notes batch processed                                                       |
+| `UnexpectedErrorResponse`                                                               | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)           | :heavy_minus_sign:                                                                      | Unexpected error                                                                        |

@@ -20,27 +20,15 @@ namespace ApideckUnifySdk.Models.Components
     public class Resources
     {
         /// <summary>
-        /// ID of the resource, typically a lowercased version of its name.
+        /// `none` means this resource refuses batch writes. `native` satisfies a batch in a single downstream call against the provider's own batch endpoint, so the request counts as one request against your plan. `loop` satisfies it as a bounded sequential fan-out, one downstream call per item — so a request of N records takes roughly N times as long and counts as N requests.
         /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; }
+        [JsonProperty("mode")]
+        public BatchSupportResourcesMode Mode { get; set; } = default!;
 
         /// <summary>
-        /// Name of the resource (plural).
+        /// The maximum number of items this resource accepts in one request. A request carrying more is rejected before any record is written. Resources on the same connector can differ: a resource that writes records one at a time is usually capped lower than one that writes them in a single call. Absent when the connector has not declared one, in which case the platform default applies.
         /// </summary>
-        [JsonProperty("name")]
-        public string? Name { get; set; }
-
-        /// <summary>
-        /// Status of the resource. Resources with status live or beta are callable.
-        /// </summary>
-        [JsonProperty("status")]
-        public ResourceStatus? Status { get; set; }
-
-        /// <summary>
-        /// Exclude from mapping coverage.
-        /// </summary>
-        [JsonProperty("excluded_from_coverage")]
-        public bool? ExcludedFromCoverage { get; set; }
+        [JsonProperty("max_items")]
+        public long? MaxItems { get; set; }
     }
 }

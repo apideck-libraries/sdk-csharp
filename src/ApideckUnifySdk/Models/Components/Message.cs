@@ -110,7 +110,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The error returned if your message status is failed or undelivered.
         /// </summary>
         [JsonProperty("error")]
-        public Error? Error { get; set; }
+        public MessageError? Error { get; set; }
 
         /// <summary>
         /// The ID of the Messaging Service used with the message. In case of Plivo this links to the Powerpack ID.

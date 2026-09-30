@@ -9,6 +9,7 @@
 * [Get](#get) - Get Bill Payment
 * [Update](#update) - Update Bill Payment
 * [Delete](#delete) - Delete Bill Payment
+* [CreateBatch](#createbatch) - Create Bill Payments in batch
 
 ## List
 
@@ -524,6 +525,170 @@ var res = await sdk.Accounting.BillPayments.DeleteAsync(req);
 ### Response
 
 **[AccountingBillPaymentsDeleteResponse](../../Models/Requests/AccountingBillPaymentsDeleteResponse.md)**
+
+### Errors
+
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+
+## CreateBatch
+
+Create multiple bill payments in a single request. Each item is processed independently, so some may be created while others fail; the response returns `200` with one result per item, in the order the items were sent. The maximum number of items accepted per request depends on the connector.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="accounting.billPaymentsBatchAdd" method="post" path="/accounting/bill-payments/batch" -->
+```csharp
+using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System;
+using System.Collections.Generic;
+
+var sdk = new Apideck(
+    consumerId: "test-consumer",
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+AccountingBillPaymentsBatchAddRequest req = new AccountingBillPaymentsBatchAddRequest() {
+    ServiceId = "salesforce",
+    CompanyId = "12345",
+    BatchBillPaymentsRequest = new BatchBillPaymentsRequest() {
+        Items = new List<BatchBillPaymentsRequestItems>() {
+            new BatchBillPaymentsRequestItems() {
+                Ref = "item-1",
+                Data = new BillPaymentCreateInput() {
+                    Currency = Currency.Usd,
+                    CurrencyRate = 0.69D,
+                    TotalAmount = 49.99D,
+                    Reference = "123456",
+                    PaymentMethod = "cash",
+                    PaymentMethodReference = "123456",
+                    PaymentMethodId = "12345",
+                    Account = new LinkedLedgerAccount() {
+                        Id = "123456",
+                        Name = "Bank account",
+                        NominalCode = "N091",
+                        Code = "453",
+                        ParentId = "123456",
+                        DisplayId = "123456",
+                    },
+                    TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
+                    Supplier = new LinkedSupplierInput() {
+                        Id = "12345",
+                        DisplayName = "Windsurf Shop",
+                        Address = new Address() {
+                            Id = "123",
+                            Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                            String = "25 Spring Street, Blackburn, VIC 3130",
+                            Name = "HQ US",
+                            Line1 = "Main street",
+                            Line2 = "apt #",
+                            Line3 = "Suite #",
+                            Line4 = "delivery instructions",
+                            Line5 = "Attention: Finance Dept",
+                            StreetNumber = "25",
+                            City = "San Francisco",
+                            State = "CA",
+                            PostalCode = "94104",
+                            Country = "US",
+                            Latitude = "40.759211",
+                            Longitude = "-73.984638",
+                            County = "Santa Clara",
+                            ContactName = "Elon Musk",
+                            Salutation = "Mr",
+                            PhoneNumber = "111-111-1111",
+                            Fax = "122-111-1111",
+                            Email = "elon@musk.com",
+                            Website = "https://elonmusk.com",
+                            Notes = "Address notes or delivery instructions.",
+                            RowVersion = "1-12345",
+                        },
+                    },
+                    CompanyId = "12345",
+                    Subsidiary = new LinkedSubsidiaryInput() {
+                        DisplayId = "123456",
+                        Name = "Acme Inc.",
+                    },
+                    Reconciled = true,
+                    Status = PaymentStatus.Authorised,
+                    Type = BillPaymentCreateInputBillPaymentType.AccountsPayable,
+                    Allocations = new List<BillPaymentCreateInputAllocations>() {
+                        new BillPaymentCreateInputAllocations() {
+                            Id = "12345",
+                            Type = BillPaymentCreateInputAllocationType.Bill,
+                            Amount = 49.99D,
+                            AllocationId = "123456",
+                        },
+                    },
+                    Note = "Some notes about this transaction",
+                    Number = "123456",
+                    TrackingCategories = new List<LinkedTrackingCategory?>() {
+                        new LinkedTrackingCategory() {
+                            Id = "123456",
+                            Code = "100",
+                            Name = "New York",
+                            ParentId = "123456",
+                            ParentName = "New York",
+                        },
+                    },
+                    CustomFields = new List<CustomField>() {
+                        CustomField.CreateCustomField1(
+                            new CustomField1() {
+                                Id = "2389328923893298",
+                                Name = "employee_level",
+                                RefName = "Marketing",
+                                Description = "Employee Level",
+                                Value = CustomField1Value.CreateStr(
+                                    "Uses Salesforce and Marketo"
+                                ),
+                            }
+                        ),
+                    },
+                    RowVersion = "1-12345",
+                    DisplayId = "123456",
+                    PassThrough = new List<PassThroughBody>() {
+                        new PassThroughBody() {
+                            ServiceId = "<id>",
+                            ExtendPaths = new List<ExtendPaths>() {
+                                new ExtendPaths() {
+                                    Path = "$.nested.property",
+                                    Value = new Dictionary<string, object>() {
+                                        { "TaxClassificationRef", new Dictionary<string, object>() {
+                                            { "value", "EUC-99990201-V1-00020000" },
+                                        } },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+};
+
+var res = await sdk.Accounting.BillPayments.CreateBatchAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                               | [AccountingBillPaymentsBatchAddRequest](../../Models/Requests/AccountingBillPaymentsBatchAddRequest.md) | :heavy_check_mark:                                                                                      | The request object to use for the request.                                                              |
+
+### Response
+
+**[AccountingBillPaymentsBatchAddResponse](../../Models/Requests/AccountingBillPaymentsBatchAddResponse.md)**
 
 ### Errors
 
