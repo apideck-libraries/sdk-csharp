@@ -9,6 +9,7 @@
 * [Get](#get) - Get Bill Credit Note
 * [Update](#update) - Update Bill Credit Note
 * [Delete](#delete) - Delete Bill Credit Note
+* [CreateBatch](#createbatch) - Create Bill Credit Notes in batch
 
 ## List
 
@@ -611,6 +612,232 @@ var res = await sdk.Accounting.BillCreditNotes.DeleteAsync(req);
 ### Response
 
 **[AccountingBillCreditNotesDeleteResponse](../../Models/Requests/AccountingBillCreditNotesDeleteResponse.md)**
+
+### Errors
+
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+
+## CreateBatch
+
+Create multiple bill credit notes in a single request. Each item is processed independently, so some may be created while others fail; the response returns `200` with one result per item, in the order the items were sent. The maximum number of items accepted per request depends on the connector.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="accounting.billCreditNotesBatchAdd" method="post" path="/accounting/bill-credit-notes/batch" -->
+```csharp
+using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using NodaTime;
+using System;
+using System.Collections.Generic;
+
+var sdk = new Apideck(
+    consumerId: "test-consumer",
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+AccountingBillCreditNotesBatchAddRequest req = new AccountingBillCreditNotesBatchAddRequest() {
+    ServiceId = "salesforce",
+    CompanyId = "12345",
+    BatchBillCreditNotesRequest = new BatchBillCreditNotesRequest() {
+        Items = new List<BatchBillCreditNotesRequestItems>() {
+            new BatchBillCreditNotesRequestItems() {
+                Ref = "item-1",
+                Data = new BillCreditNoteCreateInput() {
+                    Number = "OIT00546",
+                    Supplier = new LinkedSupplierInput() {
+                        Id = "12345",
+                        DisplayName = "Windsurf Shop",
+                        Address = new Address() {
+                            Id = "123",
+                            Type = ApideckUnifySdk.Models.Components.Type.Primary,
+                            String = "25 Spring Street, Blackburn, VIC 3130",
+                            Name = "HQ US",
+                            Line1 = "Main street",
+                            Line2 = "apt #",
+                            Line3 = "Suite #",
+                            Line4 = "delivery instructions",
+                            Line5 = "Attention: Finance Dept",
+                            StreetNumber = "25",
+                            City = "San Francisco",
+                            State = "CA",
+                            PostalCode = "94104",
+                            Country = "US",
+                            Latitude = "40.759211",
+                            Longitude = "-73.984638",
+                            County = "Santa Clara",
+                            ContactName = "Elon Musk",
+                            Salutation = "Mr",
+                            PhoneNumber = "111-111-1111",
+                            Fax = "122-111-1111",
+                            Email = "elon@musk.com",
+                            Website = "https://elonmusk.com",
+                            Notes = "Address notes or delivery instructions.",
+                            RowVersion = "1-12345",
+                        },
+                    },
+                    Subsidiary = null,
+                    Location = new LinkedLocationInput() {
+                        Id = "123456",
+                        DisplayId = "123456",
+                        Name = "New York Office",
+                    },
+                    Department = new LinkedDepartmentInput() {
+                        DisplayId = "123456",
+                        Name = "Acme Inc.",
+                    },
+                    Currency = Currency.Usd,
+                    CurrencyRate = 0.69D,
+                    TaxInclusive = true,
+                    SubTotal = 27500D,
+                    TotalAmount = 49.99D,
+                    TotalTax = 2500D,
+                    TaxCode = "1234",
+                    Balance = 27500D,
+                    RemainingCredit = 27500D,
+                    Status = BillCreditNoteCreateInputBillCreditNoteStatus.Authorised,
+                    Reference = "123456",
+                    DateIssued = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
+                    DatePaid = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
+                    Type = BillCreditNoteCreateInputBillCreditNoteType.AccountsPayableCredit,
+                    Account = new LinkedLedgerAccount() {
+                        Id = "123456",
+                        Name = "Bank account",
+                        NominalCode = "N091",
+                        Code = "453",
+                        ParentId = "123456",
+                        DisplayId = "123456",
+                    },
+                    LineItems = new List<BillCreditNoteLineItemInput>() {
+                        new BillCreditNoteLineItemInput() {
+                            RowId = "12345",
+                            Code = "120-C",
+                            LineNumber = 1,
+                            Description = "Returned goods credit",
+                            Type = LineItemType.ExpenseAccount,
+                            TaxAmount = 27.5D,
+                            TotalAmount = 27500D,
+                            Quantity = 1D,
+                            UnitPrice = 27500.5D,
+                            UnitOfMeasure = "pc.",
+                            DiscountPercentage = 0.01D,
+                            DiscountAmount = 19.99D,
+                            ServiceDate = LocalDate.FromDateTime(System.DateTime.Parse("2024-01-15")),
+                            Location = new LinkedLocationInput() {
+                                Id = "123456",
+                                DisplayId = "123456",
+                                Name = "New York Office",
+                            },
+                            Department = new LinkedDepartmentInput() {
+                                DisplayId = "123456",
+                                Name = "Acme Inc.",
+                            },
+                            Item = new LinkedInvoiceItem() {
+                                Id = "12344",
+                                Code = "120-C",
+                                Name = "Model Y",
+                            },
+                            TaxRate = new LinkedTaxRateInput() {
+                                Id = "123456",
+                                Code = "N-T",
+                                Rate = 10D,
+                            },
+                            LedgerAccount = new LinkedLedgerAccount() {
+                                Id = "123456",
+                                Name = "Bank account",
+                                NominalCode = "N091",
+                                Code = "453",
+                                ParentId = "123456",
+                                DisplayId = "123456",
+                            },
+                            TrackingCategories = new List<LinkedTrackingCategory?>() {
+                                new LinkedTrackingCategory() {
+                                    Id = "123456",
+                                    Code = "100",
+                                    Name = "New York",
+                                    ParentId = "123456",
+                                    ParentName = "New York",
+                                },
+                            },
+                            RowVersion = "1-12345",
+                        },
+                    },
+                    Allocations = new List<AllocationInput>() {
+                        new AllocationInput() {
+                            Id = "123456",
+                            Amount = 49.99D,
+                            AllocationId = "123456",
+                        },
+                    },
+                    Note = "Some notes about this bill credit note",
+                    Terms = "Some terms about this bill credit note",
+                    TrackingCategories = new List<LinkedTrackingCategory?>() {
+                        new LinkedTrackingCategory() {
+                            Id = "123456",
+                            Code = "100",
+                            Name = "New York",
+                            ParentId = "123456",
+                            ParentName = "New York",
+                        },
+                    },
+                    CustomFields = new List<CustomField>() {
+                        CustomField.CreateCustomField1(
+                            new CustomField1() {
+                                Id = "2389328923893298",
+                                Name = "employee_level",
+                                RefName = "Marketing",
+                                Description = "Employee Level",
+                                Value = CustomField1Value.CreateStr(
+                                    "Uses Salesforce and Marketo"
+                                ),
+                            }
+                        ),
+                    },
+                    RowVersion = "1-12345",
+                    PassThrough = new List<PassThroughBody>() {
+                        new PassThroughBody() {
+                            ServiceId = "<id>",
+                            ExtendPaths = new List<ExtendPaths>() {
+                                new ExtendPaths() {
+                                    Path = "$.nested.property",
+                                    Value = new Dictionary<string, object>() {
+                                        { "TaxClassificationRef", new Dictionary<string, object>() {
+                                            { "value", "EUC-99990201-V1-00020000" },
+                                        } },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+};
+
+var res = await sdk.Accounting.BillCreditNotes.CreateBatchAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                     | [AccountingBillCreditNotesBatchAddRequest](../../Models/Requests/AccountingBillCreditNotesBatchAddRequest.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
+
+### Response
+
+**[AccountingBillCreditNotesBatchAddResponse](../../Models/Requests/AccountingBillCreditNotesBatchAddResponse.md)**
 
 ### Errors
 

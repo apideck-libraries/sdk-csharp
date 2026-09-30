@@ -173,6 +173,12 @@ namespace ApideckUnifySdk.Models.Components
         public WebhookSupport? WebhookSupport { get; set; }
 
         /// <summary>
+        /// How this connector satisfies a batch write, per resource. Read this before calling a batch endpoint: support, execution mode and the per-request limit all vary by resource on the same connector, and the mode determines both latency and how many requests the call counts against your plan.
+        /// </summary>
+        [JsonProperty("batch_support")]
+        public BatchSupport? BatchSupport { get; set; }
+
+        /// <summary>
         /// When a connector has schema_support, a call can be made to retrieve a json schema that describes a downstream resource.
         /// </summary>
         [JsonProperty("schema_support")]

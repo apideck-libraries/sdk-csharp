@@ -67,7 +67,7 @@ namespace ApideckUnifySdk.Models.Errors
         public string? Str { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public Detail2? Detail2 { get; set; }
+        public Models.Errors.Detail2? Detail2 { get; set; }
 
         public UnauthorizedDetailType Type { get; set; }
         public static UnauthorizedDetail CreateStr(string str)
@@ -78,7 +78,7 @@ namespace ApideckUnifySdk.Models.Errors
             res.Str = str;
             return res;
         }
-        public static UnauthorizedDetail CreateDetail2(Detail2 detail2)
+        public static UnauthorizedDetail CreateDetail2(Models.Errors.Detail2 detail2)
         {
             UnauthorizedDetailType typ = UnauthorizedDetailType.Detail2;
 
@@ -107,12 +107,12 @@ namespace ApideckUnifySdk.Models.Errors
                 {
                     return new UnauthorizedDetail(UnauthorizedDetailType.Detail2)
                     {
-                        Detail2 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Detail2>(json)
+                        Detail2 = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Models.Errors.Detail2>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Detail2), new UnauthorizedDetail(UnauthorizedDetailType.Detail2), "Detail2"));
+                    fallbackCandidates.Add((typeof(Models.Errors.Detail2), new UnauthorizedDetail(UnauthorizedDetailType.Detail2), "Detail2"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {

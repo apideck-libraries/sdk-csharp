@@ -77,7 +77,7 @@ namespace ApideckUnifySdk.Models.Components
         /// List of resources supported in this API.
         /// </summary>
         [JsonProperty("resources")]
-        public List<Resources>? Resources { get; set; }
+        public List<Models.Components.ApiResources>? Resources { get; set; }
 
         /// <summary>
         /// List of event types this API supports.

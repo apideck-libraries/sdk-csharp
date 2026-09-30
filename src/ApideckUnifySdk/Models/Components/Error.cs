@@ -9,21 +9,51 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
 
     /// <summary>
-    /// The error returned if your message status is failed or undelivered.
+    /// Why this item did not complete. Present when `status` is `failed`, meaning the record was not written, and when `status` is `uncertain`, meaning it is unknown whether it was. Also present, more rarely, alongside `created`/`updated`: the record WAS written and post-write processing failed, so the item reports the error beside its success status.<br/>
+    /// <br/>
+    /// Per-item failures are independent — one item's rejection says nothing about the others. The exception is a failure of the request itself, such as a timeout: where a connector writes the whole batch in one call, every item shares that outcome and carries the same error.
     /// </summary>
     public class Error
     {
         /// <summary>
-        /// The error_code provides more information about the failure. If the message was successful, this value is null.
+        /// HTTP status code.
         /// </summary>
-        [JsonProperty("code")]
-        public string? Code { get; set; }
+        [JsonProperty("status_code")]
+        public double? StatusCode { get; set; }
 
+        /// <summary>
+        /// Contains an explanation of the status_code as defined in HTTP/1.1 standard (RFC 7231).
+        /// </summary>
+        [JsonProperty("error")]
+        public string? ErrorValue { get; set; }
+
+        /// <summary>
+        /// The type of error returned.
+        /// </summary>
+        [JsonProperty("type_name")]
+        public string? TypeName { get; set; }
+
+        /// <summary>
+        /// A human-readable message providing more details about the error.
+        /// </summary>
         [JsonProperty("message")]
         public string? Message { get; set; }
+
+        /// <summary>
+        /// Contains parameter or domain specific information related to the error and why it occurred.
+        /// </summary>
+        [JsonProperty("detail", NullValueHandling = NullValueHandling.Include)]
+        public BatchItemResultDetail? Detail { get; set; }
+
+        /// <summary>
+        /// Link to documentation of error type.
+        /// </summary>
+        [JsonProperty("ref")]
+        public string? Ref { get; set; }
     }
 }
