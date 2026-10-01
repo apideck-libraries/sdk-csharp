@@ -105,6 +105,13 @@ AccountingJournalsAddRequest req = new AccountingJournalsAddRequest() {
             DisplayId = "123456",
             AccountNumber = "123465",
         },
+        ClearingAccount = new LinkedFinancialAccountInput() {
+            Id = "123456",
+            Type = LinkedFinancialAccountAccountType.LedgerAccount,
+            Code = "1100",
+            DisplayId = "123456",
+            AccountNumber = "123465",
+        },
         Blocked = false,
     },
 };
@@ -217,6 +224,7 @@ AccountingJournalsUpdateRequest req = new AccountingJournalsUpdateRequest() {
         Currency = Currency.Usd,
         Iban = "GB33BUKB20201555555555",
         DefaultAccount = null,
+        ClearingAccount = null,
         Blocked = false,
     },
 };

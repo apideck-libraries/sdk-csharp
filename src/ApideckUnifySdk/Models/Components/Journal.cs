@@ -74,6 +74,12 @@ namespace ApideckUnifySdk.Models.Components
         public LinkedFinancialAccount? DefaultAccount { get; set; } = null;
 
         /// <summary>
+        /// A flexible account reference that can represent a ledger account (GL account), a bank account, or an employee payable account, depending on the connector's requirements.
+        /// </summary>
+        [JsonProperty("clearing_account")]
+        public LinkedFinancialAccount? ClearingAccount { get; set; } = null;
+
+        /// <summary>
         /// Whether the journal is blocked for posting.
         /// </summary>
         [JsonProperty("blocked")]
