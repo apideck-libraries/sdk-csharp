@@ -26,6 +26,24 @@ namespace ApideckUnifySdk.Models.Components
         [SpeakeasyMetadata("queryParam:name=owner_id")]
         public string? OwnerId { get; set; }
 
+        /// <summary>
+        /// Unique identifier of the contact to filter notes on.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=contact_id")]
+        public string? ContactId { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the company to filter notes on.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=company_id")]
+        public string? CompanyId { get; set; }
+
+        /// <summary>
+        /// Unique identifier of the opportunity to filter notes on.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=opportunity_id")]
+        public string? OpportunityId { get; set; }
+
         [SpeakeasyMetadata("queryParam:name=updated_since")]
         public DateTime? UpdatedSince { get; set; }
 

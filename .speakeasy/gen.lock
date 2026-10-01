@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 2cbd01b60985a2f89655c9495c5bbb49
-  docVersion: 10.59.0
+  docChecksum: c63f90b23a31be17d33023eef98aface
+  docVersion: 10.59.1
   speakeasyVersion: 1.791.4
   generationVersion: 2.926.8
-  releaseVersion: 0.37.0
-  configChecksum: 9424ee972842433d93bc75f266abfeb1
+  releaseVersion: 0.37.1
+  configChecksum: f77a36404d429782fa13db4ab0d455ea
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: c0efebe4-6fdf-41fa-9af9-f59d90ca890c
-  pristine_commit_hash: c302117eaa07aa646ede143b189a7ece5e05f500
-  pristine_tree_hash: f821b7c977234499dc555e7216a98391eca324c7
+  generation_id: f9d58085-8d3d-43e5-b73f-4e9878d1e869
+  pristine_commit_hash: 64873489acf293641577c75ac85382d83440b541
+  pristine_tree_hash: 2ff8ac6b63a5c3d7b2d79e1f7f2cd0a1fb728d59
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -435,6 +435,10 @@ trackedFiles:
     id: 4cc59f8236ec
     last_write_checksum: sha1:095b53796b9d47a5b49cc8b5ad2ed525b2abdb56
     pristine_git_object: 12ebce1265fa0fb2f64bdb07bb4c5c1c880ac2b3
+  docs/Models/Components/BankFeedStatementsFilter.md:
+    id: 8e34c55f86a0
+    last_write_checksum: sha1:426ac09a069b484cf376ce6a85b955f3b88329e9
+    pristine_git_object: 83619d44fb3f7719b3d755ae367c2b23928215fa
   docs/Models/Components/BatchBillCreditNotesRequest.md:
     id: 45289852cb95
     last_write_checksum: sha1:0e5a6944d4e852b55c451403090993a7258f97de
@@ -2949,8 +2953,8 @@ trackedFiles:
     pristine_git_object: 6f802e2fc0d1917edb8f7bf44eb75fb2872387be
   docs/Models/Components/Journal.md:
     id: 4e857db49cd2
-    last_write_checksum: sha1:aef140d51b5e259e0603706bff80a60eac812e18
-    pristine_git_object: 72665b555b87ac9ef736e495dff0953b5bf8f88f
+    last_write_checksum: sha1:2c9a35975ce442974c30cb593bbe1cc4a13e93b0
+    pristine_git_object: e97c06e53a3126de302a2ed933fb86e62cb91e8d
   docs/Models/Components/JournalEntriesFilter.md:
     id: 850c849a7153
     last_write_checksum: sha1:29744a2c5248f5fffc976413b7fc900ba4b153ed
@@ -2997,8 +3001,8 @@ trackedFiles:
     pristine_git_object: 604c9f1b55e8449051f1873cb31aafd4364db368
   docs/Models/Components/JournalInput.md:
     id: 0e20dce7835d
-    last_write_checksum: sha1:6f0ac4dd4d32fd9d05bc2818dd458381201dd540
-    pristine_git_object: 7c0330f33de5bca695de9d015d8bbe4b19604ed8
+    last_write_checksum: sha1:b15abeca2b69006e677d93ad10dfe8715683d921
+    pristine_git_object: 1424bf1d8ac96bf1b5f86f5149aef90333e1abbd
   docs/Models/Components/JournalType.md:
     id: 918c55e8cf56
     last_write_checksum: sha1:398c9ec6f9bd450abd921eaebc99e0399ec42515
@@ -3285,8 +3289,8 @@ trackedFiles:
     pristine_git_object: ef0cbb96fb181534f297bb3c939ef7923ce9f5a0
   docs/Models/Components/NotesFilter.md:
     id: 6d92ff6164c3
-    last_write_checksum: sha1:46f9c642fcf194aba5b570eb13778018ab5f395f
-    pristine_git_object: 8d6e11776a97f41e8b8981f4116cc829091f62c8
+    last_write_checksum: sha1:349fa8b7457c5fcf489787840cf335edb302f7f3
+    pristine_git_object: eb084beadd65c8c47c606e84a5182822d84ed853
   docs/Models/Components/OAuthGrantType.md:
     id: 7cc467d3498c
     last_write_checksum: sha1:3ee361bf3a8eac6ed1f5f4f7ba8fb08786b1a28b
@@ -4637,8 +4641,8 @@ trackedFiles:
     pristine_git_object: 6ea37f96692590515db645cce04dd7cd37f6c53e
   docs/Models/Requests/AccountingBankFeedStatementsAllRequest.md:
     id: c26bac1ffe6d
-    last_write_checksum: sha1:60e1ff645034e694f6eeafe8d8beade6fab6fdc2
-    pristine_git_object: 50463d56b0470a4d8c4437d8d5b8befdcf185f92
+    last_write_checksum: sha1:a8120f3f113127f5060e8b3af2112d49d33bffbb
+    pristine_git_object: 3ed60883d9a711d7ababc128410fa45d67c588b5
   docs/Models/Requests/AccountingBankFeedStatementsAllResponse.md:
     id: 34ba8afc9903
     last_write_checksum: sha1:ff03854e7af90e6684a6ecb5eca94d66808f7871
@@ -7533,8 +7537,8 @@ trackedFiles:
     pristine_git_object: 4b63ec4583824b47f18d8ec2e69ab5d68c0ed25a
   docs/sdks/bankfeedstatements/README.md:
     id: 3397e2a06eb3
-    last_write_checksum: sha1:d7cf87a9530f5847c07a3646268d0e3b70d1ba7f
-    pristine_git_object: d8f216ae9b9d38abd486af9639cf6f424092386e
+    last_write_checksum: sha1:3b001a105df42f9b423fa8e6f55ee66b19915daa
+    pristine_git_object: a9d6bf3b036c4ad49d1ba354541909255db4ad18
   docs/sdks/billcreditnotes/README.md:
     id: 9f712b3a2216
     last_write_checksum: sha1:fd8da9d5c8a057fcdc1853f62a8330d7986cc648
@@ -7721,8 +7725,8 @@ trackedFiles:
     pristine_git_object: 4f528e6ba1a293c710f6d399a2ec32163c9848df
   docs/sdks/journals/README.md:
     id: 255f988e78fc
-    last_write_checksum: sha1:7264d12890badb0daad0cce04d894f597e4f2038
-    pristine_git_object: 32f779f3780bf5821e06a446aa6cae8754642966
+    last_write_checksum: sha1:fe60f7cdd694f351de2cb01e7abe6858f3e98020
+    pristine_git_object: 16ad1094f5543aceb0c358e32a5ac342150ac00c
   docs/sdks/leads/README.md:
     id: f90d84a84468
     last_write_checksum: sha1:3f02a67c5e41b584792e864774bd4035bca10c2c
@@ -7913,8 +7917,8 @@ trackedFiles:
     pristine_git_object: 9bfd8e1e8985e64abc3282c3d3b978303aab1102
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:c66920d8632e65b183ac0c8c20012813a5d33c4a
-    pristine_git_object: 38bcd6f2e4ae5dd7b498bef9afad8241811dd6e4
+    last_write_checksum: sha1:c58ef90562f9caf8be8e90dd6d57e25f896dde50
+    pristine_git_object: ba74e3880ba997cbc2456c5ee5ece202005f72b2
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:de952c817c80230b917d34f75b6256e6e86c05f1
@@ -7949,8 +7953,8 @@ trackedFiles:
     pristine_git_object: 78e08bf50900b8e3ac31c735c3dbc0e9a8e09cf9
   src/ApideckUnifySdk/BankFeedStatements.cs:
     id: d78aca40df3c
-    last_write_checksum: sha1:328cd127f4972c3771c77e4fdb3bae2afa2747e7
-    pristine_git_object: 1ce08b1179746793a4abda4300fbdcc1ed92d969
+    last_write_checksum: sha1:d846a696fd6352728df9433ab4eacd3b553387dd
+    pristine_git_object: f63c8ec3d46912f4ff7062c67762bd734bc059d2
   src/ApideckUnifySdk/BillCreditNotes.cs:
     id: 845f57fb8b50
     last_write_checksum: sha1:3eae26820e03015e530cdcb98606cdd36479f751
@@ -8575,6 +8579,10 @@ trackedFiles:
     id: 1805d83a5d0e
     last_write_checksum: sha1:00d6a613a055be546c65c9c5daf034c6fa669cfd
     pristine_git_object: fce92f4bb2fdd590360750ebdb6a1e4d9133b965
+  src/ApideckUnifySdk/Models/Components/BankFeedStatementsFilter.cs:
+    id: 9830929f49d9
+    last_write_checksum: sha1:de20265fb1dae709b8e21cac8fbfa4504421f754
+    pristine_git_object: 96891c9ae45db7af723a2782fa266378970ba814
   src/ApideckUnifySdk/Models/Components/BatchBillCreditNotesRequest.cs:
     id: 119900a7fc2b
     last_write_checksum: sha1:4d313bb99dfb096983469b43d5fb5d68ff0253fa
@@ -11089,8 +11097,8 @@ trackedFiles:
     pristine_git_object: 6ef899abd631e59c77e3b3b07d7731da2d7ebab3
   src/ApideckUnifySdk/Models/Components/Journal.cs:
     id: c8166637b727
-    last_write_checksum: sha1:1f0cdeaa7f7fe4e90a973b7d9975b98e5c52d7e4
-    pristine_git_object: e90982919594f7d6edfc7ac7c97f5e5ddaa93908
+    last_write_checksum: sha1:2d6e844bbec5c0f7142aa2729f3f85b8f55cdff3
+    pristine_git_object: 6b3f3bd42187b97dc740883b389fc9fd471bc3b1
   src/ApideckUnifySdk/Models/Components/JournalEntriesFilter.cs:
     id: a2fbe17c6995
     last_write_checksum: sha1:c6b52969fe12fea6d50f1a9898e92a95992d2647
@@ -11137,8 +11145,8 @@ trackedFiles:
     pristine_git_object: d29b8d9d8b640b141b9648eb537afd67c6623314
   src/ApideckUnifySdk/Models/Components/JournalInput.cs:
     id: b386c01f2ace
-    last_write_checksum: sha1:b9f73780b3f263a19003bea3cf11ba99aef0855a
-    pristine_git_object: 302177b63e2591e096b7fca907bf34f1a01091c1
+    last_write_checksum: sha1:ccdef73f31bcfb71488f8aa5d6b89187b5a95a0e
+    pristine_git_object: 70edbe8d5bbd65556648fc0ad83f409e21199ad9
   src/ApideckUnifySdk/Models/Components/JournalType.cs:
     id: bd2f18c4dac2
     last_write_checksum: sha1:8eb77ab01937d21a632d14ec8ef4653650a3e744
@@ -11425,8 +11433,8 @@ trackedFiles:
     pristine_git_object: 05600a1584ae9f7bc858632c4761809d9ca9b85a
   src/ApideckUnifySdk/Models/Components/NotesFilter.cs:
     id: caced19c481a
-    last_write_checksum: sha1:ec45dfebbd93ce8b988e8cf92faa3a400bb12d4b
-    pristine_git_object: 435df80c9ae51cc1236f73f8025c3c0d3095ebc5
+    last_write_checksum: sha1:743179f62a20f65d776135c8867d1dba0701f391
+    pristine_git_object: 8715cf79a4f7e765ea9af42b6a9e653b7d59df02
   src/ApideckUnifySdk/Models/Components/OAuthGrantType.cs:
     id: 37d841227335
     last_write_checksum: sha1:ad98d1abb5d9003425ec987d336400f1806084d6
@@ -12789,8 +12797,8 @@ trackedFiles:
     pristine_git_object: 94978383400892900db94bf62688b8bb360d7724
   src/ApideckUnifySdk/Models/Requests/AccountingBankFeedStatementsAllRequest.cs:
     id: 35167963ffc7
-    last_write_checksum: sha1:46dd97cf7df631389b70e05bbb3d77e3a270ef57
-    pristine_git_object: d40738641f859857eaf8d6cf50beca1b90bee38f
+    last_write_checksum: sha1:64343e8351df42cd244b5152b6c4ef8490972863
+    pristine_git_object: 108d1f2d8b0a3e5bfac46a7eddc2a2f3e7156f61
   src/ApideckUnifySdk/Models/Requests/AccountingBankFeedStatementsAllResponse.cs:
     id: e4793e9ac870
     last_write_checksum: sha1:8382bd9e33e81fa542f2b33e84160effd461ed3d
@@ -15673,8 +15681,8 @@ trackedFiles:
     pristine_git_object: a58cde42504454e61d9e3212ed7ad887d4ea3b7f
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:b9f25f4adcfeaf4fe6213cd9ed284c9965475dc2
-    pristine_git_object: 9e876e9586dae7518ad56002fb1da6d7a1d4fdce
+    last_write_checksum: sha1:f0ba6afd41455ef36097458dfbd680ef70921ebd
+    pristine_git_object: f13104e523032230653358e629714cd8383bd4fa
   src/ApideckUnifySdk/SalesReceipts.cs:
     id: 54f900432c50
     last_write_checksum: sha1:67408bf86e151c3e38aea8192c93686201d87f02
@@ -15733,8 +15741,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:7534db536ee2eb37155d5b90ecb16d77c13d73e5
-    pristine_git_object: 761e71e551f0074f9073964d1ae9fcef45789076
+    last_write_checksum: sha1:28126b466803321aa6536be9d5d1f54950c8a673
+    pristine_git_object: 561fb38c1b1c9644a3a52d95e76098e0dfb1efd2
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -21274,6 +21282,7 @@ examples:
           limit: 20
           pass_through: {"search": "San Francisco"}
           fields: "id,updated_at"
+          filter: {"bank_feed_account_id": "12345"}
         header:
           x-apideck-consumer-id: "test-consumer"
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
@@ -32803,7 +32812,7 @@ examples:
           x-apideck-service-id: "salesforce"
           x-apideck-company-id: "12345"
       requestBody:
-        application/json: {"code": "90", "name": "General journal", "description": "General journal", "type": "general", "allow_vat": true, "currency": "USD", "iban": "GB33BUKB20201555555555", "default_account": {"id": "123456", "type": "ledger_account", "code": "1100", "display_id": "123456", "account_number": "123465"}, "blocked": false}
+        application/json: {"code": "90", "name": "General journal", "description": "General journal", "type": "general", "allow_vat": true, "currency": "USD", "iban": "GB33BUKB20201555555555", "default_account": {"id": "123456", "type": "ledger_account", "code": "1100", "display_id": "123456", "account_number": "123465"}, "clearing_account": {"id": "123456", "type": "ledger_account", "code": "1100", "display_id": "123456", "account_number": "123465"}, "blocked": false}
       responses:
         "201":
           application/json: {"status_code": 200, "status": "OK", "service": "exact-online", "resource": "journals", "operation": "add", "data": {"id": "12345"}}
@@ -32834,7 +32843,7 @@ examples:
           x-apideck-company-id: "12345"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "service": "exact-online", "resource": "journals", "operation": "one", "data": {"id": "12345", "code": "90", "name": "General journal", "description": "General journal", "type": "general", "allow_vat": true, "currency": "USD", "iban": "GB33BUKB20201555555555", "default_account": {"id": "123456", "type": "ledger_account", "code": "1100", "display_id": "123456", "account_number": "123465", "name": "Current assets", "downstream_id": "12345"}, "blocked": false, "created_at": "2020-09-30T07:43:32.000Z", "updated_at": "2020-09-30T07:43:32.000Z"}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}}
+          application/json: {"status_code": 200, "status": "OK", "service": "exact-online", "resource": "journals", "operation": "one", "data": {"id": "12345", "code": "90", "name": "General journal", "description": "General journal", "type": "general", "allow_vat": true, "currency": "USD", "iban": "GB33BUKB20201555555555", "default_account": {"id": "123456", "type": "ledger_account", "code": "1100", "display_id": "123456", "account_number": "123465", "name": "Current assets", "downstream_id": "12345"}, "clearing_account": {"id": "123456", "type": "ledger_account", "code": "1100", "display_id": "123456", "account_number": "123465", "name": "Current assets", "downstream_id": "12345"}, "blocked": false, "created_at": "2020-09-30T07:43:32.000Z", "updated_at": "2020-09-30T07:43:32.000Z"}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}}
         "400":
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestValidationError", "message": "Invalid Params", "detail": "Missing property foobar", "ref": "https://developers.apideck.com/errors#requestvalidationerror", "downstream_errors": [{"message": "Account code '100' has been archived or deleted", "detail": "Each line item must reference a valid account", "code": "VALIDATION_ERROR"}]}
         "401":
@@ -32860,7 +32869,7 @@ examples:
           x-apideck-service-id: "salesforce"
           x-apideck-company-id: "12345"
       requestBody:
-        application/json: {"code": "90", "name": "General journal", "description": "General journal", "type": "general", "allow_vat": true, "currency": "USD", "iban": "GB33BUKB20201555555555", "default_account": null, "blocked": false}
+        application/json: {"code": "90", "name": "General journal", "description": "General journal", "type": "general", "allow_vat": true, "currency": "USD", "iban": "GB33BUKB20201555555555", "default_account": null, "clearing_account": null, "blocked": false}
       responses:
         "200":
           application/json: {"status_code": 200, "status": "OK", "service": "exact-online", "resource": "journals", "operation": "update", "data": {"id": "12345"}}
@@ -33125,16 +33134,7 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes:
-  * `Apideck.Accounting.Bills.CreateBatch()`: **Added**
-  * `Apideck.Accounting.Invoices.CreateBatch()`: **Added**
-  * `Apideck.Accounting.CreditNotes.CreateBatch()`: **Added**
-  * `Apideck.Accounting.BillCreditNotes.CreateBatch()`: **Added**
-  * `Apideck.Accounting.Payments.CreateBatch()`: **Added**
-  * `Apideck.Accounting.BillPayments.CreateBatch()`: **Added**
-  * `Apideck.Connector.Connectors.List()`:  `response.data[].BatchSupport` **Added**
-  * `Apideck.Connector.Connectors.Get()`:  `response.data.BatchSupport` **Added**
+releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Accounting.Journals.List()`:  `response.data[].ClearingAccount` **Added**\n* `Apideck.Accounting.Journals.Create()`: \n  *  `request.Journal.ClearingAccount` **Added**\n* `Apideck.Accounting.Journals.Get()`:  `response.data.ClearingAccount` **Added**\n* `Apideck.Accounting.Journals.Update()`: \n  *  `request.Journal.ClearingAccount` **Added**\n* `Apideck.Accounting.BankFeedStatements.List()`: \n  *  `request.Filter` **Added**\n* `Apideck.Crm.Notes.List()`: \n  *  `request.Filter` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln

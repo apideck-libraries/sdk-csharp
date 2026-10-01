@@ -32,6 +32,9 @@ var sdk = new Apideck(
 AccountingBankFeedStatementsAllRequest req = new AccountingBankFeedStatementsAllRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    Filter = new BankFeedStatementsFilter() {
+        BankFeedAccountId = "12345",
+    },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
     },

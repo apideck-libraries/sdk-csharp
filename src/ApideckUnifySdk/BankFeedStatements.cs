@@ -296,6 +296,7 @@ namespace ApideckUnifySdk
                     CompanyId = request?.CompanyId,
                     Cursor = nextCursor,
                     Limit = request?.Limit,
+                    Filter = request?.Filter,
                     PassThrough = request?.PassThrough,
                     Fields = request?.Fields
                 };
