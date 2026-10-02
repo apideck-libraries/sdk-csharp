@@ -757,7 +757,7 @@ AccountingBillsBatchAddRequest req = new AccountingBillsBatchAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
     BatchBillsRequest = new BatchBillsRequest() {
-        Items = new List<Items>() {},
+        Items = new List<BatchBillsRequestItems>() {},
     },
 };
 

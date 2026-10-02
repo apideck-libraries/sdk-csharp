@@ -22,9 +22,9 @@ namespace ApideckUnifySdk.Models.Components
         public string? Ref { get; set; }
 
         /// <summary>
-        /// The writable shape of Bill for a batch create. Identical to <a href="the model returned on reads">Bill</a> with the read-only properties removed — the same properties the single-record create endpoint rejects, so a batched record and a single-record create accept exactly the same body.
+        /// The writable shape of TrackingCategory for a batch create. Identical to <a href="the model returned on reads">TrackingCategory</a> with the read-only properties removed — the same properties the single-record create endpoint rejects, so a batched record and a single-record create accept exactly the same body.
         /// </summary>
         [JsonProperty("data")]
-        public BillCreateInput Data { get; set; } = default!;
+        public TrackingCategoryCreateInput Data { get; set; } = default!;
     }
 }

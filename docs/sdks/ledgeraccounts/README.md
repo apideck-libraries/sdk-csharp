@@ -9,6 +9,7 @@
 * [Get](#get) - Get Ledger Account
 * [Update](#update) - Update Ledger Account
 * [Delete](#delete) - Delete Ledger Account
+* [CreateBatch](#createbatch) - Create Ledger Accounts in batch
 
 ## List
 
@@ -453,6 +454,137 @@ var res = await sdk.Accounting.LedgerAccounts.DeleteAsync(req);
 ### Response
 
 **[AccountingLedgerAccountsDeleteResponse](../../Models/Requests/AccountingLedgerAccountsDeleteResponse.md)**
+
+### Errors
+
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+
+## CreateBatch
+
+Create multiple ledger accounts in a single request. Each item is processed independently, so some may be created while others fail; the response returns `200` with one result per item, in the order the items were sent. The maximum number of items accepted per request depends on the connector.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="accounting.ledgerAccountsBatchAdd" method="post" path="/accounting/ledger-accounts/batch" -->
+```csharp
+using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using NodaTime;
+using System.Collections.Generic;
+
+var sdk = new Apideck(
+    consumerId: "test-consumer",
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+AccountingLedgerAccountsBatchAddRequest req = new AccountingLedgerAccountsBatchAddRequest() {
+    ServiceId = "salesforce",
+    CompanyId = "12345",
+    BatchLedgerAccountsRequest = new BatchLedgerAccountsRequest() {
+        Items = new List<BatchLedgerAccountsRequestItems>() {
+            new BatchLedgerAccountsRequestItems() {
+                Ref = "item-1",
+                Data = new LedgerAccountCreateInput() {
+                    DisplayId = "1-12345",
+                    Code = "453",
+                    Classification = LedgerAccountCreateInputClassification.Asset,
+                    Type = LedgerAccountCreateInputType.Bank,
+                    SubType = "CHECKING_ACCOUNT",
+                    Name = "Bank account",
+                    FullyQualifiedName = "Asset.Bank.Checking_Account",
+                    Description = "Main checking account",
+                    OpeningBalance = 75000D,
+                    CurrentBalance = 20000D,
+                    Currency = Currency.Usd,
+                    TaxType = "NONE",
+                    TaxRate = new LinkedTaxRateInput() {
+                        Id = "123456",
+                        Code = "N-T",
+                        Rate = 10D,
+                    },
+                    Level = 1D,
+                    Active = true,
+                    Status = LedgerAccountCreateInputAccountStatus.Active,
+                    Header = true,
+                    BankAccount = new BankAccount() {
+                        BankName = "Chase Bank",
+                        AccountNumber = "123465",
+                        AccountName = "Main Operating Account",
+                        AccountType = AccountType.CreditCard,
+                        Iban = "GB33BUKB20201555555555",
+                        Bic = "CHASUS33",
+                        RoutingNumber = "021000021",
+                        BsbNumber = "062-001",
+                        BranchIdentifier = "001",
+                        BankCode = "BNH",
+                        Currency = Currency.Usd,
+                        Country = "US",
+                    },
+                    ParentAccount = new LedgerAccountCreateInputParentAccount() {
+                        Id = "12345",
+                        Name = "Bank Accounts",
+                        DisplayId = "1-1100",
+                    },
+                    SubAccount = false,
+                    LastReconciliationDate = LocalDate.FromDateTime(System.DateTime.Parse("2020-09-30")),
+                    CustomFields = new List<CustomField>() {
+                        CustomField.CreateCustomField1(
+                            new CustomField1() {
+                                Id = "2389328923893298",
+                                Name = "employee_level",
+                                RefName = "Marketing",
+                                Description = "Employee Level",
+                                Value = CustomField1Value.CreateStr(
+                                    "Uses Salesforce and Marketo"
+                                ),
+                            }
+                        ),
+                    },
+                    RowVersion = "1-12345",
+                    PassThrough = new List<PassThroughBody>() {
+                        new PassThroughBody() {
+                            ServiceId = "<id>",
+                            ExtendPaths = new List<ExtendPaths>() {
+                                new ExtendPaths() {
+                                    Path = "$.nested.property",
+                                    Value = new Dictionary<string, object>() {
+                                        { "TaxClassificationRef", new Dictionary<string, object>() {
+                                            { "value", "EUC-99990201-V1-00020000" },
+                                        } },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+};
+
+var res = await sdk.Accounting.LedgerAccounts.CreateBatchAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [AccountingLedgerAccountsBatchAddRequest](../../Models/Requests/AccountingLedgerAccountsBatchAddRequest.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
+
+### Response
+
+**[AccountingLedgerAccountsBatchAddResponse](../../Models/Requests/AccountingLedgerAccountsBatchAddResponse.md)**
 
 ### Errors
 

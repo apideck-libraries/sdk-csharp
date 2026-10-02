@@ -1,0 +1,10 @@
+# AccountingLedgerAccountsBatchAddResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                            | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                               | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `BatchLedgerAccountsResponse`                                                         | [BatchLedgerAccountsResponse](../../Models/Components/BatchLedgerAccountsResponse.md) | :heavy_minus_sign:                                                                    | Ledger Accounts batch processed                                                       |
+| `UnexpectedErrorResponse`                                                             | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)         | :heavy_minus_sign:                                                                    | Unexpected error                                                                      |

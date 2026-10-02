@@ -256,6 +256,7 @@ while(res != null)
 * [Get](docs/sdks/customers/README.md#get) - Get Customer
 * [Update](docs/sdks/customers/README.md#update) - Update Customer
 * [Delete](docs/sdks/customers/README.md#delete) - Delete Customer
+* [CreateBatch](docs/sdks/customers/README.md#createbatch) - Create Customers in batch
 
 ### [Accounting.Departments](docs/sdks/departments/README.md)
 
@@ -331,6 +332,7 @@ while(res != null)
 * [Get](docs/sdks/journalentries/README.md#get) - Get Journal Entry
 * [Update](docs/sdks/journalentries/README.md#update) - Update Journal Entry
 * [Delete](docs/sdks/journalentries/README.md#delete) - Delete Journal Entry
+* [CreateBatch](docs/sdks/journalentries/README.md#createbatch) - Create Journal Entries in batch
 
 ### [Accounting.Journals](docs/sdks/journals/README.md)
 
@@ -347,6 +349,7 @@ while(res != null)
 * [Get](docs/sdks/ledgeraccounts/README.md#get) - Get Ledger Account
 * [Update](docs/sdks/ledgeraccounts/README.md#update) - Update Ledger Account
 * [Delete](docs/sdks/ledgeraccounts/README.md#delete) - Delete Ledger Account
+* [CreateBatch](docs/sdks/ledgeraccounts/README.md#createbatch) - Create Ledger Accounts in batch
 
 ### [Accounting.Locations](docs/sdks/locations/README.md)
 
@@ -432,6 +435,7 @@ while(res != null)
 * [Get](docs/sdks/suppliers/README.md#get) - Get Supplier
 * [Update](docs/sdks/suppliers/README.md#update) - Update Supplier
 * [Delete](docs/sdks/suppliers/README.md#delete) - Delete Supplier
+* [CreateBatch](docs/sdks/suppliers/README.md#createbatch) - Create Suppliers in batch
 
 ### [Accounting.TaxRates](docs/sdks/taxrates/README.md)
 
@@ -448,6 +452,7 @@ while(res != null)
 * [Get](docs/sdks/trackingcategories/README.md#get) - Get Tracking Category
 * [Update](docs/sdks/trackingcategories/README.md#update) - Update Tracking Category
 * [Delete](docs/sdks/trackingcategories/README.md#delete) - Delete Tracking Category
+* [CreateBatch](docs/sdks/trackingcategories/README.md#createbatch) - Create Tracking Categories in batch
 
 ### [Ats.Applicants](docs/sdks/applicants/README.md)
 
@@ -1079,8 +1084,8 @@ catch (System.Net.Http.HttpRequestException ex)
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 368 methods.*
-  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 368 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 373 methods.*
+  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 373 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 
