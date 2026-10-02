@@ -23,6 +23,6 @@ namespace ApideckUnifySdk.Models.Components
         /// The records to write. The per-connector limit is the real cap and is usually lower than the ceiling here: read `batch_support.resources[&lt;resource&gt;].max_items` on the Connector API for the connector you are calling, or the resource gotchas. This ceiling exists so an oversized array is rejected by request validation before any per-item work runs, rather than after it.
         /// </summary>
         [JsonProperty("items")]
-        public List<Items> Items { get; set; } = default!;
+        public List<BatchBillsRequestItems> Items { get; set; } = default!;
     }
 }

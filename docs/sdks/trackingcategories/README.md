@@ -9,6 +9,7 @@
 * [Get](#get) - Get Tracking Category
 * [Update](#update) - Update Tracking Category
 * [Delete](#delete) - Delete Tracking Category
+* [CreateBatch](#createbatch) - Create Tracking Categories in batch
 
 ## List
 
@@ -356,6 +357,59 @@ var res = await sdk.Accounting.TrackingCategories.DeleteAsync(req);
 ### Response
 
 **[AccountingTrackingCategoriesDeleteResponse](../../Models/Requests/AccountingTrackingCategoriesDeleteResponse.md)**
+
+### Errors
+
+| Error Type                                            | Status Code                                           | Content Type                                          |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
+| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+
+## CreateBatch
+
+Create multiple tracking categories in a single request. Each item is processed independently, so some may be created while others fail; the response returns `200` with one result per item, in the order the items were sent. The maximum number of items accepted per request depends on the connector.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="accounting.trackingCategoriesBatchAdd" method="post" path="/accounting/tracking-categories/batch" -->
+```csharp
+using ApideckUnifySdk;
+using ApideckUnifySdk.Models.Components;
+using ApideckUnifySdk.Models.Requests;
+using System.Collections.Generic;
+
+var sdk = new Apideck(
+    consumerId: "test-consumer",
+    appId: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX",
+    apiKey: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+AccountingTrackingCategoriesBatchAddRequest req = new AccountingTrackingCategoriesBatchAddRequest() {
+    ServiceId = "salesforce",
+    CompanyId = "12345",
+    BatchTrackingCategoriesRequest = new BatchTrackingCategoriesRequest() {
+        Items = new List<Items>() {},
+    },
+};
+
+var res = await sdk.Accounting.TrackingCategories.CreateBatchAsync(req);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                           | [AccountingTrackingCategoriesBatchAddRequest](../../Models/Requests/AccountingTrackingCategoriesBatchAddRequest.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
+
+### Response
+
+**[AccountingTrackingCategoriesBatchAddResponse](../../Models/Requests/AccountingTrackingCategoriesBatchAddResponse.md)**
 
 ### Errors
 

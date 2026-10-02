@@ -1,0 +1,10 @@
+# AccountingJournalEntriesBatchAddResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                            | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                               | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `BatchJournalEntriesResponse`                                                         | [BatchJournalEntriesResponse](../../Models/Components/BatchJournalEntriesResponse.md) | :heavy_minus_sign:                                                                    | Journal Entries batch processed                                                       |
+| `UnexpectedErrorResponse`                                                             | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)         | :heavy_minus_sign:                                                                    | Unexpected error                                                                      |
