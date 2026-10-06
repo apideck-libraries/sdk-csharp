@@ -63,5 +63,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("country")]
         public string? Country { get; set; } = null;
+
+        /// <summary>
+        /// Tax or VAT identification number registered on this address.
+        /// </summary>
+        [JsonProperty("tax_number")]
+        public string? TaxNumber { get; set; } = null;
     }
 }

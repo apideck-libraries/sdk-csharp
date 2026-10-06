@@ -56,6 +56,12 @@ namespace ApideckUnifySdk.Models.Components
         public CustomerStatus? Status { get; set; } = null;
 
         /// <summary>
+        /// Tax or VAT identification number of the customer.
+        /// </summary>
+        [JsonProperty("tax_number")]
+        public string? TaxNumber { get; set; } = null;
+
+        /// <summary>
         /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
         /// </summary>
         [JsonProperty("currency")]
