@@ -30,6 +30,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Number { get; set; }
 
         /// <summary>
+        /// Return only journal entries whose source_id equals the given value (the caller-supplied reference, where the connector stores one). Connectors without support reject this filter with UnsupportedFiltersError.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=source_id")]
+        public string? SourceId { get; set; }
+
+        /// <summary>
         /// Return journal entries posted on or after this date (posting date, inclusive). Connectors without date-range support reject this filter with UnsupportedFiltersError.
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=start_date")]
