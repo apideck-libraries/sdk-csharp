@@ -97,6 +97,30 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("country")]
         public string? Country { get; set; } = null;
 
+        /// <summary>
+        /// The people or businesses that hold the source bank account. Optional; `plaid-exchange` requires at least one.
+        /// </summary>
+        [JsonProperty("account_holders")]
+        public List<BankFeedAccountHolder>? AccountHolders { get; set; }
+
+        /// <summary>
+        /// Email addresses of the account holders. Optional; `plaid-exchange` requires at least one.
+        /// </summary>
+        [JsonProperty("emails")]
+        public List<Email>? Emails { get; set; }
+
+        /// <summary>
+        /// Addresses of the account holders. Optional; `plaid-exchange` requires at least one.
+        /// </summary>
+        [JsonProperty("addresses")]
+        public List<Address>? Addresses { get; set; }
+
+        /// <summary>
+        /// Phone numbers of the account holders. Optional; `plaid-exchange` requires at least one.
+        /// </summary>
+        [JsonProperty("phone_numbers")]
+        public List<PhoneNumber>? PhoneNumbers { get; set; }
+
         [JsonProperty("custom_fields")]
         public List<CustomField>? CustomFields { get; set; }
 
