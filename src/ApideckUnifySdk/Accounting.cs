@@ -88,6 +88,8 @@ namespace ApideckUnifySdk
 
         public IProjects Projects { get; }
 
+        public ISalesOrders SalesOrders { get; }
+
         public IEmployees Employees { get; }
 
         public IExpenseCategories ExpenseCategories { get; }
@@ -322,6 +324,12 @@ namespace ApideckUnifySdk
         public IProjects Projects { get; private set; }
 
         /// <summary>
+        /// SalesOrders SubSDK.
+        /// <see cref="ISalesOrders"/>
+        /// </summary>
+        public ISalesOrders SalesOrders { get; private set; }
+
+        /// <summary>
         /// Employees SubSDK.
         /// <see cref="IEmployees"/>
         /// </summary>
@@ -384,6 +392,7 @@ namespace ApideckUnifySdk
             Categories = new Categories(SDKConfiguration);
             Quotes = new Quotes(SDKConfiguration);
             Projects = new Projects(SDKConfiguration);
+            SalesOrders = new SalesOrders(SDKConfiguration);
             Employees = new Employees(SDKConfiguration);
             ExpenseCategories = new ExpenseCategories(SDKConfiguration);
             PaymentMethods = new PaymentMethods(SDKConfiguration);

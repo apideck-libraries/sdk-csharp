@@ -161,6 +161,12 @@ namespace ApideckUnifySdk.Models.Components
         public static readonly WebhookEventType AccountingTrackingCategoryCreated = new WebhookEventType("accounting.tracking_category.created");
         public static readonly WebhookEventType AccountingTrackingCategoryUpdated = new WebhookEventType("accounting.tracking_category.updated");
         public static readonly WebhookEventType AccountingTrackingCategoryDeleted = new WebhookEventType("accounting.tracking_category.deleted");
+        public static readonly WebhookEventType AccountingSalesReceiptCreated = new WebhookEventType("accounting.sales_receipt.created");
+        public static readonly WebhookEventType AccountingSalesReceiptUpdated = new WebhookEventType("accounting.sales_receipt.updated");
+        public static readonly WebhookEventType AccountingSalesReceiptDeleted = new WebhookEventType("accounting.sales_receipt.deleted");
+        public static readonly WebhookEventType AccountingRefundCreated = new WebhookEventType("accounting.refund.created");
+        public static readonly WebhookEventType AccountingRefundUpdated = new WebhookEventType("accounting.refund.updated");
+        public static readonly WebhookEventType AccountingRefundDeleted = new WebhookEventType("accounting.refund.deleted");
 
         private static readonly Dictionary <string, WebhookEventType> _knownValues =
             new Dictionary <string, WebhookEventType> ()
@@ -306,7 +312,13 @@ namespace ApideckUnifySdk.Models.Components
                 ["accounting.project.deleted"] = AccountingProjectDeleted,
                 ["accounting.tracking_category.created"] = AccountingTrackingCategoryCreated,
                 ["accounting.tracking_category.updated"] = AccountingTrackingCategoryUpdated,
-                ["accounting.tracking_category.deleted"] = AccountingTrackingCategoryDeleted
+                ["accounting.tracking_category.deleted"] = AccountingTrackingCategoryDeleted,
+                ["accounting.sales_receipt.created"] = AccountingSalesReceiptCreated,
+                ["accounting.sales_receipt.updated"] = AccountingSalesReceiptUpdated,
+                ["accounting.sales_receipt.deleted"] = AccountingSalesReceiptDeleted,
+                ["accounting.refund.created"] = AccountingRefundCreated,
+                ["accounting.refund.updated"] = AccountingRefundUpdated,
+                ["accounting.refund.deleted"] = AccountingRefundDeleted
             };
 
         private static readonly ConcurrentDictionary<string, WebhookEventType> _values =
