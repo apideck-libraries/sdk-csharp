@@ -100,6 +100,7 @@ var sdk = new Apideck(
 
 AccountingBillsAddRequest req = new AccountingBillsAddRequest() {
     ServiceId = "salesforce",
+    IdempotencyKey = "8e03978e-40d5-43e8-bc93-6894a57f9324",
     Bill = new BillInput() {
         BillNumber = "10001",
         Supplier = new LinkedSupplierInput() {

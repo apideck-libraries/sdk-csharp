@@ -158,3 +158,9 @@ var custom = WebhookEventType.Of("custom_value");
 | `AccountingTrackingCategoryCreated`      | accounting.tracking_category.created     |
 | `AccountingTrackingCategoryUpdated`      | accounting.tracking_category.updated     |
 | `AccountingTrackingCategoryDeleted`      | accounting.tracking_category.deleted     |
+| `AccountingSalesReceiptCreated`          | accounting.sales_receipt.created         |
+| `AccountingSalesReceiptUpdated`          | accounting.sales_receipt.updated         |
+| `AccountingSalesReceiptDeleted`          | accounting.sales_receipt.deleted         |
+| `AccountingRefundCreated`                | accounting.refund.created                |
+| `AccountingRefundUpdated`                | accounting.refund.updated                |
+| `AccountingRefundDeleted`                | accounting.refund.deleted                |
