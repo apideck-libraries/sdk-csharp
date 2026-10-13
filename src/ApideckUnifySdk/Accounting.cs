@@ -68,6 +68,10 @@ namespace ApideckUnifySdk
 
         public IJournals Journals { get; }
 
+        public IFiscalPeriods FiscalPeriods { get; }
+
+        public ITrialBalance TrialBalance { get; }
+
         public ITrackingCategories TrackingCategories { get; }
 
         public IBillPayments BillPayments { get; }
@@ -264,6 +268,18 @@ namespace ApideckUnifySdk
         public IJournals Journals { get; private set; }
 
         /// <summary>
+        /// FiscalPeriods SubSDK.
+        /// <see cref="IFiscalPeriods"/>
+        /// </summary>
+        public IFiscalPeriods FiscalPeriods { get; private set; }
+
+        /// <summary>
+        /// TrialBalance SubSDK.
+        /// <see cref="ITrialBalance"/>
+        /// </summary>
+        public ITrialBalance TrialBalance { get; private set; }
+
+        /// <summary>
         /// TrackingCategories SubSDK.
         /// <see cref="ITrackingCategories"/>
         /// </summary>
@@ -382,6 +398,8 @@ namespace ApideckUnifySdk
             Attachments = new Attachments(SDKConfiguration);
             BankAccounts = new BankAccounts(SDKConfiguration);
             Journals = new Journals(SDKConfiguration);
+            FiscalPeriods = new FiscalPeriods(SDKConfiguration);
+            TrialBalance = new TrialBalance(SDKConfiguration);
             TrackingCategories = new TrackingCategories(SDKConfiguration);
             BillPayments = new BillPayments(SDKConfiguration);
             Expenses = new Expenses(SDKConfiguration);

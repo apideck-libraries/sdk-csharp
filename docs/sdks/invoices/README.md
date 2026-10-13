@@ -440,6 +440,7 @@ var sdk = new Apideck(
 AccountingInvoicesUpdateRequest req = new AccountingInvoicesUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
+    IdempotencyKey = "your-unique-key-per-create",
     Invoice = new InvoiceInput() {
         Type = InvoiceType.Service,
         Number = "OIT00546",
