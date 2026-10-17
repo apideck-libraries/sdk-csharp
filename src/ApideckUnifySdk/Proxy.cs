@@ -278,7 +278,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseJson = obj;
                     return response;
@@ -291,7 +292,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseBinary = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -304,7 +306,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponsePdf = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -317,7 +320,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseXml = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -330,7 +334,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseCsv = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -343,7 +348,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseText = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -589,7 +595,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseJson = obj;
                     return response;
@@ -602,7 +609,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseBinary = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -615,7 +623,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponsePdf = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -628,7 +637,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseXml = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -641,7 +651,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseCsv = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -654,7 +665,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseText = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -906,7 +918,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseJson = obj;
                     return response;
@@ -919,7 +932,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseBinary = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -932,7 +946,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponsePdf = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -945,7 +960,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseXml = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -958,7 +974,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseCsv = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -971,7 +988,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseText = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1220,7 +1238,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseJson = obj;
                     return response;
@@ -1233,7 +1252,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseBinary = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -1246,7 +1266,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponsePdf = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -1259,7 +1280,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseXml = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1272,7 +1294,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseCsv = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1285,7 +1308,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseText = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1537,7 +1561,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseJson = obj;
                     return response;
@@ -1550,7 +1575,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseBinary = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -1563,7 +1589,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponsePdf = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -1576,7 +1603,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseXml = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1589,7 +1617,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseCsv = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1602,7 +1631,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseText = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1848,7 +1878,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseJson = obj;
                     return response;
@@ -1861,7 +1892,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseBinary = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -1874,7 +1906,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponsePdf = await httpResponse.Content.ReadAsByteArrayAsync();
                     return response;
@@ -1887,7 +1920,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseXml = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1900,7 +1934,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseCsv = await httpResponse.Content.ReadAsStringAsync();
                     return response;
@@ -1913,7 +1948,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.ResponseText = await httpResponse.Content.ReadAsStringAsync();
                     return response;

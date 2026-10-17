@@ -13,6 +13,7 @@ namespace ApideckUnifySdk.Models.Requests
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     public class CrmUsersAllResponse
@@ -30,5 +31,7 @@ namespace ApideckUnifySdk.Models.Requests
         /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
+
+        public Dictionary<string, List<string>> Headers { get; set; } = new Dictionary<string, List<string>>();
     }
 }

@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Requests
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class AccountingLocationsUpdateResponse
     {
@@ -27,5 +28,7 @@ namespace ApideckUnifySdk.Models.Requests
         /// Unexpected error.
         /// </summary>
         public UnexpectedErrorResponse? UnexpectedErrorResponse { get; set; }
+
+        public Dictionary<string, List<string>> Headers { get; set; } = new Dictionary<string, List<string>>();
     }
 }

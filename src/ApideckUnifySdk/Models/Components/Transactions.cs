@@ -47,7 +47,7 @@ namespace ApideckUnifySdk.Models.Components
         /// The ID of the source transaction.
         /// </summary>
         [JsonProperty("source_transaction_id")]
-        public string SourceTransactionId { get; set; } = default!;
+        public string? SourceTransactionId { get; set; }
 
         /// <summary>
         /// The counterparty of the transaction.
