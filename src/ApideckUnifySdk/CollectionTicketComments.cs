@@ -331,7 +331,8 @@ namespace ApideckUnifySdk
                             Response = httpResponse,
                             Request = httpRequest
                         },
-                        Next = nextFunc
+                        Next = nextFunc,
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GetCommentsResponse = obj;
                     return response;
@@ -469,7 +470,8 @@ namespace ApideckUnifySdk
                             Response = httpResponse,
                             Request = httpRequest
                         },
-                        Next = nextFunc
+                        Next = nextFunc,
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -624,7 +626,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.CreateCommentResponse = obj;
                     return response;
@@ -761,7 +764,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -947,7 +951,8 @@ namespace ApideckUnifySdk
                             Response = httpResponse,
                             Request = httpRequest
                         },
-                        Next = nextFunc
+                        Next = nextFunc,
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GetCommentResponse = obj;
                     return response;
@@ -1085,7 +1090,8 @@ namespace ApideckUnifySdk
                             Response = httpResponse,
                             Request = httpRequest
                         },
-                        Next = nextFunc
+                        Next = nextFunc,
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -1240,7 +1246,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UpdateCommentResponse = obj;
                     return response;
@@ -1377,7 +1384,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -1526,7 +1534,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.DeleteCommentResponse = obj;
                     return response;
@@ -1663,7 +1672,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;

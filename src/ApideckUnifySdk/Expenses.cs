@@ -330,7 +330,8 @@ namespace ApideckUnifySdk
                             Response = httpResponse,
                             Request = httpRequest
                         },
-                        Next = nextFunc
+                        Next = nextFunc,
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GetExpensesResponse = obj;
                     return response;
@@ -468,7 +469,8 @@ namespace ApideckUnifySdk
                             Response = httpResponse,
                             Request = httpRequest
                         },
-                        Next = nextFunc
+                        Next = nextFunc,
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -623,7 +625,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.CreateExpenseResponse = obj;
                     return response;
@@ -760,7 +763,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -909,7 +913,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GetExpenseResponse = obj;
                     return response;
@@ -1046,7 +1051,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -1201,7 +1207,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UpdateExpenseResponse = obj;
                     return response;
@@ -1338,7 +1345,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -1487,7 +1495,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.DeleteExpenseResponse = obj;
                     return response;
@@ -1624,7 +1633,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;

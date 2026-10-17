@@ -200,7 +200,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GetBalanceSheetResponse = obj;
                     return response;
@@ -337,7 +338,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;

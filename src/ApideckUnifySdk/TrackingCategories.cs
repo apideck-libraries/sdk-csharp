@@ -353,7 +353,8 @@ namespace ApideckUnifySdk
                             Response = httpResponse,
                             Request = httpRequest
                         },
-                        Next = nextFunc
+                        Next = nextFunc,
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GetTrackingCategoriesResponse = obj;
                     return response;
@@ -491,7 +492,8 @@ namespace ApideckUnifySdk
                             Response = httpResponse,
                             Request = httpRequest
                         },
-                        Next = nextFunc
+                        Next = nextFunc,
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -646,7 +648,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.CreateTrackingCategoryResponse = obj;
                     return response;
@@ -783,7 +786,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -932,7 +936,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.GetTrackingCategoryResponse = obj;
                     return response;
@@ -1069,7 +1074,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -1224,7 +1230,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UpdateTrackingCategoryResponse = obj;
                     return response;
@@ -1361,7 +1368,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -1510,7 +1518,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.DeleteTrackingCategoryResponse = obj;
                     return response;
@@ -1647,7 +1656,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;
@@ -1802,7 +1812,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.BatchTrackingCategoriesResponse = obj;
                     return response;
@@ -1939,7 +1950,8 @@ namespace ApideckUnifySdk
                         {
                             Response = httpResponse,
                             Request = httpRequest
-                        }
+                        },
+                        Headers = Utilities.CollectHeaders(httpResponse.Headers)
                     };
                     response.UnexpectedErrorResponse = obj;
                     return response;

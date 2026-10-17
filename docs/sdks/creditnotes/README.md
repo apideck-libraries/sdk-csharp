@@ -101,6 +101,7 @@ var sdk = new Apideck(
 AccountingCreditNotesAddRequest req = new AccountingCreditNotesAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    IdempotencyKey = "your-unique-key-per-create",
     CreditNote = new CreditNoteInput() {
         Number = "OIT00546",
         Customer = new LinkedCustomerInput() {
