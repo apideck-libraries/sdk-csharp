@@ -41,6 +41,12 @@ namespace ApideckUnifySdk.Models.Components
         public ManagedVia? ManagedVia { get; set; }
 
         /// <summary>
+        /// Service IDs of connectors that receive events from this connector's webhook URL when the URL's own connector has no connection for the event. Connectors listed here must use the same webhook event mapping.
+        /// </summary>
+        [JsonProperty("shared_with")]
+        public List<string>? SharedWith { get; set; }
+
+        /// <summary>
         /// Virtual webhook config for the connector.
         /// </summary>
         [JsonProperty("virtual_webhooks")]
