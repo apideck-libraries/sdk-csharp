@@ -11,5 +11,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-dotnet@v4
         with:
-          global-json-file: global.json
+          # global.json pins 8.0.0 + rollForward latestMinor; 8.0.0 itself is no longer downloadable
+          dotnet-version: 8.0.x
       - run: dotnet build ApideckUnifySdk.sln
