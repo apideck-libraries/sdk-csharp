@@ -12,6 +12,7 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using NodaTime;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
@@ -84,5 +85,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=country")]
         public string? Country { get; set; }
+
+        /// <summary>
+        /// Return employees as of this date (YYYY-MM-DD). Set a future date to include future-dated hires. When omitted, employees are returned as of today.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=as_of_date")]
+        public LocalDate? AsOfDate { get; set; }
     }
 }

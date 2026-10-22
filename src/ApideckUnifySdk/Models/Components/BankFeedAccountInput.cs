@@ -86,6 +86,12 @@ namespace ApideckUnifySdk.Models.Components
         public FeedStatus? FeedStatus { get; set; }
 
         /// <summary>
+        /// Whether the data consumer may see this account. `revoked` hides it from the consumer without deleting it; `active` restores it. Unrelated to `feed_status`. Only connectors that list it support it; others ignore the field, so setting it there changes nothing.
+        /// </summary>
+        [JsonProperty("status")]
+        public BankFeedAccountStatus? Status { get; set; }
+
+        /// <summary>
         /// Country code according to ISO 3166-1 alpha-2.
         /// </summary>
         [JsonProperty("country")]
