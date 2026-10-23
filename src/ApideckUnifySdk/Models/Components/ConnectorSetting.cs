@@ -23,5 +23,29 @@ namespace ApideckUnifySdk.Models.Components
 
         [JsonProperty("type")]
         public ConnectorSettingType? Type { get; set; }
+
+        /// <summary>
+        /// Whether a value is required for the connection to work. Required settings are always shown in Vault and cannot be hidden by an application.
+        /// </summary>
+        [JsonProperty("required")]
+        public bool? Required { get; set; }
+
+        /// <summary>
+        /// Whether a value is required before the connection can be authorized. These settings are always shown in Vault and cannot be hidden by an application.
+        /// </summary>
+        [JsonProperty("required_for_authorization")]
+        public bool? RequiredForAuthorization { get; set; }
+
+        /// <summary>
+        /// Whether the connector hides this setting from the Vault connection form for every application.
+        /// </summary>
+        [JsonProperty("hidden")]
+        public bool? Hidden { get; set; }
+
+        /// <summary>
+        /// Help text shown under the setting in the Vault connection form. May contain `${integrationSettings.&lt;key&gt;}` placeholders that are filled in from the application's integration settings when the Vault form is built.
+        /// </summary>
+        [JsonProperty("description")]
+        public string? Description { get; set; }
     }
 }
