@@ -226,6 +226,12 @@ namespace ApideckUnifySdk.Models.Components
         public List<InvoiceCreateInputPaymentAllocations>? PaymentAllocations { get; set; } = null;
 
         /// <summary>
+        /// A list of quotes linked to this record.
+        /// </summary>
+        [JsonProperty("quotes")]
+        public List<LinkedQuotesInput>? Quotes { get; set; } = null;
+
+        /// <summary>
         /// Payment method used for the transaction, such as cash, credit card, bank transfer, or check.
         /// </summary>
         [JsonProperty("payment_method")]

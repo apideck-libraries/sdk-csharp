@@ -94,6 +94,12 @@ namespace ApideckUnifySdk.Models.Components
         public double? CurrentBalance { get; set; } = null;
 
         /// <summary>
+        /// For an account that holds the cost of fixed assets, the fixed-asset register's figures for the assets recorded in it. Null for other accounts, including accumulated-depreciation accounts, and when the accounting system does not provide them.
+        /// </summary>
+        [JsonProperty("fixed_asset")]
+        public FixedAsset? FixedAsset { get; set; } = null;
+
+        /// <summary>
         /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
         /// </summary>
         [JsonProperty("currency")]
