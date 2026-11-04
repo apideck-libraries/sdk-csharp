@@ -45,6 +45,6 @@ namespace ApideckUnifySdk.Models.Requests
         public bool? Raw { get; set; } = false;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public ExpenseReportInput ExpenseReport { get; set; } = default!;
+        public ExpenseReportUpdateInput ExpenseReportUpdateInput { get; set; } = default!;
     }
 }
