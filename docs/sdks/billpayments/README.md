@@ -346,7 +346,7 @@ var sdk = new Apideck(
 AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
-    BillPayment = new BillPaymentInput() {
+    BillPaymentUpdateInput = new BillPaymentUpdateInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
         TotalAmount = 49.99D,
@@ -393,23 +393,23 @@ AccountingBillPaymentsUpdateRequest req = new AccountingBillPaymentsUpdateReques
         CompanyId = "12345",
         Reconciled = true,
         Status = PaymentStatus.Authorised,
-        Type = BillPaymentType.AccountsPayable,
-        Allocations = new List<BillPaymentAllocations>() {
-            new BillPaymentAllocations() {
+        Type = BillPaymentUpdateInputBillPaymentType.AccountsPayable,
+        Allocations = new List<BillPaymentUpdateInputAllocations>() {
+            new BillPaymentUpdateInputAllocations() {
                 Id = "12345",
-                Type = BillPaymentAllocationType.Bill,
+                Type = BillPaymentUpdateInputAllocationType.Bill,
                 Amount = 49.99D,
                 AllocationId = "123456",
             },
-            new BillPaymentAllocations() {
+            new BillPaymentUpdateInputAllocations() {
                 Id = "12345",
-                Type = BillPaymentAllocationType.Bill,
+                Type = BillPaymentUpdateInputAllocationType.Bill,
                 Amount = 49.99D,
                 AllocationId = "123456",
             },
-            new BillPaymentAllocations() {
+            new BillPaymentUpdateInputAllocations() {
                 Id = "12345",
-                Type = BillPaymentAllocationType.Bill,
+                Type = BillPaymentUpdateInputAllocationType.Bill,
                 Amount = 49.99D,
                 AllocationId = "123456",
             },

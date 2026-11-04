@@ -51,6 +51,6 @@ namespace ApideckUnifySdk.Models.Requests
         public string? CompanyId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public SalesReceiptInput SalesReceipt { get; set; } = default!;
+        public SalesReceiptUpdateInput SalesReceiptUpdateInput { get; set; } = default!;
     }
 }

@@ -1102,7 +1102,7 @@ namespace ApideckUnifySdk
                 httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "ExpenseReport", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "ExpenseReportUpdateInput", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;

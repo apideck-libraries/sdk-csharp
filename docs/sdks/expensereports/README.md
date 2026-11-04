@@ -280,15 +280,15 @@ var sdk = new Apideck(
 AccountingExpenseReportsUpdateRequest req = new AccountingExpenseReportsUpdateRequest() {
     Id = "<id>",
     ServiceId = "salesforce",
-    ExpenseReport = new ExpenseReportInput() {
+    ExpenseReportUpdateInput = new ExpenseReportUpdateInput() {
         DisplayId = "123456",
         Number = "ER-001",
         Title = "Q1 Business Travel",
-        Employee = new ExpenseReportEmployee() {
+        Employee = new ExpenseReportUpdateInputEmployee() {
             Id = "12345",
             DisplayName = "John Doe",
         },
-        Status = ExpenseReportStatus.Submitted,
+        Status = ExpenseReportUpdateInputStatus.Submitted,
         TransactionDate = System.DateTime.Parse("2021-05-01T12:00:00.000Z").ToUniversalTime(),
         PostingDate = LocalDate.FromDateTime(System.DateTime.Parse("2024-06-01")),
         DueDate = LocalDate.FromDateTime(System.DateTime.Parse("2024-06-15")),
@@ -316,7 +316,7 @@ AccountingExpenseReportsUpdateRequest req = new AccountingExpenseReportsUpdateRe
             ParentId = "123456",
             DisplayId = "123456",
         },
-        AccountingPeriod = new AccountingPeriod() {
+        AccountingPeriod = new ExpenseReportUpdateInputAccountingPeriod() {
             Id = "12345",
             Name = "Q1 2024",
         },
@@ -328,7 +328,7 @@ AccountingExpenseReportsUpdateRequest req = new AccountingExpenseReportsUpdateRe
         },
         TrackingCategories = null,
         TaxInclusive = true,
-        ApprovedBy = new ApprovedBy() {
+        ApprovedBy = new ExpenseReportUpdateInputApprovedBy() {
             Id = "12345",
             DisplayName = "Jane Smith",
         },
