@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: a14a5e84095d070eb6061d46d5628901
-  docVersion: 10.79.0
+  docChecksum: cb72289b3d41ec87a1d9d2b5bc383dc8
+  docVersion: 10.80.3
   speakeasyVersion: 1.791.4
   generationVersion: 2.926.8
-  releaseVersion: 0.51.0
-  configChecksum: cf7f1496e8aee464395b030f0ae10068
+  releaseVersion: 0.52.0
+  configChecksum: 3bbee705a19da1b5728874ac91e64a86
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: cd98f63c-feff-422f-9a79-f6ead7514a46
-  pristine_commit_hash: 670ec333063fc46ade79c30f474a88da568716f1
-  pristine_tree_hash: 6ef4b27b4279e320a836521d631e60cd27623873
+  generation_id: 8d923228-abe2-4c38-a36b-84a2fe7e9feb
+  pristine_commit_hash: 4ac8ed4356fdc871b08cdd08910c4dfafca4cff4
+  pristine_tree_hash: 085c2e12b0d163e73e3a3b8f22a965015e0f0fab
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -4211,6 +4211,10 @@ trackedFiles:
     id: 3bb2eba0af6b
     last_write_checksum: sha1:ebc103add3cab16bc285dfc8b4740437af9ca89b
     pristine_git_object: 94435b340cd53157369a38ad7e304c8b2ebb66a2
+  docs/Models/Components/TargetURLScope.md:
+    id: cc1fb352b050
+    last_write_checksum: sha1:589af32b92461081cea830413e8ef16182d4495c
+    pristine_git_object: dc1e1100f5be05300b8ff0de5276858bb0753de3
   docs/Models/Components/Tax.md:
     id: 1499134130dd
     last_write_checksum: sha1:687a606c712d4db341d89ff7463e1c93647b9fa8
@@ -4729,8 +4733,8 @@ trackedFiles:
     pristine_git_object: 2ba9548035d3702e6f657814a9eb046e25cb63e4
   docs/Models/Components/WebhookSupport.md:
     id: 0aaa8db55889
-    last_write_checksum: sha1:30a838859c503caeeead80891675c0421a590d2a
-    pristine_git_object: a88a52a4e12b5bfd28d9f76e309fc43e6ff3adaa
+    last_write_checksum: sha1:7604a950bf3273fdd640401e9d6234fe7502935d
+    pristine_git_object: 765abe0eb04a1a94a774c79aa2c90ccce08aaba8
   docs/Models/Components/WebhookSupportResources.md:
     id: 7368e4f77001
     last_write_checksum: sha1:24dcd3300c03102b04637a43af541f5c0e98e437
@@ -8385,8 +8389,8 @@ trackedFiles:
     pristine_git_object: 13276182e6d467f00dc963f9290278718f442449
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:69f4d1e4aa5afddaea92cad8f185f3618142fab9
-    pristine_git_object: b16d6ed17a74cc4868f8a63969848946782258ef
+    last_write_checksum: sha1:bd5b490a1a8e494c87d3738ea612f0797df2e89d
+    pristine_git_object: 813a8607b9bc08a7ae5893aeab426d703b62b821
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:37ce8dedc10cb940bff40906379cb65d8dd24b82
@@ -12827,6 +12831,10 @@ trackedFiles:
     id: d60855cd2efe
     last_write_checksum: sha1:7b75d4ae7a1512a50ecee1e9280e7eae1ee87abe
     pristine_git_object: c9f372d28d30830ab34dc9d5127db6a9b16c8400
+  src/ApideckUnifySdk/Models/Components/TargetURLScope.cs:
+    id: 59e8088fe228
+    last_write_checksum: sha1:f152e7640301dd84a087529d00e5003edbf7db63
+    pristine_git_object: 59e77b8c103daef9d8409d0ac094a5207da0206a
   src/ApideckUnifySdk/Models/Components/Tax.cs:
     id: 82fc71f19867
     last_write_checksum: sha1:64595f56a8398d866594a445ed597c5c3fe0e383
@@ -13345,8 +13353,8 @@ trackedFiles:
     pristine_git_object: e0ccc1ac7a9273b5bd9a402eb96e7d788f2f5f3f
   src/ApideckUnifySdk/Models/Components/WebhookSupport.cs:
     id: ddf299c6ec10
-    last_write_checksum: sha1:0edd7e881085f9460588a1c60fe3893b59572293
-    pristine_git_object: a4e961af0e641f28f2afbf371b4f9b9cdf011383
+    last_write_checksum: sha1:68329b9eb4971f753701f9fcb04f3d4e4f31eb33
+    pristine_git_object: dba04589f29cbcf301c11b2c340489c1dbee14d3
   src/ApideckUnifySdk/Models/Components/WebhookSupportResources.cs:
     id: d297a680019c
     last_write_checksum: sha1:0412fefd76a1bc2cc99a43e5810c73964b413adf
@@ -16609,8 +16617,8 @@ trackedFiles:
     pristine_git_object: cf38747446edbcc9e839abee061ac312a24b0ee4
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:962eedcba5c075bd4faf303f94d2760ec35751bb
-    pristine_git_object: c2b645e0544acec1365cf01b6867154c39f02d23
+    last_write_checksum: sha1:e704778864a855e071d29b2052de48378fa81e4f
+    pristine_git_object: cdfe85cbfbea83697260092fa69288316cac742a
   src/ApideckUnifySdk/SalesOrders.cs:
     id: c2fc472e0bd6
     last_write_checksum: sha1:ef92edc3f904ceab89c1e14867bab98010c0abd7
@@ -16677,8 +16685,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:72a25a47cddd8d17241ab1ba50583f7e4679b935
-    pristine_git_object: a22c28db32f70e9b814cfa2d2a7f65b673c11c57
+    last_write_checksum: sha1:e80016e6c92adde88c96b258248c12c006ddea75
+    pristine_git_object: c2279e6c7117a21acbe006190bba0a80e7a5aa42
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -29809,7 +29817,7 @@ examples:
           x-apideck-app-id: "dSBdXd2H6Mqwfg0atXHXYcysLJE9qyn1VwBtXHX"
       responses:
         "200":
-          application/json: {"status_code": 200, "status": "OK", "data": {"id": "crm+salesforce", "name": "Salesforce", "description": "A description", "icon_url": "https://res.cloudinary.com/apideck/image/upload/v1529456047/catalog/salesforce/icon128x128.png", "logo_url": "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/home/logo-salesforce-m.svg", "website_url": "https://www.salesforce.com", "signup_url": "https://www.salesforce.com/signup", "partner_signup_url": "https://www.salesforce.com/partners", "auth_type": "oauth2", "auth_only": true, "blind_mapped": true, "oauth_grant_type": "authorization_code", "oauth_credentials_source": "integration", "oauth_scopes": [{"id": "contacts:all", "label": "Read/write on the Contacts resource", "default_apis": ["crm"]}], "custom_scopes": true, "has_sandbox_credentials": true, "settings": [{"id": "pipeline_id", "label": "Pipeline", "type": "select"}], "service_id": "close", "unified_apis": [{"id": "crm", "name": "File Storage API", "auth_only": true, "oauth_scopes": [{"id": "contacts:all", "label": "Read/write on the Contacts resource"}], "supported_resources": [{"id": "companies", "name": "Companies", "downstream_id": "accounts", "downstream_name": "Accounts"}], "downstream_unsupported_resources": ["companies"], "supported_events": [{"event_type": "employee.created", "event_source": "native", "downstream_event_type": "person_created", "resources": ["companies"], "entity_type": "employee"}]}], "supported_resources": [{"id": "companies", "name": "Companies", "downstream_id": "accounts", "downstream_name": "Accounts"}], "configurable_resources": ["leads", "companies"], "supported_events": [{"event_type": "employee.created", "event_source": "native", "downstream_event_type": "person_created", "resources": ["companies"], "entity_type": "employee"}], "webhook_support": {"mode": "native", "subscription_level": "integration", "managed_via": "api", "shared_with": ["intuit-enterprise-suite"]}, "batch_support": {"mode": "none", "resources": {"key": {"mode": "native", "max_items": 20}}}, "schema_support": {"supported": true}, "docs": [{"id": "12345", "name": "connection", "url": "https://unify.apideck.com/connector/connectors/workday/docs/consumer+connection"}], "overview": {"beta": false, "demo": false, "difficulty": "moderate", "difficulty_reason": "Self-Service Signup + App Review Required", "partnership_required": true, "apideck_credentials_available": true, "account_type_required": "<value>", "sandbox_available": true, "consumer_access_level": "<value>"}}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}, "links": {"previous": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjE%3D", "current": "https://unify.apideck.com/crm/companies", "next": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjM"}}
+          application/json: {"status_code": 200, "status": "OK", "data": {"id": "crm+salesforce", "name": "Salesforce", "description": "A description", "icon_url": "https://res.cloudinary.com/apideck/image/upload/v1529456047/catalog/salesforce/icon128x128.png", "logo_url": "https://c1.sfdcstatic.com/content/dam/web/en_us/www/images/home/logo-salesforce-m.svg", "website_url": "https://www.salesforce.com", "signup_url": "https://www.salesforce.com/signup", "partner_signup_url": "https://www.salesforce.com/partners", "auth_type": "oauth2", "auth_only": true, "blind_mapped": true, "oauth_grant_type": "authorization_code", "oauth_credentials_source": "integration", "oauth_scopes": [{"id": "contacts:all", "label": "Read/write on the Contacts resource", "default_apis": ["crm"]}], "custom_scopes": true, "has_sandbox_credentials": true, "settings": [{"id": "pipeline_id", "label": "Pipeline", "type": "select"}], "service_id": "close", "unified_apis": [{"id": "crm", "name": "File Storage API", "auth_only": true, "oauth_scopes": [{"id": "contacts:all", "label": "Read/write on the Contacts resource"}], "supported_resources": [{"id": "companies", "name": "Companies", "downstream_id": "accounts", "downstream_name": "Accounts"}], "downstream_unsupported_resources": ["companies"], "supported_events": [{"event_type": "employee.created", "event_source": "native", "downstream_event_type": "person_created", "resources": ["companies"], "entity_type": "employee"}]}], "supported_resources": [{"id": "companies", "name": "Companies", "downstream_id": "accounts", "downstream_name": "Accounts"}], "configurable_resources": ["leads", "companies"], "supported_events": [{"event_type": "employee.created", "event_source": "native", "downstream_event_type": "person_created", "resources": ["companies"], "entity_type": "employee"}], "webhook_support": {"mode": "native", "subscription_level": "integration", "managed_via": "api", "shared_with": ["intuit-enterprise-suite"], "target_url_scope": "app", "vendor_app_url": false}, "batch_support": {"mode": "none", "resources": {"key": {"mode": "native", "max_items": 20}}}, "schema_support": {"supported": true}, "docs": [{"id": "12345", "name": "connection", "url": "https://unify.apideck.com/connector/connectors/workday/docs/consumer+connection"}], "overview": {"beta": false, "demo": false, "difficulty": "moderate", "difficulty_reason": "Self-Service Signup + App Review Required", "partnership_required": true, "apideck_credentials_available": true, "account_type_required": "<value>", "sandbox_available": true, "consumer_access_level": "<value>"}}, "meta": {"items_on_page": 50, "cursors": {"previous": "em9oby1jcm06OnBhZ2U6OjE=", "current": "em9oby1jcm06OnBhZ2U6OjI=", "next": "em9oby1jcm06OnBhZ2U6OjM="}, "total_count": 1, "warnings": [{"type": "downstream_request_failed", "status_code": 429, "operation": "getManager"}]}, "links": {"previous": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjE%3D", "current": "https://unify.apideck.com/crm/companies", "next": "https://unify.apideck.com/crm/companies?cursor=em9oby1jcm06OnBhZ2U6OjM"}}
         "401":
           application/json: {"status_code": 401, "error": "Unauthorized", "type_name": "UnauthorizedError", "message": "Unauthorized Request", "detail": "Missing authentication", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
         "402":
@@ -34431,6 +34439,10 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Apideck.Connector.Connectors.List()`:  `response.data[].WebhookSupport` **Changed**
+  * `Apideck.Connector.Connectors.Get()`:  `response.data.WebhookSupport` **Changed**
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
