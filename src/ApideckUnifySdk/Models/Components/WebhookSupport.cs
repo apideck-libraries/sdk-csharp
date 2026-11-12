@@ -47,6 +47,18 @@ namespace ApideckUnifySdk.Models.Components
         public List<string>? SharedWith { get; set; }
 
         /// <summary>
+        /// Where the vendor stores the webhook target URL. `app` means one URL per vendor developer app, which customers on Apideck's own credentials cannot configure. `tenant` means each customer's vendor account holds its own URL.
+        /// </summary>
+        [JsonProperty("target_url_scope")]
+        public TargetURLScope? TargetUrlScope { get; set; }
+
+        /// <summary>
+        /// Whether Unify accepts webhook URLs scoped to a vendor developer app for this connector, rather than to one Apideck application. Events delivered to such a URL reach every connection that the vendor app authorized.
+        /// </summary>
+        [JsonProperty("vendor_app_url")]
+        public bool? VendorAppUrl { get; set; }
+
+        /// <summary>
         /// Virtual webhook config for the connector.
         /// </summary>
         [JsonProperty("virtual_webhooks")]

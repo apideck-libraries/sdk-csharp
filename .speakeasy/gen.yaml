@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.51.0
+  version: 0.52.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
