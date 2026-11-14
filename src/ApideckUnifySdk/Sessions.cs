@@ -40,7 +40,12 @@ namespace ApideckUnifySdk
         /// <returns>An awaitable task that returns a <see cref="VaultSessionsCreateResponse"/> response envelope when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="BadRequestResponse">
+        /// Bad Request. Also returned as a `RequestValidationError` on `redirect_uri` when your application's OAuth&lt;br/&gt;<br/>
+        /// protection mode is `enforced` and the supplied `redirect_uri` does not match one of the application's allowed&lt;br/&gt;<br/>
+        /// redirect URLs or redirect URIs (the Hosted Vault callback page is always allowed, and the integration page&lt;br/&gt;<br/>
+        /// when its query is empty or a single registered `redirectToAppUrl`). No session is created. Thrown when the API returns a 400 response.
+        /// </exception>
         /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
         /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>
@@ -83,7 +88,12 @@ namespace ApideckUnifySdk
         /// <returns>An awaitable task that returns a <see cref="VaultSessionsCreateResponse"/> response envelope when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="BadRequestResponse">Bad Request. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="BadRequestResponse">
+        /// Bad Request. Also returned as a `RequestValidationError` on `redirect_uri` when your application's OAuth&lt;br/&gt;<br/>
+        /// protection mode is `enforced` and the supplied `redirect_uri` does not match one of the application's allowed&lt;br/&gt;<br/>
+        /// redirect URLs or redirect URIs (the Hosted Vault callback page is always allowed, and the integration page&lt;br/&gt;<br/>
+        /// when its query is empty or a single registered `redirectToAppUrl`). No session is created. Thrown when the API returns a 400 response.
+        /// </exception>
         /// <exception cref="UnauthorizedResponse">Unauthorized. Thrown when the API returns a 401 response.</exception>
         /// <exception cref="PaymentRequiredResponse">Payment Required. Thrown when the API returns a 402 response.</exception>
         /// <exception cref="NotFoundResponse">The specified resource was not found. Thrown when the API returns a 404 response.</exception>

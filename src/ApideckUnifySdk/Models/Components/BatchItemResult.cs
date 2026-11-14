@@ -57,7 +57,7 @@ namespace ApideckUnifySdk.Models.Components
         /// Per-item failures are independent — one item's rejection says nothing about the others. The exception is a failure of the request itself, such as a timeout: where a connector writes the whole batch in one call, every item shares that outcome and carries the same error.
         /// </summary>
         [JsonProperty("error")]
-        public Error? Error { get; set; }
+        public Models.Components.Error? Error { get; set; }
 
         /// <summary>
         /// Non-fatal problems with THIS item — a currency the connector could not match, for example, which is sent without it. Present per item rather than per request, because a caller with twenty records needs to know which one was affected.<br/>

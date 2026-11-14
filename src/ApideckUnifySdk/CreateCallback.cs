@@ -28,7 +28,9 @@ namespace ApideckUnifySdk
         /// Create Callback State.
         /// </summary>
         /// <remarks>
-        /// This endpoint creates a callback state that can be used to issue requests to the callback endpoint.
+        /// This endpoint creates a callback state that can be used to issue requests to the callback endpoint.<br/>
+        /// <br/>
+        /// Call it with your API key. For an application with `enforced` OAuth protection, a Vault session token (`x-apideck-auth-type: JWT`) gets a `401`, because a callback state skips the browser binding.
         /// </remarks>
         /// <param name="request">A <see cref="VaultCreateCallbackStateRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -65,7 +67,9 @@ namespace ApideckUnifySdk
         /// Create Callback State.
         /// </summary>
         /// <remarks>
-        /// This endpoint creates a callback state that can be used to issue requests to the callback endpoint.
+        /// This endpoint creates a callback state that can be used to issue requests to the callback endpoint.<br/>
+        /// <br/>
+        /// Call it with your API key. For an application with `enforced` OAuth protection, a Vault session token (`x-apideck-auth-type: JWT`) gets a `401`, because a callback state skips the browser binding.
         /// </remarks>
         /// <param name="request">A <see cref="VaultCreateCallbackStateRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>

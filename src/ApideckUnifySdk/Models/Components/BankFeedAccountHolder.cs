@@ -18,7 +18,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     /// <summary>
-    /// A person or business that holds the source bank account. Connectors that serve account contact data to a bank-feed consumer (`plaid-exchange`) require each holder to carry `first_name` and `last_name`, or `business_name` when the holder is a business.
+    /// A person or business that holds the source bank account. Connectors that serve account contact data to a bank-feed consumer (`intuit-bank-feeds` and `plaid-exchange`) require each holder to carry `first_name` and `last_name`, or `business_name` when the holder is a business.
     /// </summary>
     public class BankFeedAccountHolder
     {

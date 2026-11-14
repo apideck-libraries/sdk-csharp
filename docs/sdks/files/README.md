@@ -70,14 +70,15 @@ while(res != null)
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse       | 400                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse     | 401                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse  | 402                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse         | 404                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.MethodNotAllowedResponse | 405                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse    | 422                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.APIException             | 4XX, 5XX                                               | \*/\*                                                  |
 
 ## Search
 
@@ -131,14 +132,15 @@ var res = await sdk.FileStorage.Files.SearchAsync(req);
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse       | 400                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse     | 401                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse  | 402                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse         | 404                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.MethodNotAllowedResponse | 405                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse    | 422                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.APIException             | 4XX, 5XX                                               | \*/\*                                                  |
 
 ## Get
 
@@ -181,14 +183,15 @@ var res = await sdk.FileStorage.Files.GetAsync(req);
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse       | 400                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse     | 401                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse  | 402                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse         | 404                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.MethodNotAllowedResponse | 405                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse    | 422                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.APIException             | 4XX, 5XX                                               | \*/\*                                                  |
 
 ## Update
 
@@ -251,14 +254,15 @@ var res = await sdk.FileStorage.Files.UpdateAsync(req);
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse       | 400                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse     | 401                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse  | 402                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse         | 404                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.MethodNotAllowedResponse | 405                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse    | 422                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.APIException             | 4XX, 5XX                                               | \*/\*                                                  |
 
 ## Delete
 
@@ -300,14 +304,15 @@ var res = await sdk.FileStorage.Files.DeleteAsync(req);
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse       | 400                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse     | 401                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse  | 402                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse         | 404                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.MethodNotAllowedResponse | 405                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse    | 422                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.APIException             | 4XX, 5XX                                               | \*/\*                                                  |
 
 ## Download
 
@@ -351,14 +356,15 @@ var res = await sdk.FileStorage.Files.DownloadAsync(req);
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse       | 400                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse     | 401                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse  | 402                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse         | 404                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.MethodNotAllowedResponse | 405                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse    | 422                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.APIException             | 4XX, 5XX                                               | \*/\*                                                  |
 
 ## Export
 
@@ -402,11 +408,12 @@ var res = await sdk.FileStorage.Files.ExportAsync(req);
 
 ### Errors
 
-| Error Type                                            | Status Code                                           | Content Type                                          |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| ApideckUnifySdk.Models.Errors.BadRequestResponse      | 400                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnauthorizedResponse    | 401                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse | 402                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.NotFoundResponse        | 404                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.UnprocessableResponse   | 422                                                   | application/json                                      |
-| ApideckUnifySdk.Models.Errors.APIException            | 4XX, 5XX                                              | \*/\*                                                 |
+| Error Type                                             | Status Code                                            | Content Type                                           |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| ApideckUnifySdk.Models.Errors.BadRequestResponse       | 400                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnauthorizedResponse     | 401                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.PaymentRequiredResponse  | 402                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.NotFoundResponse         | 404                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.MethodNotAllowedResponse | 405                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.UnprocessableResponse    | 422                                                    | application/json                                       |
+| ApideckUnifySdk.Models.Errors.APIException             | 4XX, 5XX                                               | \*/\*                                                  |
