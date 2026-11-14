@@ -1,0 +1,11 @@
+# VaultConnectionsConfirmResponse
+
+
+## Fields
+
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                        | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                           | :heavy_check_mark:                                                                | N/A                                                                               |
+| `ConfirmConnectionResponse`                                                       | [ConfirmConnectionResponse](../../Models/Components/ConfirmConnectionResponse.md) | :heavy_minus_sign:                                                                | Connection confirmed                                                              |
+| `UnexpectedErrorResponse`                                                         | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)     | :heavy_minus_sign:                                                                | Unexpected error                                                                  |
+| `Headers`                                                                         | Dictionary<String, List<*string*>>                                                | :heavy_check_mark:                                                                | N/A                                                                               |

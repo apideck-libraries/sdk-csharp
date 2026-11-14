@@ -793,6 +793,7 @@ while(res != null)
 * [Imports](docs/sdks/connections/README.md#imports) - Import connection
 * [Migrate](docs/sdks/connections/README.md#migrate) - Migrate connection
 * [Token](docs/sdks/connections/README.md#token) - Authorize Access Token
+* [Confirm](docs/sdks/connections/README.md#confirm) - Confirm Connection
 
 ### [Vault.ConnectionSettings](docs/sdks/connectionsettings/README.md)
 
@@ -1095,14 +1096,15 @@ catch (System.Net.Http.HttpRequestException ex)
   * [`NotFoundResponse`](./src/ApideckUnifySdk/Models/Errors/NotFoundResponse.cs): The specified resource was not found. Status code `404`. *
   * [`BadRequestResponse`](./src/ApideckUnifySdk/Models/Errors/BadRequestResponse.cs): Bad Request. Status code `400`. *
   * [`UnprocessableResponse`](./src/ApideckUnifySdk/Models/Errors/UnprocessableResponse.cs): Unprocessable. Status code `422`. *
+  * [`MethodNotAllowedResponse`](./src/ApideckUnifySdk/Models/Errors/MethodNotAllowedResponse.cs): The connector cannot serve this operation. No request was sent to the connector, and retrying will not help. The `Allow` header lists the methods the connector does serve on the same URL. Status code `405`. *
 
 <details><summary>Less common exceptions (4)</summary>
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
 * Inheriting from [`BaseException`](./src/ApideckUnifySdk/Models/Errors/BaseException.cs):
-  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 381 methods.*
-  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 381 methods.*
+  * [`Unauthorized`](./src/ApideckUnifySdk/Models/Errors/Unauthorized.cs): Unauthorized. Status code `401`. Applicable to 6 of 382 methods.*
+  * [`ConflictResponse`](./src/ApideckUnifySdk/Models/Errors/ConflictResponse.cs): Conflict — a connection already exists for the target connector. Status code `409`. Applicable to 1 of 382 methods.*
   * [`ResponseValidationError`](./src/ApideckUnifySdk/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

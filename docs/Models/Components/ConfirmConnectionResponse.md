@@ -1,0 +1,12 @@
+# ConfirmConnectionResponse
+
+Connection confirmed
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `StatusCode`                                                                              | *long*                                                                                    | :heavy_check_mark:                                                                        | HTTP Response Status Code                                                                 | 200                                                                                       |
+| `Status`                                                                                  | *string*                                                                                  | :heavy_check_mark:                                                                        | HTTP Response Status                                                                      | OK                                                                                        |
+| `Data`                                                                                    | [ConfirmConnectionResponseData](../../Models/Components/ConfirmConnectionResponseData.md) | :heavy_check_mark:                                                                        | N/A                                                                                       |                                                                                           |

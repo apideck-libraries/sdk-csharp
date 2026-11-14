@@ -23,7 +23,7 @@ namespace ApideckUnifySdk.Models.Components
         public ConsumerMetadata? ConsumerMetadata { get; set; }
 
         /// <summary>
-        /// The URL to redirect the user to after the session has been configured.
+        /// The URL to redirect the user to after the session has been configured. When your application's OAuth protection mode is `enforced`, this value must match one of the application's allowed redirect URLs or redirect URIs (the Hosted Vault callback page is always allowed, and the integration page when its query is empty or a single registered `redirectToAppUrl`); an unregistered value is rejected with a 400 `RequestValidationError` and no session is created.
         /// </summary>
         [JsonProperty("redirect_uri")]
         public string? RedirectUri { get; set; }
