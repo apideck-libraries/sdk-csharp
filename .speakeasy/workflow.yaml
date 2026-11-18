@@ -12,8 +12,8 @@ targets:
         source: Apideck
         publish:
             nuget:
-                useTrustedPublishing: true
                 username: Apideck
+                useTrustedPublishing: true
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck-csharp-code-samples
