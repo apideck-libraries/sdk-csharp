@@ -169,6 +169,9 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("purchase_order")]
         public LinkedPurchaseOrder? PurchaseOrder { get; set; } = null;
 
+        [JsonProperty("custom_fields")]
+        public List<CustomField>? CustomFields { get; set; }
+
         /// <summary>
         /// A list of linked tracking categories.
         /// </summary>

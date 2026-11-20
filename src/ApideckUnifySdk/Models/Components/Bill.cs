@@ -179,6 +179,12 @@ namespace ApideckUnifySdk.Models.Components
         [JsonProperty("status")]
         public BillStatus? Status { get; set; } = null;
 
+        /// <summary>
+        /// Whether the bill is on payment hold. A bill on hold is not ready to pay, whatever its status. Not returned by connectors that do not report a payment hold.
+        /// </summary>
+        [JsonProperty("payment_hold")]
+        public bool? PaymentHold { get; set; } = null;
+
         [JsonProperty("ledger_account")]
         public LinkedLedgerAccount? LedgerAccount { get; set; } = null;
 
