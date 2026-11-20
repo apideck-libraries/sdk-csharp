@@ -105,6 +105,12 @@ namespace ApideckUnifySdk.Models.Components
         public string? Reference { get; set; } = null;
 
         /// <summary>
+        /// A PO Number uniquely identifies a purchase order and is generally defined by the buyer. The buyer will match the PO number in the quote to the Purchase Order.
+        /// </summary>
+        [JsonProperty("po_number")]
+        public string? PoNumber { get; set; } = null;
+
+        /// <summary>
         /// Quote status.
         /// </summary>
         [JsonProperty("status")]
