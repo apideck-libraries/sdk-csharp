@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: f306da52-7172-441d-9f8c-9d055cef9c2a
 management:
-  docChecksum: 5aa163c2a05544f4966cf63a68345ed9
-  docVersion: 10.88.0
+  docChecksum: e371d78829add2711f138d59d3862e34
+  docVersion: 10.89.0
   speakeasyVersion: 1.791.4
   generationVersion: 2.926.8
-  releaseVersion: 0.57.0
-  configChecksum: 798315c87976b01e4c0ec50b9ed41bc4
+  releaseVersion: 0.58.0
+  configChecksum: 721d0ab644fdba58f53dc88f25ba248e
   repoURL: https://github.com/apideck-libraries/sdk-csharp.git
   installationURL: https://github.com/apideck-libraries/sdk-csharp
   published: true
 persistentEdits:
-  generation_id: 9805f167-d9d6-43d5-90e7-9c840e19028f
-  pristine_commit_hash: 2ad52bcf846bd07b6a79074d4b8e63d66b6d661e
-  pristine_tree_hash: 48d25c967e30e5de1ff79b811976cedc32e6f156
+  generation_id: acc9a7bd-ecd5-4fdf-a3ae-81896eb2c715
+  pristine_commit_hash: 7c4fb9ac2c4b8249e27ad38c3c3486b692e90484
+  pristine_tree_hash: 5851e5b86778c5d49d89bce23f324dc32a6a7298
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1429,8 +1429,12 @@ trackedFiles:
     pristine_git_object: 18241dbe5a8c93034dbba7a4793d5c20fe67467f
   docs/Models/Components/CustomFieldFinder.md:
     id: a246bd695823
-    last_write_checksum: sha1:c15b2e4156ca0cadb3ddfd95f3d8262db1ca71d7
-    pristine_git_object: 82e1765ee6088d8a8797e148cc8745b52a6b3cf3
+    last_write_checksum: sha1:ad93d23fba764d6b6a23fea905b566091c2fd3ba
+    pristine_git_object: bdb96eb7d6444d98850c105cb66082335b35fdb7
+  docs/Models/Components/CustomFieldFinderType.md:
+    id: 813d786af7fe
+    last_write_checksum: sha1:ddc898bf72bd2413ab83658b45d77c4dd618e6a8
+    pristine_git_object: 0f7a7e696ad9f31014357dada098b1368d159087
   docs/Models/Components/CustomFieldValue.md:
     id: 6c61f5b13fd0
     last_write_checksum: sha1:5f569476278365ca0f2d89ade65b1e30d94cbe14
@@ -8425,8 +8429,8 @@ trackedFiles:
     pristine_git_object: 99bf01f91af63484de06cda9b6b8309acdeb4834
   src/ApideckUnifySdk/ApideckUnifySdk.csproj:
     id: 50925e4d8370
-    last_write_checksum: sha1:d11093cad79d7eecd667f62319387c33c8e3f205
-    pristine_git_object: 2853c81641e1ed3a83ce2367cca1b8c697bda0cc
+    last_write_checksum: sha1:29c195b436f1d4d87de7a98ec4db76aeeb5c762a
+    pristine_git_object: 88fe09d622997be0299d3a43a4e36f4525688eba
   src/ApideckUnifySdk/Apis.cs:
     id: f8e0641f5fd2
     last_write_checksum: sha1:37ce8dedc10cb940bff40906379cb65d8dd24b82
@@ -10085,8 +10089,12 @@ trackedFiles:
     pristine_git_object: 65c2897837a28a8309c75e9a50cbfc388b1fe62a
   src/ApideckUnifySdk/Models/Components/CustomFieldFinder.cs:
     id: fcb4b0e63e32
-    last_write_checksum: sha1:bd9b09b6a9c06a1fb6f5457c0230f0089090cdcb
-    pristine_git_object: 61ba4139ba3b1962cb94e2beffa30f12eb379b06
+    last_write_checksum: sha1:5262ed4aef8b72872966d80bd1e0463691d97095
+    pristine_git_object: 6ea4ea1cf188de31ba5836d6db11ff918a3387af
+  src/ApideckUnifySdk/Models/Components/CustomFieldFinderType.cs:
+    id: 915e73c86bbe
+    last_write_checksum: sha1:6c2e33a5df3b73a6ba47b1b4a62ee91bbf0d747c
+    pristine_git_object: 79a3efb50caa8baca1ef71330a8b97a933ed461f
   src/ApideckUnifySdk/Models/Components/CustomFieldValue.cs:
     id: 7034966968ba
     last_write_checksum: sha1:acefdd80cebdfee8629ac3ce232eb033c88034b8
@@ -16689,8 +16697,8 @@ trackedFiles:
     pristine_git_object: aa29ce6159b3c4ceb681ca8b85bf644e6bf84d00
   src/ApideckUnifySdk/SDKConfig.cs:
     id: d0c59f3600e4
-    last_write_checksum: sha1:ee80fe95f5f6f4acde00b23d0f96d414c44ae78a
-    pristine_git_object: 54c07bc654fa4c0707ce03c7f20daf965e0b7c55
+    last_write_checksum: sha1:d1a95848f5a4ef22931c25a8f13ef3e055d9b278
+    pristine_git_object: ae85773388b5ee82d364cb694b5a0b741e4893c7
   src/ApideckUnifySdk/SalesOrders.cs:
     id: c2fc472e0bd6
     last_write_checksum: sha1:26e4da5ee7eecbf76150ecbe82b5ab627c1ed20a
@@ -16757,8 +16765,8 @@ trackedFiles:
     pristine_git_object: 48bf1619cd6645885f6b21de93f53a6192babc9d
   src/ApideckUnifySdk/Utils/Constants.cs:
     id: c02a6c05b62d
-    last_write_checksum: sha1:90031ab231c283b23b3b8545c175cb4e15798ad4
-    pristine_git_object: 1f0c1db0d8ca629d9ca16baf45ad0689638ff0a8
+    last_write_checksum: sha1:3d48fe5b6d1577882803e045809e34f52e26aa68
+    pristine_git_object: eb595bc3b0939289e189a193253fb663243d4ffa
   src/ApideckUnifySdk/Utils/DecimalStrConverter.cs:
     id: 9fefc3eba201
     last_write_checksum: sha1:3b6ec91d9f3ee80496be6181b9b377412a86a3ea
@@ -35213,7 +35221,9 @@ examples:
           application/json: {"status_code": 400, "error": "Bad Request", "type_name": "RequestHeadersValidationError", "message": "Invalid Params", "detail": "Missing Header: x-apideck-consumer-id", "ref": "https://developers.apideck.com/errors#unauthorizederror"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Apideck.Accounting.Bills.List()`:  `response.data[]` **Changed**\n* `Apideck.Accounting.Bills.Create()`: \n  *  `request.Bill.LineItems[].CustomFields` **Added**\n* `Apideck.Accounting.Bills.Get()`:  `response.data` **Changed**\n* `Apideck.Accounting.Bills.Update()`: \n  *  `request.Bill.LineItems[].CustomFields` **Added**\n* `Apideck.Accounting.Bills.CreateBatch()`: \n  *  `request.BatchBillsRequest.Items[].Data.LineItems[].CustomFields` **Added**\n* `Apideck.Accounting.Quotes.List()`:  `response.data[].PoNumber` **Added**\n* `Apideck.Accounting.Quotes.Create()`: \n  *  `request.Quote.PoNumber` **Added**\n* `Apideck.Accounting.Quotes.Get()`:  `response.data.PoNumber` **Added**\n* `Apideck.Accounting.Quotes.Update()`: \n  *  `request.Quote.PoNumber` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Apideck.Vault.CustomFields.List()`:  `response.data[].Type` **Added**
 generatedFiles:
   - .gitattributes
   - ApideckUnifySdk.sln
