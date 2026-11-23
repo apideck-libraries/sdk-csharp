@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.57.0
+  version: 0.58.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -61,6 +61,7 @@ csharp:
   maxMethodParams: 4
   methodArguments: infer-optional-args
   multipartArrayFormat: legacy
+  optionalNullableScope: all
   outputModelSuffix: output
   packageName: ApideckUnifySdk
   packageTags: ""

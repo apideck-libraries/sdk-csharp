@@ -9,8 +9,13 @@
 #nullable enable
 namespace ApideckUnifySdk.Models.Components
 {
+    using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class CustomFieldFinder
     {
@@ -37,6 +42,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("value")]
         public object? Value { get; set; }
+
+        /// <summary>
+        /// The declared data type of the custom field. Only returned by connectors that can read the field's definition; omitted otherwise.
+        /// </summary>
+        [JsonProperty("type")]
+        public CustomFieldFinderType? Type { get; set; }
 
         /// <summary>
         /// JSONPath finder for retrieving this value when mapping a response payload from downstream.
