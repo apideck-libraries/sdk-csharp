@@ -103,6 +103,7 @@ var sdk = new Apideck(
 AccountingPaymentsAddRequest req = new AccountingPaymentsAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    IdempotencyKey = "your-unique-key-per-create",
     Payment = new PaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,

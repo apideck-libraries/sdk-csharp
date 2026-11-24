@@ -55,5 +55,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=customer_id")]
         public string? CustomerId { get; set; }
+
+        /// <summary>
+        /// Filter by the purchase order number (customer reference) set on the invoice. Exact match; more than one invoice can carry the same PO number.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=po_number")]
+        public string? PoNumber { get; set; }
     }
 }

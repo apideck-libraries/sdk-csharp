@@ -108,6 +108,7 @@ var sdk = new Apideck(
 AccountingCustomersAddRequest req = new AccountingCustomersAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    IdempotencyKey = "your-unique-key-per-create",
     Customer = new CustomerInput() {
         DisplayId = "EMP00101",
         DisplayName = "Windsurf Shop",

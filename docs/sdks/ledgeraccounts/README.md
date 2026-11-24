@@ -102,6 +102,7 @@ var sdk = new Apideck(
 AccountingLedgerAccountsAddRequest req = new AccountingLedgerAccountsAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    IdempotencyKey = "your-unique-key-per-create",
     LedgerAccount = new LedgerAccountInput() {
         DisplayId = "1-12345",
         Code = "453",
