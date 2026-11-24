@@ -101,6 +101,7 @@ var sdk = new Apideck(
 AccountingInvoiceItemsAddRequest req = new AccountingInvoiceItemsAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    IdempotencyKey = "your-unique-key-per-create",
     InvoiceItem = new InvoiceItemInput() {
         Name = "Model Y",
         Description = "Model Y is a fully electric, mid-size SUV, with seating for up to seven, dual motor AWD and unparalleled protection.",

@@ -37,5 +37,11 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [SpeakeasyMetadata("queryParam:name=subsidiary_id")]
         public string? SubsidiaryId { get; set; }
+
+        /// <summary>
+        /// Filter by the purchase order number (customer reference) set on the sales order. Exact match; more than one sales order can carry the same PO number.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:name=po_number")]
+        public string? PoNumber { get; set; }
     }
 }

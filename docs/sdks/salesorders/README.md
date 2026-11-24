@@ -38,6 +38,7 @@ AccountingSalesOrdersAllRequest req = new AccountingSalesOrdersAllRequest() {
         CreatedSince = System.DateTime.Parse("2020-09-30T07:43:32.000Z").ToUniversalTime(),
         Number = "SO000123",
         CustomerId = "123abc",
+        PoNumber = "PO-4521",
     },
     PassThrough = new Dictionary<string, object>() {
         { "search", "San Francisco" },
