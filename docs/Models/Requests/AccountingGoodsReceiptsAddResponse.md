@@ -1,0 +1,11 @@
+# AccountingGoodsReceiptsAddResponse
+
+
+## Fields
+
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                          | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                             | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `CreateGoodsReceiptResponse`                                                        | [CreateGoodsReceiptResponse](../../Models/Components/CreateGoodsReceiptResponse.md) | :heavy_minus_sign:                                                                  | Goods Receipt created                                                               |
+| `UnexpectedErrorResponse`                                                           | [UnexpectedErrorResponse](../../Models/Components/UnexpectedErrorResponse.md)       | :heavy_minus_sign:                                                                  | Unexpected error                                                                    |
+| `Headers`                                                                           | Dictionary<String, List<*string*>>                                                  | :heavy_check_mark:                                                                  | N/A                                                                                 |

@@ -100,6 +100,7 @@ var sdk = new Apideck(
 AccountingSalesOrdersAddRequest req = new AccountingSalesOrdersAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    IdempotencyKey = "your-unique-key-per-create",
     SalesOrder = new SalesOrderInput() {
         Number = "SO000123",
         Customer = new LinkedCustomerInput() {

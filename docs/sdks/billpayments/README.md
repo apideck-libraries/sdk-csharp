@@ -103,6 +103,7 @@ var sdk = new Apideck(
 AccountingBillPaymentsAddRequest req = new AccountingBillPaymentsAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    IdempotencyKey = "your-unique-key-per-create",
     BillPayment = new BillPaymentInput() {
         Currency = Currency.Usd,
         CurrencyRate = 0.69D,
