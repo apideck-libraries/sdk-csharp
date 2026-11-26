@@ -99,6 +99,7 @@ var sdk = new Apideck(
 AccountingQuotesAddRequest req = new AccountingQuotesAddRequest() {
     ServiceId = "salesforce",
     CompanyId = "12345",
+    IdempotencyKey = "your-unique-key-per-create",
     Quote = new QuoteInput() {
         Number = "QT00546",
         Customer = new LinkedCustomerInput() {

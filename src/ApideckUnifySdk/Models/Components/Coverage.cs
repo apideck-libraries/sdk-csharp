@@ -12,7 +12,10 @@ namespace ApideckUnifySdk.Models.Components
     using ApideckUnifySdk.Models.Components;
     using ApideckUnifySdk.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Coverage
     {
@@ -27,6 +30,12 @@ namespace ApideckUnifySdk.Models.Components
         /// </summary>
         [JsonProperty("downstream_name")]
         public string? DownstreamName { get; set; }
+
+        /// <summary>
+        /// Status of the resource. Resources with status live or beta are callable.
+        /// </summary>
+        [JsonProperty("status")]
+        public ResourceStatus? Status { get; set; }
 
         /// <summary>
         /// Indicates if pagination (cursor and limit parameters) is supported on the list endpoint of the resource.
