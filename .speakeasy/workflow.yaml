@@ -4,6 +4,8 @@ sources:
     Apideck:
         inputs:
             - location: https://ci-spec-unify.s3.eu-central-1.amazonaws.com/speakeasy-spec.yml
+        overlays:
+            - location: ./.speakeasy/overlay-spec.yaml
         registry:
             location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck
 targets:

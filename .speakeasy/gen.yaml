@@ -69,7 +69,7 @@ csharp:
   presenceAwareJsonSerialization: false
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: envelope-http
-  schemaValidation: strict
+  schemaValidation: lenient
   sourceDirectory: src
   targetFramework: dotnetVersion
   unionImplicitConversions: false
