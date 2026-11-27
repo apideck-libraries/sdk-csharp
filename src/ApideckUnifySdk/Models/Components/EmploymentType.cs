@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of employment relationship the employee has with the organization.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmploymentType : IEquatable<EmploymentType>
+    public class EmploymentType : IEquatable<EmploymentType>, IOpenEnum<string>
     {
         public static readonly EmploymentType Contractor = new EmploymentType("contractor");
         public static readonly EmploymentType Employee = new EmploymentType("employee");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

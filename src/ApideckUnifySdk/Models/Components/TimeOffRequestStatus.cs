@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Time off request status to filter on.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TimeOffRequestStatus : IEquatable<TimeOffRequestStatus>
+    public class TimeOffRequestStatus : IEquatable<TimeOffRequestStatus>, IOpenEnum<string>
     {
         public static readonly TimeOffRequestStatus Requested = new TimeOffRequestStatus("requested");
         public static readonly TimeOffRequestStatus Approved = new TimeOffRequestStatus("approved");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

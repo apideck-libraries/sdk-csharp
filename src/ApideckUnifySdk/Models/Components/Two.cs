@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Wildcard indicating all resources and fields when Data Scopes is disabled.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Two : IEquatable<Two>
+    public class Two : IEquatable<Two>, IOpenEnum<string>
     {
         public static readonly Two Wildcard = new Two("*");
 
@@ -54,7 +54,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

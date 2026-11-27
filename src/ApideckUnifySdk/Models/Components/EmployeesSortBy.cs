@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Employees.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmployeesSortBy : IEquatable<EmployeesSortBy>
+    public class EmployeesSortBy : IEquatable<EmployeesSortBy>, IOpenEnum<string>
     {
         public static readonly EmployeesSortBy FirstName = new EmployeesSortBy("first_name");
         public static readonly EmployeesSortBy LastName = new EmployeesSortBy("last_name");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

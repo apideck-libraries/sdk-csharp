@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Mode of the webhook support.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Mode : IEquatable<Mode>
+    public class Mode : IEquatable<Mode>, IOpenEnum<string>
     {
         public static readonly Mode Native = new Mode("native");
         public static readonly Mode Virtual = new Mode("virtual");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

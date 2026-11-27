@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The scope of the shared link.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Scope : IEquatable<Scope>
+    public class Scope : IEquatable<Scope>, IOpenEnum<string>
     {
         public static readonly Scope Public = new Scope("public");
         public static readonly Scope Company = new Scope("company");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

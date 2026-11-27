@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The gender represents the gender identity of a person.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Gender : IEquatable<Gender>
+    public class Gender : IEquatable<Gender>, IOpenEnum<string>
     {
         public static readonly Gender Male = new Gender("male");
         public static readonly Gender Female = new Gender("female");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

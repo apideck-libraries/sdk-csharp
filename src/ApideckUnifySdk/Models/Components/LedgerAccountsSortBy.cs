@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Ledger Accounts.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LedgerAccountsSortBy : IEquatable<LedgerAccountsSortBy>
+    public class LedgerAccountsSortBy : IEquatable<LedgerAccountsSortBy>, IOpenEnum<string>
     {
         public static readonly LedgerAccountsSortBy CreatedAt = new LedgerAccountsSortBy("created_at");
         public static readonly LedgerAccountsSortBy UpdatedAt = new LedgerAccountsSortBy("updated_at");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Based on the status some functionality is enabled or disabled.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TrackingCategoryCreateInputTrackingCategoryStatus : IEquatable<TrackingCategoryCreateInputTrackingCategoryStatus>
+    public class TrackingCategoryCreateInputTrackingCategoryStatus : IEquatable<TrackingCategoryCreateInputTrackingCategoryStatus>, IOpenEnum<string>
     {
         public static readonly TrackingCategoryCreateInputTrackingCategoryStatus Active = new TrackingCategoryCreateInputTrackingCategoryStatus("active");
         public static readonly TrackingCategoryCreateInputTrackingCategoryStatus Inactive = new TrackingCategoryCreateInputTrackingCategoryStatus("inactive");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

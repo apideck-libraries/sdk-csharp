@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of credit notes.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CreditNoteCreateInputCreditNoteStatus : IEquatable<CreditNoteCreateInputCreditNoteStatus>
+    public class CreditNoteCreateInputCreditNoteStatus : IEquatable<CreditNoteCreateInputCreditNoteStatus>, IOpenEnum<string>
     {
         public static readonly CreditNoteCreateInputCreditNoteStatus Draft = new CreditNoteCreateInputCreditNoteStatus("draft");
         public static readonly CreditNoteCreateInputCreditNoteStatus Authorised = new CreditNoteCreateInputCreditNoteStatus("authorised");
@@ -66,7 +66,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

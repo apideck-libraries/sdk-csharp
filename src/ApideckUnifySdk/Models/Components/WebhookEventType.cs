@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class WebhookEventType : IEquatable<WebhookEventType>
+    public class WebhookEventType : IEquatable<WebhookEventType>, IOpenEnum<string>
     {
         public static readonly WebhookEventType Wildcard = new WebhookEventType("*");
         public static readonly WebhookEventType CrmActivityCreated = new WebhookEventType("crm.activity.created");
@@ -345,7 +345,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

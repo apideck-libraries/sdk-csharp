@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class JournalEntriesFilterStatus : IEquatable<JournalEntriesFilterStatus>
+    public class JournalEntriesFilterStatus : IEquatable<JournalEntriesFilterStatus>, IOpenEnum<string>
     {
         public static readonly JournalEntriesFilterStatus Draft = new JournalEntriesFilterStatus("draft");
         public static readonly JournalEntriesFilterStatus PendingApproval = new JournalEntriesFilterStatus("pending_approval");
@@ -65,7 +65,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

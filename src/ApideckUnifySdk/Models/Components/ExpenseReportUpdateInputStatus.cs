@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The status of the expense report.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ExpenseReportUpdateInputStatus : IEquatable<ExpenseReportUpdateInputStatus>
+    public class ExpenseReportUpdateInputStatus : IEquatable<ExpenseReportUpdateInputStatus>, IOpenEnum<string>
     {
         public static readonly ExpenseReportUpdateInputStatus Draft = new ExpenseReportUpdateInputStatus("draft");
         public static readonly ExpenseReportUpdateInputStatus Submitted = new ExpenseReportUpdateInputStatus("submitted");
@@ -66,7 +66,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

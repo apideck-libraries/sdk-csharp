@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// `account`: a ledger account. `unappropriated_result`: the result of earlier fiscal years not yet posted to an equity account, added by the connector. `unmapped`: a balance the accounting system reports without a ledger account.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LineType : IEquatable<LineType>
+    public class LineType : IEquatable<LineType>, IOpenEnum<string>
     {
         public static readonly LineType Account = new LineType("account");
         public static readonly LineType UnappropriatedResult = new LineType("unappropriated_result");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

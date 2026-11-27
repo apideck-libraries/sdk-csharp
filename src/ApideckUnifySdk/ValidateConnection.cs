@@ -28,12 +28,19 @@ namespace ApideckUnifySdk
         /// Validate Connection State.
         /// </summary>
         /// <remarks>
-        /// This endpoint validates the current state of a given connection. This will perform different checks based on the connection auth type. For basic and apiKey auth types, the presence of required fields is checked.<br/>
-        /// For connectors that implement OAuth2, this operation forces the refresh flow for an access token regardless of its expiry.<br/>
+        /// This endpoint checks a connection again and returns its updated state.<br/>
+        /// For OAuth2 connectors and custom connectors with an OAuth grant (except connectors used only for authentication), this operation first forces the refresh flow for an access token regardless of its expiry.<br/>
+        /// Then, for connectors that support connection validation (`validation_support: true`), it sends the connector's validation request with the stored credentials.<br/>
+        /// The validation request is not sent when the connection is disabled, does not have the settings that the request needs, or still needs OAuth authorization.<br/>
+        /// When the connector has no OAuth refresh and no connection validation, nothing is sent to the integration, and the state is computed from the stored connection.<br/>
+        /// When the integration rejects the forced token refresh with a non-recoverable error, and no other process saved a newer token in the meantime, the connection is marked as not valid, `vault.connection.token_refresh.failed` is triggered, and the operation returns an error. Its `state` becomes `invalid` only when the connector supports connection validation and no refresh-token retention is active (`credentials_expire_at` is not a future time).<br/>
+        /// <br/>
+        /// The result is saved on the connection. When the connection `state` changes, `vault.connection.updated` is triggered, and `vault.connection.callable` too when the connection becomes callable. Use this operation to check an `invalid` connection again: reading the connection does not check it.<br/>
         /// <br/>
         /// Note:<br/>
-        ///   - Do not include any credentials in the request body. This operation does not persist changes, but only triggers the validation of connection state.<br/>
-        ///   - If a refresh token flow was performed and successful, the new access token will then be used for subsequent API requests.
+        ///   - Do not include any credentials in the request body. The operation uses the credentials stored on the connection.<br/>
+        ///   - If a refresh token flow was performed and successful, the new access token will then be used for subsequent API requests.<br/>
+        ///   - A connection that is waiting for confirmation is returned with its stored state, without a refresh or a validation request.
         /// </remarks>
         /// <param name="request">A <see cref="VaultValidateConnectionStateRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -70,12 +77,19 @@ namespace ApideckUnifySdk
         /// Validate Connection State.
         /// </summary>
         /// <remarks>
-        /// This endpoint validates the current state of a given connection. This will perform different checks based on the connection auth type. For basic and apiKey auth types, the presence of required fields is checked.<br/>
-        /// For connectors that implement OAuth2, this operation forces the refresh flow for an access token regardless of its expiry.<br/>
+        /// This endpoint checks a connection again and returns its updated state.<br/>
+        /// For OAuth2 connectors and custom connectors with an OAuth grant (except connectors used only for authentication), this operation first forces the refresh flow for an access token regardless of its expiry.<br/>
+        /// Then, for connectors that support connection validation (`validation_support: true`), it sends the connector's validation request with the stored credentials.<br/>
+        /// The validation request is not sent when the connection is disabled, does not have the settings that the request needs, or still needs OAuth authorization.<br/>
+        /// When the connector has no OAuth refresh and no connection validation, nothing is sent to the integration, and the state is computed from the stored connection.<br/>
+        /// When the integration rejects the forced token refresh with a non-recoverable error, and no other process saved a newer token in the meantime, the connection is marked as not valid, `vault.connection.token_refresh.failed` is triggered, and the operation returns an error. Its `state` becomes `invalid` only when the connector supports connection validation and no refresh-token retention is active (`credentials_expire_at` is not a future time).<br/>
+        /// <br/>
+        /// The result is saved on the connection. When the connection `state` changes, `vault.connection.updated` is triggered, and `vault.connection.callable` too when the connection becomes callable. Use this operation to check an `invalid` connection again: reading the connection does not check it.<br/>
         /// <br/>
         /// Note:<br/>
-        ///   - Do not include any credentials in the request body. This operation does not persist changes, but only triggers the validation of connection state.<br/>
-        ///   - If a refresh token flow was performed and successful, the new access token will then be used for subsequent API requests.
+        ///   - Do not include any credentials in the request body. The operation uses the credentials stored on the connection.<br/>
+        ///   - If a refresh token flow was performed and successful, the new access token will then be used for subsequent API requests.<br/>
+        ///   - A connection that is waiting for confirmation is returned with its stored state, without a refresh or a validation request.
         /// </remarks>
         /// <param name="request">A <see cref="VaultValidateConnectionStateRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
@@ -206,7 +220,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into ValidateConnectionStateResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<ValidateConnectionStateResponse>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into ValidateConnectionStateResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new VaultValidateConnectionStateResponse()
@@ -230,16 +247,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     BadRequestResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<BadRequestResponsePayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into BadRequestResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into BadRequestResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<BadRequestResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into BadRequestResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new BadRequestResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new BadRequestResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -250,16 +272,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnauthorizedResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnauthorizedResponsePayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnauthorizedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnauthorizedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnauthorizedResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnauthorizedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new UnauthorizedResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new UnauthorizedResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -270,16 +297,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     PaymentRequiredResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<PaymentRequiredResponsePayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into PaymentRequiredResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into PaymentRequiredResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<PaymentRequiredResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into PaymentRequiredResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new PaymentRequiredResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new PaymentRequiredResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -290,16 +322,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     NotFoundResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<NotFoundResponsePayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into NotFoundResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into NotFoundResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<NotFoundResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into NotFoundResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new NotFoundResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new NotFoundResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -310,16 +347,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnprocessableResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnprocessableResponsePayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnprocessableResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnprocessableResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnprocessableResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnprocessableResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new UnprocessableResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new UnprocessableResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -344,7 +386,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnexpectedErrorResponse>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new VaultValidateConnectionStateResponse()

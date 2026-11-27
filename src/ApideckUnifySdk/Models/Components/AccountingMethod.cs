@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The accounting basis used by the company for financial reports.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AccountingMethod : IEquatable<AccountingMethod>
+    public class AccountingMethod : IEquatable<AccountingMethod>, IOpenEnum<string>
     {
         public static readonly AccountingMethod Cash = new AccountingMethod("cash");
         public static readonly AccountingMethod Accrual = new AccountingMethod("accrual");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

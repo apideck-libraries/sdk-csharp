@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of the activity.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ActivityType : IEquatable<ActivityType>
+    public class ActivityType : IEquatable<ActivityType>, IOpenEnum<string>
     {
         public static readonly ActivityType Call = new ActivityType("call");
         public static readonly ActivityType Meeting = new ActivityType("meeting");
@@ -70,7 +70,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

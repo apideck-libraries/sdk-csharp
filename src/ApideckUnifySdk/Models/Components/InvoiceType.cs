@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Invoice type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class InvoiceType : IEquatable<InvoiceType>
+    public class InvoiceType : IEquatable<InvoiceType>, IOpenEnum<string>
     {
         public static readonly InvoiceType Standard = new InvoiceType("standard");
         public static readonly InvoiceType Credit = new InvoiceType("credit");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

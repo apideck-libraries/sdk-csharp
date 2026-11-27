@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of phone number.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PhoneNumberType : IEquatable<PhoneNumberType>
+    public class PhoneNumberType : IEquatable<PhoneNumberType>, IOpenEnum<string>
     {
         public static readonly PhoneNumberType Primary = new PhoneNumberType("primary");
         public static readonly PhoneNumberType Secondary = new PhoneNumberType("secondary");
@@ -76,7 +76,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

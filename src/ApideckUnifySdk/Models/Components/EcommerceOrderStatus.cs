@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Current status of the order.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EcommerceOrderStatus : IEquatable<EcommerceOrderStatus>
+    public class EcommerceOrderStatus : IEquatable<EcommerceOrderStatus>, IOpenEnum<string>
     {
         public static readonly EcommerceOrderStatus Active = new EcommerceOrderStatus("active");
         public static readonly EcommerceOrderStatus Completed = new EcommerceOrderStatus("completed");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

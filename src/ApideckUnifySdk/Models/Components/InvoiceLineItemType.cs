@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Item type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class InvoiceLineItemType : IEquatable<InvoiceLineItemType>
+    public class InvoiceLineItemType : IEquatable<InvoiceLineItemType>, IOpenEnum<string>
     {
         public static readonly InvoiceLineItemType SalesItem = new InvoiceLineItemType("sales_item");
         public static readonly InvoiceLineItemType Discount = new InvoiceLineItemType("discount");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

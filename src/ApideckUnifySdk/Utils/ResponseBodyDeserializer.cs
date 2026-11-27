@@ -18,6 +18,7 @@ namespace ApideckUnifySdk.Utils
     using System.Text;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
+    using Newtonsoft.Json.Serialization;
 
 
     internal class ResponseBodyDeserializer
@@ -36,6 +37,84 @@ namespace ApideckUnifySdk.Utils
                 throw new Exception($"Deserialization error: {typeof(T).Name} cannot be null.");
             }
             return result!;
+        }
+
+        /// <summary>
+        /// Fallback-only lenient deserializer: called when a strict Deserialize has
+        /// already failed. Constructs a typed model on a best-effort basis, defaulting
+        /// missing required fields and skipping wrong-typed known fields.
+        /// Returns default(T) when the body cannot be constructed into T at all, e.g.
+        /// a non-JSON body or a JSON root that cannot map to T.
+        /// </summary>
+        public static T? ConstructUnvalidated<T>(string json)
+        {
+            try
+            {
+                JToken token;
+                using (var reader = new JsonTextReader(new System.IO.StringReader(json)))
+                {
+                    reader.MaxDepth = 64;
+                    token = JToken.Load(reader);
+                }
+                var serializer = JsonSerializer.Create(new JsonSerializerSettings()
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    MissingMemberHandling = MissingMemberHandling.Ignore,
+                    ContractResolver = LenientContractResolver.Instance,
+                    Error = (sender, args) => args.ErrorContext.Handled = true,
+                    MaxDepth = 64,
+                    Converters = Utilities.GetJsonDeserializers(typeof(T)),
+                });
+                return token.ToObject<T>(serializer);
+            }
+            catch (Exception)
+            {
+                return default;
+            }
+        }
+
+        /// <summary>
+        /// Out-parameter variant of ConstructUnvalidated. Returns false when the body
+        /// cannot be constructed into T. Value types (scalars, enums) have no partial
+        /// representation to salvage and are always treated as non-constructable.
+        /// </summary>
+        public static bool TryConstructUnvalidated<T>(string json, out T value)
+        {
+            value = default!;
+            if (typeof(T).IsValueType)
+            {
+                return false;
+            }
+            var result = ConstructUnvalidated<T>(json);
+            if (result is null)
+            {
+                return false;
+            }
+            value = result;
+            return true;
+        }
+
+        /// <summary>
+        /// Contract resolver that downgrades Required.Always/AllowNull members so a
+        /// missing required field defaults instead of raising.
+        /// </summary>
+        internal sealed class LenientContractResolver : DefaultContractResolver
+        {
+            public static readonly LenientContractResolver Instance = new LenientContractResolver();
+
+            protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
+            {
+                var property = base.CreateProperty(member, memberSerialization);
+                property.Required = Newtonsoft.Json.Required.Default;
+                return property;
+            }
+
+            protected override JsonObjectContract CreateObjectContract(System.Type objectType)
+            {
+                var contract = base.CreateObjectContract(objectType);
+                contract.ItemRequired = Newtonsoft.Json.Required.Default;
+                return contract;
+            }
         }
 
         public sealed class MissingMemberException : Exception

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The status of the employee.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmployeeStatus : IEquatable<EmployeeStatus>
+    public class EmployeeStatus : IEquatable<EmployeeStatus>, IOpenEnum<string>
     {
         public static readonly EmployeeStatus Active = new EmployeeStatus("active");
         public static readonly EmployeeStatus Inactive = new EmployeeStatus("inactive");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Whether this credit note reduces an amount owed by a customer (accounts receivable) or owed to a supplier (accounts payable). `accounts_payable_credit` support is connector-specific — most connectors only expose the accounts-receivable side. Check the connector's gotchas for known deviations.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CreditNoteType : IEquatable<CreditNoteType>
+    public class CreditNoteType : IEquatable<CreditNoteType>, IOpenEnum<string>
     {
         public static readonly CreditNoteType AccountsReceivableCredit = new CreditNoteType("accounts_receivable_credit");
         public static readonly CreditNoteType AccountsPayableCredit = new CreditNoteType("accounts_payable_credit");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Journal Entries.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class JournalEntriesSortBy : IEquatable<JournalEntriesSortBy>
+    public class JournalEntriesSortBy : IEquatable<JournalEntriesSortBy>, IOpenEnum<string>
     {
         public static readonly JournalEntriesSortBy CreatedAt = new JournalEntriesSortBy("created_at");
         public static readonly JournalEntriesSortBy UpdatedAt = new JournalEntriesSortBy("updated_at");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

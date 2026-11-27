@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The visibility of the List. Which of these values a given connector can return depends on its native sharing model — see the connector-specific gotchas below for details.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ListVisibility : IEquatable<ListVisibility>
+    public class ListVisibility : IEquatable<ListVisibility>, IOpenEnum<string>
     {
         public static readonly ListVisibility Private = new ListVisibility("private");
         public static readonly ListVisibility Shared = new ListVisibility("shared");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

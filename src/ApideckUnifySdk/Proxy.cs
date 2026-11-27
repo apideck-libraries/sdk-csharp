@@ -269,7 +269,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyGetProxyResponse()
@@ -363,16 +366,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnauthorizedPayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnauthorizedPayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -397,7 +405,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyGetProxyResponse()
@@ -586,7 +597,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyOptionsProxyResponse()
@@ -680,16 +694,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnauthorizedPayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnauthorizedPayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -714,7 +733,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyOptionsProxyResponse()
@@ -909,7 +931,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyPostProxyResponse()
@@ -1003,16 +1028,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnauthorizedPayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnauthorizedPayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -1037,7 +1067,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyPostProxyResponse()
@@ -1229,7 +1262,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyPutProxyResponse()
@@ -1323,16 +1359,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnauthorizedPayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnauthorizedPayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -1357,7 +1398,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyPutProxyResponse()
@@ -1552,7 +1596,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyPatchProxyResponse()
@@ -1646,16 +1693,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnauthorizedPayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnauthorizedPayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -1680,7 +1732,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyPatchProxyResponse()
@@ -1869,7 +1924,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyDeleteProxyResponse()
@@ -1963,16 +2021,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnauthorizedPayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnauthorizedPayload>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnauthorizedPayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnauthorizedPayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new Unauthorized(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -1997,7 +2060,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<Dictionary<string, object>>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into Dictionary<string, object>.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new ProxyDeleteProxyResponse()

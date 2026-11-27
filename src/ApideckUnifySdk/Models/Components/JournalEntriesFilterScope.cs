@@ -20,16 +20,16 @@ namespace ApideckUnifySdk.Models.Components
     /// Connector-specific scope hint that controls which downstream source backs the read. On Xero, `manual` reads from `ManualJournals` (free in every tier), while `system` reads from `Journals` (the full general ledger view including manual journal postings, paid post 2026-03-02). Omitting the filter is equivalent to `system` and preserves the legacy default. Only honored on connectors where the distinction is exposed; ignored elsewhere.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class JournalEntriesFilterScope : IEquatable<JournalEntriesFilterScope>
+    public class JournalEntriesFilterScope : IEquatable<JournalEntriesFilterScope>, IOpenEnum<string>
     {
         public static readonly JournalEntriesFilterScope Manual = new JournalEntriesFilterScope("manual");
-        public static readonly JournalEntriesFilterScope System = new JournalEntriesFilterScope("system");
+        public static readonly JournalEntriesFilterScope SystemValue = new JournalEntriesFilterScope("system");
 
         private static readonly Dictionary <string, JournalEntriesFilterScope> _knownValues =
             new Dictionary <string, JournalEntriesFilterScope> ()
             {
                 ["manual"] = Manual,
-                ["system"] = System
+                ["system"] = SystemValue
             };
 
         private static readonly ConcurrentDictionary<string, JournalEntriesFilterScope> _values =
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

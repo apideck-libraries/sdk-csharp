@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of customer to filter on.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CustomersFilterStatus : IEquatable<CustomersFilterStatus>
+    public class CustomersFilterStatus : IEquatable<CustomersFilterStatus>, IOpenEnum<string>
     {
         public static readonly CustomersFilterStatus Active = new CustomersFilterStatus("active");
         public static readonly CustomersFilterStatus Inactive = new CustomersFilterStatus("inactive");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

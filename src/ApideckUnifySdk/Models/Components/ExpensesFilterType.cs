@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ExpensesFilterType : IEquatable<ExpensesFilterType>
+    public class ExpensesFilterType : IEquatable<ExpensesFilterType>, IOpenEnum<string>
     {
         public static readonly ExpensesFilterType Expense = new ExpensesFilterType("expense");
         public static readonly ExpensesFilterType Refund = new ExpensesFilterType("refund");
@@ -53,7 +53,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

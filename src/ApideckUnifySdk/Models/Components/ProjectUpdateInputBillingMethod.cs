@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Method used for billing this project.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProjectUpdateInputBillingMethod : IEquatable<ProjectUpdateInputBillingMethod>
+    public class ProjectUpdateInputBillingMethod : IEquatable<ProjectUpdateInputBillingMethod>, IOpenEnum<string>
     {
         public static readonly ProjectUpdateInputBillingMethod FixedPrice = new ProjectUpdateInputBillingMethod("fixed_price");
         public static readonly ProjectUpdateInputBillingMethod TimeAndMaterials = new ProjectUpdateInputBillingMethod("time_and_materials");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

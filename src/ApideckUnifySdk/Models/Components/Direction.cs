@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The direction of the message.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Direction : IEquatable<Direction>
+    public class Direction : IEquatable<Direction>, IOpenEnum<string>
     {
         public static readonly Direction Inbound = new Direction("inbound");
         public static readonly Direction OutboundApi = new Direction("outbound-api");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Whether the holder is an individual or a business.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class HolderType : IEquatable<HolderType>
+    public class HolderType : IEquatable<HolderType>, IOpenEnum<string>
     {
         public static readonly HolderType Consumer = new HolderType("consumer");
         public static readonly HolderType Business = new HolderType("business");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

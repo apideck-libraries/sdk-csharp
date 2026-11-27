@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of the contact.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ContactType : IEquatable<ContactType>
+    public class ContactType : IEquatable<ContactType>, IOpenEnum<string>
     {
         public static readonly ContactType Customer = new ContactType("customer");
         public static readonly ContactType Supplier = new ContactType("supplier");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

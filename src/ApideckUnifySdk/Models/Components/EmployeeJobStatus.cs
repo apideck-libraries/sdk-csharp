@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Indicates the status of the job.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmployeeJobStatus : IEquatable<EmployeeJobStatus>
+    public class EmployeeJobStatus : IEquatable<EmployeeJobStatus>, IOpenEnum<string>
     {
         public static readonly EmployeeJobStatus Active = new EmployeeJobStatus("active");
         public static readonly EmployeeJobStatus Inactive = new EmployeeJobStatus("inactive");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

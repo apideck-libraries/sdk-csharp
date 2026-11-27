@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type of entity this payment should be attributed to.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AllocationType : IEquatable<AllocationType>
+    public class AllocationType : IEquatable<AllocationType>, IOpenEnum<string>
     {
         public static readonly AllocationType Invoice = new AllocationType("invoice");
         public static readonly AllocationType Order = new AllocationType("order");
@@ -70,7 +70,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

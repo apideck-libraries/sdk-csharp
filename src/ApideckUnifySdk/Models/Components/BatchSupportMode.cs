@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The connector's overall batch capability: `none` when no resource supports a batch write, otherwise the mode most of its resources use. This is a summary — read `resources` for the answer that applies to the resource you are calling, because a connector can be `native` for one resource and `loop` for another.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BatchSupportMode : IEquatable<BatchSupportMode>
+    public class BatchSupportMode : IEquatable<BatchSupportMode>, IOpenEnum<string>
     {
         public static readonly BatchSupportMode None = new BatchSupportMode("none");
         public static readonly BatchSupportMode Native = new BatchSupportMode("native");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

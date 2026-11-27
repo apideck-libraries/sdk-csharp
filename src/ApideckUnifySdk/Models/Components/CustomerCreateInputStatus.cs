@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Customer status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CustomerCreateInputStatus : IEquatable<CustomerCreateInputStatus>
+    public class CustomerCreateInputStatus : IEquatable<CustomerCreateInputStatus>, IOpenEnum<string>
     {
         public static readonly CustomerCreateInputStatus Active = new CustomerCreateInputStatus("active");
         public static readonly CustomerCreateInputStatus Inactive = new CustomerCreateInputStatus("inactive");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

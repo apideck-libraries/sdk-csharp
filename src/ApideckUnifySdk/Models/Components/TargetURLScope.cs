@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Where the vendor stores the webhook target URL. `app` means one URL per vendor developer app, which customers on Apideck's own credentials cannot configure. `tenant` means each customer's vendor account holds its own URL.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TargetURLScope : IEquatable<TargetURLScope>
+    public class TargetURLScope : IEquatable<TargetURLScope>, IOpenEnum<string>
     {
         public static readonly TargetURLScope App = new TargetURLScope("app");
         public static readonly TargetURLScope Tenant = new TargetURLScope("tenant");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

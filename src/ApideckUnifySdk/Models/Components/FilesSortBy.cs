@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Files.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class FilesSortBy : IEquatable<FilesSortBy>
+    public class FilesSortBy : IEquatable<FilesSortBy>, IOpenEnum<string>
     {
         public static readonly FilesSortBy CreatedAt = new FilesSortBy("created_at");
         public static readonly FilesSortBy UpdatedAt = new FilesSortBy("updated_at");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

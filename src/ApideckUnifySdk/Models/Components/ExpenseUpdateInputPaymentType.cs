@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of payment for the expense.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ExpenseUpdateInputPaymentType : IEquatable<ExpenseUpdateInputPaymentType>
+    public class ExpenseUpdateInputPaymentType : IEquatable<ExpenseUpdateInputPaymentType>, IOpenEnum<string>
     {
         public static readonly ExpenseUpdateInputPaymentType Cash = new ExpenseUpdateInputPaymentType("cash");
         public static readonly ExpenseUpdateInputPaymentType Check = new ExpenseUpdateInputPaymentType("check");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

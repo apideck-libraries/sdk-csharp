@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Quote status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class QuoteStatus : IEquatable<QuoteStatus>
+    public class QuoteStatus : IEquatable<QuoteStatus>, IOpenEnum<string>
     {
         public static readonly QuoteStatus Draft = new QuoteStatus("draft");
         public static readonly QuoteStatus Sent = new QuoteStatus("sent");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

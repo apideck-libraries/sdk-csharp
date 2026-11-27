@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Filter by payment status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PaymentsFilterPaymentStatus : IEquatable<PaymentsFilterPaymentStatus>
+    public class PaymentsFilterPaymentStatus : IEquatable<PaymentsFilterPaymentStatus>, IOpenEnum<string>
     {
         public static readonly PaymentsFilterPaymentStatus Draft = new PaymentsFilterPaymentStatus("draft");
         public static readonly PaymentsFilterPaymentStatus Authorised = new PaymentsFilterPaymentStatus("authorised");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

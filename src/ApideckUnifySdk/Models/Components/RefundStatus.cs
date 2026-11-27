@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of refund. Maps to: QBO (limited status), NetSuite CashRefund status, Sage Intacct state (draft/posted/voided), Zoho Books vis_state.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class RefundStatus : IEquatable<RefundStatus>
+    public class RefundStatus : IEquatable<RefundStatus>, IOpenEnum<string>
     {
         public static readonly RefundStatus Draft = new RefundStatus("draft");
         public static readonly RefundStatus Authorised = new RefundStatus("authorised");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

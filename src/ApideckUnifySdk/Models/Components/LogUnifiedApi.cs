@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Which Unified Api request was made to.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LogUnifiedApi : IEquatable<LogUnifiedApi>
+    public class LogUnifiedApi : IEquatable<LogUnifiedApi>, IOpenEnum<string>
     {
         public static readonly LogUnifiedApi Crm = new LogUnifiedApi("crm");
         public static readonly LogUnifiedApi Lead = new LogUnifiedApi("lead");
@@ -76,7 +76,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

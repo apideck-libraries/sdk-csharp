@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Employment status to filter on.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmployeesFilterEmploymentStatus : IEquatable<EmployeesFilterEmploymentStatus>
+    public class EmployeesFilterEmploymentStatus : IEquatable<EmployeesFilterEmploymentStatus>, IOpenEnum<string>
     {
         public static readonly EmployeesFilterEmploymentStatus Active = new EmployeesFilterEmploymentStatus("active");
         public static readonly EmployeesFilterEmploymentStatus Inactive = new EmployeesFilterEmploymentStatus("inactive");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Sales order status, in order of precedence: `cancelled`; `closed` (the order is closed or completed, whether or not it was billed); `invoiced` (fully billed but not yet closed); `back_ordered`; `on_hold` (including credit hold); `draft` (including pending approval); `open` (every other active state, including partially shipped and partially invoiced); `other` for states that fit none of these.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class SalesOrderStatus : IEquatable<SalesOrderStatus>
+    public class SalesOrderStatus : IEquatable<SalesOrderStatus>, IOpenEnum<string>
     {
         public static readonly SalesOrderStatus Draft = new SalesOrderStatus("draft");
         public static readonly SalesOrderStatus Open = new SalesOrderStatus("open");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

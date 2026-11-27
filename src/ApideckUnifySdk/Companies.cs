@@ -230,7 +230,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into GetCompaniesResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<GetCompaniesResponse>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into GetCompaniesResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new AccountingCompaniesAllResponse()
@@ -255,16 +258,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     BadRequestResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<BadRequestResponsePayload>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into BadRequestResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into BadRequestResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<BadRequestResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into BadRequestResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new BadRequestResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new BadRequestResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -275,16 +283,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnauthorizedResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnauthorizedResponsePayload>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnauthorizedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnauthorizedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnauthorizedResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnauthorizedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new UnauthorizedResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new UnauthorizedResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -295,16 +308,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     PaymentRequiredResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<PaymentRequiredResponsePayload>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into PaymentRequiredResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into PaymentRequiredResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<PaymentRequiredResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into PaymentRequiredResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new PaymentRequiredResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new PaymentRequiredResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -315,16 +333,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     NotFoundResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<NotFoundResponsePayload>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into NotFoundResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into NotFoundResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<NotFoundResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into NotFoundResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new NotFoundResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new NotFoundResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -335,16 +358,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     MethodNotAllowedResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<MethodNotAllowedResponsePayload>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into MethodNotAllowedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into MethodNotAllowedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<MethodNotAllowedResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into MethodNotAllowedResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new MethodNotAllowedResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new MethodNotAllowedResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -355,16 +383,21 @@ namespace ApideckUnifySdk
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
                     UnprocessableResponsePayload payload;
+                    ResponseValidationException? deserializationException = null;
                     try
                     {
                         payload = ResponseBodyDeserializer.DeserializeNotNull<UnprocessableResponsePayload>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnprocessableResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        deserializationException = new ResponseValidationException("Failed to deserialize response body into UnprocessableResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnprocessableResponsePayload>(httpResponseBody, out payload))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnprocessableResponsePayload.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
-                    throw new UnprocessableResponse(payload, httpRequest, httpResponse, httpResponseBody);
+                    throw new UnprocessableResponse(payload, httpRequest, httpResponse, httpResponseBody, deserializationException);
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse, await httpResponse.Content.ReadAsStringAsync());
@@ -389,7 +422,10 @@ namespace ApideckUnifySdk
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<UnexpectedErrorResponse>(httpResponseBody, out obj))
+                        {
+                            throw new Models.Errors.APIException("Failed to deserialize response body into UnexpectedErrorResponse.", httpRequest, httpResponse, httpResponseBody, ex);
+                        }
                     }
 
                     var response = new AccountingCompaniesAllResponse()

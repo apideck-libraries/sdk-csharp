@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Frequency of employee compensation.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PaymentFrequency : IEquatable<PaymentFrequency>
+    public class PaymentFrequency : IEquatable<PaymentFrequency>, IOpenEnum<string>
     {
         public static readonly PaymentFrequency Weekly = new PaymentFrequency("weekly");
         public static readonly PaymentFrequency Biweekly = new PaymentFrequency("biweekly");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

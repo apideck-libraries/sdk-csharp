@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class JobType : IEquatable<JobType>
+    public class JobType : IEquatable<JobType>, IOpenEnum<string>
     {
         public static readonly JobType JobPortal = new JobType("job_portal");
         public static readonly JobType JobDescription = new JobType("job_description");
@@ -53,7 +53,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

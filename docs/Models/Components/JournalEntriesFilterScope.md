@@ -16,7 +16,7 @@ var custom = JournalEntriesFilterScope.Of("custom_value");
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Manual` | manual   |
-| `System` | system   |
+| Name          | Value         |
+| ------------- | ------------- |
+| `Manual`      | manual        |
+| `SystemValue` | system        |

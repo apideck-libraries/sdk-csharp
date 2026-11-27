@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Based on the status some functionality is enabled or disabled.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class DepartmentStatus : IEquatable<DepartmentStatus>
+    public class DepartmentStatus : IEquatable<DepartmentStatus>, IOpenEnum<string>
     {
         public static readonly DepartmentStatus Active = new DepartmentStatus("active");
         public static readonly DepartmentStatus Inactive = new DepartmentStatus("inactive");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

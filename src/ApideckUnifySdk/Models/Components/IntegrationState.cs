@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The current state of the Integration.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class IntegrationState : IEquatable<IntegrationState>
+    public class IntegrationState : IEquatable<IntegrationState>, IOpenEnum<string>
     {
         public static readonly IntegrationState Disabled = new IntegrationState("disabled");
         public static readonly IntegrationState NeedsConfiguration = new IntegrationState("needs_configuration");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

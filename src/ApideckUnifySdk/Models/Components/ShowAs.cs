@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ShowAs : IEquatable<ShowAs>
+    public class ShowAs : IEquatable<ShowAs>, IOpenEnum<string>
     {
         public static readonly ShowAs Free = new ShowAs("free");
         public static readonly ShowAs Busy = new ShowAs("busy");
@@ -53,7 +53,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

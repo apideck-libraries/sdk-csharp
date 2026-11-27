@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Filter by bill status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BillsFilterStatus : IEquatable<BillsFilterStatus>
+    public class BillsFilterStatus : IEquatable<BillsFilterStatus>, IOpenEnum<string>
     {
         public static readonly BillsFilterStatus Paid = new BillsFilterStatus("paid");
         public static readonly BillsFilterStatus Unpaid = new BillsFilterStatus("unpaid");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

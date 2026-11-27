@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of account being referenced. Use `ledger_account` for GL accounts from the chart of accounts, or `bank_account` for bank account entities. When not specified, the connector will use its default behavior.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LinkedFinancialAccountAccountType : IEquatable<LinkedFinancialAccountAccountType>
+    public class LinkedFinancialAccountAccountType : IEquatable<LinkedFinancialAccountAccountType>, IOpenEnum<string>
     {
         public static readonly LinkedFinancialAccountAccountType LedgerAccount = new LinkedFinancialAccountAccountType("ledger_account");
         public static readonly LinkedFinancialAccountAccountType BankAccount = new LinkedFinancialAccountAccountType("bank_account");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of invoice item, indicating whether it is an inventory item, a service, or another type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class InvoiceItemType : IEquatable<InvoiceItemType>
+    public class InvoiceItemType : IEquatable<InvoiceItemType>, IOpenEnum<string>
     {
         public static readonly InvoiceItemType Inventory = new InvoiceItemType("inventory");
         public static readonly InvoiceItemType Service = new InvoiceItemType("service");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type of entity this payment should be attributed to.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BillPaymentAllocationType : IEquatable<BillPaymentAllocationType>
+    public class BillPaymentAllocationType : IEquatable<BillPaymentAllocationType>, IOpenEnum<string>
     {
         public static readonly BillPaymentAllocationType Bill = new BillPaymentAllocationType("bill");
         public static readonly BillPaymentAllocationType Expense = new BillPaymentAllocationType("expense");
@@ -66,7 +66,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The current status of the product (active or archived).
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProductStatus : IEquatable<ProductStatus>
+    public class ProductStatus : IEquatable<ProductStatus>, IOpenEnum<string>
     {
         public static readonly ProductStatus Active = new ProductStatus("active");
         public static readonly ProductStatus Archived = new ProductStatus("archived");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Set to sms for SMS messages and mms for MMS messages.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class MessageType : IEquatable<MessageType>
+    public class MessageType : IEquatable<MessageType>, IOpenEnum<string>
     {
         public static readonly MessageType Sms = new MessageType("sms");
         public static readonly MessageType Mms = new MessageType("mms");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

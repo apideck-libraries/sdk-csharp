@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of payment.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PaymentStatus : IEquatable<PaymentStatus>
+    public class PaymentStatus : IEquatable<PaymentStatus>, IOpenEnum<string>
     {
         public static readonly PaymentStatus Draft = new PaymentStatus("draft");
         public static readonly PaymentStatus Authorised = new PaymentStatus("authorised");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

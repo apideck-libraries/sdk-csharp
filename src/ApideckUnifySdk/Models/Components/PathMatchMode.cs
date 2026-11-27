@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// How the path filter is matched. CONTAINS matches the path anywhere; STARTS_WITH / ENDS_WITH anchor the match; EXACT requires the whole path to match. Only applied when path is set.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PathMatchMode : IEquatable<PathMatchMode>
+    public class PathMatchMode : IEquatable<PathMatchMode>, IOpenEnum<string>
     {
         public static readonly PathMatchMode Contains = new PathMatchMode("CONTAINS");
         public static readonly PathMatchMode StartsWith = new PathMatchMode("STARTS_WITH");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

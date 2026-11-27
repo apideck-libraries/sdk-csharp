@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Filter by account type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BankAccountFilterAccountType : IEquatable<BankAccountFilterAccountType>
+    public class BankAccountFilterAccountType : IEquatable<BankAccountFilterAccountType>, IOpenEnum<string>
     {
         public static readonly BankAccountFilterAccountType Checking = new BankAccountFilterAccountType("checking");
         public static readonly BankAccountFilterAccountType Savings = new BankAccountFilterAccountType("savings");
@@ -66,7 +66,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

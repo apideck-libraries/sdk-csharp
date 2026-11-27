@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Priority of the ticket.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TicketPriority : IEquatable<TicketPriority>
+    public class TicketPriority : IEquatable<TicketPriority>, IOpenEnum<string>
     {
         public static readonly TicketPriority Low = new TicketPriority("low");
         public static readonly TicketPriority Normal = new TicketPriority("normal");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

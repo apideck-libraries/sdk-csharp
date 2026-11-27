@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 0.60.1
+  version: 0.61.0
   additionalDependencies: []
   author: Speakeasy
   baseErrorName: BaseException
@@ -42,6 +42,8 @@ csharp:
   enableCancellationToken: false
   enableFormatting: false
   enableSourceLink: false
+  fixFlags:
+    spreadAdditionalProperties: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
   forwardCompatibleEnumsByDefault: false

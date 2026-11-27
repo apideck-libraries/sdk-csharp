@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmploymentTerms : IEquatable<EmploymentTerms>
+    public class EmploymentTerms : IEquatable<EmploymentTerms>, IOpenEnum<string>
     {
         public static readonly EmploymentTerms FullTime = new EmploymentTerms("full-time");
         public static readonly EmploymentTerms PartTime = new EmploymentTerms("part-time");
@@ -69,7 +69,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

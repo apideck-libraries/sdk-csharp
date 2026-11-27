@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class FormFieldOptionGroupOptionType : IEquatable<FormFieldOptionGroupOptionType>
+    public class FormFieldOptionGroupOptionType : IEquatable<FormFieldOptionGroupOptionType>, IOpenEnum<string>
     {
         public static readonly FormFieldOptionGroupOptionType Group = new FormFieldOptionGroupOptionType("group");
 
@@ -51,7 +51,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

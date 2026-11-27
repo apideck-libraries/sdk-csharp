@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// OAuth grant type used by the connector. More info: https://oauth.net/2/grant-types.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class OAuthGrantType : IEquatable<OAuthGrantType>
+    public class OAuthGrantType : IEquatable<OAuthGrantType>, IOpenEnum<string>
     {
         public static readonly OAuthGrantType AuthorizationCode = new OAuthGrantType("authorization_code");
         public static readonly OAuthGrantType ClientCredentials = new OAuthGrantType("client_credentials");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The status of the bank account.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AccountingBankAccountStatus : IEquatable<AccountingBankAccountStatus>
+    public class AccountingBankAccountStatus : IEquatable<AccountingBankAccountStatus>, IOpenEnum<string>
     {
         public static readonly AccountingBankAccountStatus Active = new AccountingBankAccountStatus("active");
         public static readonly AccountingBankAccountStatus Inactive = new AccountingBankAccountStatus("inactive");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

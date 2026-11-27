@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Based on the status some functionality is enabled or disabled.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LocationStatus : IEquatable<LocationStatus>
+    public class LocationStatus : IEquatable<LocationStatus>, IOpenEnum<string>
     {
         public static readonly LocationStatus Active = new LocationStatus("active");
         public static readonly LocationStatus Inactive = new LocationStatus("inactive");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

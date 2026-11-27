@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Item type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class InvoiceItemTypeType : IEquatable<InvoiceItemTypeType>
+    public class InvoiceItemTypeType : IEquatable<InvoiceItemTypeType>, IOpenEnum<string>
     {
         public static readonly InvoiceItemTypeType Inventory = new InvoiceItemTypeType("inventory");
         public static readonly InvoiceItemTypeType NonInventory = new InvoiceItemTypeType("non_inventory");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

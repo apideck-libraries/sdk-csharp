@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The employment status of the employee, indicating whether they are currently employed, inactive, terminated, or in another status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmploymentStatus : IEquatable<EmploymentStatus>
+    public class EmploymentStatus : IEquatable<EmploymentStatus>, IOpenEnum<string>
     {
         public static readonly EmploymentStatus Active = new EmploymentStatus("active");
         public static readonly EmploymentStatus Inactive = new EmploymentStatus("inactive");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

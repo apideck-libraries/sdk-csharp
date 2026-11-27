@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Unit of measurement for employee compensation.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PaymentUnit : IEquatable<PaymentUnit>
+    public class PaymentUnit : IEquatable<PaymentUnit>, IOpenEnum<string>
     {
         public static readonly PaymentUnit Hour = new PaymentUnit("hour");
         public static readonly PaymentUnit Week = new PaymentUnit("week");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

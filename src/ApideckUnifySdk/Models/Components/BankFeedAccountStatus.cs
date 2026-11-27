@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Whether the data consumer may see this account. `revoked` hides it from the consumer without deleting it; `active` restores it. Unrelated to `feed_status`. Only connectors that list it support it; others ignore the field, so setting it there changes nothing.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BankFeedAccountStatus : IEquatable<BankFeedAccountStatus>
+    public class BankFeedAccountStatus : IEquatable<BankFeedAccountStatus>, IOpenEnum<string>
     {
         public static readonly BankFeedAccountStatus Active = new BankFeedAccountStatus("active");
         public static readonly BankFeedAccountStatus Revoked = new BankFeedAccountStatus("revoked");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

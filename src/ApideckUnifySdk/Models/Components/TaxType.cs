@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The tax applicability of this line item. Overrides the root-level tax_type for this line.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TaxType : IEquatable<TaxType>
+    public class TaxType : IEquatable<TaxType>, IOpenEnum<string>
     {
         public static readonly TaxType Sales = new TaxType("sales");
         public static readonly TaxType Purchase = new TaxType("purchase");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

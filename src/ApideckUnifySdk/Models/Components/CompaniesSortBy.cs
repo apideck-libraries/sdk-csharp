@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Companies.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CompaniesSortBy : IEquatable<CompaniesSortBy>
+    public class CompaniesSortBy : IEquatable<CompaniesSortBy>, IOpenEnum<string>
     {
         public static readonly CompaniesSortBy CreatedAt = new CompaniesSortBy("created_at");
         public static readonly CompaniesSortBy UpdatedAt = new CompaniesSortBy("updated_at");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

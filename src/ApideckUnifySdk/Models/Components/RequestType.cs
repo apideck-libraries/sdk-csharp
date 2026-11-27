@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of request.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class RequestType : IEquatable<RequestType>
+    public class RequestType : IEquatable<RequestType>, IOpenEnum<string>
     {
         public static readonly RequestType Vacation = new RequestType("vacation");
         public static readonly RequestType Sick = new RequestType("sick");
@@ -66,7 +66,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

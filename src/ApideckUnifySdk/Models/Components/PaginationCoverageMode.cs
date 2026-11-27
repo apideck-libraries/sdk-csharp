@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// How pagination is implemented on this connector. Native mode means Apideck is using the pagination parameters of the connector. With virtual pagination, the connector does not support pagination, but Apideck emulates it.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PaginationCoverageMode : IEquatable<PaginationCoverageMode>
+    public class PaginationCoverageMode : IEquatable<PaginationCoverageMode>, IOpenEnum<string>
     {
         public static readonly PaginationCoverageMode Native = new PaginationCoverageMode("native");
         public static readonly PaginationCoverageMode Virtual = new PaginationCoverageMode("virtual");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

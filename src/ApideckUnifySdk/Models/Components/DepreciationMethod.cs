@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The depreciation method of the assets, normalised across accounting systems: declining-balance variants (for example 150% or 200%) are all `declining_balance`, and the accounting system's own value is in `downstream_depreciation_method`. Set only when every asset recorded in the account uses the same method.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class DepreciationMethod : IEquatable<DepreciationMethod>
+    public class DepreciationMethod : IEquatable<DepreciationMethod>, IOpenEnum<string>
     {
         public static readonly DepreciationMethod Other = new DepreciationMethod("other");
         public static readonly DepreciationMethod StraightLine = new DepreciationMethod("straight_line");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

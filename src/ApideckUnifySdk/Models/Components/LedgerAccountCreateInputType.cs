@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of account.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LedgerAccountCreateInputType : IEquatable<LedgerAccountCreateInputType>
+    public class LedgerAccountCreateInputType : IEquatable<LedgerAccountCreateInputType>, IOpenEnum<string>
     {
         public static readonly LedgerAccountCreateInputType AccountsPayable = new LedgerAccountCreateInputType("accounts_payable");
         public static readonly LedgerAccountCreateInputType AccountsReceivable = new LedgerAccountCreateInputType("accounts_receivable");
@@ -92,7 +92,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

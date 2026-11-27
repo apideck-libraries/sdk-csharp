@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// At-a-glance implementation difficulty rating.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Difficulty : IEquatable<Difficulty>
+    public class Difficulty : IEquatable<Difficulty>, IOpenEnum<string>
     {
         public static readonly Difficulty Straightforward = new Difficulty("straightforward");
         public static readonly Difficulty Moderate = new Difficulty("moderate");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Item type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class QuoteLineItemType : IEquatable<QuoteLineItemType>
+    public class QuoteLineItemType : IEquatable<QuoteLineItemType>, IOpenEnum<string>
     {
         public static readonly QuoteLineItemType SalesItem = new QuoteLineItemType("sales_item");
         public static readonly QuoteLineItemType Discount = new QuoteLineItemType("discount");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

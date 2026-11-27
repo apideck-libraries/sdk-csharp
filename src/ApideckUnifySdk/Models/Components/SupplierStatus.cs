@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Supplier status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class SupplierStatus : IEquatable<SupplierStatus>
+    public class SupplierStatus : IEquatable<SupplierStatus>, IOpenEnum<string>
     {
         public static readonly SupplierStatus Active = new SupplierStatus("active");
         public static readonly SupplierStatus Inactive = new SupplierStatus("inactive");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

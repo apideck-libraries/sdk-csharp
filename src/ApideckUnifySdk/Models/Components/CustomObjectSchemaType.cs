@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CustomObjectSchemaType : IEquatable<CustomObjectSchemaType>
+    public class CustomObjectSchemaType : IEquatable<CustomObjectSchemaType>, IOpenEnum<string>
     {
         public static readonly CustomObjectSchemaType String = new CustomObjectSchemaType("string");
         public static readonly CustomObjectSchemaType Number = new CustomObjectSchemaType("number");
@@ -73,7 +73,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

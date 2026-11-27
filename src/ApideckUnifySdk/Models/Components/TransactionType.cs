@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The kind of transaction, indicating whether it is a sales transaction or a purchase transaction.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TransactionType : IEquatable<TransactionType>
+    public class TransactionType : IEquatable<TransactionType>, IOpenEnum<string>
     {
         public static readonly TransactionType Sale = new TransactionType("sale");
         public static readonly TransactionType Purchase = new TransactionType("purchase");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Based on the status some functionality is enabled or disabled.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CategoryStatus : IEquatable<CategoryStatus>
+    public class CategoryStatus : IEquatable<CategoryStatus>, IOpenEnum<string>
     {
         public static readonly CategoryStatus Active = new CategoryStatus("active");
         public static readonly CategoryStatus Inactive = new CategoryStatus("inactive");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The status of the account.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LedgerAccountCreateInputAccountStatus : IEquatable<LedgerAccountCreateInputAccountStatus>
+    public class LedgerAccountCreateInputAccountStatus : IEquatable<LedgerAccountCreateInputAccountStatus>, IOpenEnum<string>
     {
         public static readonly LedgerAccountCreateInputAccountStatus Active = new LedgerAccountCreateInputAccountStatus("active");
         public static readonly LedgerAccountCreateInputAccountStatus Inactive = new LedgerAccountCreateInputAccountStatus("inactive");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

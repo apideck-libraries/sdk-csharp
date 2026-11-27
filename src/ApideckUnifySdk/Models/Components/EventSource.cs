@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Unify event source.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EventSource : IEquatable<EventSource>
+    public class EventSource : IEquatable<EventSource>, IOpenEnum<string>
     {
         public static readonly EventSource Native = new EventSource("native");
         public static readonly EventSource Virtual = new EventSource("virtual");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

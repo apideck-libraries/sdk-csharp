@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Whether the List is static (a fixed set of records) or dynamic (a saved segment that is automatically kept up to date based on filter criteria).
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ListType : IEquatable<ListType>
+    public class ListType : IEquatable<ListType>, IOpenEnum<string>
     {
         public static readonly ListType Static = new ListType("static");
         public static readonly ListType Dynamic = new ListType("dynamic");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

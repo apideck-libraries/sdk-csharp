@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Name of Apideck Unified API.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class UnifiedApiId : IEquatable<UnifiedApiId>
+    public class UnifiedApiId : IEquatable<UnifiedApiId>, IOpenEnum<string>
     {
         public static readonly UnifiedApiId Accounting = new UnifiedApiId("accounting");
         public static readonly UnifiedApiId Ats = new UnifiedApiId("ats");
@@ -108,7 +108,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of the category.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CategoriesFilterType : IEquatable<CategoriesFilterType>
+    public class CategoriesFilterType : IEquatable<CategoriesFilterType>, IOpenEnum<string>
     {
         public static readonly CategoriesFilterType Supplier = new CategoriesFilterType("supplier");
         public static readonly CategoriesFilterType Expense = new CategoriesFilterType("expense");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {
