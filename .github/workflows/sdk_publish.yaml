@@ -32,7 +32,7 @@ jobs:
       needs.publish.outputs.use_nuget_trusted_publishing == 'true'
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       id-token: write
     steps:
       - uses: actions/checkout@v4
