@@ -1,0 +1,4 @@
+# Speakeasy writes "8.0.0", which is not a .NET SDK version (they start at 8.0.100).
+# publish-nuget installs .NET from this file and fails, skipping the NuGet push.
+# Remove once Speakeasy generates a valid SDK version.
+global.json
