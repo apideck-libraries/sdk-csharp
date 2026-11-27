@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PurchaseOrderStatus : IEquatable<PurchaseOrderStatus>
+    public class PurchaseOrderStatus : IEquatable<PurchaseOrderStatus>, IOpenEnum<string>
     {
         public static readonly PurchaseOrderStatus Draft = new PurchaseOrderStatus("draft");
         public static readonly PurchaseOrderStatus Open = new PurchaseOrderStatus("open");
@@ -61,7 +61,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

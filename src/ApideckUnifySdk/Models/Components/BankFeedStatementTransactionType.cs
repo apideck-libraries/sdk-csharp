@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type of transaction.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BankFeedStatementTransactionType : IEquatable<BankFeedStatementTransactionType>
+    public class BankFeedStatementTransactionType : IEquatable<BankFeedStatementTransactionType>, IOpenEnum<string>
     {
         public static readonly BankFeedStatementTransactionType Credit = new BankFeedStatementTransactionType("credit");
         public static readonly BankFeedStatementTransactionType Debit = new BankFeedStatementTransactionType("debit");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

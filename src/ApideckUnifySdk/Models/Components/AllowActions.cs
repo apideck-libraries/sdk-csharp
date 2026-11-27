@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AllowActions : IEquatable<AllowActions>
+    public class AllowActions : IEquatable<AllowActions>, IOpenEnum<string>
     {
         public static readonly AllowActions Delete = new AllowActions("delete");
         public static readonly AllowActions Disconnect = new AllowActions("disconnect");
@@ -57,7 +57,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

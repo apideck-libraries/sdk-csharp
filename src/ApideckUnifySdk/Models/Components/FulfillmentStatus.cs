@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Current fulfillment status of the order.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class FulfillmentStatus : IEquatable<FulfillmentStatus>
+    public class FulfillmentStatus : IEquatable<FulfillmentStatus>, IOpenEnum<string>
     {
         public static readonly FulfillmentStatus Pending = new FulfillmentStatus("pending");
         public static readonly FulfillmentStatus Shipped = new FulfillmentStatus("shipped");
@@ -66,7 +66,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

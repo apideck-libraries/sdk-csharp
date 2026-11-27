@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type of refund. `refund_receipt` for itemized refunds with product/service lines and payment (QBO RefundReceipt; also NetSuite's apply-list-based CustomerRefund). `cash_refund` for cash-out refunds with GL distribution or allocations (Sage Intacct). `credit_note_refund` for refunds applied against a credit note (Zoho Books). `sale_refund` for itemized refunds tied to a cash sale or return authorization, without an apply-list (NetSuite CashRefund) — NetSuite's apply-list-based CustomerRefund reports as `refund_receipt` instead.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class RefundType : IEquatable<RefundType>
+    public class RefundType : IEquatable<RefundType>, IOpenEnum<string>
     {
         public static readonly RefundType RefundReceipt = new RefundType("refund_receipt");
         public static readonly RefundType CashRefund = new RefundType("cash_refund");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

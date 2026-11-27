@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The mode of tracking categories for the company on transactions.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TrackingCategoriesMode : IEquatable<TrackingCategoriesMode>
+    public class TrackingCategoriesMode : IEquatable<TrackingCategoriesMode>, IOpenEnum<string>
     {
         public static readonly TrackingCategoriesMode Transaction = new TrackingCategoriesMode("transaction");
         public static readonly TrackingCategoriesMode Line = new TrackingCategoriesMode("line");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

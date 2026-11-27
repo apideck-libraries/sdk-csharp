@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// <a href="#section/Connection-state">Connection state flow</a>
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ConnectionState : IEquatable<ConnectionState>
+    public class ConnectionState : IEquatable<ConnectionState>, IOpenEnum<string>
     {
         public static readonly ConnectionState Available = new ConnectionState("available");
         public static readonly ConnectionState Callable = new ConnectionState("callable");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of bank account.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BankAccount1AccountType : IEquatable<BankAccount1AccountType>
+    public class BankAccount1AccountType : IEquatable<BankAccount1AccountType>, IOpenEnum<string>
     {
         public static readonly BankAccount1AccountType BankAccount = new BankAccount1AccountType("bank_account");
         public static readonly BankAccount1AccountType CreditCard = new BankAccount1AccountType("credit_card");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

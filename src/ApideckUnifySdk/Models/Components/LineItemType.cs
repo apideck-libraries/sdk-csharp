@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Line Item type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LineItemType : IEquatable<LineItemType>
+    public class LineItemType : IEquatable<LineItemType>, IOpenEnum<string>
     {
         public static readonly LineItemType ExpenseItem = new LineItemType("expense_item");
         public static readonly LineItemType ExpenseAccount = new LineItemType("expense_account");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The holder's relationship to the account.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class HolderRelationship : IEquatable<HolderRelationship>
+    public class HolderRelationship : IEquatable<HolderRelationship>, IOpenEnum<string>
     {
         public static readonly HolderRelationship AuthorizedSigner = new HolderRelationship("authorized_signer");
         public static readonly HolderRelationship AuthorizedUser = new HolderRelationship("authorized_user");
@@ -94,7 +94,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

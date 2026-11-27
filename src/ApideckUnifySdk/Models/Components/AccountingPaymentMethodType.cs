@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of payment method.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AccountingPaymentMethodType : IEquatable<AccountingPaymentMethodType>
+    public class AccountingPaymentMethodType : IEquatable<AccountingPaymentMethodType>, IOpenEnum<string>
     {
         public static readonly AccountingPaymentMethodType Cash = new AccountingPaymentMethodType("cash");
         public static readonly AccountingPaymentMethodType Check = new AccountingPaymentMethodType("check");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

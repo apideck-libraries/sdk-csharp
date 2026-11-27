@@ -105,12 +105,34 @@ namespace ApideckUnifySdk.Models.Components
                 string discriminator = jo.GetValue("option_type")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == FormFieldOptionType.Simple.ToString())
                 {
-                    SimpleFormFieldOption simpleFormFieldOption = ResponseBodyDeserializer.DeserializeNotNull<SimpleFormFieldOption>(jo.ToString());
+                    SimpleFormFieldOption simpleFormFieldOption;
+                    try
+                    {
+                        simpleFormFieldOption = ResponseBodyDeserializer.DeserializeNotNull<SimpleFormFieldOption>(jo.ToString());
+                    }
+                    catch (Exception)
+                    {
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<SimpleFormFieldOption>(jo.ToString(), out simpleFormFieldOption))
+                        {
+                            throw;
+                        }
+                    }
                     return CreateSimple(simpleFormFieldOption);
                 }
                 if (discriminator == FormFieldOptionType.Group.ToString())
                 {
-                    FormFieldOptionGroup formFieldOptionGroup = ResponseBodyDeserializer.DeserializeNotNull<FormFieldOptionGroup>(jo.ToString());
+                    FormFieldOptionGroup formFieldOptionGroup;
+                    try
+                    {
+                        formFieldOptionGroup = ResponseBodyDeserializer.DeserializeNotNull<FormFieldOptionGroup>(jo.ToString());
+                    }
+                    catch (Exception)
+                    {
+                        if (!ResponseBodyDeserializer.TryConstructUnvalidated<FormFieldOptionGroup>(jo.ToString(), out formFieldOptionGroup))
+                        {
+                            throw;
+                        }
+                    }
                     return CreateGroup(formFieldOptionGroup);
                 }
 

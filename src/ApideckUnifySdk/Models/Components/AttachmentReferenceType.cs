@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AttachmentReferenceType : IEquatable<AttachmentReferenceType>
+    public class AttachmentReferenceType : IEquatable<AttachmentReferenceType>, IOpenEnum<string>
     {
         public static readonly AttachmentReferenceType Invoice = new AttachmentReferenceType("invoice");
         public static readonly AttachmentReferenceType Bill = new AttachmentReferenceType("bill");
@@ -65,7 +65,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

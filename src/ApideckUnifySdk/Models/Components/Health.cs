@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Operational health status of the connection.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Health : IEquatable<Health>
+    public class Health : IEquatable<Health>, IOpenEnum<string>
     {
         public static readonly Health Revoked = new Health("revoked");
         public static readonly Health MissingSettings = new Health("missing_settings");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

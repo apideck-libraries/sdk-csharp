@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Target : IEquatable<Target>
+    public class Target : IEquatable<Target>, IOpenEnum<string>
     {
         public static readonly Target CustomFields = new Target("custom_fields");
         public static readonly Target Resource = new Target("resource");
@@ -53,7 +53,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

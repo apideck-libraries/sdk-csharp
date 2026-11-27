@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of credit note. A bill credit note is always an accounts payable (supplier-side) credit.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BillCreditNoteCreateInputBillCreditNoteType : IEquatable<BillCreditNoteCreateInputBillCreditNoteType>
+    public class BillCreditNoteCreateInputBillCreditNoteType : IEquatable<BillCreditNoteCreateInputBillCreditNoteType>, IOpenEnum<string>
     {
         public static readonly BillCreditNoteCreateInputBillCreditNoteType AccountsPayableCredit = new BillCreditNoteCreateInputBillCreditNoteType("accounts_payable_credit");
 
@@ -54,7 +54,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

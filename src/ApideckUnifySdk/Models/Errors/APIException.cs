@@ -27,5 +27,13 @@ namespace ApideckUnifySdk.Models.Errors
             HttpResponseMessage response,
             string body
         ): base(message, request, response, body) {}
+
+        public APIException(
+            string message,
+            HttpRequestMessage request,
+            HttpResponseMessage response,
+            string body,
+            Exception? innerException
+        ): base(message, request, response, body, innerException) {}
     }
 }

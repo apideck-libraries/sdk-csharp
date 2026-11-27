@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Whether this record is a posting period, or a quarter or year that groups posting periods.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class FiscalPeriodPeriodType : IEquatable<FiscalPeriodPeriodType>
+    public class FiscalPeriodPeriodType : IEquatable<FiscalPeriodPeriodType>, IOpenEnum<string>
     {
         public static readonly FiscalPeriodPeriodType Period = new FiscalPeriodPeriodType("period");
         public static readonly FiscalPeriodPeriodType Quarter = new FiscalPeriodPeriodType("quarter");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

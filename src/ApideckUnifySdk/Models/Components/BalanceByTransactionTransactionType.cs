@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type of the transaction.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BalanceByTransactionTransactionType : IEquatable<BalanceByTransactionTransactionType>
+    public class BalanceByTransactionTransactionType : IEquatable<BalanceByTransactionTransactionType>, IOpenEnum<string>
     {
         public static readonly BalanceByTransactionTransactionType Invoice = new BalanceByTransactionTransactionType("invoice");
         public static readonly BalanceByTransactionTransactionType CreditNote = new BalanceByTransactionTransactionType("credit_note");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

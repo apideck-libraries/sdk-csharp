@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type or category of the project.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProjectUpdateInputProjectType : IEquatable<ProjectUpdateInputProjectType>
+    public class ProjectUpdateInputProjectType : IEquatable<ProjectUpdateInputProjectType>, IOpenEnum<string>
     {
         public static readonly ProjectUpdateInputProjectType ClientProject = new ProjectUpdateInputProjectType("client_project");
         public static readonly ProjectUpdateInputProjectType InternalProject = new ProjectUpdateInputProjectType("internal_project");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

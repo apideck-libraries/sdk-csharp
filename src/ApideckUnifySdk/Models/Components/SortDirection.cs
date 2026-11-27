@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The direction in which to sort the results.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class SortDirection : IEquatable<SortDirection>
+    public class SortDirection : IEquatable<SortDirection>, IOpenEnum<string>
     {
         public static readonly SortDirection Asc = new SortDirection("asc");
         public static readonly SortDirection Desc = new SortDirection("desc");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

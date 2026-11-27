@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PaymentsFilterType : IEquatable<PaymentsFilterType>
+    public class PaymentsFilterType : IEquatable<PaymentsFilterType>, IOpenEnum<string>
     {
         public static readonly PaymentsFilterType AccountsReceivable = new PaymentsFilterType("accounts_receivable");
         public static readonly PaymentsFilterType AccountsPayable = new PaymentsFilterType("accounts_payable");
@@ -65,7 +65,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Indicates the associated currency for an amount of money. Values correspond to <a href="https://en.wikipedia.org/wiki/ISO_4217">ISO 4217</a>.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Currency : IEquatable<Currency>
+    public class Currency : IEquatable<Currency>, IOpenEnum<string>
     {
         public static readonly Currency UnknownCurrency = new Currency("UNKNOWN_CURRENCY");
         public static readonly Currency Aed = new Currency("AED");
@@ -418,7 +418,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

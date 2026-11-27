@@ -28,7 +28,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Read this rather than `id` to decide what happened. `id` is present when the identifier could also be read back, which is not the same question — a written record whose id could not be parsed still reports `created`.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BatchItemResultStatus : IEquatable<BatchItemResultStatus>
+    public class BatchItemResultStatus : IEquatable<BatchItemResultStatus>, IOpenEnum<string>
     {
         public static readonly BatchItemResultStatus Created = new BatchItemResultStatus("created");
         public static readonly BatchItemResultStatus Updated = new BatchItemResultStatus("updated");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

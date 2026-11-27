@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Debit entries are considered positive, and credit entries are considered negative.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class JournalEntryLineItemType : IEquatable<JournalEntryLineItemType>
+    public class JournalEntryLineItemType : IEquatable<JournalEntryLineItemType>, IOpenEnum<string>
     {
         public static readonly JournalEntryLineItemType Debit = new JournalEntryLineItemType("debit");
         public static readonly JournalEntryLineItemType Credit = new JournalEntryLineItemType("credit");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

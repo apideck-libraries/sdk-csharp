@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Indicates why the webhook has been disabled. `retry_limit`: webhook reached its retry limit. `usage_limit`: account is over its usage limit. `delivery_url_validation_failed`: delivery URL failed validation during webhook creation or update.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class DisabledReason : IEquatable<DisabledReason>
+    public class DisabledReason : IEquatable<DisabledReason>, IOpenEnum<string>
     {
         public static readonly DisabledReason None = new DisabledReason("none");
         public static readonly DisabledReason RetryLimit = new DisabledReason("retry_limit");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

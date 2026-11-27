@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The accounting method used for the report: cash or accrual.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BalanceSheetFilterAccountingMethod : IEquatable<BalanceSheetFilterAccountingMethod>
+    public class BalanceSheetFilterAccountingMethod : IEquatable<BalanceSheetFilterAccountingMethod>, IOpenEnum<string>
     {
         public static readonly BalanceSheetFilterAccountingMethod Cash = new BalanceSheetFilterAccountingMethod("cash");
         public static readonly BalanceSheetFilterAccountingMethod Accrual = new BalanceSheetFilterAccountingMethod("accrual");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

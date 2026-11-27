@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Bills.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class By : IEquatable<By>
+    public class By : IEquatable<By>, IOpenEnum<string>
     {
         public static readonly By UpdatedAt = new By("updated_at");
         public static readonly By CreatedAt = new By("created_at");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Format of the doc.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Format : IEquatable<Format>
+    public class Format : IEquatable<Format>, IOpenEnum<string>
     {
         public static readonly Format Markdown = new Format("markdown");
 
@@ -54,7 +54,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

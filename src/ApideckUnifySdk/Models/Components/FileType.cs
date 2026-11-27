@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of resource. Could be file, folder or url.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class FileType : IEquatable<FileType>
+    public class FileType : IEquatable<FileType>, IOpenEnum<string>
     {
         public static readonly FileType File = new FileType("file");
         public static readonly FileType Folder = new FileType("folder");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

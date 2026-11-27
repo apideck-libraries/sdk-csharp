@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Email type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmailType : IEquatable<EmailType>
+    public class EmailType : IEquatable<EmailType>, IOpenEnum<string>
     {
         public static readonly EmailType Primary = new EmailType("primary");
         public static readonly EmailType Secondary = new EmailType("secondary");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

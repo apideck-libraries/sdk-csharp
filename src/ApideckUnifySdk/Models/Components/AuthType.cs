@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type of authorization used by the connector.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AuthType : IEquatable<AuthType>
+    public class AuthType : IEquatable<AuthType>, IOpenEnum<string>
     {
         public static readonly AuthType Oauth2 = new AuthType("oauth2");
         public static readonly AuthType ApiKey = new AuthType("apiKey");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

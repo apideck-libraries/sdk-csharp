@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Tax rate status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TaxRateStatus : IEquatable<TaxRateStatus>
+    public class TaxRateStatus : IEquatable<TaxRateStatus>, IOpenEnum<string>
     {
         public static readonly TaxRateStatus Active = new TaxRateStatus("active");
         public static readonly TaxRateStatus Inactive = new TaxRateStatus("inactive");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

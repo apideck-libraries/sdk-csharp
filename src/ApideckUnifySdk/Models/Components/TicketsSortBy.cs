@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Tickets.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TicketsSortBy : IEquatable<TicketsSortBy>
+    public class TicketsSortBy : IEquatable<TicketsSortBy>, IOpenEnum<string>
     {
         public static readonly TicketsSortBy CreatedAt = new TicketsSortBy("created_at");
         public static readonly TicketsSortBy UpdatedAt = new TicketsSortBy("updated_at");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The status of the time off request.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TimeOffRequestStatusStatus : IEquatable<TimeOffRequestStatusStatus>
+    public class TimeOffRequestStatusStatus : IEquatable<TimeOffRequestStatusStatus>, IOpenEnum<string>
     {
         public static readonly TimeOffRequestStatusStatus Requested = new TimeOffRequestStatusStatus("requested");
         public static readonly TimeOffRequestStatusStatus Approved = new TimeOffRequestStatusStatus("approved");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

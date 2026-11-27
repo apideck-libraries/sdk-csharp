@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of address.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Type : IEquatable<Type>
+    public class Type : IEquatable<Type>, IOpenEnum<string>
     {
         public static readonly Type Primary = new Type("primary");
         public static readonly Type Secondary = new Type("secondary");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

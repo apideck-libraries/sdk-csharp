@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type of amortization.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BillCreateInputAmortizationType : IEquatable<BillCreateInputAmortizationType>
+    public class BillCreateInputAmortizationType : IEquatable<BillCreateInputAmortizationType>, IOpenEnum<string>
     {
         public static readonly BillCreateInputAmortizationType Manual = new BillCreateInputAmortizationType("manual");
         public static readonly BillCreateInputAmortizationType Receipt = new BillCreateInputAmortizationType("receipt");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

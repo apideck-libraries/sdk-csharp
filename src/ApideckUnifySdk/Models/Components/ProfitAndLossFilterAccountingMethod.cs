@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The accounting method used for the report: cash or accrual.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProfitAndLossFilterAccountingMethod : IEquatable<ProfitAndLossFilterAccountingMethod>
+    public class ProfitAndLossFilterAccountingMethod : IEquatable<ProfitAndLossFilterAccountingMethod>, IOpenEnum<string>
     {
         public static readonly ProfitAndLossFilterAccountingMethod Cash = new ProfitAndLossFilterAccountingMethod("cash");
         public static readonly ProfitAndLossFilterAccountingMethod Accrual = new ProfitAndLossFilterAccountingMethod("accrual");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

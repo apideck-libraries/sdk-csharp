@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Purchase Orders.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PurchaseOrdersSortBy : IEquatable<PurchaseOrdersSortBy>
+    public class PurchaseOrdersSortBy : IEquatable<PurchaseOrdersSortBy>, IOpenEnum<string>
     {
         public static readonly PurchaseOrdersSortBy UpdatedAt = new PurchaseOrdersSortBy("updated_at");
         public static readonly PurchaseOrdersSortBy CreatedAt = new PurchaseOrdersSortBy("created_at");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

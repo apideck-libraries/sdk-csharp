@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ApplicationStatus : IEquatable<ApplicationStatus>
+    public class ApplicationStatus : IEquatable<ApplicationStatus>, IOpenEnum<string>
     {
         public static readonly ApplicationStatus Open = new ApplicationStatus("open");
         public static readonly ApplicationStatus Rejected = new ApplicationStatus("rejected");
@@ -59,7 +59,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

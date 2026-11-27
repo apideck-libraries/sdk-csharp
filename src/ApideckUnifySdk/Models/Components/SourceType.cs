@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Filter by the originating transaction type.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class SourceType : IEquatable<SourceType>
+    public class SourceType : IEquatable<SourceType>, IOpenEnum<string>
     {
         public static readonly SourceType Other = new SourceType("other");
         public static readonly SourceType Invoice = new SourceType("invoice");
@@ -70,7 +70,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

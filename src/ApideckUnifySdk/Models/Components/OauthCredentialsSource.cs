@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Location of the OAuth client credentials. For most connectors the OAuth client credentials are stored on integration and managed by the application owner. For others they are stored on connection and managed by the consumer in Vault.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class OauthCredentialsSource : IEquatable<OauthCredentialsSource>
+    public class OauthCredentialsSource : IEquatable<OauthCredentialsSource>, IOpenEnum<string>
     {
         public static readonly OauthCredentialsSource Integration = new OauthCredentialsSource("integration");
         public static readonly OauthCredentialsSource Connection = new OauthCredentialsSource("connection");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

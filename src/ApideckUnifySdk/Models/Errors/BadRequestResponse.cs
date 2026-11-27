@@ -72,6 +72,12 @@ namespace ApideckUnifySdk.Models.Errors
         /// </summary>
         public BadRequestResponsePayload Payload { get; }
 
+        /// <summary>
+        ///  The schema validation error for this response body.
+        ///  Null if the body matched the expected schema.
+        /// </summary>
+        public ResponseValidationException? DeserializationException { get; }
+
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use BadRequestResponse.Payload.StatusCode instead.")]
         public double? StatusCode { get; set; }
 
@@ -108,10 +114,12 @@ namespace ApideckUnifySdk.Models.Errors
             BadRequestResponsePayload payload,
             HttpRequestMessage request,
             HttpResponseMessage response,
-            string body
+            string body,
+            ResponseValidationException? deserializationException = null
         ): base(ErrorMessage(payload, body), request, response, body)
         {
            Payload = payload;
+           DeserializationException = deserializationException;
 
            #pragma warning disable CS0618
            StatusCode = payload.StatusCode;

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The gender of the contact.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ContactGender : IEquatable<ContactGender>
+    public class ContactGender : IEquatable<ContactGender>, IOpenEnum<string>
     {
         public static readonly ContactGender Male = new ContactGender("male");
         public static readonly ContactGender Female = new ContactGender("female");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

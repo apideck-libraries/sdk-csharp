@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Side of the entry. Redundant with the sign of net_amount but exposed as an explicit flag for filtering convenience.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class GeneralLedgerTransactionLineItemType : IEquatable<GeneralLedgerTransactionLineItemType>
+    public class GeneralLedgerTransactionLineItemType : IEquatable<GeneralLedgerTransactionLineItemType>, IOpenEnum<string>
     {
         public static readonly GeneralLedgerTransactionLineItemType Debit = new GeneralLedgerTransactionLineItemType("debit");
         public static readonly GeneralLedgerTransactionLineItemType Credit = new GeneralLedgerTransactionLineItemType("credit");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

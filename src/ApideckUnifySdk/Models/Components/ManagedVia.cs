@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// How the subscription is managed in the downstream.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ManagedVia : IEquatable<ManagedVia>
+    public class ManagedVia : IEquatable<ManagedVia>, IOpenEnum<string>
     {
         public static readonly ManagedVia Manual = new ManagedVia("manual");
         public static readonly ManagedVia Api = new ManagedVia("api");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

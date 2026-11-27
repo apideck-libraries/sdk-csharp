@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Filter by account classification.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Classification : IEquatable<Classification>
+    public class Classification : IEquatable<Classification>, IOpenEnum<string>
     {
         public static readonly Classification Asset = new Classification("asset");
         public static readonly Classification Equity = new Classification("equity");
@@ -72,7 +72,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Customers.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CreditNotesSortBy : IEquatable<CreditNotesSortBy>
+    public class CreditNotesSortBy : IEquatable<CreditNotesSortBy>, IOpenEnum<string>
     {
         public static readonly CreditNotesSortBy CreatedAt = new CreditNotesSortBy("created_at");
         public static readonly CreditNotesSortBy UpdatedAt = new CreditNotesSortBy("updated_at");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The visibility of the job.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Visibility : IEquatable<Visibility>
+    public class Visibility : IEquatable<Visibility>, IOpenEnum<string>
     {
         public static readonly Visibility Draft = new Visibility("draft");
         public static readonly Visibility Public = new Visibility("public");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Type of payment.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BillPaymentCreateInputBillPaymentType : IEquatable<BillPaymentCreateInputBillPaymentType>
+    public class BillPaymentCreateInputBillPaymentType : IEquatable<BillPaymentCreateInputBillPaymentType>, IOpenEnum<string>
     {
         public static readonly BillPaymentCreateInputBillPaymentType AccountsPayableCredit = new BillPaymentCreateInputBillPaymentType("accounts_payable_credit");
         public static readonly BillPaymentCreateInputBillPaymentType AccountsPayableOverpayment = new BillPaymentCreateInputBillPaymentType("accounts_payable_overpayment");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

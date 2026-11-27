@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of period to include in the resource: month, quarter, year.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class PeriodType : IEquatable<PeriodType>
+    public class PeriodType : IEquatable<PeriodType>, IOpenEnum<string>
     {
         public static readonly PeriodType Month = new PeriodType("month");
         public static readonly PeriodType Quarter = new PeriodType("quarter");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

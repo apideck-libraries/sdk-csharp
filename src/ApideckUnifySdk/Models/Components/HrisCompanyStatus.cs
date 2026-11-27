@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class HrisCompanyStatus : IEquatable<HrisCompanyStatus>
+    public class HrisCompanyStatus : IEquatable<HrisCompanyStatus>, IOpenEnum<string>
     {
         public static readonly HrisCompanyStatus Active = new HrisCompanyStatus("active");
         public static readonly HrisCompanyStatus Inactive = new HrisCompanyStatus("inactive");
@@ -57,7 +57,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

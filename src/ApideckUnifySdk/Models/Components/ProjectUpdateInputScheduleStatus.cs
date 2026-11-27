@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Current status of project schedule compared to plan.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProjectUpdateInputScheduleStatus : IEquatable<ProjectUpdateInputScheduleStatus>
+    public class ProjectUpdateInputScheduleStatus : IEquatable<ProjectUpdateInputScheduleStatus>, IOpenEnum<string>
     {
         public static readonly ProjectUpdateInputScheduleStatus AheadOfSchedule = new ProjectUpdateInputScheduleStatus("ahead_of_schedule");
         public static readonly ProjectUpdateInputScheduleStatus OnSchedule = new ProjectUpdateInputScheduleStatus("on_schedule");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

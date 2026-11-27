@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The classification of account.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LedgerAccountClassification : IEquatable<LedgerAccountClassification>
+    public class LedgerAccountClassification : IEquatable<LedgerAccountClassification>, IOpenEnum<string>
     {
         public static readonly LedgerAccountClassification Asset = new LedgerAccountClassification("asset");
         public static readonly LedgerAccountClassification Equity = new LedgerAccountClassification("equity");
@@ -72,7 +72,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

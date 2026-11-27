@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AccountingEmployeesFilterStatus : IEquatable<AccountingEmployeesFilterStatus>
+    public class AccountingEmployeesFilterStatus : IEquatable<AccountingEmployeesFilterStatus>, IOpenEnum<string>
     {
         public static readonly AccountingEmployeesFilterStatus Active = new AccountingEmployeesFilterStatus("active");
         public static readonly AccountingEmployeesFilterStatus Inactive = new AccountingEmployeesFilterStatus("inactive");
@@ -55,7 +55,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

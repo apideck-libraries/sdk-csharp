@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class OptionType : IEquatable<OptionType>
+    public class OptionType : IEquatable<OptionType>, IOpenEnum<string>
     {
         public static readonly OptionType Simple = new OptionType("simple");
 
@@ -51,7 +51,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

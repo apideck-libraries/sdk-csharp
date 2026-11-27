@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field to sort by.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProjectsSortSortBy : IEquatable<ProjectsSortSortBy>
+    public class ProjectsSortSortBy : IEquatable<ProjectsSortSortBy>, IOpenEnum<string>
     {
         public static readonly ProjectsSortSortBy Name = new ProjectsSortSortBy("name");
         public static readonly ProjectsSortSortBy Status = new ProjectsSortSortBy("status");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The status of the payment method.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class AccountingPaymentMethodStatus : IEquatable<AccountingPaymentMethodStatus>
+    public class AccountingPaymentMethodStatus : IEquatable<AccountingPaymentMethodStatus>, IOpenEnum<string>
     {
         public static readonly AccountingPaymentMethodStatus Active = new AccountingPaymentMethodStatus("active");
         public static readonly AccountingPaymentMethodStatus Inactive = new AccountingPaymentMethodStatus("inactive");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

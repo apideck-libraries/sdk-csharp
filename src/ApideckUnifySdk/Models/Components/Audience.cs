@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Audience for the doc.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Audience : IEquatable<Audience>
+    public class Audience : IEquatable<Audience>, IOpenEnum<string>
     {
         public static readonly Audience ApplicationOwner = new Audience("application_owner");
         public static readonly Audience Consumer = new Audience("consumer");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

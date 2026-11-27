@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Filter by tax rate status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TaxRatesFilterStatus : IEquatable<TaxRatesFilterStatus>
+    public class TaxRatesFilterStatus : IEquatable<TaxRatesFilterStatus>, IOpenEnum<string>
     {
         public static readonly TaxRatesFilterStatus Active = new TaxRatesFilterStatus("active");
         public static readonly TaxRatesFilterStatus Inactive = new TaxRatesFilterStatus("inactive");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

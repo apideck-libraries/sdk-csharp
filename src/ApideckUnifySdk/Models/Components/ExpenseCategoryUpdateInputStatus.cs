@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The status of the expense category.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ExpenseCategoryUpdateInputStatus : IEquatable<ExpenseCategoryUpdateInputStatus>
+    public class ExpenseCategoryUpdateInputStatus : IEquatable<ExpenseCategoryUpdateInputStatus>, IOpenEnum<string>
     {
         public static readonly ExpenseCategoryUpdateInputStatus Active = new ExpenseCategoryUpdateInputStatus("active");
         public static readonly ExpenseCategoryUpdateInputStatus Inactive = new ExpenseCategoryUpdateInputStatus("inactive");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

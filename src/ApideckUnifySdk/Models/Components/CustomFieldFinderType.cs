@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The declared data type of the custom field. Only returned by connectors that can read the field's definition; omitted otherwise.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CustomFieldFinderType : IEquatable<CustomFieldFinderType>
+    public class CustomFieldFinderType : IEquatable<CustomFieldFinderType>, IOpenEnum<string>
     {
         public static readonly CustomFieldFinderType Text = new CustomFieldFinderType("text");
         public static readonly CustomFieldFinderType Checkbox = new CustomFieldFinderType("checkbox");
@@ -80,7 +80,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

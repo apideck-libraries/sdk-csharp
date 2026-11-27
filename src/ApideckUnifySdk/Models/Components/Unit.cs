@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The window unit for the rate.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Unit : IEquatable<Unit>
+    public class Unit : IEquatable<Unit>, IOpenEnum<string>
     {
         public static readonly Unit Second = new Unit("second");
         public static readonly Unit Minute = new Unit("minute");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

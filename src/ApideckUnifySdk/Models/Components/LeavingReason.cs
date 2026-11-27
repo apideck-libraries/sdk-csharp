@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The reason because the employment ended.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class LeavingReason : IEquatable<LeavingReason>
+    public class LeavingReason : IEquatable<LeavingReason>, IOpenEnum<string>
     {
         public static readonly LeavingReason Dismissed = new LeavingReason("dismissed");
         public static readonly LeavingReason Resigned = new LeavingReason("resigned");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Invoice status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class InvoiceCreateInputStatus : IEquatable<InvoiceCreateInputStatus>
+    public class InvoiceCreateInputStatus : IEquatable<InvoiceCreateInputStatus>, IOpenEnum<string>
     {
         public static readonly InvoiceCreateInputStatus Draft = new InvoiceCreateInputStatus("draft");
         public static readonly InvoiceCreateInputStatus Submitted = new InvoiceCreateInputStatus("submitted");
@@ -72,7 +72,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

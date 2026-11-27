@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of the attendee.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ActivityAttendeeStatus : IEquatable<ActivityAttendeeStatus>
+    public class ActivityAttendeeStatus : IEquatable<ActivityAttendeeStatus>, IOpenEnum<string>
     {
         public static readonly ActivityAttendeeStatus Accepted = new ActivityAttendeeStatus("accepted");
         public static readonly ActivityAttendeeStatus Tentative = new ActivityAttendeeStatus("tentative");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

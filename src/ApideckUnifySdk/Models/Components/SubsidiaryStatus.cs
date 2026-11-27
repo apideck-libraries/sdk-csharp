@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Based on the status some functionality is enabled or disabled.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class SubsidiaryStatus : IEquatable<SubsidiaryStatus>
+    public class SubsidiaryStatus : IEquatable<SubsidiaryStatus>, IOpenEnum<string>
     {
         public static readonly SubsidiaryStatus Active = new SubsidiaryStatus("active");
         public static readonly SubsidiaryStatus Inactive = new SubsidiaryStatus("inactive");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

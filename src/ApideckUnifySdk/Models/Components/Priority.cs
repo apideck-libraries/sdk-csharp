@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Priority level of the project.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Priority : IEquatable<Priority>
+    public class Priority : IEquatable<Priority>, IOpenEnum<string>
     {
         public static readonly Priority Low = new Priority("low");
         public static readonly Priority Medium = new Priority("medium");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

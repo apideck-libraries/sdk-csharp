@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// `none` means this resource refuses batch writes. `native` satisfies a batch in a single downstream call against the provider's own batch endpoint, so the request counts as one request against your plan. `loop` satisfies it as a bounded sequential fan-out, one downstream call per item — so a request of N records takes roughly N times as long and counts as N requests.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BatchSupportResourcesMode : IEquatable<BatchSupportResourcesMode>
+    public class BatchSupportResourcesMode : IEquatable<BatchSupportResourcesMode>, IOpenEnum<string>
     {
         public static readonly BatchSupportResourcesMode None = new BatchSupportResourcesMode("none");
         public static readonly BatchSupportResourcesMode Native = new BatchSupportResourcesMode("native");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

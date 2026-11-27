@@ -1074,6 +1074,15 @@ catch (BaseException ex)  // all SDK exceptions inherit from BaseException
         double StatusCode = payload.StatusCode;
         string Error = payload.Error;
         // ...
+
+        // If the response body did not match the expected schema, details are made
+        // available in the DeserializationException field
+        if (ex.DeserializationException != null)
+        {
+            ResponseValidationException validationEx = ex.DeserializationException;
+            System.Console.WriteLine(validationEx.Message);
+            Exception? cause = validationEx.InnerException;
+        }
     }
 
     // An underlying cause may be provided

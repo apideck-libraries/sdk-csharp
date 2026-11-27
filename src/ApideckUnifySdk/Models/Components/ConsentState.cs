@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The current consent state of the connection.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ConsentState : IEquatable<ConsentState>
+    public class ConsentState : IEquatable<ConsentState>, IOpenEnum<string>
     {
         public static readonly ConsentState Implicit = new ConsentState("implicit");
         public static readonly ConsentState Pending = new ConsentState("pending");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

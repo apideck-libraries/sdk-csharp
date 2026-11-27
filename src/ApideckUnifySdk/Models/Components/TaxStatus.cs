@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The tax applicability of the product: `taxable` (the product is taxed), `shipping` (only the shipping is taxed, the product itself is exempt) or `none` (neither is taxed).
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TaxStatus : IEquatable<TaxStatus>
+    public class TaxStatus : IEquatable<TaxStatus>, IOpenEnum<string>
     {
         public static readonly TaxStatus Taxable = new TaxStatus("taxable");
         public static readonly TaxStatus Shipping = new TaxStatus("shipping");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

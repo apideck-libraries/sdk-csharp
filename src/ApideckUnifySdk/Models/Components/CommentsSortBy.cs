@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The field on which to sort the Comments.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CommentsSortBy : IEquatable<CommentsSortBy>
+    public class CommentsSortBy : IEquatable<CommentsSortBy>, IOpenEnum<string>
     {
         public static readonly CommentsSortBy CreatedAt = new CommentsSortBy("created_at");
         public static readonly CommentsSortBy UpdatedAt = new CommentsSortBy("updated_at");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

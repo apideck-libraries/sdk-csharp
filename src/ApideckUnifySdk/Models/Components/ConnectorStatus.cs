@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of the connector. Connectors with status live or beta are callable.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ConnectorStatus : IEquatable<ConnectorStatus>
+    public class ConnectorStatus : IEquatable<ConnectorStatus>, IOpenEnum<string>
     {
         public static readonly ConnectorStatus Live = new ConnectorStatus("live");
         public static readonly ConnectorStatus Beta = new ConnectorStatus("beta");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

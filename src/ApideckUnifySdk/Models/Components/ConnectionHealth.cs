@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The operational health status of the connection.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ConnectionHealth : IEquatable<ConnectionHealth>
+    public class ConnectionHealth : IEquatable<ConnectionHealth>, IOpenEnum<string>
     {
         public static readonly ConnectionHealth Ok = new ConnectionHealth("ok");
         public static readonly ConnectionHealth PendingRefresh = new ConnectionHealth("pending_refresh");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

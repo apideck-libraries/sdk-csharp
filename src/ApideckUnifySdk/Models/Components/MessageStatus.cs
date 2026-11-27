@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of the delivery of the message.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class MessageStatus : IEquatable<MessageStatus>
+    public class MessageStatus : IEquatable<MessageStatus>, IOpenEnum<string>
     {
         public static readonly MessageStatus Accepted = new MessageStatus("accepted");
         public static readonly MessageStatus Scheduled = new MessageStatus("scheduled");
@@ -76,7 +76,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

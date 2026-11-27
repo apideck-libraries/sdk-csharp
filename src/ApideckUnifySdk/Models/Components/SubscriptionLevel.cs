@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Received events are scoped to connection or across integration.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class SubscriptionLevel : IEquatable<SubscriptionLevel>
+    public class SubscriptionLevel : IEquatable<SubscriptionLevel>, IOpenEnum<string>
     {
         public static readonly SubscriptionLevel Connection = new SubscriptionLevel("connection");
         public static readonly SubscriptionLevel Integration = new SubscriptionLevel("integration");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

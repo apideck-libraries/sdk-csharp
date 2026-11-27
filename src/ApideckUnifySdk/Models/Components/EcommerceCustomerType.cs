@@ -17,7 +17,7 @@ namespace ApideckUnifySdk.Models.Components
     using System.Linq;
 
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EcommerceCustomerType : IEquatable<EcommerceCustomerType>
+    public class EcommerceCustomerType : IEquatable<EcommerceCustomerType>, IOpenEnum<string>
     {
         public static readonly EcommerceCustomerType Billing = new EcommerceCustomerType("billing");
         public static readonly EcommerceCustomerType Shipping = new EcommerceCustomerType("shipping");
@@ -55,7 +55,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

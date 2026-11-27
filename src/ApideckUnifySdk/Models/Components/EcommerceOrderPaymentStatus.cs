@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Current payment status of the order.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EcommerceOrderPaymentStatus : IEquatable<EcommerceOrderPaymentStatus>
+    public class EcommerceOrderPaymentStatus : IEquatable<EcommerceOrderPaymentStatus>, IOpenEnum<string>
     {
         public static readonly EcommerceOrderPaymentStatus Pending = new EcommerceOrderPaymentStatus("pending");
         public static readonly EcommerceOrderPaymentStatus Authorized = new EcommerceOrderPaymentStatus("authorized");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

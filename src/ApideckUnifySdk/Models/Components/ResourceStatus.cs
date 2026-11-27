@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of the resource. Resources with status live or beta are callable.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ResourceStatus : IEquatable<ResourceStatus>
+    public class ResourceStatus : IEquatable<ResourceStatus>, IOpenEnum<string>
     {
         public static readonly ResourceStatus Live = new ResourceStatus("live");
         public static readonly ResourceStatus Beta = new ResourceStatus("beta");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

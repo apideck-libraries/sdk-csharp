@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The FLSA status for this compensation.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class FlsaStatus : IEquatable<FlsaStatus>
+    public class FlsaStatus : IEquatable<FlsaStatus>, IOpenEnum<string>
     {
         public static readonly FlsaStatus Exempt = new FlsaStatus("exempt");
         public static readonly FlsaStatus SalariedNonexempt = new FlsaStatus("salaried-nonexempt");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

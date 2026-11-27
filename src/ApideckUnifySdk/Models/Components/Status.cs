@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The status of the webhook.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Status : IEquatable<Status>
+    public class Status : IEquatable<Status>, IOpenEnum<string>
     {
         public static readonly Status Enabled = new Status("enabled");
         public static readonly Status Disabled = new Status("disabled");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

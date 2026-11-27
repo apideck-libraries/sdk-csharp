@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The unit of time off requested. Possible values include: `hours`, `days`, or `other`.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class Units : IEquatable<Units>
+    public class Units : IEquatable<Units>, IOpenEnum<string>
     {
         public static readonly Units Days = new Units("days");
         public static readonly Units Hours = new Units("hours");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

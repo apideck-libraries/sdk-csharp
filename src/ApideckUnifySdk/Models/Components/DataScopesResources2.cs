@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Wildcard indicating all resources and fields when Data Scopes is selected.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class DataScopesResources2 : IEquatable<DataScopesResources2>
+    public class DataScopesResources2 : IEquatable<DataScopesResources2>, IOpenEnum<string>
     {
         public static readonly DataScopesResources2 Wildcard = new DataScopesResources2("*");
 
@@ -54,7 +54,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

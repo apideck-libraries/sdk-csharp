@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Current status of the project.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProjectProjectStatus : IEquatable<ProjectProjectStatus>
+    public class ProjectProjectStatus : IEquatable<ProjectProjectStatus>, IOpenEnum<string>
     {
         public static readonly ProjectProjectStatus Active = new ProjectProjectStatus("active");
         public static readonly ProjectProjectStatus Completed = new ProjectProjectStatus("completed");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

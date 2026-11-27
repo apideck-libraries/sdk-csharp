@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Normalized journal classification.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class JournalType : IEquatable<JournalType>
+    public class JournalType : IEquatable<JournalType>, IOpenEnum<string>
     {
         public static readonly JournalType General = new JournalType("general");
         public static readonly JournalType Sales = new JournalType("sales");
@@ -70,7 +70,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

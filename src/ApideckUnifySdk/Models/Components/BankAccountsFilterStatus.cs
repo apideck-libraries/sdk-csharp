@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Filter by account status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class BankAccountsFilterStatus : IEquatable<BankAccountsFilterStatus>
+    public class BankAccountsFilterStatus : IEquatable<BankAccountsFilterStatus>, IOpenEnum<string>
     {
         public static readonly BankAccountsFilterStatus Active = new BankAccountsFilterStatus("active");
         public static readonly BankAccountsFilterStatus Inactive = new BankAccountsFilterStatus("inactive");
@@ -58,7 +58,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

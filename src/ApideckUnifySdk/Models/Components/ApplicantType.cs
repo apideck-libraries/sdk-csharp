@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of website.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ApplicantType : IEquatable<ApplicantType>
+    public class ApplicantType : IEquatable<ApplicantType>, IOpenEnum<string>
     {
         public static readonly ApplicantType Primary = new ApplicantType("primary");
         public static readonly ApplicantType Secondary = new ApplicantType("secondary");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

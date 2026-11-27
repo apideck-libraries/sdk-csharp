@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The start month of fiscal year.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class TheStartMonthOfFiscalYear : IEquatable<TheStartMonthOfFiscalYear>
+    public class TheStartMonthOfFiscalYear : IEquatable<TheStartMonthOfFiscalYear>, IOpenEnum<string>
     {
         public static readonly TheStartMonthOfFiscalYear January = new TheStartMonthOfFiscalYear("January");
         public static readonly TheStartMonthOfFiscalYear February = new TheStartMonthOfFiscalYear("February");
@@ -76,7 +76,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

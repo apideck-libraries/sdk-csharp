@@ -1,20 +1,20 @@
-speakeasyVersion: 1.791.4
+speakeasyVersion: 1.813.0
 sources:
     Apideck:
         sourceNamespace: apideck
-        sourceRevisionDigest: sha256:d866a9143afcc08357856aca808b0562a666aeecc11044eeabcca2504ed40f42
-        sourceBlobDigest: sha256:b0067d50203155e49e7a221deb4f7676ec160530a762fba408085bf3de491b9b
+        sourceRevisionDigest: sha256:f441ea97cc30f2ca859f865329f5a1892881681f3dfd5749541d62f0e8d78a8a
+        sourceBlobDigest: sha256:28ad72045840ee77f1d87ce9b2bdeb2d55c58a2766e450e63ab018ac9cd333d5
         tags:
             - latest
-            - 10.96.1
+            - 10.97.1
 targets:
     apideck:
         source: Apideck
         sourceNamespace: apideck
-        sourceRevisionDigest: sha256:d866a9143afcc08357856aca808b0562a666aeecc11044eeabcca2504ed40f42
-        sourceBlobDigest: sha256:b0067d50203155e49e7a221deb4f7676ec160530a762fba408085bf3de491b9b
+        sourceRevisionDigest: sha256:f441ea97cc30f2ca859f865329f5a1892881681f3dfd5749541d62f0e8d78a8a
+        sourceBlobDigest: sha256:28ad72045840ee77f1d87ce9b2bdeb2d55c58a2766e450e63ab018ac9cd333d5
         codeSamplesNamespace: apideck-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:70a049225bc22d437a499abfb768e9fb865241626c8cc8a24e0e9f2579ce4fd4
+        codeSamplesRevisionDigest: sha256:e922939bf6527c7c2da1400b767c823c2c8687133eaa8a8551f42f8709ae408c
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -22,6 +22,8 @@ workflow:
         Apideck:
             inputs:
                 - location: https://ci-spec-unify.s3.eu-central-1.amazonaws.com/speakeasy-spec.yml
+            overlays:
+                - location: ./.speakeasy/overlay-spec.yaml
             registry:
                 location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck
     targets:
@@ -30,7 +32,8 @@ workflow:
             source: Apideck
             publish:
                 nuget:
-                    apiKey: ""
+                    username: Apideck
+                    useTrustedPublishing: true
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/apideck-k2o/apideck/apideck-csharp-code-samples

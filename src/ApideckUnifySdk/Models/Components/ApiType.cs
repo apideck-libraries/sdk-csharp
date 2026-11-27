@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Indicates whether the API is a Unified API. If unified_api is false, the API is a Platform API.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ApiType : IEquatable<ApiType>
+    public class ApiType : IEquatable<ApiType>, IOpenEnum<string>
     {
         public static readonly ApiType Platform = new ApiType("platform");
         public static readonly ApiType Unified = new ApiType("unified");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

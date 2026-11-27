@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Journal entry status.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class JournalEntryStatus : IEquatable<JournalEntryStatus>
+    public class JournalEntryStatus : IEquatable<JournalEntryStatus>, IOpenEnum<string>
     {
         public static readonly JournalEntryStatus Draft = new JournalEntryStatus("draft");
         public static readonly JournalEntryStatus PendingApproval = new JournalEntryStatus("pending_approval");
@@ -68,7 +68,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

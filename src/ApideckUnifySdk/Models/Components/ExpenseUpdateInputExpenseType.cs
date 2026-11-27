@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of expense.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ExpenseUpdateInputExpenseType : IEquatable<ExpenseUpdateInputExpenseType>
+    public class ExpenseUpdateInputExpenseType : IEquatable<ExpenseUpdateInputExpenseType>, IOpenEnum<string>
     {
         public static readonly ExpenseUpdateInputExpenseType Expense = new ExpenseUpdateInputExpenseType("expense");
         public static readonly ExpenseUpdateInputExpenseType Refund = new ExpenseUpdateInputExpenseType("refund");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

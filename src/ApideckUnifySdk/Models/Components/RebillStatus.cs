@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of the rebilling process for this line item.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class RebillStatus : IEquatable<RebillStatus>
+    public class RebillStatus : IEquatable<RebillStatus>, IOpenEnum<string>
     {
         public static readonly RebillStatus Pending = new RebillStatus("pending");
         public static readonly RebillStatus Billed = new RebillStatus("billed");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

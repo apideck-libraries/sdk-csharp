@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Lifecycle status of the receipt. `draft` covers unposted or awaiting-validation documents, `pending_approval` covers documents submitted into an approval flow, `received` covers posted/validated/released receipts that have affected stock or the receiving ledger, `cancelled` covers voided, reversed or denied receipts.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class GoodsReceiptStatus : IEquatable<GoodsReceiptStatus>
+    public class GoodsReceiptStatus : IEquatable<GoodsReceiptStatus>, IOpenEnum<string>
     {
         public static readonly GoodsReceiptStatus Draft = new GoodsReceiptStatus("draft");
         public static readonly GoodsReceiptStatus PendingApproval = new GoodsReceiptStatus("pending_approval");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

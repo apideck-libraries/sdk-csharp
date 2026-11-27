@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Whether the amount is a credit or debit.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class CreditOrDebit : IEquatable<CreditOrDebit>
+    public class CreditOrDebit : IEquatable<CreditOrDebit>, IOpenEnum<string>
     {
         public static readonly CreditOrDebit Credit = new CreditOrDebit("credit");
         public static readonly CreditOrDebit Debit = new CreditOrDebit("debit");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

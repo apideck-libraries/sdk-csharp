@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Current phase of the project lifecycle.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProjectPhase : IEquatable<ProjectPhase>
+    public class ProjectPhase : IEquatable<ProjectPhase>, IOpenEnum<string>
     {
         public static readonly ProjectPhase Initiation = new ProjectPhase("initiation");
         public static readonly ProjectPhase Planning = new ProjectPhase("planning");
@@ -64,7 +64,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Current status of the bank feed.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class FeedStatus : IEquatable<FeedStatus>
+    public class FeedStatus : IEquatable<FeedStatus>, IOpenEnum<string>
     {
         public static readonly FeedStatus Pending = new FeedStatus("pending");
         public static readonly FeedStatus Rejected = new FeedStatus("rejected");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

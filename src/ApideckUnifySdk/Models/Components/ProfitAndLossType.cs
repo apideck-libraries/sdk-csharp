@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The type of profit and loss.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ProfitAndLossType : IEquatable<ProfitAndLossType>
+    public class ProfitAndLossType : IEquatable<ProfitAndLossType>, IOpenEnum<string>
     {
         public static readonly ProfitAndLossType Section = new ProfitAndLossType("Section");
         public static readonly ProfitAndLossType Record = new ProfitAndLossType("Record");
@@ -56,7 +56,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// The work schedule of the employee.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class EmploymentSubType : IEquatable<EmploymentSubType>
+    public class EmploymentSubType : IEquatable<EmploymentSubType>, IOpenEnum<string>
     {
         public static readonly EmploymentSubType FullTime = new EmploymentSubType("full_time");
         public static readonly EmploymentSubType PartTime = new EmploymentSubType("part_time");
@@ -62,7 +62,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {

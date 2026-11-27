@@ -20,7 +20,7 @@ namespace ApideckUnifySdk.Models.Components
     /// Status of the API. APIs with status live or beta are callable.
     /// </summary>
     [JsonConverter(typeof(OpenEnumConverter))]
-    public class ApiStatus : IEquatable<ApiStatus>
+    public class ApiStatus : IEquatable<ApiStatus>, IOpenEnum<string>
     {
         public static readonly ApiStatus Live = new ApiStatus("live");
         public static readonly ApiStatus Beta = new ApiStatus("beta");
@@ -60,7 +60,7 @@ namespace ApideckUnifySdk.Models.Components
             return _values.Values.ToArray();
         }
 
-        public override string ToString() => Value.ToString();
+        public override string ToString() => Value.ToString(System.Globalization.CultureInfo.InvariantCulture);
 
         public bool IsKnown()
         {
